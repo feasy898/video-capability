@@ -1,0 +1,24 @@
+# 大数据 / 媒体资产与本地环境（不入库）
+overnight/数据/
+.mimosa/
+.zcode/
+_tmp_wheels/
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+*.bundle
+
+# 密钥与本地敏感文件
+overnight/secrets/
+.env
+.env.*
+!*.env.example
+!agents/v2m3/config/api.env
+
+# Windows 坏路径产物与噪声
+D:*
+nul
+NUL
+*.log.tmp
