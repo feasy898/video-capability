@@ -1,0 +1,33 @@
+{
+  "archive": "night-data-assets-20261005.tar.gz",
+  "sha256": "7935d096a4e996fe74b2b76f68c4e038a3991f23e2398e84478b5d3438799d7c",
+  "size_bytes": 189984297,
+  "created": "2026-10-05T22:30+08:00",
+  "contents": [
+    "golden(金标40条媒体)",
+    "clips(126矩阵生成clips)",
+    "judge_rerun(judges原始输出)",
+    "frames",
+    "results",
+    "scripts",
+    "src(OmniJev/Visual-Jev/VideoChat3)",
+    "logs"
+  ],
+  "excluded": [
+    "models 77G(权重,可再获取)",
+    "venv*",
+    "tmp"
+  ],
+  "copies": [
+    {
+      "host": "anolis-gpu-01",
+      "path": "/data/night-archive/night-data-assets-20261005.tar.gz"
+    },
+    {
+      "host": "pandev-comp",
+      "path": "/home/pan-ding/workspace/视频能力-archive/night-data-assets-20261005.tar.gz"
+    }
+  ],
+  "purpose": "金标/矩阵/judges 防灭失双副本——九项目盘点 W1 工单：E10 基准与盲测不退化门的重放底座，金标注入基底不可再生",
+  "note": "恢复方法: 解包到 /data/night 后按 TASK.md 阶段(a) 重建 venv 即可复跑 run_v3_checks.py(G0-1)"
+}
