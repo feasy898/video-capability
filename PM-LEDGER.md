@@ -74,7 +74,7 @@
 > 我只做任务下达与协调；重活全部子代理。状态落盘于此 + 服务器 ~/cradle/{PROGRESS,DECISIONS}.md。
 
 ## 事实速查
-- 服务器: `ssh -i C:\Users\Administrator\.ssh\wsl_key root@36.139.118.23`（Git Bash: `/c/Users/Administrator/.ssh/wsl_key`）
+- 服务器: `ssh -i C:\Users\Administrator\.ssh\wsl_key root@203.0.113.40`（Git Bash: `/c/Users/Administrator/.ssh/wsl_key`）
 - V100S-PCIE-32GB sm_70, fp16 only / no bf16 / no fp8 / no flash-attn2。盘 99G(83G avail)。Python 3.12.3。现独占。
 - 仓库: 服务器 `~/cradle`（git 已 init，SPECS.md 为主）。本地主副本: `D:\workspace\video-capability-research\SPECS.md`
 - 墙钟: 开工 2026-09-08 00:52 → 硬停 2026-09-13 00:52

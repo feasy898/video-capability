@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# setup_oldmachine.sh — 在旧 V100 机(36.139.118.23)上搭建 judge 运行环境。
+# setup_oldmachine.sh — 在旧 V100 机(203.0.113.40)上搭建 judge 运行环境。
 # 背景：anolis-gpu-01 卡1 被生产 xdng 服务(asr/tts/lip/llm+keepalive)占 28.9G/32G，
 #       卡0 是生产 vLLM 红线；旧机 GPU 全空(0MiB)但磁盘仅 ~9.6G →
 #       权重经 sshfs 从 anolis 只读挂载，venv 本地按精确版本重建(Python 3.12)。
 # 由 root 运行。产物：/root/judgenight/{scripts,logs,results,frames,clips,src,smoke_clips}
 set -uo pipefail
 ROOT=/root/judgenight
-ANOLIS=36.139.118.235
+ANOLIS=203.0.113.41
 ANOLIS_USER=anuser
 KEY=$ROOT/.m2m_key
 IDX="https://mirrors.cloud.tencent.com/pypi/simple/"
