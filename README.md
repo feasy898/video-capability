@@ -39,3 +39,9 @@
 3. **凭据需重建**：Vidu/StepFun/MiniMax 等通道 key 不在仓内；重建只走环境变量或密钥服务，不得落仓。
 4. **运行区不在仓内**：`/data/night`（模型 77G、venv、金标）随原机器走，新环境需重建；v1/v2 的 git 历史已随旧训练机灭失，本仓 + `PM-LEDGER.md` + `deliverables*` 结论镜像是唯一史料。
 5. 历史/文档中出现的 `203.0.113.x`、`100.100.0.x` 为公开化替换的示例地址（文档保留测试网段），不是真实服务。
+
+---
+
+## 仓库来源
+
+本仓库自 agentic-factory-projects monorepo 拆分而来（一个项目一个仓库）；monorepo 内历史快照见原仓 feasy898/agentic-factory-projects。本 main 为两条快照线（monorepo 拆分线 + windev 本地快照 2026-10-05）合并结果。
