@@ -145,3 +145,8 @@ I2V：body 加 `first_frame_image`（+`last_frame_image`），值为 URL；本�
 4. 第三方 backend（seedance/wan/kling/midjourney/openai 系图像）未验证是否在会员内。
 5. ~~既有 `vpipe/src/gen_api.py` 走的是 windev 本机客户端 gateway（127.0.0.1:8001），与本手册的网关云通道并存；建议迁移到网关通道（免 windev 依赖）。~~
    **✅ 已迁移（2026-10-06）**：`gen_api.py` 默认 `--backend cloud` 走本手册 §2.1 三步流（同接口面，windev 通道降为可选后端）；实测证据 `vpipe/out/cloud_migration_smoke/`（4s/768P 云通道直出）。残留：`gen_avatar.py:99` 的 TTS 备用通道 `DESIGN_GATEWAY=127.0.0.1:8001`（design-seedaudio，默认走 StepFun 不受影响）未迁——云 TTS 端点见本手册 §4，后续同法可迁。
+
+
+## 勘误（2026-10-06 主会话）
+
+§9-1 所述 minimax_token_renew.py 不同步 minimax-design-cloud.internal.yaml 的问题**已于 2026-10-06 修复**：脚本扩展为 hub / hub-short / cloud 三 ingress 文件同步更新（备份 .bak-20261006-minimax-cloud，语法与三文件 token 行命中已验证）。token 续期后无需手工同步。
