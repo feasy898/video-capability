@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/scene-environment-intent.schema.json",
+  "$comment": "source: §4.3 SceneEnvironmentIntent / AdA motifs.setting. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest.",
+  "title": "SceneEnvironmentIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "setting",
+    "geography",
+    "time_of_day"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.scene_environment_intent"
+    },
+    "setting": {
+      "type": "string",
+      "pattern": "^vpo:genre\\.motifs\\.setting\\."
+    },
+    "geography": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "No L0 geography family exists in the seed vocabularies; registered as a schema gap (gaps/schema-gaps.md)."
+    },
+    "time_of_day": {
+      "type": "string",
+      "pattern": "^vpo:genre\\.motifs\\.setting\\.(day|night|twilight)$",
+      "$comment": "Time-of-atmosphere bound to the L0 setting family (day/night/twilight). Free prose drifts synonyms."
+    },
+    "era": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "anchor"
+      ],
+      "$comment": "Era/region/class anchoring (drama era triple-lock); excluded elements ride the absence/exception channel.",
+      "properties": {
+        "anchor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "social_class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "excluded_elements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

@@ -32,4 +32,4 @@ compile_report.json        编译日志：errors/warnings/冲突登记（hybrid 
 ## 纪律
 
 - 密钥不入包：预算只写端点语义（`wallet_check_uri_note`），调用方从 `overnight/secrets/api_keys.env` 或环境变量读取。
-- VPO schema 只读引用（`D:/workspace/video-Ontology/schemas/`，经 `$id` registry），本目录零复制。
+- VPO schema 只读引用（缺省仓内 `vpo/schemas/` vendored 副本，`VDL2_VPO_ROOT` 可覆盖；经 `$id` registry；追溯见 `vpo/PROVENANCE.md`）。

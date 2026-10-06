@@ -1,0 +1,510 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/deliverable-set.schema.json",
+  "$comment": "source: E5 / appendix G-1–G-6. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. nits, peak_nits, and panel pitch are screen capabilities and are not deliverable-set properties. venue_class selects universe; a validator forbids compiling across universes.",
+  "title": "DeliverableSet",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "display_target",
+    "pixel_map",
+    "encode_contract",
+    "readability",
+    "optical"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.deliverable_set"
+    },
+    "display_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "venue_class",
+        "viewing_distance_m",
+        "unit",
+        "measurement_basis",
+        "motion_of_audience",
+        "ambient_class"
+      ],
+      "properties": {
+        "venue_class": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.venue_class\\."
+        },
+        "viewing_distance_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "const": "m"
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "motion_of_audience": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.audience_motion\\.[a-z0-9_]+$"
+        },
+        "ambient_class": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.ambient_class\\.[a-z0-9_]+$"
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Open platform identifier for online delivery (xiaohongshu / douyin / tmall_detail ...). Platform UI-chrome avoidance (avatar bar, action rail, caption zone) is carried per-overlay by text_overlay.safe_area - the ruling is recorded here, not duplicated as a slot."
+        }
+      }
+    },
+    "pixel_map": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "native_w",
+        "native_h",
+        "unit",
+        "measurement_basis",
+        "aspect_class",
+        "scale_policy"
+      ],
+      "properties": {
+        "native_w": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "native_h": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "const": "px"
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aspect_class": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.aspect_class\\.[a-z0-9_]+$",
+          "$comment": "Closed family vpo:delivery.aspect_class.* (G-2 spec family incl. 4:3/16:10/21:9)."
+        },
+        "scale_policy": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.scale_policy\\.[a-z0-9_]+$",
+          "$comment": "Closed family vpo:delivery.scale_policy.* (fit/crop derivations, billboard no-16x9-crop rules)."
+        },
+        "requires_instance_override": {
+          "type": "boolean"
+        }
+      }
+    },
+    "encode_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "container",
+        "codec",
+        "fps",
+        "max_bitrate",
+        "max_file_mb",
+        "audio_policy",
+        "duration_exact_frames"
+      ],
+      "properties": {
+        "container": {
+          "type": "string",
+          "minLength": 1
+        },
+        "codec": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fps": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "fps"
+            }
+          }
+        },
+        "max_bitrate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "max_file_mb": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "MB"
+            }
+          }
+        },
+        "audio_policy": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.audio_policy\\."
+        },
+        "duration_exact_frames": {
+          "type": "integer",
+          "minimum": 1,
+          "$comment": "Exact integer frame count. Half-open timeline length."
+        },
+        "max_loudness_lufs": {
+          "type": "number",
+          "$comment": "G-5: delivery-side loudness ceiling in LUFS. Content-side target lufs on AudioIntent does not substitute."
+        },
+        "spill_constraint": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "G-5: venue sound-spill constraint (must not spill into the neighboring shop)."
+        },
+        "audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "channels",
+            "sample_rate_khz"
+          ],
+          "$comment": "Audio technical envelope for sounding deliverables; codec is an open technical identifier (container/codec exemption).",
+          "properties": {
+            "channels": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sample_rate_khz": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "codec": {
+              "type": "string",
+              "minLength": 1
+            },
+            "true_peak_dbtp": {
+              "type": "number"
+            }
+          }
+        },
+        "master_color": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "color_space"
+          ],
+          "$comment": "Film-grade master envelope (Gen-4.5 hdr_exr_acescg / prores / hdr_pq_12bit facts); identifiers stay open like container/codec.",
+          "properties": {
+            "color_space": {
+              "type": "string",
+              "minLength": 1
+            },
+            "transfer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bit_depth": {
+              "type": "integer",
+              "minimum": 8
+            },
+            "alpha": {
+              "type": "boolean"
+            },
+            "image_sequence": {
+              "type": "boolean"
+            }
+          }
+        },
+        "content_credentials": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "watermark"
+          ],
+          "properties": {
+            "watermark": {
+              "type": "string",
+              "pattern": "^vpo:delivery\\.watermark_policy\\.[a-z_]+"
+            },
+            "label_mode": {
+              "type": "string",
+              "enum": [
+                "explicit",
+                "implicit",
+                "none"
+              ],
+              "$comment": "Explicit visible label vs implicit metadata marking."
+            }
+          },
+          "$comment": "AIGC content labeling as a declarative delivery fact (detection is unreliable per HC-12); vendor-forced watermarks are recorded here."
+        }
+      }
+    },
+    "readability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_words",
+        "min_stroke_px",
+        "qr_allowed",
+        "contrast_floor",
+        "safe_area_pct"
+      ],
+      "properties": {
+        "max_words": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "min_stroke_px": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "px"
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "qr_allowed": {
+          "type": "boolean"
+        },
+        "contrast_floor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "safe_area_pct": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "unit": {
+              "type": "string",
+              "const": "pct"
+            }
+          }
+        }
+      }
+    },
+    "optical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "designed_ambient",
+        "apl_policy",
+        "night_safe"
+      ],
+      "properties": {
+        "designed_ambient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "apl_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "night_safe": {
+          "type": "boolean"
+        },
+        "full_frame_peak_allowed": {
+          "type": "boolean",
+          "default": false,
+          "$comment": "Night-safe deliverables forbid uncapped full-frame peak. Observed on the raster, not by undeclared keys."
+        }
+      }
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "universe": {
+      "type": "string",
+      "enum": [
+        "vpo:delivery.universe.trafficking",
+        "vpo:delivery.universe.owned_screen"
+      ]
+    },
+    "loop": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.loop_mode\\.(none|playlist_repeat|seamless_file)$"
+        },
+        "seam_grade": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.seam_grade\\.(exact|good|fail)$"
+        }
+      }
+    },
+    "qc_strips": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:delivery\\.qc_strip\\."
+      }
+    },
+    "site_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "venueClass": {
+          "type": "boolean"
+        },
+        "nativePixelMap": {
+          "type": "boolean"
+        },
+        "playerModel": {
+          "type": "boolean"
+        }
+      }
+    },
+    "compiled_from_16x9": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_id",
+        "max_file_mb",
+        "duration_sec"
+      ],
+      "$comment": "G-7: when a networkId exists, its maxFileMB and durationSec override the profile defaults; the package must comply with the network contract.",
+      "properties": {
+        "network_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "max_file_mb": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "duration_sec": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "target_market": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "market"
+      ],
+      "properties": {
+        "market": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Open market/region identifier (e.g. ISO 3166 region or market code); drives casting ethnicity presentation and subtitle/typography budget splits upstream."
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "deliverable_language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "$comment": "BCP-47 deliverable language; working language stays a process concern, deliverable language is an ontology fact."
+    },
+    "additional_languages": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+      },
+      "$comment": "Secondary delivery languages (bilingual on-screen text is a real delivery fact affecting layout budget and acceptance)."
+    }
+  },
+  "unevaluatedProperties": false
+}

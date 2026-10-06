@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l5/provenance.schema.json",
+  "$comment": "PROV-O Entity/Activity/Agent plus VPO predicates. Provenance is not a correctness proof. C2PA is an asset-level attachment. GenerationContract records model_id+version+control_channel+seed+param fingerprint+input hashes. seed yields similar results, not bitwise identity (Runway C1). Source: §4.6, PROV-O, E1 D3.9. Core distinctions (1.4): unambiguous interpretation does not mean a unique legal result; semantic losslessness does not mean acceptance.",
+  "title": "VPO Provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "entities", "activities", "agents", "relations", "turtle"],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/l5/provenance.schema.json"
+    },
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entity" }
+    },
+    "activities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/activity" }
+    },
+    "agents": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/agent" }
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/relation" }
+    },
+    "generation_contracts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/generation_contract" }
+    },
+    "rejection_codes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "$comment": "Compile rejection codes recorded on the evaluate activity. Required when the package fails closed."
+    },
+    "c2pa_attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["asset_ref", "manifest_uri"],
+        "properties": {
+          "asset_ref": { "type": "string" },
+          "manifest_uri": { "type": "string" }
+        }
+      }
+    },
+    "prov_json": {
+      "type": "object",
+      "$comment": "W3C PROV-JSON graph. Not a substitute for the Turtle deliverable.",
+      "required": ["prefix", "entity", "activity", "agent"],
+      "properties": {
+        "prefix": { "type": "object" },
+        "entity": { "type": "object" },
+        "activity": { "type": "object" },
+        "agent": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "turtle": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "W3C Turtle serialization of this record. Must be independently parseable by a standard RDF library (rdflib format=turtle). JSON graphs do not substitute."
+    },
+    "audit_warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "path"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "revision"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": {
+          "type": "string",
+          "enum": ["intent", "asset", "artifact", "spec", "record", "baseline", "cut"]
+        },
+        "revision": { "type": "string", "minLength": 1, "not": { "const": "latest" } },
+        "uri": { "type": "string" },
+        "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+      }
+    },
+    "activity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": ["approve", "compile", "generate", "evaluate", "split", "derive", "supersede"]
+        },
+        "started": { "type": "string", "format": "date-time" },
+        "ended": { "type": "string", "format": "date-time" }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "name": { "type": "string" }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["predicate", "from", "to"],
+      "properties": {
+        "predicate": {
+          "type": "string",
+          "enum": [
+            "wasGeneratedBy",
+            "used",
+            "wasAssociatedWith",
+            "wasAttributedTo",
+            "wasDerivedFrom",
+            "wasInformedBy",
+            "actedOnBehalfOf",
+            "wasEndedBy",
+            "uses",
+            "depends_on",
+            "supersedes",
+            "split_from",
+            "derived_from",
+            "approved_by",
+            "evaluated_by",
+            "compiled_from",
+            "instantiates",
+            "conflicts_with",
+            "replaces_baseline",
+            "attached_c2pa"
+          ]
+        },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 }
+      }
+    },
+    "generation_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_id",
+        "model_id",
+        "model_version",
+        "control_channel",
+        "parameter_fingerprint",
+        "input_asset_hashes"
+      ],
+      "properties": {
+        "contract_id": { "type": "string", "format": "uuid" },
+        "model_id": { "type": "string", "minLength": 1 },
+        "model_version": { "type": "string", "minLength": 1, "not": { "const": "latest" } },
+        "control_channel": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.control_channel\\.[a-z0-9_]+$"
+        },
+        "seed": {
+          "type": ["integer", "string", "null"],
+          "$comment": "Similar results only. Not a continuity key across shots."
+        },
+        "parameter_fingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "$comment": "sha256 over the generation_params / work-item params actually dispatched (cfg, steps, sampler, negative_prompts, reference strengths, audio knobs...). It does NOT cover the compiled prompt text; that is prompt_hash / prompt_ref."
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "$comment": "sha256 over the exact executed prompt string. Approval-execution alignment anchor: what was approved (final prompt reviewed before dispatch) is verifiably what ran. Optional because deterministic prompt compilation is executor-side (CONTROL-MAPPING II.7); this records the outcome, not the compilation."
+        },
+        "prompt_ref": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "URI/id of the stored executed prompt artifact when the full text is kept outside the provenance record."
+        },
+        "input_asset_hashes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/common/identifiers.schema.json",
+  "$comment": "§4.2 numbering system (E2). Fields carry semantics; display_label is a human synthesis and is not a unique key. Deleted scenes stay OMITTED; numbers are never recycled. setupLetter skips I/O/S. Source: OMC slating + E2.",
+  "title": "VPO Identifiers",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entity_id"],
+  "properties": {
+    "entity_id": {
+      "type": "string",
+      "format": "uuid",
+      "$comment": "Immutable primary key. Never reuse."
+    },
+    "scene_code": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Raw scene number in the script namespace, e.g. A12. Do not parse meaning out of a compressed string."
+    },
+    "sceneStableId": {
+      "type": "string",
+      "minLength": 1,
+      "allOf": [
+        { "not": { "pattern": "(^|.*[-_]|.*[0-9])[IiOoSs]$" } },
+        { "not": { "pattern": "[0-9][IiOoSs][-_](T[0-9]|[0-9]*U|[A-Z]{1,4})" } }
+      ],
+      "$comment": "Locked-script id. Never changes, including after OMITTED. Must not encode US setup/insert letters I/O/S as a compressed slate, including successor marks (A12I-T3)."
+    },
+    "sceneInsertPrefix": {
+      "type": ["string", "null"],
+      "pattern": "^$|^[A-HJ-NP-RT-Z]{1,2}$",
+      "not": { "pattern": "^[IiOoSs]+$" },
+      "$comment": "Empty|A|AA|B. US default. ProductionOrder header declares naming_style. I/O/S are unrepresentable."
+    },
+    "setupLetter": {
+      "type": ["string", "null"],
+      "pattern": "^$|^[A-HJ-NP-RT-Z]{1,2}$",
+      "not": { "pattern": "^[IiOoSs]+$" },
+      "$comment": "Empty|A|B|AA. Skip I/O/S. Rearranging I/O/S into this field is still illegal."
+    },
+    "unitCode": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.unit_code\\.[a-z0-9_]+$",
+      "$comment": "L0 concept_id, e.g. vpo:delivery.unit_code.1u"
+    },
+    "takeNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:delivery\\.slate_flag\\.[a-z0-9_]+$"
+      },
+      "uniqueItems": true
+    },
+    "editorialShotId": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Stable editorial-side id. Many-to-many with production numbers."
+    },
+    "display_label": {
+      "type": "string",
+      "$comment": "Human-readable synthesis such as A12B-T3. Not a unique structural key."
+    },
+    "occurrence_id": {
+      "type": "string",
+      "format": "uuid",
+      "$comment": "ClipInstance occurrence. Same Shot may appear many times."
+    },
+    "status": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.entity_status\\.[a-z0-9_]+$"
+    }
+  }
+}

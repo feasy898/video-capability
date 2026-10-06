@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/common/reference.schema.json",
+  "$comment": "Asset / image / bible reference binding. role/target/authoritative_features/time_scope/conflict_policy. Identity refs and style refs must not fight over domain (E3/E1). Versions are immutable; 'latest' is illegal. Source: E3 §2.2, G4, G5.",
+  "title": "VPO Reference Binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "role",
+    "asset_uri",
+    "asset_revision"
+  ],
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "vpo:craft.reference_role.identity",
+        "vpo:craft.reference_role.style",
+        "vpo:craft.reference_role.first_frame",
+        "vpo:craft.reference_role.end_frame",
+        "vpo:craft.reference_role.motion",
+        "vpo:craft.reference_role.palette",
+        "vpo:craft.reference_role.layout",
+        "vpo:craft.reference_role.product",
+        "vpo:craft.reference_role.product_geometry",
+        "vpo:craft.reference_role.environment",
+        "vpo:craft.reference_role.audio_voice",
+        "vpo:craft.reference_role.mask",
+        "vpo:craft.reference_role.pose",
+        "vpo:craft.reference_role.depth",
+        "vpo:craft.reference_role.subtitle",
+        "vpo:craft.reference_role.frame",
+        "vpo:craft.reference_role.edit_base",
+        "vpo:craft.reference_role.audio_track",
+        "vpo:craft.reference_role.mood",
+        "vpo:craft.reference_role.document"
+      ],
+      "$comment": "product_geometry is the reference role that locks a product's geometric identity (silhouette/proportion), distinct from a generic product asset binding."
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "What the reference is supposed to control (character, region, element, channel)."
+    },
+    "asset_uri": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Stable URI. Local absolute filesystem paths are forbidden (OTIO boundary, §4.2)."
+    },
+    "asset_revision": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "authoritative_features": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "$comment": "Which features of the reference are binding (silhouette, palette, wardrobe, face landmark…)."
+    },
+    "time_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "time_base": {
+          "type": "object",
+          "required": [
+            "rate_num",
+            "rate_den"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "rate_num": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rate_den": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "$comment": "Rational time base. Intervals are half-open [start, end) per OTIO."
+        },
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "conflict_policy": {
+      "type": "string",
+      "enum": [
+        "reject",
+        "identity_wins",
+        "style_wins",
+        "require_upstream"
+      ],
+      "$comment": "identity vs style domain fight must not be silently resolved by the executor."
+    },
+    "control_channel": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.control_channel\\.[a-z0-9_]+$"
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dimensions",
+        "decision"
+      ],
+      "$comment": "MiniMax semantic-judgment contract: what the reference donates and the upstream take/adapt/ignore/block decision; executors must not re-arbitrate.",
+      "properties": {
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^vpo:craft\\.contribution_dim\\.[a-z_]+$"
+          }
+        },
+        "decision": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.ref_decision\\.(take|adapt|ignore|block|ask)$",
+          "$comment": "ask = contribution pending upstream arbitration; a package with an ask contribution must gate the consuming work item at plan_review."
+        },
+        "traits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "$comment": "Concrete visible traits to carry (transfer invariant)."
+        }
+      }
+    },
+    "view": {
+      "type": "string",
+      "pattern": "^vpo:craft\\.view_angle\\.[a-z0-9_]+$",
+      "$comment": "View-slot label for character reference sets. Also carries the whole-asset sheet mark (vpo:craft.view_angle.sheet_3x2 = asset-pipeline standard six-view 3x2 sheet) when the binding declares one multi-view asset."
+    },
+    "strength": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "measurement_basis",
+        "evidence_status"
+      ],
+      "$comment": "Per-reference weight (front 0.8 / side 0.6 style recipes); contract-level reference_strength stays the default.",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "vpo:delivery.evidence_status.prior",
+            "vpo:delivery.evidence_status.measured"
+          ]
+        }
+      }
+    },
+    "content_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy"
+      ],
+      "properties": {
+        "policy": {
+          "type": "string",
+          "enum": [
+            "accepted",
+            "real_face_rejected",
+            "celebrity_likeness_rejected",
+            "rights_third_party_rejected"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "$comment": "Vendor content policy for this reference (real-face upload policies)."
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "measurement_basis",
+        "evidence_status"
+      ],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "px_long_edge | fps | s | seconds_total | chars | images — unit selects which qualification face this block declares."
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "vpo:delivery.evidence_status.prior",
+            "vpo:delivery.evidence_status.measured"
+          ]
+        }
+      },
+      "$comment": "Declared media qualification facts for this reference (resolution/fps/duration/format) so capability qualification faces are machine-checkable."
+    },
+    "format": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Container format of the referenced asset (mp4/mov/png...)."
+    },
+    "views": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:craft\\.view_angle\\.[a-z0-9_]+"
+      },
+      "$comment": "Multi-slot declaration: this single asset is a multi-view sheet covering these view slots (one asset, several slots). Counting faces must dedupe by asset, not by binding."
+    }
+  }
+}

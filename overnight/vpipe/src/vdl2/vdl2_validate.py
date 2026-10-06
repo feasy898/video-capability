@@ -3,8 +3,10 @@
 
 依据：overnight/vpipe/VDL_v2_草案.md §2.1（校验两段式）、§3.4（R1-R6）、§7.4（validate_vdl 规格）。
 契约：contracts/v2/vdl_package.schema.json + shot_v2.schema.json（draft-07，闸门 A）。
-VPO 侧零改动红线（草案 §7.1）：不复制任何 VPO schema 文本进 vpipe；闸门 B 经 $id registry
+VPO 侧零改动红线（草案 §7.1，W5 修订 2026-10-06）：VPO schema 文本零改动；闸门 B 经 $id registry
 把 https://vpo.example/schemas/v1/... 映射到本地 video-Ontology/schemas/ 原版 2020-12 schema。
+原 windev 共享路径灭失后改为仓内 vendored 只读副本（vpo/schemas/，追溯见 vpo/PROVENANCE.md），
+本机如有上游 checkout 可用环境变量 VDL2_VPO_ROOT 指回原版。
 
 闸门 A（结构，draft-07）: vdl_package.schema.json 全量 + shot_v2.schema.json（$ref registry）。
 闸门 B（意图内容，2020-12）: intents[]/deliverable/post_ops 内嵌实例按 intent_type 分派
@@ -28,7 +30,7 @@ VPO 侧零改动红线（草案 §7.1）：不复制任何 VPO schema 文本进 
 
 CLI:
   python vdl2_validate.py --pkg examples/10_shortdrama_ep01.yaml
-      [--vpo-root D:/workspace/video-Ontology/schemas] [--out report.json]
+      [--vpo-root <video-Ontology>/schemas，缺省 VDL2_VPO_ROOT 环境变量，再缺省仓内 vpo/schemas/] [--out report.json]
   exit 0 = 通过；1 = 拒收（errors 非空）；2 = 输入/环境错误。
 """
 from __future__ import annotations
@@ -36,6 +38,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -53,7 +56,13 @@ VPPIPE_ROOT = HERE.parent.parent                       # overnight/vpipe
 CONTRACTS_V2 = VPPIPE_ROOT / "contracts" / "v2"
 PKG_SCHEMA_PATH = CONTRACTS_V2 / "vdl_package.schema.json"
 SHOT_V2_SCHEMA_PATH = CONTRACTS_V2 / "shot_v2.schema.json"
-DEFAULT_VPO_ROOT = Path("D:/workspace/video-Ontology/schemas")
+# VPO schema 根目录解析顺序（W5 修复，2026-10-06）：
+#   1. 环境变量 VDL2_VPO_ROOT（显式覆盖，指向任意 video-Ontology schemas/ 根）
+#   2. 缺省：仓内 vendored 副本 overnight/vpipe/vpo/schemas/
+#      （来源=windev 抢救 bundle video-Ontology master@21b5609，见 vpo/PROVENANCE.md；
+#       原 windev 路径 D:/workspace/video-Ontology/schemas 已随机器灭失）
+DEFAULT_VPO_ROOT = Path(os.environ.get("VDL2_VPO_ROOT")
+                        or (VPPIPE_ROOT / "vpo" / "schemas"))
 
 # 首批九意图（草案 §0 采纳面；其余 l2 意图可校验但登记「非首批」note）
 FIRST_NINE = {

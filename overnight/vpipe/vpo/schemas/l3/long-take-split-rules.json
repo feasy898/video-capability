@@ -1,0 +1,44 @@
+{
+  "$comment": "E1 D3 long-take split hard constraints. All nine enter the executor contract template. evidence_status: prior.",
+  "evidence_status": "vpo:delivery.evidence_status.prior",
+  "rules": [
+    {
+      "id": "single_intent_peak",
+      "text": "Each generated segment carries exactly one intent peak."
+    },
+    {
+      "id": "overlap_8_16",
+      "text": "Splice overlap is 8–16 frames.",
+      "overlap_frames": { "min": 8, "max": 16, "unit": "frame" }
+    },
+    {
+      "id": "real_tail_as_condition",
+      "text": "The next segment's generation condition is the previous segment's real tail frame, not the planned tail."
+    },
+    {
+      "id": "no_cross_segment_move_change",
+      "text": "Camera movement type must not change across segments of one take."
+    },
+    {
+      "id": "restate_locks",
+      "text": "Subject / wardrobe / light / lens locks are restated on every segment."
+    },
+    {
+      "id": "exit_reenter_is_new_shot",
+      "text": "Exiting frame and re-entering is a new shot. Cross-segment memory of the subject is not a contract."
+    },
+    {
+      "id": "stylized_max_4_5s",
+      "text": "Stylized-medium segments are at most 4–5 seconds.",
+      "max_seconds": { "min": 4, "max": 5, "unit": "s" }
+    },
+    {
+      "id": "seam_four_metrics",
+      "text": "Seam acceptance uses one or more of: occluder cut-out, motion-vector continuity, exposure delta ≤ threshold, sound-leads-picture."
+    },
+    {
+      "id": "seed_not_continuity_key",
+      "text": "seed is not a continuity key. Same seed + same params yields similar results, not bitwise identity."
+    }
+  ]
+}

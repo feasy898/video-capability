@@ -1,6 +1,6 @@
 {
- "package": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\examples\\vdl2\\20_avatar_talk.yaml",
- "compiled_at": "2026-09-30T18:07:27",
+ "package": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/20_avatar_talk.yaml",
+ "compiled_at": "2026-10-06T15:05:30",
  "compiler": "vdl2_compile.py@vpipe2.0-dev",
  "ok": true,
  "errors": [],

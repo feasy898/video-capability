@@ -1,0 +1,40 @@
+{
+  "$comment": "L3 illegal actions (initial 6) plus extension point. Executing these is an implementation error, not a warning. Source: §4.4 / E2 lock-script rules.",
+  "version": "1.0.0",
+  "actions": [
+    {
+      "id": "vpo:delivery.forbidden_action.renumber_scenes",
+      "code": "renumberScenes",
+      "description": "Renumber scenes after lock. OMITTED numbers are never recycled."
+    },
+    {
+      "id": "vpo:delivery.forbidden_action.recycle_omitted",
+      "code": "recycleOmittedId",
+      "description": "Reuse an OMITTED sceneStableId or scene_code."
+    },
+    {
+      "id": "vpo:delivery.forbidden_action.overwrite_latest_approved",
+      "code": "overwriteLatestApproved",
+      "description": "Overwrite an object addressed as latest. latest is not a legal dependency."
+    },
+    {
+      "id": "vpo:delivery.forbidden_action.unauthorized_exception",
+      "code": "unauthorizedExceptionApproval",
+      "description": "Approve an exception without the authority named on the intent."
+    },
+    {
+      "id": "vpo:delivery.forbidden_action.silent_copy_reflow",
+      "code": "silentCopyReflow",
+      "description": "Silently shorten, reflow, or alter copy to make a layout fit."
+    },
+    {
+      "id": "vpo:delivery.forbidden_action.post_picture_lock_picture_change",
+      "code": "postPictureLockPictureChange",
+      "description": "Change picture after picture lock without a change order."
+    }
+  ],
+  "extension_point": {
+    "description": "Additional forbidden actions MUST be registered in L0 (domain delivery, kind attribute_value, parent forbidden_action) before they appear here.",
+    "items": []
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l1/creative-work.schema.json",
+  "$comment": "Five-axis container. Axes are linked by ids, never nested into one tree. Three times stay separate: story / playback / production. Carrier form is one of the 13 §1.2 forms. Source: E2. Core distinctions (1.4): unambiguous interpretation does not mean a unique legal result; semantic losslessness does not mean acceptance.",
+  "title": "CreativeWork",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "work_id",
+    "version",
+    "carrier_form",
+    "required_tier",
+    "narrative_axis",
+    "production_axis",
+    "continuity_axis",
+    "asset_axis",
+    "editorial_axis"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/l1/creative-work.schema.json"
+    },
+    "work_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "title": {
+      "type": "string"
+    },
+    "carrier_form": {
+      "type": "string",
+      "pattern": "^vpo:genre\\.carrier_form\\.[a-z0-9_]+$"
+    },
+    "required_tier": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.required_tier\\.(short|feature)$"
+    },
+    "fiaf_form": {
+      "type": "string",
+      "pattern": "^vpo:genre\\.fiaf_form\\.[a-z0-9_]+$"
+    },
+    "narrative_axis": {
+      "$ref": "https://vpo.example/schemas/v1/l1/narrative-axis.schema.json"
+    },
+    "production_axis": {
+      "$ref": "https://vpo.example/schemas/v1/l1/production-axis.schema.json"
+    },
+    "continuity_axis": {
+      "$ref": "https://vpo.example/schemas/v1/l1/continuity-axis.schema.json"
+    },
+    "asset_axis": {
+      "$ref": "https://vpo.example/schemas/v1/l1/asset-axis.schema.json"
+    },
+    "editorial_axis": {
+      "$ref": "https://vpo.example/schemas/v1/l1/editorial-axis.schema.json"
+    },
+    "intent_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "profile_id": {
+      "type": "string"
+    },
+    "rhythm_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Work/sequence pacing: speech-rate SSOT and segment pacing marks (drama-series storyboard).",
+      "properties": {
+        "speech_rate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "non_speech_reserve_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "segment_ref",
+              "mark"
+            ],
+            "properties": {
+              "segment_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mark": {
+                "type": "string",
+                "pattern": "^vpo:craft\\.pacing_mark\\.[a-z_]+$"
+              },
+              "speech_rate": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "$comment": "Per-segment speech-rate override (education tiering); adjacent-difference discipline rides the defense."
+              }
+            }
+          }
+        },
+        "trajectory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "arc"
+          ],
+          "properties": {
+            "arc": {
+              "type": "string",
+              "pattern": "^vpo:craft\\.rhythm_trajectory\\.[a-z_]+"
+            },
+            "intensity": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "segment_ref",
+                  "value",
+                  "unit",
+                  "measurement_basis"
+                ],
+                "properties": {
+                  "segment_ref": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 10
+                  },
+                  "unit": {
+                    "type": "string",
+                    "const": "intensity_band"
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "visual_event_density": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "events_per_15s_window"
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1,
+              "$comment": "e.g. brand-ad form-bound bands (premium 5-7, social fast-cut 8-10 per 15s); montage 0.25-0.45s/event converts accordingly."
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          },
+          "$comment": "Time-axis visual event rate contract (retention discipline for fast-cut marketing forms)."
+        },
+        "cuts_rate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "cuts_per_min"
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          },
+          "$comment": "Cutting rate from reference-video rhythm analysis (text channel; distinct axis from visual_event_density)."
+        },
+        "pace_pattern": {
+          "type": "string",
+          "pattern": "^vpo:craft\\.pace_pattern\\.[a-z_]+$"
+        },
+        "shot_size_pattern": {
+          "type": "string",
+          "pattern": "^vpo:craft\\.shot_size_pattern\\.[a-z_]+$"
+        }
+      }
+    }
+  }
+}

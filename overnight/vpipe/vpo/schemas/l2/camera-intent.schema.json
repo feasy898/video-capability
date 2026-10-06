@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/camera-intent.schema.json",
+  "$comment": "source: E1 / appendix D1. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. pitch_deg, lighting_ratio, and speed_continuous are not camera-intent properties.",
+  "title": "CameraIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "shot_scale",
+    "subject_frame_ratio",
+    "camera_angle",
+    "movement",
+    "movement_speed",
+    "framing_anchor"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.camera_intent"
+    },
+    "shot_scale": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.shot_scale_coarse\\.(extreme_wide|wide|medium|close|extreme_close|macro)$"
+    },
+    "subject_frame_ratio": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.subject_frame_ratio\\.(15pct|30pct|50pct|80pct)$"
+    },
+    "camera_angle": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.angle_coarse\\.(eye_level|high|low|overhead)$"
+    },
+    "movement": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.movement_primary\\.(static|push|pull|pan|tilt|track|orbit|zoom|boom|whip_pan|dolly_zoom|roll)$",
+      "$comment": "Single primary movement. A validator, not this schema, limits secondary_movement to at most one."
+    },
+    "secondary_movement": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^vpo:cine\\.movement_primary\\.(static|push|pull|pan|tilt|track|orbit|zoom|boom)$"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^vpo:cine\\.movement_primary\\.(static|push|pull|pan|tilt|track|orbit|zoom|boom)$"
+          }
+        }
+      ],
+      "$comment": "At most one micro secondary. Arrays longer than one are a G4 conflict_detected, not an undeclared-property miss."
+    },
+    "first_frame_shot_scale": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.shot_scale_coarse\\.(extreme_wide|wide|medium|close|extreme_close|macro)$",
+      "$comment": "Legal first-frame scale. Conflict with shot_scale is G4, not an extra key."
+    },
+    "first_frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "shot_scale": {
+          "type": "string",
+          "pattern": "^vpo:cine\\.shot_scale_coarse\\.(extreme_wide|wide|medium|close|extreme_close|macro)$"
+        }
+      }
+    },
+    "movement_speed": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.movement_speed\\.(slow|medium|fast)$"
+    },
+    "framing_anchor": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.framing_anchor\\.(center|thirds_left|thirds_right|custom_box)$"
+    },
+    "custom_box": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "w",
+        "h",
+        "unit",
+        "measurement_basis"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "w": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "h": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "unit": {
+          "type": "string",
+          "const": "normalized"
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "product_geometry_ref": {
+      "$ref": "https://vpo.example/schemas/v1/common/reference.schema.json",
+      "$comment": "Product geometric identity locked to a reference image with role=vpo:craft.reference_role.product_geometry. Frame-ratio, ΔE, and character identity-role refs do not substitute."
+    },
+    "hand_object_contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constraint",
+        "tolerance"
+      ],
+      "properties": {
+        "constraint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "held_object_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tolerance": {
+          "$ref": "https://vpo.example/schemas/v1/common/tolerance.schema.json"
+        }
+      }
+    },
+    "playback": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.camera\\.recording_playback_speed\\.[a-z_]+$",
+      "$comment": "Recording/playback speed class (slow motion / timelapse / freeze / backwards) consuming the AdA seed family."
+    },
+    "capture_relation": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.capture_relation\\.[a-z_]+$",
+      "$comment": "Who holds the camera relative to the subject (UGC/KOC core control; koc-video skill lexicon)."
+    },
+    "capture_textures": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:cine\\.capture_texture\\.[a-z_]+$"
+      },
+      "$comment": "Acquisition textures to render (handheld tremor, AF hunt...); stabilized_rig is forbidden for UGC realism."
+    },
+    "shot_composition": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.shot_composition\\.[a-z_]+$",
+      "$comment": "Coverage composition type (OTS/two-shot/single/group/insert/POV); complements scene_blocking."
+    },
+    "lens_family": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.lens\\.[a-z0-9_]+$",
+      "$comment": "Coarse lens family (fisheye/wide/medium/telephoto/anamorphic...); numeric mm stays in L3/USD hints. Binds the registered CV lens vocabulary."
+    },
+    "depth_of_field": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.depth_of_field\\.(shallow|deep|rack_focus)$",
+      "$comment": "Coarse DOF grade; rack_focus declares focus transfer as the shot device."
+    },
+    "focus_move": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.focus_move\\.[a-z_]+$",
+      "$comment": "In-shot focus transfer direction."
+    },
+    "movement_direction": {
+      "type": "string",
+      "pattern": "^vpo:motion\\.displacement_direction\\.[a-z_]+$",
+      "$comment": "Direction axis of the primary movement (pan left/right, tilt up/down, orbit cw/ccw...). Required by the compiler when movement is orbit or whip_pan (otherwise the two opposite meanings compile to one legal instance); recommended for pan/tilt/track/boom."
+    }
+  },
+  "if": {
+    "properties": {
+      "framing_anchor": {
+        "const": "vpo:cine.framing_anchor.custom_box"
+      }
+    },
+    "required": [
+      "framing_anchor"
+    ]
+  },
+  "then": {
+    "required": [
+      "custom_box"
+    ]
+  },
+  "unevaluatedProperties": false
+}

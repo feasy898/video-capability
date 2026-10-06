@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/brand-kit.schema.json",
+  "$comment": "source: E4 / appendix F-4–F-5 / DTCG Design Tokens. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Brand hard constraints must not be silently relaxed.",
+  "title": "BrandKit",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "tokens",
+    "asset_pack",
+    "logo_clearspace",
+    "usage_rules",
+    "motion_steps",
+    "safety_spaces",
+    "examples_good",
+    "examples_bad"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.brand_kit"
+    },
+    "tokens": {
+      "type": "object",
+      "required": [
+        "color",
+        "font",
+        "duration",
+        "cubicBezier"
+      ],
+      "properties": {
+        "color": {
+          "type": "object"
+        },
+        "font": {
+          "type": "object"
+        },
+        "duration": {
+          "type": "object"
+        },
+        "cubicBezier": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "asset_pack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uri",
+        "content_hash"
+      ],
+      "properties": {
+        "uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "logo_clearspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "unit",
+        "measurement_basis"
+      ],
+      "properties": {
+        "relation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "usage_rules": {
+      "type": "array",
+      "minItems": 1,
+      "$comment": "Computable brand-use rules (E4). Logo clearspace is a relation, not a vibe. Silent copy reflow is illegal.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rule",
+          "measurement_basis"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule": {
+            "type": "string",
+            "minLength": 1
+          },
+          "measurement_basis": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "motion_steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "micro_ms",
+        "standard_ms",
+        "emphasis_ms"
+      ],
+      "properties": {
+        "micro_ms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max",
+            "unit",
+            "evidence_status"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "const": 120
+            },
+            "max": {
+              "type": "number",
+              "const": 200
+            },
+            "unit": {
+              "type": "string",
+              "const": "ms"
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          }
+        },
+        "standard_ms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max",
+            "unit",
+            "evidence_status"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "const": 240
+            },
+            "max": {
+              "type": "number",
+              "const": 400
+            },
+            "unit": {
+              "type": "string",
+              "const": "ms"
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          }
+        },
+        "emphasis_ms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max",
+            "unit",
+            "evidence_status"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "const": 500
+            },
+            "max": {
+              "type": "number",
+              "const": 800
+            },
+            "unit": {
+              "type": "string",
+              "const": "ms"
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "safety_spaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brand_clearspace",
+        "channel_safe",
+        "content_protect"
+      ],
+      "properties": {
+        "brand_clearspace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "channel_safe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_protect": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "examples_good": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "examples_bad": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "locked_copy": {
+      "type": "array",
+      "$comment": "Brand-fact strings that must match exactly. Synonym rewrite is this morphology's copy-truth failure, not a schema extra key.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "evidence_mode": {
+      "type": "string",
+      "enum": [
+        "real_product",
+        "concept_product"
+      ],
+      "$comment": "Real-product advertising freezes that real marks/logos/legal text come only from the asset pack; concept products may show generated marks."
+    },
+    "mark_sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "$comment": "Asset-pack references that are the only legal sources for real marks/logos/legal text under real_product mode."
+    }
+  },
+  "unevaluatedProperties": false
+}

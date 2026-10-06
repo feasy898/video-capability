@@ -1,10 +1,10 @@
 {
  "schema_version": "2.0",
  "work_id": "shortdrama_ep01",
- "compiled_at": "2026-09-30T18:07:25",
+ "compiled_at": "2026-10-06T15:05:30",
  "compiler": "vdl2_compile.py@vpipe2.0-dev",
  "source_package": {
-  "path": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\examples\\vdl2\\10_shortdrama_ep01.yaml",
+  "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/10_shortdrama_ep01.yaml",
   "sha256": "319c3ade3df2f26557e146a506b2f91a638d9c8c55c26b880e0dc3249f33d2ba"
  },
  "validation": {

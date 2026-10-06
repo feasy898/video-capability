@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l1/production-axis.schema.json",
+  "$comment": "ProductionAxis: Unit > ShootBlock > ProductionScene > Setup > Take. NarrativeScene and ProductionScene stay separate (OMC). naming_style us|uk on the order header. Source: E2, OMC v2.8.",
+  "title": "ProductionAxis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "axis_id",
+    "naming_style",
+    "units"
+  ],
+  "properties": {
+    "axis_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "naming_style": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.naming_style\\.(us|uk)$"
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/unit"
+      }
+    }
+  },
+  "$defs": {
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "unit_code"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "unit_code": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.unit_code\\.[a-z0-9_]+$"
+        },
+        "shoot_blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shoot_block"
+          }
+        }
+      }
+    },
+    "shoot_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "label": {
+          "type": "string"
+        },
+        "production_scenes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/production_scene"
+          }
+        }
+      }
+    },
+    "production_scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "narrative_scene_ref": {
+          "type": "string",
+          "format": "uuid",
+          "$comment": "Link, not containment. Narrative and production scenes remain separate objects."
+        },
+        "setups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/setup"
+          }
+        }
+      }
+    },
+    "setup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "takes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/take"
+          }
+        }
+      }
+    },
+    "take": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "takeNumber"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              }
+            ]
+          }
+        },
+        "takeNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mos": {
+          "type": "boolean"
+        },
+        "editorial_shot_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "$comment": "Many-to-many with editorial shots."
+        }
+      }
+    }
+  }
+}

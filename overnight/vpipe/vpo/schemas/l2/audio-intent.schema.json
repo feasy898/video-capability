@@ -1,0 +1,367 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/audio-intent.schema.json",
+  "$comment": "source: E3-E6 / §4.3 AudioIntent. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Sound present does not imply on-camera lip motion.",
+  "title": "AudioIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "atmosphere",
+    "cues",
+    "loudness",
+    "dialogue_class",
+    "voice_identity_ref"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.audio_intent"
+    },
+    "atmosphere": {
+      "type": "string",
+      "pattern": "^vpo:sound\\.acoustics\\.dominant_acoustic_level\\.[a-z_]+$",
+      "minLength": 1
+    },
+    "cues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "time_range",
+          "cue_type",
+          "channel"
+        ],
+        "properties": {
+          "time_range": {
+            "$ref": "#/$defs/time_range"
+          },
+          "cue_type": {
+            "type": "string",
+            "pattern": "^vpo:sound\\.cue_type\\.[a-z_]+$"
+          },
+          "channel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "vo_token": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Word-level narration/dialogue token. Not a shot-level cue label."
+          },
+          "token_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "line_id": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Sentence/line grouping for spoken-voice cues: the word-level vo_token cues of one sentence share a line_id (the dialogue-side counterpart of lyric_line). Compile-time line discipline: one line must sit inside exactly one shot window (cuts land on complete sentence ends), must not repeat across shots, and token order must follow the timeline."
+          },
+          "lyric_line": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Verbatim lyric line for word-level binding when this cue is a lyric window."
+          },
+          "authorization": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "granted_by",
+              "scope"
+            ],
+            "properties": {
+              "granted_by": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_ref": {
+                "type": "string",
+                "minLength": 1,
+                "$comment": "Licensed library / generation contract the cue comes from."
+              }
+            },
+            "$comment": "Cue-level licensing authorization, same shape as the three adapter sides."
+          }
+        }
+      }
+    },
+    "loudness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_lufs",
+        "unit",
+        "standard"
+      ],
+      "properties": {
+        "target_lufs": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "const": "LUFS"
+        },
+        "standard": {
+          "type": "string",
+          "const": "R128"
+        }
+      }
+    },
+    "dialogue_class": {
+      "type": "string",
+      "pattern": "^vpo:sound\\.dialogue_class\\.(on_camera|off_camera|narration|inner_monologue|nonverbal)$"
+    },
+    "voice_identity_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "master_timeline": {
+      "type": "boolean",
+      "$comment": "True when this audio track is the timing authority for the whole work (MV main song)."
+    },
+    "music": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tempo"
+      ],
+      "$comment": "Music fact layer: tempo/meter give barBeat anchors a dimensional basis; sections map onto the master timeline.",
+      "properties": {
+        "tempo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "bpm"
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "meter": {
+          "type": "string",
+          "pattern": "^[0-9]+/[0-9]+$"
+        },
+        "key_moments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "time_s",
+              "type",
+              "priority"
+            ],
+            "properties": {
+              "time_s": {
+                "type": "number"
+              },
+              "type": {
+                "type": "string",
+                "pattern": "^vpo:sound\\.music_key_moment\\.[a-z_]+$",
+                "$comment": "Audible key moment type recovered from the finalized song (mv music card)."
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "P0",
+                  "P1",
+                  "P2"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$comment": "Point events on the song timeline (section change / energy shift / hook land / breath) that storyboard and type events anchor to; must fall inside the music duration."
+        },
+        "final_duration_s": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "$comment": "Integer-second finalized music duration (serial generation then integer finalize)."
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "pattern": "^vpo:sound\\.music_section\\.[a-z_]+"
+              },
+              "bar_range": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "time_range": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "genre": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Open genre identifier (trap / boom-bap / dark-pop / synth-pop...; cool-mv genre-BPM table and h3vd five-style recipes are prior anchors). Kept open like container/codec: vendor genre vocabularies differ."
+        },
+        "mood": {
+          "type": "string",
+          "pattern": "^vpo:sound\\.acoustics.music_mood\\.[a-z_]+$",
+          "$comment": "Musical mood (AdA music_mood family)."
+        },
+        "arrangement": {
+          "type": "string",
+          "pattern": "^vpo:sound\\.acoustics.music_arrangement\\.[a-z_]+$",
+          "$comment": "Arrangement texture fact (AdA music_arrangement family)."
+        },
+        "tonality": {
+          "type": "string",
+          "pattern": "^vpo:sound\\.acoustics.music_tonality\\.[a-z_]+$",
+          "$comment": "Tonality fact (AdA music_tonality family)."
+        },
+        "intensity_grade": {
+          "type": "string",
+          "pattern": "^vpo:sound\\.acoustics.music_intensity\\.[a-z_]+$",
+          "$comment": "Music intensity grade (AdA music_intensity family)."
+        }
+      }
+    },
+    "audio_approach": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.audio_approach\\.[a-z_]+",
+      "$comment": "Work-level sound production strategy (native/VO-post/preserve/silent/proxy-replaced)."
+    },
+    "proxy_track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "replaced_by"
+      ],
+      "properties": {
+        "replaced_by": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Postprocess op that replaces this proxy at final mix."
+        }
+      },
+      "$comment": "Proxy audio lifecycle: used during generation, replaced and discarded at final mix."
+    },
+    "voice_blend": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "voice_ref",
+          "weight"
+        ],
+        "properties": {
+          "voice_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "weight": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "unit",
+              "measurement_basis"
+            ],
+            "properties": {
+              "value": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "unit": {
+                "type": "string",
+                "const": "weight_fraction"
+              },
+              "measurement_basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "$comment": "Weighted voice blend (moss TimberWeights-style recipe, e.g. 0.7 A + 0.3 B). The moss card marks the vendor face experimental/unexposed - declared here as a delegation fact; executor availability is a capability question."
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "time_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "time_base",
+        "start_frame",
+        "end_frame"
+      ],
+      "properties": {
+        "time_base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rate_num",
+            "rate_den"
+          ],
+          "properties": {
+            "rate_num": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rate_den": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0,
+          "$comment": "Half-open [start, end) per OTIO."
+        }
+      }
+    }
+  }
+}

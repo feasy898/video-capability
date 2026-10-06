@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/limited-motion-intent.schema.json",
+  "$comment": "source: E3 / appendix E-1–E-4. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Lip-set enums must not mix pinyin, English phonemes, or vendor viseme names.",
+  "title": "LimitedMotionIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "animatable_parts",
+    "frozen_parts",
+    "blink",
+    "breath",
+    "lips",
+    "body_while_speaking",
+    "motion_energy",
+    "behaviors"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.limited_motion_intent"
+    },
+    "animatable_parts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "frozen_parts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "blink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "period",
+        "duration",
+        "suppress_during"
+      ],
+      "properties": {
+        "period": {
+          "$ref": "#/$defs/measured_number"
+        },
+        "duration": {
+          "$ref": "#/$defs/measured_number"
+        },
+        "suppress_during": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "breath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "period",
+        "amplitude",
+        "amplitude_unit",
+        "measurement_basis",
+        "suppress_during"
+      ],
+      "properties": {
+        "period": {
+          "$ref": "#/$defs/measured_number"
+        },
+        "amplitude": {
+          "type": "number"
+        },
+        "amplitude_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suppress_during": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "lips": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "set",
+        "max_error_frames",
+        "blend_ms",
+        "unit"
+      ],
+      "properties": {
+        "set": {
+          "type": "string",
+          "pattern": "^vpo:motion\\.lip_set\\.(flap_2state|aiueo_closed|viseme_8_plus)$"
+        },
+        "max_error_frames": {
+          "type": "integer",
+          "const": 3
+        },
+        "blend_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "const": "ms"
+        }
+      }
+    },
+    "body_while_speaking": {
+      "type": "string",
+      "minLength": 1
+    },
+    "motion_energy": {
+      "type": "string",
+      "pattern": "^vpo:motion\\.energy\\."
+    },
+    "behaviors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/behavior"
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "measured_number": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "measurement_basis"
+      ],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "time_base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rate_num",
+        "rate_den"
+      ],
+      "properties": {
+        "rate_num": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rate_den": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "time_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_frame",
+        "end_frame"
+      ],
+      "properties": {
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0,
+          "$comment": "Half-open [start, end) per OTIO."
+        }
+      }
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_ref",
+        "semantic_region",
+        "time_range",
+        "time_base",
+        "behavior_type",
+        "approved_profile_ref",
+        "trigger_event_ref",
+        "suppression_rules",
+        "observable_amplitude",
+        "unit",
+        "measurement_basis",
+        "period_or_event_timing",
+        "cadence",
+        "phase_policy",
+        "priority_and_conflict_policy",
+        "tolerance",
+        "verification_ref"
+      ],
+      "properties": {
+        "target_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_range": {
+          "$ref": "#/$defs/time_range"
+        },
+        "time_base": {
+          "$ref": "#/$defs/time_base"
+        },
+        "behavior_type": {
+          "type": "string",
+          "pattern": "^vpo:motion\\.limited_motion_term\\."
+        },
+        "approved_profile_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_event_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suppression_rules": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "observable_amplitude": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_or_event_timing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cadence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority_and_conflict_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tolerance": {
+          "$ref": "https://vpo.example/schemas/v1/common/tolerance.schema.json"
+        },
+        "verification_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "type": "string",
+          "pattern": "^vpo:motion\\.displacement_direction\\.[a-z_]+$",
+          "$comment": "Motion-brush semantics: regional displacement direction (attachment C2-02)."
+        },
+        "displacement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

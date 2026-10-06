@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/transition-intent.schema.json",
+  "$comment": "source: §4.3 TransitionIntent / AdA montage shot_transition. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest.",
+  "title": "TransitionIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "transition_type",
+    "incoming_shot_ref",
+    "outgoing_shot_ref",
+    "boundary_constraints"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.transition_intent"
+    },
+    "transition_type": {
+      "type": "string",
+      "pattern": "^vpo:craft\\.montage\\.shot_transition\\."
+    },
+    "incoming_shot_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outgoing_shot_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "boundary_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outgoing_tail",
+        "incoming_head"
+      ],
+      "$comment": "4.3 row 9: assertions on both sides of the boundary, not just who they are.",
+      "properties": {
+        "outgoing_tail": {
+          "$ref": "#/$defs/boundary_side"
+        },
+        "incoming_head": {
+          "$ref": "#/$defs/boundary_side"
+        },
+        "action_continuity": {
+          "type": "string",
+          "pattern": "^vpo:craft\\.montage\\.montage_figure_micro\\.",
+          "$comment": "Match cut / match on action etc. from the L0 montage micro family when continuity carries the transition."
+        },
+        "sound_lead_in_frames": {
+          "type": "integer",
+          "minimum": 0,
+          "$comment": "Sound leads the boundary (D3 seam rule); frames before the cut at canvas fps."
+        }
+      }
+    },
+    "mg_device": {
+      "type": "string",
+      "pattern": "^vpo:style\\\\.mg_transition\\\\.[a-z_]+$",
+      "$comment": "MG/UI-form transition device (fold / depth pass-through / shared-element expansion / shape morph / foreground occlusion) when the boundary change is an element-level choreography rather than a shot-level optical transition."
+    }
+  },
+  "$defs": {
+    "boundary_side": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state_assertion"
+      ],
+      "properties": {
+        "state_assertion": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Tail/head state the transition depends on (pose, motion phase, exposure)."
+        },
+        "exposure_color_compat": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Exposure/color compatibility across the boundary."
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

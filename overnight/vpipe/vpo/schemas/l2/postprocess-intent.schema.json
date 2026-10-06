@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/postprocess-intent.schema.json",
+  "$comment": "source: CONTROL-MAPPING 2.3 (attachment C4-03/C5-05/C6-04..06, MiniMax deterministic postprocess). Deterministic postpass as a first-class intent: no creative re-decision, ops in declared order, inputs resolve inside the package.",
+  "title": "PostProcessIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "ops",
+    "input_refs",
+    "output_kind"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.postprocess_intent"
+    },
+    "ops": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "op"
+        ],
+        "properties": {
+          "op": {
+            "type": "string",
+            "pattern": "^vpo:delivery\\.postprocess_op\\.[a-z_]+$"
+          },
+          "params": {
+            "type": "object",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidence_status": {
+                      "type": "string",
+                      "enum": [
+                        "vpo:delivery.evidence_status.prior",
+                        "vpo:delivery.evidence_status.measured"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "$comment": "Numeric op params carry value+unit+measurement_basis (discipline 3); bare numbers are structurally rejected."
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "input_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "$comment": "Ordered inputs; merge order is the declared order (ordinal semantics)."
+    },
+    "output_kind": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.deliverable_kind\\.[a-z_]+$",
+      "$comment": "Controlled deliverable kinds (master/stem/sidecar_text/editable_source...)."
+    },
+    "subtitle_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Subtitle burn constraints (subtitle pipeline prior): per-line char caps, no mid-character breaks, safe bands.",
+      "properties": {
+        "max_chars_per_line_cjk": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_chars_per_line_lat": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "break_policy": {
+          "type": "string",
+          "enum": [
+            "semantic_break",
+            "never_mid_character"
+          ]
+        },
+        "font_height_ratio": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "safe_top_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "safe_bottom_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "safe_left_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "safe_right_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "anchor": {
+          "type": "string",
+          "enum": [
+            "bottom_center",
+            "top_center",
+            "center",
+            "bottom_left",
+            "bottom_right"
+          ],
+          "$comment": "ASS \\an-style anchor for burned subtitles."
+        },
+        "max_lines_per_cue": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "outline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "width"
+          ],
+          "properties": {
+            "width": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "measurement_basis"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "measurement_basis": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$comment": "Burn style: ASS outline width (pipeline default 2-unit black outline); deterministic subtitle correctness contract."
+        },
+        "fill_color": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Burn style: glyph fill color (open identifier, e.g. &H00FFFFFF or named)."
+        },
+        "back_color": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Burn style: opaque box background color, when used."
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

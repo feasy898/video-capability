@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/common/intent-common.schema.json",
+  "$comment": "E6 twelve-tuple shared by every L2 intent. Unambiguous interpretation ≠ unique legal result. Semantic losslessness ≠ acceptance. Missing fields use G3 four-state; agents must not treat absence as freedom. Source: E6, G3, G5, G7.",
+  "title": "VPO IntentCommon",
+  "type": "object",
+  "required": [
+    "identity",
+    "intent_type",
+    "target",
+    "scope",
+    "temporal_extent",
+    "reference_context",
+    "predicate",
+    "strength",
+    "tolerance",
+    "exceptions",
+    "acceptance_ref",
+    "authority",
+    "control_channel"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "value"
+      ]
+    },
+    {
+      "required": [
+        "absence"
+      ]
+    }
+  ],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intent_id",
+        "version"
+      ],
+      "properties": {
+        "intent_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        }
+      }
+    },
+    "intent_type": {
+      "type": "string",
+      "pattern": "^vpo:craft\\.intent_object\\.[a-z0-9_]+$"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "character",
+            "region",
+            "element",
+            "channel",
+            "shot",
+            "scene",
+            "work",
+            "product"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level"
+      ],
+      "properties": {
+        "level": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.scope\\.[a-z0-9_]+$"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "$comment": "Five levels: work > scene > shot > object > time_range. A local exception that overrides a work-level hard constraint requires authority."
+    },
+    "temporal_extent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "time_base"
+      ],
+      "properties": {
+        "time_base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rate_num",
+            "rate_den"
+          ],
+          "properties": {
+            "rate_num": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rate_den": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0,
+          "$comment": "Half-open [start, end) per OTIO."
+        }
+      }
+    },
+    "reference_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "time_kind": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.time_kind\\.[a-z0-9_]+$"
+        },
+        "coordinate_system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "color_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_mode": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.prompt_mode\\.[a-z_]+$",
+          "$comment": "Prompt boundary mode (new / reference-based / source edit) deciding how the contribution contract is interpreted."
+        }
+      }
+    },
+    "predicate": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "(?i)\\b(runway|houdini|nuke|after effects|premiere|davinci|resolve|blender|unreal|maya|cinema 4d|c4d|ae\b|comfyui|gen-4|gen4|(?:wan|seedance|veo|hailuo|aleph|kling|pika)(?:[\\s.-]?[0-9]+(?:\\.[0-9]+)?)?|sora|luma|lightwrap|shadow catcher)\\b"
+      }
+    },
+    "value": {
+      "not": {
+        "type": "string",
+        "pattern": "(?i)\\b(runway|houdini|nuke|after effects|premiere|davinci|resolve|blender|unreal|maya|cinema 4d|c4d|ae\b|comfyui|gen-4|gen4|(?:wan|seedance|veo|hailuo|aleph|kling|pika)(?:[\\s.-]?[0-9]+(?:\\.[0-9]+)?)?|sora|luma|lightwrap|shadow catcher)\\b"
+      }
+    },
+    "absence": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.absence\\.[a-z0-9_]+$",
+      "$comment": "G3 four-state. Do not interpret unprovided as unconstrained."
+    },
+    "strength": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.strength\\.(must|should|may)$"
+    },
+    "tolerance": {
+      "$ref": "https://vpo.example/schemas/v1/common/tolerance.schema.json"
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "authority"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "acceptance_ref": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Points at an L4 AcceptanceSpec id+version. Never 'latest'."
+    },
+    "authority": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Approving role. Executing agents cannot self-approve exceptions."
+    },
+    "field_channels": {
+      "type": "object",
+      "$comment": "G5 field-level channel annotation: dotted field path -> channels that control it (D0/D1 strategies are per dimension). Intent-level control_channel stays the summary.",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.control_channel\\.[a-z0-9_]+$"
+        }
+      }
+    },
+    "control_channel": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:delivery\\.control_channel\\.[a-z0-9_]+$"
+      }
+    },
+    "overrides_work_hard_constraint": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "if": {
+    "properties": {
+      "overrides_work_hard_constraint": {
+        "const": true
+      }
+    },
+    "required": [
+      "overrides_work_hard_constraint"
+    ]
+  },
+  "then": {
+    "required": [
+      "exceptions"
+    ]
+  }
+}

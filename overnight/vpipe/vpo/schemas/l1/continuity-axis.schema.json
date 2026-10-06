@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l1/continuity-axis.schema.json",
+  "$comment": "ContinuityAxis: StoryDay > EntityStateSnapshot. Story time is independent of playback order and production time (E2). Flashbacks change playback, not story day.",
+  "title": "ContinuityAxis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "axis_id",
+    "story_days"
+  ],
+  "properties": {
+    "axis_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "story_days": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/story_day"
+      }
+    }
+  },
+  "$defs": {
+    "story_day": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "ordinal"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "label": {
+          "type": "string"
+        },
+        "snapshots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/snapshot"
+          }
+        }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "entity_instance_id",
+        "state_id",
+        "definition_revision"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "entity_instance_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition_revision": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        },
+        "narrative_scene_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "attributes": {
+          "type": "object"
+        },
+        "depends_on_snapshot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_status": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.review_status\\.(clean|dirty|reviewed)$",
+          "$comment": "Cascade engine writes dirty when an upstream state rule is rewritten; reviewed after re-lock."
+        }
+      }
+    }
+  }
+}

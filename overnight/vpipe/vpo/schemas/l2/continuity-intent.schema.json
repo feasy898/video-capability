@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/continuity-intent.schema.json",
+  "$comment": "source: E2 ContinuityIntent. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Matched action is Setup/Take level; progressive action is StoryDay level.",
+  "title": "ContinuityIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "state_requirements"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.continuity_intent"
+    },
+    "state_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/state_requirement"
+      }
+    },
+    "scene_in_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene_out_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "matched_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Setup/Take level. Not interchangeable with progressive_action.",
+      "properties": {
+        "setup_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "take_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "progressive_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "StoryDay level. Not interchangeable with matched_action.",
+      "required": [
+        "story_day_ref"
+      ],
+      "properties": {
+        "story_day_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "episode_hook": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Inter-episode serial hook (StoryDay stand-in). A shot dissolve connecting two clips is not this hook.",
+      "required": [
+        "from_story_day_ref",
+        "to_story_day_ref",
+        "hook_kind",
+        "unresolved_beat"
+      ],
+      "properties": {
+        "from_story_day_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to_story_day_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hook_kind": {
+          "type": "string",
+          "pattern": "^vpo:craft\\.serial_hook\\.(cliffhanger|promise|button)$"
+        },
+        "unresolved_beat": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "healing_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/healing_rule"
+      }
+    },
+    "seed": {
+      "type": [
+        "integer",
+        "string",
+        "null"
+      ],
+      "$comment": "Similar results only. Presence on a continuity intent is regen_required; seed is not a continuity key."
+    },
+    "scene_blocking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "axis_line"
+      ],
+      "$comment": "Scene-level spatial continuity: 180-degree axis, anchor placements, default camera side, prop handoff chain (drama-series blocking sheet).",
+      "properties": {
+        "axis_line": {
+          "type": "boolean"
+        },
+        "anchors": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ref"
+                ],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "relative_position": {
+                    "type": "string",
+                    "minLength": 1,
+                    "$comment": "Placement discipline: steps / one-arm distance / scene-share band."
+                  },
+                  "distance_band": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "facing": {
+                    "type": "string",
+                    "pattern": "^vpo:craft\\.montage\\.montage_figure_micro\\.[a-z_]+$",
+                    "$comment": "Default facing / eyeline relation."
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "camera_side": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ]
+        },
+        "prop_chain": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "time_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "time_base",
+        "start_frame",
+        "end_frame"
+      ],
+      "properties": {
+        "time_base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rate_num",
+            "rate_den"
+          ],
+          "properties": {
+            "rate_num": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rate_den": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0,
+          "$comment": "Half-open [start, end) per OTIO."
+        }
+      }
+    },
+    "state_requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_instance_id",
+        "state_id",
+        "definition_revision",
+        "story_scope",
+        "required_attributes",
+        "reference_asset_versions",
+        "tolerance",
+        "upstream_ref"
+      ],
+      "properties": {
+        "entity_instance_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition_revision": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        },
+        "story_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_attributes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reference_asset_versions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "asset_uri",
+              "asset_revision"
+            ],
+            "properties": {
+              "asset_uri": {
+                "type": "string",
+                "minLength": 1
+              },
+              "asset_revision": {
+                "type": "string",
+                "minLength": 1,
+                "not": {
+                  "const": "latest"
+                }
+              },
+              "content_hash": {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        "tolerance": {
+          "$ref": "https://vpo.example/schemas/v1/common/tolerance.schema.json"
+        },
+        "upstream_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "healing_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_instance_id",
+        "phases"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity_instance_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_window": {
+          "$ref": "#/$defs/time_range"
+        },
+        "phases": {
+          "type": "array",
+          "minItems": 2,
+          "$comment": "Ordered story-time windows such as wound → scab → scar. A rewrite of an earlier phase dirties later phases.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "state_id",
+              "story_scope"
+            ],
+            "properties": {
+              "state_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "story_scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "definition_revision": {
+                "type": "string",
+                "minLength": 1,
+                "not": {
+                  "const": "latest"
+                }
+              },
+              "time_window": {
+                "$ref": "#/$defs/time_range"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

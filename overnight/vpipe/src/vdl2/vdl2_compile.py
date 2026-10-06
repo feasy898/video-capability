@@ -22,7 +22,7 @@ prompt 编译（编译器①，草案 §3.2 #2-#3）：
 
 CLI:
   python vdl2_compile.py --pkg examples/10_shortdrama_ep01.yaml --out-dir out/vdl2/10
-      [--vpo-root D:/workspace/video-Ontology/schemas]
+      [--vpo-root <video-Ontology>/schemas，缺省 VDL2_VPO_ROOT 环境变量，再缺省仓内 vpo/schemas/]
   exit 0 = 编译成功；1 = 编译产物异常；2 = 校验拒收；3 = IO/环境错误。
 """
 from __future__ import annotations

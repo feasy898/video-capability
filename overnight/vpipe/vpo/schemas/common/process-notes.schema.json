@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/common/process-notes.schema.json",
+  "$comment": "Writing-process notes for a morphology instance. Unexpressable items live here, not as package.json fields or the warehouse gaps index. Source: SPEC-SIGN-OFF section 6 (writing-notes deliverable sign-off) for hard morphologies (feature / short_drama / comic_hybrid).",
+  "title": "VPO Process Notes",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "notes"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/common/process-notes.schema.json"
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "unexpressable",
+          "attempted_as",
+          "schema_revision"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unexpressable": {
+            "type": "string",
+            "minLength": 1
+          },
+          "attempted_as": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

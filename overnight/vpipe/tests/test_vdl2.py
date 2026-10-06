@@ -15,6 +15,7 @@
 """
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -42,6 +43,22 @@ def test_v2_schemas_compile_as_draft07():
     for f in ("vdl_package.schema.json", "shot_v2.schema.json"):
         doc = json.loads((VPIPE / "contracts" / "v2" / f).read_text(encoding="utf-8"))
         jsonschema.Draft7Validator.check_schema(doc)          # 断言不抛即通过
+
+
+# ---------------------------------------------------------------- VPO 根解析（W5）
+def test_vpo_root_resolution_env_var_priority(monkeypatch):
+    """W5 修复回归：VDL2_VPO_ROOT 环境变量优先，缺省=仓内 vendored vpo/schemas/。"""
+    import importlib
+    import vdl2_validate
+    monkeypatch.delenv("VDL2_VPO_ROOT", raising=False)
+    vendored = importlib.reload(vdl2_validate).DEFAULT_VPO_ROOT
+    assert vendored == VPIPE / "vpo" / "schemas", f"缺省应指向仓内 vendored 目录，实得 {vendored}"
+    assert vendored.is_dir() and (vendored / "l4" / "acceptance-record.schema.json").is_file()
+    monkeypatch.setenv("VDL2_VPO_ROOT", str(VPIPE / "examples"))   # 任一显式路径可覆盖
+    overridden = importlib.reload(vdl2_validate).DEFAULT_VPO_ROOT
+    assert overridden == Path(os.environ["VDL2_VPO_ROOT"]), f"环境变量应优先，实得 {overridden}"
+    monkeypatch.delenv("VDL2_VPO_ROOT")
+    importlib.reload(vdl2_validate)                                # 还原模块态，免污染后续用例
 
 
 # ---------------------------------------------------------------- 正例：校验+编译

@@ -1,0 +1,583 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l1/narrative-axis.schema.json",
+  "$comment": "NarrativeAxis: Act > Sequence > NarrativeScene > EditorialShot. Permanently separate from ProductionScene and ClipInstance (OMC + E2). Act/Sequence may degenerate on short-form (required_tier: short). Panel is a first-class framing_unit (E3).",
+  "title": "NarrativeAxis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "axis_id",
+    "required_tier",
+    "editorial_shots"
+  ],
+  "properties": {
+    "axis_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "required_tier": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.required_tier\\.(short|feature)$"
+    },
+    "acts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/act"
+      }
+    },
+    "sequences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sequence"
+      }
+    },
+    "narrative_scenes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/narrative_scene"
+      }
+    },
+    "editorial_shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/editorial_shot"
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "required_tier": {
+        "const": "vpo:delivery.required_tier.feature"
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "acts",
+      "sequences",
+      "narrative_scenes"
+    ]
+  },
+  "$defs": {
+    "act": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "sequence_ids"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "sequence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "narrative_scene_ids"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "narrative_scene_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    },
+    "narrative_scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "story_time_label": {
+          "type": "string"
+        },
+        "editorial_shot_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "$comment": "Do not nest ProductionScene here."
+    },
+    "editorial_shot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "framing_unit"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "framing_unit": {
+          "type": "string",
+          "pattern": "^vpo:cine\\.framing_unit\\.(shot|panel)$"
+        },
+        "intent_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "duration_frames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "time_base": {
+          "type": "object",
+          "required": [
+            "rate_num",
+            "rate_den"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "rate_num": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rate_den": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "sample_group": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "group_id",
+            "mode"
+          ],
+          "$comment": "Generation grouping: shots in one single_sampling group come out of one continuous sample with in-group durations summing to the group span (timestamp storyboard); seam discipline applies between groups only.",
+          "properties": {
+            "group_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "mode": {
+              "type": "string",
+              "pattern": "^vpo:delivery\\.sample_group_mode\\.[a-z_]+$"
+            },
+            "spoken_or_silent": {
+              "type": "string",
+              "enum": [
+                "spoken",
+                "explicitly_silent"
+              ],
+              "$comment": "Per-shot declaration in a multi-shot sample: every shot carries dialogue or an explicit silence."
+            }
+          }
+        },
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^vpo:cine\\.shot_risk\\.[a-z_]+"
+          },
+          "$comment": "Declarative physical-risk routing flags; acceptance gates and inpaint/stabilize postpasses may key on them."
+        },
+        "subject_visibility": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "target_ref",
+              "identifiable_by"
+            ],
+            "properties": {
+              "target_ref": {
+                "type": "string",
+                "minLength": 1,
+                "$comment": "Live-action subject/product the visibility window is about."
+              },
+              "visibility_policy": {
+                "type": "string",
+                "pattern": "^vpo:craft\\.visibility_policy\\.[a-z_]+$",
+                "$comment": "Reveal discipline for this window: absent = must NOT be identifiable; tease = silhouette/material cues only; full = fully identifiable (brand-ad five-segment reveal). Complements the positive identifiable_by window."
+              },
+              "not_identifiable_until": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "unit": {
+                    "type": "string",
+                    "const": "s_from_shot_start"
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_status": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:delivery.evidence_status.prior",
+                      "vpo:delivery.evidence_status.measured"
+                    ]
+                  }
+                },
+                "$comment": "Negative window: before this offset the target must not be identifiable; must be strictly earlier than identifiable_by when both are declared."
+              },
+              "identifiable_by": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "unit": {
+                    "type": "string",
+                    "const": "s_from_shot_start"
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_status": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:delivery.evidence_status.prior",
+                      "vpo:delivery.evidence_status.measured"
+                    ]
+                  }
+                },
+                "$comment": "Opening-evidence discipline: the product body must be identifiable within this window (brand-ad hard rule t<=1.5s)."
+              },
+              "sustained_through": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "unit": {
+                    "type": "string",
+                    "const": "s_from_shot_start"
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_status": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:delivery.evidence_status.prior",
+                      "vpo:delivery.evidence_status.measured"
+                    ]
+                  }
+                },
+                "$comment": "Subject must remain visible through this mark (brand-ad 3-4s sustain)."
+              }
+            }
+          },
+          "$comment": "Live-action subject visibility windows (non-MG, non-text elements) — the opening-evidence time discipline for real subjects/products."
+        },
+        "regional_motion": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "region",
+              "direction",
+              "displacement"
+            ],
+            "properties": {
+              "region": {
+                "type": "string",
+                "minLength": 1,
+                "$comment": "Named/annotated region of the frame the brush applies to (e.g. ribbon area, background water)."
+              },
+              "direction": {
+                "type": "string",
+                "pattern": "^vpo:motion\\.displacement_direction\\.[a-z_]+$",
+                "$comment": "Motion-brush semantics (C2-02): regional displacement direction; same family as limited-motion."
+              },
+              "displacement": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis",
+                  "evidence_status"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_status": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:delivery.evidence_status.prior",
+                      "vpo:delivery.evidence_status.measured"
+                    ]
+                  }
+                }
+              },
+              "path": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "x",
+                    "y",
+                    "t_s"
+                  ],
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "t_s": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "$comment": "Waypoint path (start->through->end) in frame-normalized coordinates x/y and seconds from shot start. Simple directional drift uses direction+displacement; complex/precise paths prefer a motion reference video (contribution_dim.motion)."
+              }
+            }
+          },
+          "$comment": "General carrier-neutral local motion control (motion brush): lives on the editorial shot so non-comic forms (product silk, background water) can declare it without the comic limited-motion construct. Declaring it requires a profile with motion_brush supported (role->feature reconciliation)."
+        }
+      },
+      "dependentRequired": {
+        "duration_frames": [
+          "time_base"
+        ]
+      }
+    }
+  }
+}

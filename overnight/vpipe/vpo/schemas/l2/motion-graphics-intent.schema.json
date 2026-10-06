@@ -1,0 +1,895 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/motion-graphics-intent.schema.json",
+  "$comment": "source: E4 / appendix F-1 MUST fields. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Missing any required field is requirements_incomplete.",
+  "title": "MotionGraphicsIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "shot_role",
+    "communicative_job",
+    "payload",
+    "canvas",
+    "host_surface",
+    "object_stack",
+    "reading_order",
+    "beat_binding",
+    "build_strategy",
+    "motion_language",
+    "brand_binding",
+    "occlusion_policy",
+    "acceptance_ref"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.motion_graphics_intent"
+    },
+    "shot_role": {
+      "type": "string",
+      "pattern": "^vpo:style\\.shot_role\\."
+    },
+    "communicative_job": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "One checkable proposition the viewer must be able to restate at shot end."
+    },
+    "payload": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "unit"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "measurement_basis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "precision": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ]
+      }
+    },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aspect",
+        "pixel_size",
+        "duration_frames",
+        "fps",
+        "color_space",
+        "safe_title",
+        "safe_action"
+      ],
+      "properties": {
+        "aspect": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pixel_size": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "w",
+            "h",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "w": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "h": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "unit": {
+              "type": "string",
+              "const": "px"
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "duration_frames": {
+          "type": "integer",
+          "minimum": 1,
+          "$comment": "Frame count at canvas.fps. Intervals half-open [start,end)."
+        },
+        "fps": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "fps"
+            }
+          }
+        },
+        "color_space": {
+          "type": "string",
+          "minLength": 1
+        },
+        "safe_title": {
+          "$ref": "#/$defs/safe_box"
+        },
+        "safe_action": {
+          "$ref": "#/$defs/safe_box"
+        }
+      }
+    },
+    "host_surface": {
+      "type": "string",
+      "pattern": "^vpo:style\\.host_surface\\."
+    },
+    "object_stack": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role",
+          "content_ref",
+          "anchor",
+          "z_order",
+          "must_remain_legible"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "pattern": "^vpo:style\\.mg_object_role\\."
+          },
+          "content_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "anchor": {
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            ]
+          },
+          "z_order": {
+            "type": "integer"
+          },
+          "must_remain_legible": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "reading_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "beat_binding": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object_id",
+          "in_at",
+          "hold",
+          "out_at",
+          "bind_anchor"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "in_at": {
+            "type": "integer",
+            "minimum": 0,
+            "$comment": "Inclusive start frame. Half-open with out_at."
+          },
+          "hold": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "out_at": {
+            "type": "integer",
+            "minimum": 0,
+            "$comment": "Exclusive end frame per OTIO [start,end)."
+          },
+          "bind_anchor": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(timecode|voToken|barBeat|lyric):[A-Za-z0-9_.:\\-]+$",
+            "$comment": "Anchor-type prefix (L0 vpo:style.beat_anchor.*) plus the anchor value; barBeat carries bar.beat positions."
+          }
+        }
+      }
+    },
+    "build_strategy": {
+      "type": "string",
+      "pattern": "^vpo:style\\.build_strategy\\."
+    },
+    "motion_language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "energy",
+        "easing_family",
+        "stagger",
+        "camera_behavior"
+      ],
+      "properties": {
+        "energy": {
+          "type": "string",
+          "pattern": "^vpo:motion\\.energy\\."
+        },
+        "easing_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stagger": {
+          "type": "string",
+          "minLength": 1
+        },
+        "camera_behavior": {
+          "type": "string",
+          "pattern": "^vpo:style\\.mg_camera_behavior\\.",
+          "$comment": "F-1 four-value family in L0; must be an approved brand motion token."
+        }
+      }
+    },
+    "brand_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kit_id",
+        "allowed_type_roles",
+        "allowed_color_roles",
+        "logo_treatment"
+      ],
+      "properties": {
+        "kit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowed_type_roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allowed_color_roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "logo_treatment": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "occlusion_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "forbidden_cover_pixels",
+        "max_concurrent_callouts",
+        "min_contrast"
+      ],
+      "properties": {
+        "forbidden_cover_pixels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "max_concurrent_callouts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "min_contrast": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "explainer_form": {
+      "type": "string",
+      "pattern": "^vpo:style\\.explainer_form\\."
+    },
+    "explainer_structure": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "$comment": "Combination of explainer forms at Shot/Scene boundaries. A single form is not an explanation-structure combination.",
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:style\\.explainer_form\\."
+      }
+    },
+    "information_structure": {
+      "type": "array",
+      "minItems": 1,
+      "$comment": "E4 core field: structural relations among information objects on this intent. reading_order is sequence, not relation. shot_role/payload/build_strategy do not substitute.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "relation",
+          "to"
+        ],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "template_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "F-5 template parameter slots (9). L2 carries the slot binding; template instantiation itself is an L3 concern.",
+      "properties": {
+        "template_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "value": {
+          "type": "object",
+          "required": [
+            "value",
+            "format"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "format": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "hold_frames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "accent_color_token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface_color_token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logo_variant": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layout_variant": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pointer_target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "icon_or_media_slot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "in_style": {
+          "type": "string",
+          "minLength": 1
+        },
+        "out_style": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "linked_intents": {
+      "type": "array",
+      "$comment": "Explicit links from this graphic to other intents in the package (4.3 row 10); binds the graphic to the overlay/brand/audio/product facts it depends on.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "intent_ref",
+          "relation"
+        ],
+        "properties": {
+          "intent_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "element_modules": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "$comment": "Conditional-required fields by element type, six modules (instruction book 4.3 row 10). A module block is required when the declared object roles / shot_role / explainer_form / build_strategy imply that element type, or when a seamless-file LoopIntent coexists in the package (loop_graphic); the compiler infers the requirement from values, not from self report. Chart module keeps scale and encoding separated (3.1 Vega-Lite borrowing).",
+      "properties": {
+        "text": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min_font_height_pct",
+            "min_stroke_px"
+          ],
+          "properties": {
+            "min_font_height_pct": {
+              "$ref": "#/$defs/prior_quantity_pct"
+            },
+            "min_stroke_px": {
+              "$ref": "#/$defs/prior_quantity_px"
+            },
+            "copy_source_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "chart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "data_ref",
+            "fields",
+            "encodings"
+          ],
+          "properties": {
+            "data_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fields": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "encodings": {
+              "type": "array",
+              "minItems": 1,
+              "$comment": "Data-to-visual-channel mapping; scale is declared per encoding and never fused into the channel name.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "channel",
+                  "field",
+                  "scale"
+                ],
+                "properties": {
+                  "channel": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:style.chart_channel.x",
+                      "vpo:style.chart_channel.y",
+                      "vpo:style.chart_channel.color",
+                      "vpo:style.chart_channel.size",
+                      "vpo:style.chart_channel.shape",
+                      "vpo:style.chart_channel.angle"
+                    ]
+                  },
+                  "field": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "scale": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "vpo:style.chart_scale_type.linear",
+                          "vpo:style.chart_scale_type.ordinal",
+                          "vpo:style.chart_scale_type.band",
+                          "vpo:style.chart_scale_type.point",
+                          "vpo:style.chart_scale_type.log"
+                        ]
+                      },
+                      "domain": {
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "string",
+                            "number"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "diagram": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodes",
+            "edges"
+          ],
+          "properties": {
+            "nodes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label_ref"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "label_ref": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "edges": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "from",
+                  "to",
+                  "relation",
+                  "directed"
+                ],
+                "properties": {
+                  "from": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "to": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "relation": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "directed": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "callout": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "anchor_binding",
+            "label_placement",
+            "follow_behavior",
+            "leader_crossing_policy",
+            "target_occluded_policy"
+          ],
+          "properties": {
+            "anchor_binding": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label_placement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "follow_behavior": {
+              "type": "string",
+              "minLength": 1
+            },
+            "leader_crossing_policy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "target_occluded_policy": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "spatial_explode": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "parts",
+            "reassembly_policy"
+          ],
+          "properties": {
+            "parts": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "part_id",
+                  "order",
+                  "explode_direction"
+                ],
+                "properties": {
+                  "part_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "order": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "explode_direction": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "reassembly_policy": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "loop_graphic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cycle_period_frames",
+            "phase_policy",
+            "seamless"
+          ],
+          "properties": {
+            "cycle_period_frames": {
+              "type": "integer",
+              "minimum": 1,
+              "$comment": "Whole cycle in canvas frames; the graphic re-enters phase 0 exactly at this boundary."
+            },
+            "phase_policy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "seamless": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "prior_quantity_pct": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "measurement_basis",
+        "evidence_status"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "vpo:delivery.evidence_status.prior",
+            "vpo:delivery.evidence_status.measured"
+          ]
+        }
+      }
+    },
+    "prior_quantity_px": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "measurement_basis",
+        "evidence_status"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "const": "px"
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "vpo:delivery.evidence_status.prior",
+            "vpo:delivery.evidence_status.measured"
+          ]
+        }
+      }
+    },
+    "safe_box": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "top_pct",
+        "bottom_pct",
+        "left_pct",
+        "right_pct",
+        "unit"
+      ],
+      "properties": {
+        "top_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "bottom_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "left_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "right_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "unit": {
+          "type": "string",
+          "const": "pct"
+        }
+      }
+    }
+  }
+}

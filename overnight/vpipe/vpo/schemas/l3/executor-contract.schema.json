@@ -1,0 +1,894 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l3/executor-contract.schema.json",
+  "$comment": "ExecutorContract is a performance contract, not a recipe. Tool names and model ids belong in capability profiles, not in L2. Old-baseline late results must not overwrite a newer baseline (parallel_safety). Source: §4.4, CWL requirement vs hint, PDDL pre/post, E1, E5 G-7. Core distinctions (1.4): unambiguous interpretation does not mean a unique legal result; semantic losslessness does not mean acceptance.",
+  "title": "ExecutorContract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "contract_id",
+    "version",
+    "input_baseline",
+    "preconditions",
+    "deliverables",
+    "postconditions",
+    "failure_semantics",
+    "parallel_safety"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/l3/executor-contract.schema.json"
+    },
+    "contract_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "input_baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_id",
+        "revision"
+      ],
+      "properties": {
+        "baseline_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        }
+      }
+    },
+    "provided_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "present"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "required"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "enum": [
+              "playerModel",
+              "nativePixelMap",
+              "audioAllowedByVenue",
+              "characterBibleLock",
+              "venueClass"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "satisfied": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "evidence_required"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "evidence_required": {
+            "type": "boolean"
+          },
+          "acceptance_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "postconditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant",
+          "acceptance_ref"
+        ],
+        "properties": {
+          "invariant": {
+            "type": "string"
+          },
+          "acceptance_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "capability_required": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "failure_semantics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:delivery\\.failure_semantics\\.(unsupported|conflict_detected|capability_gap|regen_required|requirements_incomplete|precondition_failed)$"
+      }
+    },
+    "change_request_semantics": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parallel_safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_baseline_revision",
+        "submission_scope",
+        "expected_revision"
+      ],
+      "properties": {
+        "input_baseline_revision": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        },
+        "submission_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_revision": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        }
+      }
+    },
+    "long_take_split": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "applies": {
+          "type": "boolean"
+        },
+        "rules_ref": {
+          "type": "string",
+          "const": "schemas/l3/long-take-split-rules.json"
+        }
+      }
+    },
+    "forbidden_actions_ref": {
+      "type": "string",
+      "const": "schemas/l3/forbidden-actions.json"
+    },
+    "generation_params": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Sampler-level knobs stay in L3 (L2 stays tool-neutral). Seed is never a cross-shot continuity key.",
+      "properties": {
+        "cfg": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "const": "scale"
+            }
+          }
+        },
+        "steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sampler": {
+          "type": "string",
+          "minLength": 1
+        },
+        "negative_prompts": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "$comment": "Precise 2-5 entries (FP-10); heap-piling degrades attention."
+        },
+        "seed_policy": {
+          "type": "string",
+          "enum": [
+            "fix_for_iteration",
+            "vary",
+            "none"
+          ]
+        },
+        "reference_strength": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          }
+        },
+        "motion_strength": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          },
+          "$comment": "Object-side motion magnitude knob (motion_bucket_id family), prior."
+        },
+        "prompt_expansion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "disabled",
+                "balanced",
+                "quality"
+              ],
+              "$comment": "Vendor-side silent prompt rewrite switch; disabled preserves the authored intent verbatim (no silent creative decisions)."
+            },
+            "vendor_flag": {
+              "type": "string",
+              "minLength": 1,
+              "$comment": "Open vendor identifier (prompt_extend / prompt_expansion_mode), container/codec exemption style."
+            }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "$comment": "Audio-side knobs mirroring video sampling knobs (TTS prosody / music mode).",
+          "properties": {
+            "tts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "speed": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "pitch": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "const": "semitones"
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "volume": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "emotion_tag": {
+                  "type": "string",
+                  "pattern": "^vpo:sound\\.emotion_tag\\.[a-z_]+"
+                },
+                "known_bad_combo_note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "$comment": "Annotation only. Machine-checkable numeric param-combo forbidden zones (e.g. speed>1.5 AND pitch>+6) are declared on the capability side as control_features[].constraints[].when.all_of param conditions and enforced at compile time; use this note only for combinations that cannot be expressed there."
+                }
+              }
+            },
+            "music": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "song",
+                    "instrumental"
+                  ]
+                },
+                "lyrics_language": {
+                  "type": "string",
+                  "minLength": 1
+                },
+"vocals": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "voice_lock": {
+                      "type": "string",
+                      "pattern": "^vpo:sound\\.voice_lock\\.[a-z_]+$",
+                      "$comment": "Lead-vocal performer voice gender lock (mv music card); cross-checked against the single voice persona when the package declares one."
+                    },
+                    "singer_character_relation": {
+                      "type": "string",
+                      "enum": ["same", "separate"],
+                      "$comment": "same = the on-screen persona also sings (lock must agree with it); separate = singer and on-screen character differ (mv card) — the voice-lock/persona consistency check is waived."
+                    },
+                    "range_timbre": { "type": "string", "minLength": 1 },
+                    "delivery": { "type": "string", "minLength": 1 },
+                    "backing": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "vendor_flags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "unit",
+              "measurement_basis"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "measurement_basis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_status": {
+                "type": "string",
+                "enum": [
+                  "vpo:delivery.evidence_status.prior",
+                  "vpo:delivery.evidence_status.measured"
+                ]
+              }
+            }
+          },
+          "$comment": "Controlled escape hatch for discrete vendor knobs not yet a first-class param: every flag carries value+unit+basis and must match a control_features entry note on the locked profile."
+        },
+        "request_mode": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "work_items": {
+      "type": "array",
+      "$comment": "Per-shot / per-asset execution plan (MiniMax stage work items): creative is defined upstream, production is delegated per item.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "intent_refs",
+          "review_gate"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intent_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "asset_kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model_lock": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Capability profile id; planner-authored lock is authoritative."
+          },
+          "params_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ref_slots": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "$comment": "Ordered reference slots (@Image1 semantics); order is binding."
+          },
+          "review_gate": {
+            "type": "string",
+            "enum": [
+              "plan_review",
+              "result_review",
+              "none"
+            ]
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "params": {
+            "type": "object",
+            "additionalProperties": false,
+            "$comment": "Per-item generation params overriding the contract-level generation_params defaults for this item only (multi-model orchestration); fields and defenses identical.",
+            "properties": {
+              "cfg": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "const": "scale"
+                  }
+                }
+              },
+              "steps": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sampler": {
+                "type": "string",
+                "minLength": 1
+              },
+              "negative_prompts": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "$comment": "Precise 2-5 entries (FP-10); heap-piling degrades attention."
+              },
+              "seed_policy": {
+                "type": "string",
+                "enum": [
+                  "fix_for_iteration",
+                  "vary",
+                  "none"
+                ]
+              },
+              "reference_strength": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis",
+                  "evidence_status"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_status": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:delivery.evidence_status.prior",
+                      "vpo:delivery.evidence_status.measured"
+                    ]
+                  }
+                }
+              },
+              "motion_strength": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis",
+                  "evidence_status"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_status": {
+                    "type": "string",
+                    "enum": [
+                      "vpo:delivery.evidence_status.prior",
+                      "vpo:delivery.evidence_status.measured"
+                    ]
+                  }
+                },
+                "$comment": "Object-side motion magnitude knob (motion_bucket_id family), prior."
+              },
+              "prompt_expansion": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode"
+                ],
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "disabled",
+                      "balanced",
+                      "quality"
+                    ],
+                    "$comment": "Vendor-side silent prompt rewrite switch; disabled preserves the authored intent verbatim (no silent creative decisions)."
+                  },
+                  "vendor_flag": {
+                    "type": "string",
+                    "minLength": 1,
+                    "$comment": "Open vendor identifier (prompt_extend / prompt_expansion_mode), container/codec exemption style."
+                  }
+                }
+              },
+              "audio": {
+                "type": "object",
+                "additionalProperties": false,
+                "$comment": "Audio-side knobs mirroring video sampling knobs (TTS prosody / music mode).",
+                "properties": {
+                  "tts": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "speed": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "value",
+                          "unit",
+                          "measurement_basis"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          },
+                          "unit": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "measurement_basis": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      },
+                      "pitch": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "value",
+                          "unit",
+                          "measurement_basis"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          },
+                          "unit": {
+                            "type": "string",
+                            "const": "semitones"
+                          },
+                          "measurement_basis": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      },
+                      "volume": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "value",
+                          "unit",
+                          "measurement_basis"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          },
+                          "unit": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "measurement_basis": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      },
+                      "emotion_tag": {
+                        "type": "string",
+                        "pattern": "^vpo:sound\\.emotion_tag\\.[a-z_]+"
+                      },
+                      "known_bad_combo_note": {
+                        "type": "string",
+                        "minLength": 1,
+                        "$comment": "Annotation only. Machine-checkable numeric param-combo forbidden zones (e.g. speed>1.5 AND pitch>+6) are declared on the capability side as control_features[].constraints[].when.all_of param conditions and enforced at compile time; use this note only for combinations that cannot be expressed there."
+                      }
+                    }
+                  },
+                  "music": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "mode": {
+                        "type": "string",
+                        "enum": [
+                          "song",
+                          "instrumental"
+                        ]
+                      },
+                      "lyrics_language": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+"vocals": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "voice_lock": {
+                        "type": "string",
+                        "pattern": "^vpo:sound\\.voice_lock\\.[a-z_]+$",
+                        "$comment": "Lead-vocal performer voice gender lock (mv music card); cross-checked against the single voice persona when the package declares one."
+                      },
+
+                      "singer_character_relation": {
+                        "type": "string",
+                        "enum": ["same", "separate"],
+                        "$comment": "same = the on-screen persona also sings; separate = singer and on-screen character differ (mv card) - the consistency check is waived."
+                      },
+                      "range_timbre": { "type": "string", "minLength": 1 },
+                      "delivery": { "type": "string", "minLength": 1 },
+                      "backing": { "type": "string", "minLength": 1 }
+                    }
+                  }
+                    }
+                  }
+                }
+              },
+              "vendor_flags": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean"
+                      ]
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidence_status": {
+                      "type": "string",
+                      "enum": [
+                        "vpo:delivery.evidence_status.prior",
+                        "vpo:delivery.evidence_status.measured"
+                      ]
+                    }
+                  }
+                },
+                "$comment": "Controlled escape hatch for discrete vendor knobs not yet a first-class param: every flag carries value+unit+basis and must match a control_features entry note on the locked profile."
+              }
+            }
+          },
+          "request_mode": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Vendor request mode fact (extend/avatar/motion-control...); feeds when.dimension=mode constraint evaluation."
+          },
+          "consistency_group": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "group_id",
+              "same_model"
+            ],
+            "properties": {
+              "group_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "same_model": {
+                "type": "boolean",
+                "$comment": "Work items in the same group must resolve to one vendor/model; which one can be delegated (execution_locks same_vendor_model)."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/panel-presentation-intent.schema.json",
+  "$comment": "source: E3 PanelPresentationIntent. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. panel_reveal is bound to the L0 panel_reveal family (vpo:craft.panel_reveal.*).",
+  "title": "PanelPresentationIntent",
+  "allOf": [
+    { "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json" }
+  ],
+  "type": "object",
+  "required": ["intent_type", "keep_panels", "balloon_timing", "panel_reveal"],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.panel_presentation_intent"
+    },
+    "keep_panels": { "type": "boolean" },
+    "balloon_timing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["balloon_id", "time_range"],
+        "properties": {
+          "balloon_id": { "type": "string", "minLength": 1 },
+          "time_range": { "$ref": "#/$defs/time_range" }
+        }
+      }
+    },
+    "panel_reveal": { "type": "string", "pattern": "^vpo:craft\\.panel_reveal\\.[a-z_]+$" }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "time_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time_base", "start_frame", "end_frame"],
+      "properties": {
+        "time_base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rate_num", "rate_den"],
+          "properties": {
+            "rate_num": { "type": "integer", "minimum": 1 },
+            "rate_den": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "start_frame": { "type": "integer", "minimum": 0 },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0,
+          "$comment": "Half-open [start, end) per OTIO."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/style-intent.schema.json",
+  "$comment": "source: E3 StyleIntent / MediumProfile nine dimensions. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Identity-reference vs style-reference domain fights are G4, not silent executor resolution.",
+  "title": "StyleIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "medium_family",
+    "style_domain",
+    "visual_tradition",
+    "mark_language",
+    "substrate_appearance",
+    "line_and_shape_profile",
+    "shading_and_palette_profile",
+    "mark_attachment",
+    "temporal_mark_policy",
+    "motion_cadence_profile",
+    "protected_features",
+    "motion_budget",
+    "priority",
+    "allowed_degradation",
+    "reanchor_every_shot"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.style_intent"
+    },
+    "medium_family": {
+      "type": "string",
+      "pattern": "^vpo:style\\.medium_family\\.(photoreal|flat_graphic|paper_cut|embroidery|watercolor|oil|ink_comic)$"
+    },
+    "style_domain": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Must match CharacterBible.style_domain when both appear in one package."
+    },
+    "visual_tradition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mark_language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "substrate_appearance": {
+      "type": "string",
+      "minLength": 1
+    },
+    "line_and_shape_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shading_and_palette_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mark_attachment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "temporal_mark_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "motion_cadence_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protected_features": {
+      "type": "string",
+      "minLength": 1
+    },
+    "motion_budget": {
+      "type": "string",
+      "pattern": "^vpo:motion\\.motion_budget\\.(l0_atmosphere|l1_local|l2_performance)$"
+    },
+    "priority": {
+      "type": "string",
+      "pattern": "^vpo:style\\.priority\\.(style|motion|balanced)$"
+    },
+    "allowed_degradation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reanchor_every_shot": {
+      "type": "boolean"
+    },
+    "style_adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "$comment": "Style internalization path (style LoRA), symmetric to visual_adapter on identity and voice_profile on sound.",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "style_lora",
+            "none"
+          ]
+        },
+        "source_set_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "training_images": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "authorization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "granted_by",
+            "scope"
+          ],
+          "properties": {
+            "granted_by": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "acceptance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "anchor",
+            "min_similarity",
+            "unit",
+            "measurement_basis"
+          ],
+          "properties": {
+            "anchor": {
+              "type": "string",
+              "minLength": 1
+            },
+            "min_similarity": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "training_params": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "rank": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "measurement_basis"
+              ],
+              "properties": {
+                "value": {
+                  "type": "integer"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "measurement_basis": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "learning_rate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "measurement_basis"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "measurement_basis": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "epochs": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "measurement_basis"
+              ],
+              "properties": {
+                "value": {
+                  "type": "integer"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "measurement_basis": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$comment": "Delegable LoRA training configuration (C1-04/C4-04): rank/lr/epochs with unit and basis."
+        },
+        "trigger_token": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Invocation token that activates the trained adapter; the executor needs it to call the adapter the contract trained."
+        },
+        "weight": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": { "type": "number" },
+            "unit": { "type": "string", "minLength": 1 },
+            "measurement_basis": { "type": "string", "minLength": 1 },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          },
+          "$comment": "Inference weight of the style adapter at use time (style sweet spot 0.6-0.8 with trigger token; C4-04)."
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

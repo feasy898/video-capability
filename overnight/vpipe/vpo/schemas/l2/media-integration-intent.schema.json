@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/media-integration-intent.schema.json",
+  "$comment": "source: E3 / appendix E-6. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. result_params describe observable relationships; node names are forbidden.",
+  "title": "MediaIntegrationIntent",
+  "allOf": [
+    { "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json" },
+    {
+      "if": {
+        "properties": { "domain_policy": { "const": "vpo:style.domain_policy.layered_comp" } },
+        "required": ["domain_policy"]
+      },
+      "then": { "required": ["result_params"] }
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "integration_mode",
+    "domain_policy",
+    "accommodation"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.media_integration_intent"
+    },
+    "integration_mode": {
+      "type": "string",
+      "pattern": "^vpo:style\\.integration_mode\\.(shared_world|graphic_overlay|deliberate_collage)$"
+    },
+    "domain_policy": {
+      "type": "string",
+      "pattern": "^vpo:style\\.domain_policy\\.(unified|layered_comp)$"
+    },
+    "accommodation": {
+      "type": "string",
+      "pattern": "^vpo:style\\.accommodation\\.(plate_to_character|character_to_plate|both_meet_at)$"
+    },
+    "result_params": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spatial_perspective",
+        "occlusion",
+        "contact",
+        "lighting_response",
+        "shadow_reflection",
+        "edge_contour",
+        "color_relation",
+        "imaging_time"
+      ],
+      "properties": {
+        "spatial_perspective": { "type": "string", "minLength": 1 },
+        "occlusion": { "type": "string", "minLength": 1 },
+        "contact": { "type": "string", "minLength": 1 },
+        "lighting_response": { "type": "string", "minLength": 1 },
+        "shadow_reflection": { "type": "string", "minLength": 1 },
+        "edge_contour": { "type": "string", "minLength": 1 },
+        "color_relation": { "type": "string", "minLength": 1 },
+        "imaging_time": { "type": "string", "minLength": 1 }
+      }
+    },
+    "references": {
+      "type": "array",
+      "$comment": "Legal reference roles. end_frame together with identity/style/first_frame is G4 conflict_detected, inferred from role, not from author flags.",
+      "items": {
+        "$ref": "https://vpo.example/schemas/v1/common/reference.schema.json"
+      }
+    }
+  },
+  "unevaluatedProperties": false
+
+}

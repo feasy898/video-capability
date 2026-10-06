@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json",
+  "$comment": "AcceptanceSpec is fixed before execution. Gate split (E6): block only P0 where false-positive cost < miss cost; flag = P1; human = performance emotion / style / AI-taste / cross-shot continuity / brand gestalt. VBench/DOVER scores live in advisory_benchmark and MUST NOT share the gate namespace. Source: E6, G2. Core distinctions (1.4): unambiguous interpretation does not mean a unique legal result; semantic losslessness does not mean acceptance.",
+  "title": "AcceptanceSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "criterion_id",
+    "version",
+    "intent_path",
+    "metric",
+    "tolerance",
+    "gate",
+    "detector_id",
+    "detector_version"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    },
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "intent_path": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "JSON pointer or dotted path into an L2 field."
+    },
+    "detector_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "detector_version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tolerance": {
+      "$ref": "https://vpo.example/schemas/v1/common/tolerance.schema.json"
+    },
+    "measurement_uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Detector metadata. Separate from L2 tolerance and from record confidence (G2).",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement_basis": {
+          "type": "string"
+        },
+        "evidence_status": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.evidence_status\\.(prior|measured)$"
+        }
+      }
+    },
+    "gate": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.gate\\.(block|flag|human)$"
+    },
+    "p0": {
+      "type": "boolean",
+      "default": false
+    },
+    "advisory_benchmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Not an acceptance gate. VBench/DOVER/NISQA live here only.",
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "const": "advisory_benchmark"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "score": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "metric"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "metric": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "benchmark_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "review_level": {
+      "type": "string",
+      "pattern": "^vpo:delivery.review_level.(shot|sequence|work)$",
+      "$comment": "4.5: whole-work creative acceptance happens only at sequence and work levels; shot-level creative sign-off does not substitute them."
+    }
+  }
+}

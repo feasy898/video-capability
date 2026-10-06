@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/common/tolerance.schema.json",
+  "$comment": "G2 three-way split. This object is L2 work tolerance only (how far the work may deviate). measurement_uncertainty belongs on L4 detector metadata; confidence belongs on L4 records. Do not merge the three into one number. evidence_status is prior until T4 calibration. Source: E1-2 / E6 / G2.",
+  "title": "VPO Work Tolerance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["evidence_status"],
+  "properties": {
+    "evidence_status": {
+      "type": "string",
+      "enum": ["vpo:delivery.evidence_status.prior", "vpo:delivery.evidence_status.measured"],
+      "$comment": "First release: all defaults are prior. T4 may later allow measured; schema const will then become an enum."
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Required whenever a numeric bound is present. Screen pixels must name deliverable resolution; angles must name coordinate system; displacements must name measurement basis."
+    },
+    "measurement_basis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lower": {
+      "type": "number"
+    },
+    "upper": {
+      "type": "number"
+    },
+    "inclusive": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "dependentRequired": {
+    "lower": ["unit"],
+    "upper": ["unit"]
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["measurement_uncertainty"] },
+      { "required": ["confidence"] }
+    ]
+  }
+}

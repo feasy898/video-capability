@@ -1,10 +1,10 @@
 {
  "schema_version": "2.0",
  "work_id": "avatar_talk_demo",
- "compiled_at": "2026-09-30T18:07:27",
+ "compiled_at": "2026-10-06T15:05:31",
  "compiler": "vdl2_compile.py@vpipe2.0-dev",
  "source_package": {
-  "path": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\examples\\vdl2\\20_avatar_talk.yaml",
+  "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/20_avatar_talk.yaml",
   "sha256": "c4258d5edbd874241c5aeaa7bb6d909a2ddec30bd85544a44c36941f8d125d0b"
  },
  "validation": {

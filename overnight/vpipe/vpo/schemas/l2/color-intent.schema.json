@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/color-intent.schema.json",
+  "$comment": "source: E1 / appendix D1. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Brand-color ΔE00 bounds are prior (E1).",
+  "title": "ColorIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "palette"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.color_intent"
+    },
+    "palette": {
+      "type": "string",
+      "pattern": "^vpo:color\\.palette_coarse\\.(cold|warm|low_saturation|high_saturation|monochrome)$"
+    },
+    "brand_color_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "delta_e00_median_max",
+        "delta_e00_p95_max",
+        "evidence_status",
+        "unit"
+      ],
+      "properties": {
+        "delta_e00_median_max": {
+          "type": "number",
+          "minimum": 0,
+          "$comment": "Upper bound, prior start point 5 (tolerances/brand-color-v0.json); stricter upstream contracts are legal, calibration may raise evidence_status."
+        },
+        "delta_e00_p95_max": {
+          "type": "number",
+          "minimum": 0,
+          "$comment": "Upper bound, prior start point 10 (tolerances/brand-color-v0.json)."
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "vpo:delivery.evidence_status.prior",
+            "vpo:delivery.evidence_status.measured"
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "const": "CIEDE2000"
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "$ref": "https://vpo.example/schemas/v1/common/reference.schema.json"
+      }
+    },
+    "palette_ratio": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "$comment": "Dominant/secondary/accent ratio contract (poster recipe 60-70/20-30/5-10; PV accent discipline).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "value",
+          "unit",
+          "measurement_basis"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "dominant",
+              "secondary",
+              "accent"
+            ]
+          },
+          "value": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 100
+          },
+          "unit": {
+            "type": "string",
+            "const": "pct_of_frame"
+          },
+          "measurement_basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_ref": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Semantic node the accent color may appear on (unique semantic node discipline)."
+          }
+        }
+      }
+    },
+    "color_arc": {
+      "type": "string",
+      "pattern": "^vpo:color\\.color_arc\\.[a-z_]+$",
+      "$comment": "Named cross-segment color trajectory (cold-to-warm etc.), the color-side twin of rhythm trajectory."
+    }
+  },
+  "unevaluatedProperties": false
+}

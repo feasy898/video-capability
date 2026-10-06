@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/lighting-intent.schema.json",
+  "$comment": "source: E1 / appendix D1. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. lighting_ratio is legal on the image channel; a numeric ratio on the text channel is G4 conflict_detected.",
+  "title": "LightingIntent",
+  "allOf": [
+    { "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json" }
+  ],
+  "type": "object",
+  "required": ["intent_type", "direction", "tonality", "designed_ambient"],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.lighting_intent"
+    },
+    "direction": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.light_direction\\.(front|side|back|top|bottom)$"
+    },
+    "tonality": {
+      "type": "string",
+      "pattern": "^vpo:cine\\.tonality\\.(high_key|low_key|high_contrast|soft_even)$"
+    },
+    "designed_ambient": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "(?i)\\b(runway|houdini|nuke|after effects|premiere|davinci|resolve|blender|unreal|maya|cinema 4d|c4d|ae\b|comfyui|gen-4|gen4|(?:wan|seedance|veo|hailuo|aleph|kling|pika)(?:[\\s.-]?[0-9]+(?:\\.[0-9]+)?)?|sora|luma|lightwrap|shadow catcher)\\b"
+      },
+      "$comment": "L2 tool-neutral: model/software/node names fail this field at the L2 schema layer."
+    },
+    "lighting_ratio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "measurement_basis"],
+      "$comment": "Numeric ratio. Illegal on control_channel text; use image.",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 },
+        "measurement_basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "key_fill_ratio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "measurement_basis"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 },
+        "measurement_basis": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

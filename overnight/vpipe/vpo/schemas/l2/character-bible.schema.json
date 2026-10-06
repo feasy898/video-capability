@@ -1,0 +1,693 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/character-bible.schema.json",
+  "$comment": "source: E3 §2.2. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. Three record kinds share this schema; appearance_ref.revision must not be latest.",
+  "title": "CharacterBible",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "record_kind"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.character_bible"
+    },
+    "record_kind": {
+      "type": "string",
+      "enum": [
+        "character_definition",
+        "appearance_definition",
+        "character_occurrence"
+      ]
+    },
+    "lock_status": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.entity_status\\.(locked|draft|active)$"
+    },
+    "style_domain": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "identity_key",
+        "identity_features",
+        "proportion",
+        "canonical_reference_set",
+        "identity_acceptance_profile",
+        "lock_status",
+        "style_domain"
+      ],
+      "properties": {
+        "record_kind": {
+          "const": "character_definition"
+        },
+        "lock_status": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.entity_status\\.(locked|draft|active)$",
+          "$comment": "Contracts that require characterBibleLock fail unless this is locked."
+        },
+        "style_domain": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Must match StyleIntent.style_domain in the same package."
+        },
+        "identity_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity_features": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "proportion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_reference_set": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "https://vpo.example/schemas/v1/common/reference.schema.json"
+          }
+        },
+        "identity_acceptance_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "profile_id"
+          ],
+          "properties": {
+            "profile_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1,
+              "not": {
+                "const": "latest"
+              }
+            }
+          }
+        },
+        "retain_original": {
+          "type": "array",
+          "$comment": "Creator-assist: original plates/shots that must be kept. Not interchangeable with reshooting.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "asset_uri",
+              "asset_revision",
+              "must_keep"
+            ],
+            "properties": {
+              "asset_uri": {
+                "type": "string",
+                "minLength": 1
+              },
+              "asset_revision": {
+                "type": "string",
+                "minLength": 1,
+                "not": {
+                  "const": "latest"
+                }
+              },
+              "must_keep": {
+                "type": "boolean"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "allowed_modifications": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "forbidden"
+          ],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "forbidden": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "insert_match": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "match_on",
+            "reference_role"
+          ],
+          "properties": {
+            "match_on": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "reference_role": {
+              "type": "string",
+              "enum": [
+                "vpo:craft.reference_role.identity",
+                "vpo:craft.reference_role.style",
+                "vpo:craft.reference_role.first_frame",
+                "vpo:craft.reference_role.product"
+              ]
+            }
+          }
+        },
+        "seed": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ],
+          "$comment": "Similar results only. Presence on a character bible is regen_required; seed is not a continuity key."
+        },
+        "voice_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "persona"
+          ],
+          "$comment": "Voice identity anchor (MiniMax asset-pipeline voice anchor; voice-clone skill acceptance).",
+          "properties": {
+            "persona": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "description"
+              ],
+              "properties": {
+                "gender_presentation": {
+                  "type": "string",
+                  "pattern": "^vpo:sound\\.voice_lock\\.[a-z_]+$",
+                  "$comment": "Voice-gender presentation of the persona; the song vocals.voice_lock must agree with the single persona when both are declared."
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "language": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "age_band": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pitch": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pace": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "timbre": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "accent": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resonance": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pause_style": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pronunciation_lexicon": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "mic_distance": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "cloning_source": {
+              "$ref": "https://vpo.example/schemas/v1/common/reference.schema.json"
+            },
+            "authorization": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "granted_by",
+                "scope"
+              ],
+              "properties": {
+                "granted_by": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "scope": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "acceptance": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "similarity_anchor",
+                "min_similarity",
+                "unit",
+                "measurement_basis"
+              ],
+              "properties": {
+                "similarity_anchor": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "min_similarity": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "measurement_basis": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "distinct_from": {
+          "type": "array",
+          "$comment": "Cross-character distinctness contract (drama cast clash check); acceptance rides a human-gate spec.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "other_ref",
+              "required_differences"
+            ],
+            "properties": {
+              "other_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "required_differences": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "visual_adapter": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind"
+          ],
+          "$comment": "Visual identity/style internalization path (LoRA-style adapter): source set, authorization, acceptance mirror voice_profile.",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "character_lora",
+                "style_lora",
+                "none"
+              ]
+            },
+            "source_set_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "training_images": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "authorization": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "granted_by",
+                "scope"
+              ],
+              "properties": {
+                "granted_by": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "scope": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "acceptance": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "anchor",
+                "min_similarity",
+                "unit",
+                "measurement_basis"
+              ],
+              "properties": {
+                "anchor": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "min_similarity": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "measurement_basis": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "training_params": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "rank": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "integer"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "learning_rate": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "epochs": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "unit",
+                    "measurement_basis"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "integer"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "measurement_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              "$comment": "Delegable LoRA training configuration (C1-04/C4-04): rank/lr/epochs with unit and basis."
+            },
+            "trigger_token": {
+              "type": "string",
+              "minLength": 1,
+              "$comment": "Invocation token that activates the trained adapter (kohya-ss convention); the executor needs it to call the adapter the contract trained."
+            },
+            "weight": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "measurement_basis",
+                "evidence_status"
+              ],
+              "properties": {
+                "value": { "type": "number" },
+                "unit": { "type": "string", "minLength": 1 },
+                "measurement_basis": { "type": "string", "minLength": 1 },
+                "evidence_status": {
+                  "type": "string",
+                  "enum": [
+                    "vpo:delivery.evidence_status.prior",
+                    "vpo:delivery.evidence_status.measured"
+                  ]
+                }
+              },
+              "$comment": "Inference weight of the trained adapter at use time (character sweet spot 0.7-0.85, >0.9 overfits; C1-04). The training-side contract lives in training_params; this is the delegation-side knob."
+            }
+          }
+        }
+      }
+    },
+    {
+      "required": [
+        "reference_views",
+        "wardrobe",
+        "accessories",
+        "palette",
+        "invariant_rules",
+        "allowed_variations"
+      ],
+      "properties": {
+        "record_kind": {
+          "const": "appearance_definition"
+        },
+        "reference_views": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "https://vpo.example/schemas/v1/common/reference.schema.json"
+          }
+        },
+        "wardrobe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accessories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "palette": {
+          "type": "string",
+          "minLength": 1
+        },
+        "invariant_rules": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allowed_variations": {
+          "type": "array",
+          "$comment": "Costume deltas that may legally appear between episode stand-ins. Each variation must carry the approving authority; an observed change not covered here is wardrobe-identity drift.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "description",
+              "authority",
+              "episode_standin"
+            ],
+            "properties": {
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "authority": {
+                "type": "string",
+                "minLength": 1
+              },
+              "episode_standin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "adds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "removes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "usage_rules": {
+          "type": "array",
+          "minItems": 1,
+          "$comment": "Per-episode (or story-day stand-in) costume usage rules. A single wardrobe string is not serial grammar.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "episode_standin",
+              "rule",
+              "measurement_basis"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "episode_standin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "story_day_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rule": {
+                "type": "string",
+                "minLength": 1
+              },
+              "measurement_basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "required": [
+        "appearance_ref",
+        "shot_ref",
+        "continuity_state_ref"
+      ],
+      "properties": {
+        "record_kind": {
+          "const": "character_occurrence"
+        },
+        "appearance_ref": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "revision"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1,
+              "not": {
+                "const": "latest"
+              }
+            }
+          }
+        },
+        "shot_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "continuity_state_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "story_day_ref": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Episode stand-in this occurrence belongs to; wardrobe drift is observed across these."
+        },
+        "wardrobe_observed": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "$comment": "The costume actually bound to this occurrence of the character. The costume-identity binding is observed here, not inferred from usage rules."
+        }
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

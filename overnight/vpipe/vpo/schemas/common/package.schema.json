@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/common/package.schema.json",
+  "$comment": "Production-instruction package. Compile and acceptance aggregation run on this closure, not on isolated files. Source: independent evaluation 2026-09-19; SPEC-SIGN-OFF §4–§5.",
+  "title": "VPO Instruction Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "package_id",
+    "version",
+    "carrier_form",
+    "morphology_claim",
+    "members",
+    "facts",
+    "acceptance_aggregate"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/common/package.schema.json"
+    },
+    "package_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "carrier_form": {
+      "type": "string",
+      "pattern": "^vpo:genre\\.carrier_form\\.[a-z0-9_]+$"
+    },
+    "morphology_claim": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "What this package answers that the other twelve do not."
+    },
+    "distinctive_intent_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^vpo:craft\\.intent_object\\.[a-z0-9_]+$"
+      }
+    },
+    "members": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creative_work",
+        "intents",
+        "contract",
+        "acceptance_specs",
+        "acceptance_records",
+        "provenance",
+        "capability_profiles"
+      ],
+      "properties": {
+        "creative_work": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intents": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "contract": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability_profiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acceptance_specs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "acceptance_records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "process_notes": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Path to the instance process-notes document (machine index). Package fields exploration_notes/process_records do not substitute."
+        },
+        "writing_notes": {
+          "type": "string",
+          "pattern": "\\.md$",
+          "$comment": "Path to the written writing-process note document (.md). For hard morphologies this is the method-required deliverable; the JSON process-notes file is only its index."
+        }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "statement",
+          "bind",
+          "invalid_under_carrier"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "geometry",
+              "timing",
+              "loop",
+              "copy",
+              "version",
+              "medium",
+              "audio"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "invalid_under_carrier": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^vpo:genre\\.carrier_form\\.[a-z0-9_]+$"
+            }
+          },
+          "observation_criterion": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "coverage_gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "need",
+          "workaround"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "need": {
+            "type": "string",
+            "minLength": 1
+          },
+          "workaround": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_revision": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "process_records": {
+      "type": "array",
+      "$comment": "Morphology-instance process log for facts that are not first-class types. Warehouse prose does not substitute.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "body"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "cascade",
+              "coverage",
+              "lips",
+              "insert_match",
+              "healing"
+            ]
+          },
+          "body": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "exploration_notes": {
+      "type": "array",
+      "$comment": "Write-time items this morphology cannot express in the type system. Must live on the instance; coverage_gaps and warehouse indexes do not substitute.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "unexpressable",
+          "attempted_as",
+          "schema_revision"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unexpressable": {
+            "type": "string",
+            "minLength": 1
+          },
+          "attempted_as": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "acceptance_aggregate": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "inconclusive"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

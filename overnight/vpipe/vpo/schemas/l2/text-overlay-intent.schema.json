@@ -1,0 +1,405 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/text-overlay-intent.schema.json",
+  "$comment": "source: E4 §5 / §4.3 TextOverlayIntent. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest. kind is bound to the L0 overlay_kind family (vpo:style.overlay_kind.*).",
+  "title": "TextOverlayIntent",
+  "allOf": [
+    {
+      "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "kind",
+    "safe_area",
+    "min_font_height_pct",
+    "contrast_ratio_min",
+    "standard"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.text_overlay_intent"
+    },
+    "kind": {
+      "type": "string",
+      "pattern": "^vpo:style\\.overlay_kind\\.[a-z_]+$"
+    },
+    "safe_area": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "top_pct",
+        "bottom_pct",
+        "unit"
+      ],
+      "properties": {
+        "top_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "bottom_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "unit": {
+          "type": "string",
+          "const": "pct"
+        }
+      }
+    },
+    "min_font_height_pct": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "measurement_basis"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100
+        },
+        "unit": {
+          "type": "string",
+          "const": "pct"
+        },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Frame height of the deliverable."
+        }
+      }
+    },
+    "contrast_ratio_min": {
+      "type": "number",
+      "const": 4.5
+    },
+    "standard": {
+      "type": "string",
+      "const": "WCAG 2.x 4.5:1"
+    },
+    "callout_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sku_or_feature_id",
+        "claim",
+        "anchor_normalized",
+        "label_slot",
+        "leader_line",
+        "in_delay_after_readable_frames",
+        "min_hold_s",
+        "max_concurrent",
+        "forbidden_regions"
+      ],
+      "properties": {
+        "sku_or_feature_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchor_normalized": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "label_slot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "leader_line": {
+          "type": "boolean"
+        },
+        "in_delay_after_readable_frames": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "min_hold_s": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "const": "s"
+            }
+          }
+        },
+        "max_concurrent": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2,
+          "default": 1
+        },
+        "forbidden_regions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "target_ref": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "F-3 binding: what the callout points at (sku/feature/region id)."
+        },
+        "follow_behavior": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "F-3 binding: how the label follows a moving target."
+        },
+        "leader_crossing_policy": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "F-3 exception: where the leader line may not cross."
+        },
+        "target_occluded_policy": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "F-3 exception: what happens when the target is occluded during the readable hold."
+        },
+        "target_offscreen_policy": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "F-3 exception: what happens when the target leaves the frame."
+        },
+        "allowed_overlap": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "$comment": "F-3 exception: regions the label may overlap despite the general ban."
+        },
+        "max_anchor_error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          },
+          "$comment": "F-3 exception: declared drift bound between label anchor and target; the L4 follow observation checks against this contract, not a bare flag."
+        },
+        "jitter_tolerance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "measurement_basis",
+            "evidence_status"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_status": {
+              "type": "string",
+              "enum": [
+                "vpo:delivery.evidence_status.prior",
+                "vpo:delivery.evidence_status.measured"
+              ]
+            }
+          },
+          "$comment": "F-3 exception: allowed label jitter magnitude per readable-hold second."
+        }
+      }
+    },
+    "diegetic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verbatim"
+      ],
+      "$comment": "In-plate generated text (signage, packaging, on-screen UI) routed as a layout object with verbatim content (on-image-text failure card).",
+      "properties": {
+        "verbatim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Where the text lives: sign / package / screen UI / prop label."
+        },
+        "readability_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "TVC typography package (tvc_typography_package): cast roles, scale ladder, space binding, mode, per-event lifecycle, render owner (video-native forbids post burn).",
+      "properties": {
+        "cast": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "verbatim"
+            ],
+            "properties": {
+              "role": {
+                "type": "string",
+                "pattern": "^vpo:style\\.type_cast\\.[a-z_]+$"
+              },
+              "verbatim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scale_band": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "unit",
+                  "measurement_basis"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "const": "pct_of_frame"
+                  },
+                  "measurement_basis": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "sequence_role": {
+                "type": "string",
+                "pattern": "^vpo:style\\.type_sequence_role\\.[a-z_]+$",
+                "$comment": "Narrative role of this type event in the sequence (establish/identity/contrast/turn/hook/transition/resolve; typography-packaging sequence_role)."
+              },
+              "skeleton": {
+                "type": "string",
+                "minLength": 1,
+                "$comment": "Type skeleton (condensed/wide geometric/square grotesk...)."
+              },
+              "material_edge": {
+                "type": "string",
+                "minLength": 1,
+                "$comment": "Material edge treatment (etched/metal/frosted...)."
+              },
+              "space_binding": {
+                "type": "string",
+                "minLength": 1,
+                "$comment": "Depth surface the type binds to (wall/floor/glass/subject/frame/independent layer)."
+              }
+            }
+          }
+        },
+        "mode": {
+          "type": "string",
+          "pattern": "^vpo:style\\.typography_mode\\.[a-z_]+"
+        },
+        "render_owner": {
+          "type": "string",
+          "pattern": "^vpo:delivery\\.render_owner\\.[a-z_]+"
+        },
+        "lifecycle": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event",
+              "anchor"
+            ],
+            "properties": {
+              "event": {
+                "type": "string",
+                "enum": [
+                  "enter",
+                  "fully_readable",
+                  "single_response",
+                  "recall_or_hold"
+                ]
+              },
+              "anchor": {
+                "type": "string",
+                "pattern": "^(timecode|voToken|barBeat|lyric):[A-Za-z0-9_.:\\\\-]+$"
+              },
+              "readable_hold_s": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "mechanism": {
+          "type": "string",
+          "pattern": "^vpo:style\\.type_motion_mechanism\\.[a-z0-9_]+$",
+          "$comment": "Type motion mechanism (MV packaging device vocabulary)."
+        },
+        "cue_source": {
+          "type": "string",
+          "pattern": "^vpo:sound\\.music_event_source\\.[a-z0-9_]+$",
+          "$comment": "Which musical event drives the type event."
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

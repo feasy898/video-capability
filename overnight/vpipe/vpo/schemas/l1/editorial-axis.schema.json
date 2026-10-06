@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l1/editorial-axis.schema.json",
+  "$comment": "EditorialAxis: CutVersion > TimelinePart(Reel) > ClipInstance(ShotOccurrence). Shot (thing to make) ≠ ClipInstance (one appearance). OTIO is an import/export snapshot only: nest ≤1, metadata holds ids+checksums, media URIs must be stable, local absolute paths forbidden. Intervals half-open. Source: E2, OTIO v0.19 §4.2.",
+  "title": "EditorialAxis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "axis_id",
+    "cut_versions"
+  ],
+  "properties": {
+    "axis_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "cut_versions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/cut_version"
+      }
+    }
+  },
+  "$defs": {
+    "cut_version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "revision",
+        "parts"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "const": "latest"
+          }
+        },
+        "picture_lock": {
+          "type": "boolean",
+          "default": false
+        },
+        "parts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/timeline_part"
+          }
+        },
+        "otio_snapshot_uri": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Optional OTIO snapshot. Not the system of record."
+        }
+      }
+    },
+    "timeline_part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "clips"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "reel_label": {
+          "type": "string"
+        },
+        "clips": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/clip_instance"
+          }
+        }
+      }
+    },
+    "clip_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiers",
+        "occurrence_id",
+        "editorial_shot_id",
+        "source_range",
+        "record_range",
+        "story_day_ref"
+      ],
+      "properties": {
+        "identifiers": {
+          "allOf": [
+            {
+              "$ref": "https://vpo.example/schemas/v1/common/identifiers.schema.json"
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "scene_code"
+                ]
+              },
+              {
+                "required": [
+                  "sceneStableId"
+                ]
+              },
+              {
+                "required": [
+                  "sceneInsertPrefix"
+                ]
+              },
+              {
+                "required": [
+                  "setupLetter"
+                ]
+              },
+              {
+                "required": [
+                  "takeNumber"
+                ]
+              },
+              {
+                "required": [
+                  "unitCode"
+                ]
+              },
+              {
+                "required": [
+                  "flags"
+                ]
+              }
+            ]
+          }
+        },
+        "occurrence_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "editorial_shot_id": {
+          "type": "string",
+          "format": "uuid",
+          "$comment": "The Shot being instanced. One Shot, many occurrences."
+        },
+        "story_day_ref": {
+          "type": "string",
+          "format": "uuid",
+          "$comment": "Playback may reorder; this must keep pointing at the original ContinuityAxis story day. Flashback must not rewrite story time."
+        },
+        "source_range": {
+          "$ref": "#/$defs/time_range"
+        },
+        "record_range": {
+          "$ref": "#/$defs/time_range"
+        },
+        "media_uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "media_checksum": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "nest_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1,
+          "$comment": "OTIO snapshot nesting ≤ 1."
+        }
+      }
+    },
+    "time_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "time_base",
+        "start_frame",
+        "end_frame"
+      ],
+      "properties": {
+        "time_base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rate_num",
+            "rate_den"
+          ],
+          "properties": {
+            "rate_num": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rate_den": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

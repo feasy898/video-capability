@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l2/loop-intent.schema.json",
+  "$comment": "source: E5 / appendix G-4. L2 is tool-neutral: no model names, software names, node graphs, plugin names, or vendor parameter names. Enums are L0 concept_id strings. Numeric fields need unit + measurement_basis. Time intervals are half-open OTIO [start,end). Versions must not be the string latest.",
+  "title": "LoopIntent",
+  "allOf": [
+    { "$ref": "https://vpo.example/schemas/v1/common/intent-common.schema.json" }
+  ],
+  "type": "object",
+  "required": [
+    "intent_type",
+    "mode",
+    "seam_grade",
+    "first_last_match_tolerance",
+    "gop_policy",
+    "frame_rate_mode",
+    "tail_trim_policy",
+    "audio_encoder_delay_policy"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "const": "vpo:craft.intent_object.loop_intent"
+    },
+    "mode": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.loop_mode\\.(none|playlist_repeat|seamless_file)$"
+    },
+    "seam_grade": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.seam_grade\\.(exact|good|fail)$"
+    },
+    "first_last_match_tolerance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motion_px",
+        "unit",
+        "measurement_basis",
+        "luma_pct",
+        "allowed_dissolve_frames"
+      ],
+      "properties": {
+        "motion_px": { "type": "number", "minimum": 0 },
+        "unit": { "type": "string", "const": "px" },
+        "measurement_basis": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Deliverable resolution."
+        },
+        "luma_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "allowed_dissolve_frames": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "gop_policy": {
+      "type": "string",
+      "const": "vpo:delivery.gop_policy.closed_idr_start"
+    },
+    "frame_rate_mode": {
+      "type": "string",
+      "const": "vpo:delivery.frame_rate_mode.cfr",
+      "$comment": "G-4: loop deliverables are CFR."
+    },
+    "tail_trim_policy": {
+      "type": "string",
+      "const": "vpo:delivery.tail_trim.to_next_gop_boundary",
+      "$comment": "G-4: tail frame trimmed to just before the next GOP."
+    },
+    "audio_encoder_delay_policy": {
+      "type": "string",
+      "const": "vpo:delivery.audio_delay.compensate_equal_length",
+      "$comment": "G-4: audio equal length after encoder-delay compensation."
+    },
+    "daypart_variants": {
+      "type": "array",
+      "$comment": "E5. Instantiated daypart plates; a seam cut on the wrong variant is a morphology failure, not a generic duration miss.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "window"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "window": { "type": "string", "minLength": 1 },
+          "plate_ref": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "legal_seam_frames": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "integer", "minimum": 0 },
+      "$comment": "Legal cut-frame indices on the deliverable. A loop cut elsewhere is this morphology's failure path."
+    }
+  },
+  "unevaluatedProperties": false
+}

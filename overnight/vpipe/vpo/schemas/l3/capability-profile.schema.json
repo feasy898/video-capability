@@ -1,0 +1,596 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpo.example/schemas/v1/l3/capability-profile.schema.json",
+  "$comment": "Capability profiles are versioned and separate from L2 intents. Reliability = Wilson 95% CI lower bound ≥ 80% (E1-2). pass@1 and pass@k are stored apart. Statistics include compiler version. evidence_status required. Source: E1-2.",
+  "title": "CapabilityProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "profile_id",
+    "version",
+    "model_id",
+    "model_version",
+    "input_mode",
+    "control_channel",
+    "compiler_version",
+    "evidence_status",
+    "pass_at_1",
+    "pass_at_k"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "https://vpo.example/schemas/v1/l3/capability-profile.schema.json"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "input_mode": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^vpo:delivery\\.input_mode\\.[a-z0-9_]+$",
+      "$comment": "Vendor input modes; work-item reference shapes are checked against the locked profile."
+    },
+    "control_channel": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.control_channel\\.[a-z0-9_]+$"
+    },
+    "compiler_version": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "const": "latest"
+      }
+    },
+    "evidence_status": {
+      "type": "string",
+      "pattern": "^vpo:delivery\\.evidence_status\\.(prior|measured)$"
+    },
+    "pass_at_1": {
+      "$ref": "#/$defs/rate"
+    },
+    "pass_at_k": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "k",
+        "rate"
+      ],
+      "properties": {
+        "k": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "rate": {
+          "$ref": "#/$defs/rate"
+        }
+      }
+    },
+    "reliable": {
+      "type": "boolean",
+      "$comment": "true only if Wilson 95% CI lower bound ≥ 0.80. Do not set by gut feel."
+    },
+    "notes": {
+      "type": "string"
+    },
+    "control_features": {
+      "type": "array",
+      "$comment": "Control capability matrix (attachment ch.13 / FP-08): what this model family supports and its limits; all prior.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "feature",
+          "supported",
+          "evidence_status"
+        ],
+        "properties": {
+          "feature": {
+            "type": "string",
+            "pattern": "^vpo:delivery\\.control_feature\\.[a-z_]+$"
+          },
+          "supported": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "unit",
+              "measurement_basis",
+              "evidence_status"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "measurement_basis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_status": {
+                "type": "string",
+                "enum": [
+                  "vpo:delivery.evidence_status.prior",
+                  "vpo:delivery.evidence_status.measured"
+                ]
+              },
+              "applies_to_role": {
+                "type": "string",
+                "pattern": "^vpo:craft\\.reference_role\\.[a-z_]+$",
+                "$comment": "Per-role bucket the limit applies to (multimodal reference budgets)."
+              },
+              "values": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                },
+                "$comment": "Discrete vendor whitelist (durations 4/6/8s, sample rates, or BCP-47 language codes for language faces); non-member values are hard-rejected with no fallback."
+              },
+              "aggregate": {
+                "type": "string",
+                "enum": [
+                  "per_item",
+                  "sum_per_role"
+                ],
+                "$comment": "Whether the limit is per item or an aggregate budget summed per role (kling: with video present, images sum to a shared cap)."
+              }
+            }
+          },
+          "range": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            },
+            "$comment": "For interval features such as cfg_range."
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_status": {
+            "type": "string",
+            "enum": [
+              "vpo:delivery.evidence_status.prior",
+              "vpo:delivery.evidence_status.measured"
+            ]
+          },
+          "excludes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^vpo:delivery\\.control_feature\\.[a-z_]+$"
+            },
+            "$comment": "Features this one is mutually exclusive with on the same vendor (e.g. first/last frame vs reference input)."
+          },
+          "constraints": {
+            "type": "array",
+            "$comment": "Conditional/cross-dimensional vendor faces: paired whitelists and mode implications a single values[] cannot express.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "when",
+                "then"
+              ],
+              "properties": {
+                "when": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "dimension": {
+                      "type": "string",
+                      "enum": [
+                        "aspect_class",
+                        "resolution",
+                        "mode",
+                        "feature",
+                        "duration",
+                        "content"
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "reference_role": {
+                      "type": "string",
+                      "pattern": "^vpo:craft\\.reference_role\\.[a-z_]+$",
+                      "$comment": "Reference-combo condition: this constraint applies while the package binds a reference of this role."
+                    },
+                    "content_key": {
+                      "type": "string",
+                      "enum": [
+                        "diegetic_text",
+                        "lips",
+                        "audio_track_ref",
+                        "overlay",
+                        "camera_movement"
+                      ],
+                      "$comment": "Package content fact the condition keys on."
+                    },
+                    "param": {
+                      "type": "string",
+                      "pattern": "^[a-z_][a-z0-9_]*(\\.[a-z_][a-z0-9_]*)+$",
+                      "$comment": "Dotted numeric-parameter path resolved against executor-contract generation_params and work_items[].params (e.g. audio.tts.speed). A {value,unit,measurement_basis} object resolves by .value; a plain number resolves directly."
+                    },
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "gt",
+                        "lt",
+                        "gte",
+                        "lte",
+                        "eq",
+                        "ne"
+                      ],
+                      "$comment": "Numeric comparison for param conditions."
+                    },
+                    "num_value": {
+                      "type": "number",
+                      "$comment": "Numeric threshold for param conditions."
+                    },
+                    "all_of": {
+                      "type": "array",
+                      "minItems": 2,
+                      "items": {
+                        "$ref": "#/$defs/constraintCondition"
+                      },
+                      "$comment": "Conjunction of conditions; vendor numeric param-combo forbidden zones (e.g. speed>1.5 AND pitch>+6) need this because a single equality cannot express joint thresholds."
+                    }
+                  },
+                  "oneOf": [
+                    {
+                      "required": [
+                        "dimension"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "reference_role"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "param",
+                        "op",
+                        "num_value"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "all_of"
+                      ]
+                    }
+                  ]
+                },
+                "then": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "allowed": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "$comment": "Values the when-dimension permits (paired whitelist)."
+                    },
+                    "required_value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "$comment": "Value another dimension must take (mode=extend => aspect=adaptive)."
+                    },
+                    "inherits_from_input": {
+                      "type": "boolean",
+                      "$comment": "Dimension is determined by the input frame (H3-Max first-frame decides aspect)."
+                    },
+                    "required_reference_role": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^vpo:craft\\.reference_role\\.[a-z_]+$"
+                      },
+                      "$comment": "Existence requirement: when the condition fires, the package must bind references of these roles."
+                    },
+                    "block_all": {
+                      "type": "boolean",
+                      "$comment": "Explicit total rejection for the when-face (e.g. non-whitelisted prompt language): no legal value exists."
+                    },
+                    "forbidden_feature": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^vpo:delivery\\.control_feature\\.[a-z_]+"
+                      },
+                      "$comment": "Features that must be off when the when-face fires (kling: reference video forbids native audio)."
+                    },
+                    "forbidden_reference_role": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^vpo:craft\\.reference_role\\.[a-z_]+"
+                      },
+                      "$comment": "Reference roles that must not be bound when the when-face fires (seed-audio: audio refs and image refs are mutually exclusive)."
+                    },
+                    "duration_inherits_from_reference": {
+                      "type": "boolean",
+                      "$comment": "Output duration equals the driving reference duration (kling avatar/motion-control; wan edit/extend)."
+                    },
+                    "required_any_of": {
+                      "type": "array",
+                      "minItems": 2,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^vpo:craft\\.reference_role\\.[a-z_]+"
+                      },
+                      "$comment": "Disjunctive admission: at least one of these roles must be bound (H3-Max: at least an image or a video; wan: prompt or asset)."
+                    },
+                    "reference_total_budget": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "$comment": "Conditional total reference budget (all roles, asset-deduped) when the when-face fires (kling-omni: with a reference video, 4 total)."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "content_policy": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": [
+                "real_face_rejected",
+                "celebrity_likeness_rejected",
+                "rights_third_party_rejected"
+              ]
+            },
+            "$comment": "Content policies the vendor applies to uploaded references of this kind."
+          },
+          "pitch_range": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "$comment": "TTS pitch envelope [min, max] in the feature's declared unit (e.g. semitones -12..12)."
+          },
+          "volume_range": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "$comment": "TTS volume envelope [min, max] in the feature's declared unit."
+          }
+        }
+      }
+    },
+    "availability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "deprecated",
+            "eol"
+          ],
+          "$comment": "eol = end of life (stopped service); locking an eol model fails compile."
+        },
+        "since": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "vpo:delivery.evidence_status.prior",
+            "vpo:delivery.evidence_status.measured"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "constraintCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "aspect_class",
+            "resolution",
+            "mode",
+            "feature",
+            "duration",
+            "content"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_role": {
+          "type": "string",
+          "pattern": "^vpo:craft\\.reference_role\\.[a-z_]+$",
+          "$comment": "Reference-combo condition: this constraint applies while the package binds a reference of this role."
+        },
+        "content_key": {
+          "type": "string",
+          "enum": [
+            "diegetic_text",
+            "lips",
+            "audio_track_ref",
+            "overlay",
+            "camera_movement"
+          ],
+          "$comment": "Package content fact the condition keys on."
+        },
+        "param": {
+          "type": "string",
+          "pattern": "^[a-z_][a-z0-9_]*(\\.[a-z_][a-z0-9_]*)+$",
+          "$comment": "Dotted numeric-parameter path resolved against executor-contract generation_params and work_items[].params (e.g. audio.tts.speed). A {value,unit,measurement_basis} object resolves by .value; a plain number resolves directly."
+        },
+        "op": {
+          "type": "string",
+          "enum": [
+            "gt",
+            "lt",
+            "gte",
+            "lte",
+            "eq",
+            "ne"
+          ],
+          "$comment": "Numeric comparison for param conditions."
+        },
+        "num_value": {
+          "type": "number",
+          "$comment": "Numeric threshold for param conditions."
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "dimension"
+          ]
+        },
+        {
+          "required": [
+            "reference_role"
+          ]
+        },
+        {
+          "required": [
+            "param",
+            "op",
+            "num_value"
+          ]
+        }
+      ]
+    },
+    "rate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "successes",
+        "trials",
+        "wilson95_lower"
+      ],
+      "properties": {
+        "successes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "trials": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "wilson95_lower": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "point": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reliable": {
+            "const": true
+          }
+        },
+        "required": [
+          "reliable"
+        ]
+      },
+      "then": {
+        "properties": {
+          "pass_at_1": {
+            "properties": {
+              "wilson95_lower": {
+                "minimum": 0.8
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reliable": {
+            "const": false
+          }
+        },
+        "required": [
+          "reliable"
+        ]
+      },
+      "then": {
+        "properties": {
+          "pass_at_1": {
+            "properties": {
+              "wilson95_lower": {
+                "maximum": 0.799
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

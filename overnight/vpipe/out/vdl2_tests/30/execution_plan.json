@@ -1,10 +1,10 @@
 {
  "schema_version": "2.0",
  "work_id": "product_loop_demo",
- "compiled_at": "2026-09-30T18:07:29",
+ "compiled_at": "2026-10-06T15:05:31",
  "compiler": "vdl2_compile.py@vpipe2.0-dev",
  "source_package": {
-  "path": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\examples\\vdl2\\30_programmatic_loop.yaml",
+  "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/30_programmatic_loop.yaml",
   "sha256": "9019114d6a6c8fb943fa346ceb8e53fbb1e597a3b8d4e593a4dcf21207f41c74"
  },
  "validation": {
