@@ -1,0 +1,13 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "cloud_mig_smoke",
+ "axis": "OTHER",
+ "duration_s": 4,
+ "aspect": "16:9",
+ "resolution": "768P",
+ "prompt": "清晨的湖面上一只白鹭展开翅膀掠过水面，激起细小的涟漪，镜头平稳跟随",
+ "seed": 42,
+ "audio": {"generate": false},
+ "engine_hint": {"preferred": "api", "model": "MiniMax-H3"},
+ "notes": "gen_api 云通道迁移冒烟（2026-10-06）：最小 4s/768P/无声，对齐接入手册 §2.2 验证用例口径"
+}

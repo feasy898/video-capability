@@ -18,7 +18,7 @@ vpipe/
 │   └── asset_manifest.schema.json ← 内容寻址（sha256）资产登记表
 ├── src/                           ← 四个胶水模块（互不 import，只靠契约 JSON 通信）
 │   ├── gen_local.py               ← diffusers 调 Wan/LTX，种子固定（GPU 机器卡1）
-│   ├── gen_api.py                 ← MiniMax Design H3 客户端（DTO 白名单/积分守卫/断点续跑）
+│   ├── gen_api.py                 ← MiniMax 视频客户端（higress 云通道三步流；windev 客户端网关保留为可选通道。DTO 白名单/积分守卫/断点续跑）
 │   ├── qc_orch.py                 ← 检测器规则引擎 + 多 judge 合议（E10）
 │   └── report.py                  ← 汇 metadata/QC/manifest → 报告
 ├── eval/                          ← 验收资产（重生成验收的唯一裁判）
@@ -87,25 +87,54 @@ resolve_wh(engine: str, aspect: str) -> (w, h)            # 480P 档映射，越
 - 仅实测过 480P（V100S-32GB fp16）；`resolution` 声明高于 480P 时告警并按 480P 渲染。
 - 产出后登记 manifest（asset_id=`<shot_id>@<model>`，kind=clip，带 sha256 + probe 级证据）。
 
-### 2.2 gen_api.py — MiniMax Design H3 客户端
+### 2.2 gen_api.py — MiniMax 视频生成（higress 云通道 + windev 可选通道）
 
-运行位置：本机 Windows（网关 127.0.0.1:8001，免鉴权；应用必须存活，挂了自动重启再探）。
+运行位置：任何能达网关的机器（2026-10-06 迁移后默认走 **higress 云通道** `http://100.64.0.6:8080`
+的 `/minimax-cloud/` 三步流，调用方零凭据——token/Authorization 由网关注入，见
+`overnight/MiniMax-Design-接入手册.md` §0/§2；**不再依赖 windev 本机客户端网关 127.0.0.1:8001**，
+后者保留为 `--backend windev` 可选通道，windev 2026-10-07 销毁后即不可用）。
 
 ```python
 # CLI
-python src/gen_api.py --shots DIR|FILE.jsonl --out-dir D [--model MiniMax-H3]
+python src/gen_api.py --shots DIR|FILE.jsonl --out-dir D [--backend cloud] [--model MiniMax-H3]
                       [--credit-cap 40000] [--dry-run] [--only id,id] [--retry-failed]
                       [--skip-seed-probe]
 python src/gen_api.py make-shots --prompts ../数据/prompts.json --out-dir shots/   # 一次性适配器
-# 核心签名
+# 核心签名（冻结，双通道一致）
 build_payload(shot: dict, model_id: str, include_seed: bool, refs_resolved: list[str])
-    -> (payload: dict, ignored: list[str])   # DTO 白名单映射；被丢弃字段进 ignored
+    -> (payload: dict, ignored: list[str])   # windev DTO 白名单映射；被丢弃字段进 ignored
+build_cloud_payload(shot: dict, model_id: str, ref_urls: list[str]) -> dict
+                                               # 云 DTO 白名单（手册 §2.1 实测字段）
 validate_base_url(url: str, allow_private: bool, allow_loopback: bool) -> (ok, reason)
-probe_seed(sess, state) -> dict                # 0 成本 DTO 探测：seed 是否在白名单
+validate_cloud_params(shot: dict, model_id: str) -> (ok, reason)
+                                               # 手册 §2 模型表本地预检，不发 HTTP 不耗额度
+probe_seed(sess, state) -> dict                # 0 成本 DTO 探测：seed 是否在白名单（windev 专属）
 poll_task(sess, task_id) -> dict               # 轮询到 succeeded/failed/poll_timeout/poll_error
+                                               # （按 sess.backend 分派云/windev；云 success 归一化为 succeeded）
 load_shots(spec) -> list[dict]                 # 目录/*.jsonl 逐条契约校验
 ```
-行为要点（来自今晚 `overnight/数据/run_api_matrix.py` 实跑 46/46 成功、实扣 14,280 积分）：
+云通道行为要点（2026-10-06 实测迁移，证据 `out/cloud_migration_smoke/`）：
+- **三步流**：`POST /minimax-cloud/api/v1/video/minimax-v3/generate` →
+  `GET .../tasks/{task_id}`（processing→success）→ `GET .../files/{task_id}` 的
+  `download_url`（CDN 直链，下载前过 URL 安全校验拒内网/环回），落盘 + sha256 + 本地 ffprobe。
+- **客户端参数预检**：按手册 §2 模型表（时长整数区间/分辨率档，如 H3 4–15s·768P/2K）本地校验，
+  越界记 `invalid_params` 不发 HTTP（云侧试参成本未知，不盲试）。
+- **积分守卫（如实降级）**：云通道无钱包端点（手册 §7 单价/余额未探明）→ 按 56 积分/s 估算
+  累计进 `out/api_state.json`（`cloud_est_credit_spent`），超 `--credit-cap` 即 exit 3；
+  记录里 `credit_before/after/cost=null`、`est_credit=<估算>`，不冒充实扣。
+- **seed**：云 DTO 白名单无 seed 字段 → 一律不发送；probe_seed 不跑（windev 专属）。
+- **参考图**：`characters[].ref_image` 为 http(s) URL → 直传 `reference_images`；
+  本地路径需 `/minimax-cloud/api/v1/files/upload`（手册标注未实测）→ fail-closed 记
+  `reference_unsupported_on_cloud`，不盲调。
+- **fail-closed 不变**：探活失败 exit 2（零消耗 GET `/minimax/v1/models/config`）；提交/轮询/
+  取文件/下载任一失败如实记 `submit_error`/`failed`/`file_fetch_error`/`download_error`/
+  `poll_error`/`poll_timeout`，不伪造成功。
+- **配置集中**：网关基址/超时/轮询参数集中在模块头常量，`VPIPE_GENAPI_*` 环境变量可覆盖
+  （`_BACKEND`/`_CLOUD_BASE`/`_WINDEV_BASE`/`_TIMEOUT`/`_POLL_INTERVAL`/`_POLL_TIMEOUT`）。
+- 单测（mock 网关，零真实生成）：`python -m pytest tests/test_gen_api_cloud.py`。
+
+windev 通道（`--backend windev`，历史）行为要点（来自 `overnight/数据/run_api_matrix.py`
+实跑 46/46 成功、实扣 14,280 积分）：
 - **DTO 白名单**：顶层仅 `backend/model_id/prompt/filename/image_paths/params/source_tool`；
   参考图必须走顶层 `image_paths`；params 全字符串；漏 `resolution` 报 500。
 - **积分守卫**：`--credit-cap`（默认 40000）硬上限；baseline 首跑写入 `out/api_state.json`；
@@ -113,10 +142,11 @@ load_shots(spec) -> list[dict]                 # 目录/*.jsonl 逐条契约校�
 - **断点续跑**：`out/api_results.jsonl` 已有终态的 `<shot_id>@<model>` 跳过；`--retry-failed`
   只重跑失败条。
 - **seed**：首跑 0 成本探测 DTO（塞 `seed:"42"` + 必然未知键，网关一次列出全部未知键）；
-  今晚实测 seed 意外通过校验（结论见 `overnight/数据/api_seed_test.json`），探测意外 201 时
+  实测 seed 意外通过校验（结论见 `overnight/数据/api_seed_test.json`），探测意外 201 时
   立即 cancel 并记录 ≤224 积分风险。
-- **URL 安全**：默认基址是架构内授权端点 `http://127.0.0.1:8001`；`--base-url` 覆盖时强制
-  http/https、拒绝环回/私有/保留地址，内网部署须显式 `--allow-private`/`--allow-loopback`。
+- **URL 安全**：默认基址（云网关 `http://100.64.0.6:8080` / windev `http://127.0.0.1:8001`）
+  为架构内授权端点精确放行；`--cloud-base-url`/`--base-url` 覆盖时强制 http/https、
+  拒绝环回/私有/保留地址，内网部署须显式 `--allow-private`/`--allow-loopback`。
 - 成片从 hub 工作区取回（`/api/workspace` → `output_files`），复制 + sha256 + 登记 manifest。
 
 ### 2.3 qc_orch.py — 质检编排（检测器规则引擎 + judge 合议）
