@@ -14,7 +14,7 @@
 
 - 网关注入头：`token`（JWT）、`device_id`、`version_code: 3.0.21`；cloud 通道另注入 `Authorization: Bearer <JWT>`。
 - JWT 有效期至 2026-11-13；续期 cron：治理机 `minimax_token_renew.py`（每日 05:50，临期<7天自动续）。
-  ⚠️ 续期脚本目前只更新 hub 两个 ingress 文件，`minimax-design-cloud.internal.yaml` 需手工同步（见 risks）。
+  ✅ 续期脚本已（2026-10-06）扩展为 hub / hub-short / cloud 三 ingress 同步更新，无需手工同步（见 §9-1 修复记录）。
 
 ---
 
