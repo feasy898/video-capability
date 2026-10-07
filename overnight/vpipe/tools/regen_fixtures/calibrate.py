@@ -441,10 +441,10 @@ def main():
     g9a_dst.parent.mkdir(parents=True, exist_ok=True)
     if not g9a_dst.exists():
         shutil.copyfile(G9A_SRC, g9a_dst)
-        d, j = judge(g9a_dst)
-        manifest["clips"]["g9a_intro_60s_vidu"] = {
-            "kind": "original_copy", "source": str(G9A_SRC), "note": "原物在仓，免重建（判定实测复现基线）",
-            "final_judgment": j, "match": j["conf"] == 0.623 and j["types"] == ["ghosting"]}
+    d, j = judge(g9a_dst)          # 无论是否新拷贝，均实测验证并落 manifest（provenance 完整）
+    manifest["clips"]["g9a_intro_60s_vidu"] = {
+        "kind": "original_copy", "source": str(G9A_SRC), "note": "原物在仓，免重建（判定实测复现基线）",
+        "final_judgment": j, "match": j["conf"] == 0.623 and j["types"] == ["ghosting"]}
     mpath.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     bad = [k for k, v in manifest["clips"].items() if not v.get("match")]
     print("== done; %d clips, mismatches: %s" % (len(manifest["clips"]), bad or "none"), flush=True)
