@@ -1,0 +1,4962 @@
+{
+ "_note": "regenerated fixtures — 原片灭失，检测器回归夹具（详见 README.md）",
+ "generator": "tools/regen_fixtures/gen_fixtures.py",
+ "detector": "src/qc_detectors_v2.py @ thresholds.yaml judges.J6_detectors_v2",
+ "params_snapshot": {
+  "cut_abs_min": 15.0,
+  "cut_rel_k": 3.5,
+  "emit_conf": 0.55,
+  "feat_width": 160.0,
+  "flicker_amp_min": 6.0,
+  "flicker_min_s": 1.0,
+  "flicker_rate_min": 6.0,
+  "flicker_sat_amp_min": 0.08,
+  "freeze_diff_thr": 0.8,
+  "freeze_lap_guard": 0.75,
+  "freeze_min_s": 2.0,
+  "ghost_boundary_ratio": 1.3,
+  "ghost_cut_free": 15.0,
+  "ghost_dip_ratio": 0.65,
+  "ghost_interior_s": 0.5,
+  "ghost_lap_boundary": 1.15,
+  "ghost_lap_out_min": 300.0,
+  "ghost_lap_ratio": 0.85,
+  "ghost_min_s": 1.2,
+  "ghost_out_min": 1.2,
+  "ghost_plateau_exempt_profiles": [
+   "avatar_talk"
+  ],
+  "ghost_plateau_in_max": 2.0,
+  "known_cuts_tol_s": 0.5,
+  "measured_on_golden": {
+   "a_temporal_clip_recall": 0.625,
+   "a_temporal_type_macro_recall": 0.25,
+   "c_fpr": 0.0,
+   "label_validity_note": "金标时序 8 条中 5 条注入未生效（017/028 无定格、004/030 无交替、022 无混叠， 见 数据/j6_v2/audit_notes.json）；合成正片 4/4 检出（数据/j6_v2/results_syn）"
+  },
+  "reentry_gap_s": 0.5,
+  "reentry_margin": 0.05,
+  "reentry_win_s": 0.4,
+  "role": "signal_only",
+  "rule_params": {
+   "feat_width": 160,
+   "sim_width": 80,
+   "freeze_diff_thr": 0.8,
+   "freeze_min_s": 2.0,
+   "freeze_lap_guard": 0.75,
+   "flicker_amp_min": 6.0,
+   "flicker_sat_amp_min": 0.08,
+   "flicker_rate_min": 6.0,
+   "flicker_min_s": 1.0,
+   "cut_abs_min": 15.0,
+   "cut_rel_k": 3.5,
+   "reentry_win_s": 0.4,
+   "reentry_gap_s": 0.5,
+   "reentry_margin": 0.05,
+   "swap_multi_min_cuts": 2,
+   "swap_multi_back_min": 0.62,
+   "swap_single_back_min": 0.85,
+   "swap_span_s": 3.0,
+   "ghost_dip_ratio": 0.65,
+   "ghost_out_min": 1.2,
+   "ghost_min_s": 1.5,
+   "ghost_cut_free": 15.0,
+   "ghost_interior_s": 0.5,
+   "ghost_boundary_ratio": 1.3,
+   "ghost_lap_ratio": 0.85,
+   "ghost_lap_out_min": 300.0,
+   "ghost_lap_boundary": 1.15,
+   "ghost_plateau_in_max": 2.0,
+   "ghost_plateau_exempt_profiles": [
+    "avatar_talk"
+   ],
+   "known_cuts_tol_s": 0.5,
+   "emit_conf": 0.55
+  },
+  "sim_width": 80.0,
+  "swap_multi_back_min": 0.62,
+  "swap_multi_min_cuts": 2.0,
+  "swap_single_back_min": 0.85,
+  "swap_span_s": 3.0
+ },
+ "clips": {
+  "syn_flicker": {
+   "kind": "flicker",
+   "final_knobs": {
+    "kind": "flicker",
+    "seed": 901,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 124,
+    "v": 1.2,
+    "amp": 8,
+    "ff1": 35,
+    "ff2": 84
+   },
+   "baseline_target": {
+    "types": [
+     "flicker"
+    ],
+    "conf": 0.95
+   },
+   "final_judgment": {
+    "clip_id": "syn_flicker",
+    "detected": true,
+    "types": [
+     "flicker"
+    ],
+    "conf": 0.95,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "judg": {
+      "clip_id": "syn_flicker",
+      "detected": true,
+      "types": [
+       "flicker"
+      ],
+      "conf": 0.95,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 10.9
+  },
+  "syn_freeze": {
+   "kind": "freeze",
+   "final_knobs": {
+    "kind": "freeze",
+    "seed": 902,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 188,
+    "v": 1.4,
+    "F": 123,
+    "t_r": 12,
+    "s": 1.0,
+    "d0": 1.045
+   },
+   "baseline_target": {
+    "types": [
+     "frame_freeze",
+     "temporal_swap"
+    ],
+    "conf": 0.7
+   },
+   "final_judgment": {
+    "clip_id": "syn_freeze",
+    "detected": true,
+    "types": [
+     "frame_freeze",
+     "temporal_swap"
+    ],
+    "conf": 0.7,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "d0": 24.15,
+     "back": 0.214,
+     "conf": 0.7,
+     "judg": {
+      "clip_id": "syn_freeze",
+      "detected": true,
+      "types": [
+       "frame_freeze"
+      ],
+      "conf": 0.7,
+      "rej": [
+       "temporal_swap"
+      ]
+     }
+    },
+    {
+     "iter": 1,
+     "d0": 12.225,
+     "back": 0.4595,
+     "conf": 0.7,
+     "judg": {
+      "clip_id": "syn_freeze",
+      "detected": true,
+      "types": [
+       "frame_freeze"
+      ],
+      "conf": 0.7,
+      "rej": [
+       "temporal_swap"
+      ]
+     }
+    },
+    {
+     "iter": 2,
+     "d0": 6.263,
+     "back": 0.7386,
+     "conf": 0.7,
+     "judg": {
+      "clip_id": "syn_freeze",
+      "detected": true,
+      "types": [
+       "frame_freeze"
+      ],
+      "conf": 0.7,
+      "rej": [
+       "temporal_swap"
+      ]
+     }
+    },
+    {
+     "iter": 3,
+     "d0": 3.281,
+     "back": 0.8227,
+     "conf": 0.7,
+     "judg": {
+      "clip_id": "syn_freeze",
+      "detected": true,
+      "types": [
+       "frame_freeze"
+      ],
+      "conf": 0.7,
+      "rej": [
+       "temporal_swap"
+      ]
+     }
+    },
+    {
+     "iter": 4,
+     "d0": 1.79,
+     "back": 0.8457,
+     "conf": 0.7,
+     "judg": {
+      "clip_id": "syn_freeze",
+      "detected": true,
+      "types": [
+       "frame_freeze"
+      ],
+      "conf": 0.7,
+      "rej": [
+       "temporal_swap"
+      ]
+     }
+    },
+    {
+     "iter": 5,
+     "d0": 1.045,
+     "back": 0.8522,
+     "conf": 0.7,
+     "judg": {
+      "clip_id": "syn_freeze",
+      "detected": true,
+      "types": [
+       "frame_freeze",
+       "temporal_swap"
+      ],
+      "conf": 0.7,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 21.8
+  },
+  "syn_ghost": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 903,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 136,
+    "v": 2.89,
+    "f1": 36,
+    "win": 48,
+    "r": 0.5
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.802,
+    "out_s": 6.1,
+    "dur_s": 2.125
+   },
+   "final_judgment": {
+    "clip_id": "syn_ghost",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.802,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 2.89,
+     "r": 0.4,
+     "win": 45,
+     "out_med": 6.165,
+     "in_med": 2.51,
+     "dur_s": 2.25,
+     "dip_ratio": 0.409,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.824,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 2.89,
+     "r": 0.4,
+     "win": 42,
+     "out_med": 6.18,
+     "in_med": 2.516,
+     "dur_s": 2.25,
+     "dip_ratio": 0.408,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.825,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 2.89,
+     "r": 0.4,
+     "win": 39,
+     "out_med": 6.16,
+     "in_med": 2.524,
+     "dur_s": 2.25,
+     "dip_ratio": 0.41,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.824,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 2.89,
+     "r": 0.4,
+     "win": 36,
+     "out_med": 6.146,
+     "in_med": 2.536,
+     "dur_s": 2.0,
+     "dip_ratio": 0.412,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.772,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 2.89,
+     "r": 0.4,
+     "win": 39,
+     "out_med": 6.16,
+     "in_med": 2.524,
+     "dur_s": 2.25,
+     "dip_ratio": 0.41,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.824,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 2.89,
+     "r": 0.215,
+     "win": 36,
+     "out_med": 6.171,
+     "in_med": 1.408,
+     "dur_s": 2.25,
+     "dip_ratio": 0.228,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.866,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 2.89,
+     "r": 0.3075,
+     "win": 33,
+     "out_med": 6.186,
+     "in_med": 1.952,
+     "dur_s": 2.0,
+     "dip_ratio": 0.316,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.794,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 2.89,
+     "r": 0.3538,
+     "win": 36,
+     "out_med": 6.181,
+     "in_med": 2.193,
+     "dur_s": 2.0,
+     "dip_ratio": 0.356,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.785,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 2.89,
+     "r": 0.3769,
+     "win": 39,
+     "out_med": 6.173,
+     "in_med": 2.384,
+     "dur_s": 2.25,
+     "dip_ratio": 0.387,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.829,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 2.89,
+     "r": 0.3885,
+     "win": 36,
+     "out_med": 6.177,
+     "in_med": 2.441,
+     "dur_s": 2.0,
+     "dip_ratio": 0.395,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.776,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 2.89,
+     "r": 0.3827,
+     "win": 39,
+     "out_med": 6.167,
+     "in_med": 2.43,
+     "dur_s": 2.25,
+     "dip_ratio": 0.394,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.828,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 2.89,
+     "r": 0.3798,
+     "win": 36,
+     "out_med": 6.165,
+     "in_med": 2.435,
+     "dur_s": 2.0,
+     "dip_ratio": 0.395,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.776,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 2.89,
+     "r": 0.3784,
+     "win": 39,
+     "out_med": 6.178,
+     "in_med": 2.415,
+     "dur_s": 2.25,
+     "dip_ratio": 0.39,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.829,
+      "rej": []
+     }
+    },
+    {
+     "iter": 13,
+     "v": 2.89,
+     "r": 0.3791,
+     "win": 36,
+     "out_med": 6.176,
+     "in_med": 2.393,
+     "dur_s": 2.0,
+     "dip_ratio": 0.387,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.777,
+      "rej": []
+     }
+    },
+    {
+     "iter": 14,
+     "v": 2.89,
+     "r": 0.3795,
+     "win": 39,
+     "out_med": 6.186,
+     "in_med": 2.425,
+     "dur_s": 2.25,
+     "dip_ratio": 0.393,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.828,
+      "rej": []
+     }
+    },
+    {
+     "iter": 15,
+     "v": 2.89,
+     "r": 0.3797,
+     "win": 36,
+     "out_med": 6.166,
+     "in_med": 2.422,
+     "dur_s": 2.0,
+     "dip_ratio": 0.395,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.776,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.585,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.731,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.6,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.73,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.615,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.725,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.5,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.751,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.53,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.744,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.44,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.84,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.47,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.834,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.5,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.827,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.53,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.56,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.813,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.59,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.807,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.62,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.44,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.815,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.47,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.809,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.5,
+     "judg": {
+      "clip_id": "syn_ghost",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.802,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 62.1
+  },
+  "syn_swap": {
+   "kind": "swap",
+   "final_knobs": {
+    "kind": "swap",
+    "seed": 904,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 124,
+    "v": 0.6,
+    "Fc": 60,
+    "t_r": 6,
+    "s": 1.0,
+    "d0": 3.676,
+    "crf": 14
+   },
+   "baseline_target": {
+    "types": [
+     "temporal_swap"
+    ],
+    "conf": 0.663
+   },
+   "final_judgment": {
+    "clip_id": "syn_swap",
+    "detected": true,
+    "types": [
+     "temporal_swap"
+    ],
+    "conf": 0.663,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "d0": 12.025,
+     "back": 0.6165,
+     "conf": 1.0,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": [
+       "temporal_swap"
+      ]
+     }
+    },
+    {
+     "iter": 1,
+     "d0": 6.038,
+     "back": 0.8732,
+     "conf": 0.581,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.581,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "d0": 3.044,
+     "back": 0.947,
+     "conf": 0.679,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.679,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "d0": 4.541,
+     "back": 0.9151,
+     "conf": 0.637,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.637,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "d0": 3.793,
+     "back": 0.932,
+     "conf": 0.659,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.659,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "d0": 3.418,
+     "back": 0.9399,
+     "conf": 0.67,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.67,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "d0": 3.606,
+     "back": 0.9364,
+     "conf": 0.665,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.665,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "d0": 3.7,
+     "back": 0.9343,
+     "conf": 0.662,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.662,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "d0": 3.653,
+     "back": 0.9352,
+     "conf": 0.664,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.664,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "d0": 3.676,
+     "back": 0.9349,
+     "conf": 0.663,
+     "judg": {
+      "clip_id": "syn_swap",
+      "detected": true,
+      "types": [
+       "temporal_swap"
+      ],
+      "conf": 0.663,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 22.4
+  },
+  "dh_design_720p": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 802,
+    "w": 826,
+    "h": 1114,
+    "n_frames": 408,
+    "v": 1.4,
+    "f1": 96,
+    "win": 24,
+    "r": 0.49
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.643,
+    "in_med_lt": 2.0,
+    "out_s": 3.25,
+    "dur_s": 1.5
+   },
+   "final_judgment": {
+    "clip_id": "dh_design_720p",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.643,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 1.4,
+     "r": 0.42,
+     "win": 20,
+     "out_med": 3.256,
+     "in_med": 1.481,
+     "dur_s": 1.5,
+     "dip_ratio": 0.456,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.657,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 1.4,
+     "r": 0.42,
+     "win": 20,
+     "out_med": 3.256,
+     "in_med": 1.481,
+     "dur_s": 1.5,
+     "dip_ratio": 0.456,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.657,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 1.4,
+     "r": 0.42,
+     "win": 20,
+     "out_med": 3.256,
+     "in_med": 1.481,
+     "dur_s": 1.5,
+     "dip_ratio": 0.456,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.657,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 1.4,
+     "r": 0.42,
+     "win": 20,
+     "out_med": 3.256,
+     "in_med": 1.481,
+     "dur_s": 1.5,
+     "dip_ratio": 0.456,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.657,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 1.4,
+     "r": 0.42,
+     "win": 20,
+     "out_med": 3.256,
+     "in_med": 1.481,
+     "dur_s": 1.5,
+     "dip_ratio": 0.456,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.657,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 20,
+     "out_med": 3.207,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 23,
+     "out_med": 3.246,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 26,
+     "out_med": 3.252,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 29,
+     "out_med": 3.254,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 32,
+     "out_med": 3.255,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 35,
+     "out_med": 3.246,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 38,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 41,
+     "out_med": 3.214,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 13,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 44,
+     "out_med": 3.244,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 14,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 47,
+     "out_med": 3.251,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 15,
+     "v": 1.4,
+     "r": 0.66,
+     "win": 50,
+     "out_med": 3.255,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.42,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.44,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.845,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.46,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.841,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.48,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.836,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.5,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.836,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.52,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.828,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.765,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.758,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.752,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.74,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.735,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.58,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.731,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.61,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.722,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.764,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.757,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.752,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.74,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.734,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.58,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.728,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.61,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.72,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.712,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.705,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.697,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.689,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.683,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.58,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.673,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 30,
+     "r": 0.61,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.669,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.711,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.702,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.696,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.687,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.68,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.58,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.672,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 27,
+     "r": 0.61,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.619,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 24,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.661,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 24,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.65,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 24,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "dh_design_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.643,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 277.3
+  },
+  "dh_final_30s": {
+   "kind": "swap",
+   "final_knobs": {
+    "kind": "swap",
+    "seed": 803,
+    "w": 826,
+    "h": 1114,
+    "fmin": 0.02618,
+    "fmax": 0.05236,
+    "d0_axis": "x",
+    "crf": 14,
+    "n_frames": 721,
+    "v": 2.1633187470168584,
+    "Fc": 334,
+    "t_r": 1,
+    "s": 0.85,
+    "d0": 24.15,
+    "f1": 42,
+    "win": 45,
+    "r": 0.304
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting",
+     "temporal_swap"
+    ],
+    "conf": 0.821,
+    "in_med_lt": 2.0,
+    "cut_t": 13.917,
+    "out_s": 1.35,
+    "dur_s": 2.25
+   },
+   "final_judgment": {
+    "clip_id": "dh_final_30s",
+    "detected": true,
+    "types": [
+     "ghosting",
+     "temporal_swap"
+    ],
+    "conf": 0.821,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 1.5,
+     "r": 0.184,
+     "win": 48,
+     "out_med": 0.971,
+     "in_med": 0.145,
+     "dur_s": 2.0,
+     "dip_ratio": 0.118,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap",
+       "frame_freeze"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 2.084904857036708,
+     "r": 0.184,
+     "win": 54,
+     "out_med": 1.627,
+     "in_med": 0.17,
+     "dur_s": 2.5,
+     "dip_ratio": 0.104,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "frame_freeze",
+       "temporal_swap"
+      ],
+      "conf": 0.926,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 1.7294879605213944,
+     "r": 0.184,
+     "win": 48,
+     "out_med": 1.48,
+     "in_med": 0.154,
+     "dur_s": 2.5,
+     "dip_ratio": 0.106,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap",
+       "frame_freeze"
+      ],
+      "conf": 0.926,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 1.5778604300814398,
+     "r": 0.184,
+     "win": 42,
+     "out_med": 0.985,
+     "in_med": 0.154,
+     "dur_s": 2.25,
+     "dip_ratio": 0.104,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.895,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 2.1633187470168584,
+     "r": 0.184,
+     "win": 42,
+     "out_med": 1.636,
+     "in_med": 0.191,
+     "dur_s": 2.0,
+     "dip_ratio": 0.115,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.84,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 2.1633187470168584,
+     "r": 0.542,
+     "win": 48,
+     "out_med": 1.636,
+     "in_med": 0.934,
+     "dur_s": 2.5,
+     "dip_ratio": 0.567,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.819,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 2.1633187470168584,
+     "r": 0.363,
+     "win": 42,
+     "out_med": 1.636,
+     "in_med": 0.727,
+     "dur_s": 2.0,
+     "dip_ratio": 0.432,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.767,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 2.1633187470168584,
+     "r": 0.2735,
+     "win": 48,
+     "out_med": 1.635,
+     "in_med": 0.685,
+     "dur_s": 2.5,
+     "dip_ratio": 0.414,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 2.1633187470168584,
+     "r": 0.3183,
+     "win": 42,
+     "out_med": 1.635,
+     "in_med": 0.705,
+     "dur_s": 2.25,
+     "dip_ratio": 0.426,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.82,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 2.1633187470168584,
+     "r": 0.2959,
+     "win": 42,
+     "out_med": 1.635,
+     "in_med": 0.708,
+     "dur_s": 2.25,
+     "dip_ratio": 0.421,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 2.1633187470168584,
+     "r": 0.3071,
+     "win": 42,
+     "out_med": 1.636,
+     "in_med": 0.726,
+     "dur_s": 2.25,
+     "dip_ratio": 0.437,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.818,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 2.1633187470168584,
+     "r": 0.3015,
+     "win": 42,
+     "out_med": 1.635,
+     "in_med": 0.695,
+     "dur_s": 2.25,
+     "dip_ratio": 0.419,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 2.1633187470168584,
+     "r": 0.3043,
+     "win": 42,
+     "out_med": 1.636,
+     "in_med": 0.711,
+     "dur_s": 2.25,
+     "dip_ratio": 0.428,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.82,
+      "rej": []
+     }
+    },
+    {
+     "iter": 13,
+     "v": 2.1633187470168584,
+     "r": 0.3029,
+     "win": 42,
+     "out_med": 1.636,
+     "in_med": 0.705,
+     "dur_s": 2.25,
+     "dip_ratio": 0.42,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": 14,
+     "v": 2.1633187470168584,
+     "r": 0.3036,
+     "win": 42,
+     "out_med": 1.635,
+     "in_med": 0.705,
+     "dur_s": 2.25,
+     "dip_ratio": 0.419,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": 15,
+     "v": 2.1633187470168584,
+     "r": 0.3039,
+     "win": 42,
+     "out_med": 1.636,
+     "in_med": 0.702,
+     "dur_s": 2.25,
+     "dip_ratio": 0.419,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.214,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "frame_freeze",
+       "temporal_swap"
+      ],
+      "conf": 0.871,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.244,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.855,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.274,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.304,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.851,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.334,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.851,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.364,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 54,
+     "r": 0.394,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.837,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.214,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "frame_freeze",
+       "temporal_swap"
+      ],
+      "conf": 0.868,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.244,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.274,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.304,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.852,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.334,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.849,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.364,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.847,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 51,
+     "r": 0.394,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.831,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.214,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap",
+       "frame_freeze"
+      ],
+      "conf": 0.841,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.244,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.856,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.274,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.304,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.851,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.334,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.851,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.364,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.817,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.394,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.806,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.214,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.814,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.244,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.856,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.274,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.304,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.821,
+      "rej": []
+     }
+    },
+    {
+     "iter": 0,
+     "d0": 24.15,
+     "back": 0.9452,
+     "conf": 0.821,
+     "judg": {
+      "clip_id": "dh_final_30s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "temporal_swap"
+      ],
+      "conf": 0.821,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 364.1,
+   "also_copied_to": "/home/pan-ding/workspace/视频能力/overnight/数据/digital_human/dh_final_30s.mp4"
+  },
+  "buA_120s": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 711,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 2880,
+    "v": 1.3619225630256568,
+    "f1": 2592,
+    "win": 33,
+    "r": 0.4
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.771,
+    "out_s": 3.2,
+    "dur_s": 2.0
+   },
+   "final_judgment": {
+    "clip_id": "buA_120s",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.771,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.84,
+     "r": 0.37,
+     "win": 46,
+     "out_med": 1.974,
+     "in_med": 0.808,
+     "dur_s": 2.5,
+     "dip_ratio": 0.406,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.856,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 1.3619225630256568,
+     "r": 0.37,
+     "win": 34,
+     "out_med": 3.216,
+     "in_med": 1.194,
+     "dur_s": 2.0,
+     "dip_ratio": 0.375,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.78,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 1.3619225630256568,
+     "r": 0.37,
+     "win": 34,
+     "out_med": 3.216,
+     "in_med": 1.194,
+     "dur_s": 2.0,
+     "dip_ratio": 0.375,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.78,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 1.3619225630256568,
+     "r": 0.37,
+     "win": 34,
+     "out_med": 3.216,
+     "in_med": 1.194,
+     "dur_s": 2.0,
+     "dip_ratio": 0.375,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.78,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 1.3619225630256568,
+     "r": 0.37,
+     "win": 34,
+     "out_med": 3.216,
+     "in_med": 1.194,
+     "dur_s": 2.0,
+     "dip_ratio": 0.375,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.78,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 34,
+     "out_med": 3.216,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 37,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 40,
+     "out_med": 3.216,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 43,
+     "out_med": 3.216,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 46,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 49,
+     "out_med": 3.216,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 52,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 55,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 13,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 58,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 14,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 60,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": 15,
+     "v": 1.3619225630256568,
+     "r": 0.635,
+     "win": 60,
+     "out_med": 3.217,
+     "in_med": null,
+     "dur_s": null,
+     "dip_ratio": null,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.853,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.415,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.43,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.845,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.445,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.843,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.46,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.37,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.863,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.855,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.805,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.798,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 48,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.792,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.37,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.863,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.841,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.779,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.77,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 45,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.764,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.37,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.833,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.825,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.817,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.81,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.754,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.745,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 42,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.736,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.37,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.832,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.824,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.764,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.809,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.754,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.743,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 39,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.736,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.37,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.781,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.772,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.43,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.764,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.46,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.756,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.49,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.751,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.52,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.741,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 36,
+     "r": 0.55,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.737,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.37,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.78,
+      "rej": []
+     }
+    },
+    {
+     "iter": "brute",
+     "win": 33,
+     "r": 0.4,
+     "judg": {
+      "clip_id": "buA_120s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.771,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 1910.5
+  },
+  "buA_30s": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 712,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 720,
+    "v": 0.66,
+    "f1": 192,
+    "win": 26,
+    "r": 0.37
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.685,
+    "out_s": 2.6,
+    "dur_s": 1.75
+   },
+   "final_judgment": {
+    "clip_id": "buA_30s",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.685,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.66,
+     "r": 0.37,
+     "win": 26,
+     "out_med": 1.331,
+     "in_med": 0.736,
+     "dur_s": 1.75,
+     "dip_ratio": 0.56,
+     "judg": {
+      "clip_id": "buA_30s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.685,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 24.7
+  },
+  "buA_60s": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 713,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 1440,
+    "v": 4.538160091575513,
+    "crf": 12,
+    "f1": 690,
+    "win": 52,
+    "r": 0.1563
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.911,
+    "out_s": 9.5,
+    "dur_s": 2.9167
+   },
+   "final_judgment": {
+    "clip_id": "buA_60s",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.911,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 1.6,
+     "r": 0.09,
+     "win": 63,
+     "out_med": 3.349,
+     "in_med": 0.366,
+     "dur_s": 3.25,
+     "dip_ratio": 0.112,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting",
+       "frame_freeze"
+      ],
+      "conf": 0.924,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 4.538160091575513,
+     "r": 0.09,
+     "win": 55,
+     "out_med": 9.487,
+     "in_med": 0.966,
+     "dur_s": 3.25,
+     "dip_ratio": 0.104,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.926,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 4.538160091575513,
+     "r": 0.09,
+     "win": 47,
+     "out_med": 9.485,
+     "in_med": 0.936,
+     "dur_s": 2.75,
+     "dip_ratio": 0.099,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.927,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 4.538160091575513,
+     "r": 0.09,
+     "win": 51,
+     "out_med": 9.484,
+     "in_med": 0.941,
+     "dur_s": 3.0,
+     "dip_ratio": 0.1,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.927,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 4.538160091575513,
+     "r": 0.09,
+     "win": 49,
+     "out_med": 9.48,
+     "in_med": 0.964,
+     "dur_s": 3.0,
+     "dip_ratio": 0.102,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.926,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 4.538160091575513,
+     "r": 0.495,
+     "win": 47,
+     "out_med": 9.474,
+     "in_med": 4.895,
+     "dur_s": 2.208,
+     "dip_ratio": 0.512,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.792,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 4.538160091575513,
+     "r": 0.2925,
+     "win": 64,
+     "out_med": 9.483,
+     "in_med": 2.88,
+     "dur_s": 3.25,
+     "dip_ratio": 0.313,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.878,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 4.538160091575513,
+     "r": 0.1912,
+     "win": 56,
+     "out_med": 9.488,
+     "in_med": 1.937,
+     "dur_s": 3.25,
+     "dip_ratio": 0.209,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.902,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 4.538160091575513,
+     "r": 0.1406,
+     "win": 48,
+     "out_med": 9.485,
+     "in_med": 1.418,
+     "dur_s": 2.75,
+     "dip_ratio": 0.15,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.915,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 4.538160091575513,
+     "r": 0.1659,
+     "win": 52,
+     "out_med": 9.481,
+     "in_med": 1.776,
+     "dur_s": 3.0,
+     "dip_ratio": 0.189,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.906,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 4.538160091575513,
+     "r": 0.1532,
+     "win": 50,
+     "out_med": 9.483,
+     "in_med": 1.549,
+     "dur_s": 3.0,
+     "dip_ratio": 0.164,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.912,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 4.538160091575513,
+     "r": 0.1595,
+     "win": 48,
+     "out_med": 9.487,
+     "in_med": 1.631,
+     "dur_s": 2.75,
+     "dip_ratio": 0.172,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.91,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 4.538160091575513,
+     "r": 0.1563,
+     "win": 52,
+     "out_med": 9.483,
+     "in_med": 1.61,
+     "dur_s": 3.0,
+     "dip_ratio": 0.171,
+     "judg": {
+      "clip_id": "buA_60s",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.911,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 283.2
+  },
+  "buB_turn": {
+   "kind": "clean",
+   "final_knobs": {
+    "kind": "clean",
+    "seed": 714,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 288,
+    "v": 0.85
+   },
+   "baseline_target": {
+    "types": []
+   },
+   "final_judgment": {
+    "clip_id": "buB_turn",
+    "detected": false,
+    "types": [],
+    "conf": 1.0,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.85,
+     "out_med": 1.836,
+     "judg": {
+      "clip_id": "buB_turn",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 14.8
+  },
+  "buB_walk": {
+   "kind": "clean",
+   "final_knobs": {
+    "kind": "clean",
+    "seed": 715,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 288,
+    "v": 0.8
+   },
+   "baseline_target": {
+    "types": []
+   },
+   "final_judgment": {
+    "clip_id": "buB_walk",
+    "detected": false,
+    "types": [],
+    "conf": 1.0,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.8,
+     "out_med": 2.107,
+     "judg": {
+      "clip_id": "buB_walk",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 15.3
+  },
+  "buC_id1": {
+   "kind": "clean",
+   "final_knobs": {
+    "kind": "clean",
+    "seed": 716,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 288,
+    "v": 0.9
+   },
+   "baseline_target": {
+    "types": []
+   },
+   "final_judgment": {
+    "clip_id": "buC_id1",
+    "detected": false,
+    "types": [],
+    "conf": 1.0,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.9,
+     "out_med": 1.85,
+     "judg": {
+      "clip_id": "buC_id1",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 15.1
+  },
+  "buC_id2": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 717,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 288,
+    "v": 1.5169896999628394,
+    "f1": 132,
+    "win": 60,
+    "r": 0.435
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.846,
+    "out_s": 3.4,
+    "dur_s": 3.0417
+   },
+   "final_judgment": {
+    "clip_id": "buC_id2",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.846,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.9,
+     "r": 0.27,
+     "win": 70,
+     "out_med": 2.017,
+     "in_med": 0.661,
+     "dur_s": 3.5,
+     "dip_ratio": 0.478,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.84,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 1.5169896999628394,
+     "r": 0.27,
+     "win": 59,
+     "out_med": 3.402,
+     "in_med": 0.957,
+     "dur_s": 3.0,
+     "dip_ratio": 0.283,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.885,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 1.5169896999628394,
+     "r": 0.27,
+     "win": 59,
+     "out_med": 3.402,
+     "in_med": 0.957,
+     "dur_s": 3.0,
+     "dip_ratio": 0.283,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.885,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 1.5169896999628394,
+     "r": 0.27,
+     "win": 59,
+     "out_med": 3.402,
+     "in_med": 0.957,
+     "dur_s": 3.0,
+     "dip_ratio": 0.283,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.885,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 1.5169896999628394,
+     "r": 0.27,
+     "win": 59,
+     "out_med": 3.402,
+     "in_med": 0.957,
+     "dur_s": 3.0,
+     "dip_ratio": 0.283,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.885,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 1.5169896999628394,
+     "r": 0.585,
+     "win": 59,
+     "out_med": 3.41,
+     "in_med": 2.045,
+     "dur_s": 2.542,
+     "dip_ratio": 0.604,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.811,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 1.5169896999628394,
+     "r": 0.4275,
+     "win": 71,
+     "out_med": 3.412,
+     "in_med": 1.496,
+     "dur_s": 3.5,
+     "dip_ratio": 0.602,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.811,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 1.5169896999628394,
+     "r": 0.3488,
+     "win": 60,
+     "out_med": 3.407,
+     "in_med": 1.24,
+     "dur_s": 3.0,
+     "dip_ratio": 0.367,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.865,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 1.5169896999628394,
+     "r": 0.3881,
+     "win": 60,
+     "out_med": 3.412,
+     "in_med": 1.379,
+     "dur_s": 3.0,
+     "dip_ratio": 0.408,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.856,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 1.5169896999628394,
+     "r": 0.4078,
+     "win": 60,
+     "out_med": 3.41,
+     "in_med": 1.448,
+     "dur_s": 3.0,
+     "dip_ratio": 0.43,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.851,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 1.5169896999628394,
+     "r": 0.4176,
+     "win": 60,
+     "out_med": 3.411,
+     "in_med": 1.479,
+     "dur_s": 3.0,
+     "dip_ratio": 0.439,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.849,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 1.5169896999628394,
+     "r": 0.4225,
+     "win": 60,
+     "out_med": 3.409,
+     "in_med": 1.498,
+     "dur_s": 3.0,
+     "dip_ratio": 0.443,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 1.5169896999628394,
+     "r": 0.425,
+     "win": 60,
+     "out_med": 3.4,
+     "in_med": 1.499,
+     "dur_s": 3.0,
+     "dip_ratio": 0.444,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": 13,
+     "v": 1.5169896999628394,
+     "r": 0.4263,
+     "win": 60,
+     "out_med": 3.406,
+     "in_med": 1.492,
+     "dur_s": 3.0,
+     "dip_ratio": 0.442,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": 14,
+     "v": 1.5169896999628394,
+     "r": 0.4269,
+     "win": 60,
+     "out_med": 3.406,
+     "in_med": 1.497,
+     "dur_s": 3.0,
+     "dip_ratio": 0.443,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": 15,
+     "v": 1.5169896999628394,
+     "r": 0.4272,
+     "win": 60,
+     "out_med": 3.409,
+     "in_med": 1.497,
+     "dur_s": 3.0,
+     "dip_ratio": 0.444,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.848,
+      "rej": []
+     }
+    },
+    {
+     "iter": "grid",
+     "r": 0.435,
+     "judg": {
+      "clip_id": "buC_id2",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.846,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 75.4
+  },
+  "buD_clone": {
+   "kind": "clean",
+   "final_knobs": {
+    "kind": "clean",
+    "seed": 718,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 216,
+    "v": 0.85
+   },
+   "baseline_target": {
+    "types": []
+   },
+   "final_judgment": {
+    "clip_id": "buD_clone",
+    "detected": false,
+    "types": [],
+    "conf": 1.0,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.85,
+     "out_med": 1.769,
+     "judg": {
+      "clip_id": "buD_clone",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 12.9
+  },
+  "vidu_a_talk_540p": {
+   "kind": "clean",
+   "final_knobs": {
+    "kind": "clean",
+    "seed": 721,
+    "w": 960,
+    "h": 540,
+    "n_frames": 504,
+    "v": 0.85
+   },
+   "baseline_target": {
+    "types": []
+   },
+   "final_judgment": {
+    "clip_id": "vidu_a_talk_540p",
+    "detected": false,
+    "types": [],
+    "conf": 1.0,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.85,
+     "out_med": 1.852,
+     "judg": {
+      "clip_id": "vidu_a_talk_540p",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 13.1
+  },
+  "vidu_b2_text_novoice": {
+   "kind": "clean",
+   "final_knobs": {
+    "kind": "clean",
+    "seed": 722,
+    "w": 960,
+    "h": 540,
+    "n_frames": 144,
+    "v": 0.8
+   },
+   "baseline_target": {
+    "types": []
+   },
+   "final_judgment": {
+    "clip_id": "vidu_b2_text_novoice",
+    "detected": false,
+    "types": [],
+    "conf": 1.0,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.8,
+     "out_med": 1.716,
+     "judg": {
+      "clip_id": "vidu_b2_text_novoice",
+      "detected": false,
+      "types": [],
+      "conf": 1.0,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 7.6
+  },
+  "vidu_c_walk_object_540p": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 724,
+    "w": 960,
+    "h": 540,
+    "n_frames": 528,
+    "v": 2.1979790568916595,
+    "f1": 84,
+    "win": 63,
+    "r": 0.3147
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.87,
+    "out_s": 4.6,
+    "dur_s": 3.125
+   },
+   "final_judgment": {
+    "clip_id": "vidu_c_walk_object_540p",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.87,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 1.21,
+     "r": 0.19,
+     "win": 69,
+     "out_med": 2.532,
+     "in_med": 0.584,
+     "dur_s": 3.5,
+     "dip_ratio": 0.383,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.862,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 2.1979790568916595,
+     "r": 0.19,
+     "win": 60,
+     "out_med": 4.608,
+     "in_med": 0.891,
+     "dur_s": 3.0,
+     "dip_ratio": 0.213,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.901,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 2.1979790568916595,
+     "r": 0.19,
+     "win": 63,
+     "out_med": 4.619,
+     "in_med": 0.894,
+     "dur_s": 3.25,
+     "dip_ratio": 0.214,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.901,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 2.1979790568916595,
+     "r": 0.19,
+     "win": 60,
+     "out_med": 4.608,
+     "in_med": 0.891,
+     "dur_s": 3.0,
+     "dip_ratio": 0.213,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.901,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 2.1979790568916595,
+     "r": 0.19,
+     "win": 63,
+     "out_med": 4.619,
+     "in_med": 0.894,
+     "dur_s": 3.25,
+     "dip_ratio": 0.214,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.901,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 2.1979790568916595,
+     "r": 0.545,
+     "win": 60,
+     "out_med": 4.61,
+     "in_med": 2.473,
+     "dur_s": 2.75,
+     "dip_ratio": 0.59,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.814,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 2.1979790568916595,
+     "r": 0.3675,
+     "win": 69,
+     "out_med": 4.627,
+     "in_med": 1.703,
+     "dur_s": 3.5,
+     "dip_ratio": 0.554,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.822,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 2.1979790568916595,
+     "r": 0.2787,
+     "win": 60,
+     "out_med": 4.622,
+     "in_med": 1.307,
+     "dur_s": 3.0,
+     "dip_ratio": 0.312,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.878,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 2.1979790568916595,
+     "r": 0.3231,
+     "win": 63,
+     "out_med": 4.627,
+     "in_med": 1.47,
+     "dur_s": 3.25,
+     "dip_ratio": 0.352,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.869,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 2.1979790568916595,
+     "r": 0.3009,
+     "win": 60,
+     "out_med": 4.619,
+     "in_med": 1.404,
+     "dur_s": 3.0,
+     "dip_ratio": 0.335,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.873,
+      "rej": []
+     }
+    },
+    {
+     "iter": 10,
+     "v": 2.1979790568916595,
+     "r": 0.312,
+     "win": 63,
+     "out_med": 4.613,
+     "in_med": 1.423,
+     "dur_s": 3.25,
+     "dip_ratio": 0.341,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.871,
+      "rej": []
+     }
+    },
+    {
+     "iter": 11,
+     "v": 2.1979790568916595,
+     "r": 0.3175,
+     "win": 60,
+     "out_med": 4.625,
+     "in_med": 1.462,
+     "dur_s": 3.0,
+     "dip_ratio": 0.349,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.869,
+      "rej": []
+     }
+    },
+    {
+     "iter": 12,
+     "v": 2.1979790568916595,
+     "r": 0.3147,
+     "win": 63,
+     "out_med": 4.62,
+     "in_med": 1.441,
+     "dur_s": 3.25,
+     "dip_ratio": 0.345,
+     "judg": {
+      "clip_id": "vidu_c_walk_object_540p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.87,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 64.1
+  },
+  "vidu_b_timeline_720p": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 723,
+    "w": 1280,
+    "h": 720,
+    "n_frames": 624,
+    "v": 1.3431989726801816,
+    "f1": 192,
+    "win": 42,
+    "r": 0.3382
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.837,
+    "out_s": 3.0,
+    "dur_s": 2.25
+   },
+   "final_judgment": {
+    "clip_id": "vidu_b_timeline_720p",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.837,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.79,
+     "r": 0.32,
+     "win": 50,
+     "out_med": 1.764,
+     "in_med": 0.719,
+     "dur_s": 2.75,
+     "dip_ratio": 0.415,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.854,
+      "rej": []
+     }
+    },
+    {
+     "iter": 1,
+     "v": 1.3431989726801816,
+     "r": 0.32,
+     "win": 38,
+     "out_med": 3.012,
+     "in_med": 1.037,
+     "dur_s": 2.25,
+     "dip_ratio": 0.347,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": 2,
+     "v": 1.3431989726801816,
+     "r": 0.32,
+     "win": 38,
+     "out_med": 3.012,
+     "in_med": 1.037,
+     "dur_s": 2.25,
+     "dip_ratio": 0.347,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": 3,
+     "v": 1.3431989726801816,
+     "r": 0.32,
+     "win": 38,
+     "out_med": 3.012,
+     "in_med": 1.037,
+     "dur_s": 2.25,
+     "dip_ratio": 0.347,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": 4,
+     "v": 1.3431989726801816,
+     "r": 0.32,
+     "win": 38,
+     "out_med": 3.012,
+     "in_med": 1.037,
+     "dur_s": 2.25,
+     "dip_ratio": 0.347,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": 5,
+     "v": 1.3431989726801816,
+     "r": 0.61,
+     "win": 38,
+     "out_med": 3.01,
+     "in_med": 1.871,
+     "dur_s": 1.833,
+     "dip_ratio": 0.625,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.688,
+      "rej": []
+     }
+    },
+    {
+     "iter": 6,
+     "v": 1.3431989726801816,
+     "r": 0.465,
+     "win": 48,
+     "out_med": 3.006,
+     "in_med": 1.432,
+     "dur_s": 2.5,
+     "dip_ratio": 0.48,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.839,
+      "rej": []
+     }
+    },
+    {
+     "iter": 7,
+     "v": 1.3431989726801816,
+     "r": 0.3925,
+     "win": 42,
+     "out_med": 3.007,
+     "in_med": 1.217,
+     "dur_s": 2.25,
+     "dip_ratio": 0.406,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.825,
+      "rej": []
+     }
+    },
+    {
+     "iter": 8,
+     "v": 1.3431989726801816,
+     "r": 0.3563,
+     "win": 42,
+     "out_med": 3.009,
+     "in_med": 1.122,
+     "dur_s": 2.25,
+     "dip_ratio": 0.374,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.832,
+      "rej": []
+     }
+    },
+    {
+     "iter": 9,
+     "v": 1.3431989726801816,
+     "r": 0.3382,
+     "win": 42,
+     "out_med": 3.008,
+     "in_med": 1.054,
+     "dur_s": 2.25,
+     "dip_ratio": 0.353,
+     "judg": {
+      "clip_id": "vidu_b_timeline_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.837,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 113.1
+  },
+  "dh_stepfun_720p": {
+   "kind": "ghost",
+   "final_knobs": {
+    "kind": "ghost",
+    "seed": 801,
+    "w": 826,
+    "h": 1114,
+    "n_frames": 360,
+    "v": 0.83,
+    "f1": 42,
+    "win": 43,
+    "r": 0.45
+   },
+   "baseline_target": {
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.766,
+    "in_med_lt": 2.0,
+    "out_s": 3.2,
+    "dur_s": 1.917
+   },
+   "final_judgment": {
+    "clip_id": "dh_stepfun_720p",
+    "detected": true,
+    "types": [
+     "ghosting"
+    ],
+    "conf": 0.766,
+    "rej": []
+   },
+   "match": true,
+   "calibration_log": [
+    {
+     "iter": 0,
+     "v": 0.83,
+     "r": 0.45,
+     "win": 43,
+     "out_med": 1.941,
+     "in_med": 0.903,
+     "dur_s": 2.042,
+     "dip_ratio": 0.472,
+     "judg": {
+      "clip_id": "dh_stepfun_720p",
+      "detected": true,
+      "types": [
+       "ghosting"
+      ],
+      "conf": 0.766,
+      "rej": []
+     }
+    }
+   ],
+   "sec": 20.9
+  }
+ }
+}
