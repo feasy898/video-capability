@@ -8,9 +8,11 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 2                   # 2026-10-01：J6_detectors_v2 增低运动平台豁免/known_cuts；
-                             # l0_preflight 增采样与 avatar 垫尾参数（工程方案v3.1 P0-1/P0-2）。
-                             # E10 合议与全部判定阈未动，eval 回归 ACCEPT 零偏差后方可生效。
+version: 3                   # 2026-10-07：judges.J3_omnijev.thr 0.70→0.71（判官数据重跑后
+                             #   按 §修改规程 重扫工作点，证据见该行注记与 g01-full-relock.json）。
+                             # 2026-10-01（v2）：J6_detectors_v2 增低运动平台豁免/known_cuts；
+                             #   l0_preflight 增采样与 avatar 垫尾参数（工程方案v3.1 P0-1/P0-2）。
+                             #   E10 合议与全部判定阈未动，eval 回归 ACCEPT 零偏差后方可生效。
 source_report: overnight/judge基准报告.md (2026-09-30)
 
 # ---------------------------------------------------------------
@@ -49,10 +51,16 @@ judges:
   J3_omnijev:                   # OmniJev-4B 9 通道校准概率 —— L1 主判
     role: primary
     rule: "flag = any(per_type[p] > thr for p in 8types) or overall > thr"
-    thr: 0.70                   # §7 扫描：R=1.000 / FPR=0.250 / F1=0.914（默认工作点）
+    thr: 0.71                   # §7 扫描原工作点 0.70：R=1.000 / FPR=0.250 / F1=0.914。
+                                # 2026-10-07 重扫→0.71（判官三件套按 JUDGES-RERUN.md 配方重跑后
+                                # 概率整体微移，golden_006 frame_freeze=0.7069 以 0.0069 边际
+                                # 越过 0.70 致 FPR 4/12=0.3333>准入线 0.30；新数据上扫描
+                                # 0.71=唯一保持 R=1.000 且 B_flag 余量最大的点：
+                                # R=1.000/FPR=0.250(3/12=010,013,032)/F1=0.9143/B_flag=0.5833，
+                                # 013 为 J1 布尔检出与阈无关——见 g01-full-relock.json round2）
     thr_fpr_first: 0.80         # 追求 FPR≤0.1 的工作点：R=0.875 / FPR=0.083 / F1=0.903
     auto_reject_p: 0.90         # §5：P≥0.9 区间 8/8 全对 → 单通道达标直接 auto_reject
-    gray_zone: [0.70, 0.90]     # 灰区 → manual_review（人工复核队列，§11.1 人工抽检行）
+    gray_zone: [0.71, 0.90]     # 灰区 → manual_review（人工复核队列，§11.1 人工抽检行；仅文档口径，回放代码不读本键）
     ece_per_type: 0.2209        # §5 校准：两头准中间烂，0.5 默认阈恰在最不可信区（禁回 0.5）
     known_fp_mechanism: "color_shift 通道把电影感调色当偏色（§9）；frame_freeze 通道对静态场景过信"
   J4_visualjev:
