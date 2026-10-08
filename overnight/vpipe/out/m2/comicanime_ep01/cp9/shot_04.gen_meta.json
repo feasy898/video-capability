@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_04",
+ "work_id": "comicanime_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "ZJDxRz3YYAeq",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 05:14:30",
+ "elapsed_s": 31.2,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Overhead close-up of hands, static camera: a cook lifts noodles into a rough ceramic bowl with a long wooden ladle, ladles golden broth over them, then drizzles sizzling hot oil from a small pot in one unbroken flow, steam rolling up past the top of the frame; the rough ceramic bowl and ladle keep perfectly rigid shapes, no deformation, one pair of hands only. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+  "duration": 5,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "2e3d582ab4567044c53c9e2f52bf9fee42bd7ae6b3300b68d188f307e082086e",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 280,
+  "credit_spent_est": 280,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "35825dc26d5fb9f95f014bd84a5c595e0dd8d4dba4c9f153dbac61f4f8f475de",
+  "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_04.final.mp4",
+  "size_bytes": 5196131,
+  "sha256": "35825dc26d5fb9f95f014bd84a5c595e0dd8d4dba4c9f153dbac61f4f8f475de"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "5.184000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "124"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_04.json",
+  "shot_contract": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shots/shot_04.json"
+ }
+}

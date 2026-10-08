@@ -1,0 +1,189 @@
+{
+  "schema_version": "2.0",
+  "clip_id": "comicanime_ep01",
+  "generated_at": "2026-10-08T21:38:46Z",
+  "work_id": "comicanime_ep01",
+  "qc_mode": "online",
+  "checkpoint": {
+    "cp_id": "cp12",
+    "artifact_ref": "f325f7ade1651eea9dd3cc19c76b4d15a8f0239078f97f1e4a5d672ab14c7a2a"
+  },
+  "verdict": {
+    "defect_detected": false,
+    "decision": "pass",
+    "confidence": 0.8,
+    "decided_by": "cp12.composite(E10=J1∨J3@0.71 成片合议 + cp12.gate.master_score_min 成片绝对门)",
+    "reasons": [
+      "J1(detected=False, types=[], conf=0.8)",
+      "J3@0.71 flag=False hits=[] max_channel_P=0.6513",
+      "成片分 100.0 = 0.7×mean(100.0) + 0.3×worst(100.0)，9 段继承成片单镜分（镜级 QCReport 未产出，按任务预案单镜近似并声明）；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与排序依据）",
+      "J6v2 成片重跑：8 拼接切点（CP6 帧界累计）全部落入 known_cuts 白名单（judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）被豁免，零 temporal_swap 误报——合成层硬切点登记制生效；CP5 shot_04 切点 3.6s 以「声明切点·无实体缝」登记于 cp11/qc_known_cuts.json（装配前场景检测证实 CP9 素材内该处无实体硬切）",
+      "G8 风格人检（CP9 后 9/9 代表帧亲看）：2D 赛璐璐平涂+清晰线稿+高饱和暖色夜戏全部成立，无写实/3D/水墨漂移，不触发 v3.1 回退 api_h3 裁决；镜间面部造型轻度波动如实登记",
+      "shot_09 计数：CP8 处置（精确计数 prompt）后精修层 exactly two bowls 成立——无需转人工队列",
+      "无 avatar 段（漫剧线按 TASK_v4 不含 avatar 段）",
+      "人工上升率实测 0.0833 =（CP1 pending 1 + CP12 队列 0）/12；TASK_v4 §3.3 漫剧线 ≤0.20未超"
+    ]
+  },
+  "defects": [],
+  "scores": {
+    "per_type": {
+      "frame_freeze": 0.6513,
+      "flicker": 0.3237,
+      "color_shift": 0.5849,
+      "face_blur": 0.2023,
+      "garble_text": 0.0551,
+      "temporal_swap": 0.4488,
+      "pixelate": 0.1601,
+      "ghosting": 0.5096
+    },
+    "overall": 0.4605,
+    "thresholds_applied": {
+      "ensemble_id": "E10",
+      "j3_thr": 0.71,
+      "auto_reject_p": 0.9,
+      "j6_emit_conf": 0.55,
+      "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+    }
+  },
+  "spans": [
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J1",
+        "text": "无"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J3",
+        "text": "full_clip:16帧均匀采样4x4拼图"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J5",
+        "text": "full_clip:fps=0.2解码"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J6v2 known_cuts 豁免记录：4 个 junction 候选全部 exempted（temporal_swap_known_cuts，证据 judges/detectors/comicanime_ep01.qc2.json temporal_rejected）"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J3 未达判定阈(0.71)的次高通道只登记数据不入队列：frame_freeze=0.6513; color_shift=0.5849; ghosting=0.5096"
+      }
+    }
+  ],
+  "judges": {
+    "J1": {
+      "clip_id": "comicanime_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.8,
+      "spans": "无",
+      "notes": "逐帧核对：f01-f02 顾客（蓝衣长发）与 f03-f06 面馆师傅（头带围裙）为两个不同角色，各自跨帧外观、服饰一致，无身份漂移；f01 中顾客伸手为掀门帘动作，f05 持勺、f03 持布、f06 双手按桌等手部均未见多指/融指等解剖异常；f04 锅灶、f07-f08 两碗面计数合理，无堆叠异常；f07-f08 为静态空镜构图（配文'谁都没先动筷'），3.7 秒间隔取帧相似属正常静止镜头，不能证实定格；整体色调统一为雨夜暖灯冷街对比，无闪烁、色偏、像素化、拖影；f01 背景竖幅招牌文字在低分辨率下无法确证为乱码，按证据不足不报。未发现命中 rubric 的缺陷。"
+    },
+    "J3": {
+      "clip_id": "comicanime_ep01",
+      "defect_detected": true,
+      "defect_types": [
+        "frame_freeze",
+        "color_shift",
+        "ghosting"
+      ],
+      "confidence": 0.6513,
+      "spans": "full_clip:16帧均匀采样4x4拼图",
+      "notes": "noul概率 frame_freeze=0.651 flicker=0.324 color_shift=0.585 face_blur=0.202 garble_text=0.055 temporal_swap=0.449 pixelate=0.160 ghosting=0.510; overall=0.461; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+    },
+    "J5": {
+      "clip_id": "comicanime_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.8,
+      "spans": "full_clip:fps=0.2解码",
+      "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
+    },
+    "J6": {
+      "clip_id": "master",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 1.0,
+      "spans": []
+    }
+  },
+  "inputs": {
+    "clip": "overnight/vpipe/out/m2/comicanime_ep01/cp11/master.mp4",
+    "frames_dir": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01",
+    "judge_files": {
+      "J1": "out/m2/comicanime_ep01/judges/glm8/comicanime_ep01.json",
+      "J3": "out/m2/comicanime_ep01/judges/omnijev/run_metadata.json",
+      "J5": "out/m2/comicanime_ep01/judges/videochat3/comicanime_ep01.json",
+      "J6": "out/m2/comicanime_ep01/judges/detectors/comicanime_ep01.qc2.json"
+    }
+  },
+  "episode_verdict": {
+    "score": 100.0,
+    "mean_shot_score": 100.0,
+    "worst_shot_score": 100.0,
+    "formula": "0.7*mean+0.3*worst",
+    "verdict": "pass",
+    "params_ref": "cp12.gate.master_score_min",
+    "shot_qc_refs": [
+      {
+        "shot_id": "comicanime_ep01",
+        "qc_report_fingerprint": "5660622aaa4a1d742ee239071db257d6a96222a335fcd5854444082a2f720d3a"
+      }
+    ]
+  },
+  "human_review": {
+    "queue": [],
+    "escalation_rate": 0.0833,
+    "params_ref": "cp12.gate.human_escalation_rate_max"
+  },
+  "qc_context": {
+    "profile": null,
+    "known_cuts": [
+      5.292,
+      8.833,
+      12.125,
+      16.292,
+      18.75,
+      20.917,
+      24.25,
+      27.333
+    ],
+    "l0_preflight": {
+      "clip": "out/m2/comicanime_ep01/cp11/master.mp4",
+      "expect_duration_s": 30.0,
+      "profile": null,
+      "failures": [],
+      "checks": {
+        "duration": {
+          "measured_s": 30.0,
+          "rule": "dev_max",
+          "dev": 0.0,
+          "dev_max": 0.02
+        },
+        "black_mono_ratio": {
+          "n_samples": 64,
+          "black_luma_max": 8.0,
+          "mono_std_max": 2.0,
+          "ratio_max": 0.5,
+          "used": 64,
+          "bad_frames": 0,
+          "ratio": 0.0
+        }
+      }
+    }
+  },
+  "errors": {
+    "J2": "J2 glm3 备用判官不在本次配方（E10 不消费 J2），未跑非失败",
+    "B_group": "B 组专用小模型未部署——弃权形登记（主控验收修订语义），不填占位指标；gate_groups.b_group.abstain=true"
+  }
+}

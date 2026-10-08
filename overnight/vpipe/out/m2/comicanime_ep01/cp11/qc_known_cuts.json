@@ -1,0 +1,32 @@
+{
+ "cuts": [
+  5.292,
+  8.833,
+  12.125,
+  16.292,
+  18.75,
+  20.917,
+  24.25,
+  27.333
+ ],
+ "source": "overnight/vpipe/out/m2/comicanime_ep01/cp11/cp11.json payload.known_cuts (CP11 合成层 8 拼接硬切点全部登记)；另 CP5 shot_04 切点 3.6s（blocking 83 帧>72 帧窗口段界）在合成层显式登记为「声明切点·无实体缝」：master 绝对时刻 15.739s（shot_04 起点 12.125s + 3.6s×CP5→CP6 域换算 1.004016），CP9 shot_04 为单次生成 T2V 片段，装配前场景检测该处无实体硬切（素材内实测切点 []，±0.5s 命中 []）——登记进本白名单供检测器豁免，不进 payload.known_cuts（known_cuts 数==段数-1 恒等式约束）",
+ "declared_intra_shot_cuts": [
+  {
+   "shot_id": "shot_04",
+   "cp5_cut_s": 3.6,
+   "master_abs_s": 15.739,
+   "manifestation": "no_physical_seam",
+   "evidence": {
+    "name": "shot04_cp5_cut_probe",
+    "cp5_known_cuts": [
+     3.6
+    ],
+    "cp5_frame_count": 83,
+    "scale_to_cp6": 1.004016,
+    "master_abs_declared_cut_s": 15.739,
+    "clip_measured_cuts": [],
+    "clip_hits_near_cp5_cut": []
+   }
+  }
+ ]
+}

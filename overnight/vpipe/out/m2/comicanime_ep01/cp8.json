@@ -1,0 +1,309 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp8",
+ "artifact_type": "selection",
+ "fingerprint": "c93c4d242993f411834cd191cfc2bdc0723551e5eed1b1eac543fb310ded74e4",
+ "produced_by": "agent.selector",
+ "produced_at": "2026-10-08T21:09:23Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp7",
+   "fingerprint": "57d6914fa7d00c21109d4a8fed7a07fcd21679985f71ea48331746df89d0df63"
+  },
+  {
+   "cp_id": "cp3",
+   "fingerprint": "8cc4fcc235bbddf1a422aed3b19c1937b8276587d9e23a468746d809a4c8e91a"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "composite",
+  "params_ref": "cp8.gate.pareto_rule",
+  "result": "pass",
+  "note": "9 次择优判定累计：9 镜中 9 镜进 CP9（cp7 构图人检 4 成立+3 弱成立+2 部分；本轮择优者对 5 个弱/部分镜亲自复核 frame_shot_01/02/05/08/09.jpg，全部主体可辨→ 按任务书处置全部进 CP9 并在 prompt 加强；0 镜主体完全不可辨，无回炉轮，修订轮数 0）。草稿层 ROI 记录：负样本在计费层之前被拦下 0 镜次。shot_09 计数失真（亲看确认 4+ 碗）→ CP9 prompt 精确计数约束，若精修层仍失真如实记录转人工队列（ CP12 口径）。"
+ },
+ "aux_gates": [
+  {
+   "type": "judge_rank",
+   "params_ref": "ensemble.definitions.E10",
+   "result": "pass",
+   "note": "相对线空转：每镜 N=1 无次序可排（白皮书 CP8 两层不可混——本批由绝对门承重）。"
+  }
+ ],
+ "payload": {
+  "work_id": "comicanime_ep01",
+  "candidates": [
+   {
+    "shot_id": "shot_01",
+    "candidate_id": "shot_01@ltx2b_draft",
+    "draft_fingerprint": "7c7318e087fe5ac48e8b43db0ff90bf15d29ac6b173639d69516b034eeb452f6",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_01.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_01.jpg（cp7 代理亲看：成立（弱））；本轮择优复核：复核成立（弱）：棚檐/塑料条帘/顶部灯笼形物/右侧入棚人形可辨，逆光入棚构图在；整帧过曝重（LTX 色偏固有，不入判定）→ 进 CP9，prompt 加强：人物外形描述+暖光压暗描述（过曝为草稿层固有，精修层由 prompt 光影段约束）"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_01@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_01.json",
+    "upstream_cp7_fingerprint": "1b1c80fa207813c58aaa9bd617232c153ebb9bc80457797147522599de043a58"
+   },
+   {
+    "shot_id": "shot_02",
+    "candidate_id": "shot_02@ltx2b_draft",
+    "draft_fingerprint": "eab208d8d6d0b392add1a2708b56cc4b78a5f6d4b6cfb2167f867dbd97fd4f94",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_02.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_02.jpg（cp7 代理亲看：部分成立）；本轮择优复核：复核部分成立：坐姿人物+案台+雨丝可辨；「指节敲案点单」动作与面部近景未成形→ 进 CP9，prompt 加强：敲案动作时序化描述+面部大半占幅显式声明"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_02@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_02.json",
+    "upstream_cp7_fingerprint": "d93673c2e5750166b35544f82354d07f87360fe2104410eea9803f22809525dd"
+   },
+   {
+    "shot_id": "shot_03",
+    "candidate_id": "shot_03@ltx2b_draft",
+    "draft_fingerprint": "4094b2bd22e3f58fceab0a398e325c9d4a40084cf48f74642dd515ec7e9a2902",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_03.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_03.jpg（cp7 代理亲看：成立）；本轮择优复核：cp7 人检成立：灶后台后人物+前景锅具台面+蒸汽漫布，中近景构图与 CP3 action 对位→ 原样进 CP9"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_03@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_03.json",
+    "upstream_cp7_fingerprint": "5e9bc26cd61573a2074113147d1fb3d5d02e3c56766e2902e59c058429f19aa9"
+   },
+   {
+    "shot_id": "shot_04",
+    "candidate_id": "shot_04@ltx2b_draft",
+    "draft_fingerprint": "ca56634f22d4bfc7ea45ef06b41bc14ba9d2513d7ec7ce8e1ff13f28049ad735",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_04.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_04.jpg（cp7 代理亲看：成立）；本轮择优复核：cp7 人检成立：俯拍碗+面条旋纹清晰+右上角手部入画，蒸汽感在，俯拍案台构图对位→ 原样进 CP9"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_04@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_04.json",
+    "upstream_cp7_fingerprint": "42b9e534a6f95740f72409c88d3b69211c7f9c2e32c5b96311dc1d14c7d6dfd6"
+   },
+   {
+    "shot_id": "shot_05",
+    "candidate_id": "shot_05@ltx2b_draft",
+    "draft_fingerprint": "2ccc23d8f5e08402f7105422fb4c89e0815ebf2303db4956ec4783dc4ef0ec7a",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_05.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_05.jpg（cp7 代理亲看：弱成立）；本轮择优复核：复核弱成立：器物圆面特写占满画幅、磨痕纹理可辨、画面无脸；「火苗舔锅底」未成形→ 进 CP9，prompt 加强：火苗元素前置+明暗对比描述"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_05@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_05.json",
+    "upstream_cp7_fingerprint": "0c938f8686e2b8765c8084c1f2a2c62008d3681d1c73c19ee6c9cafa3a80ab29"
+   },
+   {
+    "shot_id": "shot_06",
+    "candidate_id": "shot_06@ltx2b_draft",
+    "draft_fingerprint": "24d144858bfe5c45304b1592cc6f2d38234ead893c50ae83640f79279f34b455",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_06.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_06.jpg（cp7 代理亲看：成立）；本轮择优复核：cp7 人检成立：面部大特写+眼部可辨、暗调压面，与「瞳孔骤缩」惊变情绪对位→ 原样进 CP9"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_06@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_06.json",
+    "upstream_cp7_fingerprint": "bef724fdd7f093bf7f9beefd863c952506a699b1e2abc68b052380548b1b76b4"
+   },
+   {
+    "shot_id": "shot_07",
+    "candidate_id": "shot_07@ltx2b_draft",
+    "draft_fingerprint": "ab5ef010594a0b22a0d4936fba1a44ede57610b8963cce4c72a3a444090dc80e",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_07.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_07.jpg（cp7 代理亲看：成立（最强））；本轮择优复核：cp7 人检成立（最强）：双男主题材双人对坐构图完整（本轮择优者亲看复核 frame_shot_07.jpg同向：两人隔案相对、案上碗碟、背景货架）→ 原样进 CP9"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_07@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_07.json",
+    "upstream_cp7_fingerprint": "fd622fae61c60aa9e17d2373fee8af0ecf4c075ed117925cf7ab267983aa99ca"
+   },
+   {
+    "shot_id": "shot_08",
+    "candidate_id": "shot_08@ltx2b_draft",
+    "draft_fingerprint": "68c7d170f22316e8e06a94f3866b2d32c2c4428b65ce33661df0ad743e337f7f",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_08.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_08.jpg（cp7 代理亲看：弱成立）；本轮择优复核：复核弱成立：失神扭曲面部近景+暗调结构可辨、情绪对位；「扶案沿/毛巾滑落」动作不可辨→ 进 CP9，prompt 加强：动作主次化（失神表情为主、扶案为辅）"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_08@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_08.json",
+    "upstream_cp7_fingerprint": "faa055cd28801abbfdcae7b65c12c21b79541830c38e9a026c40c177f11723e6"
+   },
+   {
+    "shot_id": "shot_09",
+    "candidate_id": "shot_09@ltx2b_draft",
+    "draft_fingerprint": "09307471b7a2e2077b11777cf276da6ee4cd3dd946dfbc4c07e76a2671fedbf9",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_09.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_09.jpg（cp7 代理亲看：部分成立）；本轮择优复核：复核部分成立：案上碗具群+雨帘线条+右侧灯笼形物可辨；「两碗面并排」失真为多碗（本轮亲看确认 4+ 碗，计数失真属实）→ 进 CP9，prompt 用精确计数描述 \"exactly two bowls, only two bowls in the whole frame, no other bowls\"；若 CP9 精修仍计数失真→如实记录转人工队列（草稿/精修层计数不可控为已知边界）"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_09@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_09.json",
+    "upstream_cp7_fingerprint": "82770ec6fda6dc440ad8cee9fc4f463993872b68d08f5d8341a682d0166d5097"
+   }
+  ]
+ },
+ "notes": "聚合视图（任务书形态 payload.candidates[] 每镜一条）。⚠ 契约矛盾沿 ecd9b80 主控裁决双形态纪律：checkpoint.schema.json definitions.selection 为单镜形态（additionalProperties:false + 必备 shot_id 单值），聚合 candidates[]9 镜与「过 schema cp8 分支」不可同时成立（与 cp7.json 同款 EXIT=1）；权威形态=cp8/cp8_shot_01..09.json（单镜件，过 schema），本件供 episode 级簿记。【择优规则】L0 等价物（black_mono_ratio=0.0≤0.50、NaN=0、时长 dev=0.0≤2%、ffprobe 三元组）+ 构图核验（cp7 代理亲看 9/9 + 本轮择优者亲看复核 5 弱/部分镜）双过才进 CP9。色彩不入判定（发现 B）。【结果】进 CP9 9 镜 / rework_cp3 0 镜。"
+}

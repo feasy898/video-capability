@@ -1,0 +1,120 @@
+{
+ "schema_version": "1.0",
+ "name": "vpipe-cp12-comicanime_ep01",
+ "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
+ "generated_at": "2026-10-08T21:38:46Z",
+ "assets": [
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp11/master.mp4",
+   "sha256": "bd885ec8916b23700f1585808401e74e045ca38e476d75fb92fb9142b69a2ad5"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp11/cp11.json",
+   "sha256": "6e72b84c1fa76dc08ad5b3a3d027b83c5f45c4db73ae563b244077dccf012866"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp11/synth_meta.json",
+   "sha256": "cbee8be089382f78f72cb959ac5ce97518271b43bd6532b7a304713cea07627e"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp11/qc_known_cuts.json",
+   "sha256": "9c958164d490f359571dcc02da154100749319f8b5e6e69098ee7667ed470bd3"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp11/validate_cp11_report.json",
+   "sha256": "9a22646878c7c20ee7ea77500485e21c3375669dc6b1b7325efa48b0628dd4c2"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_reports_online/comicanime_ep01.json",
+   "sha256": "5660622aaa4a1d742ee239071db257d6a96222a335fcd5854444082a2f720d3a"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_report_v2.json",
+   "sha256": "59b7d5dec0924c95220b343662974488c4740c96ab5c4e9a4b00c2da86bc7cbd"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp12.json",
+   "sha256": "528d9df7ef1479576a3e07484cf54c7b33eb553f3027a212c085dcf8dfddc61e"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/glm8/comicanime_ep01.json",
+   "sha256": "97f78359c0ad3d7aa087e6d8842799a02098276989856df30e44f6df6bcf533d"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/glm8/run_metadata.json",
+   "sha256": "d1335180af561e53601ecce57fc949562d71631b69cf243f375628ddcad26644"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/omnijev/comicanime_ep01.json",
+   "sha256": "c89d98561d6bcfa6e47cce0e951acf8476e36517f50a86f0c8ec3332ba7e6ed9"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/omnijev/run_metadata.json",
+   "sha256": "92df862266db1a45890aa4148230cf3f21b4b36da4587a07a63cf9c3bd0c2a45"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/videochat3/comicanime_ep01.json",
+   "sha256": "416655ee8ca9fbd3bb83054cc123415bed0b449aca1271692f2f72800d538158"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/videochat3/run_metadata.json",
+   "sha256": "5cd5908b3d053195f4d917d38f72edca284540f4a986394b6e2b6d1069c338a2"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/judges/detectors/comicanime_ep01.qc2.json",
+   "sha256": "af7ed1e2da23f3403c68965ffcc6176c45f50320ac9358e1b2ce96ded6cf7d01"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp8.json",
+   "sha256": "5c979247fe2192af54a1da47442dadd3e946753856da4f504e86e457cedfdf20"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9.json",
+   "sha256": "e0cb4381b806f56034879b9db14c4a7ffb3777d782c978557ff15d0b84d1c2cd"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9_prompts.json",
+   "sha256": "1ddb858ff46ef8830f682f30626b4d18b677aa8072f5ffea5fe49175f0382683"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp10/subs.ass",
+   "sha256": "98c91f7aad452226af21551ef75fc0b535e06c3532da5b97afb39ea82c637ed2"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp10/duration_reconciliation.json",
+   "sha256": "71332f45c0caf8183d5b8735c84cdb6753de98ebd21ec857818e40879c4db971"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f01.jpg",
+   "sha256": "38321acbe6ef9efb42268150d50c30a78890253159b3ef977e5b7aafd6ce47dc"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f02.jpg",
+   "sha256": "0c51e2d752f30b331fb1a1ee4c12977c58856496c3bd7c2ecfc04d04a5a18c30"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f03.jpg",
+   "sha256": "69c43d37399eb3a73c0b10851f92bb9b3feb2477775b6a791ed6ec501444583b"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f04.jpg",
+   "sha256": "1e0333d46527a5e02cffc450c1bcfd3a7c2b25c8aa46902a9acc8b162db3a67d"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f05.jpg",
+   "sha256": "1d2b7c85e3d9769abb5d399af490e714114029ea27bcf952bb97685b7e8caecf"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f06.jpg",
+   "sha256": "be569dc57a79941ed6dbe11b1b01574b6fe8f358035b1eea8e8a5fde4a16778b"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f07.jpg",
+   "sha256": "f4b5b1c2f198aabe00f51a5b2b2101180e7f55a96eaac4376381014095381bc5"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/qc_frames/comicanime_ep01/f08.jpg",
+   "sha256": "85a92dd5b74f952d911f240da4b9759557c889464ae56bcdbc9086a3edd91fc8"
+  }
+ ]
+}

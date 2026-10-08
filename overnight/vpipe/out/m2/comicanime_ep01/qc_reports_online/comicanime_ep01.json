@@ -1,0 +1,145 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "comicanime_ep01",
+ "generated_at": "2026-10-09T05:38:37",
+ "qc_mode": "online",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.8,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.8)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6513"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.6513,
+   "flicker": 0.3237,
+   "color_shift": 0.5849,
+   "face_blur": 0.2023,
+   "garble_text": 0.0551,
+   "temporal_swap": 0.4488,
+   "pixelate": 0.1601,
+   "ghosting": 0.5096
+  },
+  "overall": 0.4605,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=0.2解码"
+   }
+  }
+ ],
+ "judges": {
+  "J6": {
+   "clip_id": "comicanime_ep01",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 在线规则引擎（emit@0.55）"
+  },
+  "J1": {
+   "clip_id": "comicanime_ep01",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "无",
+   "notes": "逐帧核对：f01-f02 顾客（蓝衣长发）与 f03-f06 面馆师傅（头带围裙）为两个不同角色，各自跨帧外观、服饰一致，无身份漂移；f01 中顾客伸手为掀门帘动作，f05 持勺、f03 持布、f06 双手按桌等手部均未见多指/融指等解剖异常；f04 锅灶、f07-f08 两碗面计数合理，无堆叠异常；f07-f08 为静态空镜构图（配文'谁都没先动筷'），3.7 秒间隔取帧相似属正常静止镜头，不能证实定格；整体色调统一为雨夜暖灯冷街对比，无闪烁、色偏、像素化、拖影；f01 背景竖幅招牌文字在低分辨率下无法确证为乱码，按证据不足不报。未发现命中 rubric 的缺陷。"
+  },
+  "J5": {
+   "clip_id": "comicanime_ep01",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=0.2解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "comicanime_ep01",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.6513,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.651 flicker=0.324 color_shift=0.585 face_blur=0.202 garble_text=0.055 temporal_swap=0.449 pixelate=0.160 ghosting=0.510; overall=0.461; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "out/m2/comicanime_ep01/cp11/master.mp4",
+  "frames_dir": null,
+  "judge_files": {
+   "J6": "out/m2/comicanime_ep01/judges/detectors/comicanime_ep01.qc2.json",
+   "J1": "out/m2/comicanime_ep01/judges/glm8/comicanime_ep01.json",
+   "J5": "out/m2/comicanime_ep01/judges/videochat3/comicanime_ep01.json",
+   "J3": "out/m2/comicanime_ep01/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {},
+ "qc_context": {
+  "profile": null,
+  "known_cuts": [
+   5.292,
+   8.833,
+   12.125,
+   16.292,
+   18.75,
+   20.917,
+   24.25,
+   27.333
+  ],
+  "l0_preflight": {
+   "clip": "out/m2/comicanime_ep01/cp11/master.mp4",
+   "expect_duration_s": 30.0,
+   "profile": null,
+   "failures": [],
+   "checks": {
+    "duration": {
+     "measured_s": 30.0,
+     "rule": "dev_max",
+     "dev": 0.0,
+     "dev_max": 0.02
+    },
+    "black_mono_ratio": {
+     "n_samples": 64,
+     "black_luma_max": 8.0,
+     "mono_std_max": 2.0,
+     "ratio_max": 0.5,
+     "used": 64,
+     "bad_frames": 0,
+     "ratio": 0.0
+    }
+   }
+  }
+ }
+}

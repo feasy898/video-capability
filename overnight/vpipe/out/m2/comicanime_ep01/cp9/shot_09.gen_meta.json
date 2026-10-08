@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_09",
+ "work_id": "comicanime_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "p98Yk79ovk4O",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 05:17:11",
+ "elapsed_s": 31.3,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Medium shot, static props, the camera slowly pulling back out past the stall curtain: exactly two noodle bowls sit side by side on the stall counter with their steam gone — only two bowls in the whole frame, no third bowl, no plates, no clutter; behind them the warm lantern sways gently in the rain, echoing the opening shot, the stall empty of people. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+  "duration": 5,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "00d24ca77f47eceb11d2f52149d7e0d6f6f04991e32b638fc63efea2f2bd1f46",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 280,
+  "credit_spent_est": 280,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "febcb5989c793a6eeee0f552d24e3ef78b69cdc0351cbb3ca181a28b41555680",
+  "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_09.final.mp4",
+  "size_bytes": 5929243,
+  "sha256": "febcb5989c793a6eeee0f552d24e3ef78b69cdc0351cbb3ca181a28b41555680"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "5.184000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "124"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_09.json",
+  "shot_contract": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shots/shot_09.json"
+ }
+}

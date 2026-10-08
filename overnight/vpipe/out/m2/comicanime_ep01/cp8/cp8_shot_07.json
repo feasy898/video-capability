@@ -1,0 +1,67 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp8",
+ "artifact_type": "selection",
+ "fingerprint": "345544910872aa802e143af59f256cfc9019ce77b95823bc042de2b11d94a642",
+ "produced_by": "agent.selector",
+ "produced_at": "2026-10-08T21:09:23Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp7",
+   "fingerprint": "fd622fae61c60aa9e17d2373fee8af0ecf4c075ed117925cf7ab267983aa99ca"
+  },
+  {
+   "cp_id": "cp3",
+   "fingerprint": "8cc4fcc235bbddf1a422aed3b19c1937b8276587d9e23a468746d809a4c8e91a"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "composite",
+  "params_ref": "cp8.gate.pareto_rule",
+  "result": "pass",
+  "note": "候选 N=1（T2 草稿每镜一支，cp7 唯一草稿 ab5ef010594a…）：硬校验向量全绿（黑帧 0/NaN 0/时长 dev=0.0≤0.02，L0 accepted）且构图核验成立（cp7 代理亲看=成立（最强）；本轮择优者亲看复核 frame_shot_07.jpg 同向）→ 单候选平凡 Pareto 支配（params_ref=cp8.gate.pareto_rule=top1_strict_dominance）→ 本镜进 CP9 精修。A/B 组否决缺陷 0（veto_defects=[]）。色彩不入判定（发现 B）。"
+ },
+ "aux_gates": [
+  {
+   "type": "judge_rank",
+   "params_ref": "ensemble.definitions.E10",
+   "result": "pass",
+   "note": "相对线空转：每镜 N=1 无次序可排（白皮书 CP8 两层不可混——本批由绝对门承重）。"
+  }
+ ],
+ "payload": {
+  "work_id": "comicanime_ep01",
+  "shot_id": "shot_07",
+  "candidates": [
+   {
+    "candidate_id": "shot_07@ltx2b_draft",
+    "draft_fingerprint": "ab5ef010594a0b22a0d4936fba1a44ede57610b8963cce4c72a3a444090dc80e",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_07.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "cp7/frame_shot_07.jpg（cp7 代理亲看：成立（最强））；本轮择优复核：cp7 人检成立（最强）：双男主题材双人对坐构图完整（本轮择优者亲看复核 frame_shot_07.jpg同向：两人隔案相对、案上碗碟、背景货架）→ 原样进 CP9"
+    }
+   }
+  ],
+  "top1_candidate_id": "shot_07@ltx2b_draft",
+  "pareto_dominant": true,
+  "veto_defects": [],
+  "escalated_to_human": false,
+  "structural_difficult": false
+ },
+ "notes": "单镜择优件（CP8 权威形态）——《头汤面》EP1 shot_07。decision=advance_cp9。CP3 action=双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切，双主角身份不漂移（声明镜长 3.26s，草稿时长口径见 hard_verify）。任务书处置：弱成立/部分成立镜主体可辨者进 CP9 并在 prompt 加强；shot_09 计数失真用精确计数 prompt，若精修层仍失真如实记录转人工队列。prompt 加强项：cp7 人检成立（最强）：双男主题材双人对坐构图完整（本轮择优者亲看复核 frame_shot_07.jpg同向：两人隔案相对、案上碗碟、背景货架）→ 原样进 CP9。硬校验数值源=cp7 L0 证据（shot_07.draft.l0.json）；草稿色偏/过曝为 LTX-2B checkpoint 固有（SPIKE 发现 B）不入判定。CP8 默认零人工（cp1 owner pending 在 CP12 口径计）。"
+}

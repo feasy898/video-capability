@@ -1,0 +1,36 @@
+{
+ "module": "tts.py@vpipe-cp10-1.0",
+ "generated_at": "2026-10-09T05:17:16",
+ "status": "ok",
+ "key_masked": "3ixelB****(len=65)",
+ "endpoint_base": "https://api.stepfun.com/step_plan/v1",
+ "out_path": "/data/night/cp10-comicanime/tts_seg_03.wav",
+ "errors": [],
+ "dry_run": false,
+ "model": "stepaudio-2.5-tts",
+ "voice_id": "cixingnansheng",
+ "voice_name": null,
+ "instruction": null,
+ "response_format": "wav",
+ "speed": 1.0,
+ "text_len": 18,
+ "billing_note": "credits_or_cost_estimate 为牌价估算（见其 basis 字段）",
+ "credits_or_cost_estimate": {
+  "billing_units_est": 15,
+  "cny_doc_rate_est": 0.0087,
+  "basis": "牌价 ¥5.8/万字符（工程方案v3.1 §2.4②）；step_plan 实扣拆分 API 不可得（§4.1），实测低于牌价（数字人实验报告 §2.1：64字实扣¥0.01）——此值为估算非实扣"
+ },
+ "request_id": null,
+ "latency_s": 122.324,
+ "sha256": "c55f9f3d1d8291bec71f6347f354aa26b881f208f0c4edf16ca3d5fdcb38c620",
+ "size_bytes": 197326,
+ "audio_sniff": "riff_wave",
+ "duration_s": 4.08,
+ "ffprobe": {
+  "duration_s": 4.08,
+  "acodec": "pcm_s16le",
+  "sample_rate": "24000",
+  "channels": 1
+ },
+ "clone": null
+}

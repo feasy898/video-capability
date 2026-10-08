@@ -1,0 +1,160 @@
+{
+ "tool": "assemble_cp11.py(comicanime)",
+ "verdict": "ok",
+ "generated_at": "2026-10-08T21:23:24Z",
+ "master_sha256": "bd885ec8916b23700f1585808401e74e045ca38e476d75fb92fb9142b69a2ad5",
+ "master_bytes": 16464766,
+ "shot04_cp5_cut": {
+  "cp5_cut_s": 3.6,
+  "master_abs_s": 15.739,
+  "manifestation": "no_physical_seam",
+  "clip_measured_cuts": []
+ },
+ "steps": [
+  {
+   "name": "shot04_cp5_cut_probe",
+   "cp5_known_cuts": [
+    3.6
+   ],
+   "cp5_frame_count": 83,
+   "scale_to_cp6": 1.004016,
+   "master_abs_declared_cut_s": 15.739,
+   "clip_measured_cuts": [],
+   "clip_hits_near_cp5_cut": []
+  },
+  {
+   "name": "encode_master",
+   "argv": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-nostats",
+    "-y",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_01.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_02.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_03.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_04.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_05.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_06.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_07.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_08.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp9/shot_09.final.mp4",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_01.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_02.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_03.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_04.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_05.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_06.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_07.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_08.fit.wav",
+    "-i",
+    "out/m2/comicanime_ep01/cp10/fit/tts_seg_09.fit.wav",
+    "-filter_complex_script",
+    "out/m2/comicanime_ep01/cp11/filter_complex.txt",
+    "-map",
+    "[vout]",
+    "-map",
+    "[aout]",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "20",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "1",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-movflags",
+    "+faststart",
+    "-t",
+    "30.000000",
+    "out/m2/comicanime_ep01/cp11/master.mp4"
+   ],
+   "rc": 0,
+   "stderr_tail": ""
+  }
+ ],
+ "probe": {
+  "duration_s": 30.0,
+  "nb_read_frames": 720,
+  "expected_frames": 720,
+  "width": 1080,
+  "height": 1920,
+  "r_frame_rate": "24/1",
+  "vcodec": "h264",
+  "acodec": "aac",
+  "container": "mov,mp4,m4a,3gp,3g2,mj2",
+  "scene_cuts": [
+   {
+    "t": 5.292,
+    "score": 0.4147
+   },
+   {
+    "t": 8.833,
+    "score": 0.4565
+   },
+   {
+    "t": 12.125,
+    "score": 0.5402
+   },
+   {
+    "t": 16.292,
+    "score": 0.4925
+   },
+   {
+    "t": 18.75,
+    "score": 0.4624
+   },
+   {
+    "t": 20.917,
+    "score": 0.454
+   },
+   {
+    "t": 24.25,
+    "score": 0.5182
+   },
+   {
+    "t": 27.333,
+    "score": 0.4953
+   }
+  ],
+  "black_intervals": [],
+  "black_total_s": 0,
+  "mix_lufs_input_i": "-16.13",
+  "known_cuts": [
+   5.292,
+   8.833,
+   12.125,
+   16.292,
+   18.75,
+   20.917,
+   24.25,
+   27.333
+  ]
+ }
+}

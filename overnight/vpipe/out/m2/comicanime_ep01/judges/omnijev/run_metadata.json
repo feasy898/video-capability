@@ -1,0 +1,71 @@
+{
+  "judge": "omnijev",
+  "model": "OmniJev-4B(v1.1)",
+  "ckpt": "/data/night/models/OmniJev-4B-v1.1",
+  "base": "/data/night/models/Qwen3.5-4B",
+  "questions": {
+    "q_frame_freeze": {
+      "type": "noul",
+      "instructions": "该视频是否存在画面定格（数秒不动）（frame_freeze）"
+    },
+    "q_flicker": {
+      "type": "noul",
+      "instructions": "该视频是否存在帧闪（帧间明暗/内容快速交替闪烁）（flicker）"
+    },
+    "q_color_shift": {
+      "type": "noul",
+      "instructions": "该视频是否存在整体色偏（颜色异常偏移）（color_shift）"
+    },
+    "q_face_blur": {
+      "type": "noul",
+      "instructions": "该视频是否存在人脸模糊（人脸区域异常模糊）（face_blur）"
+    },
+    "q_garble_text": {
+      "type": "noul",
+      "instructions": "该视频是否存在乱码文字（画面出现乱码/无意义文字）（garble_text）"
+    },
+    "q_temporal_swap": {
+      "type": "noul",
+      "instructions": "该视频是否存在段落错乱（时序跳变/场景切换不连贯）（temporal_swap）"
+    },
+    "q_pixelate": {
+      "type": "noul",
+      "instructions": "该视频是否存在像素化（画面局部马赛克/像素块）（pixelate）"
+    },
+    "q_ghosting": {
+      "type": "noul",
+      "instructions": "该视频是否存在拖影（运动残影/重影）（ghosting）"
+    },
+    "q_overall": {
+      "type": "noul",
+      "instructions": "该视频是否存在上述任何一种缺陷或其他明显的画面异常/生成伪影"
+    }
+  },
+  "threshold": 0.5,
+  "chunk": 9,
+  "load_seconds": 29.7,
+  "clips": [
+    {
+      "clip_id": "comicanime_ep01",
+      "ok": true,
+      "probs": {
+        "frame_freeze": 0.6513,
+        "flicker": 0.3237,
+        "color_shift": 0.5849,
+        "face_blur": 0.2023,
+        "garble_text": 0.0551,
+        "temporal_swap": 0.4488,
+        "pixelate": 0.1601,
+        "ghosting": 0.5096,
+        "overall": 0.4605
+      },
+      "peak_vram_mb": 11740.0,
+      "latency_s": 75.07
+    }
+  ],
+  "n_clips": 1,
+  "n_ok": 1,
+  "n_fail": 0,
+  "torch": "2.7.0+cu126",
+  "finished_at": "2026-10-09 05:36:06"
+}

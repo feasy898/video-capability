@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/723 [00:00<?, ?it/s]Loading weights:  29%|██▉       | 210/723 [00:00<00:00, 2084.42it/s]Loading weights: 100%|██████████| 723/723 [00:00<00:00, 4225.52it/s]
+fast_kernels: fla not used (No module named 'fla')
+[omnijev] model loaded in 29.7s (chunk=9)
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[omnijev] 1/1 comicanime_ep01 ok=True lat=75.1s 
+[omnijev] DONE ok=1 fail=0

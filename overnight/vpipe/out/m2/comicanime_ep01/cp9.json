@@ -1,0 +1,201 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp9",
+ "artifact_type": "final_render",
+ "fingerprint": "e2900376e994754b467bcf1a312ff0fc80bce26e3db2001830d3778eb8408d25",
+ "produced_by": "gen_api",
+ "produced_at": "2026-10-08T21:19:11Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp6",
+   "fingerprint": "7b9da66eb15a11993345920e0aea1f93a8150fa14238531cb2d3adb69cfe5eb6"
+  },
+  {
+   "cp_id": "cp8",
+   "fingerprint": "c93c4d242993f411834cd191cfc2bdc0723551e5eed1b1eac543fb310ded74e4"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "rule",
+  "params_ref": "cp9.gate.credit_cap_per_shot",
+  "result": "warn",
+  "note": "9 镜精修：est 合计 2576（56积分/s × 46s 提交秒数，cp9_prompts.json total_submitted_seconds=46 同源）≤ 集级上限 3360（CP1 credit_cap_total；--credit-cap 3360 实跑守卫，超限 exit 3）；单镜 280 为 5s 标准档锚点，shot_01（6s 档）>280 warn 标注（CP3 分镜守恒 ceil 所致）。真实调用 9 次 ≤ 10 次红线。"
+ },
+ "aux_gates": [
+  {
+   "type": "rule",
+   "params_ref": "cp9.gate.repro_log_complete",
+   "result": "pass",
+   "note": "9/9 镜 submit_params 指纹 + task_id + 参数全量落盘 gen_meta.json，零缺失。"
+  }
+ ],
+ "payload": {
+  "work_id": "comicanime_ep01",
+  "shots": [
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_01",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "eb2719338c91cce844088c58295300f5048c42f1b7a8db35562ee5d5894d1a92",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_01.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "e8e656d0ca3547010c9aca196b13cfda0c2987abfd9a43c89416d3bf611accb6",
+    "seed_recorded": null,
+    "credit_spent": 336,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_02",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "e9216563e9f4d2daf7b79b0dde9fde867511306d88e791c3f4fc5bb6b67ff87e",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_02.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "0afb5e14b12ee61fba14441092effe6f0a61f50c817906f51cebba6c4277fbd1",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_03",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "7f5b9146feaf4f09b3d58e014c5b5055b675c8510ecd5421474be7a357485cd0",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_03.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "fb499bc3fae2f82181577f57d38de51e0fa7f467ff1926b81e906500d27d8ac9",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_04",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "35825dc26d5fb9f95f014bd84a5c595e0dd8d4dba4c9f153dbac61f4f8f475de",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_04.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "2e3d582ab4567044c53c9e2f52bf9fee42bd7ae6b3300b68d188f307e082086e",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_05",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "95296779fbeefba40a12ea6902f6d302c25c9bd388c5ca0fdafa5ffda0c92951",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_05.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "44c5ec10ad85fec2404cd5b1cc21694de6d82c9f88daf658d0784e04cb4aa2fb",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_06",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "44006c2684c6dbaa3d344d33a6b1dde8cdd5db5b59ac5d183dc3ac7489a95ee1",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_06.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "fd3170ff8016b861db23909586aac28d56b4b426df07af8f359df33745118593",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_07",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "818962402ad705ffe548911793070771b8f36e9559f8218d1055ab92f8cc5242",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_07.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "71c5793f37eedbbf2cb365076648b323078ab2c7c8d9543663de51c4aefb164a",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_08",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "0857f8c3d96307f5c6fea6c1cd30a3feac8a68be8eb058db783ddb02bfa6b1fe",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_08.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "45593c6b7c6ab25ff1e590e6d4a6ab2183da508f36865d196a3da03898cbe29d",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_09",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "febcb5989c793a6eeee0f552d24e3ef78b69cdc0351cbb3ca181a28b41555680",
+     "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_09.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "00d24ca77f47eceb11d2f52149d7e0d6f6f04991e32b638fc63efea2f2bd1f46",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   }
+  ]
+ },
+ "notes": "聚合视图（payload.shots[] 每镜一份 final_render payload）。⚠ 双形态纪律（ecd9b80 主控裁决）：checkpoint.schema.json definitions.final_render 为单镜形态，聚合 payload.shots[] 过不了 schema cp9 分支（EXIT=1，与 cp7/cp8 聚合件同款如实记录）；权威形态=cp9/cp9_shot_XX.json（单镜件）。【通道】api_h3max（T4 现役默认），higress 云通道三步流，T2V 显式 image_mode=text-to-video。【seed】云 DTO 白名单无 seed → 一律不发送。【参考图】未用（CP2 注册表无 http(s) URL，本地路径 fail-closed）。【成本】credit_spent 全部为 56积分/s 估算值；真实调用 9 次。【时长口径】提交秒数=ceil(CP3 声明镜长) 夹 H3-Max [5,15]（shot_01=6s，其余 5s 下限夹取）；云侧封装时长略大于提交值逐镜留痕 gen_meta.ffprobe。【预算】est 2576/3360（漫剧线 cap）。"
+}

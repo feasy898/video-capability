@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_08",
+ "work_id": "comicanime_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "AP94xLA00O38",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 05:16:39",
+ "elapsed_s": 31.2,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Close-up, static camera, one single centered subject: the same young cook staggers half a step backward and grips the counter edge, the towel slipping from his hand, his face draining into blank disbelief in a clean readable anime expression, simple uncluttered stall background behind him. He is Shen Yu, a young Chinese man in his mid-twenties, the noodle-stall cook: black hair bound by a plain grey cloth headband, sturdy shoulders, quiet steady dark eyes, wearing a beige hemp apron over a slate-blue robe with a white towel over his left shoulder. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+  "duration": 5,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "45593c6b7c6ab25ff1e590e6d4a6ab2183da508f36865d196a3da03898cbe29d",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 280,
+  "credit_spent_est": 280,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "0857f8c3d96307f5c6fea6c1cd30a3feac8a68be8eb058db783ddb02bfa6b1fe",
+  "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_08.final.mp4",
+  "size_bytes": 4384602,
+  "sha256": "0857f8c3d96307f5c6fea6c1cd30a3feac8a68be8eb058db783ddb02bfa6b1fe"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "5.184000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "124"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/comicanime_ep01/cp8/cp8_shot_08.json",
+  "shot_contract": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shots/shot_08.json"
+ }
+}

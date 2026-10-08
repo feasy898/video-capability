@@ -1,0 +1,100 @@
+{
+  "validator": "validate_cp12",
+  "cp_id": "cp12",
+  "gate": "composite",
+  "verdict": "pass",
+  "checks": [
+    {
+      "name": "artifact_shape",
+      "ok": true,
+      "detail": "cp12 分支识别成立，payload 必备键齐"
+    },
+    {
+      "name": "upstream_master_mount",
+      "ok": true,
+      "detail": "upstream_refs 含 cp11（master_fingerprint 挂载 CP11 master_asset，upstream=['cp10', 'cp11', 'cp6', 'cp8', 'cp9']）"
+    },
+    {
+      "name": "episode_score_formula",
+      "ok": true,
+      "detail": "score 100 = 0.7×mean 100 + 0.3×worst 100（复算一致，短板惩罚恒等式；verdict='pass'）"
+    },
+    {
+      "name": "gate_groups_a_group",
+      "ok": true,
+      "detail": "gate_groups.a_group 判定 pass（recall 1 vs ≥0.99，fpr 0 vs ≤0.01（cp12.gate.a_group_recall_min / a_group_fpr_max））"
+    },
+    {
+      "name": "gate_groups_b_group",
+      "ok": true,
+      "detail": "gate_groups.b_group 弃权：B 组专用小模型未部署（TASK_v4 M2-W7 范围外，M2 试点未装机）——弃权不参与 veto_groups——合议弃权语义（SPEC §2.3：判官弃权后用剩余通道继续），不参与 veto_groups"
+    },
+    {
+      "name": "gate_groups_c_group",
+      "ok": true,
+      "detail": "gate_groups.c_group 判定 pass（recall 1 vs ≥0.8，fpr 0 vs ≤0.15（cp12.gate.c_group_recall_min / c_group_fpr_max））"
+    },
+    {
+      "name": "veto_groups_gate",
+      "ok": true,
+      "detail": "否决组 ['a_group', 'b_group']（cp12.gate.veto_groups）无 fail 组（a/b/c 声明判定：{'a_group': 'pass', 'b_group': None, 'c_group': 'pass'}）"
+    },
+    {
+      "name": "gate_groups_d_warn_only",
+      "ok": true,
+      "detail": "d_group.warn_only=true（const 复核通过）、verdict=warn、flagged_count=0"
+    },
+    {
+      "name": "human_escalation_rate_max",
+      "ok": true,
+      "detail": "human_escalation_rate 0.0833 ≤ cp12.gate.human_escalation_rate_max=0.2（白皮书 §3 CP12：人工上升率 ≤20%；yaml 无按 episode 类型分档键，单键口径）"
+    },
+    {
+      "name": "routed_reworks_legal",
+      "ok": true,
+      "detail": "routed_reworks 未随工件登记（schema 非必备字段）——无驳回即无路由记录"
+    },
+    {
+      "name": "retry_round_max",
+      "ok": true,
+      "detail": "retry_round 0 ≤ cp12.gate.retry_round_max=2（白皮书 §3 CP12：重试 ≤2 轮仍不过 → 人工工单+标记结构性困难+进金标扩样队列）"
+    },
+    {
+      "name": "params_ref_resolvable",
+      "ok": true,
+      "detail": "gate/aux_gates params_ref 全部解析到真实键（['cp12.gate.a_group_recall_min', 'cp12.gate.human_escalation_rate_max', 'cp12.gate.master_score_min']）"
+    },
+    {
+      "name": "master_score_warn_only",
+      "ok": true,
+      "detail": "master_score_min=70 仅作 warn 阈（本件 score 100≥阈）——不作自动放行门，键存在性已由 load_thresholds 保证（缺失 exit 2）"
+    },
+    {
+      "name": "episode_reject_is_data",
+      "ok": true,
+      "detail": "episode_verdict.verdict=pass（无自录驳回）"
+    }
+  ],
+  "warnings": [],
+  "warn_only_count": 0,
+  "evidence": {},
+  "work_id": "comicanime_ep01",
+  "thresholds_keys_used": [
+    "checkpoints.cp12.gate.master_score_min",
+    "checkpoints.cp12.gate.a_group_recall_min",
+    "checkpoints.cp12.gate.a_group_fpr_max",
+    "checkpoints.cp12.gate.b_group_recall_min",
+    "checkpoints.cp12.gate.b_group_fpr_max",
+    "checkpoints.cp12.gate.c_group_recall_min",
+    "checkpoints.cp12.gate.c_group_fpr_max",
+    "checkpoints.cp12.gate.veto_groups",
+    "checkpoints.cp12.gate.human_escalation_rate_max",
+    "checkpoints.cp12.gate.retry_round_max"
+  ],
+  "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
+  "veto_groups": [
+    "a_group",
+    "b_group"
+  ],
+  "artifact": "out/m2/comicanime_ep01/cp12.json"
+}

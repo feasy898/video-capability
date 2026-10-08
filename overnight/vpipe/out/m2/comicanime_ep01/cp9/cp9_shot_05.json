@@ -1,0 +1,52 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp9",
+ "artifact_type": "final_render",
+ "fingerprint": "c2aa5b7be1a4c0d8cf35357d1e2bcc531fdcc4ff79f3a1aa0759e224b6121416",
+ "produced_by": "gen_api",
+ "produced_at": "2026-10-09 05:15:02",
+ "upstream_refs": [
+  {
+   "cp_id": "cp6",
+   "fingerprint": "7b9da66eb15a11993345920e0aea1f93a8150fa14238531cb2d3adb69cfe5eb6"
+  },
+  {
+   "cp_id": "cp8",
+   "fingerprint": "d44d9c77ed3676f753487537cf917b716aa78b4bb0b1706df16437fb764cc63c"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "rule",
+  "params_ref": "cp9.gate.credit_cap_per_shot",
+  "result": "pass",
+  "note": "实耗(估) 280 = 56积分/s × 5s（5s 标准档，等于上限，thresholds cp9.gate.credit_cap_per_shot）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=PAV7ezdjYnwa。"
+ },
+ "aux_gates": [
+  {
+   "type": "rule",
+   "params_ref": "cp9.gate.repro_log_complete",
+   "result": "pass",
+   "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 44c5ec10ad85… + task_id 落盘 shot_05.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+  }
+ ],
+ "payload": {
+  "work_id": "comicanime_ep01",
+  "shot_id": "shot_05",
+  "channel": "api_h3max",
+  "asset": {
+   "kind": "clip",
+   "fingerprint": "95296779fbeefba40a12ea6902f6d302c25c9bd388c5ca0fdafa5ffda0c92951",
+   "path": "overnight/vpipe/out/m2/comicanime_ep01/cp9/shot_05.final.mp4"
+  },
+  "resolution": "768P",
+  "repro_level": "submit_params",
+  "submit_params_fingerprint": "44c5ec10ad85fec2404cd5b1cc21694de6d82c9f88daf658d0784e04cb4aa2fb",
+  "seed_recorded": null,
+  "credit_spent": 280,
+  "credit_cap_per_shot": 280,
+  "draft_task_id": null,
+  "rework_route": null
+ },
+ "notes": "单镜终稿件（CP9 权威形态）。credit_spent=280 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=PAV7ezdjYnwa；draft_task_id=null（H3-Max 非 Seedance Draft 通道）。分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V）。G8 风格强约束块逐镜显式（强风格指令镜，风格漂移若见按 v3.1 裁决如实记录并考虑回退 api_h3）。资产 sha256=95296779fbee…（ffprobe+sha256 本地亲核）。"
+}

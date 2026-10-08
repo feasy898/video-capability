@@ -1,0 +1,12 @@
+seg_03 rc=1
+seg_09 rc=0
+seg_08 rc=0
+seg_06 rc=0
+seg_05 rc=0
+seg_04 rc=0
+seg_07 rc=0
+seg_02 rc=0
+seg_01 rc=0
+seg_03 rc=0
+retry seg_03 rc-recorded
+TTS_ALL_DONE total_calls=10

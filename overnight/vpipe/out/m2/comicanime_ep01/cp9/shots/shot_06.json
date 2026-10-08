@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_06",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Extreme close-up, the camera very slowly pushing in: the same young cook freezes with a tasting ladle stopped in mid-air, his eyes widening and pupils contracting in shock, a clean readable anime face in large scale, steam dissolving into soft flat cel-shaded blur behind him. He is Shen Yu, a young Chinese man in his mid-twenties, the noodle-stall cook: black hair bound by a plain grey cloth headband, sturdy shoulders, quiet steady dark eyes, wearing a beige hemp apron over a slate-blue robe with a white towel over his left shoulder. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max）。CP3 声明镜长 2.17s → ceil=5s（H3-Max 整数秒区间 [5,15]，下限夹取）。prompt 基底=cp7 草稿验证构图（asset 见 cp8/cp8_shot_06.json）+CP8 加强项；G8 风格强约束块+光影段为 CP9 补全（SPIKE-REPORT 发现 B：草稿色偏不可信）。CP8 择优件 upstream。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

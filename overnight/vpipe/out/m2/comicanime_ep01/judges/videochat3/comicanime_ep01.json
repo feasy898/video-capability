@@ -1,0 +1,8 @@
+{
+  "clip_id": "comicanime_ep01",
+  "defect_detected": false,
+  "defect_types": [],
+  "confidence": 0.8,
+  "spans": "full_clip:fps=0.2解码",
+  "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
+}

@@ -1,0 +1,23 @@
+[gen_api 05:12:22] [gateway] 云网关探活 ok（GET /minimax/v1/models/config）
+[gen_api 05:12:22] [wallet] 云通道无钱包端点（手册§7 未探明）→ 守卫降级为估算累计: 已耗(估)=0 上限=3360（56积分/s 口径）
+[gen_api 05:12:22] [seed] 云通道不发送 seed（DTO 无此字段）；probe_seed 为 windev 专属，跳过
+[gen_api 05:12:22] [run] shot_01@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=6 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:12:54] [ok ] shot_01@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_01@MiniMax-H3-Max.mp4 (31.4s, 5913425B, probe={'width': 768, 'height': 1344, 'duration': 6.592, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:12:54] [run] shot_02@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:13:27] [ok ] shot_02@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_02@MiniMax-H3-Max.mp4 (31.3s, 5805096B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:13:27] [run] shot_03@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:13:59] [ok ] shot_03@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_03@MiniMax-H3-Max.mp4 (31.2s, 5836192B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:13:59] [run] shot_04@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:14:31] [ok ] shot_04@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_04@MiniMax-H3-Max.mp4 (31.2s, 5196131B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:14:31] [run] shot_05@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:15:03] [ok ] shot_05@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_05@MiniMax-H3-Max.mp4 (31.2s, 4571190B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:15:03] [run] shot_06@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:15:35] [ok ] shot_06@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_06@MiniMax-H3-Max.mp4 (31.3s, 6356095B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:15:35] [run] shot_07@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:16:08] [ok ] shot_07@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_07@MiniMax-H3-Max.mp4 (31.4s, 4946711B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:16:08] [run] shot_08@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:16:40] [ok ] shot_08@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_08@MiniMax-H3-Max.mp4 (31.2s, 4384602B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:16:40] [run] shot_09@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:17:12] [ok ] shot_09@MiniMax-H3-Max -> out/m2/comicanime_ep01/cp9/gen/shot_09@MiniMax-H3-Max.mp4 (31.3s, 5929243B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:17:12] [done] 本次处理 9（成功 9/失败 0）；结果: out/m2/comicanime_ep01/cp9/gen/api_results.jsonl
+RUN_EXIT=0

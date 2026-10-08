@@ -1,0 +1,72 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp11",
+  "artifact_type": "composite",
+  "fingerprint": "6ed7f78084dc96f3d8639f0420f61d2933b756b595b3f0f95eab19ba22cd1da3",
+  "produced_by": "agent.cp11_assembler.ffmpeg",
+  "produced_at": "2026-10-08T21:25:15Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "7b9da66eb15a11993345920e0aea1f93a8150fa14238531cb2d3adb69cfe5eb6"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "5e2f6e52adc08700dd869d1dcba70f6fcda9f94ce081e9af27b675bbd1fd5090"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "e2900376e994754b467bcf1a312ff0fc80bce26e3db2001830d3778eb8408d25"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
+    "result": "pass",
+    "note": "8 个拼接硬切点（[5.292, 8.833, 12.125, 16.292, 18.75, 20.917, 24.25, 27.333]）全部登记 known_cuts 白名单，容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s；master 实测 8 切点与登记逐一重合（select 滤器，工作点 0.3），validate_cp11.py --probe 复核。另 CP5 shot_04 切点 3.6s 在合成层显式登记为「声明切点·无实体缝」（master 绝对时刻 15.739s，装配前场景检测无实体缝，登记于 cp11/qc_known_cuts.json 声明切点段——不进 payload.known_cuts，known_cuts 数==段数-1 恒等式约束）。（validate_cp11.py --probe 实跑 exit 0；status gated→passed）"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.duration_tol_s",
+      "result": "pass",
+      "note": "声明 30s == CP6 total_frames/fps = 720/24；ffprobe 实测 30.0s / 720 帧，±1s 门由校验器复核。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.shot_count_match",
+      "result": "pass",
+      "note": "master_shot_segments 9 == storyboard_shot_count 9（CP6 shots 数）；实测切点 8（+1 段=9 段）由校验器复核。"
+    }
+  ],
+  "payload": {
+    "work_id": "comicanime_ep01",
+    "master_asset": {
+      "kind": "clip",
+      "fingerprint": "bd885ec8916b23700f1585808401e74e045ca38e476d75fb92fb9142b69a2ad5",
+      "path": "overnight/vpipe/out/m2/comicanime_ep01/cp11/master.mp4"
+    },
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "width": 1080,
+    "height": 1920,
+    "duration_s": 30.0,
+    "master_shot_segments": 9,
+    "storyboard_shot_count": 9,
+    "known_cuts": [
+      5.292,
+      8.833,
+      12.125,
+      16.292,
+      18.75,
+      20.917,
+      24.25,
+      27.333
+    ],
+    "all_cuts_registered": true,
+    "black_ratio": 0.0
+  },
+  "notes": "《头汤面》EP1 CP11 合成件（漫剧线 30s G8 风格化样片）。【合成器】TASK 预案路径：src/gate/synth.py 只收 kind=lavfi 的程序源（synth.py:186-189），CP9 真实终稿无法入 case，改 ffmpeg filter_complex 直拼（cp11/assemble_cp11.py，argv/探针全量留痕 synth_meta.json）。【规格】1080x1920/24fps/h264+aac（ASK 指定）；⚠CP1 deliverable.pixel_map=1088x1920 与 ASK 1080x1920 存在分歧，本轮从 ASK，分歧在此登记（沿短剧线同款处置，CP12 复核时注意）。【时间线】CP9 终稿依 CP6 shots 顺序硬切拼接，每镜 trim=duration_frames/24（帧域冻结，Σ=720 帧实测=720=30.0s）；768x1344 cover-crop 到 1080x1920（水平裁 ~17px≈1.6%），setsar=1。【known_cuts】8 缝=CP6 镜帧界累计/24（[5.292, 8.833, 12.125, 16.292, 18.75, 20.917, 24.25, 27.333]），与 select 实测切点逐一重合（0 偏差、0 未登记检出、0 登记未复现）。【CP5 切点登记】CP5 shot_04 blocking 序列 83 帧>72 帧窗口，known_cuts=[3.6]（20fps 段界）；CP9 shot_04 为单次生成 T2V 片段无内部缝——装配前场景检测实测素材内切点 []（±0.5s 无命中），该切点在合成层登记为「声明切点·无实体缝」（master 绝对时刻 15.739s=12.125+3.6×CP5→CP6 域换算 1.00401），全文登记于 cp11/qc_known_cuts.json source+declared_intra_shot_cuts 与本件 gate.note，检测器侧豁免由 qc_detectors_v2 --known-cuts 消费同一文件；不虚增 payload.known_cuts（known_cuts 数==段数-1 恒等式）。装配级修复 0 处（9/9 镜无生成拼接痕，与短剧线 2 处修复不同，如实记录）。【配音轨】cp10/fit/tts_seg_XX.fit.wav：TTS 实测时长普遍超 CP2 估时（8/9 句 >20%，详见 cp10/duration_reconciliation.json），CP6 帧域冻结不改，逐句 silenceremove 修剪（-40dB，lead 0.12s/句内停顿>0.4s 截到 0.35s）+ atempo 压缩入窗（factor 1.04–1.50，seg_06 最大 1.495，语速风险如实登记）；音频起点=镜起点−sound_lead_in_frames(2帧)/24（声先入），句间零碰撞。【混音】amix normalize=0，响度实测 −16.13 LUFS（loudnorm input_i，贴 −16 目标），未做归一；BGM 无授权音源，纯配音轨如实记录。【字幕】cp10/subs.ass 烧录：CP6 subtitle_segments 窗口 × CP2 narration_text 逐字文本（verbatim_check_pass=true；漫剧字幕=对白+旁白 9 句混排，G2 纪律：画面零可读文字，台词与拟声一律本后期字牌）；手动 \\N 分行 ≤15 字/行——libass 自动换列实测不生效（短剧线实证沿记）；Noto Sans CJK SC 字号 64（≥48）、竖版安全区 MarginV=220/MarginL|R=64。【black_ratio】blackdetect（d=0.1/pix_th 0.10/pic_th 0.98）实测 0 区间。【avatar】无数字人段（漫剧线按 TASK_v4 不含 avatar 段）。【cp10 指纹】upstream_refs[cp10] 为 cp10 交付物清单（9×wav+meta sha256 + subs.ass + duration_reconciliation.json）规范化 JSON sha256——CP10 未立 schema 工件（cp10_subtitle_audio required 的 cer_small/cer_medium 需 whisper 双口径实测，本环境无 ASR 且红线禁 pip install，不伪造数值），CER 门留待 CP12/后续环境补跑。"
+}
