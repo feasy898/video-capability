@@ -1,0 +1,1 @@
+{"scenario":"A_slot_narration","description":"台词槽位替换：改 cp2 的 seg_02 narration_text（换台词），信封字段零改动，plan --slot seg_02","file":"cp2.json","slot":"seg_02","field":"narration_text","old":"你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！","new":"林伯，五年了。这林家的门，我今天不但要进，还要堂堂正正地走进去。","fingerprint_field_touched":false,"changed":"cp2.json"}

@@ -1,0 +1,1 @@
+{"changed":"cp7/cp7_shot_11.json","payload_drifted":false,"closure_mode":"artifact_level","invalidated_count":0,"invalidated_paths":[],"unaffected_count":16,"expectations":{"失效闭包=∅（末段无下游）":true,"仅 changed 自身重跑（最便宜）":true,"其余 16 工件命中缓存":true}}

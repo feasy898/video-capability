@@ -162,6 +162,42 @@
         "note": {
           "type": "string",
           "description": "人读一句话判定依据（哪个规则什么数值），沿用 v1 QCReport verdict.reasons 风格。"
+        },
+        "applied_versions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "spec_version",
+            "registry_version",
+            "prompt_version"
+          ],
+          "properties": {
+            "spec_version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "description": "判定时实际使用的规格版本（如 vpipe-spec-v2.0+<SPEC_v2.md sha256 前 12>），与 eval/thresholds.yaml versioning.spec_version 同源同值。"
+            },
+            "registry_version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "description": "判定时实际使用的缺陷规则定义集 hash（thresholds.yaml judges+checkpoints 两段规范化内容 sha256 前 12），与 thresholds versioning.registry_version 同源同值。"
+            },
+            "prompt_version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "description": "判定时实际使用的判官 prompt 文本字节 hash（J1/J3，sha256 前 12），与 thresholds versioning.prompt_version 同源同值。null=该字段取不到，原因写 gate.note。"
+            }
+          },
+          "description": "三版本字段随行登记（可选；白皮书 §5.2「三版本字段强制随行」行，抄 DramaClaw verification/version_hash.py:3-11 规范——三个值都不许手填，一律按 eval/thresholds.yaml versioning 段注释口径实算）。字段是登记不是判定数值，不参与门禁判定。可选=向后兼容：2026-10-09 thresholds v6 只增升版不溯及既往，旧工件无此字段仍合法；null=该字段取不到（诚实登记），原因写 gate.note。"
         }
       },
       "description": "门禁声明：每个 CP 工件的主门。判不了就不是门禁，是文档（白皮书 §3 谱使用规则 3：每个 CP 的门禁必须能被一条命令判定）。"

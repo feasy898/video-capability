@@ -16,7 +16,12 @@
     "type": "composite",
     "params_ref": "cp12.gate.a_group_recall_min",
     "result": "pass",
-    "note": "A 组程序规则召回 1.00 / 误报 0.00（阈见 cp12.gate.a_group_recall_min）；任一镜头无 A/B 组否决缺陷，成片门通过。"
+    "applied_versions": {
+      "spec_version": "vpipe-spec-v2.0+1d7773149b31",
+      "registry_version": "bf4739195429",
+      "prompt_version": "23b918011af0"
+    },
+    "note": "A 组程序规则召回 1.00 / 误报 0.00（阈见 cp12.gate.a_group_recall_min）；任一镜头无 A/B 组否决缺陷，成片门通过。applied_versions 三值与 eval/thresholds.yaml versioning 段同源同值（白皮书 §5.2 三版本字段强制随行）。"
   },
   "aux_gates": [
     {

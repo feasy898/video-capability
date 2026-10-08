@@ -1,0 +1,1 @@
+{"scenario":"C_last_stage","description":"末段重跑最便宜：plan --changed cp7/cp7_shot_11.json（模板线末段工件，同位 M1 线 cp11），无下游 → 失效闭包应为空","edit":null,"changed":"cp7/cp7_shot_11.json","slot":null}

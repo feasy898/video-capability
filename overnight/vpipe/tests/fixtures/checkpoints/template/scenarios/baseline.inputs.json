@@ -1,0 +1,1 @@
+{"scenario":"baseline","description":"基线建图：cp1-cp6+cp7_shot_01..11（base/ 快照），plan --changed cp2.json，无实际修改仅模拟变更","edit":null,"changed":"cp2.json","slot":null}

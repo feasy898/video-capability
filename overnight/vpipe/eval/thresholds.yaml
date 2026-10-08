@@ -8,7 +8,15 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 5                   # 2026-10-08（v5）：checkpoints 下新增 cost.episode_budget 段
+version: 6                   # 2026-10-09（v6）：头部新增 versioning 段（spec_version/
+                             #   registry_version/prompt_version 三版本字段当前值登记；
+                             #   白皮书 §5.2「阈值版本三字段」行，抄 DramaClaw
+                             #   verification/version_hash.py:3-11 规范——三个值一律按口径
+                             #   实算不许手填，口径见该段注释；三字段是登记不是新判定数值，
+                             #   无阈值语义，不进任何判定路径）；v3/v4/v5 全部既有段零修改
+                             #   （纯只增升版）；run_v3_checks ALL PASS + eval ACCEPT 零偏差
+                             #   后生效（G0-3 sha256 对账同步 eval_results.json）。
+                             # 2026-10-08（v5）：checkpoints 下新增 cost.episode_budget 段
                              #   （M2-W9 成本台账 report 的单集预算对照数值，主控 2026-10-08 批准；
                              #   推导口径见该段注释——单集预算上限 = standard_episode_shots ×
                              #   checkpoints.cp9.gate.credit_cap_per_shot × budget_multiplier，
@@ -28,6 +36,44 @@ version: 5                   # 2026-10-08（v5）：checkpoints 下新增 cost.e
                              #   l0_preflight 增采样与 avatar 垫尾参数（工程方案v3.1 P0-1/P0-2）。
                              #   E10 合议与全部判定阈未动，eval 回归 ACCEPT 零偏差后方可生效。
 source_report: overnight/judge基准报告.md (2026-09-30)
+
+# ---------------------------------------------------------------
+# 三版本字段当前值登记（2026-10-09 v6 新增段；白皮书 §5.2「阈值版本三字段」行：
+#   抄 DramaClaw verification/version_hash.py:3-11 三字段规范 + dramaclaw-deepdive.md:609-617
+#   算法——registry_version=sha256(canonicalized_defs)[:12]、prompt_version=
+#   sha256(actual_prompt_bytes)[:12]、spec_version=指向规格快照的稳定常量。
+#   三个值都不许手填，一律按下列口径实算；被登记对象任何变更 → version 再 +1
+#   并重算本段。三字段是登记不是新判定数值：无阈值语义，不进任何判定路径
+#   （eval_run.py 只读 eval_admission/ensemble 段，本段为纯登记视图）。
+# ---------------------------------------------------------------
+versioning:
+  spec_version: "vpipe-spec-v2.0+1d7773149b31"  # 稳定常量名 + SPEC_v2.md 内容指纹后缀：
+                                                #   sha256(overnight/vpipe/SPEC_v2.md 全文
+                                                #   utf-8 字节) 前 12 位（hex 小写）。
+  registry_version: "bf4739195429"              # 缺陷规则定义集 hash。仓内无独立规则集文件
+                                                #   （数据/golden 夹具是缺陷样本非规则定义），
+                                                #   按主控口径登记本文件 judges+checkpoints 两段
+                                                #   合计内容：yaml 解析后
+                                                #   sha256(json.dumps({"judges":…,"checkpoints":…},
+                                                #   ensure_ascii=False, sort_keys=True,
+                                                #   separators=(",",":")).encode("utf-8")) 前 12 位。
+                                                #   本 versioning 段与 version 行不参与（防自引用）。
+  prompt_version: "23b918011af0"                # E10 两判官（J1∨J3）prompt 文本字节 hash：
+                                                #   sha256( "J1|"+judges_src/glm8_batch.py 的
+                                                #   RUBRIC 模板原文 + "\nJ3|"+json.dumps(
+                                                #   judges_src/judge_common.py omnijev_questions(),
+                                                #   ensure_ascii=False, sort_keys=True,
+                                                #   separators=(",",":")) 的 utf-8 字节) 前 12 位。
+                                                #   诚实边界注记：J1 取插值前模板字节（clip_id/
+                                                #   时长为逐条插值变量，逐条实际字节 hash 属运行时
+                                                #   留痕，不进本静态登记）；J3 的 9 条 instructions
+                                                #   原样作为 instr 发给模型（overnight/omnijev_src/
+                                                #   infer.py:143），无插值=即实际 prompt 文本；
+                                                #   mso 包内 tokenizer/chat 模板与帧拼图图像字节
+                                                #   不属 prompt 文本，未纳入——如后续纳入，本值
+                                                #   升版重登记。两判官 rubric/问题文本任一改动
+                                                #   → 本值必变（白皮书 §5.2：堵「改 prompt 模板
+                                                #   但数据集没分代」的静默污染）。
 
 # ---------------------------------------------------------------
 # 合议方案（eval_run.py 与 qc_orch.py 共同引用的判定定义）
