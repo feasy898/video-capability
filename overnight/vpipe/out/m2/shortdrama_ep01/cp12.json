@@ -1,0 +1,96 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp12",
+  "artifact_type": "qc_master",
+  "fingerprint": "5a283e9acde2943af3ec27ad9f040fb887444225448351d788d9eea08b64757f",
+  "produced_by": "agent.cp12_inspector.qc_orch_v2",
+  "produced_at": "2026-10-08T19:29:02Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp11",
+      "fingerprint": "8ef16ef8ed9e66a2e882d714888b8b7df6b86369259d1ba91c2542ecfb06f0b3"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "54f562bea824fbfd37e8f1f604f2d4e43c1e05723ecf0ae69816294bb2c11c48"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "13f7236d2f4ea6342e91fb2c19b1a22f5fe6c0e90507c672d6a10205628092c4"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+    }
+  ],
+  "status": "gated",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp12.gate.a_group_recall_min",
+    "result": "warn",
+    "applied_versions": {
+      "spec_version": "vpipe-spec-v2.0+1d7773149b31",
+      "registry_version": "bf4739195429",
+      "prompt_version": "23b918011af0"
+    },
+    "note": "四维实跑（v4 首次）：缺陷维 E10=J1∨J3@0.71（judges.J3_omnijev.thr）判定 True / decision=manual_review → gate.result=warn（C 组 judge 检出不自动否决，灰区转人工队列）；A 组程序规则（J6v2 时序规则+L0）：10 拼接切点全部被 known_cuts 白名单豁免（±0.5s tol，judges.J6_detectors_v2.rule_params.known_cuts_tol_s），零 temporal_swap 误报，无 A 组否决缺陷；B 组专用小模型未部署（TASK_v4 M2-W7 交付范围外）→ 弃权，gate_groups.b_group 的 0.0/0.0 为占位非实测，弃权记入 qc_report_v2.errors；C 组 judge（J1/J3/J5）检出不自动否决；D 组 0 个 warn-only 候选窗。a/c 组 recall/fpr 为 golden 40 条实测校准值登记（eval_results_v3post.json @thr ffc57c88…，本会话复跑 ACCEPT），非本片实测——单片无真值不可测召回。"
+  },
+  "aux_gates": [
+    {
+      "type": "judge_absolute",
+      "params_ref": "cp12.gate.master_score_min",
+      "result": "warn",
+      "note": "成片分 24.8（=0.7×24.8+0.3×24.8，11 镜继承成片单镜 E10 合议分——逐镜 QCReport 本链未产出，按任务预案单镜近似并声明），未达 70 warn 阈→warn 标注不否决；70 warn 阈（cp12.gate.master_score_min）只作排序依据，人评锚定（120 片段）未完成不作自动放行/否决（白皮书 §7 非目标 8），composite verdict 不因此翻转"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp12.gate.human_escalation_rate_max",
+      "result": "pass",
+      "note": "人工上升率实测 2/12 = 0.17（CP1 owner pending 计 1 + CP3/CP5/CP6 子代理自检通过未上升计 0 + CP12 灰区队列 pending 1）；thresholds 键 cp12.gate.human_escalation_rate_max=0.20：未超；TASK_v4 §3.3 短剧线 pilot 上限 0.25：未超（两条口径均如实登记）"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "master_fingerprint": "b701fc7f6f56f7e2775e093e3b67ae476bb2affb84ab758eddc4389085f4bdad",
+    "episode_verdict": {
+      "score": 24.8,
+      "mean_shot_score": 24.8,
+      "worst_shot_score": 24.8,
+      "formula": "0.7*mean+0.3*worst",
+      "verdict": "pass"
+    },
+    "gate_groups": {
+      "a_group": {
+        "recall": 1.0,
+        "fpr": 0.0,
+        "verdict": "pass",
+        "note": "本片 A 组程序检出 0 缺陷、0 误拒（L0 全绿：时长 dev=0/黑屏占比 0；CP11 门禁 13/13）"
+      },
+      "b_group": {
+        "abstain": true,
+        "reason": "B 组专用小模型未部署（TASK_v4 M2-W7 范围外，M2 试点未装机）——弃权不参与 veto_groups",
+        "note": "原工件以金标 recall=0 占位导致组门不可复算；主控验收修订为弃权形（qc_orch §2.3 弃权语义组级化）"
+      },
+      "c_group": {
+        "recall": 1.0,
+        "fpr": 0.0,
+        "verdict": "pass",
+        "note": "组级阈本片真空通过（judge 组未做任何自动否决，fpr=0 即无误拒）；J3 ghosting P=0.7522>0.71 触发已入 defects[]+human_review.queue——judge 缺陷不自动否决（白皮书 §3 CP12/§7 非目标 3），真假由人工裁决"
+      },
+      "d_group": {
+        "warn_only": true,
+        "flagged_count": 0,
+        "verdict": "warn"
+      }
+    },
+    "human_escalation_rate": 0.1667,
+    "retry_round": 0,
+    "shot_qc_refs": [
+      {
+        "shot_id": "shortdrama_ep01",
+        "qc_report_fingerprint": "202ebd90887a87187af819e8293ae0e5c72d287c79ba9a1fb40c5248c9e3a47d"
+      }
+    ]
+  },
+  "notes": "《雨夜合约》EP1 CP12 质检成片（v4 首次四维判定实跑）。【判官链】J1 glm8（API glm-5.3-flash 8帧 rubric，仓 judges_src/glm8_batch.py，BIGMODEL_API_KEY 经 stdin 注入远端零回显零落盘；api_keys.env 不存在（overnight/secrets/ 空），凭据实际来源=agent-tools/llm-env zhipu（g01-rerun 同源））；J3 omnijev（本地权重 OmniJev-4B-v1.1，GPU0，venv-judge，ok=1）；J5 videochat3（本地权重 VideoChat3-4B，GPU0，venv-vc3）：首跑按 g01 原配方（fps=1.0/max_pixels=268144）OOM 失败（60s 成片超 7s 金标片段的视觉缓冲预算，Tried to allocate 334.21GiB，失败工件 shortdrama_ep01.failed_run1_oom.json 留档），retry1 声明参数缩放 fps=0.25/max_pixels=133072（≈金标总视觉 token 预算 1.07×，非判定数值）后 ok=1；J6v2 qc_detectors_v2（CPU，known_cuts=CP11 登记的 10 硬切点）。判官原始六字段输出一字不改嵌入 qc_report_v2.judges。【成片分映射（声明）】D=max(J3 触发通道 P≥0.71，J1/J5 detected→confidence，J6v2 emitted conf≥0.55)；D=0.752 → clip_score=100×(1−D)=24.8（若 D=0 即无任何检出信号则 100 分）；11 镜继承成片单镜分 mean=worst=24.8，分数只作排序依据不作放行门（锚定未完成）。【四组】a=J6v2+L0 无否决缺陷；b=未部署弃权；c=E10 golden 校准 R=1.0/FPR=0.25；d=warn-only 0 窗。【人工】灰区队列 1 条 pending，人工只看队列与 D 组窗不看全片（白皮书 §2 原则三）；CP12 签字（人工三件事之三）待 human.owner，本工件 verdict=门禁计算结果非人工签字。"
+}

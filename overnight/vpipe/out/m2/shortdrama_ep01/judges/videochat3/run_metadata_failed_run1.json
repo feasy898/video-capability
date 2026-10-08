@@ -1,0 +1,24 @@
+{
+  "judge": "videochat3",
+  "model": "VideoChat3-4B",
+  "path": "/data/night/models/VideoChat3-4B",
+  "question": "请逐帧仔细检查该视频是否存在以下8种缺陷中的哪几种，并判断是否存在其他明显缺陷：frame_freeze(画面定格数秒不动)、flicker(帧间明暗或内容快速交替闪烁)、color_shift(整体颜色异常偏色)、face_blur(人脸区域异常模糊)、garble_text(画面中出现乱码或无意义文字)、temporal_swap(段落或时序错乱、场景跳变不连贯)、pixelate(画面局部像素化或马赛克块)、ghosting(运动拖影或重影)。只输出一个JSON对象，不要输出其他内容，格式：{\"defect_types\":[\"存在的缺陷英文键\"],\"other\":false,\"reason\":\"一句话依据\"}。缺陷英文键必须从上面8个中选；没有缺陷时 defect_types 为空数组、other 为 false。",
+  "fps": 1.0,
+  "max_pixels": 268144,
+  "input_mode": "video(decord)",
+  "load_seconds": 30.0,
+  "clips": [
+    {
+      "clip_id": "shortdrama_ep01",
+      "ok": false,
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 334.21 GiB. GPU 0 has a total capacity of 31.73 GiB of which 3.54 GiB is free. Process 1287345 has 306.00 MiB memory in use. Including non-PyTorch memory, this process has 27.59 GiB memory in use. Process 1948580 has 306.00 MiB memory in use. Of the allocated memory 27.14 GiB is allocated by PyTorch, and 87.40 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+      "trace": "Traceback (most recent call last):\n  File \"/data/night/cp12-run/judges_src/videochat3_batch.py\", line 113, in main\n    gen = model.generate(**inputs, max_new_tokens=a.max_new_tokens, do_sample=False)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/night/venv-vc3/lib64/python3.11/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/night/venv-vc3/lib64/python3.11/site-packages/transformers/generation/utils.py\", line 2566, in generate\n    result = decoding_method(\n             ^^^^^^^^^^^^^^^^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 334.21 GiB. GPU 0 has a total capacity of 31.73 GiB of which 3.54 GiB is free. Process 1287345 has 306.00 MiB memory in use. Including non-PyTorch memory, this process has 27.59 GiB memory in use. Process 1948580 has 306.00 MiB memory in use. Of the allocated memory 27.14 GiB is allocated by PyTorch, and 87.40 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n",
+      "latency_s": 7.36
+    }
+  ],
+  "n_clips": 1,
+  "n_ok": 0,
+  "n_fail": 1,
+  "torch": "2.7.0+cu126",
+  "finished_at": "2026-10-09 03:08:00"
+}

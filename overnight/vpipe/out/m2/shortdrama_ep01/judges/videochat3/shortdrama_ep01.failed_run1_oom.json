@@ -1,0 +1,8 @@
+{
+  "clip_id": "shortdrama_ep01",
+  "defect_detected": false,
+  "defect_types": [],
+  "confidence": 0.0,
+  "spans": "",
+  "notes": "judge FAILED: OutOfMemoryError: CUDA out of memory. Tried to allocate 334.21 GiB. GPU 0 has a total capacity of 31.73 GiB of which 3.54 GiB is free. Process 1287345 has 306.00 MiB memory in use. Including non-PyTorch memory, this process has 27.59 GiB memory in use. Process 1948580 has 306.00 MiB memory in use. Of the allocated memory 27.14 GiB is allocated by PyTorch, and 87.40 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+}

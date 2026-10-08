@@ -1,0 +1,13 @@
+{
+  "clip_id": "shortdrama_ep01",
+  "defect_detected": true,
+  "defect_types": [
+    "flicker",
+    "color_shift",
+    "temporal_swap",
+    "ghosting"
+  ],
+  "confidence": 0.7522,
+  "spans": "full_clip:16帧均匀采样4x4拼图",
+  "notes": "noul概率 frame_freeze=0.366 flicker=0.542 color_shift=0.541 face_blur=0.259 garble_text=0.045 temporal_swap=0.655 pixelate=0.208 ghosting=0.752; overall=0.603; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+}

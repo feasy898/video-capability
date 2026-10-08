@@ -1,0 +1,25 @@
+{
+  "judge": "videochat3",
+  "model": "VideoChat3-4B",
+  "path": "/data/night/models/VideoChat3-4B",
+  "question": "请逐帧仔细检查该视频是否存在以下8种缺陷中的哪几种，并判断是否存在其他明显缺陷：frame_freeze(画面定格数秒不动)、flicker(帧间明暗或内容快速交替闪烁)、color_shift(整体颜色异常偏色)、face_blur(人脸区域异常模糊)、garble_text(画面中出现乱码或无意义文字)、temporal_swap(段落或时序错乱、场景跳变不连贯)、pixelate(画面局部像素化或马赛克块)、ghosting(运动拖影或重影)。只输出一个JSON对象，不要输出其他内容，格式：{\"defect_types\":[\"存在的缺陷英文键\"],\"other\":false,\"reason\":\"一句话依据\"}。缺陷英文键必须从上面8个中选；没有缺陷时 defect_types 为空数组、other 为 false。",
+  "fps": 0.25,
+  "max_pixels": 133072,
+  "input_mode": "video(decord)",
+  "load_seconds": 3.9,
+  "clips": [
+    {
+      "clip_id": "shortdrama_ep01",
+      "ok": true,
+      "parse": "json",
+      "types": [],
+      "gen_seconds": 5.54,
+      "latency_s": 7.15
+    }
+  ],
+  "n_clips": 1,
+  "n_ok": 1,
+  "n_fail": 0,
+  "torch": "2.7.0+cu126",
+  "finished_at": "2026-10-09 03:20:48"
+}

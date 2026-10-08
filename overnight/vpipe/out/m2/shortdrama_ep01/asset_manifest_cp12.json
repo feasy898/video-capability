@@ -1,0 +1,92 @@
+{
+ "schema_version": "1.0",
+ "name": "vpipe-cp12-shortdrama_ep01",
+ "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
+ "generated_at": "2026-10-08T19:29:02Z",
+ "assets": [
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp11/master.mp4",
+   "sha256": "b701fc7f6f56f7e2775e093e3b67ae476bb2affb84ab758eddc4389085f4bdad"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_reports_online/shortdrama_ep01.json",
+   "sha256": "202ebd90887a87187af819e8293ae0e5c72d287c79ba9a1fb40c5248c9e3a47d"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_report_v2.json",
+   "sha256": "fb1565f813c386b20d80a2feb8b7a6e2379acfd7a4c38141af40c57647ebe69a"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp12.json",
+   "sha256": "4bf06dcbbbb10884daecf2d7b86da1622a3bcaaaeaf1eb98be477297bcc6ba57"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/glm8/shortdrama_ep01.json",
+   "sha256": "40f88d2d7050a9aed09371ef51932835c25b4e7548bd276207765f168af77b79"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/glm8/run_metadata.json",
+   "sha256": "fa23dba2d93f0fcfb1ef18563ef7fe1793a77577176666dce1eb0c4f6234f11d"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/omnijev/shortdrama_ep01.json",
+   "sha256": "fdbff3cf3813f038bde27eb337d18c7a8874850f0e665cbf19994861e1b79272"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/omnijev/run_metadata.json",
+   "sha256": "9dc40c05bc3ed0f1b14e56880595fdb6e9f42d90d53f2cc67fbdf8acc3450492"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/videochat3/shortdrama_ep01.json",
+   "sha256": "070f37b645b704643bc5cf52e5cea2f43faf51ec90f56418d14e0cba10054420"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/videochat3/run_metadata.json",
+   "sha256": "721ef322c47f6e33168008f908d76ff7c8deab3a77598837e8cb2da849e80f1e"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/videochat3/shortdrama_ep01.failed_run1_oom.json",
+   "sha256": "77d22b7aed062407753f60ea2c87c2b1c6f59e327a75bc957f8dc418bf81f1a2"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/videochat3/run_metadata_failed_run1.json",
+   "sha256": "2c06effb0d44d747e8bb4d77a3e4a415418e7d6deeec27f91d937e101c81b52d"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/judges/detectors/shortdrama_ep01.qc2.json",
+   "sha256": "ca4f342487d9430c50ffb1c58cf6111f55540f45abe556eafcb4600f510f6a2a"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f01.jpg",
+   "sha256": "1992367c0fe7478edb144be99a4b9feeee2bee9ae0cbef8fe9ccffac28c4efed"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f02.jpg",
+   "sha256": "0dac6d3f3fc32c5b88841a98a1e4376f422f19d89413ed721487710a8fa17ce3"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f03.jpg",
+   "sha256": "3d6759505420d7e5c7f6966bfaf12a997c6a64708d85d7e819504c4f9e15a935"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f04.jpg",
+   "sha256": "0c0918c746bb5131853f0eefa3860fc93b8defe24106f428d522b63ac50a482b"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f05.jpg",
+   "sha256": "fd790041e5a98472fabbfb86f257f06ec405d5fc20c0406ab4bfe2f72791f151"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f06.jpg",
+   "sha256": "5dd095eeb8d64286237adb4102211e0003317190a8f3027773cf7d694a68972f"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f07.jpg",
+   "sha256": "2cf21ad7d221d8dc4bdfeb50dcae04199b1fa900ac7d3b93cdff3129f68cccfb"
+  },
+  {
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01/f08.jpg",
+   "sha256": "bbbadb2b9c12a308c5501dd70475d276e5cca2445647b3594931bd457ef9c619"
+  }
+ ]
+}

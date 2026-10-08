@@ -1,0 +1,18 @@
+{
+  "model": "glm-5.3-flash",
+  "clip_id": "shortdrama_ep01",
+  "answer_text": "{\"clip_id\":\"shortdrama_ep01\",\"defect_detected\":false,\"defect_types\":[],\"confidence\":0.78,\"spans\":\"无\",\"notes\":\"逐帧核查8帧：f01雨中女主、f02桌上的扳手、f03灰发长者看合约、f04两人同桌（烛台、酒具连贯）、f05眼部特写（虹膜中央亮斑为光源反光、眼内映出印章与台词语义呼应）、f06长者站立质疑、f07女主正面、f08仰头干杯，时序与剧情连贯，无定格、闪烁、色偏、模糊、乱码、像素化、拖影证据。人物跨帧外观一致（f03/f04/f06长者同貌，f01/f04/f07/f08女主同貌，发湿到干有剧情时间推移支撑）。f08持杯手指数目正常、握持姿势成立，杯中残酒与滴液符合'干杯'语义；f05瞳孔橙色反光属戏剧化打光而非解剖异常。字幕均为清晰规范中文，无乱码。未发现可命中的缺陷项，判定为干净。\"}",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1501,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1251
+    },
+    "prompt_tokens": 22159,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 23660
+  },
+  "latency_s": 308.3
+}

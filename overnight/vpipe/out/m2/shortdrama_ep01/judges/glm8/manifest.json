@@ -1,0 +1,7 @@
+{
+  "items": [
+    {"clip_id": "shortdrama_ep01",
+     "verify": {"dur_s": 60.0, "n_frames": 1440,
+                "note": "M2-d CP11 master.mp4 1080x1920/24fps/h264+aac, sha256 b701fc7f6f56f7e2775e093e3b67ae476bb2affb84ab758eddc4389085f4bdad"}}
+  ]
+}

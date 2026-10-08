@@ -399,6 +399,15 @@ def check_gate_groups(payload: dict, thr: dict) -> tuple[list[dict], list[str]]:
             checks.append({"name": f"gate_groups_{gid}", "ok": False,
                            "detail": f"gate_groups.{gid} 缺失或非映射（实得 {type(g).__name__}）"})
             continue
+        # 弃权形态（abstain=true+reason）：qc_orch §2.3 判官弃权语义的组级化
+        # （主控验收修订 2026-10-09：B 组专用小模型未部署等场景须可诚实表达，
+        # 填占位指标伪装 pass/fail 是第二套判定）——弃权不参与 veto_groups。
+        if g.get("abstain") is True:
+            reason = g.get("reason") or "（未注明弃权原因）"
+            checks.append({"name": f"gate_groups_{gid}", "ok": True,
+                           "detail": f"gate_groups.{gid} 弃权：{reason}——合议弃权语义"
+                                     "（SPEC §2.3：判官弃权后用剩余通道继续），不参与 veto_groups"})
+            continue
         implied, why = _group_metric_verdict(gid, g, thr)
         verdict = g.get("verdict")
         problems = []

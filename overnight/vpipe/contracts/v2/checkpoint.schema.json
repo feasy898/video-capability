@@ -1582,90 +1582,186 @@
           "properties": {
             "a_group": {
               "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "recall",
-                "fpr",
-                "verdict"
-              ],
-              "properties": {
-                "recall": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
+              "properties": {},
+              "description": "A 组程序规则（召回/误报阈经 params_ref=cp12.gate.a_group_recall_min / a_group_fpr_max 引用）。；anyOf 两形态：指标形（recall/fpr/verdict）或弃权形（abstain=true+reason，qc_orch §2.3 判官弃权语义的组级化）",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "recall",
+                    "fpr",
+                    "verdict"
+                  ],
+                  "properties": {
+                    "recall": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "fpr": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "verdict": {
+                      "type": "string",
+                      "enum": [
+                        "pass",
+                        "fail"
+                      ]
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "组级判定依据的片内事实备注（文档位，无判定语义）"
+                    }
+                  }
                 },
-                "fpr": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                "verdict": {
-                  "type": "string",
-                  "enum": [
-                    "pass",
-                    "fail"
-                  ]
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "abstain",
+                    "reason"
+                  ],
+                  "properties": {
+                    "abstain": {
+                      "const": true,
+                      "description": "弃权（该组本片未部署/不可判）——合议弃权语义，不参与 veto_groups"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "弃权原因（必填，如实）"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
                 }
-              },
-              "description": "A 组程序规则（召回/误报阈经 params_ref=cp12.gate.a_group_recall_min / a_group_fpr_max 引用）。"
+              ]
             },
             "b_group": {
               "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "recall",
-                "fpr",
-                "verdict"
-              ],
-              "properties": {
-                "recall": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
+              "properties": {},
+              "description": "B 组专用小模型（阈经 cp12.gate.b_group_* 引用；LSE-D 硬门仅特写/近景，全身镜头降 warn-only，白皮书 CP12）。；anyOf 两形态：指标形（recall/fpr/verdict）或弃权形（abstain=true+reason，qc_orch §2.3 判官弃权语义的组级化）",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "recall",
+                    "fpr",
+                    "verdict"
+                  ],
+                  "properties": {
+                    "recall": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "fpr": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "verdict": {
+                      "type": "string",
+                      "enum": [
+                        "pass",
+                        "fail"
+                      ]
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "组级判定依据的片内事实备注（文档位，无判定语义）"
+                    }
+                  }
                 },
-                "fpr": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                "verdict": {
-                  "type": "string",
-                  "enum": [
-                    "pass",
-                    "fail"
-                  ]
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "abstain",
+                    "reason"
+                  ],
+                  "properties": {
+                    "abstain": {
+                      "const": true,
+                      "description": "弃权（该组本片未部署/不可判）——合议弃权语义，不参与 veto_groups"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "弃权原因（必填，如实）"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
                 }
-              },
-              "description": "B 组专用小模型（阈经 cp12.gate.b_group_* 引用；LSE-D 硬门仅特写/近景，全身镜头降 warn-only，白皮书 CP12）。"
+              ]
             },
             "c_group": {
               "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "recall",
-                "fpr",
-                "verdict"
-              ],
-              "properties": {
-                "recall": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
+              "properties": {},
+              "description": "C 组 VLM judge 类内口径（阈经 cp12.gate.c_group_* 引用）；judge 缺陷不允许自动否决（白皮书 CP12）。；anyOf 两形态：指标形（recall/fpr/verdict）或弃权形（abstain=true+reason，qc_orch §2.3 判官弃权语义的组级化）",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "recall",
+                    "fpr",
+                    "verdict"
+                  ],
+                  "properties": {
+                    "recall": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "fpr": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "verdict": {
+                      "type": "string",
+                      "enum": [
+                        "pass",
+                        "fail"
+                      ]
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "组级判定依据的片内事实备注（文档位，无判定语义）"
+                    }
+                  }
                 },
-                "fpr": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                "verdict": {
-                  "type": "string",
-                  "enum": [
-                    "pass",
-                    "fail"
-                  ]
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "abstain",
+                    "reason"
+                  ],
+                  "properties": {
+                    "abstain": {
+                      "const": true,
+                      "description": "弃权（该组本片未部署/不可判）——合议弃权语义，不参与 veto_groups"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "弃权原因（必填，如实）"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
                 }
-              },
-              "description": "C 组 VLM judge 类内口径（阈经 cp12.gate.c_group_* 引用）；judge 缺陷不允许自动否决（白皮书 CP12）。"
+              ]
             },
             "d_group": {
               "type": "object",

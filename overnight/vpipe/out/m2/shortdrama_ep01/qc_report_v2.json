@@ -1,0 +1,207 @@
+{
+  "schema_version": "2.0",
+  "clip_id": "shortdrama_ep01",
+  "generated_at": "2026-10-08T19:29:02Z",
+  "work_id": "shortdrama_ep01",
+  "qc_mode": "online",
+  "checkpoint": {
+    "cp_id": "cp12",
+    "artifact_ref": "5a283e9acde2943af3ec27ad9f040fb887444225448351d788d9eea08b64757f"
+  },
+  "verdict": {
+    "defect_detected": true,
+    "decision": "manual_review",
+    "confidence": 0.7522,
+    "decided_by": "cp12.composite(E10=J1∨J3@0.71 成片合议 + cp12.gate.master_score_min 成片绝对门)",
+    "reasons": [
+      "J1(detected=False, types=[], conf=0.78)",
+      "J3@0.71 flag=True hits=['ghosting'] max_channel_P=0.7522",
+      "降级: J6",
+      "成片分 24.8 = 0.7×mean(24.8) + 0.3×worst(24.8)，11 镜继承成片单镜分（逐镜 QCReport 未产出，按任务预案单镜近似并声明）；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与排序依据）",
+      "J6v2 成片重跑：10 拼接切点（CP6 帧界累计/24）全部落入 known_cuts 白名单（judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）被豁免，零 temporal_swap 误报——合成层硬切点登记制生效",
+      "人工上升率实测 0.17 =（CP1 pending 1 + CP12 队列 1）/12；TASK_v4 §3.3 短剧线 ≤0.25未超"
+    ]
+  },
+  "defects": [
+    {
+      "type": "ghosting",
+      "sources": [
+        "J3"
+      ],
+      "confidence": 0.7522
+    }
+  ],
+  "scores": {
+    "per_type": {
+      "frame_freeze": 0.3662,
+      "flicker": 0.5419,
+      "color_shift": 0.5415,
+      "face_blur": 0.2593,
+      "garble_text": 0.045,
+      "temporal_swap": 0.655,
+      "pixelate": 0.2076,
+      "ghosting": 0.7522
+    },
+    "overall": 0.6031,
+    "thresholds_applied": {
+      "ensemble_id": "E10",
+      "j3_thr": 0.71,
+      "auto_reject_p": 0.9,
+      "j6_emit_conf": 0.55,
+      "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+    }
+  },
+  "spans": [
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J1",
+        "text": "无"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J3",
+        "text": "full_clip:16帧均匀采样4x4拼图"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J5",
+        "text": "full_clip:fps=0.2解码"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J6v2 known_cuts 豁免记录：10 个 junction（cut_t=4.708…54.208）全部 exempted（证据 judges/detectors/shortdrama_ep01.qc2.json temporal_rejected.temporal_swap_known_cuts）"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J3 未达判定阈(0.71)的次高通道只登记数据不入队列：temporal_swap=0.6550; flicker=0.5419; color_shift=0.5415；J3 拼图判官不知 known_cuts 白名单，10 个登记硬切点（CP6 帧界累计/24）可解释其 temporal_swap 信号"
+      }
+    }
+  ],
+  "judges": {
+    "J1": {
+      "clip_id": "shortdrama_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.78,
+      "spans": "无",
+      "notes": "逐帧核查8帧：f01雨中女主、f02桌上的扳手、f03灰发长者看合约、f04两人同桌（烛台、酒具连贯）、f05眼部特写（虹膜中央亮斑为光源反光、眼内映出印章与台词语义呼应）、f06长者站立质疑、f07女主正面、f08仰头干杯，时序与剧情连贯，无定格、闪烁、色偏、模糊、乱码、像素化、拖影证据。人物跨帧外观一致（f03/f04/f06长者同貌，f01/f04/f07/f08女主同貌，发湿到干有剧情时间推移支撑）。f08持杯手指数目正常、握持姿势成立，杯中残酒与滴液符合'干杯'语义；f05瞳孔橙色反光属戏剧化打光而非解剖异常。字幕均为清晰规范中文，无乱码。未发现可命中的缺陷项，判定为干净。"
+    },
+    "J3": {
+      "clip_id": "shortdrama_ep01",
+      "defect_detected": true,
+      "defect_types": [
+        "flicker",
+        "color_shift",
+        "temporal_swap",
+        "ghosting"
+      ],
+      "confidence": 0.7522,
+      "spans": "full_clip:16帧均匀采样4x4拼图",
+      "notes": "noul概率 frame_freeze=0.366 flicker=0.542 color_shift=0.541 face_blur=0.259 garble_text=0.045 temporal_swap=0.655 pixelate=0.208 ghosting=0.752; overall=0.603; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+    },
+    "J5": {
+      "clip_id": "shortdrama_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.8,
+      "spans": "full_clip:fps=0.2解码",
+      "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"视频画面流畅，无明显缺陷\"}"
+    },
+    "J6": {
+      "clip_id": "master",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 1.0,
+      "spans": []
+    }
+  },
+  "inputs": {
+    "clip": "overnight/vpipe/out/m2/shortdrama_ep01/cp11/master.mp4",
+    "frames_dir": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01",
+    "judge_files": {
+      "J1": "out/m2/shortdrama_ep01/judges/glm8/shortdrama_ep01.json",
+      "J3": "out/m2/shortdrama_ep01/judges/omnijev/run_metadata.json",
+      "J5": "out/m2/shortdrama_ep01/judges/videochat3/shortdrama_ep01.json",
+      "J6": "out/m2/shortdrama_ep01/judges/detectors/shortdrama_ep01.qc2.json"
+    }
+  },
+  "episode_verdict": {
+    "score": 24.8,
+    "mean_shot_score": 24.8,
+    "worst_shot_score": 24.8,
+    "formula": "0.7*mean+0.3*worst",
+    "verdict": "pass",
+    "params_ref": "cp12.gate.master_score_min",
+    "shot_qc_refs": [
+      {
+        "shot_id": "shortdrama_ep01",
+        "qc_report_fingerprint": "202ebd90887a87187af819e8293ae0e5c72d287c79ba9a1fb40c5248c9e3a47d"
+      }
+    ]
+  },
+  "human_review": {
+    "queue": [
+      {
+        "ref": "shortdrama_ep01",
+        "reason": "J3 通道 ghosting P=0.7522 落灰区 [0.71,0.90)（judges.J3_omnijev.gray_zone），未达 auto_reject_p=0.90——检出待人工复核",
+        "params_ref": "judges.J3_omnijev.gray_zone",
+        "outcome": "pending"
+      }
+    ],
+    "escalation_rate": 0.1667,
+    "params_ref": "cp12.gate.human_escalation_rate_max"
+  },
+  "qc_context": {
+    "profile": null,
+    "known_cuts": [
+      4.708,
+      10.958,
+      17.625,
+      23.875,
+      29.25,
+      35.042,
+      40.833,
+      44.292,
+      50.75,
+      54.208
+    ],
+    "l0_preflight": {
+      "clip": "out/m2/shortdrama_ep01/cp11/master.mp4",
+      "expect_duration_s": 60.0,
+      "profile": null,
+      "failures": [],
+      "checks": {
+        "duration": {
+          "measured_s": 60.0,
+          "rule": "dev_max",
+          "dev": 0.0,
+          "dev_max": 0.02
+        },
+        "black_mono_ratio": {
+          "n_samples": 64,
+          "black_luma_max": 8.0,
+          "mono_std_max": 2.0,
+          "ratio_max": 0.5,
+          "used": 64,
+          "bad_frames": 0,
+          "ratio": 0.0
+        }
+      }
+    }
+  },
+  "errors": {
+    "J2": "J2 glm3 备用判官不在本次配方（E10 不消费 J2），未跑非失败",
+    "B_group": "B 组专用小模型（LSE-D 类）未部署——TASK_v4 M2-W7 交付范围为缺陷维 E10+规格服从维 A 组+审美/合规 warn，B 组弃权如实登记，gate_groups.b_group 数值为占位非实测",
+    "J5_retry": "J5 首跑 OOM 失败（g01 原配方 fps=1.0/max_pixels=268144 针对 7s 金标片段，60s 成片视觉缓冲超限，见 shortdrama_ep01.failed_run1_oom.json）；retry1 声明参数缩放 fps=0.25/max_pixels=133072（≈金标总视觉 token 预算 1.07×）成功——参数缩放已声明，未动判定阈值",
+    "J6": "未提供 --detector-json（检测器弃权）——J6v2 已另行 standalone 实跑（CPU，known_cuts 白名单），其协议视图一字不改嵌入本报告 judges.J6；未走 --detector-json 是因 qc_detectors_v2 输出契约与 qc_orch_v2 内建 v1 规则引擎（run_j6_rules）消费的 qc_detectors.py 契约不同"
+  }
+}
