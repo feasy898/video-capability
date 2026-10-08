@@ -7,7 +7,7 @@
     "TASK_v4 §3.1 M1-W5（3 个用例同输入同输出，md5 一致）",
     "工程方案v3.1.md:218（合成层同参数二遍编码 md5 一致口径）"
   ],
-  "generated_at": "2026-10-08T15:52:02Z",
+  "generated_at": "2026-10-08T15:54:49Z",
   "tool": {
     "synth": "overnight/vpipe/src/gate/synth.py",
     "synth_sha256": "d92bd470e7535da60cbe807abdcda9151cbd04482ce9c8617576ceb6eca71d5f",
