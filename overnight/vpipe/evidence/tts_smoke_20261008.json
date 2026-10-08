@@ -1,0 +1,119 @@
+{
+  "evidence": "tts_smoke_20261008",
+  "task": "TASK_v4 CP10 字幕音轨：StepFun TTS 客户端（src/tts.py）真实调用验证",
+  "date": "2026-10-08",
+  "machine": "GPU 机 100.64.0.7:/data/night/g01-rerun/video-capability（SSH 实跑）",
+  "module": "overnight/vpipe/src/tts.py@vpipe-cp10-1.0（纯标准库 urllib，零第三方依赖）",
+  "credentials": {
+    "source": "--env-file overnight/secrets/api_keys.env（0600，gitignore 域，见 docs/credentials-rebuild.md §3/§5）",
+    "key_masked": "3ixelB****(len=65)",
+    "discipline": "key 只进内存；日志/meta/命令行全程掩码（前 6 字符+len）；完整 key 泄露自检见 leak_self_check"
+  },
+  "endpoint_dto_verification": {
+    "method": "WebFetch 官方文档（2026-10-08 抓取核实，非猜测）",
+    "tts": "POST https://api.stepfun.com/step_plan/v1/audio/speech（step-plan 音频接入指南 platform.stepfun.com/docs/zh/step-plan/integrations/audio-api；与 bao 记录 STEPFUN_BASE_URL 一致）",
+    "dto": "model/input(≤1000字)/voice/response_format(wav|mp3|flac|opus|pcm)/speed(0.5~2)/instruction（api-reference/audio/create-audio 页）",
+    "clone_loop": "/v1/files multipart purpose=storage（api-reference/files/create 页，mp3/wav 5-10s）→ POST /audio/voices {model,file_id,text?} → {id,object:audio.voice,duplicated}（api-reference/audio/create-voice 页）",
+    "auth": "Authorization: Bearer $STEPFUN_API_KEY",
+    "note": "本轮未实测克隆（预算留给合成+负控制，克隆闭环端点按文档实现、有单测覆盖 mock 三步）"
+  },
+  "real_call_budget": {
+    "limit": "≤3 次（任务红线）",
+    "used": 2,
+    "http_calls_breakdown": {
+      "smoke_synth": 1,
+      "dry_run": 0,
+      "wrong_key_negative_control": 1
+    }
+  },
+  "cost": {
+    "single_call_max_estimate_cny": 0.00522,
+    "redline_cny": 1.0,
+    "verdict": "单次预估 << ¥1 红线，未触发停机；estimator 为牌价口径（¥5.8/万字符，工程方案v3.1 §2.4②），step_plan 实扣拆分 API 不可得（§4.1），meta 已如实标注「估算非实扣」"
+  },
+  "runs": [
+    {
+      "id": "smoke_synth",
+      "desc": "默认音色合成一句 10 字中文（任务要求①）",
+      "cmd_masked": "python3 overnight/vpipe/src/tts.py --text \"夜幕降临了，灯火渐亮\" --out out/tts/tts_smoke_20261008.wav --env-file overnight/secrets/api_keys.env",
+      "exit_code": 0,
+      "http_status": 200,
+      "text_len": 10,
+      "model": "stepaudio-2.5-tts",
+      "voice_id": "cixingnansheng",
+      "response_format": "wav",
+      "duration_s_ffprobe": 2.84,
+      "ffprobe_independent_check": "pcm_s16le / 24000 Hz / mono / duration=2.840000 / size=137804（ssh 实跑 ffprobe 复核，与 meta 一致）",
+      "sha256": "0ce1cf60cd6ec7a448fc234ae54d0b3840151f520de8c7c3eb0f6c69417294f7",
+      "size_bytes": 137804,
+      "audio_sniff": "riff_wave",
+      "latency_s": 122.656,
+      "request_id": null,
+      "request_id_note": "响应头未暴露 request-id 类头部，如实记 null（客户端对全部响应头做 request-id 扫描）",
+      "cost_estimate_cny": 0.00522,
+      "meta_file": "out/tts/tts_smoke_20261008.meta.json（GPU 机）",
+      "latency_note": "本轮墙钟 122.7s，显著慢于 9 月底实测 3.6s 出片（数字人实验报告 §2.1）——服务端当时段排队/负载因素，如实记录，不影响产物有效性"
+    },
+    {
+      "id": "dry_run",
+      "desc": "负控制：--dry-run 必须零 HTTP、不落音频（任务要求②前半）",
+      "cmd_masked": "python3 overnight/vpipe/src/tts.py --text \"dry run 探针，不发请求\" --out out/tts/tts_dryrun_20261008.wav --dry-run --env-file overnight/secrets/api_keys.env",
+      "exit_code": 0,
+      "http_calls": 0,
+      "audio_file_created": false,
+      "meta_status": "dry_run",
+      "request_preview_masked": "POST .../audio/speech，Authorization: Bearer 3ixelB****(len=65)，body{model,input,voice,response_format,speed}",
+      "meta_file": "out/tts/tts_dryrun_20261008.meta.json（GPU 机）"
+    },
+    {
+      "id": "wrong_key_negative_control",
+      "desc": "负控制：错误 key 必须 fail-closed、不伪造成功（任务要求②后半）",
+      "cmd_masked": "printf 'STEPFUN_API_KEY=invalid_key_negative_control_0000000000' > /tmp/wrongkey_tts.env && python3 overnight/vpipe/src/tts.py --text \"负控制探针\" --out out/tts/tts_wrongkey_20261008.wav --env-file /tmp/wrongkey_tts.env（用后即删）",
+      "exit_code": 1,
+      "http_status": 401,
+      "server_error": "{\"error\":{\"message\":\"Incorrect API key provided\",\"type\":\"invalid_api_key\"}}",
+      "audio_file_created": false,
+      "meta_status": "failed",
+      "meta_errors_contains": "speech_http_401",
+      "key_masked": "invali****(len=39)",
+      "verdict": "fail-closed 实证：非 200 一律 status=failed+errors 落 meta，退出码 1，零音频伪造",
+      "meta_file": "out/tts/tts_wrongkey_20261008.meta.json（GPU 机）"
+    }
+  ],
+  "unit_tests": {
+    "file": "overnight/vpipe/tests/test_tts.py",
+    "style": "unittest 标准库（pytest 亦可收集），mock 本地 ThreadingHTTPServer 三端点，零真实 API 调用",
+    "cmd": "cd overnight/vpipe && python3 tests/test_tts.py",
+    "result": "Ran 15 tests ... OK（2026-10-08 本机实跑）",
+    "coverage": [
+      "请求构造与官方上限校验（input≤1000/speed/格式枚举，扣费前拦截 exit 2）",
+      "掩码（前 6 字符+len；meta/日志/请求预览完整 key 0 命中）",
+      "meta 契约六字段（text_len/duration_s(ffprobe 实测)/credits_or_cost_estimate/request_id/latency_s/sha256）",
+      "dry-run 零 HTTP、不落音频",
+      "fail-closed（401/200+JSON 软错误/凭据缺失）",
+      "克隆闭环三步（multipart purpose=storage → file_id → voice_id 参与合成；--voice-name 仅本地标签不入 API 体）",
+      "成本红线 >¥1 exit 4 零 HTTP"
+    ],
+    "test_safety_net": "测试内包裹 http 层：任何非 127.0.0.1 请求直接断言失败（单测永不外呼）"
+  },
+  "leak_self_check": {
+    "method": "GPU 机上 KEY=$(grep '^STEPFUN_API_KEY=' overnight/secrets/api_keys.env | cut -d= -f2-) 后对 5 个文件 grep -c \"$KEY\"（key 全程不回显）",
+    "files": [
+      "out/tts/tts_smoke_20261008.meta.json → 0",
+      "out/tts/tts_dryrun_20261008.meta.json → 0",
+      "out/tts/tts_wrongkey_20261008.meta.json → 0",
+      "overnight/vpipe/src/tts.py → 0",
+      "overnight/vpipe/tests/test_tts.py → 0"
+    ],
+    "verdict": "完整 key 泄露自检 0 命中（延续 stepfun_smoke_20260930.json:6 合规口径）"
+  },
+  "artifacts_on_gpu": {
+    "audio": "out/tts/tts_smoke_20261008.wav（137804B，24kHz mono wav）",
+    "metas": ["out/tts/tts_smoke_20261008.meta.json", "out/tts/tts_dryrun_20261008.meta.json", "out/tts/tts_wrongkey_20261008.meta.json"]
+  },
+  "open_items": [
+    "克隆闭环（/v1/files→/audio/voices）本轮只过 mock 单测，未花真实调用实测（预算 2/3 已用，留 1 次余量给后续按需验证）",
+    "request_id：/audio/speech 二进制响应头未暴露请求 id，meta 记 null（错误体有 id 时可提取，本轮 401 体亦无）",
+    "同输入两遍一致性仍未测（工程方案v3.1 §5 口径不变），本模块不承诺字节复现"
+  ]
+}
