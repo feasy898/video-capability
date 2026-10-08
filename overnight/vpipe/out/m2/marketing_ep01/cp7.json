@@ -1,0 +1,332 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp7",
+  "artifact_type": "draft_clip",
+  "fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426",
+  "produced_by": "agent.cp7_draft_generator",
+  "produced_at": "2026-10-08T20:52:36Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "bec0afc3bf414ac841c9099979df2398ebc59434a5c82ea96a75355c14c1ad85"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "972211e4b2f6a32be405eed343697c5f811bf6b9b5fb0ae7c7dc8fe9e32acdbe"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "l0_preflight.black_frame_ratio_max",
+    "result": "pass",
+    "note": "黑帧 0：5/5 镜帧级均值<2 计数=0（生成张量与 mp4 端到端回检双侧），black_mono_ratio 全 0.0 ≤ 0.50（thresholds.yaml l0_preflight.black_frame_ratio_max）；NaN=0；逐镜 L0 证据 <shot_id>.draft.l0.json。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "l0_preflight.duration_dev_max",
+      "result": "pass",
+      "note": "5/5 镜实测 1.375s == 声明 1.375s（33帧@24fps，dev=0.0% ≤ 2%，thresholds.yaml l0_preflight.duration_dev_max）。声明值=本批资产规格：任务书固定 33 帧档（spike 验证包络），CP3 分镜声明镜长 2.61–4.78s 与草稿时长差异如实登记于 shots[].cp3_duration_s，节奏预演按帧数比例。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp7.gate.uses_existing_keys",
+      "result": "pass",
+      "note": "NaN/黑帧布尔项=0/0；帧率 24/1、分辨率 704x480（480x704 HxW 口径）符合声明档；ffprobe 三元组逐镜 h264/yuv420p/33帧；确定性抽验 shot_03 二遍生成全帧 MAE=0.0（SPIKE-REPORT ③ 复证）；l0 accepted 判定修正 shortdrama 首跑 str/int 比较缺陷（nb_frames 显式转 int 后比较，阈值零改动）。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "channel": "local_ltx_2b",
+    "model": {
+      "path": "/data/night/models/LTX-Video",
+      "pipeline": "LTXPipeline",
+      "dtype": "float16"
+    },
+    "params": {
+      "num_frames": 33,
+      "height": 480,
+      "width": 704,
+      "steps": 15,
+      "guidance_scale": 3.0,
+      "fps": 24,
+      "seed_rule": "42 + shot ordinal (1-based): shot_02->44 ... shot_06->48"
+    },
+    "prompts_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/cp7_prompts.json",
+    "determinism": {
+      "shot_id": "shot_03",
+      "method": "same seed/params second generation, full-frame MAE",
+      "gen2_s": 4.95,
+      "mae_all_frames": 0.0,
+      "frames_compared": 33,
+      "equal_bits": true
+    },
+    "run_report_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/cp7_run_report.json",
+    "composition_check_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/composition_check.json",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "channel": "api_vidu_avatar_planned",
+        "reason": "口播主体镜按 G9a 专线在 CP9 由 avatar 直出（TTS→gen_avatar.py image+audio 模式，口型由 TTS 音频直驱），不经草稿层——短剧线钩子段已验证该链路；本程（前半程）只设计不调用。",
+        "generated_here": false,
+        "seed": null,
+        "asset": null,
+        "duration_frames": null,
+        "declared_duration_s": null,
+        "actual_duration_s": null,
+        "duration_dev": null,
+        "black_mono_ratio": null,
+        "nan_detected": null,
+        "l0_preflight": {
+          "accepted": null,
+          "evidence_ref": null
+        },
+        "cp3_duration_s": 4.78,
+        "cp3_action_zh": "明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感",
+        "prompt_en": null,
+        "note": "口播镜不跑 LTX 草稿：G9a 数字人专线 CP9 由 avatar 直出（TTS→gen_avatar.py image+audio 模式，口型由 TTS 音频直驱），短剧线钩子段已验证该链路；本程（前半程）只设计不调用 avatar。口播台词=CP2 seg_01（22 字，估时 4.78s，avatar 计费按音频实长 ceil，≈5 vidu 积分，1 积分/s 官方定价）。"
+      },
+      {
+        "shot_id": "shot_02",
+        "channel": "local_ltx_2b",
+        "prompt_en": "Close-up with a slow push-in: an amber glass reed diffuser bottle standing on a round wooden base, natural rattan reeds fanning out of the bottle neck, soft daylight from a bedroom window, background melting into warm bokeh, the bottle geometry stays perfectly rigid",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 44,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "6aa22e680901479121c49bc0608f1bc3b67cb2a2695ab8f027712fff5b03c3a4",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_02.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 2.83,
+        "cp3_action_zh": "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_02.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "126161"
+        },
+        "mp4_md5": "9fdde4959728d0ee1e9aaed51748f9eb",
+        "gen_s": 5.25,
+        "encode_s": 0.357,
+        "shot_wall_s": 5.87
+      },
+      {
+        "shot_id": "shot_03",
+        "channel": "local_ltx_2b",
+        "prompt_en": "Extreme close-up, static camera: natural rattan reeds standing in the neck of an amber glass diffuser bottle, gentle light glints sliding along the glass shoulder, dark soft bedroom background, the bottle and reeds keep a perfectly rigid unchanged shape",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 45,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "83eafc280432abf1e3cdd4ca58812d0ef940de37e0715dcc535c3438455f62a1",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_03.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 4.13,
+        "cp3_action_zh": "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_03.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "156858"
+        },
+        "mp4_md5": "d1f234e3a9428b89a758ea52f208410b",
+        "gen_s": 4.94,
+        "encode_s": 0.251,
+        "shot_wall_s": 5.45
+      },
+      {
+        "shot_id": "shot_04",
+        "channel": "local_ltx_2b",
+        "prompt_en": "Medium close-up, static camera: a woman's hand gently swaps and tilts the rattan reeds of an amber glass diffuser bottle on a wooden bedside table beside a warm glowing lamp, cozy evening bedroom, slow calm motion, five distinct fingers",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 46,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "d6121b6d3803a61acfc78a99838a562b00521c239429ee6a3b385d31b5830f52",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_04.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 3.04,
+        "cp3_action_zh": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_04.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "270772"
+        },
+        "mp4_md5": "2748c268ffc2eaa0d7a174dfe23a484d",
+        "gen_s": 4.94,
+        "encode_s": 0.298,
+        "shot_wall_s": 5.48
+      },
+      {
+        "shot_id": "shot_05",
+        "channel": "local_ltx_2b",
+        "prompt_en": "Wide shot, static camera: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 47,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "9741c2021dd49f9ecb87b200201050c223885c7cea6cce82345aecd9bedcf8cb",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_05.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 2.83,
+        "cp3_action_zh": "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_05.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "117282"
+        },
+        "mp4_md5": "ad7d052a135ee5b83505e0d88b7e1c6c",
+        "gen_s": 4.92,
+        "encode_s": 0.251,
+        "shot_wall_s": 5.41
+      },
+      {
+        "shot_id": "shot_06",
+        "channel": "local_ltx_2b",
+        "prompt_en": "Medium close-up with a slow push-in: an amber glass reed diffuser bottle with a round wooden base on a bedside table, warm lamp rim light, soft dusk window glow behind, clean empty space in the upper frame, premium calm product showcase, the bottle shape stays rigid",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 48,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "f4548e21079a980afea5303c2e089653237f3a7be5f9a046dec4c87b2c47f77c",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_06.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 2.61,
+        "cp3_action_zh": "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_06.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "134865"
+        },
+        "mp4_md5": "c3751f2507ca4bd18fc575411ecec2bc",
+        "gen_s": 4.92,
+        "encode_s": 0.28,
+        "shot_wall_s": 5.45
+      }
+    ]
+  },
+  "notes": "聚合工件（任务书要求形态 payload.shots[]，6 条=1 avatar planned + 5 LTX 草稿镜，逐镜留痕 asset/pixel/fps/declared_vs_actual/black_mono_ratio/nan_detected/seed/l0_preflight/prompt_en）。⚠ 契约矛盾声明：checkpoint.schema.json definitions.draft_clip 为单镜形态（additionalProperties:false + 顶层单镜必备字段），payload.shots[] 与「过 checkpoint.schema cp7 分支」按现行契约不可同时成立；契约自身粒度为每镜一件（contracts/v2/examples/cp7.json notes「本集 4 镜各一份」）。本件按任务书原样落盘并如实记录其 jsonschema exit，合规形态见 cp7_shot_02..06.json（5/5 过 schema）。两者裁决留 owner（shortdrama 同款处置）。【口播镜 avatar planned】payload.shots[0]=shot_01 登记 channel=api_vidu_avatar_planned、reason=口播主体镜按 G9a 专线在 CP9 由 avatar 直出（TTS→gen_avatar.py image+audio，口型由 TTS 音频直驱），不经草稿层——短剧线钩子段已验证该链路；本程只设计不调用（无 asset/无生成证据字段，逐项 null 如实留痕，不冒充生成）。【硬条件】英文 prompt 层（SPIKE-REPORT 发现 A，中文直喂=100% 废片）；色偏为 checkpoint 固有（发现 B）只记录不修——草稿色彩不可依赖，CP8 择优与 CP9 精修不看草稿色彩；确定性 shot_03 同参数二遍全帧 MAE=0.0（发现 ③ 复证）。【构图亲检】5/5 镜中点帧目检（composition_check.json）：镜别/主体/构图/留白与 CP3 声明一致，全帧无文字无水印（G2 草稿层干净）；shot_04 手部解剖草稿级可用（G1 终稿由 CP9/CP12 把守）。【时长口径】任务书固定 33 帧档（480x704 HxW/15步/guidance 3.0/24fps），declared=1.375s 为资产规格，L0 时长门禁校验编码一致性（实测=声明，dev=0.0%）；CP3 镜长 2.61–4.78s 与草稿差异逐镜登记于 shots[].cp3_duration_s。【红线】只卡 0：起跑前卡0=310MiB/卡1=26706MiB 未触碰；全程卡0 nvidia-smi 峰值 18776MiB（本进程）；跑前复测通过才发车（preflight card0=310MiB ≤1024MiB）；不 kill/不 pip/不下载（HF_HUB_OFFLINE=1）。等待窗口：发车前卡 0 被同仓 comicanime_ep01 CP7 任务占用（18466MiB，pid 1977792），按红线等待其自然结束后于 310MiB 基线发车，未触碰他任务。"
+}

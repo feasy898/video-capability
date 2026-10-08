@@ -1,0 +1,81 @@
+{
+  "task": "cp7-draft-generation-marketing_ep01",
+  "generated_at": "2026-10-09T04:48:50+0800",
+  "params": {
+    "height": 480,
+    "width": 704,
+    "num_frames": 33,
+    "num_inference_steps": 15,
+    "guidance_scale": 3.0,
+    "seed_rule": "42 + shot ordinal (1-based): shot_02->44 ... shot_06->48",
+    "fps_out": 24,
+    "declared_duration_s_per_clip": 1.375,
+    "negative_prompt": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles"
+  },
+  "avatar_planned": {
+    "shot_id": "shot_01",
+    "channel": "api_vidu_avatar_planned",
+    "reason": "口播主体镜按 G9a 专线在 CP9 由 avatar 直出（TTS→gen_avatar.py image+audio 模式，口型由 TTS 音频直驱），不经草稿层——短剧线钩子段已验证该链路；本程（前半程）只设计不调用。",
+    "generated_here": false
+  },
+  "shots": [
+    {
+      "shot_id": "shot_02",
+      "seed": 44,
+      "action_zh": "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变",
+      "prompt_en": "Close-up with a slow push-in: an amber glass reed diffuser bottle standing on a round wooden base, natural rattan reeds fanning out of the bottle neck, soft daylight from a bedroom window, background melting into warm bokeh, the bottle geometry stays perfectly rigid",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_03",
+      "seed": 45,
+      "action_zh": "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变",
+      "prompt_en": "Extreme close-up, static camera: natural rattan reeds standing in the neck of an amber glass diffuser bottle, gentle light glints sliding along the glass shoulder, dark soft bedroom background, the bottle and reeds keep a perfectly rigid unchanged shape",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_04",
+      "seed": 46,
+      "action_zh": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存",
+      "prompt_en": "Medium close-up, static camera: a woman's hand gently swaps and tilts the rattan reeds of an amber glass diffuser bottle on a wooden bedside table beside a warm glowing lamp, cozy evening bedroom, slow calm motion, five distinct fingers",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_05",
+      "seed": 47,
+      "action_zh": "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰",
+      "prompt_en": "Wide shot, static camera: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_06",
+      "seed": 48,
+      "action_zh": "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存",
+      "prompt_en": "Medium close-up with a slow push-in: an amber glass reed diffuser bottle with a round wooden base on a bedside table, warm lamp rim light, soft dusk window glow behind, clean empty space in the upper frame, premium calm product showcase, the bottle shape stays rigid",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_01",
+      "seed": null,
+      "action_zh": "明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感",
+      "prompt_en": null,
+      "channel": "api_vidu_avatar_planned",
+      "note": "口播主体镜不跑 LTX 草稿：G9a 专线 CP9 由 avatar 直出（TTS→gen_avatar.py image+audio，口型由 TTS 音频直驱），短剧线钩子段已验证；本程只设计不调用。"
+    }
+  ]
+}

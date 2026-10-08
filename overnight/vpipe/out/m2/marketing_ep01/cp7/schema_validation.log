@@ -1,0 +1,7 @@
+out/m2/marketing_ep01/cp7/cp7_shot_02.json: schema PASS (cp7_draft_clip)
+out/m2/marketing_ep01/cp7/cp7_shot_03.json: schema PASS (cp7_draft_clip)
+out/m2/marketing_ep01/cp7/cp7_shot_04.json: schema PASS (cp7_draft_clip)
+out/m2/marketing_ep01/cp7/cp7_shot_05.json: schema PASS (cp7_draft_clip)
+out/m2/marketing_ep01/cp7/cp7_shot_06.json: schema PASS (cp7_draft_clip)
+out/m2/marketing_ep01/cp7.json: schema FAIL (cp7_draft_clip): Additional properties are not allowed ('composition_check_ref', 'determinism', 'model', 'params', 'prompts_ref', 'run_report_ref', 'shots' were unexpected)
+aggregate jsonschema exit: 1 （聚合形态为已知契约矛盾，shortdrama 同款如实记录）

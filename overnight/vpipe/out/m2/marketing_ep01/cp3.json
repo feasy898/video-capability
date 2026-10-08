@@ -1,0 +1,148 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T20:45:04Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "68fc5f34b8d03e1a5b854d044d2430433c508b90f35f12a97b26148a4afba168"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pass",
+    "note": "6 镜最长 shot_03=4.13s ≤ 15.0s（checkpoints.cp3.gate.max_shot_duration_s=15.0；H3 实测 4–15s，VDL_v2_草案 R3），validate_cp3.py 实跑 exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.word_anchor_valid",
+      "result": "pass",
+      "note": "6 处词锚 @{…} 剥壳后均为对应 segment narration_text 连续子串（checkpoints.cp3.gate.word_anchor_valid=true），validate_cp3.py 实跑核过。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.shot_line_count_match",
+      "result": "pass",
+      "note": "镜头数 6 == CP2 台词条数 6（逐行一拍一镜，cp2.gate.line_shot_ratio 的等式另一侧；checkpoints.cp3.gate.shot_line_count_match=true），validate_cp3.py 实跑核过。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "source_script_fingerprint": "68fc5f34b8d03e1a5b854d044d2430433c508b90f35f12a97b26148a4afba168",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 4.78,
+        "action": "明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感",
+        "refs": [
+          "cast_host"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{雪松香薰}",
+            "segment_id": "seg_01"
+          }
+        ],
+        "channel_hint": "api_vidu_avatar"
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "close",
+        "move": "push_in",
+        "duration_s": 2.83,
+        "action": "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变",
+        "refs": [
+          "prop_diffuser_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{越闻越安神}",
+            "segment_id": "seg_02"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "extreme_close",
+        "move": "static",
+        "duration_s": 4.13,
+        "action": "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变",
+        "refs": [
+          "prop_diffuser_01",
+          "prop_reeds_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{拨拨藤条}",
+            "segment_id": "seg_03"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_04",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 3.04,
+        "action": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存",
+        "refs": [
+          "cast_host",
+          "prop_diffuser_01",
+          "prop_reeds_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{搬进卧室}",
+            "segment_id": "seg_04"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_05",
+        "shot_scale": "wide",
+        "move": "static",
+        "duration_s": 2.83,
+        "action": "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰",
+        "refs": [
+          "prop_diffuser_01",
+          "prop_bedside_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{摆哪都好看}",
+            "segment_id": "seg_05"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_06",
+        "shot_scale": "medium_close",
+        "move": "push_in",
+        "duration_s": 2.61,
+        "action": "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存",
+        "refs": [
+          "prop_diffuser_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{今晚下单}",
+            "segment_id": "seg_06"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      }
+    ]
+  },
+  "notes": "《雪松晚安香》20s 营销分镜表：6 镜一一对应 CP2 seg_01–seg_06（逐行一拍一镜），Σ duration_s=20.22s 与 CP2 estimated_total_duration_s 逐镜守恒（每镜 duration_s=该段 estimated_duration_s，供 CP6 时间线直接承接）。【镜型对位 mk01 先验】shot_01 口播镜（mk01 idx1 大口播镜位）→ shot_02/03 产品特写插入镜（mk01 idx2/3 产品特写位）→ shot_04 使用镜（mk01 idx4 上手使用位）→ shot_05 产品全景镜（mk01 idx5 俯拍全景位）→ shot_06 CTA 收尾镜（mk01 idx6 举瓶收尾位）；mk01 口播镜 68% 时长占比在 20s 线+逐行一拍一镜约束下适配为「最长单镜+全片 VO 贯穿」（见 CP1 notes 结构先验适配说明）。【景别/运镜分配】口播镜 medium_close 固定机位（自拍视角，mk01 口播镜同款）；产品镜特写/微距（shot_02 缓推、shot_03 微距静止）；使用镜 medium_close（手部动作镜，G1 禁区投影）；全景镜 wide 静止（场景卖点）；CTA 镜 medium_close 缓推（留白构图供后期字牌）。【refs 红线】全部 9 个 ref 解析到 CP2 payload.cast/props 4 项注册表（cast_host/prop_diffuser_01/prop_reeds_01/prop_bedside_01），validate_cp3.py ⑦ 实跑核过。【词锚红线】6 处词锚 @{…} 形式（SVML 词形），逐条=对应 segment narration_text 连续子串，validate_cp3.py ③ 实跑核过。【禁区投影】CP1/CP2 禁区投影到镜级：prop_diffuser_01/prop_reeds_01 G7 恒存不形变（shot_02/03/04/05/06 action）；画面无可读文字元素，产品名/价格/链接只走CP10 后期字牌（沿 CP2 small_text_policy=post_render_plate）；shot_04 手部动作镜登记 G1 禁区投影。【通道】shot_01 channel_hint=api_vidu_avatar（口播主体镜走 G9a 数字人专线，CP9 由 avatar 直出，不经草稿层）；shot_02–06 channel_hint=api_h3max（产品/场景镜终稿走 H3-Max，model_tiers.yaml:257；草稿层走 local_ltx_2b 见 CP7）。【指纹】fingerprint 与 payload.source_script_fingerprint、upstream_refs[0].fingerprint 三处同源：前者=sha256(本工件 canonical payload)（src/gate/fingerprint.py compute 同算法），后两者=对 cp2.json 实算值（fingerprint.py compute 实跑，与 CP2 声明值一致）。【无 during】逐行一拍一镜无需跨镜引用，④⑤ 两条按无可判项通过；营销线 CP3 人工介入按 TASK_v4 §3.3 「可省（直接照模板）」，本件按 mk01 模板直出，机判七条全过，构图判读留 owner 灰区通道。"
+}

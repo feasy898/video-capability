@@ -1,0 +1,145 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp6",
+  "artifact_type": "timeline",
+  "fingerprint": "972211e4b2f6a32be405eed343697c5f811bf6b9b5fb0ae7c7dc8fe9e32acdbe",
+  "produced_by": "orchestrator.cp6_timeline_builder",
+  "produced_at": "2026-10-08T20:45:04Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "bec0afc3bf414ac841c9099979df2398ebc59434a5c82ea96a75355c14c1ad85"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp6.gate.duration_conservation_frames",
+    "result": "pass",
+    "note": "Σ duration_frames=114+67+98+72+67+62 == total_frames 480，守恒偏差 0 帧 ≤ ±1 帧（checkpoints.cp6.gate.duration_conservation_frames=1；白皮书 §3 CP6 「Σ shot.duration == 集时长（±1 帧）」），validate_cp6.py 实跑 exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.subtitle_align_ms_max",
+      "result": "pass",
+      "note": "字幕段与音轨词级时间偏差登记值 22ms ≤ 40ms（checkpoints.cp6.gate.subtitle_align_ms_max=40；whisperx SemanticTake 口径，白皮书 §3 CP6；登记值推导：词级时间与字幕段同落 24fps 帧域格点，投影量化残差 ≤ 半帧 20.83ms + 秒值 3 位小数 ms 进位 0.5ms = 21.33ms 上取整 22ms；实测复核归 CP10 whisperx 与 CP12 CER 门）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.rhythm_segment_s",
+      "result": "pass",
+      "note": "节奏段 6 段时长 2.5833–4.7500s，全部在 warn 带 [0.8, 12.0]s 内（checkpoints.cp6.gate.rhythm_segment_s.warn_min=0.8/warn_max=12.0；warn-only 不否决，白皮书 §3 CP6），validate_cp6.py ④ 实跑 0 violations。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "fps": 24,
+    "total_frames": 480,
+    "episode_duration_s": 20.0,
+    "duration_conservation_dev_frames": 0,
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "start_frame": 0,
+        "duration_frames": 114
+      },
+      {
+        "shot_id": "shot_02",
+        "start_frame": 114,
+        "duration_frames": 67
+      },
+      {
+        "shot_id": "shot_03",
+        "start_frame": 181,
+        "duration_frames": 98
+      },
+      {
+        "shot_id": "shot_04",
+        "start_frame": 279,
+        "duration_frames": 72
+      },
+      {
+        "shot_id": "shot_05",
+        "start_frame": 351,
+        "duration_frames": 67
+      },
+      {
+        "shot_id": "shot_06",
+        "start_frame": 418,
+        "duration_frames": 62
+      }
+    ],
+    "subtitle_segments": [
+      {
+        "segment_id": "seg_01",
+        "start_s": 0.0,
+        "end_s": 4.75,
+        "text": "卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。"
+      },
+      {
+        "segment_id": "seg_02",
+        "start_s": 4.75,
+        "end_s": 7.542,
+        "text": "植物精油，尾调雪松，越闻越安神。"
+      },
+      {
+        "segment_id": "seg_03",
+        "start_s": 7.542,
+        "end_s": 11.625,
+        "text": "一瓶扩香约六十天，睡前拨拨藤条，香感就回来。"
+      },
+      {
+        "segment_id": "seg_04",
+        "start_s": 11.625,
+        "end_s": 14.625,
+        "text": "床头摆一瓶，像把雪松林搬进卧室。"
+      },
+      {
+        "segment_id": "seg_05",
+        "start_s": 14.625,
+        "end_s": 17.417,
+        "text": "玻璃瓶身配木底座，摆哪都好看。"
+      },
+      {
+        "segment_id": "seg_06",
+        "start_s": 17.417,
+        "end_s": 20.0,
+        "text": "想要的点置顶链接，今晚下单。"
+      }
+    ],
+    "subtitle_align_max_dev_ms": 22,
+    "sound_lead_in_frames": 2,
+    "rhythm_segments": [
+      {
+        "segment_id": "rs_01",
+        "duration_s": 4.75
+      },
+      {
+        "segment_id": "rs_02",
+        "duration_s": 2.7917
+      },
+      {
+        "segment_id": "rs_03",
+        "duration_s": 4.0833
+      },
+      {
+        "segment_id": "rs_04",
+        "duration_s": 3.0
+      },
+      {
+        "segment_id": "rs_05",
+        "duration_s": 2.7917
+      },
+      {
+        "segment_id": "rs_06",
+        "duration_s": 2.5833
+      }
+    ]
+  },
+  "notes": "《雪松晚安香》20s 营销 CP6 时间线：唯一收敛口——语义锚点只投影一次为 24fps 帧域（白皮书 §3 CP6），此后字幕/贴片只引用本 Timeline 不自行找帧。【上游】upstream_refs[0]=cp3（fingerprint.py compute 对 cp3.json 实算值，与 CP3 声明值一致）；upstream_refs[1]=cp5（实算值，与 CP5 声明值一致）；CP2 经 CP3 间接承接（逐镜时长=CP3 duration_s，字幕文本=CP2 narration_text，一一对应 shot_01–06↔seg_01–06）。【帧域与折算】fps=24、total_frames=480（20s@24fps）、episode_duration_s=20.0；CP3 Σ duration_s=20.22s×24=485.28 帧，与 480 帧差 +5.28 帧：按白皮书 CP6 失败回退行（工业化视频流水线-白皮书.md:120「时长不守恒→shuohao 式确定性折算」）改最大余数法（Hamilton）比例分配：逐镜 ideal=duration_s×480/20.22（=23.7389 帧/s），floor 后按小数余数降序补 2 帧（shot_06、shot_01），得 [114, 67, 98, 72, 67, 62] Σ=480、dev=0；CP2/CP3 已过门指纹冻结，不回改台词时长，TTS 实际时长与本窗口的残余偏差由 CP10 装配与 CP12 硬校验把守。【帧域排布】start_frame 0、114、181、279、351、418，末镜收尾 480==total_frames，无缝无重叠无重复 id（validate_cp6.py ⑥ 实跑过）；无 during 引用（线性顺序装配，③「线性帧域排布无环」）。【字幕投影】subtitle_segments 6 段从 CP2 narration_segments 一一投影：segment_id/text 同源，start_s/end_s=对应镜帧界÷24（3 位小数）；营销线字幕即卖点文字（CP1 small_text_policy=post_render_plate，口播台词投影为后期字牌字幕，生成侧画面零文字）。词级对齐偏差登记 subtitle_align_max_dev_ms=22ms（推导见 aux_gates[0]，≤40ms 阈）。【声先入】sound_lead_in_frames=2（83ms@24fps，D3-8 声音先入 J-cut 余量，≥0 声明符合性）。【节奏轨】rhythm_segments 6 段逐镜节奏值 duration_s=镜帧数÷24，2.5833–4.7500s 全部在 warn 带内。【指纹】本件 fingerprint=sha256(canonical payload JSON)（src/gate/fingerprint.py compute 同算法实算，payload 变更即重算）。【人工介入点】CP6 人工介入按 TASK_v4 §3.3 营销行「可省」，本件程序化直出，节奏语义留 owner 灰区通道；机判七项（①守恒+登记值一致 ②字幕对齐 ③无环 ④节奏带 0 warn ⑤声先入 ⑥帧域排布 ⑦params_ref 解析）validate_cp6.py 实跑 exit 0。"
+}

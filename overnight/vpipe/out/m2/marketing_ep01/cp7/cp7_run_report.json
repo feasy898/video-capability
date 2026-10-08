@@ -1,0 +1,266 @@
+{
+  "task": "cp7-draft-generation-marketing_ep01",
+  "host": "anolis-gpu-01",
+  "generated_at": "2026-10-09T04:48:50+0800",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "dtype": "float16",
+    "pipeline": "LTXPipeline"
+  },
+  "params": {
+    "height": 480,
+    "width": 704,
+    "num_frames": 33,
+    "num_inference_steps": 15,
+    "guidance_scale": 3.0,
+    "seed_rule": "42 + shot ordinal (1-based): shot_02->44 ... shot_06->48",
+    "fps_out": 24,
+    "declared_duration_s_per_clip": 1.375,
+    "negative_prompt": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles"
+  },
+  "avatar_planned": {
+    "shot_id": "shot_01",
+    "channel": "api_vidu_avatar_planned",
+    "reason": "口播主体镜按 G9a 专线在 CP9 由 avatar 直出（TTS→gen_avatar.py image+audio 模式，口型由 TTS 音频直驱），不经草稿层——短剧线钩子段已验证该链路；本程（前半程）只设计不调用。",
+    "generated_here": false
+  },
+  "shots": [
+    {
+      "shot_id": "shot_02",
+      "seed": 44,
+      "gen_s": 5.25,
+      "torch_peak_mib": 16623.3,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 147.455,
+        "frame_mean_max": 148.014,
+        "frame_mean_overall": 147.753
+      },
+      "encode_s": 0.357,
+      "mp4_md5": "9fdde4959728d0ee1e9aaed51748f9eb",
+      "mp4_sha256": "6aa22e680901479121c49bc0608f1bc3b67cb2a2695ab8f027712fff5b03c3a4",
+      "mp4_size_bytes": 21684,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "126161"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 107.033,
+        "frame_mean_overall": 107.116
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "cp3_action_zh": "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变",
+      "l0_accepted": true,
+      "l0_evidence": "shot_02.draft.l0.json",
+      "shot_wall_s": 5.87
+    },
+    {
+      "shot_id": "shot_03",
+      "seed": 45,
+      "gen_s": 4.94,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 40.064,
+        "frame_mean_max": 40.561,
+        "frame_mean_overall": 40.42
+      },
+      "encode_s": 0.251,
+      "mp4_md5": "d1f234e3a9428b89a758ea52f208410b",
+      "mp4_sha256": "83eafc280432abf1e3cdd4ca58812d0ef940de37e0715dcc535c3438455f62a1",
+      "mp4_size_bytes": 26960,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "156858"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 213.093,
+        "frame_mean_overall": 213.181
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "cp3_action_zh": "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变",
+      "l0_accepted": true,
+      "l0_evidence": "shot_03.draft.l0.json",
+      "shot_wall_s": 5.45
+    },
+    {
+      "shot_id": "shot_04",
+      "seed": 46,
+      "gen_s": 4.94,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 86.487,
+        "frame_mean_max": 87.964,
+        "frame_mean_overall": 86.945
+      },
+      "encode_s": 0.298,
+      "mp4_md5": "2748c268ffc2eaa0d7a174dfe23a484d",
+      "mp4_sha256": "d6121b6d3803a61acfc78a99838a562b00521c239429ee6a3b385d31b5830f52",
+      "mp4_size_bytes": 46539,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "270772"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 166.985,
+        "frame_mean_overall": 168.008
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "cp3_action_zh": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存",
+      "l0_accepted": true,
+      "l0_evidence": "shot_04.draft.l0.json",
+      "shot_wall_s": 5.48
+    },
+    {
+      "shot_id": "shot_05",
+      "seed": 47,
+      "gen_s": 4.92,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 93.469,
+        "frame_mean_max": 94.147,
+        "frame_mean_overall": 93.944
+      },
+      "encode_s": 0.251,
+      "mp4_md5": "ad7d052a135ee5b83505e0d88b7e1c6c",
+      "mp4_sha256": "9741c2021dd49f9ecb87b200201050c223885c7cea6cce82345aecd9bedcf8cb",
+      "mp4_size_bytes": 20158,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "117282"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 161.081,
+        "frame_mean_overall": 161.174
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "cp3_action_zh": "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰",
+      "l0_accepted": true,
+      "l0_evidence": "shot_05.draft.l0.json",
+      "shot_wall_s": 5.41
+    },
+    {
+      "shot_id": "shot_06",
+      "seed": 48,
+      "gen_s": 4.92,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 140.083,
+        "frame_mean_max": 140.832,
+        "frame_mean_overall": 140.592
+      },
+      "encode_s": 0.28,
+      "mp4_md5": "c3751f2507ca4bd18fc575411ecec2bc",
+      "mp4_sha256": "f4548e21079a980afea5303c2e089653237f3a7be5f9a046dec4c87b2c47f77c",
+      "mp4_size_bytes": 23180,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "134865"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 114.112,
+        "frame_mean_overall": 114.427
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "cp3_action_zh": "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存",
+      "l0_accepted": true,
+      "l0_evidence": "shot_06.draft.l0.json",
+      "shot_wall_s": 5.45
+    }
+  ],
+  "errors": [],
+  "preflight": {
+    "ts": "2026-10-09T04:48:52+0800",
+    "card0_used_mib": 310,
+    "card1_used_mib": 26706
+  },
+  "gpu": {
+    "name": "Tesla V100S-PCIE-32GB",
+    "capability": "7.0",
+    "bf16_supported": true
+  },
+  "git_head": "fdaa1cd386502dcbcf0f38f07f24edba9cd35b9b",
+  "determinism": {
+    "shot_id": "shot_03",
+    "method": "same seed/params second generation, full-frame MAE",
+    "gen2_s": 4.95,
+    "mae_all_frames": 0.0,
+    "frames_compared": 33,
+    "equal_bits": true
+  },
+  "timing_s": {
+    "load": 9.12,
+    "total": 48.11,
+    "gen_sum": 24.97,
+    "encode_sum": 1.44
+  },
+  "vram": {
+    "baseline_used_mib": 310,
+    "nvidia_smi_max_used_mib": 18776,
+    "nvidia_smi_samples": 24
+  },
+  "ok": true
+}

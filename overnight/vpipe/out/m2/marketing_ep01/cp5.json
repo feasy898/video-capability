@@ -1,0 +1,382 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp5",
+  "artifact_type": "blocking",
+  "fingerprint": "bec0afc3bf414ac841c9099979df2398ebc59434a5c82ea96a75355c14c1ad85",
+  "produced_by": "agent.blockingCompiler",
+  "produced_at": "2026-10-08T20:45:04Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp5.gate.pose_frame_max",
+    "result": "pass",
+    "note": "1 序列 frame_count=96（20fps 采样口径沿 examples/cp5.json 样例 1.2s↔24 帧，frame_count=ceil(CP3 duration_s×20)）；超上限 72，按白皮书 §3 CP5 失败回退行分段，known_cuts 登记 1 个切点 3.6s（=72 帧/20fps 段界，切点数满足 ceil(F/72)-1=1）（checkpoints.cp5.gate.pose_frame_max=72），validate_cp5.py 实跑 exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp5.gate.frame_time_monotonic",
+      "result": "pass",
+      "note": "全部 8 条轨道 frames[].time 严格递增、≥0（checkpoints.cp5.gate.frame_time_monotonic=true），validate_cp5.py ② 实跑核过。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp5.gate.speech_fullbody_lip_layer",
+      "result": "pass",
+      "note": "1 序列所在镜（shot_01）为口播镜（CP2 seg_01 narration_text 为主播台词），speech_mode=independent_lip_layer：口型由音频驱动独立口型层合成、与全身姿态序列解耦——本线口播段走 G9a 数字人专线（CP9 gen_avatar.py image+audio 模式，口型由 TTS 音频直接驱动），独立口型层路径声明成立；无 requires_split_shot 序列（该值按白皮书判 fail 退回 CP3 拆镜，本集 CP3 已过门指纹冻结）；口型质量由 CP12 LSE-D 门按特写/近景把守，validate_cp5.py ⑤ 实跑核过。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "sequences": [
+      {
+        "shot_id": "shot_01",
+        "joint_names": [
+          "hips",
+          "spine",
+          "neck",
+          "head",
+          "leftShoulder",
+          "leftElbow",
+          "leftWrist",
+          "rightShoulder",
+          "rightElbow",
+          "rightWrist",
+          "leftHip",
+          "leftKnee",
+          "leftAnkle",
+          "rightHip",
+          "rightKnee",
+          "rightAnkle"
+        ],
+        "bone_length_constant": true,
+        "speech_mode": "independent_lip_layer",
+        "tracks": [
+          {
+            "joint": null,
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 0.6,
+                "rotation": {
+                  "x": 0,
+                  "y": 0.02,
+                  "z": 0
+                }
+              },
+              {
+                "time": 1.6,
+                "rotation": {
+                  "x": 0,
+                  "y": 0.05,
+                  "z": 0
+                }
+              },
+              {
+                "time": 2.8,
+                "rotation": {
+                  "x": 0.03,
+                  "y": 0.03,
+                  "z": 0
+                }
+              },
+              {
+                "time": 3.6,
+                "rotation": {
+                  "x": 0.02,
+                  "y": 0.06,
+                  "z": 0
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": 0.05,
+                  "y": 0.02,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          {
+            "joint": "spine",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0.02,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": 0.12,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 2.5,
+                "rotation": {
+                  "x": 0.08,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": 0.06,
+                  "y": 0,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          {
+            "joint": "head",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 0.8,
+                "rotation": {
+                  "x": 0.08,
+                  "y": -0.05,
+                  "z": 0
+                }
+              },
+              {
+                "time": 2.0,
+                "rotation": {
+                  "x": 0.02,
+                  "y": 0.06,
+                  "z": 0
+                }
+              },
+              {
+                "time": 3.2,
+                "rotation": {
+                  "x": 0.1,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": 0.05,
+                  "y": -0.03,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          {
+            "joint": "rightShoulder",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": -0.15
+                }
+              },
+              {
+                "time": 1.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": -0.8
+                }
+              },
+              {
+                "time": 2.4,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": -1.0
+                }
+              },
+              {
+                "time": 3.6,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": -0.75
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": -0.6
+                }
+              }
+            ]
+          },
+          {
+            "joint": "rightElbow",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": -0.25,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 1.0,
+                "rotation": {
+                  "x": -1.1,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 2.4,
+                "rotation": {
+                  "x": -1.35,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": -1.1,
+                  "y": 0,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          {
+            "joint": "rightWrist",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0.05,
+                  "z": 0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": 0,
+                  "y": -0.35,
+                  "z": 0
+                }
+              },
+              {
+                "time": 2.6,
+                "rotation": {
+                  "x": 0,
+                  "y": -0.55,
+                  "z": 0
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": 0,
+                  "y": -0.45,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          {
+            "joint": "leftShoulder",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0.15
+                }
+              },
+              {
+                "time": 2.0,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0.35
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0.3
+                }
+              }
+            ]
+          },
+          {
+            "joint": "leftElbow",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": -0.2,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 2.0,
+                "rotation": {
+                  "x": -0.6,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "time": 4.7,
+                "rotation": {
+                  "x": -0.5,
+                  "y": 0,
+                  "z": 0
+                }
+              }
+            ]
+          }
+        ],
+        "frame_count": 96,
+        "known_cuts": [
+          3.6
+        ]
+      }
+    ]
+  },
+  "notes": "《雪松晚安香》EP1 CP5 动作脚本：上游=cp3.json（upstream_refs[0].fingerprint=fingerprint.py compute 对 cp3.json 实算值，与 CP3 声明值一致）；本件 fingerprint=sha256(canonical payload JSON)（fingerprint.py 同算法实算，payload 变更即重算）。【词表】16 关节 joint_names 与 track.joint 词表由 checkpoint.schema.json definitions.blocking properties.sequences.items 的 joint_names/joint 枚举原序写入（非手打；ToonFlow director3dNode mannequin schema，cheap-draft-and-programmatic-tools.md:57-59），joint=null 为根轨道（控制整体姿态，同词表）。【序列范围】只给 1 个需要指定动作的镜写姿态序列：shot_01 口播镜（半身姿态序列——root 微晃、spine 前倾 hook、head 点头/微偏、右手开掌示意-收、左臂低位辅助手势；营销口播手势幅度小节奏稳，帧区间覆盖全镜 0–4.7s）；关节轨道只为本镜实际驱动的关节建轨，未驱动关节不建轨（词表全集仍在 joint_names 声明；半身取景下肢不出画不建轨）。【no_blocking_needed】其余 5 镜无 blocking 序列，逐镜理由：shot_02（静物产品特写，无人物主体，运动=CP3 已声明的 push_in 单一缓推，无可编排骨架对象）；shot_03（藤条微距静物镜，无人物主体，无可编排骨架对象）；shot_04（使用镜主体动作为指尖拨藤条——16 关节 mannequin 词表无手指关节，腕以下微动作超出骨架表达域，沿 shortdrama cp5 shot_06 同口径，指尖姿态由 CP4 关键帧锁定）；shot_05（卧室全景静物镜，无人物主体）；shot_06（产品收尾静物镜，无人物主体，留白构图由 CP4 锁定）。【no_blocking_needed 落点说明】契约 definitions.blocking additionalProperties=false 只收 work_id/sequences 两键，payload 级结构化声明被 s0 契约外字段拒收（shortdrama 第 1 轮实跑 exit 1 实证），故沿 examples/cp5.json 同款处置落 notes（本段即正式声明），理由逐镜在案。【采样与分段】20fps 采样口径沿 examples/cp5.json 样例（1.2s↔24 帧），frame_count=ceil(CP3 duration_s×20)=96；MimicMotion 72 帧窗口=3.6s：超限分段，known_cuts 登记切点 3.6s（72 帧/20fps 段界，切点数满足 ceil(F/72)-1，progressive latent fusion 拼接），下游 CP11 汇入合成层 known_cuts 白名单（容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）。【rotation-only】全部帧对象只含 {time,rotation}，rotation=相对父关节 XYZ 欧拉角弧度、值域 ±1.35 rad 在 schema ±2π 界内，无 scale/translation/position/location 通道，bone_length_constant=true（骨长恒定结构不变量）。【speech_mode】1 序列为口播镜标 independent_lip_layer（独立口型层路径=音频驱动口型层与全身姿态序列解耦；本线口播段由 G9a 数字人专线在 CP9 以 TTS 音频直驱口型，validate_cp5.py ⑤ 认可该声明），无 requires_split_shot。【人工介入点】CP5 人工介入按 TASK_v4 §3.3 营销行「可省（程序化模板）」，本件按程序化口播手势模板生成，动作语义留 owner 灰区通道；机判 s0+①-⑥+s1 八项全过（validate_cp5.py exit 0）。"
+}

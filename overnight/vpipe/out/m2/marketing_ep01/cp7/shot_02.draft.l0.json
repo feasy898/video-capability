@@ -1,0 +1,23 @@
+{
+  "shot_id": "shot_02",
+  "asset": "shot_02.draft.mp4",
+  "ts": "2026-10-09T04:49:14+0800",
+  "thresholds_ref": "eval/thresholds.yaml l0_preflight（:224-233 v3 段）",
+  "checks": {
+    "black_frames_tensor_lt2": 0,
+    "black_frames_decoded_lt2": 0,
+    "nan_count_tensor": 0,
+    "duration_dev": 0.0,
+    "duration_dev_max": 0.02,
+    "black_frame_ratio": 0.0,
+    "black_frame_ratio_max": 0.5,
+    "ffprobe_triple": {
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "wh": "704x480",
+      "fps": "24/1",
+      "nb_frames": "33"
+    }
+  },
+  "accepted": true
+}

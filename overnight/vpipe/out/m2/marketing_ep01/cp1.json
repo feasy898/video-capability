@@ -1,0 +1,64 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp1",
+  "artifact_type": "intent_card",
+  "fingerprint": "14a4b1d79c9e9260aa85b976bff3db80c37097f456052a669becde943cef4fc1",
+  "produced_by": "agent.director",
+  "produced_at": "2026-10-08T20:45:04Z",
+  "upstream_refs": [],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp1.gate.forbidden_defect_code_registry",
+    "result": "pass",
+    "note": "producer 声明：禁区 3 条全部映射到 thresholds.yaml checkpoints.cp1.gate.forbidden_defect_code_registry 已注册缺陷码（G2_画面内文字:217 / G7_物体恒存:222 / G1_手部:216——行号为 thresholds.yaml v4 注册表段目检位次，实键以键名为准）；credit_cap_total=2016 整数非零；deliverable.pixel_map(1088×1920 9:16)+encode_contract(mp4/h264/aac) 齐备；结构由 checkpoint.schema.json cp1 分支 jsonschema 全量校验承担（CP1 无独立校验器，validate_cp1.py 不存在）。"
+  },
+  "aux_gates": [
+    {
+      "type": "human",
+      "params_ref": "cp1.gate.owner_confirmation",
+      "result": "pending",
+      "note": "pilot 期 owner 未实时确认意图卡，记 pending owner review——CP1 是设计内人工介入点（白皮书 §3 谱首段），不许 agent 代签；M2 报告将上抛该 pending 项。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "theme": "20s 竖屏带货口播营销短视频《雪松晚安香》：主播对镜口播推荐「栖野」卧室无火香薰（藤条扩香瓶·雪松晚安香型，家用香薰品类）。产品定义：琥珀玻璃瓶身+实木底座+天然藤条，植物精油无火扩香；卖点三连=①无火无烟植物精油（可开着睡）②一瓶扩香约六十天 ③玻璃瓶实木底座百搭摆设；CTA=置顶链接下单。同结构不同内容：沿用 mk01 结构先验（大口播镜开场+产品特写插入镜+使用镜+收尾镜的口播带货镜序、全片无硬字幕无水印、口播信息走音频层），产品/台词/场景全部原创；参考样片仅为结构对位，不是内容来源。",
+    "selling_point": "20 秒一条龙口播转化：hook（卧室睡不好）→卖点三连（无火无烟植物精油→约 60 天长效扩香→卧室场景感）→CTA（置顶链接今晚下单），全程竖屏近景口播+产品特写插入，含数字人口播段（G9a 专线：TTS→avatar，短剧线已验证该链路，本线第二次实战）。",
+    "must_keep": [
+      "prop_diffuser_01 香薰瓶实物一致（琥珀玻璃瓶身+实木底座+藤条，几何恒存不形变，镜级实物一致）",
+      "cast_host 主播同一形象（单一口播主体，跨镜身份不漂移，数字人段与产品镜同一人物设定）",
+      "产品名/价格/购买链接一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"
+    ],
+    "forbidden_zones": [
+      {
+        "description": "画面内渲染产品名/价格/促销文字与硬字幕（营销线核心信息全部后期字牌，生成侧自由渲染必乱）",
+        "defect_code": "G2_画面内文字"
+      },
+      {
+        "description": "产品形变（玻璃瓶身/实木底座/藤条几何恒存，产品特写镜逐镜登记）",
+        "defect_code": "G7_物体恒存"
+      },
+      {
+        "description": "手部特写解剖失真（使用镜指尖拨藤条近景，融指/断指风险）",
+        "defect_code": "G1_手部"
+      }
+    ],
+    "deliverable": {
+      "pixel_map": {
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16"
+      },
+      "encode_contract": {
+        "container": "mp4",
+        "video_codec": "h264",
+        "audio_codec": "aac"
+      }
+    },
+    "budget": {
+      "credit_cap_total": 2016
+    }
+  },
+  "notes": "reference 三元组登记（schema intent_card 分支 additionalProperties=false 不收编 reference 对象，故登记于本 notes，沿 shortdrama_ep01/cp1.json 同款处置）：source=bilibili，clip=marketing/mk01.mp4，sha256=e25d944dd13fa0ce05e0c412757511efdf48ea50af86ce9181fec7797f85900d（overnight/数据/samples/marketing/mk01.meta.json 实读），role=structure_reference——带货口播结构先验（M2-LINE-MAPPING.md:14 营销主参考行：45.67s 留香珠口播案例，0-31.13s 单一大口播镜占 68%+3 产品插入镜+使用/收尾镜，全片无硬字幕无水印），非内容来源。【产品自定声明】参考样片为留香珠类家清，本线产品自定为「栖野」卧室无火香薰（藤条扩香瓶·雪松晚安香型）：品类=家用香薰（无火藤条扩香），卖点=无火无烟植物精油/约 60 天扩香/百搭摆设，CTA=置顶链接下单，可描述性强（瓶形/藤条/床头场景具体）且静物属性利于 G7 恒存把守。【budget 推导】credit_cap_total=2016：6 镜 × 280 积分/镜（checkpoints.cp9.gate.credit_cap_per_shot=280，thresholds.yaml:344）× 1.2 冗余（shortdrama cp1 同口径 24×280×1.2=8064）=2016（TASK_v4 §3.3 营销行镜数 4-6/条取上限 6 镜）；avatar 口播段预算另列不并入本值——api_vidu_avatar 计费 1 积分/s（src/gen_avatar.py 契约头，官方定价），口播镜 CP3 声明 4.78s→ceil=5 积分、×1.2冗余=6 积分（vidu_credit 币种），与 MiniMax 积分跨体系不可换算（白皮书 §5.4），仅在 CP9 后半程实跑时按 gen_avatar.py 积分守卫记账。【口播段设计声明】口播镜（shot_01）按 G9a 专线 TTS→avatar 直出：CP10 TTS 出声轨→CP9 gen_avatar.py （image+audio 模式）直出口播段成片，不经草稿层；本程（前半程）只设计不调用 avatar。【结构先验适配说明】mk01 大口播镜占 68%（31.13s/45.67s）在 20s 线不可整比复刻：CP2/CP3 契约「逐行一拍一镜」等式门（shot_line_count_match）下 6 句台词=6 镜，口播镜取最长单镜（4.78s/23.6%），「口播贯穿」属性由音频层承接（6 句全为主播 VO，产品镜作为插入 b-roll），镜序与镜型完全沿 mk01。pixel_map 1088×1920 沿 INTENT.md:89 竖版口径。fingerprint=sha256(规范化 payload JSON)，src/gate/fingerprint.py compute 实算，非占位。"
+}
