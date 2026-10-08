@@ -1,0 +1,68 @@
+{
+ "status": "submit_failed",
+ "errors": [
+  "CreditInsufficient: 积分不足（官方任务 err_code 同名语义）",
+  "submit_failed: HTTP 400 https://api.vidu.cn/ent/s_avatar/offline [Token/vda_10…(len=56)]: {\"code\":400, \"reason\":\"CreditInsufficient\", \"message\":\"insufficient credits\", \"metadata\":{\"trace_id\":\"6905ff9a3815157523b03f5c77173d82\"}}"
+ ],
+ "pools_before": {
+  "general": null,
+  "exclusive": 5000
+ },
+ "guard": {
+  "est_credits": 3,
+  "min_required": 48,
+  "credits_probe": {
+   "endpoint": "/ent/v2/credits",
+   "auth": "VIDU_API_KEY_1:Token",
+   "key_masked": "vda_10…(len=56)",
+   "status": 200,
+   "attempts": [
+    "VIDU_API_KEY_1:Token"
+   ],
+   "resp_keys": [
+    "exclusive_remains",
+    "general_remains",
+    "packages",
+    "queue_count",
+    "remains"
+   ]
+  },
+  "rule": "max(general,exclusive) >= est+45（官方：余额<45 不能发起任务）",
+  "available_max": 5000,
+  "verdict": "pass"
+ },
+ "repro": {
+  "module": "gen_avatar.py@vpipe-v4-1.0",
+  "command": "gen_avatar.py create --image out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png --audio out/m2/shortdrama_ep01/avatar/tts_hello.wav --resolution 540p",
+  "base_url": "https://api.vidu.cn",
+  "create_endpoint": "/ent/s_avatar/offline",
+  "query_endpoint": "/ent/v2/tasks/{task_id}/creations",
+  "contract_source": "https://platform.vidu.cn/vidu-stream/doc/s2-avatar/async/{introduction,parameters,quick-start} (2026-10-09)",
+  "billing_rule": "1 积分/s × ceil(输入音频时长)；text 模式按合成语音时长（约 2-3 字/s）",
+  "key_labels": [
+   "VIDU_API_KEY_1",
+   "VIDU_API_KEY_2"
+  ],
+  "image": {
+   "path": "out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+   "sha256": "3b946c2ef3b640018c796b956abb738bb920f3f8358057fe1a31fa14a0208cec",
+   "size_bytes": 1299501,
+   "transport": "base64_data_uri",
+   "mime": "image/png"
+  },
+  "audio": {
+   "path": "out/m2/shortdrama_ep01/avatar/tts_hello.wav",
+   "sha256": "9b42dbc6bb93e47fdf71de351255b93c55020df201684b121a0da0a343bec337",
+   "size_bytes": 107086,
+   "transport": "base64_data_uri",
+   "mime": "audio/wav"
+  },
+  "audio_probe": {
+   "duration_s": 2.2,
+   "acodec": "pcm_s16le",
+   "sample_rate": "24000",
+   "channels": 1
+  },
+  "mode": "audio"
+ }
+}

@@ -1,0 +1,119 @@
+{
+  "schema": "vidu_avatar_smoke_v1",
+  "date": "2026-10-09",
+  "task": "vpipe v4：Vidu S2 avatar 非实时档客户端（gen_avatar.py）最小真实生成验证",
+  "redline": {"real_generation_calls": 2, "failed_calls": 1, "succeeded_calls": 1,
+              "note": "≤2 次真实调用预算内：第 1 次失败（账户态原因），第 2 次成功"},
+  "secrets_hygiene": {
+    "key_echo": false, "keys_in_git": false,
+    "key_source": "GPU 机 /data/night/g01-rerun/video-capability/overnight/secrets/api_keys.env（VIDU_API_KEY_1/_2，仅 env/--env-file/进程 env 读入）",
+    "masked_keys": ["vda_10…(len=56) @VIDU_API_KEY_1", "vda_10…(len=56) @VIDU_API_KEY_2"],
+    "url_redaction": "预签名产物 URL（24h 时效）不入本留痕，仅记 url_present 布尔"
+  },
+  "contract_extraction": {
+    "verdict": "官方契约完整提取（端点/DTO/轮询/计费/错误码五项俱全，零历史口径补丁）",
+    "method": "browser-use/control-browser 内核对本 subagent 会话不可用（Session is not active: sess_dwf-…-actor_1_1）；改走 Next.js RSC 端点（带 RSC:1 头的页面请求返回服务端渲染 flight payload，内嵌整页 markdown 原文，与浏览器渲染同源同文）",
+    "pages": [
+      "https://platform.vidu.cn/vidu-stream/doc/s2-avatar/async/introduction",
+      "https://platform.vidu.cn/vidu-stream/doc/s2-avatar/async/parameters",
+      "https://platform.vidu.cn/vidu-stream/doc/s2-avatar/async/quick-start"
+    ],
+    "detail": "overnight/vpipe/evidence/vidu_s2_avatar_contract.md",
+    "key_points": {
+      "create": "POST https://api.vidu.cn/ent/s_avatar/offline",
+      "query": "GET https://api.vidu.cn/ent/v2/tasks/{task_id}/creations",
+      "auth": "Authorization: Token vda_…（官方 Token 方案，非 Bearer；本轮全部调用 Token 直连 200，未触发降级）",
+      "dto_fields": ["model(默认 vidu-s1)", "image(必填,单人图,URL/base64+MIME/ssupload)", "audio|text(至少一,双传 audio 优先)", "voice(仅 text 模式)", "timeline(序列化 JSON 串)", "resolution(540p 默认|720p)", "callback_url", "payload", "watermark(官方默认加水印,须显式 false)", "wm_position", "wm_url", "meta_data", "image_recaption"],
+      "billing": "1 积分/秒（0.03125 元）×ceil(音频时长)；余额<45 不能发起；创建只预检，排队预扣，失败退还，实扣以查询 credits 为准"
+    }
+  },
+  "client": {
+    "path": "overnight/vpipe/src/gen_avatar.py",
+    "module_id": "gen_avatar.py@vpipe-v4-1.0",
+    "style": "单文件、零兄弟 import、纯 stdlib（urllib）、CLI、fail-closed、失败写 errors 不静默",
+    "cli_verified": ["balance（双 key 掩码轮询）", "create --dry-run（零 HTTP）", "create（真实）", "status"],
+    "checks": [
+      {"check": "py_compile 本地+GPU", "cmd": "python3 -m py_compile src/gen_avatar.py", "result": "pass（GPU Python 3.11，曾暴露 f-string 嵌套同引号不兼容，已修复）"},
+      {"check": "balance 双 key 实探", "cmd": "python3 src/gen_avatar.py balance --env-file …/api_keys.env", "result": "pass：KEY_1 general=None/exclusive=5000；KEY_2 general=565/exclusive=5000；均 Token 方案 200，掩码打印正确"},
+      {"check": "--dry-run 零 HTTP", "result": "pass：DTO 预览正确（image/audio data URI、watermark:false、540p、est=3），日志自证未查余额未提交"}
+    ]
+  },
+  "smoke_inputs": {
+    "ref_image": {
+      "path": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+      "origin": "ffmpeg 从 shot_09.final.mp4（小满面部大特写，7.296s 中点 3.6s 处）抽 1 帧；本地抽出后 scp 至 GPU",
+      "extract_cmd": "ffmpeg -y -v error -ss 3.6 -i …/cp9/shot_09.final.mp4 -frames:v 1 ref_shot09_mid.png",
+      "sha256": "3b946c2ef3b640018c796b956abb738bb920f3f8358057fe1a31fa14a0208cec",
+      "size_bytes": 1299501, "transport": "base64_data_uri(data:image/png)",
+      "visual_check": "目检确认：单人、正脸清晰、角色造型与正片一致（黑西装白内衬、宴会背景）"
+    },
+    "audio": {
+      "path": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/tts_hello.wav",
+      "origin": "GPU 机 src/tts.py（stepaudio-2.5-tts，默认音色 cixingnansheng，--env-file 同一凭据文件）",
+      "text": "大家好，我是小满。", "chars": 9,
+      "duration_s": 2.2, "acodec": "pcm_s16le", "sample_rate": "24000",
+      "sha256": "9b42dbc6bb93e47fdf71de351255b93c55020df201684b121a0da0a343bec337",
+      "cost_est_cny": 0.00406, "tts_latency_s": 122.257,
+      "voice_note": "默认音色为磁性男声×女性角色=已知性别错配（数字人实验报告 §7-4：StepFun 内建女声 id 全 404 不可查，工程化路径=克隆通道，本轮不在范围）"
+    }
+  },
+  "attempt_1": {
+    "key": "VIDU_API_KEY_1（进程内轮询首选）",
+    "time": "2026-10-09T03:33:41(GPU 本地)",
+    "guard": "pass（旧规则 max(general,exclusive)=5000 ≥ 3+45）",
+    "http": {"status": 400, "endpoint": "POST /ent/s_avatar/offline",
+             "body": {"code": 400, "reason": "CreditInsufficient", "message": "insufficient credits",
+                      "metadata.trace_id_present": true},
+             "body_full_redacted": false},
+    "root_cause": "通用池为空（general=None）时提交被拒；avatar 专属池 5000 不被 /ent/s_avatar/offline 采纳。与 v3 期实证一致（工程方案v3.1 §0.2 V6 期 avatar 任务实扣通用池 683→622、专属池不动）",
+    "failover_assessment": "400 不属于 ask 规定的 401/403 故障转移范围，客户端正确 fail-closed（exit 1）并完整落痕 avatar_20261009_033341.meta.json",
+    "client_fix": "credit_guard 规则改为【通用池为主】（general 缺失/不足即拒绝，专属池仅记录），修订依据=本轮 400 实测 + v3 双重实证，已写进 gen_avatar.py docstring 与 guard.rule 字段",
+    "failure_trail": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/avatar_20261009_033341.meta.json"
+  },
+  "attempt_2": {
+    "key": "VIDU_API_KEY_2（通用池 565；经进程 env 注入，unset KEY_1，key 未入命令行未回显）",
+    "time": "2026-10-09T03:34:57(GPU 本地) 提交",
+    "guard": "pass（修正后规则 general=565 ≥ 3+45）",
+    "submit": {"http": 200, "task_id": "1005863650101063680", "state": "created", "model": "vidu-s1"},
+    "params": {"resolution": "540p（默认参数，未显式传）", "watermark": false, "timeline": null,
+               "mode": "audio", "payload": null, "callback_url": null,
+               "model_create": "vidu-s1（官方默认，未显式传）"},
+    "terminal": {"state": "success", "polls": 11, "poll_interval": "3s 起 ×1.3 退避上限 8s",
+                 "progress_note": "官方：progress 停 99 属正常，勿作卡死判据"},
+    "result": {
+      "mp4": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/avatar_1005863650101063680.mp4",
+      "sha256": "0ac227cf30a97ea818a278d425bb1a6f9766db175232c0818f3128866b2f30e6",
+      "size_bytes": 409289, "perms": "644",
+      "probe": {"vcodec": "h264", "acodec": "aac", "width": 548, "height": 944,
+                "fps": "24/1", "duration_s": 3.0, "has_audio": true},
+      "type": "offline_avatar", "model_reported": "vidus1（官方明示：查询返回无连字符写法）",
+      "resolution_reported": "540p",
+      "download_elapsed_s": 0.78, "url_24h_discipline": "success 后 0.78s 内即时落盘"
+    },
+    "credits": {"reported": 3, "estimated": 3, "match": true,
+                "pools_before": {"general": 565, "exclusive": 5000},
+                "pools_after": {"general": 562, "exclusive": 5000},
+                "pools_delta": {"general": 3, "exclusive": 0},
+                "conclusion": "avatar offline 实扣走【通用池】，专属池不动——第 2 次独立实证（第 1 次 400 为反证）"},
+    "latency": {"submit_to_terminal_s": 69.1, "official_range": "40s~2min（官方文档），69.1s 在带内"},
+    "visual_check": {
+      "identity": "输出帧目检（0.4s/1.5s/2.5s）：与参考帧同一小满——同脸、同黑西装白内衬、同宴会背景，身份保持",
+      "lipsync_evidence": "嘴部区域（crop 274x200+137+500）三时刻 md5 互异（4785c5057e4e/d59396644929/bb2fdf44699d）：1.5s 张、2.5s 闭，口型活动成立",
+      "audio_track": "aac 音轨在（2.2s 语音驱动的 3.0s 成片，整秒取整垫尾 0.8s 属平台行为）"
+    },
+    "failure_detail": null
+  },
+  "status_endpoint_check": {
+    "cmd": "python3 src/gen_avatar.py status --task-id 1005863650101063680 --out-dir out/m2/shortdrama_ep01/avatar",
+    "http": 200, "state": "success", "credits": 3,
+    "note": "查询端点端到端复验；创建者以外 key 官方语义为 Forbidden，未测（节约调用）",
+    "snapshot": "out/m2/shortdrama_ep01/avatar/status_1005863650101063680.json（GPU 侧，含 24h 时效预签名 URL 原文，不入本留痕）"
+  },
+  "errors": [],
+  "repro": {
+    "gpu_repo": "/data/night/g01-rerun/video-capability/overnight/vpipe",
+    "create_cmd": "python3 src/gen_avatar.py create --image out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png --audio out/m2/shortdrama_ep01/avatar/tts_hello.wav --out-dir out/m2/shortdrama_ep01/avatar [--env-file …/api_keys.env | 进程 env]",
+    "tts_cmd": "python3 src/tts.py --text '大家好，我是小满。' --out …/avatar/tts_hello.wav --env-file …/api_keys.env",
+    "contract_source": "evidence/vidu_s2_avatar_contract.md（官方三页原文誊录）"
+  }
+}

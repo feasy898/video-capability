@@ -1,0 +1,147 @@
+{
+ "module": "gen_avatar.py@vpipe-v4-1.0",
+ "status": "ok",
+ "generated_at": "2026-10-09T03:36:06",
+ "task_id": "1005863650101063680",
+ "type": "offline_avatar",
+ "state": "success",
+ "model_create": "vidu-s1(默认,未显式传)",
+ "model_reported": "vidus1",
+ "resolution": "540p",
+ "mode": "audio",
+ "credits": {
+  "reported": 3,
+  "estimated": 3,
+  "source": "GET /ent/v2/tasks/{id}/creations .credits（官方：实扣以此为准，1 积分/s×ceil(音频秒)；failed 时为 0）",
+  "pools_before": {
+   "general": 565,
+   "exclusive": 5000
+  },
+  "pools_after": {
+   "general": 562,
+   "exclusive": 5000
+  },
+  "pools_delta": {
+   "general": 3,
+   "exclusive": 0
+  },
+  "delta_note": "官方文档无池概念；v3 期实测走通用池，本轮以差值实测为准"
+ },
+ "duration_s": 3,
+ "err_code": "",
+ "err_msg": "",
+ "progress_note": 100,
+ "creations": [
+  {
+   "id": "1005863893555249152",
+   "url_present": true,
+   "cover_url_present": true,
+   "watermarked_url_present": false,
+   "url_note": "临时 URL 24h 失效，不入留痕；视频已落盘 clip.path"
+  }
+ ],
+ "clip": {
+  "path": "out/m2/shortdrama_ep01/avatar/avatar_1005863650101063680.mp4",
+  "sha256": "0ac227cf30a97ea818a278d425bb1a6f9766db175232c0818f3128866b2f30e6",
+  "size_bytes": 409289,
+  "elapsed_s": 0.78,
+  "note": "产物 URL 24h 有效，已即时落盘（官方纪律）",
+  "duration_s": 3.0,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "width": 548,
+  "height": 944,
+  "fps": "24/1",
+  "has_audio": true
+ },
+ "latency": {
+  "submit_to_terminal_s": 69.1,
+  "poll": {
+   "polls": 11,
+   "elapsed_s": 68.4,
+   "query_call": {
+    "auth": "VIDU_API_KEY_2:Token",
+    "key_masked": "vda_10…(len=56)",
+    "status": 200,
+    "attempts": [
+     "VIDU_API_KEY_2:Token"
+    ]
+   }
+  },
+  "total_timeout_s": 420
+ },
+ "submit_response": {
+  "task_id": "1005863650101063680",
+  "state": "created",
+  "model": "vidu-s1",
+  "credits": 0,
+  "payload": "",
+  "created_at": "2026-10-08T19:34:57.375248262Z",
+  "resolution": "540p"
+ },
+ "submit_call": {
+  "auth": "VIDU_API_KEY_2:Token",
+  "key_masked": "vda_10…(len=56)",
+  "status": 200,
+  "attempts": [
+   "VIDU_API_KEY_2:Token"
+  ]
+ },
+ "guard": {
+  "est_credits": 3,
+  "min_required": 48,
+  "credits_probe": {
+   "endpoint": "/ent/v2/credits",
+   "auth": "VIDU_API_KEY_2:Token",
+   "key_masked": "vda_10…(len=56)",
+   "status": 200,
+   "attempts": [
+    "VIDU_API_KEY_2:Token"
+   ],
+   "resp_keys": [
+    "exclusive_remains",
+    "general_remains",
+    "packages",
+    "queue_count",
+    "remains"
+   ]
+  },
+  "rule": "general >= est+45（官方：余额<45 不能发起任务；2026-10-09 smoke 实测：提交校验走通用池，专属池不被 offline 任务采纳）",
+  "verdict": "pass",
+  "available": 565
+ },
+ "repro": {
+  "module": "gen_avatar.py@vpipe-v4-1.0",
+  "command": "gen_avatar.py create --image out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png --audio out/m2/shortdrama_ep01/avatar/tts_hello.wav --resolution 540p",
+  "base_url": "https://api.vidu.cn",
+  "create_endpoint": "/ent/s_avatar/offline",
+  "query_endpoint": "/ent/v2/tasks/{task_id}/creations",
+  "contract_source": "https://platform.vidu.cn/vidu-stream/doc/s2-avatar/async/{introduction,parameters,quick-start} (2026-10-09)",
+  "billing_rule": "1 积分/s × ceil(输入音频时长)；text 模式按合成语音时长（约 2-3 字/s）",
+  "key_labels": [
+   "VIDU_API_KEY_2"
+  ],
+  "image": {
+   "path": "out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+   "sha256": "3b946c2ef3b640018c796b956abb738bb920f3f8358057fe1a31fa14a0208cec",
+   "size_bytes": 1299501,
+   "transport": "base64_data_uri",
+   "mime": "image/png"
+  },
+  "audio": {
+   "path": "out/m2/shortdrama_ep01/avatar/tts_hello.wav",
+   "sha256": "9b42dbc6bb93e47fdf71de351255b93c55020df201684b121a0da0a343bec337",
+   "size_bytes": 107086,
+   "transport": "base64_data_uri",
+   "mime": "audio/wav"
+  },
+  "audio_probe": {
+   "duration_s": 2.2,
+   "acodec": "pcm_s16le",
+   "sample_rate": "24000",
+   "channels": 1
+  },
+  "mode": "audio"
+ },
+ "errors": []
+}

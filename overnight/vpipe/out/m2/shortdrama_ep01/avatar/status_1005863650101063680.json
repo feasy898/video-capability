@@ -1,0 +1,46 @@
+{
+ "queried_at": "2026-10-09T03:37:23",
+ "task_id": "1005863650101063680",
+ "endpoint": "/ent/v2/tasks/1005863650101063680/creations",
+ "auth": "VIDU_API_KEY_2:Token",
+ "response": {
+  "state": "success",
+  "err_code": "",
+  "creations": [
+   {
+    "id": "1005863893555249152",
+    "url": "https://prod-ss-vidu.s3.oss-cn-beijing.aliyuncs.com/infer_80/tasks/26/1008/19/1005863650101063680/creation-01/video.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=LTAI5t9wejmA3ETdEwa19PH5%2F20261008%2Fcn-beijing%2Fs3%2Faws4_request&X-Amz-Date=20261008T193723Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&response-cache-control=max-age%3D86400&response-content-disposition=attachment%3Bfilename%3D-1-2026-10-08T19%253A35%253A55Z.mp4&x-id=GetObject&X-Amz-Signature=acc7d0399abe7989e833e78b268258c7e8c126535cd224cedab592fa237c483a",
+    "cover_url": "https://prod-ss-vidu.s3.oss-cn-beijing.aliyuncs.com/infer_80/tasks/26/1008/19/1005863650101063680/creation-01/cover.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=LTAI5t9wejmA3ETdEwa19PH5%2F20261008%2Fcn-beijing%2Fs3%2Faws4_request&X-Amz-Date=20261008T193723Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&response-cache-control=max-age%3D86400&x-id=GetObject&X-Amz-Signature=d65fcdf66534dba20ae014522f103e929bde0b8efa2969a262f662b36572def5",
+    "watermarked_url": "",
+    "moderation_url": [],
+    "video": {
+     "duration": 0,
+     "fps": 0,
+     "resolution": null
+    },
+    "speech_url": "",
+    "sound_url": "",
+    "bgm_url": "",
+    "text_content": "",
+    "attachments": []
+   }
+  ],
+  "id": "1005863650101063680",
+  "credits": 3,
+  "bgm": true,
+  "payload": "",
+  "cus_priority": 0,
+  "off_peak": false,
+  "audio": false,
+  "progress": 100,
+  "type": "offline_avatar",
+  "model": "vidus1",
+  "resolution": "540p",
+  "aspect_ratio": "16:9",
+  "template": "",
+  "duration": 3,
+  "err_msg": "",
+  "blocked_resources": [],
+  "usage": null
+ }
+}
