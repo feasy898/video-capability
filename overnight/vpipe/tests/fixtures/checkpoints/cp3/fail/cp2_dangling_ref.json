@@ -1,0 +1,57 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp2",
+  "artifact_type": "script",
+  "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+  "produced_by": "agent.writer",
+  "produced_at": "2026-10-08T09:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp1",
+      "fingerprint": "c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp2.gate.duration_dev_max",
+    "result": "pass",
+    "note": "夹具占位"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "target_duration_s": 30.0,
+    "estimated_total_duration_s": 8.0,
+    "narration_segments": [
+      {
+        "segment_id": "seg_01",
+        "narration_text": "他出现了。",
+        "visual_description": "他出现了。",
+        "estimated_duration_s": 4.0,
+        "tts_safe": true,
+        "cast_refs": [
+          "father_b"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_02",
+        "narration_text": "目光相接。",
+        "visual_description": "目光相接。",
+        "estimated_duration_s": 4.0,
+        "tts_safe": true,
+        "cast_refs": [
+          "father_b"
+        ],
+        "props_refs": []
+      }
+    ],
+    "cast": [
+      {
+        "char_id": "father_b"
+      }
+    ],
+    "props": []
+  },
+  "notes": "fail 夹具配套剧本"
+}

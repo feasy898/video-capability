@@ -1,0 +1,49 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "夹具占位——判定以 validate_cp3.py 为准"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 4.0,
+        "action": "他出现",
+        "refs": [
+          "father_b",
+          "ghost_char"
+        ]
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "close",
+        "move": "push_in",
+        "duration_s": 3.0,
+        "action": "他抬眼",
+        "refs": [
+          "father_b"
+        ]
+      }
+    ]
+  },
+  "notes": "fail ⑦：ref ghost_char 悬空（不在 --script cast/props）——预期仅 reference_integrity 失败"
+}

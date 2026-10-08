@@ -2,13 +2,13 @@
   "schema_version": "2.0",
   "cp_id": "cp3",
   "artifact_type": "storyboard",
-  "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61",
+  "fingerprint": "9566ea86c37274595d5ab9ae98efc2b26dc050dbbb1ac53071df2b6eb05d8c77",
   "produced_by": "agent.boardArtist",
   "produced_at": "2026-10-08T10:00:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp2",
-      "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23"
+      "fingerprint": "59d3a80782556a53c2ad3cc6cede51a633be12ab3cdb515fa228e861ece9f6b2"
     }
   ],
   "status": "passed",
@@ -34,7 +34,7 @@
   ],
   "payload": {
     "work_id": "shortdrama_ep01",
-    "source_script_fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23",
+    "source_script_fingerprint": "59d3a80782556a53c2ad3cc6cede51a633be12ab3cdb515fa228e861ece9f6b2",
     "shots": [
       {
         "shot_id": "shot_01",
@@ -42,9 +42,15 @@
         "move": "static",
         "duration_s": 5.0,
         "action": "女儿推门而入，父亲背影在灶台前",
-        "refs": ["heroine_a", "father_b"],
+        "refs": [
+          "heroine_a",
+          "father_b"
+        ],
         "word_anchors": [
-          { "anchor": "你终于回来了", "segment_id": "seg_01" }
+          {
+            "anchor": "你终于回来了",
+            "segment_id": "seg_01"
+          }
         ],
         "channel_hint": "api_h3max"
       },
@@ -54,9 +60,14 @@
         "move": "pan",
         "duration_s": 7.0,
         "action": "父亲擦桌，镜头摇到老位置红木凳",
-        "refs": ["father_b"],
+        "refs": [
+          "father_b"
+        ],
         "word_anchors": [
-          { "anchor": "老位置", "segment_id": "seg_02" }
+          {
+            "anchor": "老位置",
+            "segment_id": "seg_02"
+          }
         ],
         "channel_hint": "api_h3max"
       },
@@ -66,9 +77,15 @@
         "move": "push_in",
         "duration_s": 8.0,
         "action": "父亲举杯一饮而尽，杯面不遮挡手指",
-        "refs": ["father_b", "prop_cup_01"],
+        "refs": [
+          "father_b",
+          "prop_cup_01"
+        ],
         "word_anchors": [
-          { "anchor": "这杯我替你喝了", "segment_id": "seg_03" }
+          {
+            "anchor": "这杯我替你喝了",
+            "segment_id": "seg_03"
+          }
         ],
         "channel_hint": "api_h3max"
       },
@@ -78,7 +95,10 @@
         "move": "static",
         "duration_s": 10.0,
         "action": "女儿低头吃面，热气模糊眼镜",
-        "refs": ["heroine_a", "prop_noodle_bowl"],
+        "refs": [
+          "heroine_a",
+          "prop_noodle_bowl"
+        ],
         "word_anchors": [],
         "channel_hint": "api_h3max"
       }

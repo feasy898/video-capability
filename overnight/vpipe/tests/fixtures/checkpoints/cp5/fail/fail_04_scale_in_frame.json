@@ -1,0 +1,152 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp5",
+  "artifact_type": "blocking",
+  "fingerprint": "f679a6460add96e697e79d0bc0e6e6c61c3cec5a7608cda11746fb2b3d132516",
+  "produced_by": "agent.blockingCompiler",
+  "produced_at": "2026-10-08T11:10:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp5.gate.pose_frame_max",
+    "result": "pass",
+    "note": "shot_03 序列 24 帧 ≤ 上限（MimicMotion 72 帧 @576×1024，cheap-draft-and-programmatic-tools.md:219；阈见 cp5.gate.pose_frame_max）。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp5.gate.frame_time_monotonic",
+      "result": "pass",
+      "note": "全部轨道帧时间单调递增（校验器判定）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp5.gate.speech_fullbody_lip_layer",
+      "result": "pass",
+      "note": "shot_03 无对白全身动作 speech_mode=none，无需独立口型层；若为 full-body 对白镜须先拆镜（AI视频生产流水线方案.md §3.3）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "sequences": [
+      {
+        "shot_id": "shot_03",
+        "joint_names": [
+          "hips",
+          "spine",
+          "neck",
+          "head",
+          "leftShoulder",
+          "leftElbow",
+          "leftWrist",
+          "rightShoulder",
+          "rightElbow",
+          "rightWrist",
+          "leftHip",
+          "leftKnee",
+          "leftAnkle",
+          "rightHip",
+          "rightKnee",
+          "rightAnkle"
+        ],
+        "bone_length_constant": true,
+        "speech_mode": "none",
+        "tracks": [
+          {
+            "joint": "rightShoulder",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.3
+                }
+              },
+              {
+                "time": 0.5,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.9
+                },
+                "scale": {
+                  "x": 1.0,
+                  "y": 1.0,
+                  "z": 1.0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -1.1
+                }
+              }
+            ]
+          },
+          {
+            "joint": "rightElbow",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": -0.2,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              {
+                "time": 0.5,
+                "rotation": {
+                  "x": -1.2,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": -1.4,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              }
+            ]
+          },
+          {
+            "joint": null,
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.2,
+                  "z": 0.0
+                }
+              }
+            ]
+          }
+        ],
+        "frame_count": 24,
+        "known_cuts": []
+      }
+    ]
+  },
+  "notes": "负例④：帧对象含 scale 字段（rotation-only 骨长恒定违例）——校验项 ④ 应 fail。"
+}

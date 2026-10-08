@@ -1,0 +1,75 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp6",
+  "artifact_type": "timeline",
+  "fingerprint": "e196acfa7528e8083cf9db17f799b294b46a9d3359ccb72f4df6a0d2dafcf063",
+  "produced_by": "orchestrator.cp6_timeline_builder",
+  "produced_at": "2026-10-08T15:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23"
+    },
+    {
+      "cp_id": "cp3",
+      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "f679a6460add96e697e79d0bc0e6e6c61c3cec5a7608cda11746fb2b3d132516"
+    }
+  ],
+  "status": "rejected",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp6.gate.duration_conservation_frames",
+    "result": "fail",
+    "note": "Σ=910 ≠ 900：守恒偏差 +10 帧超 ±1（cp6.gate.duration_conservation_frames）；登记值如实记 10。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.rhythm_segment_s",
+      "result": "pass",
+      "note": "节奏段在 warn 带内（cp6.gate.rhythm_segment_s）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "fps": 30,
+    "total_frames": 900,
+    "episode_duration_s": 30.0,
+    "duration_conservation_dev_frames": 10,
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "start_frame": 0,
+        "duration_frames": 150
+      },
+      {
+        "shot_id": "shot_02",
+        "start_frame": 150,
+        "duration_frames": 210
+      },
+      {
+        "shot_id": "shot_03",
+        "start_frame": 360,
+        "duration_frames": 240
+      },
+      {
+        "shot_id": "shot_04",
+        "start_frame": 600,
+        "duration_frames": 310
+      }
+    ],
+    "subtitle_align_max_dev_ms": 30,
+    "sound_lead_in_frames": 3,
+    "rhythm_segments": [
+      {
+        "segment_id": "rs_01",
+        "duration_s": 5.0
+      }
+    ]
+  },
+  "notes": "fail/cp6_fail_duration_sum_mismatch"
+}

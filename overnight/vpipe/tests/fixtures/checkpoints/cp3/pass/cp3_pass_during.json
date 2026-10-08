@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "夹具占位——判定以 validate_cp3.py 为准"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "s01-01",
+        "shot_scale": "wide",
+        "move": "static",
+        "duration_s": 3.0,
+        "action": "院子夜景",
+        "refs": [
+          "heroine_a"
+        ]
+      },
+      {
+        "shot_id": "s01-02",
+        "shot_scale": "medium",
+        "move": "pan",
+        "duration_s": 4.0,
+        "action": "她回头",
+        "refs": [
+          "heroine_a"
+        ],
+        "during": "@s01-01.line[1]"
+      },
+      {
+        "shot_id": "s01-03",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 5.0,
+        "action": "灯亮起",
+        "refs": [
+          "narrator_x"
+        ],
+        "during": [
+          "@s01-01",
+          "@s01-02.line[0]"
+        ]
+      }
+    ]
+  },
+  "notes": "pass 夹具 B：during 合法形态——同场景（s01 前缀）、已定义、编译序在前；含列表形式"
+}

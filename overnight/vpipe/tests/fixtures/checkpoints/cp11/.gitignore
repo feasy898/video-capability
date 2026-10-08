@@ -1,0 +1,4 @@
+# 测试片 mp4 由 make_fixture.py 程序生成（ffmpeg 内建源，字节级可复现），
+# 按红线「优先生成器脚本而非二进制入库」不入 git；克隆后一键再生成：
+#   python3 make_fixture.py
+*.mp4

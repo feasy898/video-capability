@@ -1,0 +1,81 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp2",
+  "artifact_type": "script",
+  "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23",
+  "produced_by": "agent.writer",
+  "produced_at": "2026-10-08T09:30:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp1",
+      "fingerprint": "00baa9aa058be0ccc85aefef1b76e8e643b640ea4ea0b746b71537a8265132c4"
+    }
+  ],
+  "status": "rejected",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp2.gate.duration_dev_max",
+    "result": "fail",
+    "note": "负例（仅动一处）：seg_02 cast_refs 增加未定义角色 uncle_ghost——人名悬空引用拒收（白皮书 §3 CP2：人名/道具名全部在 cast/props 表中已定义，禁止下游「临时编一个」），回退剧本生成。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp2.gate.line_shot_ratio",
+      "result": "pass",
+      "note": "台词条数 4 / 预计镜头数 4 = 1.0，在 [1.0, 1.5] 内。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "target_duration_s": 30.0,
+    "estimated_total_duration_s": 29.7,
+    "narration_segments": [
+      {
+        "segment_id": "seg_01",
+        "narration_text": "你终于回来了。",
+        "visual_description": "深夜面馆门口，女儿推门而入，父亲背影在灶台前",
+        "estimated_duration_s": 3.4,
+        "tts_safe": true,
+        "cast_refs": ["heroine_a"],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_02",
+        "narration_text": "坐吧，还是老位置。",
+        "visual_description": "父亲擦桌子，镜头摇到老位置的红木凳",
+        "estimated_duration_s": 4.7,
+        "tts_safe": true,
+        "cast_refs": ["father_b", "uncle_ghost"],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_03",
+        "narration_text": "这杯我替你喝了。",
+        "visual_description": "父亲举起茶杯一饮而尽，杯面不遮挡手指",
+        "estimated_duration_s": 7.1,
+        "tts_safe": true,
+        "cast_refs": ["father_b"],
+        "props_refs": ["prop_cup_01"]
+      },
+      {
+        "segment_id": "seg_04",
+        "narration_text": "下次…常回来吃饭。",
+        "visual_description": "女儿低头吃面，热气模糊了眼镜，两人无言",
+        "estimated_duration_s": 14.5,
+        "tts_safe": true,
+        "cast_refs": ["heroine_a", "father_b"],
+        "props_refs": ["prop_noodle_bowl"]
+      }
+    ],
+    "cast": [
+      { "char_id": "heroine_a" },
+      { "char_id": "father_b" }
+    ],
+    "props": [
+      { "prop_id": "prop_cup_01" },
+      { "prop_id": "prop_noodle_bowl" }
+    ]
+  },
+  "notes": "CP2 负例夹具：cast 悬空引用（seg_02 cast_refs 含未定义角色 uncle_ghost）。其余项全部合法——被拦原因必须只有悬空引用一项。"
+}

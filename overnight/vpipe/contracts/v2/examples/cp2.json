@@ -2,13 +2,13 @@
   "schema_version": "2.0",
   "cp_id": "cp2",
   "artifact_type": "script",
-  "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23",
+  "fingerprint": "59d3a80782556a53c2ad3cc6cede51a633be12ab3cdb515fa228e861ece9f6b2",
   "produced_by": "agent.writer",
   "produced_at": "2026-10-08T09:30:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp1",
-      "fingerprint": "00baa9aa058be0ccc85aefef1b76e8e643b640ea4ea0b746b71537a8265132c4"
+      "fingerprint": "486e39e3b383dcc5b6623e6f70a8c539f0146fdd6f02815ade07dcccc67cc43a"
     }
   ],
   "status": "passed",
@@ -37,7 +37,9 @@
         "visual_description": "深夜面馆门口，女儿推门而入，父亲背影在灶台前",
         "estimated_duration_s": 3.4,
         "tts_safe": true,
-        "cast_refs": ["heroine_a"],
+        "cast_refs": [
+          "heroine_a"
+        ],
         "props_refs": []
       },
       {
@@ -46,7 +48,9 @@
         "visual_description": "父亲擦桌子，镜头摇到老位置的红木凳",
         "estimated_duration_s": 4.7,
         "tts_safe": true,
-        "cast_refs": ["father_b"],
+        "cast_refs": [
+          "father_b"
+        ],
         "props_refs": []
       },
       {
@@ -55,8 +59,12 @@
         "visual_description": "父亲举起茶杯一饮而尽，杯面不遮挡手指",
         "estimated_duration_s": 7.1,
         "tts_safe": true,
-        "cast_refs": ["father_b"],
-        "props_refs": ["prop_cup_01"]
+        "cast_refs": [
+          "father_b"
+        ],
+        "props_refs": [
+          "prop_cup_01"
+        ]
       },
       {
         "segment_id": "seg_04",
@@ -64,17 +72,30 @@
         "visual_description": "女儿低头吃面，热气模糊了眼镜，两人无言",
         "estimated_duration_s": 14.5,
         "tts_safe": true,
-        "cast_refs": ["heroine_a", "father_b"],
-        "props_refs": ["prop_noodle_bowl"]
+        "cast_refs": [
+          "heroine_a",
+          "father_b"
+        ],
+        "props_refs": [
+          "prop_noodle_bowl"
+        ]
       }
     ],
     "cast": [
-      { "char_id": "heroine_a" },
-      { "char_id": "father_b" }
+      {
+        "char_id": "heroine_a"
+      },
+      {
+        "char_id": "father_b"
+      }
     ],
     "props": [
-      { "prop_id": "prop_cup_01" },
-      { "prop_id": "prop_noodle_bowl" }
+      {
+        "prop_id": "prop_cup_01"
+      },
+      {
+        "prop_id": "prop_noodle_bowl"
+      }
     ]
   },
   "notes": "示例工件：narration_segment 与 visual_description 一对一绑定（DramaClaw VisualBeat 结构，白皮书 §3 CP2）；台词时长按汉字计音节估算（hypit measure 逻辑）。"

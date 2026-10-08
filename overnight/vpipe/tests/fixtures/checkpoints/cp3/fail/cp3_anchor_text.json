@@ -1,0 +1,44 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "夹具占位——判定以 validate_cp3.py 为准"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 4.0,
+        "action": "父亲摆凳",
+        "refs": [
+          "father_b"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{老地方}",
+            "segment_id": "seg_01"
+          }
+        ]
+      }
+    ]
+  },
+  "notes": "fail ③：词锚 @老地方 不在本镜台词 seg_01「坐吧，还是老位置。」内——预期仅 word_anchor_valid 失败"
+}

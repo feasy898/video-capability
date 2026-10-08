@@ -2,21 +2,21 @@
   "schema_version": "2.0",
   "cp_id": "cp11",
   "artifact_type": "composite",
-  "fingerprint": "92e578f2de27801e63d20abff92382214132ba971b4f7a5659406ca2f71ed634",
+  "fingerprint": "3a73b4552c2f6268b89d0d2e8631a831f3d9c32456b0eb6dd35a43fa7ce1d602",
   "produced_by": "synth",
   "produced_at": "2026-10-08T15:10:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp3",
-      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+      "fingerprint": "9566ea86c37274595d5ab9ae98efc2b26dc050dbbb1ac53071df2b6eb05d8c77"
     },
     {
       "cp_id": "cp9",
-      "fingerprint": "fd4164db947cfe5e39e7b2a113f03975d93496ce8a34a4047c41b5d93bc7c8e4"
+      "fingerprint": "547ff171a357142e99a72392c9f3a999eb2f05596909a3c77f9c10bf027e0f99"
     },
     {
       "cp_id": "cp10",
-      "fingerprint": "d03990af9482709522aa187387191d6c4ea6e90413b35db0dd29024c24125b80"
+      "fingerprint": "fff3a9fc470eb12ea8a5c6efc8847acf4507a9e79807e897fe7fe0e7fc192c47"
     }
   ],
   "status": "passed",

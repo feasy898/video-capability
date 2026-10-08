@@ -1,0 +1,72 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "夹具占位——判定以 validate_cp3.py 为准"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 4.0,
+        "action": "她折信收进抽屉",
+        "refs": [
+          "heroine_a",
+          "prop_letter"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{信}",
+            "segment_id": "seg_01"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "wide",
+        "move": "pan",
+        "duration_s": 3.0,
+        "action": "雨中窗景摇过",
+        "refs": [
+          "heroine_a"
+        ]
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "medium_close",
+        "move": "push_in",
+        "duration_s": 4.0,
+        "action": "他推门收伞",
+        "refs": [
+          "narrator_x",
+          "prop_umbrella"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "推门",
+            "segment_id": "seg_03"
+          }
+        ]
+      }
+    ]
+  },
+  "notes": "pass 夹具 A：3 镜/3 台词；@{} 形式与裸词两种词锚；配 cp2_pass.json 全过"
+}

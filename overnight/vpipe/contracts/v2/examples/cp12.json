@@ -2,13 +2,13 @@
   "schema_version": "2.0",
   "cp_id": "cp12",
   "artifact_type": "qc_master",
-  "fingerprint": "7fbad220709185826a41f027e8d8fc7babd6bca68acd632932675f48ee93ad7e",
+  "fingerprint": "d65c6fafdf759f2518a0c97bad9b1be956861380a03435e47957c7733009d70f",
   "produced_by": "gate.episode_judge",
   "produced_at": "2026-10-08T15:50:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp11",
-      "fingerprint": "92e578f2de27801e63d20abff92382214132ba971b4f7a5659406ca2f71ed634"
+      "fingerprint": "3a73b4552c2f6268b89d0d2e8631a831f3d9c32456b0eb6dd35a43fa7ce1d602"
     }
   ],
   "status": "passed",
@@ -43,10 +43,26 @@
       "verdict": "pass"
     },
     "gate_groups": {
-      "a_group": { "recall": 1.0, "fpr": 0.0, "verdict": "pass" },
-      "b_group": { "recall": 0.96, "fpr": 0.08, "verdict": "pass" },
-      "c_group": { "recall": 0.85, "fpr": 0.1, "verdict": "pass" },
-      "d_group": { "warn_only": true, "flagged_count": 2, "verdict": "warn" }
+      "a_group": {
+        "recall": 1.0,
+        "fpr": 0.0,
+        "verdict": "pass"
+      },
+      "b_group": {
+        "recall": 0.96,
+        "fpr": 0.08,
+        "verdict": "pass"
+      },
+      "c_group": {
+        "recall": 0.85,
+        "fpr": 0.1,
+        "verdict": "pass"
+      },
+      "d_group": {
+        "warn_only": true,
+        "flagged_count": 2,
+        "verdict": "warn"
+      }
     },
     "human_escalation_rate": 0.12,
     "retry_round": 0,

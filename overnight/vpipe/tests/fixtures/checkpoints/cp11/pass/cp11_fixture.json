@@ -1,0 +1,67 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp11",
+  "artifact_type": "composite",
+  "fingerprint": "7f01a63772e7c87a7b4879dd7c8bb129b1dc62fd0996e48ac3decd329e49d6f5",
+  "produced_by": "fixture.gen",
+  "produced_at": "2026-10-08T00:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  ],
+  "status": "gated",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
+    "result": "pass",
+    "note": "3 个拼接硬切点（2.5/5.0/7.5s）全部登记 known_cuts 白名单，容差 0.5s 沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.duration_tol_s",
+      "result": "pass",
+      "note": "成片 9s vs 声明 9s，±1s 内（ffprobe 实测由校验器复核）。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.shot_count_match",
+      "result": "pass",
+      "note": "实测切点数 3（+1 段 = 4）== master_shot_segments 4 == storyboard_shot_count 4。"
+    }
+  ],
+  "payload": {
+    "work_id": "cp11_fixture",
+    "master_asset": {
+      "kind": "clip",
+      "fingerprint": "26766deedb91d71594fb1434a24303849c4a56ca7cf4a715e002c46601b9d201",
+      "path": "tests/fixtures/checkpoints/cp11/master_9s.mp4"
+    },
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "width": 360,
+    "height": 640,
+    "duration_s": 9.0,
+    "master_shot_segments": 4,
+    "storyboard_shot_count": 4,
+    "known_cuts": [
+      2.5,
+      5.0,
+      7.5
+    ],
+    "all_cuts_registered": true,
+    "black_ratio": 0.0
+  },
+  "notes": "CP11 校验器夹具：ffmpeg 内建 lavfi 源程序拼接（smptebars/rgbtestsrc/testsrc2/灰底），硬切点 2.5/5.0/7.5s。由 make_fixture.py 生成，重跑字节级复现。"
+}

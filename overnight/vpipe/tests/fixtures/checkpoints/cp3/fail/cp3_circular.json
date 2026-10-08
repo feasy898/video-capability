@@ -1,0 +1,50 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "夹具占位——判定以 validate_cp3.py 为准"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "ep1-a01",
+        "shot_scale": "wide",
+        "move": "static",
+        "duration_s": 3.0,
+        "action": "甲",
+        "refs": [
+          "heroine_a"
+        ],
+        "during": "@ep1-a02.line[0]"
+      },
+      {
+        "shot_id": "ep1-a02",
+        "shot_scale": "medium",
+        "move": "pan",
+        "duration_s": 4.0,
+        "action": "乙",
+        "refs": [
+          "narrator_x"
+        ],
+        "during": "@ep1-a01.line[1]"
+      }
+    ]
+  },
+  "notes": "fail ⑤：during 引用图 ep1-a01→ep1-a02→ep1-a01 成环（⑤ 拒）；④ 编译序同时违例（ep1-a01 后向引用），属环的结构性后果"
+}

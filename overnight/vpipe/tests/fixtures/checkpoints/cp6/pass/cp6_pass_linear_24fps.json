@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp6",
+  "artifact_type": "timeline",
+  "fingerprint": "32b1322bd9defbd9462dfa379eddf6b4b030f955c76cdb32bec4d2555001229d",
+  "produced_by": "orchestrator.cp6_timeline_builder",
+  "produced_at": "2026-10-08T15:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23"
+    },
+    {
+      "cp_id": "cp3",
+      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "f679a6460add96e697e79d0bc0e6e6c61c3cec5a7608cda11746fb2b3d132516"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp6.gate.duration_conservation_frames",
+    "result": "pass",
+    "note": "Σ duration_frames=360 == total_frames 360，偏差 0 帧 ≤ ±1（cp6.gate.duration_conservation_frames）。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.subtitle_align_ms_max",
+      "result": "pass",
+      "note": "字幕对齐登记值见 payload.subtitle_align_max_dev_ms。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "fps": 24,
+    "total_frames": 360,
+    "episode_duration_s": 15.0,
+    "duration_conservation_dev_frames": 0,
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "start_frame": 0,
+        "duration_frames": 120
+      },
+      {
+        "shot_id": "shot_02",
+        "start_frame": 120,
+        "duration_frames": 96
+      },
+      {
+        "shot_id": "shot_03",
+        "start_frame": 216,
+        "duration_frames": 144
+      }
+    ],
+    "subtitle_segments": [
+      {
+        "segment_id": "seg_01",
+        "start_s": 0.0,
+        "end_s": 4.5,
+        "text": "开门。"
+      },
+      {
+        "segment_id": "seg_02",
+        "start_s": 4.5,
+        "end_s": 9.0,
+        "text": "别进来！"
+      }
+    ],
+    "subtitle_align_max_dev_ms": 10,
+    "sound_lead_in_frames": 2,
+    "rhythm_segments": [
+      {
+        "segment_id": "rs_01",
+        "duration_s": 5.0
+      },
+      {
+        "segment_id": "rs_02",
+        "duration_s": 4.0
+      },
+      {
+        "segment_id": "rs_03",
+        "duration_s": 6.0
+      }
+    ]
+  },
+  "notes": "pass/cp6_pass_linear_24fps"
+}

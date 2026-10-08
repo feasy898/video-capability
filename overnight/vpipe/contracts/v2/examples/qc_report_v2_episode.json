@@ -1,129 +1,129 @@
 {
- "schema_version": "2.0",
- "clip_id": "shortdrama_ep01",
- "generated_at": "2026-10-08T15:55:00Z",
- "work_id": "shortdrama_ep01",
- "qc_mode": "online",
- "checkpoint": {
-  "cp_id": "cp12",
-  "artifact_ref": "7fbad220709185826a41f027e8d8fc7babd6bca68acd632932675f48ee93ad7e"
- },
- "verdict": {
-  "defect_detected": false,
-  "decision": "pass",
-  "confidence": 0.8204,
-  "decided_by": "cp12.composite(E10镜级合议+cp12.gate.master_score_min成片绝对门)",
-  "reasons": [
-   "成片级聚合：shot_qc_refs 4 份镜级 QCReport 无 A/B 组否决缺陷（任一存在则成片门直接不通过，否决组归属经 cp12.gate.veto_groups）",
-   "成片分 73.5 = 0.7×mean(75.0) + 0.3×worst(70.0)，短板惩罚公式 episode_verdict.formula；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与人工队列排序依据）",
-   "shot_03 的 J3 color_shift 通道 P=0.8204 落灰区（judges.J3_omnijev.gray_zone），未达 auto_reject_p——降为 manual_review 登记，见 human_review.queue",
-   "C 组 judge 缺陷不自动否决；D 组 2 个候选时间窗 warn-only（物理/时序类自动否决不存在），见 human_review.queue 第二条"
-  ]
- },
- "defects": [],
- "scores": {
-  "per_type": {
-   "frame_freeze": 0.4102,
-   "flicker": 0.3347,
-   "color_shift": 0.8204,
-   "face_blur": 0.1905,
-   "garble_text": 0.0712,
-   "temporal_swap": 0.3688,
-   "pixelate": 0.1456,
-   "ghosting": 0.3214
+  "schema_version": "2.0",
+  "clip_id": "shortdrama_ep01",
+  "generated_at": "2026-10-08T15:55:00Z",
+  "work_id": "shortdrama_ep01",
+  "qc_mode": "online",
+  "checkpoint": {
+    "cp_id": "cp12",
+    "artifact_ref": "d65c6fafdf759f2518a0c97bad9b1be956861380a03435e47957c7733009d70f"
   },
-  "overall": 0.5987,
-  "thresholds_applied": {
-   "ensemble_id": "E10",
-   "j3_thr": 0.71,
-   "auto_reject_p": 0.9,
-   "j6_emit_conf": 0.55,
-   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
-  }
- },
- "spans": [
-  {
-   "type": "note",
-   "evidence": {
-    "judge": "J3",
-    "text": "shot_03 color_shift 通道 P=0.8204 落灰区（judges.J3_omnijev.gray_zone），入 human_review.queue 待人工复核；C 组口径不自动否决"
-   }
+  "verdict": {
+    "defect_detected": false,
+    "decision": "pass",
+    "confidence": 0.8204,
+    "decided_by": "cp12.composite(E10镜级合议+cp12.gate.master_score_min成片绝对门)",
+    "reasons": [
+      "成片级聚合：shot_qc_refs 4 份镜级 QCReport 无 A/B 组否决缺陷（任一存在则成片门直接不通过，否决组归属经 cp12.gate.veto_groups）",
+      "成片分 73.5 = 0.7×mean(75.0) + 0.3×worst(70.0)，短板惩罚公式 episode_verdict.formula；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与人工队列排序依据）",
+      "shot_03 的 J3 color_shift 通道 P=0.8204 落灰区（judges.J3_omnijev.gray_zone），未达 auto_reject_p——降为 manual_review 登记，见 human_review.queue",
+      "C 组 judge 缺陷不自动否决；D 组 2 个候选时间窗 warn-only（物理/时序类自动否决不存在），见 human_review.queue 第二条"
+    ]
   },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "escalation_rate=0.12 按本集全链 QC 判定流计量，与 checkpoint.artifact_ref 指向的 qc_master 工件 payload.human_escalation_rate 同值"
-   }
-  }
- ],
- "judges": {
-  "J1": {
-   "clip_id": "shortdrama_ep01",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.9,
-   "spans": "成片全片重采样复检",
-   "notes": "成片级复核：四镜装配后无新增缺陷；镜级明细以 shot_qc_refs 指向的 4 份 clip 级 QCReport 为准；C 组标注不自动否决。"
+  "defects": [],
+  "scores": {
+    "per_type": {
+      "frame_freeze": 0.4102,
+      "flicker": 0.3347,
+      "color_shift": 0.8204,
+      "face_blur": 0.1905,
+      "garble_text": 0.0712,
+      "temporal_swap": 0.3688,
+      "pixelate": 0.1456,
+      "ghosting": 0.3214
+    },
+    "overall": 0.5987,
+    "thresholds_applied": {
+      "ensemble_id": "E10",
+      "j3_thr": 0.71,
+      "auto_reject_p": 0.9,
+      "j6_emit_conf": 0.55,
+      "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
+    }
   },
-  "J6": {
-   "clip_id": "shortdrama_ep01",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 1.0,
-   "spans": [],
-   "notes": "qc_detectors_v2 成片级重跑：全部拼接切点均已登记于 known_cuts（容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s），无 temporal_swap 误报。"
-  }
- },
- "inputs": {
-  "clip": "masters/shortdrama_ep01.mp4",
-  "frames_dir": null,
-  "judge_files": {
-   "J1": "overnight/数据/judges/glm8/shortdrama_ep01.json",
-   "J6": "overnight/数据/judges/detectors/raw/shortdrama_ep01.qc.json"
-  }
- },
- "episode_verdict": {
-  "score": 73.5,
-  "mean_shot_score": 75.0,
-  "worst_shot_score": 70.0,
-  "formula": "0.7*mean+0.3*worst",
-  "verdict": "pass",
-  "params_ref": "cp12.gate.master_score_min",
-  "shot_qc_refs": [
-   {
-    "shot_id": "shot_01",
-    "qc_report_fingerprint": "daecaf38ce30c533a92d6a211c7a006f3eeec5345cddbe3c7186f989c1844caf"
-   },
-   {
-    "shot_id": "shot_02",
-    "qc_report_fingerprint": "03c47c218b47430848ff8cc3b8981d358e721ad943d1141e49aedf3bad25655d"
-   },
-   {
-    "shot_id": "shot_03",
-    "qc_report_fingerprint": "dec29102700c39ccafc4b5c17f3ff469c880725025d2db26b6d251d3bfcb03e7"
-   },
-   {
-    "shot_id": "shot_04",
-    "qc_report_fingerprint": "824892b80ea2e11ff6e0d04428bfdf0bed40862eb0e4fade6e0dfd8a3ae0a25a"
-   }
-  ]
- },
- "human_review": {
-  "queue": [
-   {
-    "ref": "shot_03",
-    "reason": "J3 color_shift 通道 P=0.8204 落灰区（judges.J3_omnijev.gray_zone），未达 auto_reject_p；入队待人工复核，处置结果回填 outcome",
-    "params_ref": "judges.J3_omnijev.gray_zone",
-    "outcome": "pending"
-   },
-   {
-    "ref": "shot_04",
-    "reason": "D 组时序叙事 flag 的候选时间窗 2 处（warn-only，物理/时序类自动否决不存在，白皮书 §2 原则 3）；人工只看程序标出的时间窗",
-    "outcome": "pending"
-   }
+  "spans": [
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J3",
+        "text": "shot_03 color_shift 通道 P=0.8204 落灰区（judges.J3_omnijev.gray_zone），入 human_review.queue 待人工复核；C 组口径不自动否决"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "escalation_rate=0.12 按本集全链 QC 判定流计量，与 checkpoint.artifact_ref 指向的 qc_master 工件 payload.human_escalation_rate 同值"
+      }
+    }
   ],
-  "escalation_rate": 0.12,
-  "params_ref": "cp12.gate.human_escalation_rate_max"
- },
- "errors": {}
+  "judges": {
+    "J1": {
+      "clip_id": "shortdrama_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.9,
+      "spans": "成片全片重采样复检",
+      "notes": "成片级复核：四镜装配后无新增缺陷；镜级明细以 shot_qc_refs 指向的 4 份 clip 级 QCReport 为准；C 组标注不自动否决。"
+    },
+    "J6": {
+      "clip_id": "shortdrama_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 1.0,
+      "spans": [],
+      "notes": "qc_detectors_v2 成片级重跑：全部拼接切点均已登记于 known_cuts（容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s），无 temporal_swap 误报。"
+    }
+  },
+  "inputs": {
+    "clip": "masters/shortdrama_ep01.mp4",
+    "frames_dir": null,
+    "judge_files": {
+      "J1": "overnight/数据/judges/glm8/shortdrama_ep01.json",
+      "J6": "overnight/数据/judges/detectors/raw/shortdrama_ep01.qc.json"
+    }
+  },
+  "episode_verdict": {
+    "score": 73.5,
+    "mean_shot_score": 75.0,
+    "worst_shot_score": 70.0,
+    "formula": "0.7*mean+0.3*worst",
+    "verdict": "pass",
+    "params_ref": "cp12.gate.master_score_min",
+    "shot_qc_refs": [
+      {
+        "shot_id": "shot_01",
+        "qc_report_fingerprint": "daecaf38ce30c533a92d6a211c7a006f3eeec5345cddbe3c7186f989c1844caf"
+      },
+      {
+        "shot_id": "shot_02",
+        "qc_report_fingerprint": "03c47c218b47430848ff8cc3b8981d358e721ad943d1141e49aedf3bad25655d"
+      },
+      {
+        "shot_id": "shot_03",
+        "qc_report_fingerprint": "dec29102700c39ccafc4b5c17f3ff469c880725025d2db26b6d251d3bfcb03e7"
+      },
+      {
+        "shot_id": "shot_04",
+        "qc_report_fingerprint": "824892b80ea2e11ff6e0d04428bfdf0bed40862eb0e4fade6e0dfd8a3ae0a25a"
+      }
+    ]
+  },
+  "human_review": {
+    "queue": [
+      {
+        "ref": "shot_03",
+        "reason": "J3 color_shift 通道 P=0.8204 落灰区（judges.J3_omnijev.gray_zone），未达 auto_reject_p；入队待人工复核，处置结果回填 outcome",
+        "params_ref": "judges.J3_omnijev.gray_zone",
+        "outcome": "pending"
+      },
+      {
+        "ref": "shot_04",
+        "reason": "D 组时序叙事 flag 的候选时间窗 2 处（warn-only，物理/时序类自动否决不存在，白皮书 §2 原则 3）；人工只看程序标出的时间窗",
+        "outcome": "pending"
+      }
+    ],
+    "escalation_rate": 0.12,
+    "params_ref": "cp12.gate.human_escalation_rate_max"
+  },
+  "errors": {}
 }

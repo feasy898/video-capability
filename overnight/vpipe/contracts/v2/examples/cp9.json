@@ -2,17 +2,17 @@
   "schema_version": "2.0",
   "cp_id": "cp9",
   "artifact_type": "final_render",
-  "fingerprint": "fd4164db947cfe5e39e7b2a113f03975d93496ce8a34a4047c41b5d93bc7c8e4",
+  "fingerprint": "547ff171a357142e99a72392c9f3a999eb2f05596909a3c77f9c10bf027e0f99",
   "produced_by": "gen_api",
   "produced_at": "2026-10-08T14:00:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp6",
-      "fingerprint": "82e712a442d767c704894218f8eaa0db34400841f2125f4472babf6a2c32b986"
+      "fingerprint": "1b4bc95d30d0e7f706cf0a39479dd584c446ae7b381a087cec018084812913aa"
     },
     {
       "cp_id": "cp8",
-      "fingerprint": "752c4ac6d295f44232749e7a2971c673b2650e56e79b4330adb8d801f7417806"
+      "fingerprint": "5559af085a86edcd806657747bae684512ef26185cb75c270be753a383bb835d"
     }
   ],
   "status": "passed",

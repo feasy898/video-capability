@@ -1,0 +1,66 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "fail",
+    "note": "夹具（主控验收改判 2026-10-08）：带 refs+词锚但无 --script 可解析——按 fail-closed 纪律必须拒。原归类 pass_noscript 是错误预期（契约下 refs 只能经 --script 解析）。"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 4.0,
+        "action": "信纸特写，折好入抽屉",
+        "refs": [
+          "heroine_a",
+          "prop_letter"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "抽屉",
+            "segment_id": "seg_01"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "wide",
+        "move": "pan",
+        "duration_s": 3.0,
+        "action": "雨幕中的窗",
+        "refs": [
+          "heroine_a"
+        ]
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "medium",
+        "move": "handheld",
+        "duration_s": 4.0,
+        "action": "他推门收伞",
+        "refs": [
+          "narrator_x",
+          "prop_umbrella"
+        ]
+      }
+    ]
+  },
+  "notes": "预期：validate_cp3.py 不带 --script 时 exit 1（③⑥⑦ fail-closed）；配对 --script cp2_pass.json 后应转 pass（证明拒因是缺源而非工件损坏）。"
+}

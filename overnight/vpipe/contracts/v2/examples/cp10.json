@@ -2,17 +2,17 @@
   "schema_version": "2.0",
   "cp_id": "cp10",
   "artifact_type": "subtitle_audio",
-  "fingerprint": "d03990af9482709522aa187387191d6c4ea6e90413b35db0dd29024c24125b80",
+  "fingerprint": "fff3a9fc470eb12ea8a5c6efc8847acf4507a9e79807e897fe7fe0e7fc192c47",
   "produced_by": "orchestrator.cp10_subtitle_audio",
   "produced_at": "2026-10-08T14:40:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp2",
-      "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23"
+      "fingerprint": "59d3a80782556a53c2ad3cc6cede51a633be12ab3cdb515fa228e861ece9f6b2"
     },
     {
       "cp_id": "cp6",
-      "fingerprint": "82e712a442d767c704894218f8eaa0db34400841f2125f4472babf6a2c32b986"
+      "fingerprint": "1b4bc95d30d0e7f706cf0a39479dd584c446ae7b381a087cec018084812913aa"
     }
   ],
   "status": "passed",

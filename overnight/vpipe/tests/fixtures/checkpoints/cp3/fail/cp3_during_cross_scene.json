@@ -1,0 +1,49 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "夹具占位——判定以 validate_cp3.py 为准"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "source_script_fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+    "shots": [
+      {
+        "shot_id": "s01-02",
+        "shot_scale": "medium",
+        "move": "pan",
+        "duration_s": 4.0,
+        "action": "她回头",
+        "refs": [
+          "heroine_a"
+        ],
+        "during": "@s02-01.line[0]"
+      },
+      {
+        "shot_id": "s02-01",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 3.0,
+        "action": "另一场景灯亮",
+        "refs": [
+          "narrator_x"
+        ]
+      }
+    ]
+  },
+  "notes": "fail ④：s01-02 during 跨场景引用 s02-01（已定义但场景不同）——预期仅 during_reference_valid 失败"
+}

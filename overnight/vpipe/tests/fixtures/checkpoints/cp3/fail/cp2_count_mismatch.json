@@ -1,0 +1,90 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp2",
+  "artifact_type": "script",
+  "fingerprint": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+  "produced_by": "agent.writer",
+  "produced_at": "2026-10-08T09:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp1",
+      "fingerprint": "c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp2.gate.duration_dev_max",
+    "result": "pass",
+    "note": "夹具占位"
+  },
+  "payload": {
+    "work_id": "fixture_ep01",
+    "target_duration_s": 30.0,
+    "estimated_total_duration_s": 16.0,
+    "narration_segments": [
+      {
+        "segment_id": "seg_01",
+        "narration_text": "一。",
+        "visual_description": "一。",
+        "estimated_duration_s": 4.0,
+        "tts_safe": true,
+        "cast_refs": [
+          "heroine_a"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_02",
+        "narration_text": "二。",
+        "visual_description": "二。",
+        "estimated_duration_s": 4.0,
+        "tts_safe": true,
+        "cast_refs": [
+          "father_b"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_03",
+        "narration_text": "三。",
+        "visual_description": "三。",
+        "estimated_duration_s": 4.0,
+        "tts_safe": true,
+        "cast_refs": [
+          "heroine_a"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_04",
+        "narration_text": "四。",
+        "visual_description": "四。",
+        "estimated_duration_s": 4.0,
+        "tts_safe": true,
+        "cast_refs": [
+          "heroine_a",
+          "father_b"
+        ],
+        "props_refs": []
+      }
+    ],
+    "cast": [
+      {
+        "char_id": "heroine_a"
+      },
+      {
+        "char_id": "father_b"
+      }
+    ],
+    "props": [
+      {
+        "prop_id": "prop_letter"
+      },
+      {
+        "prop_id": "prop_umbrella"
+      }
+    ]
+  },
+  "notes": "fail 夹具配套剧本"
+}

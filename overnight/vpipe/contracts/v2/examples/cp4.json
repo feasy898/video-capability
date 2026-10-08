@@ -2,13 +2,13 @@
   "schema_version": "2.0",
   "cp_id": "cp4",
   "artifact_type": "keyframes",
-  "fingerprint": "ffcc4ed9421481bcf26e92ec60c8bd3f3b8af5d1cc4bbc523cc8233b89d82953",
+  "fingerprint": "f98a05d3f479b22c0a7986a465d0656ccf2b32679250fee92c86aadc3c39d55d",
   "produced_by": "agent.keyframePainter",
   "produced_at": "2026-10-08T10:40:00Z",
   "upstream_refs": [
     {
       "cp_id": "cp3",
-      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+      "fingerprint": "9566ea86c37274595d5ab9ae98efc2b26dc050dbbb1ac53071df2b6eb05d8c77"
     }
   ],
   "status": "passed",
@@ -47,9 +47,18 @@
         "height": 1920,
         "aspect": "9:16",
         "black_frame_ratio": 0.0,
-        "expected_identities": ["heroine_a", "father_b"],
-        "detected_identities": ["heroine_a", "father_b"],
-        "identity_cosine": { "heroine_a": 0.71, "father_b": 0.68 }
+        "expected_identities": [
+          "heroine_a",
+          "father_b"
+        ],
+        "detected_identities": [
+          "heroine_a",
+          "father_b"
+        ],
+        "identity_cosine": {
+          "heroine_a": 0.71,
+          "father_b": 0.68
+        }
       },
       {
         "shot_id": "shot_02",
@@ -62,9 +71,15 @@
         "height": 1920,
         "aspect": "9:16",
         "black_frame_ratio": 0.0,
-        "expected_identities": ["father_b"],
-        "detected_identities": ["father_b"],
-        "identity_cosine": { "father_b": 0.68 }
+        "expected_identities": [
+          "father_b"
+        ],
+        "detected_identities": [
+          "father_b"
+        ],
+        "identity_cosine": {
+          "father_b": 0.68
+        }
       },
       {
         "shot_id": "shot_03",
@@ -77,9 +92,15 @@
         "height": 1920,
         "aspect": "9:16",
         "black_frame_ratio": 0.0,
-        "expected_identities": ["father_b"],
-        "detected_identities": ["father_b"],
-        "identity_cosine": { "father_b": 0.68 }
+        "expected_identities": [
+          "father_b"
+        ],
+        "detected_identities": [
+          "father_b"
+        ],
+        "identity_cosine": {
+          "father_b": 0.68
+        }
       },
       {
         "shot_id": "shot_04",
@@ -92,9 +113,15 @@
         "height": 1920,
         "aspect": "9:16",
         "black_frame_ratio": 0.0,
-        "expected_identities": ["heroine_a"],
-        "detected_identities": ["heroine_a"],
-        "identity_cosine": { "heroine_a": 0.71 }
+        "expected_identities": [
+          "heroine_a"
+        ],
+        "detected_identities": [
+          "heroine_a"
+        ],
+        "identity_cosine": {
+          "heroine_a": 0.71
+        }
       }
     ]
   },

@@ -2,7 +2,7 @@
   "schema_version": "2.0",
   "cp_id": "cp1",
   "artifact_type": "intent_card",
-  "fingerprint": "00baa9aa058be0ccc85aefef1b76e8e643b640ea4ea0b746b71537a8265132c4",
+  "fingerprint": "486e39e3b383dcc5b6623e6f70a8c539f0146fdd6f02815ade07dcccc67cc43a",
   "produced_by": "agent.director",
   "produced_at": "2026-10-08T09:00:00Z",
   "upstream_refs": [],
