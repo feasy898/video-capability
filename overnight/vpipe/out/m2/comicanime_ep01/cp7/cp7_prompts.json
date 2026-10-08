@@ -1,0 +1,112 @@
+{
+  "schema": "cp7_prompts/1.0",
+  "work_id": "comicanime_ep01",
+  "generated_at": "2026-10-09T04:48:29+0800",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "pipeline": "LTXPipeline",
+    "dtype": "float16"
+  },
+  "params": {
+    "height": 480,
+    "width": 704,
+    "fps": 24,
+    "duration_frames": 33,
+    "steps": 15,
+    "guidance": 3.0,
+    "seed_rule": "42 + shot ordinal (1-based): shot_01->43 ... shot_09->51"
+  },
+  "hard_conditions_ref": "evidence/spike/SPIKE-REPORT.md §1 发现A(英文层)/发现B(色偏固有)；短剧线 ecd9b80 实证沿用",
+  "shots": [
+    {
+      "shot_id": "shot_01",
+      "action_zh": "雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边，画格流定格开场",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Medium wide shot: a rain-soaked street noodle stall at night under a warm glowing lantern, a young man in a dark coat pushes through the plastic strip curtain into the awning, his backlit silhouette edged by slanting rain streaks, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 43,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_02",
+      "action_zh": "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边，画格流定格",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Close-up: a young man sits down at a wooden stall counter and taps the counter twice with his knuckle to order, his face filling most of the frame, warm lantern light edging his profile, rain haze behind, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 44,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_03",
+      "action_zh": "沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话，画格流定格",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Medium close-up: a young cook behind a noodle stall glances up from his pot while wiping his hands on a towel, then flips the towel back over his shoulder, steam drifting past him, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 45,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_04",
+      "action_zh": "俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，面碗粗陶体不形变",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Overhead close-up of hands: a cook lifts noodles into a rough ceramic bowl with a long ladle, ladles golden broth over them, then drizzles sizzling hot oil from a small pot, steam rolling up past the top of the frame, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 46,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_05",
+      "action_zh": "汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸，器物恒存不形变",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Extreme close-up of an old stockpot: worn rim with scratch marks and years of patina clearly visible, small blue flames licking the pot bottom, thin steam curling up, no people in frame, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 47,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_06",
+      "action_zh": "沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Extreme close-up: a young cook freezes with a tasting ladle stopped in mid-air, his eyes widening and pupils contracting in shock, steam dissolving into soft blur behind him, the camera very slowly pushing in toward his face",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 48,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_07",
+      "action_zh": "双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切，双主角身份不漂移",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Medium close-up two-shot, one static take: two young men sit facing each other across a narrow stall counter, one lays his chopsticks across the rim of an empty ceramic bowl and stares straight at the other, no cuts, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 49,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_08",
+      "action_zh": "沈聿后退半步扶住案沿，毛巾从手里滑落，近景拍他失神的脸，画格流定格",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Close-up: a young cook staggers half a step backward and grips the counter edge, a towel slipping from his hand, his face draining into blank disbelief, static camera",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 50,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_09",
+      "action_zh": "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃，收尾呼应开场",
+      "prompt_en": "Vertical anime manhua style, clean bold line art, cel shading. Medium shot: two noodle bowls cooling side by side on a stall counter, the steam gone, the camera slowly pulling back out past the stall curtain as a warm lantern sways in the rain",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 51,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    }
+  ]
+}

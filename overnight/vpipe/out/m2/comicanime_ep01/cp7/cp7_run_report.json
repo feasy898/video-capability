@@ -1,0 +1,419 @@
+{
+  "task": "cp7-draft-generation-comicanime_ep01",
+  "host": "anolis-gpu-01",
+  "generated_at": "2026-10-09T04:46:39+0800",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "dtype": "float16",
+    "pipeline": "LTXPipeline"
+  },
+  "params": {
+    "height": 480,
+    "width": 704,
+    "num_frames": 33,
+    "num_inference_steps": 15,
+    "guidance_scale": 3.0,
+    "seed_rule": "42 + shot ordinal (1-based): shot_01->43 ... shot_09->51",
+    "fps_out": 24,
+    "declared_duration_s_per_clip": 1.375,
+    "negative_prompt": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles"
+  },
+  "shots": [
+    {
+      "shot_id": "shot_01",
+      "seed": 43,
+      "gen_s": 5.34,
+      "torch_peak_mib": 16623.3,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 31.913,
+        "frame_mean_max": 33.96,
+        "frame_mean_overall": 33.257
+      },
+      "encode_s": 0.554,
+      "mp4_md5": "2b1e94fb6c72ae9eddcfd3f948360326",
+      "mp4_sha256": "7c7318e087fe5ac48e8b43db0ff90bf15d29ac6b173639d69516b034eeb452f6",
+      "mp4_size_bytes": 613708,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "3570664"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 215.53,
+        "frame_mean_overall": 217.244
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_01.draft.l0.json",
+      "shot_wall_s": 6.18
+    },
+    {
+      "shot_id": "shot_02",
+      "seed": 44,
+      "gen_s": 4.89,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 35.663,
+        "frame_mean_max": 36.919,
+        "frame_mean_overall": 36.372
+      },
+      "encode_s": 0.303,
+      "mp4_md5": "29bfa52fc4d915734c104c8852610bbb",
+      "mp4_sha256": "eab208d8d6d0b392add1a2708b56cc4b78a5f6d4b6cfb2167f867dbd97fd4f94",
+      "mp4_size_bytes": 41316,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "240384"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 218.147,
+        "frame_mean_overall": 218.585
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_02.draft.l0.json",
+      "shot_wall_s": 5.45
+    },
+    {
+      "shot_id": "shot_03",
+      "seed": 45,
+      "gen_s": 4.96,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 129.332,
+        "frame_mean_max": 131.364,
+        "frame_mean_overall": 130.699
+      },
+      "encode_s": 0.313,
+      "mp4_md5": "32b96450ac90aa4cdddded470ec4d1c3",
+      "mp4_sha256": "4094b2bd22e3f58fceab0a398e325c9d4a40084cf48f74642dd515ec7e9a2902",
+      "mp4_size_bytes": 67906,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "395089"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 123.633,
+        "frame_mean_overall": 124.357
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_03.draft.l0.json",
+      "shot_wall_s": 5.54
+    },
+    {
+      "shot_id": "shot_04",
+      "seed": 46,
+      "gen_s": 4.95,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 144.82,
+        "frame_mean_max": 149.72,
+        "frame_mean_overall": 146.752
+      },
+      "encode_s": 0.383,
+      "mp4_md5": "f0a1e4e8eff8c1a897e24e35ca5976ec",
+      "mp4_sha256": "ca56634f22d4bfc7ea45ef06b41bc14ba9d2513d7ec7ce8e1ff13f28049ad735",
+      "mp4_size_bytes": 168852,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "982411"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 105.48,
+        "frame_mean_overall": 108.326
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_04.draft.l0.json",
+      "shot_wall_s": 5.6
+    },
+    {
+      "shot_id": "shot_05",
+      "seed": 47,
+      "gen_s": 4.92,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 150.897,
+        "frame_mean_max": 153.541,
+        "frame_mean_overall": 151.873
+      },
+      "encode_s": 0.42,
+      "mp4_md5": "39b0d4840c5dd4c507874bcec435d943",
+      "mp4_sha256": "2ccc23d8f5e08402f7105422fb4c89e0815ebf2303db4956ec4783dc4ef0ec7a",
+      "mp4_size_bytes": 163298,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "950097"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 101.794,
+        "frame_mean_overall": 103.159
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_05.draft.l0.json",
+      "shot_wall_s": 5.62
+    },
+    {
+      "shot_id": "shot_06",
+      "seed": 48,
+      "gen_s": 4.92,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 198.524,
+        "frame_mean_max": 206.386,
+        "frame_mean_overall": 202.466
+      },
+      "encode_s": 0.407,
+      "mp4_md5": "cd7368138ca3b857b9a86ece7b4c3fba",
+      "mp4_sha256": "24d144858bfe5c45304b1592cc6f2d38234ead893c50ae83640f79279f34b455",
+      "mp4_size_bytes": 215409,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "1253288"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 48.819,
+        "frame_mean_overall": 52.622
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_06.draft.l0.json",
+      "shot_wall_s": 5.6
+    },
+    {
+      "shot_id": "shot_07",
+      "seed": 49,
+      "gen_s": 4.96,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 150.611,
+        "frame_mean_max": 151.253,
+        "frame_mean_overall": 151.034
+      },
+      "encode_s": 0.281,
+      "mp4_md5": "cdac61c078d765a9f91861a5f650b93d",
+      "mp4_sha256": "ab5ef010594a0b22a0d4936fba1a44ede57610b8963cce4c72a3a444090dc80e",
+      "mp4_size_bytes": 41223,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "239842"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 104.381,
+        "frame_mean_overall": 104.485
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_07.draft.l0.json",
+      "shot_wall_s": 5.5
+    },
+    {
+      "shot_id": "shot_08",
+      "seed": 50,
+      "gen_s": 4.95,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 200.816,
+        "frame_mean_max": 203.126,
+        "frame_mean_overall": 201.897
+      },
+      "encode_s": 0.299,
+      "mp4_md5": "45e56cd126a97db7ebde54d6372b2da0",
+      "mp4_sha256": "68c7d170f22316e8e06a94f3866b2d32c2c4428b65ce33661df0ad743e337f7f",
+      "mp4_size_bytes": 84734,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "492997"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 52.158,
+        "frame_mean_overall": 53.374
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_08.draft.l0.json",
+      "shot_wall_s": 5.51
+    },
+    {
+      "shot_id": "shot_09",
+      "seed": 51,
+      "gen_s": 4.93,
+      "torch_peak_mib": 16623.6,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 127.046,
+        "frame_mean_max": 129.732,
+        "frame_mean_overall": 128.108
+      },
+      "encode_s": 0.362,
+      "mp4_md5": "f004668938804d4b87c796dbc0a39979",
+      "mp4_sha256": "09307471b7a2e2077b11777cf276da6ee4cd3dd946dfbc4c07e76a2671fedbf9",
+      "mp4_size_bytes": 184099,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "1071121"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 125.525,
+        "frame_mean_overall": 126.958
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "l0_evidence": "shot_09.draft.l0.json",
+      "shot_wall_s": 5.56
+    }
+  ],
+  "errors": [],
+  "preflight": {
+    "ts": "2026-10-09T04:46:40+0800",
+    "card0_used_mib": 310,
+    "card1_used_mib": 26706
+  },
+  "gpu": {
+    "name": "Tesla V100S-PCIE-32GB",
+    "capability": "7.0",
+    "bf16_supported": true
+  },
+  "git_head": "fdaa1cd386502dcbcf0f38f07f24edba9cd35b9b",
+  "determinism": {
+    "shot_id": "shot_04",
+    "method": "same seed/params second generation, full-frame MAE",
+    "gen2_s": 4.95,
+    "mae_all_frames": 0.0,
+    "frames_compared": 33,
+    "equal_bits": true
+  },
+  "timing_s": {
+    "load": 48.35,
+    "total": 107.93,
+    "gen_sum": 44.82,
+    "encode_sum": 3.32,
+    "gen_s_min": 4.89,
+    "gen_s_max": 5.34,
+    "shot_wall_min": 5.45,
+    "shot_wall_max": 6.18
+  },
+  "vram": {
+    "baseline_used_mib": 618,
+    "nvidia_smi_max_used_mib": 18776,
+    "nvidia_smi_samples": 54
+  },
+  "ok": true
+}

@@ -1,0 +1,18 @@
+# CP7 schema validation log — 2026-10-09T04:54:08+0800
+# cwd=/home/pan-ding/workspace/视频能力
+# 命令口径 = SPEC_v2.md:145 canonical: python3 -c "import json,jsonschema,pathlib; s=json.loads(pathlib.Path('overnight/vpipe/contracts/v2/checkpoint.schema.json').read_text()); jsonschema.validate(artifact, s)"
+
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_01.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_02.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_03.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_04.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_05.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_06.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_07.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_08.json
+EXIT=0 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_shot_09.json
+EXIT=1 overnight/vpipe/out/m2/comicanime_ep01/cp7.json  #               '未触碰；全程卡0 nvidia-smi 峰值 18776MiB（本进程）；不 kill/不 pip/不下载。'}
+
+--- aggregate 校验错误详情（jsonschema.ValidationError 摘要）---
+ValidationError: {'schema_version': '2.0', 'cp_id': 'cp7', 'artifact_type': 'draft_clip', 'fingerprint': '57d6914fa7d00c21109d4a8fed7a07f
+validator: oneOf | schema path: ['oneOf']

@@ -1,0 +1,176 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp2",
+  "artifact_type": "script",
+  "fingerprint": "4fcbe4a78d4fbf5fc04e7ca387fd429ab1e4e6c63996673831d884f48897952d",
+  "produced_by": "agent.writer",
+  "produced_at": "2026-10-08T20:44:31Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp1",
+      "fingerprint": "9b7122fa6fa41fcb245a40cae770658403ce8fa64bbf226570530fb9863c7e83"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp2.gate.duration_dev_max",
+    "result": "pass",
+    "note": "Σ estimated_duration_s=29.56s vs 目标 30.0s，偏差 1.47% ≤ 2%（checkpoints.cp2.gate.duration_dev_max=0.02，thresholds.yaml:275-277）；逐段估时按 StepFun stepaudio-2.5-tts 实测 4.6 字/s（工程方案v3.1.md:53，src/tts.py:84 CHARS_PER_SEC_EST 同值同口径），与 validate_cp2.py 独立重算一致，exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp2.gate.line_shot_ratio",
+      "result": "pass",
+      "note": "台词条数 9 / 预计镜头数 9（契约 payload 不收 expected_shot_count，按白皮书 §3 CP2 注「逐行一拍一镜」取=台词条数）= 1.0，在 [1.0, 1.5] 内（checkpoints.cp2.gate.line_shot_ratio，thresholds.yaml:278-280）；9 条在漫剧线 8-12 镜带内，镜均 30/9≈3.33s 贴 cd01 先验 3.02s。"
+    }
+  ],
+  "payload": {
+    "work_id": "comicanime_ep01",
+    "target_duration_s": 30.0,
+    "estimated_total_duration_s": 29.56,
+    "narration_segments": [
+      {
+        "segment_id": "seg_01",
+        "narration_text": "雨夜，沈记面馆的灯还亮着。推门进来的人，十年没回来过了。",
+        "visual_description": "雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边",
+        "estimated_duration_s": 5.22,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lu"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_02",
+        "narration_text": "老板，一碗头汤面。汤宽，面硬，葱花最后放。",
+        "visual_description": "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边",
+        "estimated_duration_s": 3.48,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lu"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_03",
+        "narration_text": "头汤只卖一碗。这规矩，十年前就断了。",
+        "visual_description": "沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话",
+        "estimated_duration_s": 3.26,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_shenyu"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_04",
+        "narration_text": "沈聿下面收汤，动作和十年前教他的一分不差。",
+        "visual_description": "俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，一气呵成",
+        "estimated_duration_s": 4.13,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_shenyu"
+        ],
+        "props_refs": [
+          "prop_bowl_01",
+          "prop_ladle_01"
+        ]
+      },
+      {
+        "segment_id": "seg_05",
+        "narration_text": "锅还是那口锅，可惜姓了沈。",
+        "visual_description": "汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸",
+        "estimated_duration_s": 2.39,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lu"
+        ],
+        "props_refs": [
+          "prop_pot_01"
+        ]
+      },
+      {
+        "segment_id": "seg_06",
+        "narration_text": "这手法……你到底跟谁学的？",
+        "visual_description": "沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近",
+        "estimated_duration_s": 2.17,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_shenyu"
+        ],
+        "props_refs": [
+          "prop_bowl_01"
+        ]
+      },
+      {
+        "segment_id": "seg_07",
+        "narration_text": "跟一个老师傅。他说，味道在，人就还在。",
+        "visual_description": "双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切",
+        "estimated_duration_s": 3.26,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lu",
+          "cast_shenyu"
+        ],
+        "props_refs": [
+          "prop_bowl_01",
+          "prop_chopsticks_01"
+        ]
+      },
+      {
+        "segment_id": "seg_08",
+        "narration_text": "师弟？！那道门是爹锁的，不关我的事！",
+        "visual_description": "沈聿后退半步扶住案沿，毛巾从手里滑落，近景拍他失神的脸",
+        "estimated_duration_s": 3.04,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_shenyu"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_09",
+        "narration_text": "面凉了，雨声里谁都没先动筷。",
+        "visual_description": "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃",
+        "estimated_duration_s": 2.61,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lu",
+          "cast_shenyu"
+        ],
+        "props_refs": [
+          "prop_bowl_01",
+          "prop_lantern_01"
+        ]
+      }
+    ],
+    "cast": [
+      {
+        "char_id": "cast_lu"
+      },
+      {
+        "char_id": "cast_shenyu"
+      }
+    ],
+    "props": [
+      {
+        "prop_id": "prop_bowl_01"
+      },
+      {
+        "prop_id": "prop_ladle_01"
+      },
+      {
+        "prop_id": "prop_pot_01"
+      },
+      {
+        "prop_id": "prop_chopsticks_01"
+      },
+      {
+        "prop_id": "prop_lantern_01"
+      }
+    ]
+  },
+  "notes": "《头汤面》EP1 剧本：9 条=漫剧旁白（seg_01/04/09）+对白（seg_02/03/05/06/07/08）混合，全部落在漫剧 6-9 句带内。cast 注册 2 项（cast_lu=陆星辞·被逐出师门的少东家，cast_shenyu=沈聿·接手面馆的师兄），props 注册 5 项（prop_bowl_01 头汤面碗/prop_ladle_01 长柄汤勺/prop_pot_01 老汤锅/prop_chopsticks_01 木筷/prop_lantern_01 面摊灯笼）——供 CP3 refs 引用，validate_cp2.py ④ 悬空引用检查实跑核过。台词汉字总量 138，Σ=29.56s（4.6 字/s），与 30s 目标偏差 1.47%；CP6 按 720 帧@24fps 最大余数法守恒折算。small_text_policy=post_render_plate（沿短剧线）：画面内不出现任何可读文字/拟声词，台词与漫剧式拟声一律 CP10 后期字牌（CP1 禁区 G2 的 CP2 侧投影）。fingerprint=sha256(canonical payload)（fingerprint.py 同算法实算）。"
+}

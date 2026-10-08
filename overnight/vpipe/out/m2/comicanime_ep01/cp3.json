@@ -1,0 +1,205 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "8cc4fcc235bbddf1a422aed3b19c1937b8276587d9e23a468746d809a4c8e91a",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T20:44:31Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "4fcbe4a78d4fbf5fc04e7ca387fd429ab1e4e6c63996673831d884f48897952d"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pass",
+    "note": "9 镜最长 shot_01=5.22s ≤ 15.0s（checkpoints.cp3.gate.max_shot_duration_s=15.0，thresholds.yaml:283-285；H3 实测 4–15s，VDL_v2_草案 R3），validate_cp3.py 实跑 exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.word_anchor_valid",
+      "result": "pass",
+      "note": "9 处词锚 @{…} 剥壳后均为对应 segment narration_text 连续子串（checkpoints.cp3.gate.word_anchor_valid=true，thresholds.yaml:283-285 同段相邻键），validate_cp3.py ③ 实跑核过。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.shot_line_count_match",
+      "result": "pass",
+      "note": "镜头数 9 == CP2 台词条数 9（逐行一拍一镜，cp2.gate.line_shot_ratio 的等式另一侧；9 镜在漫剧线 8-12 镜带内），validate_cp3.py ⑥ 实跑核过。"
+    }
+  ],
+  "payload": {
+    "work_id": "comicanime_ep01",
+    "source_script_fingerprint": "4fcbe4a78d4fbf5fc04e7ca387fd429ab1e4e6c63996673831d884f48897952d",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 5.22,
+        "action": "雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边，画格流定格开场",
+        "refs": [
+          "cast_lu",
+          "prop_lantern_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{推门进来的人}",
+            "segment_id": "seg_01"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 3.48,
+        "action": "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边，画格流定格",
+        "refs": [
+          "cast_lu"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{一碗头汤面}",
+            "segment_id": "seg_02"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 3.26,
+        "action": "沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话，画格流定格",
+        "refs": [
+          "cast_shenyu"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{头汤只卖一碗}",
+            "segment_id": "seg_03"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_04",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 4.13,
+        "action": "俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，面碗粗陶体不形变",
+        "refs": [
+          "cast_shenyu",
+          "prop_bowl_01",
+          "prop_ladle_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{一分不差}",
+            "segment_id": "seg_04"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_05",
+        "shot_scale": "extreme_close",
+        "move": "static",
+        "duration_s": 2.39,
+        "action": "汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸，器物恒存不形变",
+        "refs": [
+          "prop_pot_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{锅还是那口锅}",
+            "segment_id": "seg_05"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_06",
+        "shot_scale": "extreme_close",
+        "move": "push_in",
+        "duration_s": 2.17,
+        "action": "沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近",
+        "refs": [
+          "cast_shenyu",
+          "prop_bowl_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{跟谁学的}",
+            "segment_id": "seg_06"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_07",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 3.26,
+        "action": "双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切，双主角身份不漂移",
+        "refs": [
+          "cast_lu",
+          "cast_shenyu",
+          "prop_bowl_01",
+          "prop_chopsticks_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{味道在}",
+            "segment_id": "seg_07"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_08",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 3.04,
+        "action": "沈聿后退半步扶住案沿，毛巾从手里滑落，近景拍他失神的脸，画格流定格",
+        "refs": [
+          "cast_shenyu"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{不关我的事}",
+            "segment_id": "seg_08"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_09",
+        "shot_scale": "medium",
+        "move": "pull_out",
+        "duration_s": 2.61,
+        "action": "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃，收尾呼应开场",
+        "refs": [
+          "cast_lu",
+          "cast_shenyu",
+          "prop_bowl_01",
+          "prop_lantern_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{谁都没先动筷}",
+            "segment_id": "seg_09"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      }
+    ]
+  },
+  "notes": "《头汤面》EP1 分镜表：9 镜一一对应 CP2 seg_01–seg_09（逐行一拍一镜），Σ duration_s=29.56s 与 CP2 estimated_total_duration_s 逐镜守恒（每镜 duration_s=该段 estimated_duration_s，供 CP6 时间线直接承接）。【景别/运镜分配】沿 cd01 先验（近景/特写主导 13/19 实算口径、固定机位画格流）：近景系 7/9（close shot_02/04/08 + medium_close shot_03/07 + extreme_close shot_05/06），特写给物件与情绪转折——shot_05 老汤锅器物特写（漫剧画格流标志性定格）、shot_06 尝汤瞳孔大特写+缓推（反转点）；中景给空间——shot_01 雨夜面棚开场、shot_09 拉出收尾呼应。运镜 static×7 + push_in×1 + pull_out×1，画格流以固定机位为主。【refs 红线】全部 15 个 ref 解析到 CP2 payload.cast/props 7 项注册表（cast_lu/cast_shenyu/prop_bowl_01/prop_ladle_01/prop_pot_01/prop_chopsticks_01/prop_lantern_01），validate_cp3.py ⑦ 实跑核过。【词锚红线】9 处词锚 @{…} 形式（SVML 词形），逐条=对应 segment narration_text 连续子串，validate_cp3.py ③ 实跑核过。【禁区投影】CP1 禁区投影到镜级：prop_bowl_01/prop_pot_01 恒存不形变（shot_04/05 action，G7）；画面无可读文字元素、漫画拟声词不进生成（G2，走 CP10 后期字牌）；shot_07 双人同框双主角身份不漂移（G5）；风格词（国漫厚涂赛璐璐/粗黑描线）在 CP7 prompt_en 逐镜锁定（G8）。【通道】全部 channel_hint=api_h3max（model_tiers.yaml，漫剧线 G8 风格化最强通道，TASK_v4 §3.3）。【指纹】fingerprint 与 payload.source_script_fingerprint、upstream_refs[0].fingerprint 三处同源：前者=sha256(本工件 canonical payload)（fingerprint.py compute 同算法），后两者=对 cp2.json 实算 4fcbe4a78d4fbf5fc04e7ca387fd429ab1e4e6c63996673831d884f48897952d（与 CP2 声明值一致）。【无 during】逐行一拍一镜无需跨镜引用，④⑤ 两条按无可判项通过；本件为设计内人工介入点（TASK_v4 §3.3 漫剧行 CP3 必到：构图+风格），构图判读留 owner 确认，机判七条全过。"
+}

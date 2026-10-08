@@ -1,0 +1,190 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp6",
+  "artifact_type": "timeline",
+  "fingerprint": "7b9da66eb15a11993345920e0aea1f93a8150fa14238531cb2d3adb69cfe5eb6",
+  "produced_by": "orchestrator.cp6_timeline_builder",
+  "produced_at": "2026-10-08T20:44:31Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "8cc4fcc235bbddf1a422aed3b19c1937b8276587d9e23a468746d809a4c8e91a"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "f79408a710e5c20f8bc7b51a51676afb685a45bfc8d0a25ad3831d2fe909148b"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp6.gate.duration_conservation_frames",
+    "result": "pass",
+    "note": "Σ duration_frames=127+85+79+100+59+52+80+74+64=720 == total_frames 720，守恒偏差 0 帧 ≤ ±1 帧（checkpoints.cp6.gate.duration_conservation_frames=1，thresholds.yaml:311-312；白皮书 §3 CP6「Σ shot.duration == 集时长（±1 帧）」），validate_cp6.py 实跑 exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.subtitle_align_ms_max",
+      "result": "pass",
+      "note": "字幕段与音轨词级时间偏差登记值 22ms ≤ 40ms（checkpoints.cp6.gate.subtitle_align_ms_max=40，thresholds.yaml:313-314；whisperx SemanticTake 口径）；登记值推导沿短剧线同款：词级时间与字幕段同落 24fps 帧域格点，投影量化残差 ≤ 半帧 20.83ms + 秒值 3 位小数 ms 进位 0.5ms = 21.33ms 上取整 22ms；实测复核归 CP10 whisperx 与 CP12 CER 门。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.rhythm_segment_s",
+      "result": "pass",
+      "note": "节奏段 9 段时长 2.1667–5.2917s，全部在 warn 带 [0.8, 12.0]s 内（checkpoints.cp6.gate.rhythm_segment_s.warn_min=0.8/warn_max=12.0，thresholds.yaml:315-317；warn-only 不否决），validate_cp6.py ④ 实跑 0 violations；镜均 3.33s 贴 cd01 画格流先验 3.02s。"
+    }
+  ],
+  "payload": {
+    "work_id": "comicanime_ep01",
+    "fps": 24,
+    "total_frames": 720,
+    "episode_duration_s": 30.0,
+    "duration_conservation_dev_frames": 0,
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "start_frame": 0,
+        "duration_frames": 127
+      },
+      {
+        "shot_id": "shot_02",
+        "start_frame": 127,
+        "duration_frames": 85
+      },
+      {
+        "shot_id": "shot_03",
+        "start_frame": 212,
+        "duration_frames": 79
+      },
+      {
+        "shot_id": "shot_04",
+        "start_frame": 291,
+        "duration_frames": 100
+      },
+      {
+        "shot_id": "shot_05",
+        "start_frame": 391,
+        "duration_frames": 59
+      },
+      {
+        "shot_id": "shot_06",
+        "start_frame": 450,
+        "duration_frames": 52
+      },
+      {
+        "shot_id": "shot_07",
+        "start_frame": 502,
+        "duration_frames": 80
+      },
+      {
+        "shot_id": "shot_08",
+        "start_frame": 582,
+        "duration_frames": 74
+      },
+      {
+        "shot_id": "shot_09",
+        "start_frame": 656,
+        "duration_frames": 64
+      }
+    ],
+    "subtitle_segments": [
+      {
+        "segment_id": "seg_01",
+        "start_s": 0.0,
+        "end_s": 5.292,
+        "text": "雨夜，沈记面馆的灯还亮着。推门进来的人，十年没回来过了。"
+      },
+      {
+        "segment_id": "seg_02",
+        "start_s": 5.292,
+        "end_s": 8.833,
+        "text": "老板，一碗头汤面。汤宽，面硬，葱花最后放。"
+      },
+      {
+        "segment_id": "seg_03",
+        "start_s": 8.833,
+        "end_s": 12.125,
+        "text": "头汤只卖一碗。这规矩，十年前就断了。"
+      },
+      {
+        "segment_id": "seg_04",
+        "start_s": 12.125,
+        "end_s": 16.292,
+        "text": "沈聿下面收汤，动作和十年前教他的一分不差。"
+      },
+      {
+        "segment_id": "seg_05",
+        "start_s": 16.292,
+        "end_s": 18.75,
+        "text": "锅还是那口锅，可惜姓了沈。"
+      },
+      {
+        "segment_id": "seg_06",
+        "start_s": 18.75,
+        "end_s": 20.917,
+        "text": "这手法……你到底跟谁学的？"
+      },
+      {
+        "segment_id": "seg_07",
+        "start_s": 20.917,
+        "end_s": 24.25,
+        "text": "跟一个老师傅。他说，味道在，人就还在。"
+      },
+      {
+        "segment_id": "seg_08",
+        "start_s": 24.25,
+        "end_s": 27.333,
+        "text": "师弟？！那道门是爹锁的，不关我的事！"
+      },
+      {
+        "segment_id": "seg_09",
+        "start_s": 27.333,
+        "end_s": 30.0,
+        "text": "面凉了，雨声里谁都没先动筷。"
+      }
+    ],
+    "subtitle_align_max_dev_ms": 22,
+    "sound_lead_in_frames": 2,
+    "rhythm_segments": [
+      {
+        "segment_id": "rs_01",
+        "duration_s": 5.2917
+      },
+      {
+        "segment_id": "rs_02",
+        "duration_s": 3.5417
+      },
+      {
+        "segment_id": "rs_03",
+        "duration_s": 3.2917
+      },
+      {
+        "segment_id": "rs_04",
+        "duration_s": 4.1667
+      },
+      {
+        "segment_id": "rs_05",
+        "duration_s": 2.4583
+      },
+      {
+        "segment_id": "rs_06",
+        "duration_s": 2.1667
+      },
+      {
+        "segment_id": "rs_07",
+        "duration_s": 3.3333
+      },
+      {
+        "segment_id": "rs_08",
+        "duration_s": 3.0833
+      },
+      {
+        "segment_id": "rs_09",
+        "duration_s": 2.6667
+      }
+    ]
+  },
+  "notes": "《头汤面》EP1 CP6 时间线：唯一收敛口——语义锚点只投影一次为 24fps 帧域（白皮书 §3 CP6）。【上游】upstream_refs[0]=cp3（fingerprint.py compute 对 cp3.json 实算，与 CP3 声明值一致）；upstream_refs[1]=cp5（同法实算，与 CP5 声明值一致）；CP2 经 CP3 间接承接（逐镜时长=CP3 duration_s，字幕文本=CP2 narration_text，一一对应 shot_01–09↔seg_01–09）。【帧域】fps=24、total_frames=720（30s@24fps）、episode_duration_s=30.0；CP3 Σ duration_s=29.56s×24=709.44 帧，与 720 帧差 10.56 帧：按白皮书 CP6 失败回退行（shuohao 式确定性折算）最大余数法（Hamilton）比例分配：逐镜 ideal=duration_s×720/29.56，floor 后按小数余数降序补 4 帧（shot_06/02/04/09），得 [127, 85, 79, 100, 59, 52, 80, 74, 64] Σ=720、dev=0；全局 146.67% 拉伸逐镜分摊消化（单镜 ≤1 帧=≤42ms）；CP2/CP3 已过门指纹冻结，不回改台词时长，TTS 实际时长与本窗口的残余偏差由 CP10 装配与 CP12 硬校验把守（守恒口径一次过，修订轮数 0）。【帧域排布】start_frame [0, 127, 212, 291, 391, 450, 502, 582, 656]，末镜收尾 720==total_frames，无缝无重叠无重复 id（validate_cp6.py ⑥ 实跑过）；无 during 引用（线性顺序装配）。【字幕投影】subtitle_segments 9 段从 CP2 narration_segments 一一投影：segment_id/text 同源，start_s/end_s=对应镜帧界÷24（3 位小数）；词级对齐偏差登记 subtitle_align_max_dev_ms=22ms。【声先入】sound_lead_in_frames=2（83ms@24fps，D3-8 声音先入 J-cut 余量）。【节奏轨】rhythm_segments 9 段逐镜节奏值 duration_s=镜帧数÷24，2.1667–5.2917s 全部在 warn 带内。【指纹】本件 fingerprint=sha256(canonical payload JSON)（fingerprint.py 同算法实算）。【人工介入点】CP6 为设计内人工介入点（人类拖时间线/改停顿/压秒数），节奏语义留 owner 确认；机判七项（①守恒+登记值一致 ②字幕对齐 ③无环 ④节奏带 ⑤声先入 ⑥帧域排布 ⑦params_ref 解析）validate_cp6.py 实跑 exit 0。"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp7",
+  "artifact_type": "draft_clip",
+  "fingerprint": "42b9e534a6f95740f72409c88d3b69211c7f9c2e32c5b96311dc1d14c7d6dfd6",
+  "produced_by": "agent.cp7_draft_generator",
+  "produced_at": "2026-10-08T20:54:08Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "8cc4fcc235bbddf1a422aed3b19c1937b8276587d9e23a468746d809a4c8e91a"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "f79408a710e5c20f8bc7b51a51676afb685a45bfc8d0a25ad3831d2fe909148b"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "7b9da66eb15a11993345920e0aea1f93a8150fa14238531cb2d3adb69cfe5eb6"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "l0_preflight.black_frame_ratio_max",
+    "result": "pass",
+    "note": "黑帧 0：9/9 镜帧级均值<2 计数=0（生成张量与 mp4 端到端回检双侧），black_mono_ratio 全 0.0 ≤ 0.50（thresholds.yaml l0_preflight.black_frame_ratio_max）；NaN=0；逐镜 L0 证据 <shot_id>.draft.l0.json。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "l0_preflight.duration_dev_max",
+      "result": "pass",
+      "note": "9/9 镜实测 1.375s == 声明 1.375s（33帧@24fps，dev=0.0% ≤ 2%，thresholds.yaml l0_preflight.duration_dev_max）。声明值=本批资产规格：任务书固定 33 帧档（spike 验证包络），CP3 分镜声明镜长 2.17–5.22s 与草稿时长差异如实登记于 shots[].cp3_duration_s，节奏预演按帧数比例。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp7.gate.uses_existing_keys",
+      "result": "pass",
+      "note": "NaN/黑帧布尔项=0/0；帧率 24/1、分辨率 704x480（480x704 HxW 口径）符合声明档；ffprobe 三元组逐镜 h264/yuv420p/33帧；确定性抽验 shot_04 二遍生成全帧 MAE=0.0（SPIKE-REPORT ③ 复证）。"
+    }
+  ],
+  "payload": {
+    "work_id": "comicanime_ep01",
+    "shot_id": "shot_04",
+    "channel": "local_ltx_2b",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "ca56634f22d4bfc7ea45ef06b41bc14ba9d2513d7ec7ce8e1ff13f28049ad735",
+      "path": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_04.draft.mp4"
+    },
+    "width": 704,
+    "height": 480,
+    "fps": 24,
+    "declared_duration_s": 1.375,
+    "actual_duration_s": 1.375,
+    "black_mono_ratio": 0.0,
+    "nan_detected": false,
+    "seed": 46,
+    "l0_preflight": {
+      "accepted": true,
+      "evidence_ref": "overnight/vpipe/out/m2/comicanime_ep01/cp7/shot_04.draft.l0.json"
+    }
+  },
+  "notes": "单镜草稿（T2 层，非交付物；CP8 择优器为其唯一消费者）。prompt_en（与 seed=46）逐镜留痕于 overnight/vpipe/out/m2/comicanime_ep01/cp7/cp7_prompts.json，全文：Vertical anime manhua style, clean bold line art, cel shading. Overhead close-up of hands: a cook lifts noodles into a rough ceramic bowl with a long ladle, ladles golden broth over them, then drizzles sizzling hot oil from a small pot, steam rolling up past the top of the frame, static camera。CP3 action_zh：俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，面碗粗陶体不形变。CP3 声明镜长 4.13s vs 草稿 33帧@24fps=1.375s（任务书固定帧档，构图/运动/节奏预演按帧数比例，见 aux_gates 口径）。生成墙钟 gen=4.95s encode=0.383s。【构图人检】代理亲看代表帧（n=16/33，overnight/vpipe/out/m2/comicanime_ep01/cp7/frame_shot_04.jpg）：成立——俯拍碗+面条旋纹清晰+右上角手部入画，蒸汽感在；俯拍案台构图对位。【漫剧风格如实记录】LTX-2B 草稿层输出为写实向厚涂图像，非国漫厚涂赛璐璐平涂；prompt 风格词（anime manhua cel shading）仅带来轻微平涂化倾向，不能作为 G8 风格判定依据——G8 风格化由 CP9 精修通道（H3-Max 四风格全成口径）承担，草稿层只表示构图/运动/节奏。色偏为 LTX-2B-v0.9.1 checkpoint 固有（SPIKE-REPORT 发现 B），只记录不修：草稿色彩不可依赖，CP8 择优与 CP9 精修不看草稿色彩。确定性：同 seed 逐比特可复现（本批 shot_04 二遍 MAE=0.0）。"
+}

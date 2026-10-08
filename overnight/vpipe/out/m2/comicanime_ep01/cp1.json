@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp1",
+  "artifact_type": "intent_card",
+  "fingerprint": "9b7122fa6fa41fcb245a40cae770658403ce8fa64bbf226570530fb9863c7e83",
+  "produced_by": "agent.director",
+  "produced_at": "2026-10-08T20:44:31Z",
+  "upstream_refs": [],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp1.gate.forbidden_defect_code_registry",
+    "result": "pass",
+    "note": "producer 声明：禁区 4 条全部映射到 thresholds.yaml checkpoints.cp1.gate.forbidden_defect_code_registry 已注册缺陷码（G7_物体恒存 / G2_画面内文字 / G5_多角色一致性 / G8_风格化，注册表 thresholds.yaml:262-269）；credit_cap_total=3360 整数非零；deliverable.pixel_map(1088×1920 9:16)+encode_contract(mp4/h264/aac) 齐备；结构由 checkpoint.schema.json cp1 分支 jsonschema 全量校验承担（CP1 无独立校验器，validate_cp1.py 不存在，沿短剧线口径）。"
+  },
+  "aux_gates": [
+    {
+      "type": "human",
+      "params_ref": "cp1.gate.owner_confirmation",
+      "result": "pending",
+      "note": "pilot 期 owner 未实时确认意图卡，记 pending owner review——CP1 是设计内人工介入点（白皮书 §3 谱首段），不许 agent 代签；漫剧线 M2 报告上抛该 pending 项（人工上升率 ≤20% 口径，TASK_v4 §3.3 漫剧行）。"
+    }
+  ],
+  "payload": {
+    "work_id": "comicanime_ep01",
+    "theme": "竖屏漫剧《头汤面》：十年前沈记面馆易主，少东家陆星辞被扫地出门；十年后雨夜，他以食客身份回到面摊点一碗头汤面，接手面馆的师兄沈聿一口汤尝出师门手法，当场掀开十年前的家门旧事。同结构不同内容：沿用 cd01 结构先验（19 镜画格流、镜均 3.02s、近景/特写主导 13/19、硬字幕 14/19、单场景双人对质、道具主导特写），人物/台词/场景全部原创；参考样片仅为画格节奏与景别配比对位，不是内容来源。风格定位：G8 风格化（H3-Max 四风格全成实测口径，TASK_v4 §2），国漫厚涂赛璐璐、粗黑描线、高饱和暖色夜戏，风格词在 CP3/CP7 逐镜锁定防漂移",
+    "selling_point": "30 秒一碗头汤面三次反转：点单立规矩→尝汤认手法→「师弟」脱口而出；全程画格流定格+近景特写压迫感，一碗面从热气到凉透就是十年恩怨的计时器",
+    "must_keep": [
+      "prop_bowl_01 头汤面碗（粗陶碗恒存不形变，热气→凉透为镜级状态线）",
+      "prop_pot_01 老汤锅（锅沿磨痕全程一致，镜级实物一致）",
+      "cast_lu/cast_shenyu 同框镜头双主角身份不漂移（G5 禁区）",
+      "台词与拟声词一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"
+    ],
+    "forbidden_zones": [
+      {
+        "description": "食物/道具形变（面碗、汤锅、面条热气形态）",
+        "defect_code": "G7_物体恒存"
+      },
+      {
+        "description": "画面内渲染硬字幕与漫画拟声词（漫剧样片 14/19 带硬字幕，生成侧自由渲染必乱，绕行走后期字牌）",
+        "defect_code": "G2_画面内文字"
+      },
+      {
+        "description": "同框双主角身份漂移（双男主题材近景对质易串脸）",
+        "defect_code": "G5_多角色一致性"
+      },
+      {
+        "description": "风格化漂移（厚涂赛璐璐漂成写实/3D/水墨——G8-35 同类；本线核心风格轴）",
+        "defect_code": "G8_风格化"
+      }
+    ],
+    "deliverable": {
+      "pixel_map": {
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16"
+      },
+      "encode_contract": {
+        "container": "mp4",
+        "video_codec": "h264",
+        "audio_codec": "aac"
+      }
+    },
+    "budget": {
+      "credit_cap_total": 3360
+    }
+  },
+  "notes": "reference（cd01 结构参考）三元组登记：source=bilibili，clip=comic-drama/cd01.mp4，sha256=4ee0256337e72e8259a1efb6f689b4df41d411c2a066afbab8d88d15f176b909（cd01.meta.json 实值），role=structure_reference——画格节奏/景别配比先验（M2-LINE-MAPPING.md 漫剧主参考行），非内容来源；schema intent_card 分支 additionalProperties=false 不收编 reference 对象，故登记于本 notes 字段（沿短剧线同款处置）。budget.credit_cap_total=3360 推导：30s 线按 10 镜 × 280 积分/镜（checkpoints.cp9.gate.credit_cap_per_shot=280，thresholds.yaml:344-346）× 1.2 冗余系数（checkpoints.cost.episode_budget.budget_multiplier，thresholds.yaml:405）= 3,360（任务书口径：10 镜×280×1.2=3360）；本集 CP3 实落 9 镜在预算内，未动上限。pixel_map 1088×1920 沿 INTENT.md:89 竖版口径（参考样片 cd01 原生 1080×1920，交付按线上标准 1088）。fingerprint=sha256(规范化 payload JSON)，src/gate/fingerprint.py compute 实算，非占位。"
+}
