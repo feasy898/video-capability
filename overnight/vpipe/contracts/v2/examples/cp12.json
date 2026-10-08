@@ -1,0 +1,74 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp12",
+  "artifact_type": "qc_master",
+  "fingerprint": "7fbad220709185826a41f027e8d8fc7babd6bca68acd632932675f48ee93ad7e",
+  "produced_by": "gate.episode_judge",
+  "produced_at": "2026-10-08T15:50:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp11",
+      "fingerprint": "92e578f2de27801e63d20abff92382214132ba971b4f7a5659406ca2f71ed634"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp12.gate.a_group_recall_min",
+    "result": "pass",
+    "note": "A 组程序规则召回 1.00 / 误报 0.00（阈见 cp12.gate.a_group_recall_min）；任一镜头无 A/B 组否决缺陷，成片门通过。"
+  },
+  "aux_gates": [
+    {
+      "type": "judge_absolute",
+      "params_ref": "cp12.gate.master_score_min",
+      "result": "pass",
+      "note": "成片分 73.5 ≥ 70（≙ 人评 7.0/10 的映射值）；人评锚定（120 片段）完成前仅作 warn 阈与人工队列排序依据，不作自动放行绝对门（白皮书 §7 非目标 8）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp12.gate.human_escalation_rate_max",
+      "result": "pass",
+      "note": "人工上升率 12% ≤ 20%（阈见 cp12.gate.human_escalation_rate_max）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "master_fingerprint": "20dd1ebc22c8b5e3acbd9afdeb9603196045bcccbf2bafdc174584d2b1811c70",
+    "episode_verdict": {
+      "score": 73.5,
+      "mean_shot_score": 75.0,
+      "worst_shot_score": 70.0,
+      "formula": "0.7*mean+0.3*worst",
+      "verdict": "pass"
+    },
+    "gate_groups": {
+      "a_group": { "recall": 1.0, "fpr": 0.0, "verdict": "pass" },
+      "b_group": { "recall": 0.96, "fpr": 0.08, "verdict": "pass" },
+      "c_group": { "recall": 0.85, "fpr": 0.1, "verdict": "pass" },
+      "d_group": { "warn_only": true, "flagged_count": 2, "verdict": "warn" }
+    },
+    "human_escalation_rate": 0.12,
+    "retry_round": 0,
+    "routed_reworks": [],
+    "shot_qc_refs": [
+      {
+        "shot_id": "shot_01",
+        "qc_report_fingerprint": "daecaf38ce30c533a92d6a211c7a006f3eeec5345cddbe3c7186f989c1844caf"
+      },
+      {
+        "shot_id": "shot_02",
+        "qc_report_fingerprint": "03c47c218b47430848ff8cc3b8981d358e721ad943d1141e49aedf3bad25655d"
+      },
+      {
+        "shot_id": "shot_03",
+        "qc_report_fingerprint": "dec29102700c39ccafc4b5c17f3ff469c880725025d2db26b6d251d3bfcb03e7"
+      },
+      {
+        "shot_id": "shot_04",
+        "qc_report_fingerprint": "824892b80ea2e11ff6e0d04428bfdf0bed40862eb0e4fade6e0dfd8a3ae0a25a"
+      }
+    ]
+  },
+  "notes": "示例工件：成片分 73.5 = 0.7×75.0 + 0.3×70.0（短板惩罚公式，AI视频生产流水线方案.md:162）；D 组 2 个候选时间窗转人工（warn-only，物理/时序自动否决不存在）；C 组 judge 缺陷不允许自动否决（白皮书 §3 CP12）。"
+}

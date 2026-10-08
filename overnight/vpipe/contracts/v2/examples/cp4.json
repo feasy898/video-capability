@@ -1,0 +1,102 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp4",
+  "artifact_type": "keyframes",
+  "fingerprint": "ffcc4ed9421481bcf26e92ec60c8bd3f3b8af5d1cc4bbc523cc8233b89d82953",
+  "produced_by": "agent.keyframePainter",
+  "produced_at": "2026-10-08T10:40:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "cp4.gate.identity_cosine_min",
+    "result": "pass",
+    "note": "ArcFace 逐身份余弦实测 heroine_a 0.71 / father_b 0.68，均 ≥ 统一口径阈（白皮书表 2-1 为 0.60，阈见 cp4.gate.identity_cosine_min）。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp4.gate.identity_coverage",
+      "result": "pass",
+      "note": "4 镜在场检测 detected ⊇ expected（DramaClaw 唯一标记色 + 检出态思路）。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp4.gate.black_frame_ratio_max",
+      "result": "pass",
+      "note": "4 帧黑图率全 0（fp16 NaN 是 V100 已知失败模式）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "small_text_policy": "post_render_plate",
+    "frames": [
+      {
+        "shot_id": "shot_01",
+        "asset": {
+          "kind": "image",
+          "fingerprint": "f9d3f1b1ba78eebf868d770ff75405e7b9d8fe1da692d5d1ebeb3fbdfeff3706",
+          "path": "out/keyframes/shot_01.png"
+        },
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16",
+        "black_frame_ratio": 0.0,
+        "expected_identities": ["heroine_a", "father_b"],
+        "detected_identities": ["heroine_a", "father_b"],
+        "identity_cosine": { "heroine_a": 0.71, "father_b": 0.68 }
+      },
+      {
+        "shot_id": "shot_02",
+        "asset": {
+          "kind": "image",
+          "fingerprint": "7a5147f4d9fa48aebf812543c69a70b196b849f11426b4ee78f87650b422b4d3",
+          "path": "out/keyframes/shot_02.png"
+        },
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16",
+        "black_frame_ratio": 0.0,
+        "expected_identities": ["father_b"],
+        "detected_identities": ["father_b"],
+        "identity_cosine": { "father_b": 0.68 }
+      },
+      {
+        "shot_id": "shot_03",
+        "asset": {
+          "kind": "image",
+          "fingerprint": "4888b0f40ab42403f96ccc3b5ea1362f3c2dff59c4668286517edfaabc691893",
+          "path": "out/keyframes/shot_03.png"
+        },
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16",
+        "black_frame_ratio": 0.0,
+        "expected_identities": ["father_b"],
+        "detected_identities": ["father_b"],
+        "identity_cosine": { "father_b": 0.68 }
+      },
+      {
+        "shot_id": "shot_04",
+        "asset": {
+          "kind": "image",
+          "fingerprint": "056254607546aedfccc060e516c5aeb76f79875c904bdfa3d16438b641811eec",
+          "path": "out/keyframes/shot_04.png"
+        },
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16",
+        "black_frame_ratio": 0.0,
+        "expected_identities": ["heroine_a"],
+        "detected_identities": ["heroine_a"],
+        "identity_cosine": { "heroine_a": 0.71 }
+      }
+    ]
+  },
+  "notes": "示例工件：身份锁止于「在场 + 身份级余弦」，不是 IP-Adapter 级像素同一性（白皮书 §3 CP4 边界说明照抄，不夸大）；门禁全部程序化零 VLM。"
+}

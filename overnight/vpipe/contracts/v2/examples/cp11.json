@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp11",
+  "artifact_type": "composite",
+  "fingerprint": "92e578f2de27801e63d20abff92382214132ba971b4f7a5659406ca2f71ed634",
+  "produced_by": "synth",
+  "produced_at": "2026-10-08T15:10:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "fd4164db947cfe5e39e7b2a113f03975d93496ce8a34a4047c41b5d93bc7c8e4"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "d03990af9482709522aa187387191d6c4ea6e90413b35db0dd29024c24125b80"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "J6_detectors_v2.known_cuts_tol_s",
+    "result": "pass",
+    "note": "3 个拼接硬切点（5.0/12.0/20.0s）全部登记 known_cuts 白名单，容差 0.5s 沿 thresholds 既有段 J6_detectors_v2.known_cuts_tol_s；J6v2 未误报 temporal_swap（不登记则同人物同构图硬切后向重入相似度 0.9784 > 0.85 必误报，工程方案v3.1.md:170）。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.duration_tol_s",
+      "result": "pass",
+      "note": "成片 30.0s vs CP6 时间线 30.0s，±1s 内（CRADLE 硬校验挂载点之一）。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.shot_count_match",
+      "result": "pass",
+      "note": "成片镜头段数 4 == CP3 分镜表镜头数 4。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "master_asset": {
+      "kind": "clip",
+      "fingerprint": "20dd1ebc22c8b5e3acbd9afdeb9603196045bcccbf2bafdc174584d2b1811c70",
+      "path": "out/episodes/shortdrama_ep01/final.mp4"
+    },
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "width": 1088,
+    "height": 1920,
+    "duration_s": 30.0,
+    "master_shot_segments": 4,
+    "storyboard_shot_count": 4,
+    "known_cuts": [5.0, 12.0, 20.0],
+    "all_cuts_registered": true,
+    "black_ratio": 0.0
+  },
+  "notes": "示例工件：确定性层合成（ffmpeg 子进程 + MoviePy v2 + HyperFrames 字牌），同参数二遍 md5 一致（工程方案v3.1.md:218 口径）；编码不达标只重跑合成，零 API 成本，全链最便宜的修复（白皮书 §3 CP11）。"
+}

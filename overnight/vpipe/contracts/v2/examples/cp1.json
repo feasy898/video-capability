@@ -1,0 +1,62 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp1",
+  "artifact_type": "intent_card",
+  "fingerprint": "00baa9aa058be0ccc85aefef1b76e8e643b640ea4ea0b746b71537a8265132c4",
+  "produced_by": "agent.director",
+  "produced_at": "2026-10-08T09:00:00Z",
+  "upstream_refs": [],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp1.gate.forbidden_defect_code_registry",
+    "result": "pass",
+    "note": "禁区 2 条均映射到已注册缺陷码（G7_物体恒存 / G2_画面内文字，thresholds.yaml 注册表可查）；budget.credit_cap_total 整数非零；deliverable 齐备。"
+  },
+  "aux_gates": [
+    {
+      "type": "human",
+      "params_ref": "cp1.gate.owner_confirmation",
+      "result": "pass",
+      "note": "owner 确认意图卡（白皮书 §3 CP1：人类在这一步花的时间应该最多；全链唯一允许「必须回到人」的死胡同在禁区缺陷码注册裁决）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "theme": "都市情感短剧：深夜面馆的父女和解",
+    "selling_point": "一碗热面引出的父女和解，全程竖屏近景压迫感",
+    "must_keep": [
+      "prop_cup_01 持杯特写（杯面不遮挡手指）",
+      "片名小字一律后期字牌烧录"
+    ],
+    "forbidden_zones": [
+      {
+        "description": "变形食物",
+        "defect_code": "G7_物体恒存"
+      },
+      {
+        "description": "画面内堆叠小字",
+        "defect_code": "G2_画面内文字"
+      }
+    ],
+    "reference_images": [
+      "c900bbc611441136d0f166e36d87d82d49da2fd856ab59a9479bbe6db090f62c"
+    ],
+    "deliverable": {
+      "pixel_map": {
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16"
+      },
+      "encode_contract": {
+        "container": "mp4",
+        "video_codec": "h264",
+        "audio_codec": "aac"
+      }
+    },
+    "budget": {
+      "credit_cap_total": 6720
+    }
+  },
+  "notes": "示例工件（M0-W1 契约演示）：budget 6720 = 标准档 120s 单集 24 镜 × 280 积分（白皮书 §4 成本可信度表，工程方案v3.md:138 算式）。"
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp9",
+  "artifact_type": "final_render",
+  "fingerprint": "fd4164db947cfe5e39e7b2a113f03975d93496ce8a34a4047c41b5d93bc7c8e4",
+  "produced_by": "gen_api",
+  "produced_at": "2026-10-08T14:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "82e712a442d767c704894218f8eaa0db34400841f2125f4472babf6a2c32b986"
+    },
+    {
+      "cp_id": "cp8",
+      "fingerprint": "752c4ac6d295f44232749e7a2971c673b2650e56e79b4330adb8d801f7417806"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp9.gate.credit_cap_per_shot",
+    "result": "pass",
+    "note": "实耗 280 ≤ 单镜上限 280（白皮书 §3 CP9 成本闸门单点；双拦截 exit 3 先于扣费，工程方案v3.1 §6.3 实证 34 条 submit_error 零损失）。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp9.gate.repro_log_complete",
+      "result": "pass",
+      "note": "提交参数 + seed + 指纹落盘一致（submit_params 级；API 层同指纹重提交必然新样本，不做像素级 md5 承诺，白皮书 §2 原则 4）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_01",
+    "channel": "api_h3max",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "0e6e8ca0236be89f02e8700c31d85340409dcd2d90d0295f81e6eca295c566cd",
+      "path": "out/final/shot_01__h3max.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "68e970bbbf9b6a58814b6939d32beb76d6b3dcfdbd5508c36f4325d7a3650083",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+  },
+  "notes": "示例工件（本集 4 镜各一份，此处列 shot_01）：T4 精修层现役默认 H3-Max（280 积分/条 = 56 积分/s，工程方案v3.md:125）；云通道 DTO 白名单无 seed 字段 → seed_recorded=null（不发送不冒充）；draft_task_id 为 Seedance Draft 机制专属关联位（本镜非 Seedance 通道）。VDL R2 生效：api 通道禁 seed_policy=fix_for_iteration 与 cache.strategy=content_fingerprint。"
+}

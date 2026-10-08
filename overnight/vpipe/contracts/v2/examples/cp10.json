@@ -1,0 +1,61 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp10",
+  "artifact_type": "subtitle_audio",
+  "fingerprint": "d03990af9482709522aa187387191d6c4ea6e90413b35db0dd29024c24125b80",
+  "produced_by": "orchestrator.cp10_subtitle_audio",
+  "produced_at": "2026-10-08T14:40:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "82e712a442d767c704894218f8eaa0db34400841f2125f4472babf6a2c32b986"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp10.gate.cer_max",
+    "result": "pass",
+    "note": "whisper CER 双口径 small 3.1% / medium 4.2% ≤ 阈 5%（同音字以 pinyin 归一口径分析不凑数，INTENT.md:89；阈见 cp10.gate.cer_max）。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp10.gate.loudness_lufs_target",
+      "result": "pass",
+      "note": "混音响度 -16.0 LUFS 达标（目标值见 cp10.gate.loudness_lufs_target）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "l0_preflight.avatar_tail_max_s",
+      "result": "pass",
+      "note": "成片时长 30.0s = ceil(29.7s 音频)，垫尾 0.3s ≤ 1.0s 豁免上界（thresholds 既有段 l0_preflight.avatar_tail_max_s）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "tts": {
+      "channel": "api_stepfun_tts",
+      "voice_id": "female_warm_ep01",
+      "gender_match_confirmed": true
+    },
+    "subtitles": {
+      "format": "ass",
+      "verbatim_check_pass": true,
+      "cer_small": 0.031,
+      "cer_medium": 0.042
+    },
+    "loudness_lufs": -16.0,
+    "duration_conservation": {
+      "expected_s": 29.7,
+      "actual_s": 30.0,
+      "method": "ceil_audio"
+    },
+    "numbers_in_subtitle_only": true
+  },
+  "notes": "示例工件：TTS 与字幕共用同一分句源（CP2 narration_segments），CER 超标优先改分句不改词；voice_id 为量产前克隆的统一女性音色（StepFun 磁性男声×女性角色=性别错配实测教训，工程方案v3.1.md:53）；画面无数字，数字只在字幕。"
+}

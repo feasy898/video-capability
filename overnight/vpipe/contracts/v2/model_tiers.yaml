@@ -1,0 +1,383 @@
+# =====================================================================
+# vpipe 模型分层表（contracts/v2/model_tiers.yaml）
+# ---------------------------------------------------------------------
+# 唯一来源声明（白皮书 §8 整合铁律 2）：本文件是 VDL v2 engine.channel 枚举
+#   的唯一来源。VDL_v2_草案.md §3.2 #4 文档内枚举（local_ltx/local_wan/
+#   api_h3max/api_h3，开放扩展）自本文件落地起为历史快照，不再维护；
+#   R2 校验规则（api 通道禁 fix_for_iteration / content_fingerprint）以
+#   本文件 channel_id 词表为稳定依据。
+# 效力：checkpoint.schema.json 的 channel 字段只存本文件 channels[].channel_id；
+#   模型名字不进意图层（白皮书 §4 分层纪律 2，VDL not-pattern 实测拒 "Wan2.1"）。
+# 修改规程：改本文件（增删通道/改价）= 触发一次「模型分层重扫」（TASK_v4 §2.5），
+#   按白皮书 §4 成本数字的可信度分层复算，并在下方 变更记录 追加行。
+# =====================================================================
+version: "2.0"
+updated: "2026-10-08"
+source: "research/2026-10-08/工业化视频流水线-白皮书.md §4 模型分层（成本数字的可信度分层表 + T0–T5）"
+
+# 成本可信度三级（白皮书 §4 取证纪律的机读化；未确证不许写成确定值）
+cost_confidence_semantics:
+  measured: "仓内实跑/实扣留痕，evidence_ref 指向 文件:行号，可复算"
+  reported: "白皮书/方案文档转引记录，有出处但本仓未复核"
+  unverified: "未确证：不得进任何预算基线，cost_value 只能为 null 或区间（notes 内说明）"
+
+# V100S 兼容判据（物理事实，不是调优问题）：
+#   torch is_bf16_supported() 要求 major >= 8；V100S 是 SM70 / major 7 / 仅 fp16
+#   （research/2026-10-08/cheap-draft-and-programmatic-tools.md:187）。
+#   bf16 / flash-attention / fp8 路线一律不进 owner 硬件产线（白皮书 §5.3 丢弃清单）。
+# v100s_compatible 语义：可在 owner 2×V100S-32GB（卡1，卡0 绝不占用，INTENT.md:97）
+#   硬件上进入产线。API/进程通道不占卡，恒为 true。
+
+tiers:
+  # ---------------------------------------------------------------
+  - tier_id: T0
+    name: "确定性层（零生成成本）"
+    purpose: "把想象降维成确定性函数：字幕/花字/排行榜/时长/节奏/混音/转场在 HTML/ffmpeg 里是纯函数，唯一能承诺像素级复现的层。"
+    channels:
+      - channel_id: proc_ffmpeg
+        provider: local
+        model: "ffmpeg 子进程 + MoviePy v2"
+        licensing: "FFmpeg LGPL/GPL 组件（分发注意构建配置）；MoviePy v2 MIT"
+        cost_basis: "每条（¥）"
+        cost_value: 0
+        cost_confidence: measured
+        evidence_ref: "overnight/工程方案v3.1.md:218（dh_final_30s 同参数二遍编码 md5 一致 289f96f3…；¥0 为本地进程结构事实，无计费通道）"
+        gate_refs:
+          - "cp11.gate.duration_tol_s"
+          - "cp11.gate.shot_count_match"
+          - "cp11.gate.known_cuts_registered"
+        v100s_compatible: true
+        notes: "确定性梯度顶端；CRADLE 六道硬校验挂载点（白皮书 §4 T0 门禁行，cheap-draft-and-programmatic-tools.md:371）；像素级回归用例 ≥3 个（M1-W5）。"
+      - channel_id: proc_hyperframes
+        provider: local
+        model: "HyperFrames（HTML data-* + headless Chrome 逐帧 seek + ffmpeg；171 blocks + 223 components）"
+        licensing: "Apache 2.0，无 per-render 费用；Remotion 因 LICENSE 禁「copy or modify … for the purpose of selling your own derivate」出局作对外底座（cheap-draft-and-programmatic-tools.md:337）"
+        cost_basis: "每条（¥）"
+        cost_value: 0
+        cost_confidence: measured
+        evidence_ref: "research/2026-10-08/hypit-svml-deepdive.md:19,99（字幕/排行榜/B-roll 动效纯 HTML/CSS 组件零调用费，经白皮书 §2 原则一转引）"
+        gate_refs:
+          - "cp4.gate.black_frame_ratio_max"
+          - "cp11.gate.shot_count_match"
+        v100s_compatible: true
+        notes: "字牌/花字/排行榜/数据可视化；CP4 小字绕行的程序渲染出口（G2 实测小字必乱）。"
+      - channel_id: proc_blender
+        provider: local
+        model: "Blender 无头（blender -b scene.blend -a -s <start> -e <end> -o //out/####）"
+        licensing: "GPL-2.0-or-later（Blender 官方）"
+        cost_basis: "每条（¥）"
+        cost_value: 0
+        cost_confidence: measured
+        evidence_ref: "本地进程结构事实（无计费通道）；渲染墙钟未确证——白皮书附录 A 显式列为待确证项，不进排产承诺"
+        gate_refs:
+          - "cp5.gate.pose_frame_max"
+        v100s_compatible: true
+        notes: "CP5 blocking（16 关节 armature）的确定性渲染出口；mcp-for-blender 只用于人机共驾预演台，不作无人值守批处理唯一入口（白皮书 §7 非目标 7）。"
+
+  # ---------------------------------------------------------------
+  - tier_id: T1
+    name: "分镜草图 / 关键帧层（本地图像）"
+    purpose: "每镜 1–2 张关键帧 + 身份参考图：构图在交给视频模型想象之前先被钉死；CP4 局部返修能力的来源。"
+    channels:
+      - channel_id: local_vace_1_3b
+        provider: local
+        model: "VACE-1.3B（参考图注入 + 局部重做，约 16GB@512×512×81）"
+        licensing: "Apache-2.0（阿里 VACE）"
+        cost_basis: "每张（积分）"
+        cost_value: 0
+        cost_confidence: reported
+        evidence_ref: "白皮书 §4 T1（本地推理结构零积分；墙钟量级待实测——T9 时间盒：GGUF 档黑图率×5 prompts=0 且显存 ≤30GB 才入产线）"
+        gate_refs:
+          - "cp4.gate.identity_coverage"
+          - "cp4.gate.identity_cosine_min"
+          - "cp4.gate.black_frame_ratio_max"
+        v100s_compatible: true
+        notes: "首选：一致性注入与反馈局部重做统一到同一 mask 通道，一条通道两用不重复建设；多参考身份注入必须 API 的实测针对视频层（Wan-1.3B 无 I2V 权重、LTX 仅首帧条件，overnight/工程方案v3.md:36），图像层 VACE 为 CP4 补位。"
+      - channel_id: local_qwen_image_edit_2509
+        provider: local
+        model: "Qwen-Image-Edit-2509（GGUF 量化档）"
+        licensing: "Apache-2.0（Qwen 系）；GGUF 量化为社区再分发"
+        cost_basis: "每张（积分）"
+        cost_value: 0
+        cost_confidence: unverified
+        evidence_ref: "白皮书 §4 T1 列为备选；本仓无实跑记录，显存/黑图率未经 V100S 实测"
+        gate_refs:
+          - "cp4.gate.black_frame_ratio_max"
+        v100s_compatible: true
+        notes: "备选；过 T9 时间盒验收前不进产线排产。"
+      - channel_id: local_flux_kontext_dev
+        provider: local
+        model: "FLUX.1-Kontext dev（12B，fp16 约 24GB 单卡可容）"
+        licensing: "FLUX.1 [dev] Non-Commercial License：输出用于个人/科研/评测尚可，商业化（订阅服务）须 BFL 授权——与 owner 终局目标冲突，作对外产品底座前必须换许可（Remotion 教训同构，cheap-draft-and-programmatic-tools.md:337）"
+        cost_basis: "每张（积分）"
+        cost_value: 0
+        cost_confidence: unverified
+        evidence_ref: "白皮书 §4 T1 列为备选；本仓无实跑记录"
+        gate_refs:
+          - "cp4.gate.black_frame_ratio_max"
+        v100s_compatible: true
+        notes: "仅备选。20B 级编辑器无 NVLink 禁模型切分、无例外（AI视频生产流水线方案.md §2.1 纪律）；12B fp16 单卡可容是入围前提。"
+
+  # ---------------------------------------------------------------
+  - tier_id: T2
+    name: "廉价草稿视频层（本地 V100S）"
+    purpose: "owner 的「廉价本地模型先形成草稿」：480P/16fps 构图动作节奏预演，替精修层挡烂片；它不是交付物。"
+    channels:
+      - channel_id: local_ltx_2b
+        provider: local
+        model: "LTX-Video 2B distilled（fp16，8 步）"
+        licensing: "开源权重（LTXV 系；具体商用条款以仓库 LICENSE 为准，白皮书未记载，接入商用前补核）"
+        cost_basis: "每条（积分）"
+        cost_value: 0
+        cost_confidence: measured
+        evidence_ref: "overnight/工程方案v3.md:35（76.7s/条 15.2× 实时、42/42 全成、0 积分，仓内实跑台账）"
+        gate_refs:
+          - "l0_preflight.black_frame_ratio_max"
+          - "l0_preflight.duration_dev_max"
+        v100s_compatible: true
+        notes: "首选（★★★★★，owner 已跑通）。480×704/480×832、16fps；LTX fp16 黑帧/NaN → VAE fp32 自动降级重跑（SPEC.md §2.1 实测语义）；只做择优不做 aesthetic 判定；ROI 诚实算法 = 挡掉的镜头数×精修单价 − 本地墙钟，拐点须用真实单价跑（cheap-draft-and-programmatic-tools.md:347）。"
+      - channel_id: local_wan22_ti2v_5b
+        provider: local
+        model: "Wan2.2-TI2V-5B（--convert_model_dtype 降 fp16 + SDPA 兜底）"
+        licensing: "Apache-2.0（阿里 Wan）"
+        cost_basis: "每条（积分）"
+        cost_value: 0
+        cost_confidence: measured
+        evidence_ref: "AI视频生产流水线方案.md:129（Q8 档 212–214s/33 帧 480×832、23.7GB，仓内实跑）"
+        gate_refs:
+          - "l0_preflight.black_frame_ratio_max"
+          - "l0_preflight.duration_dev_max"
+        v100s_compatible: true
+        notes: "次选（★★★★☆）。原生 bf16 档在 SM70 不可用（major=7），必须降 fp16；M0-W2 spike 验收门槛：峰值 <30GB + 黑帧率 0 + ≥1 条过全部六门禁，过则产线 480P/16fps 直上 720P/24fps（TASK_v4 §4 M0-W2）；14B 档 V100 ≈7 小时/条流水线不可用（同文件 :129 行）。"
+      - channel_id: local_cogvideox_2b
+        provider: local
+        model: "CogVideoX-2B"
+        licensing: "Apache-2.0（THUDM CogVideoX-2B）"
+        cost_basis: "每条（积分）"
+        cost_value: 0
+        cost_confidence: reported
+        evidence_ref: "白皮书 §4 T2（唯一官方推荐 FP16、4GB 起；本仓无实跑记录）"
+        gate_refs:
+          - "l0_preflight.black_frame_ratio_max"
+          - "l0_preflight.duration_dev_max"
+        v100s_compatible: true
+        notes: "兜底。注意 CogVideoX1.5-5B 是另一模型：默认 bf16，出局（见 excluded_channels）。"
+
+  # ---------------------------------------------------------------
+  - tier_id: T3
+    name: "动作与口播层（本地 + 极便宜 API）"
+    purpose: "动作可编程（姿态序列驱动，动作先在确定性层被指定再渲染）+ 口播主体（本体系内最省路径）。"
+    channels:
+      - channel_id: local_mimicmotion
+        provider: local
+        model: "MimicMotion（confidence-aware pose guidance + regional loss amplification，72 帧 @576×1024）"
+        licensing: "Apache-2.0 含第三方组件例外清单（cheap-draft-and-programmatic-tools.md:226，接入前逐条核对例外）"
+        cost_basis: "每条（积分）"
+        cost_value: 0
+        cost_confidence: measured
+        evidence_ref: "本地推理结构零积分；墙钟：72 帧 20 分钟@4090，V100S 必然更慢（cheap-draft-and-programmatic-tools.md:219；V100S 实测墙钟未确证，白皮书附录 A）"
+        gate_refs:
+          - "cp5.gate.pose_frame_max"
+          - "cp12.gate.b_group_recall_min"
+        v100s_compatible: true
+        notes: "唯一同时满足「官方 V100 验证 + 16GB 显存 + 动作可编程」（输入是姿态序列不是文本）；只能对需要指定动作的少数镜头跑；72 帧装不下走分段 + progressive latent fusion，拼接缝登记 known_cuts（白皮书 §3 CP5/§4 T3）。"
+      - channel_id: local_echomimicv3
+        provider: local
+        model: "EchoMimicV3（1.3B/12GB，talking head 5 步）"
+        licensing: "Apache-2.0（Antgroup EchoMimic）"
+        cost_basis: "每条（积分）"
+        cost_value: 0
+        cost_confidence: unverified
+        evidence_ref: "白皮书 §4 T3 与附录 A：官方测试卡含 V100 16G，但 32GB V100S 实际表现未确证"
+        gate_refs:
+          - "cp10.gate.cer_max"
+        v100s_compatible: true
+        notes: "特写口型。精度档未核实——若默认 bf16 须降 fp16 复验（SM70 major=7 物理约束）；音频驱动动作由音频定，无法指定「手伸向第三个按钮」：解决口型不解决动作（白皮书 §4 T3）。"
+      - channel_id: local_latentsync
+        provider: local
+        model: "LatentSync（独立口型层，全身对白）"
+        licensing: "未核实（接入前以仓库 LICENSE 为准）"
+        cost_basis: "每条（积分）"
+        cost_value: 0
+        cost_confidence: unverified
+        evidence_ref: "白皮书 §4 T3 列名；本仓无实跑、无 V100S 精度档记录"
+        gate_refs:
+          - "cp12.gate.b_group_recall_min"
+        v100s_compatible: true
+        notes: "口型层备选；V100S 精度档与显存未经实测，入产线前须过与 Wan2.2-5B 同款的 fp16 化验证。"
+      - channel_id: api_kling_lipsync
+        provider: kling
+        model: "可灵 Lipsync"
+        licensing: "闭源商用 API（快手可灵平台条款）"
+        cost_basis: "每条（¥，未核价）"
+        cost_value: null
+        cost_confidence: unverified
+        evidence_ref: "overnight/工程方案v3.md:41（v2 的可灵/Vidu/Seedance 价目与通道维持未接入未核价状态）"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+        v100s_compatible: true
+        notes: "全身对白独立口型层的 API 选项；核价后才可入排产（白皮书 §7 非目标 6：先跑 1 条小额测试片+核价落 evidence 才准进 tier 表）。"
+      - channel_id: api_vidu_avatar
+        provider: vidu
+        model: "Vidu avatar（540p=618×836 / 720p=826×1114）"
+        licensing: "闭源商用 API（Vidu 平台条款）"
+        cost_basis: "每秒（Vidu 积分，按音频整秒向上取整，失败不扣）"
+        cost_value: 1
+        cost_confidence: measured
+        evidence_ref: "overnight/工程方案v3.1.md:93（逐任务 credits 实读 b=26（音频 25.006s）、c=22（21.262s））"
+        gate_refs:
+          - "l0_preflight.avatar_tail_max_s"
+          - "cp11.gate.duration_tol_s"
+        v100s_compatible: true
+        notes: "口播主体最省路径（30s 口播 ≈30 积分）；须 --profile avatar_talk（J6v2 ghosting 规则在口播自然低运动平台 2/2 误报，实测 in_med=0.71–1.64，工程方案v3.1.md:169）；MiniMax/Vidu 两钱包不可直接换算，只允许同体系内比较（白皮书 §5.4 成本记账）。"
+      - channel_id: api_stepfun_tts
+        provider: stepfun
+        model: "stepaudio-2.5-tts（Design seedaudio 备用/对照）"
+        licensing: "闭源商用 API（StepFun 平台条款）"
+        cost_basis: "每万字符（¥）"
+        cost_value: 5.8
+        cost_confidence: measured
+        evidence_ref: "overnight/工程方案v3.1.md:101（牌价 ¥5.8/万字符，64 字实扣 ¥0.01；克隆闭环走通）"
+        gate_refs:
+          - "cp10.gate.cer_max"
+          - "cp10.gate.loudness_lufs_target"
+        v100s_compatible: true
+        notes: "TTS 默认通道；量产前先克隆统一音色性别——磁性男声×女性角色=性别错配实测教训（overnight/工程方案v3.1.md:53）；CER 超标优先改分句不改词（白皮书 §3 CP10）。"
+
+  # ---------------------------------------------------------------
+  - tier_id: T4
+    name: "精修层（API，按秒计费）"
+    purpose: "API 的钱买 768P、音轨、多参考身份、零本地 GPU 占用——本地路线做不出终稿（480p 无声无 I2V，缺口不假设超分可补）。"
+    channels:
+      - channel_id: api_h3max
+        provider: minimax
+        model: "MiniMax H3-Max（5s 768P 含音轨，同价 4 倍速）"
+        licensing: "闭源商用 API（MiniMax 平台条款）"
+        cost_basis: "每条（MiniMax 积分，5s 768P 含音轨）= 56 积分/s 列表价"
+        cost_value: 280
+        cost_confidence: measured
+        evidence_ref: "overnight/工程方案v3.md:125（钱包逐条可对；07 手册 224 八折在该钱包路径未生效，按 280 预算）"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+          - "cp9.gate.repro_log_complete"
+        v100s_compatible: true
+        notes: "现役默认：33.4s/条（overnight/工程方案v3.md:68）、42/42 零失败、G6 运镜语义与 G3 计数个例反超；T2V 必须显式 image_mode=\"text-to-video\"（default=reference 且零参考图即 500）；DTO 白名单校验先于扣费（首批 34 条 submit_error 零损失，白皮书 §3 CP9）。回退场景见 api_h3。"
+      - channel_id: api_h3
+        provider: minimax
+        model: "MiniMax H3（4–15s，768P/2K）"
+        licensing: "闭源商用 API（MiniMax 平台条款）"
+        cost_basis: "每条（MiniMax 积分，5s 768P 含音轨）"
+        cost_value: 280
+        cost_confidence: measured
+        evidence_ref: "overnight/工程方案v3.md:125（与 H3-Max 同表同价实扣口径）"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+          - "cp9.gate.repro_log_complete"
+        v100s_compatible: true
+        notes: "两类回退场景（白皮书 §4 T4）：强风格指令镜头（H3-Max 风格漂移实测 G8-35 水墨→彩色工笔）；面部相似度优先的定妆类镜头（H3-Max 系统性轻度美颜化）。"
+      - channel_id: api_kling_30
+        provider: kling
+        model: "可灵 3.0（运动笔刷 + static/dynamic_masks ≤6 组，尾帧定向修改）"
+        licensing: "闭源商用 API（快手可灵平台条款）"
+        cost_basis: "每秒（¥）"
+        cost_value: null
+        cost_confidence: unverified
+        evidence_ref: "AI视频生产流水线方案.md:130 记 720P ¥0.6/s、1080P ¥0.8/s（官方价目实抓）——但 overnight/工程方案v3.md:41 记「可灵/Vidu/Seedance 价目与通道维持未接入未核价」，按待核价对待（白皮书 §4 成本可信度表）"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+        v100s_compatible: true
+        notes: "待核价后作并行池；1 积分=¥1 口径见方案文档 :130。"
+      - channel_id: api_kling_25_turbo
+        provider: kling
+        model: "可灵 2.5-turbo（经济精修档）"
+        licensing: "闭源商用 API（快手可灵平台条款）"
+        cost_basis: "每秒（¥）"
+        cost_value: null
+        cost_confidence: unverified
+        evidence_ref: "AI视频生产流水线方案.md:130 记 720P ¥0.3/s——同 api_kling_30 的未接入未核价裁定（overnight/工程方案v3.md:41），不得进预算基线"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+        v100s_compatible: true
+        notes: "同上待核价；核价流程 = 1 条小额测试片 + evidence/pricing/ 落痕（白皮书 §7 非目标 6）。"
+
+  # ---------------------------------------------------------------
+  - tier_id: T5
+    name: "终稿/精修上限层"
+    purpose: "owner 点名的上限层（「让 seedance 2.5 这种专注在最终渲染」）：参考驱动 up to 50 inputs + Draft 机制=平台侧官方版「草稿抽卡→定向出片」，与 CP7→CP9 结构天然同构。"
+    channels:
+      - channel_id: api_seedance_25
+        provider: volcengine
+        model: "Seedance 2.5"
+        licensing: "闭源商用 API（火山引擎；开通需余额 ≥200 元；并发：企业 600 RPM/并发 10，个人 180/3——白皮书 §4 T5 转引，开通前自行复核）"
+        cost_basis: "未定价（元/百万 token 或每条，M0-W1 控制台核价前不承诺口径）"
+        cost_value: null
+        cost_confidence: unverified
+        evidence_ref: "无仓内实测，单价不可给点值。邻近证据：Seedance 2.0 编辑档 28 元/M token（AI视频生产流水线方案.md:130）；46 元/M token 为媒体转述明文未确证（同文件 :462、:567）；hypit 案例 $1.15/条 20s 无逐项账单（research/2026-10-08/hypit-svml-deepdive.md:31，官方 Skill 原文 \"Hypit itself calculates no total\"）；M0-W1 核价尝试留痕：evidence/pricing/seedance_evidence.json（官方渠道未取到价目，第三方转售价 $0.167/s 整体 confidence=unverified）"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+          - "cp9.gate.draft_task_link_required"
+        v100s_compatible: true
+        notes: "⚠️ 未核价不进预算基线（白皮书 §4：单条成本只能给区间不能给点值；M0-W1 核价落 evidence/pricing/，核不出就明文标未确证，confirmed=false 不得进预算基线——TASK_v4 §4 M0-W1）。Draft 机制：先出 480p 样片（token×0.6），凭 draft_task.id 出正式片自动复用 model/seed/ratio/duration/camera_fixed（ID 有效期 7 天）；draft_task.id 关联必须落盘（唯一能拿到的「要素一致」凭证）；审核被拒行占位进历史窗口、不复用被拒内容（dramaclaw-deepdive.md:450）。"
+      - channel_id: api_seedance_20_edit
+        provider: volcengine
+        model: "Seedance 2.0 编辑档（vid2vid 保构图改质感）"
+        licensing: "闭源商用 API（火山引擎，同上余额/并发注意）"
+        cost_basis: "每百万 token（元）"
+        cost_value: 28
+        cost_confidence: reported
+        evidence_ref: "AI视频生产流水线方案.md:130（方案文档记录，未在钱包路径复核）；46 元/M token 媒体转述未确证（同文件 :462、:567）不采用"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+          - "cp9.gate.draft_task_link_required"
+        v100s_compatible: true
+        notes: "Seedance 2.5 不通时的上限层退化路径；全线不通则 T5 退化为 H3-Max 独占（白皮书 §6 M0 回退方案，结构不变）。"
+      - channel_id: api_vidu_q3
+        provider: vidu
+        model: "Vidu Q3"
+        licensing: "闭源商用 API（Vidu 平台条款）"
+        cost_basis: "未定价（积分/条）"
+        cost_value: null
+        cost_confidence: unverified
+        evidence_ref: "白皮书 §4 T5 列名；无单价记录、通道未接入（overnight/工程方案v3.md:41 同口径）"
+        gate_refs:
+          - "cp9.gate.credit_cap_per_shot"
+        v100s_compatible: true
+        notes: "待核价待实测；按白皮书 §7 非目标 6 的接入判据执行（小额测试片 + evidence 落痕后才可进排产）。"
+
+# ---------------------------------------------------------------------
+# 出局通道（白皮书 §5.3 丢弃清单的机读化；channel_id 保留防止下游误用旧名）
+# v100s_compatible=false 的物理原因统一：torch/cuda/__init__.py 的
+# is_bf16_supported() 要求 major >= 8，V100S 是 major 7（SM70）——
+# 这是物理事实，不是调优问题（cheap-draft-and-programmatic-tools.md:187）。
+# ---------------------------------------------------------------------
+excluded_channels:
+  - channel_id: local_wan22_a14b
+    model: "Wan2.2-A14B"
+    v100s_compatible: false
+    reason: "官方门槛 ≥80GB 显存；双卡无 NVLink 禁 TP；14B 档 V100 实跑 ≈7 小时/条流水线不可用（AI视频生产流水线方案.md:129；白皮书 §4 T2 矩阵）"
+  - channel_id: local_hunyuanvideo_15
+    model: "HunyuanVideo-1.5"
+    v100s_compatible: false
+    reason: "默认 bf16——SM70 major=7 不满足 is_bf16_supported() 的 major>=8（cheap-draft-and-programmatic-tools.md:187,196）；最低 60GB 显存（白皮书 §4 T2）"
+  - channel_id: local_mochi
+    model: "Mochi"
+    v100s_compatible: false
+    reason: "官方栈 60GB；默认 bf16——SM70 major=7 物理不支持（cheap-draft-and-programmatic-tools.md:187,199；白皮书 §4 T2）"
+  - channel_id: local_cogvideox15_5b
+    model: "CogVideoX1.5-5B"
+    v100s_compatible: false
+    reason: "默认 bf16——SM70 major=7 物理不支持（cheap-draft-and-programmatic-tools.md:187,202）；官方速度基准即 A100/H100 量级（白皮书 §4 T2）"
+  - channel_id: proc_remotion
+    model: "Remotion"
+    v100s_compatible: false
+    reason: "非硬件原因：LICENSE.md 禁止 copy/modify Remotion code for the purpose of selling your own derivate；owner 终局是订阅服务（cheap-draft-and-programmatic-tools.md:337；白皮书 §5.3 丢弃清单）——HyperFrames（Apache 2.0）为同类替代"
+  - channel_id: local_wan21_13b
+    model: "Wan2.1-1.3B（v3 旧草稿主力）"
+    v100s_compatible: true
+    reason: "硬件可跑但已降为存档：567s/条（112× 实时）且质量不优于 LTX，速度差 7.4 倍（overnight/工程方案v3.md:35）——降档存档，不进 v2 产线排产"
+
+# ---------------------------------------------------------------------
+# 变更记录
+# ---------------------------------------------------------------------
+# | 日期       | 版本 | 变更                                                                 |
+# | 2026-10-08 | 2.0  | 首版：T0–T5 六层 + excluded_channels；engine.channel 枚举唯一来源自此文件 |

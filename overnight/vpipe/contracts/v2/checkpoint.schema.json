@@ -1,0 +1,1093 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "vpipe/contracts/v2/checkpoint.schema.json",
+  "title": "Checkpoint Artifact v2",
+  "description": "检查点工件契约 v2.0（12 CP 谱）。依据：research/2026-10-08/工业化视频流水线-白皮书.md §3（CP1 意图单 / CP2 剧本 / CP3 分镜表 / CP4 关键帧 / CP5 动作脚本 / CP6 时间线 / CP7 草稿视频 / CP8 择优 / CP9 终稿渲染 / CP10 字幕音轨 / CP11 合成 / CP12 质检成片）+ §8 整合铁律（v1 契约零修改，本契约是 v2 并行的第四份新增）。结构：顶层 oneOf 按 cp_id 分派到 12 个自包含分支（definitions.cp1_intent_card .. cp12_qc_master），每个分支含公共头字段 + CP 专属 payload。三条红线（本 schema 自身遵守，消费者必须遵守）：① 一切判定数值不进本契约，一律经 gate.params_ref 引用 eval/thresholds.yaml 的具名键路径（thresholds v4 起 CP 级段命名 cpN.gate.*；既有段直接引用，如 l0_preflight.black_frame_ratio_max、J6_detectors_v2.known_cuts_tol_s）；② engine 通道字段（channel）只存 channel_id 字符串，其枚举唯一来源是 contracts/v2/model_tiers.yaml（白皮书 §8 铁律 2），本 schema 只做词形约束不收编枚举；③ 人工介入只出现在白皮书 §3 声明的设计内介入点（CP1/CP3/CP5/CP6/CP12），schema 以 gate.type=human 表达，不许为「保险」加人工字段。",
+  "oneOf": [
+    { "$ref": "#/definitions/cp1_intent_card" },
+    { "$ref": "#/definitions/cp2_script" },
+    { "$ref": "#/definitions/cp3_storyboard" },
+    { "$ref": "#/definitions/cp4_keyframes" },
+    { "$ref": "#/definitions/cp5_blocking" },
+    { "$ref": "#/definitions/cp6_timeline" },
+    { "$ref": "#/definitions/cp7_draft_clip" },
+    { "$ref": "#/definitions/cp8_selection" },
+    { "$ref": "#/definitions/cp9_final_render" },
+    { "$ref": "#/definitions/cp10_subtitle_audio" },
+    { "$ref": "#/definitions/cp11_composite" },
+    { "$ref": "#/definitions/cp12_qc_master" }
+  ],
+  "definitions": {
+    "schema_version": {
+      "type": "string",
+      "const": "2.0",
+      "description": "契约版本，固定 2.0。与 v1 契约（schema_version=1.0）文件级判定隔离：v1 引擎见 2.0 即拒收（同 VDL_v2_草案 §7.2 双版本隔离纪律），v2 工件不许流入冻结的 v1 管线。"
+    },
+    "cp_id": {
+      "type": "string",
+      "pattern": "^cp([1-9]|1[0-2])$",
+      "description": "检查点 ID，白皮书 §3 十二选一：cp1 意图单 / cp2 剧本 / cp3 分镜表 / cp4 关键帧 / cp5 动作脚本 / cp6 时间线 / cp7 草稿视频 / cp8 择优 / cp9 终稿渲染 / cp10 字幕音轨 / cp11 合成 / cp12 质检成片。"
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": ["intent_card", "script", "storyboard", "keyframes", "blocking", "timeline", "draft_clip", "selection", "final_render", "subtitle_audio", "composite", "qc_master"],
+      "description": "工件类型词表，与 cp_id 一一对应（cp1↔intent_card … cp12↔qc_master），一一对应关系由 12 个分支的 const 联合强制。"
+    },
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "内容指纹（sha256 十六进制小写）。工件身份 = payload 规范化 JSON 的 sha256（不含 fingerprint/upstream_refs 自身），沿 contracts/asset_manifest.schema.json「sha256 是资产身份，manifest 只是登记视图」纪律。失效传播：上游工件 payload 变更 → 其 fingerprint 变更 → 所有 upstream_refs 指向它的下游工件失效（白皮书 §5.4 缓存/失效重写为槽位级指纹图）。"
+    },
+    "produced_by": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "生产者标识（agent/模块 id，如 orchestrator.cp6_timeline_builder、agent.director、human.owner）。CP1/CP3/CP5/CP6/CP12 的设计内人工介入在此留痕。"
+    },
+    "produced_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "工件产出时刻，ISO-8601。"
+    },
+    "work_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "description": "集/作品 ID，与 vdl_package.work_id（vdl_package.schema.json §2.2）同词形同语义，是 CP 工件回链 VDL 包与 QCReport v2 的键。"
+    },
+    "upstream_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["cp_id", "fingerprint"],
+        "properties": {
+          "cp_id": { "$ref": "#/definitions/cp_id" },
+          "fingerprint": { "$ref": "#/definitions/fingerprint" }
+        },
+        "description": "单个上游依赖：来自哪个 CP 的哪个指纹版本。"
+      },
+      "description": "上游依赖工件指纹列表（白皮书 §3 M0-W1 交付要求）。CP1 为谱首，upstream_refs=[]；校验器（src/gate/ 包，M1 落地）负责悬空指纹拒收（沿 VDL R1 引用完整规则）。"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "gated", "passed", "rejected"],
+      "description": "stage 状态机五态（白皮书 §5.4 编排器重写）：pending 待做 / running 进行中 / gated 门禁判定中 / passed 过门 / rejected 拒绝（拒绝是数据，不静默；rejected 工件必须保留，回退目标 CP 由白皮书 §3 各 CP 失败回退行定义）。"
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "params_ref"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["schema", "rule", "hard_verify", "judge_rank", "judge_absolute", "human", "composite"],
+          "description": "门禁类型词表（白皮书 §3 各 CP「客观验收门禁」行的归类）：schema=纯结构校验（本 schema 即裁判）；rule=确定性规则（数值在 thresholds.yaml）；hard_verify=程序化硬校验（ffprobe/在场检测/ArcFace/L0 预检/known_cuts）；judge_rank=judge 只排序不设绝对线（CP8 相对线）；judge_absolute=judge 绝对门（CP12 成片分，须人评锚定）；human=人工工位（仅设计内介入点）；composite=多门组合（组合内的数值门仍各自 params_ref）。"
+        },
+        "params_ref": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_]+(\\.[A-Za-z0-9_]+){1,5}$",
+          "description": "本门禁全部判定数值的键路径，必须解析到 eval/thresholds.yaml 中真实存在的键（如 cp12.gate.a_group_recall_min、l0_preflight.black_frame_ratio_max、J6_detectors_v2.known_cuts_tol_s）。CP 级新段由 thresholds v4 增补（TASK_v4 §3.1 P0-M0-W2），命名 cpN.gate.*。schema/yaml/source 任何一处出现第二套判定数值即验收失败（SPEC.md §0 纪律 3 继承）。"
+        },
+        "result": {
+          "type": "string",
+          "enum": ["pass", "warn", "fail"],
+          "description": "本工件过门时的判定结果快照。warn=warn-only 维（审美/合规/D 组）不否决只标注（白皮书 §7 非目标 3/8）。"
+        },
+        "note": { "type": "string", "description": "人读一句话判定依据（哪个规则什么数值），沿用 v1 QCReport verdict.reasons 风格。" }
+      },
+      "description": "门禁声明：每个 CP 工件的主门。判不了就不是门禁，是文档（白皮书 §3 谱使用规则 3：每个 CP 的门禁必须能被一条命令判定）。"
+    },
+    "aux_gates": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/gate" },
+      "description": "副门列表（同一工件的多道门，如 CP6 的时长守恒主门 + 字幕对齐/节奏段副门）。每道副门同样 params_ref 引用，不许内联数值。"
+    },
+    "asset_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "fingerprint"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["clip", "image", "audio", "timeline", "report", "other"],
+          "description": "资产形态（沿 asset_manifest kind 思想收敛为工件级六值）。"
+        },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "path": { "type": "string", "description": "落盘路径（相对仓根或绝对），登记视图非身份。" }
+      },
+      "description": "工件指向的媒体/报告资产引用：sha256 是身份，path 只是登记。"
+    },
+    "channel_id": {
+      "type": "string",
+      "pattern": "^(proc|local|api)_[a-z0-9_]+$",
+      "description": "engine 通道 ID。词形约束仅此而已；枚举唯一来源 = contracts/v2/model_tiers.yaml channels[].channel_id（白皮书 §8 铁律 2：模型名字不进意图层，换引擎改 channel 不改语义；VDL_v2_草案 §3.2 #4 的文档内枚举自 model_tiers.yaml 落地起为快照，不再维护）。"
+    },
+    "notes": { "type": "string", "description": "自由备注。" },
+
+    "intent_card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "theme", "selling_point", "forbidden_zones", "deliverable", "budget"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "theme": { "type": "string", "minLength": 1, "description": "题材定位（白皮书 §3 CP1：人类写下「要什么」的第一格）。" },
+        "selling_point": { "type": "string", "minLength": 1, "description": "一句话卖点。" },
+        "must_keep": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "必须出现的物件/文字清单（I 意图自变量的保留项）。"
+        },
+        "forbidden_zones": {
+          "type": "array",
+          "minItems": 1,
+          "description": "禁区清单，≥1 条（结构性下界，白皮书 CP1 门禁原文「禁区条目 ≥1 条」）。每条必须映射到已注册缺陷码，否则拒收并要求 owner 明确是否值得为它新建门禁（全链唯一允许「必须回到人」的死胡同）。",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["description", "defect_code"],
+            "properties": {
+              "description": { "type": "string", "minLength": 1, "description": "禁区人读描述（如「变形食物」「小字堆叠」）。" },
+              "defect_code": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_\\u4e00-\\u9fff]{2,64}$",
+                "description": "已注册缺陷码（如 G7_物体恒存）。必须能在 thresholds.yaml 查到（校验器规则，数值/注册表不进本 schema）。"
+              }
+            }
+          }
+        },
+        "reference_images": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/fingerprint" },
+          "description": "参考图指纹（owner「照这个感觉」的 3–5 张参考，CP4 关键帧生成的上游）。"
+        },
+        "deliverable": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pixel_map", "encode_contract"],
+          "properties": {
+            "pixel_map": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["width", "height", "aspect"],
+              "properties": {
+                "width": { "type": "integer", "minimum": 1 },
+                "height": { "type": "integer", "minimum": 1 },
+                "aspect": { "type": "string", "pattern": "^[0-9]+:[0-9]+$" }
+              },
+              "description": "交付像素规格（INTENT.md:89 竖版口径：1088×1920、9:16）。"
+            },
+            "encode_contract": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["container", "video_codec", "audio_codec"],
+              "properties": {
+                "container": { "type": "string", "description": "封装（如 mp4）。" },
+                "video_codec": { "type": "string", "description": "视频编码（如 h264）。" },
+                "audio_codec": { "type": "string", "description": "音频编码（如 aac）。" }
+              },
+              "description": "交付编码合同（CP11 合成与 CP12 质检的 ffprobe 验收依据）。"
+            }
+          },
+          "description": "交付规格，齐备为 CP1 门禁硬条件（白皮书 CP1：deliverable.pixel_map 与 encode_contract 齐备）。"
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["credit_cap_total"],
+          "properties": {
+            "credit_cap_total": { "type": "integer", "minimum": 1, "description": "全片积分硬上限，整数且非零（结构性约束，白皮书 CP1 门禁原文）。执行层双拦截 exit 3 沿 gen_api 实测语义。" }
+          }
+        }
+      },
+      "description": "CP1 意图单 payload：一页可寻址的意图卡。人类在这一步花的时间应该最多（白皮书 §3 CP1）。"
+    },
+
+    "script": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "target_duration_s", "estimated_total_duration_s", "narration_segments", "cast", "props"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "target_duration_s": { "type": "number", "exclusiveMinimum": 0, "description": "目标集时长（秒）。" },
+        "estimated_total_duration_s": { "type": "number", "exclusiveMinimum": 0, "description": "Σ estimated_duration（秒）。与目标偏差门禁经 gate.params_ref=cp2.gate.duration_dev_max 引用（白皮书口径 ≤2%，数值在 thresholds v4）。" },
+        "narration_segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["segment_id", "narration_text", "visual_description", "estimated_duration_s", "cast_refs", "props_refs"],
+            "properties": {
+              "segment_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$", "description": "台词段 ID（CP6 词级对齐与 CP3 词锚定的回链键）。" },
+              "narration_text": { "type": "string", "minLength": 1, "description": "台词原文（TTS 输入源，CP10 与字幕共用同一分句源）。" },
+              "visual_description": { "type": "string", "minLength": 1, "description": "画面描述，与 narration_text 一对一绑定（DramaClaw VisualBeat 结构，白皮书 CP2：narration_segment/visual_description 成对）。" },
+              "estimated_duration_s": { "type": "number", "exclusiveMinimum": 0, "description": "按汉字计音节估的时长（hypit measure 逻辑，白皮书 CP2：把「拍多少秒」从剪辑决策变成生成参数）。" },
+              "tts_safe": { "type": "boolean", "description": "不含无法 TTS 的字符集（CP2 门禁项，声明 + 校验器复核）。" },
+              "cast_refs": { "type": "array", "items": { "type": "string" }, "description": "出场角色 ID，必须解析到 cast[]（悬空引用拒绝，沿 v2 §3.2 R1）。" },
+              "props_refs": { "type": "array", "items": { "type": "string" }, "description": "出场道具 ID，必须解析到 props[]。" }
+            }
+          },
+          "description": "逐条台词段（narration_segment 与 visual_description 成对）。台词条数/镜头数比值门禁经 params_ref=cp2.gate.line_shot_ratio 引用。"
+        },
+        "cast": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["char_id"],
+            "properties": { "char_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,32}$" } }
+          },
+          "description": "角色表（人名悬空引用在 CP2 拒收，禁止下游「临时编一个」）。"
+        },
+        "props": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["prop_id"],
+            "properties": { "prop_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,32}$" } }
+          },
+          "description": "道具表。"
+        }
+      },
+      "description": "CP2 剧本与台词本 payload。人类只判断「这话我说得出口吗」，不判断画面（白皮书 §3 CP2）。"
+    },
+
+    "storyboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "source_script_fingerprint", "shots"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "source_script_fingerprint": { "$ref": "#/definitions/fingerprint", "description": "来源剧本（CP2）工件指纹，等于 upstream_refs 中 cp2 条目。" },
+        "shots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["shot_id", "shot_scale", "move", "duration_s", "action", "refs"],
+            "properties": {
+              "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$", "description": "镜头 ID（与 v1 shot_id 同词形）。" },
+              "shot_scale": {
+                "type": "string",
+                "enum": ["extreme_wide", "wide", "medium", "medium_close", "close", "extreme_close"],
+                "description": "景别五要素之一（人类管构图：特写/中景在这里定）。"
+              },
+              "move": {
+                "type": "string",
+                "enum": ["static", "push_in", "pull_out", "pan", "tilt", "tracking", "handheld", "orbit", "other"],
+                "description": "运镜五要素之二（词表与 v1 shot.schema.json camera.movement 一致，不另立第二套）。"
+              },
+              "duration_s": { "type": "number", "exclusiveMinimum": 0, "maximum": 15, "description": "镜时长（秒）。五要素之三；maximum 15 为引擎单段上限的结构兜底（H3 实测 4–15s，VDL_v2_草案 R3 / shot_v2.schema.json duration_s 同值），逐通道上限仍以 params_ref=cp3.gate.max_shot_duration_s 判定。" },
+              "action": { "type": "string", "minLength": 1, "description": "动作描述五要素之四（CP5 动作脚本的编译源）。" },
+              "refs": { "type": "array", "items": { "type": "string" }, "description": "五要素之五：本镜引用的角色/道具/参考图 ID。" },
+              "word_anchors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["anchor", "segment_id"],
+                  "properties": {
+                    "anchor": { "type": "string", "minLength": 1, "description": "词锚文本（@{} 引用必须存在于本镜台词内，校验器规则）。" },
+                    "segment_id": { "type": "string", "description": "锚定的 CP2 台词段 ID。" }
+                  }
+                },
+                "description": "词锚定登记（AI视频生产流水线方案.md §3.2 校验器七条之词锚定合法）。"
+              },
+              "channel_hint": { "$ref": "#/definitions/channel_id", "description": "本镜所需通道能力标注（如 G5 多身份→必须 API，白皮书 CP3 AI 辅助行）。" }
+            }
+          },
+          "description": "逐镜规格表。镜头数与 CP2 台词条数一致（cp2.gate.line_shot_ratio 的另一侧）；任何校验失败退回 CP2/CP3 重生成该镜，不允许带病进 CP4。"
+        }
+      },
+      "description": "CP3 分镜表 payload：第一件人类天然要确认的工件（人类管构图，不管像素）。"
+    },
+
+    "keyframes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "small_text_policy", "frames"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "small_text_policy": {
+          "type": "string",
+          "enum": ["post_render_plate", "none"],
+          "description": "文字类小字处置声明（G2 实测小字必乱，v2 §2.3 绕行定稿）：post_render_plate=改走后期程序渲染字牌不进生成模型；none=本集无小字。枚举无 generate_free——生成侧自由渲染小字不是合法选项。"
+        },
+        "frames": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["shot_id", "asset", "width", "height", "aspect", "black_frame_ratio", "expected_identities", "detected_identities", "identity_cosine"],
+            "properties": {
+              "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$" },
+              "asset": { "$ref": "#/definitions/asset_ref", "description": "关键帧图资产（每镜 1–2 张，白皮书 CP4）。" },
+              "width": { "type": "integer", "minimum": 1 },
+              "height": { "type": "integer", "minimum": 1 },
+              "aspect": { "type": "string", "pattern": "^[0-9]+:[0-9]+$", "description": "分辨率/比例符合 deliverable（CP1 pixel_map）为门禁项，数值经 params_ref=cp4.gate.pixel_map_rule 判定，此处只登记实测值。" },
+              "black_frame_ratio": { "type": "number", "minimum": 0, "maximum": 1, "description": "黑图率实测值（fp16 NaN 是 V100 已知失败模式）。门禁数值经 params_ref=cp4.gate.black_frame_ratio_max 引用，不进本契约。" },
+              "expected_identities": { "type": "array", "items": { "type": "string" }, "description": "本镜应到场身份。" },
+              "detected_identities": { "type": "array", "items": { "type": "string" }, "description": "在场检测实到身份（DramaClaw 唯一标记色 + 检出态思路，白皮书 CP4）。门禁 detected ⊇ expected 为规则判定，经 params_ref=cp4.gate.identity_coverage。" },
+              "identity_cosine": {
+                "type": "object",
+                "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 },
+                "description": "逐身份 ArcFace 跨身份余弦实测值。统一口径阈（白皮书表 2-1 为 0.60）经 params_ref=cp4.gate.identity_cosine_min 引用，不进本契约。"
+              }
+            }
+          },
+          "description": "逐镜关键帧。全部门禁程序化零 VLM（白皮书 CP4）；身份锁止于「在场 + 身份级余弦」，不是 IP-Adapter 级像素同一性——这个诚实边界写进白皮书 §3 CP4 边界说明，工件如实记录不夸大。"
+        }
+      },
+      "description": "CP4 构图参考/关键帧 payload：第二件人类天然要确认的工件（圈改/一句话修改，owner 限定介入形态之二）。"
+    },
+
+    "blocking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "sequences"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "sequences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["shot_id", "joint_names", "bone_length_constant", "speech_mode", "tracks", "frame_count"],
+            "properties": {
+              "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$" },
+              "joint_names": {
+                "type": "array",
+                "minItems": 16,
+                "maxItems": 16,
+                "items": {
+                  "type": "string",
+                  "enum": ["hips", "spine", "neck", "head", "leftShoulder", "leftElbow", "leftWrist", "rightShoulder", "rightElbow", "rightWrist", "leftHip", "leftKnee", "leftAnkle", "rightHip", "rightKnee", "rightAnkle"],
+                  "description": "关节名穷举（16 关节，ToonFlow director3dNode mannequin schema，cheap-draft-and-programmatic-tools.md:57-59）。这是结构词表不是判定数值，可进 schema。"
+                },
+                "description": "本序列可用的关节全集（16 关节穷举，白皮书 CP5 门禁「姿态序列关节名合法」）。"
+              },
+              "bone_length_constant": {
+                "type": "boolean",
+                "const": true,
+                "description": "骨长恒定（rotation-only，禁 scale）——mannequin 动画轨道「帧只填写 rotation，保留固定骨长」的结构不变量，const 表达。"
+              },
+              "speech_mode": {
+                "type": "string",
+                "enum": ["none", "independent_lip_layer", "requires_split_shot"],
+                "description": "对白与全身动作的关系（白皮书 CP5 门禁）：none=本镜无对白；independent_lip_layer=存在独立口型层路径；requires_split_shot=此镜必须降级拆为「无对白行走镜 + 近景对白镜」——分镜层规避，禁止质检环节自动改景别（AI视频生产流水线方案.md §3.3 明文）。"
+              },
+              "tracks": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["frames"],
+                  "properties": {
+                    "joint": {
+                      "type": ["string", "null"],
+                      "enum": [null, "hips", "spine", "neck", "head", "leftShoulder", "leftElbow", "leftWrist", "rightShoulder", "rightElbow", "rightWrist", "leftHip", "leftKnee", "leftAnkle", "rightHip", "rightKnee", "rightAnkle"],
+                      "description": "轨道关节名；null/省略 = 根轨道（控制整体移动/旋转，ToonFlow：省略 joint 的轨道控制整体）。"
+                    },
+                    "frames": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["time", "rotation"],
+                        "properties": {
+                          "time": { "type": "number", "minimum": 0, "description": "帧时间（帧时间单调为门禁项，params_ref=cp5.gate.frame_time_monotonic，校验器判定）。" },
+                          "rotation": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["x", "y", "z"],
+                            "properties": {
+                              "x": { "type": "number", "minimum": -6.283185307179586, "maximum": 6.283185307179586 },
+                              "y": { "type": "number", "minimum": -6.283185307179586, "maximum": 6.283185307179586 },
+                              "z": { "type": "number", "minimum": -6.283185307179586, "maximum": 6.283185307179586 }
+                            },
+                            "description": "相对父关节的 XYZ 欧拉角，单位弧度（mannequin schema 原文口径）。"
+                          }
+                        }
+                      },
+                      "description": "关键帧序列：{time, rotation}。"
+                    }
+                  }
+                },
+                "description": "姿态轨道序列，一份数据三端通吃（MimicMotion DWPose / Blender armature / ToonFlow 导演台，白皮书 CP5）。"
+              },
+              "frame_count": { "type": "integer", "minimum": 1, "description": "序列总帧数。帧数上限（MimicMotion 72 帧 @576×1024，cheap-draft-and-programmatic-tools.md:219）经 params_ref=cp5.gate.pose_frame_max 引用；超限走分段 + progressive latent fusion，拼接缝登记 known_cuts。" },
+              "known_cuts": {
+                "type": "array",
+                "items": { "type": "number", "minimum": 0 },
+                "description": "分段拼接缝登记（秒）。拼接缝必须登记（白皮书 CP5 失败回退行），下游 CP11 汇入合成层 known_cuts 白名单。"
+              }
+            }
+          },
+          "description": "逐镜姿态序列。姿态编译失败退回 CP3 改 action 描述，不许让渲染模型自由发挥（白皮书 CP5 失败回退）。"
+        }
+      },
+      "description": "CP5 动作脚本（Blocking）payload：第三件人类天然要确认的工件（人类管动作语义：走位/姿态序列，不管渲染）。"
+    },
+
+    "timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "fps", "total_frames", "episode_duration_s", "shots", "duration_conservation_dev_frames"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "fps": { "type": "integer", "minimum": 1, "maximum": 120, "description": "唯一帧率时钟域（hypit pipeline:Normalize 归一口径：全链只认这一个时钟）。" },
+        "total_frames": { "type": "integer", "minimum": 0, "description": "集总帧数。Σ shot.duration_frames == total_frames（守恒 ±1 帧门禁经 params_ref=cp6.gate.duration_conservation_frames）。" },
+        "episode_duration_s": { "type": "number", "minimum": 0, "description": "集时长（秒）= total_frames / fps。" },
+        "duration_conservation_dev_frames": {
+          "type": "integer",
+          "description": "Σ duration_frames 与 total_frames 的守恒偏差实测（帧）。阈（±1 帧）经 gate.params_ref=cp6.gate.duration_conservation_frames 引用，本字段只登记实测值。"
+        },
+        "shots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["shot_id", "start_frame", "duration_frames"],
+            "properties": {
+              "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$" },
+              "start_frame": { "type": "integer", "minimum": 0 },
+              "duration_frames": { "type": "integer", "minimum": 1 }
+            }
+          },
+          "description": "逐镜帧域排布。语义锚点只投影一次为帧域，之后字幕/B-roll/贴纸只引用本 Timeline，组件自己不做找帧（白皮书 CP6 唯一收敛口）。"
+        },
+        "subtitle_segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["segment_id", "start_s", "end_s", "text"],
+            "properties": {
+              "segment_id": { "type": "string", "description": "回链 CP2 台词段 ID。" },
+              "start_s": { "type": "number", "minimum": 0 },
+              "end_s": { "type": "number", "minimum": 0 },
+              "text": { "type": "string" }
+            }
+          },
+          "description": "字幕段（与音轨词级时间偏差门禁经 params_ref=cp6.gate.subtitle_align_ms_max 引用）。"
+        },
+        "subtitle_align_max_dev_ms": { "type": "number", "minimum": 0, "description": "字幕段与音轨词级时间偏差实测最大值（毫秒）。阈在 thresholds（whisperx SemanticTake 对齐口径）。" },
+        "sound_lead_in_frames": { "type": "integer", "minimum": 0, "description": "音频先入引导帧数（D3-8 声音先入），符合声明为门禁项。" },
+        "rhythm_segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["segment_id", "duration_s"],
+            "properties": {
+              "segment_id": { "type": "string" },
+              "duration_s": { "type": "number", "exclusiveMinimum": 0 }
+            }
+          },
+          "description": "节奏轨段落（长度上下限 0.8s/12s 为 warn-only，阈经 params_ref=cp6.gate.rhythm_segment_s；超限上升人类一次带三个候选方案，不自动改）。"
+        }
+      },
+      "description": "CP6 时间线与节奏轨 payload：第四件人类天然要确认的工件（节奏是剪辑的核心工作对象）；owner 模板线诉求（INTENT.md:39）在 vpipe 的落点就是本 Timeline + 槽位。"
+    },
+
+    "draft_clip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "shot_id", "channel", "asset", "width", "height", "fps", "declared_duration_s", "actual_duration_s", "black_mono_ratio", "nan_detected"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$" },
+        "channel": { "$ref": "#/definitions/channel_id", "description": "草稿通道（如 local_ltx_2b；枚举唯一来源 model_tiers.yaml T2 层）。" },
+        "asset": { "$ref": "#/definitions/asset_ref", "description": "草稿片资产（480×704 或 480×832、16fps 的预演片——它不是交付物，白皮书 §4 T2 客观形态）。" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "fps": { "type": "number", "minimum": 1 },
+        "declared_duration_s": { "type": "number", "exclusiveMinimum": 0, "description": "声明时长。" },
+        "actual_duration_s": { "type": "number", "exclusiveMinimum": 0, "description": "ffprobe 实测时长。偏差门禁（白皮书 CP7：≤2%，L0 预检已实装拒收 exit 4）经 params_ref=l0_preflight.duration_dev_max 引用既有段。" },
+        "black_mono_ratio": { "type": "number", "minimum": 0, "maximum": 1, "description": "黑场/单色占比实测。门禁（≤50%）经 params_ref=l0_preflight.black_frame_ratio_max 引用既有段。" },
+        "nan_detected": { "type": "boolean", "description": "NaN/黑帧检出（LTX fp16 已知失败模式，gen_local 有 VAE fp32 降级重跑实测语义）。" },
+        "seed": { "type": ["integer", "null"], "description": "本地通道种子（同种子帧级一致，SPEC.md §2.1）；null=通道无 seed 概念。" },
+        "l0_preflight": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["accepted"],
+          "properties": {
+            "accepted": { "type": "boolean", "description": "L0 预检是否放行（拒收件不产后续工件，证据 <clip_id>.l0.json 另行落盘）。" },
+            "evidence_ref": { "type": "string", "description": "L0 证据文件路径。" }
+          },
+          "description": "L0 确定性预检结果快照（沿 QCReport qc_context.l0_preflight 1.1 语义）。"
+        }
+      },
+      "description": "CP7 草稿视频 payload：构图/节奏/动作预演。草稿层不做 aesthetic 判定——它存在的唯一理由是给 CP8 择优器东西可打（白皮书 §3 CP7）。"
+    },
+
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "shot_id", "candidates", "top1_candidate_id", "pareto_dominant", "veto_defects"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$" },
+        "candidates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["candidate_id", "draft_fingerprint"],
+            "properties": {
+              "candidate_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.@-]{0,127}$", "description": "候选 ID（沿 v1 clip 命名 <shot_id>@<model> 词形）。" },
+              "draft_fingerprint": { "$ref": "#/definitions/fingerprint", "description": "该候选草稿片的资产指纹。" },
+              "hard_verify": { "type": "object", "description": "硬校验向量实测（黑场/时长/NaN 等，逐项数值登记；门禁数值经 aux_gates.params_ref 引用）。" },
+              "judge_scores": { "type": "object", "description": "judge 打分快照（相对线只决定次序；不设绝对通过线，白皮书 CP8 两层不可混）。" }
+            }
+          },
+          "description": "N 个草稿候选（BoN 相对线的作用域）。"
+        },
+        "top1_candidate_id": { "type": "string", "description": "选中进 CP9 精修的候选。" },
+        "pareto_dominant": { "type": "boolean", "description": "top-1 是否在硬校验向量上 Pareto 支配（无单项比 top-2 差且总分更低）。判定规则经 params_ref=cp8.gate.pareto_rule。" },
+        "veto_defects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "A/B 组否决缺陷类型（任一存在 → 候选直接出局不进 top-k；空数组=本次选择无否决缺陷）。缺陷词表与否决组归属经 params_ref=cp12.gate.veto_groups（与 CP12 同源，防两套）。"
+        },
+        "escalated_to_human": { "type": "boolean", "description": "judge 间分歧 > δ 或与硬校验方向矛盾时上升人工（白皮书 CP8：仅此时人看）。" },
+        "structural_difficult": { "type": "boolean", "description": "无候选达标升档后仍失败 → 标记「结构性困难镜」，单镜重试上限经 params_ref=cp8.gate.retry_max（白皮书 CP8：上限 2 次，超限转人工工单）。" }
+      },
+      "description": "CP8 择优 payload：硬校验承重、judge 只排序、矛盾上升人（AI视频生产流水线方案.md 第四章）。"
+    },
+
+    "final_render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "shot_id", "channel", "asset", "repro_level", "submit_params_fingerprint", "credit_spent", "credit_cap_per_shot"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "shot_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$" },
+        "channel": { "$ref": "#/definitions/channel_id", "description": "精修通道（如 api_h3max / api_seedance_25；枚举唯一来源 model_tiers.yaml T4/T5 层）。" },
+        "asset": { "$ref": "#/definitions/asset_ref", "description": "768P+ 含音轨终稿片段（白皮书 §4 T4 客观形态）。" },
+        "resolution": { "type": "string", "enum": ["768P", "2K", "1080P"], "description": "终稿分辨率档（登记值；本地 480P 不允许出现在 CP9——草稿不是交付物）。" },
+        "repro_level": {
+          "type": "string",
+          "enum": ["params", "submit_params"],
+          "description": "复现级别声明：params=本地参数级；submit_params=API 提交参数级。API 通道 seed 零控制力，「同指纹重提交必然新样本」（SPEC.md §2.2）——像素级 md5 承诺已被 owner 明令废止，本字段是诚实口径的机读化（白皮书 §2 原则 4）。"
+        },
+        "submit_params_fingerprint": { "$ref": "#/definitions/fingerprint", "description": "提交参数（含 seed、prompt_hash、时长、分辨率、参考图 sha）整体指纹，参数级复现留痕的落点。" },
+        "seed_recorded": { "type": ["integer", "null"], "description": "提交的 seed 留痕（API 通道仅留痕不承诺效果；VDL R2：api 通道禁 seed_policy=fix_for_iteration）。" },
+        "credit_spent": { "type": "integer", "minimum": 0, "description": "本镜实耗积分（如实记录；云通道无钱包端点时为估算值并在 notes 声明，不冒充实扣——SPEC.md §2.2 降级语义继承）。" },
+        "credit_cap_per_shot": { "type": "integer", "minimum": 1, "description": "单镜成本闸门上限。超限 exit 3（工程方案v3.1 §6.3 实证：DTO 校验在扣费前拦截、0 损失）。" },
+        "draft_task_id": { "type": ["string", "null"], "description": "Seedance Draft 机制关联 ID（draft_task.id 是唯一能拿到的「要素一致」凭证，必须落盘；非 Seedance 通道为 null，白皮书 §4 T5 门禁行）。" },
+        "rework_route": {
+          "type": ["string", "null"],
+          "enum": [null, "cp4", "cp5", "cp3"],
+          "description": "质量缺陷按类型路由的回退目标登记（身份→CP4 修 refs；动作→CP5 修姿态；构图→CP3/CP4）；任何回退不得跳过 CP6 直接换时间。"
+        }
+      },
+      "description": "CP9 终稿渲染 payload：贵的那一层（owner 明示「让 seedance 2.5 这种专注在最终渲染」）。局部返修优先于整镜重抽。"
+    },
+
+    "subtitle_audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "tts", "subtitles", "loudness_lufs", "duration_conservation"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "tts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["channel", "voice_id", "gender_match_confirmed"],
+          "properties": {
+            "channel": { "$ref": "#/definitions/channel_id", "description": "TTS 通道（如 api_stepfun_tts，model_tiers.yaml T3 层）。" },
+            "voice_id": { "type": "string", "description": "克隆音色 ID。量产前先克隆统一音色性别——StepFun 磁性男声 × 女性角色 = 性别错配实测教训（工程方案v3.1.md:53）。" },
+            "gender_match_confirmed": { "type": "boolean", "description": "音色性别与角色设定核对通过（人工听一遍音色与语速，CP10 设计内人工介入的落点；不满意给 voice 参考，不改台词）。" }
+          }
+        },
+        "subtitles": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["format", "verbatim_check_pass", "cer_small", "cer_medium"],
+          "properties": {
+            "format": { "type": "string", "const": "ass", "description": "ASS 硬渲染（程序化字幕层）。" },
+            "verbatim_check_pass": { "type": "boolean", "description": "ASS 逐字硬校验零错字（确定性校验）。" },
+            "cer_small": { "type": "number", "minimum": 0, "maximum": 1, "description": "whisper CER small 口径实测。阈经 params_ref=cp10.gate.cer_max 引用；同音字以 pinyin 归一口径分析不凑数（INTENT.md:89）。" },
+            "cer_medium": { "type": "number", "minimum": 0, "maximum": 1, "description": "whisper CER medium 口径实测（双口径同阈）。" }
+          }
+        },
+        "loudness_lufs": { "type": "number", "description": "混音响度实测（LUFS）。目标值经 params_ref=cp10.gate.loudness_lufs_target 引用。" },
+        "duration_conservation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["expected_s", "actual_s", "method"],
+          "properties": {
+            "expected_s": { "type": "number", "exclusiveMinimum": 0, "description": "音频时长（秒）。" },
+            "actual_s": { "type": "number", "exclusiveMinimum": 0, "description": "ffprobe 成片段时长（秒）。" },
+            "method": { "type": "string", "enum": ["ceil_audio", "strict"], "description": "守恒口径：ceil_audio=avatar 线成片时长=ceil(音频秒)（垫尾豁免沿 l0_preflight.avatar_tail_max_s）；strict=逐帧守恒。" }
+          }
+        },
+        "numbers_in_subtitle_only": { "type": "boolean", "description": "数字只在字幕里、不在画面里（CP10 门禁项；画面数字走 G3 绕行拣选通道）。" }
+      },
+      "description": "CP10 字幕与音轨 payload。TTS 与字幕共用同一分句源；CER 超标优先改分句不改词。"
+    },
+
+    "composite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "master_asset", "container", "video_codec", "audio_codec", "width", "height", "duration_s", "master_shot_segments", "storyboard_shot_count", "known_cuts", "all_cuts_registered"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "master_asset": { "$ref": "#/definitions/asset_ref", "description": "成片资产（确定性层产物：同参数二遍 md5 一致，工程方案v3.1.md:218 实测口径）。" },
+        "container": { "type": "string", "description": "封装（ffprobe 实测，如 mp4）。" },
+        "video_codec": { "type": "string", "description": "视频编码（ffprobe 实测，如 h264）。" },
+        "audio_codec": { "type": "string", "description": "音频编码（ffprobe 实测，如 aac）。" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "duration_s": { "type": "number", "exclusiveMinimum": 0, "description": "总时长实测。±1s 门禁经 params_ref=cp11.gate.duration_tol_s 引用。" },
+        "master_shot_segments": { "type": "integer", "minimum": 1, "description": "成片内切分出的镜头段数（ffprobe/检测器实测）。" },
+        "storyboard_shot_count": { "type": "integer", "minimum": 1, "description": "CP3 分镜表镜头数。切镜数==分镜表镜头数为 CP11 门禁；不符退回定位哪一镜多/少切。" },
+        "known_cuts": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 },
+          "description": "全部硬切点登记（秒）。白名单容差沿既有段 J6_detectors_v2.known_cuts_tol_s 引用——拼接切点不登记会对同人物同构图硬切误报 temporal_swap（实测后向重入相似度 0.9784 > swap_single_back_min=0.85，工程方案v3.1.md:170）。"
+        },
+        "all_cuts_registered": { "type": "boolean", "description": "拼接切点是否全部在 known_cuts 白名单内登记（无登记硬切点 → exit 非 0，TASK_v4 M1-W5 known_cuts 强制登记）。" },
+        "black_ratio": { "type": "number", "minimum": 0, "maximum": 1, "description": "黑场占比实测（CRADLE 六道硬校验之一，挂到合成产物，白皮书 §4 T0 门禁行）。" }
+      },
+      "description": "CP11 合成 payload：确定性梯度顶端（ffmpeg 子进程 + MoviePy v2 + HyperFrames）。编码不达标只重跑合成，零 API 成本——全链最便宜的一次修复。"
+    },
+
+    "qc_master": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_id", "master_fingerprint", "episode_verdict", "gate_groups", "human_escalation_rate", "retry_round", "shot_qc_refs"],
+      "properties": {
+        "work_id": { "$ref": "#/definitions/work_id" },
+        "master_fingerprint": { "$ref": "#/definitions/fingerprint", "description": "被检成片指纹（= CP11 master_asset.fingerprint）。" },
+        "episode_verdict": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["score", "mean_shot_score", "worst_shot_score", "formula", "verdict"],
+          "properties": {
+            "score": { "type": "number", "minimum": 0, "maximum": 100, "description": "成片门实测分。绝对门阈（judge 标定分 70 ≙ 人评 7.0/10，且必须是人评锚定后的映射值）经 params_ref=cp12.gate.master_score_min 引用；锚定未完成前 70 只作 warn 阈与人工队列排序依据（白皮书 §7 非目标 8）。" },
+            "mean_shot_score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "worst_shot_score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "formula": { "type": "string", "const": "0.7*mean+0.3*worst", "description": "成片分公式（短板惩罚，AI视频生产流水线方案.md:162），const 固化防实现漂移。" },
+            "verdict": { "type": "string", "enum": ["pass", "reject"], "description": "放行/驳回（签字或驳回是 CP12 人工三件事之三）。" }
+          }
+        },
+        "gate_groups": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["a_group", "b_group", "c_group", "d_group"],
+          "properties": {
+            "a_group": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["recall", "fpr", "verdict"],
+              "properties": {
+                "recall": { "type": "number", "minimum": 0, "maximum": 1 },
+                "fpr": { "type": "number", "minimum": 0, "maximum": 1 },
+                "verdict": { "type": "string", "enum": ["pass", "fail"] }
+              },
+              "description": "A 组程序规则（召回/误报阈经 params_ref=cp12.gate.a_group_recall_min / a_group_fpr_max 引用）。"
+            },
+            "b_group": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["recall", "fpr", "verdict"],
+              "properties": {
+                "recall": { "type": "number", "minimum": 0, "maximum": 1 },
+                "fpr": { "type": "number", "minimum": 0, "maximum": 1 },
+                "verdict": { "type": "string", "enum": ["pass", "fail"] }
+              },
+              "description": "B 组专用小模型（阈经 cp12.gate.b_group_* 引用；LSE-D 硬门仅特写/近景，全身镜头降 warn-only，白皮书 CP12）。"
+            },
+            "c_group": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["recall", "fpr", "verdict"],
+              "properties": {
+                "recall": { "type": "number", "minimum": 0, "maximum": 1 },
+                "fpr": { "type": "number", "minimum": 0, "maximum": 1 },
+                "verdict": { "type": "string", "enum": ["pass", "fail"] }
+              },
+              "description": "C 组 VLM judge 类内口径（阈经 cp12.gate.c_group_* 引用）；judge 缺陷不允许自动否决（白皮书 CP12）。"
+            },
+            "d_group": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["warn_only", "flagged_count", "verdict"],
+              "properties": {
+                "warn_only": { "type": "boolean", "const": true, "description": "D 组默认 warn-only 不做自动否决（物理类 ROC-AUC≈53≈随机；时序类 TempCompass 人类 96.7–100 vs 视频 LLM 27–41，白皮书 CP12/§7 非目标 3）——const true 固化，不许出现自动拦截形态。" },
+                "flagged_count": { "type": "integer", "minimum": 0, "description": "flag 的候选时间窗数（人工只看程序标出的时间窗，白皮书 §2 原则 3）。" },
+                "verdict": { "type": "string", "enum": ["warn"], "description": "D 组判定值域只有 warn。" }
+              }
+            }
+          },
+          "description": "四维/四组门禁实测（任一镜头存在 A/B 组否决缺陷 → 成片门直接不通过）。全部数值经各 params_ref 引用。"
+        },
+        "human_escalation_rate": { "type": "number", "minimum": 0, "maximum": 1, "description": "人工上升率实测。上限（≤20%）经 params_ref=cp12.gate.human_escalation_rate_max 引用；周复核误杀/漏放并回滚权重。" },
+        "retry_round": { "type": "integer", "minimum": 0, "description": "本轮是第几轮重试（重试 ≤2 轮仍不过 → 人工工单并标记结构性困难、进金标扩样队列；上限经 params_ref=cp12.gate.retry_round_max）。" },
+        "routed_reworks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["defect_type", "target_cp"],
+            "properties": {
+              "defect_type": { "type": "string", "description": "缺陷类型（沿 QCReport defects[].type 词表）。" },
+              "target_cp": { "$ref": "#/definitions/cp_id", "description": "按缺陷类型路由回的具体 CP（身份→cp4，动作→cp5，节奏→cp6，字幕→cp10）。" }
+            }
+          },
+          "description": "驳回时的路由记录。不允许成片级重抽（白皮书 CP12 失败回退）。"
+        },
+        "shot_qc_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["shot_id", "qc_report_fingerprint"],
+            "properties": {
+              "shot_id": { "type": "string" },
+              "qc_report_fingerprint": { "$ref": "#/definitions/fingerprint", "description": "该镜 QCReport（v1/1.1 契约产物）的资产指纹，经 asset_manifest 登记。" }
+            }
+          },
+          "description": "逐镜 QCReport 引用（成片分公式的输入；v1 QCReport 契约零修改，本契约只引用不重定义）。"
+        }
+      },
+      "description": "CP12 质检与成片 payload。人工三件事且只做三件：看灰区队列、看 D 类、签字或驳回（白皮书 §3 CP12）。"
+    },
+
+    "cp1_intent_card": {
+      "title": "CP1 意图单（Intent Card）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp1" },
+        "artifact_type": { "const": "intent_card" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["rule", "human"] } } }
+          ],
+          "description": "CP1 主门：schema 校验 + 禁区缺陷码注册表可查（rule）；禁区无对应缺陷码 → 拒收并要求 owner 裁决（human，全链唯一死胡同）。params_ref 例：cp1.gate.forbidden_defect_code_registry。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/intent_card" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP1 工件：意图 → 一页可寻址的意图卡（含禁区与必须保留物）。生产者 agent.director（AI 草稿）/ human.owner（确认）；消费者：cp2 剧本生成器 + 全链回读（禁区投影到镜级）。设计内人工介入点（白皮书 §3 谱首段）。"
+    },
+    "cp2_script": {
+      "title": "CP2 剧本与台词本（Script / Narration）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp2" },
+        "artifact_type": { "const": "script" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["rule"] } } }
+          ],
+          "description": "CP2 主门：Σ estimated_duration 偏差、台词/镜头比、TTS 字符集、悬空引用（全部 rule）。params_ref 例：cp2.gate.duration_dev_max。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/script" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP2 工件：意图 → 分集/分场 → 逐条台词（narration_segment 与 visual_description 成对）。生产者 agent.writer；消费者 human.owner（只判断「这话我说得出口吗」，非设计内强制介入点，异常才上升）→ cp3。默认零人工。"
+    },
+    "cp3_storyboard": {
+      "title": "CP3 分镜表（Storyboard Spec）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp3" },
+        "artifact_type": { "const": "storyboard" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["rule"] } } }
+          ],
+          "description": "CP3 主门：五要素齐全 / duration ≤ 引擎单段上限 / 词锚定合法 / 跨镜 during 同场景且编译序在前 / 循环引用检测 / 镜头数与 CP2 一致（校验器七条，AI视频生产流水线方案.md §3.2）。params_ref 例：cp3.gate.max_shot_duration_s。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/storyboard" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP3 工件：剧本 → 逐镜规格表。生产者 agent.boardArtist；消费者 human.owner（第一件天然确认工件：「这一镜应该是特写不是中景」）→ cp4/cp5。设计内人工介入点（TASK_v4 §3.3：短剧/漫剧必到，营销可省）。任何校验失败退回 CP2/CP3 重生成该镜，不许带病进 CP4。"
+    },
+    "cp4_keyframes": {
+      "title": "CP4 构图参考 / 关键帧（Keyframe）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp4" },
+        "artifact_type": { "const": "keyframes" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["hard_verify"] } } }
+          ],
+          "description": "CP4 主门：全部程序化零 VLM——分辨率/比例符合 deliverable、黑图率、在场检测 detected⊇expected、ArcFace 逐身份余弦。params_ref 例：cp4.gate.identity_cosine_min。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/keyframes" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP4 工件：分镜表 → 每镜 1–2 张关键帧。生产者 agent.keyframePainter（VACE/reference 通道，多参考身份注入必须 API——工程方案v3.md:36 实测）；消费者 human.owner（圈改/一句话，仅在构图不符时）→ cp7（草稿）/ cp9（精修首帧条件）。默认零人工。身份未命中先修 refs 再重生，不重抽视频。"
+    },
+    "cp5_blocking": {
+      "title": "CP5 动作脚本（Blocking）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp5" },
+        "artifact_type": { "const": "blocking" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["rule"] } } }
+          ],
+          "description": "CP5 主门：关节名合法（16 穷举）/ 帧时间单调 / 帧数 ≤ 上限 / 骨长恒定 / speech=full-body 必须存在独立口型层路径。params_ref 例：cp5.gate.pose_frame_max。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/blocking" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP5 工件：分镜表 → 确定性动作描述 + 可执行姿态序列（ToonFlow mannequin schema，一份数据三端通吃）。生产者 agent.blockingCompiler；消费者 human.owner（第三件天然确认工件：「他应该先伸手再拿杯」）→ T3 动作层（MimicMotion）。设计内人工介入点（TASK_v4 §3.3：短剧必到，漫剧/营销可省）。姿态编译失败退回 CP3 改 action。"
+    },
+    "cp6_timeline": {
+      "title": "CP6 时间线与节奏轨（Timeline + Rhythm Track）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp6" },
+        "artifact_type": { "const": "timeline" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["rule"] } } }
+          ],
+          "description": "CP6 主门：Σ shot.duration == 集时长（±1 帧）/ 字幕段与音轨词级偏差 ≤ 阈 / 无时间轴循环引用 / sound lead-in 符合声明。params_ref 例：cp6.gate.duration_conservation_frames。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/timeline" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP6 工件：分镜表 + 台词时长 + 动作时长 → 单一帧域时间线（唯一收敛口，语义锚点只投影一次）。生产者 orchestrator.cp6_timeline_builder；消费者 human.owner（拖时间线/改停顿，第四件天然确认工件）→ cp7/cp9/cp10/cp11 全链复用。设计内人工介入点；段落过长过短上升人类一次带三个候选方案。"
+    },
+    "cp7_draft_clip": {
+      "title": "CP7 草稿视频（Draft Clip）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp7" },
+        "artifact_type": { "const": "draft_clip" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["hard_verify"] } } }
+          ],
+          "description": "CP7 主门：L0 预检（黑场/单色占比、时长偏差、NaN/黑帧、帧率分辨率）——全部数值沿既有段 l0_preflight.* 引用（拒收 exit 4 已实装）。草稿层不做 aesthetic 判定。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/draft_clip" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP7 工件：分镜表 + 关键帧 + 姿态 → 廉价本地草稿片（T2 层）。生产者 gen_local（J6v2 时序 signal 层 qc_detectors_v2 直迁本 CP 作信号）；消费者 cp8 择优器。默认零人工（仅「冷启动保护」前 N 条抽看，AI视频生产流水线方案.md §4.2 L5）。L0 拒收同 seed 重跑一次（零成本）。"
+    },
+    "cp8_selection": {
+      "title": "CP8 择优（Selection / Best-of-N）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp8" },
+        "artifact_type": { "const": "selection" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["composite"] } } }
+          ],
+          "description": "CP8 主门（composite，两层不可混）：① 相对线 judge_rank 只排序（ensemble.E10 判据族）；② 绝对门 hard_verify Pareto 支配 + A/B 组否决缺陷一票出局。params_ref 例：cp8.gate.pareto_rule。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/selection" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP8 工件：N 个草稿候选 + 硬校验指标 + judge 分数 → 选 1 个进精修。生产者 agent.selector；消费者 cp9。默认零人工（judge 分歧 > δ 或与硬校验矛盾才上升，AI视频生产流水线方案.md §4.2 L3）。无候选达标 → 升一档并记录结构性困难镜。"
+    },
+    "cp9_final_render": {
+      "title": "CP9 终稿渲染（Final Render）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp9" },
+        "artifact_type": { "const": "final_render" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["rule", "composite"] } } }
+          ],
+          "description": "CP9 主门：参数级复现留痕一致 + 单镜成本闸门（credit_cap_per_shot 超限 exit 3，DTO 校验先于扣费）。params_ref 例：cp9.gate.credit_cap_per_shot。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/final_render" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP9 工件：选中的构图/关键帧/动作/时间 → 精确渲染（T4/T5 层，贵的那一层）。生产者 gen_api（higress 云通道三步流）；消费者 cp10/cp11。默认零人工（仅风格/表演类 gate=human 判据的 flag 镜）。VDL R2 在此生效：api 通道禁 fix_for_iteration 与 content_fingerprint。"
+    },
+    "cp10_subtitle_audio": {
+      "title": "CP10 字幕与音轨（Subtitle / Audio）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp10" },
+        "artifact_type": { "const": "subtitle_audio" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["composite"] } } }
+          ],
+          "description": "CP10 主门（composite）：ffprobe 时长守恒（hard_verify）+ ASS 逐字零错字（rule）+ whisper CER 双口径（专用小模型）+ 响度（rule）。params_ref 例：cp10.gate.cer_max。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/subtitle_audio" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP10 工件：台词 + 时间线 → 配音 + 字幕 + 混音。生产者 tts.py + subtitle 渲染链（T3 层 StepFun/Design + HyperFrames 字牌）；消费者 human.owner（听音色语速，给 voice 参考不改台词）→ cp11。CER 超标优先改分句不改词。"
+    },
+    "cp11_composite": {
+      "title": "CP11 合成（Compose）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp11" },
+        "artifact_type": { "const": "composite" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["hard_verify"] } } }
+          ],
+          "description": "CP11 主门：ffprobe 全项（总时长 ±1s、竖版、h264+aac）+ 切镜数==分镜表镜头数 + 黑场占比 + 拼接切点全部在 known_cuts 白名单（容差沿 J6_detectors_v2.known_cuts_tol_s）。CRADLE 六道硬校验挂载点（白皮书 §4 T0 门禁行）。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/composite" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP11 工件：所有片段 + 字幕 + 音轨 → 成片。生产者 synth（ffmpeg 子进程 + MoviePy v2 + HyperFrames，确定性梯度顶端，同参数二遍 md5 一致）；消费者 cp12。默认零人工。编码不达标只重跑合成（全链最便宜的修复）。"
+    },
+    "cp12_qc_master": {
+      "title": "CP12 质检与成片（QC Report + Master）",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cp_id", "artifact_type", "fingerprint", "produced_by", "produced_at", "upstream_refs", "status", "gate", "payload"],
+      "properties": {
+        "schema_version": { "$ref": "#/definitions/schema_version" },
+        "cp_id": { "const": "cp12" },
+        "artifact_type": { "const": "qc_master" },
+        "fingerprint": { "$ref": "#/definitions/fingerprint" },
+        "produced_by": { "$ref": "#/definitions/produced_by" },
+        "produced_at": { "$ref": "#/definitions/produced_at" },
+        "upstream_refs": { "$ref": "#/definitions/upstream_refs" },
+        "status": { "$ref": "#/definitions/status" },
+        "gate": {
+          "allOf": [
+            { "$ref": "#/definitions/gate" },
+            { "properties": { "type": { "enum": ["composite"] } } }
+          ],
+          "description": "CP12 主门（composite = 五层质检聚合）：成片绝对门（judge_absolute）+ A/B/C 组（rule/hard_verify/judge）+ D 组 warn-only + 人工上升率。params_ref 例：cp12.gate.a_group_recall_min（thresholds v4 CP 分段的锚点键）。"
+        },
+        "aux_gates": { "$ref": "#/definitions/aux_gates" },
+        "payload": { "$ref": "#/definitions/qc_master" },
+        "notes": { "$ref": "#/definitions/notes" }
+      },
+      "description": "CP12 工件：成片 + 剧本 + 各镜 QCReport → 放行/驳回 + 成片交付。生产者 gate 包（qc_orch/qc_orch_v2 降级为其子模块）；消费者 human.owner（灰区队列 + D 类 + 签字，设计内介入点）→ 交付。任一硬门不过按缺陷类型路由回具体 CP，不允许成片级重抽。"
+    }
+  }
+}

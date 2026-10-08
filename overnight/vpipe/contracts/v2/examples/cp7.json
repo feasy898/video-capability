@@ -1,0 +1,60 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp7",
+  "artifact_type": "draft_clip",
+  "fingerprint": "829ca3b427382a5c9d9037de721eaf9ca2fbf5d2ecaabeb9e3bbd9dfb3cdc802",
+  "produced_by": "gen_local",
+  "produced_at": "2026-10-08T13:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp4",
+      "fingerprint": "ffcc4ed9421481bcf26e92ec60c8bd3f3b8af5d1cc4bbc523cc8233b89d82953"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "f679a6460add96e697e79d0bc0e6e6c61c3cec5a7608cda11746fb2b3d132516"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "82e712a442d767c704894218f8eaa0db34400841f2125f4472babf6a2c32b986"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "l0_preflight.black_frame_ratio_max",
+    "result": "pass",
+    "note": "黑场/单色占比 0.00 ≤ 0.50（thresholds.yaml 既有段 l0_preflight，拒收 exit 4 已实装）。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "l0_preflight.duration_dev_max",
+      "result": "pass",
+      "note": "实测 4.98s vs 声明 5.0s，偏差 0.4% ≤ 2%（thresholds 既有段 l0_preflight.duration_dev_max）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_01",
+    "channel": "local_ltx_2b",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "1f2e789ef4c8781b35993e6a6847caeca3f88d11f4ebf2ce1d8bfa173fadefb4",
+      "path": "out/drafts/shot_01__ltx2b.mp4"
+    },
+    "width": 480,
+    "height": 704,
+    "fps": 16,
+    "declared_duration_s": 5.0,
+    "actual_duration_s": 4.98,
+    "black_mono_ratio": 0.0,
+    "nan_detected": false,
+    "seed": 42,
+    "l0_preflight": {
+      "accepted": true,
+      "evidence_ref": "out/drafts/shot_01__ltx2b.l0.json"
+    }
+  },
+  "notes": "示例工件（本集 4 镜各一份，此处列 shot_01）：T2 廉价草稿层（LTX-2B distilled fp16 8 步，76.7s/条 0 积分 42/42 全成，工程方案v3.md:35）；它不是交付物，草稿层不做 aesthetic 判定，唯一存在理由是给 CP8 择优器东西可打（白皮书 §3 CP7 / §4 T2）。"
+}

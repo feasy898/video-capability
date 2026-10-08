@@ -1,0 +1,88 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "f926a2bf1f0e3efdf5e2b69fa33a95a9fc9d566e64eac5a44ef64d0888245a61",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T10:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pass",
+    "note": "4 镜最长 10.0s，均在引擎单段上限内（H3 实测 4–15s，VDL_v2_草案 R3；阈见 cp3.gate.max_shot_duration_s）。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.word_anchor_valid",
+      "result": "pass",
+      "note": "3 处词锚 @{} 引用均存在于本镜台词内（校验器七条之词锚定合法）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.shot_line_count_match",
+      "result": "pass",
+      "note": "镜头数 4 == CP2 台词段数 4（cp2.gate.line_shot_ratio 的另一侧）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "source_script_fingerprint": "d05718535270f223cb81709c3f9fdb812bdbd767b9d3a0b9959d3ee12c758d23",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 5.0,
+        "action": "女儿推门而入，父亲背影在灶台前",
+        "refs": ["heroine_a", "father_b"],
+        "word_anchors": [
+          { "anchor": "你终于回来了", "segment_id": "seg_01" }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "wide",
+        "move": "pan",
+        "duration_s": 7.0,
+        "action": "父亲擦桌，镜头摇到老位置红木凳",
+        "refs": ["father_b"],
+        "word_anchors": [
+          { "anchor": "老位置", "segment_id": "seg_02" }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "close",
+        "move": "push_in",
+        "duration_s": 8.0,
+        "action": "父亲举杯一饮而尽，杯面不遮挡手指",
+        "refs": ["father_b", "prop_cup_01"],
+        "word_anchors": [
+          { "anchor": "这杯我替你喝了", "segment_id": "seg_03" }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_04",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 10.0,
+        "action": "女儿低头吃面，热气模糊眼镜",
+        "refs": ["heroine_a", "prop_noodle_bowl"],
+        "word_anchors": [],
+        "channel_hint": "api_h3max"
+      }
+    ]
+  },
+  "notes": "示例工件：每镜五要素齐全（shot/move/duration/action/refs）；CP1 禁区已投影到 shot_03 action（杯面不遮挡手指）与全片小字处置（cp4.small_text_policy）。"
+}
