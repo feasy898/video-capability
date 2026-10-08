@@ -1,0 +1,225 @@
+{
+  "schema_version": "2.0",
+  "clip_id": "marketing_ep01",
+  "generated_at": "2026-10-08T21:34:29Z",
+  "work_id": "marketing_ep01",
+  "qc_mode": "online",
+  "checkpoint": {
+    "cp_id": "cp12",
+    "artifact_ref": "a72f69aef0f510a92520a59fb8cd5913ec2b83f67ee3c57ad0c0776ada5bea79"
+  },
+  "verdict": {
+    "defect_detected": true,
+    "decision": "manual_review",
+    "confidence": 0.711,
+    "decided_by": "cp12.composite(E10=J1∨J3@0.71 成片合议 + cp12.gate.master_score_min 成片绝对门)",
+    "reasons": [
+      "J1(detected=True, types=['identity_drift'], conf=0.62)",
+      "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.711",
+      "成片分 24.2 = 0.7×mean(24.2) + 0.3×worst(24.2)，6 段继承成片单镜分（镜级 QCReport 未产出，按任务预案单镜近似并声明）；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与排序依据）",
+      "J6v2 成片重跑：5 拼接切点（CP6 帧界累计 114/181/279/351/418÷24fps）全部落入 known_cuts 白名单（judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）被豁免，零 temporal_swap 误报——合成层硬切点登记制生效",
+      "J6v2 emitted frame_freeze conf=0.758（span 14.625-17.375s=shot_05 静态全景镜，CP3 move=static 为设计声明；生成侧近零帧差待人工裁决）按 role=signal_only 不翻 verdict、入 defects[]+人工队列",
+      "shot_01 口播镜降级 no-talking-head（参考图缺位，owner 预留路径），无 avatar 段无单列 avatar QC；shot_05 生成侧乱码标签（G2 风险）已登记，判官判定见 judges/ 三家输出",
+      "人工上升率实测 0.17（TASK_v4 验收脚本 CP 粒度口径 =（CP1 pending 1 + CP12 队列非空 1）/12；队列明细 3 条含对照口径 0.33超限（如实并记））；TASK_v4 W9 营销线 ≤0.10超限（如实登记）；thresholds 0.20未超"
+    ]
+  },
+  "defects": [
+    {
+      "type": "frame_freeze",
+      "sources": [
+        "J3",
+        "J6"
+      ],
+      "confidence": 0.758
+    },
+    {
+      "type": "identity_drift",
+      "sources": [
+        "J1"
+      ],
+      "confidence": 0.62
+    }
+  ],
+  "scores": {
+    "per_type": {
+      "frame_freeze": 0.711,
+      "flicker": 0.4519,
+      "color_shift": 0.6517,
+      "face_blur": 0.2243,
+      "garble_text": 0.0603,
+      "temporal_swap": 0.6574,
+      "pixelate": 0.2516,
+      "ghosting": 0.4752
+    },
+    "overall": 0.6358,
+    "thresholds_applied": {
+      "ensemble_id": "E10",
+      "j3_thr": 0.71,
+      "auto_reject_p": 0.9,
+      "j6_emit_conf": 0.55,
+      "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+    }
+  },
+  "spans": [
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J1",
+        "text": "f06-f08（主体外观不一致，f07 最明显）"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J3",
+        "text": "full_clip:16帧均匀采样4x4拼图"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J5",
+        "text": "full_clip:fps=0.2解码"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J6v2 known_cuts 豁免记录：5 个 junction（cut_t=4.75…17.417）全部 exempted（证据 judges/detectors/marketing_ep01.qc2.json temporal_rejected.temporal_swap_known_cuts）"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J3 未达判定阈(0.71)的次高通道只登记数据不入队列：temporal_swap=0.6574; color_shift=0.6517; ghosting=0.4752；J3 拼图判官不知 known_cuts 白名单，5 个登记硬切点（CP6 帧界累计）可解释其 temporal_swap 信号"
+      }
+    }
+  ],
+  "judges": {
+    "J1": {
+      "clip_id": "marketing_ep01",
+      "defect_detected": true,
+      "defect_types": [
+        "identity_drift"
+      ],
+      "confidence": 0.62,
+      "spans": "f06-f08（主体外观不一致，f07 最明显）",
+      "notes": "主体（香薰瓶）跨帧外观突变：f01-f06 及 f08 瓶身均为无标签的纯琥珀色玻璃瓶，唯独 f07 瓶身突然出现带白色标签（含小字）的外观；同时藤条数量在不同镜头间明显不一致，f01-f03 约 8-10 根，f07 仅约 5-6 根，同一产品前后形态不统一。其余维度检查：f04-f05 构图相近但属同一慢推镜头，未见定格；f01→f02、f02→f03 等为正常转场，无时序错乱；字幕文字均通顺无乱码；f06 手部手指数目与形态正常；无 flicker/color_shift/pixelate/ghosting 证据。故仅报主体一致性缺陷。"
+    },
+    "J3": {
+      "clip_id": "marketing_ep01",
+      "defect_detected": true,
+      "defect_types": [
+        "frame_freeze",
+        "color_shift",
+        "temporal_swap"
+      ],
+      "confidence": 0.711,
+      "spans": "full_clip:16帧均匀采样4x4拼图",
+      "notes": "noul概率 frame_freeze=0.711 flicker=0.452 color_shift=0.652 face_blur=0.224 garble_text=0.060 temporal_swap=0.657 pixelate=0.252 ghosting=0.475; overall=0.636; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+    },
+    "J5": {
+      "clip_id": "marketing_ep01",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.8,
+      "spans": "full_clip:fps=0.2解码",
+      "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+    },
+    "J6": {
+      "clip_id": "marketing_ep01",
+      "defect_detected": true,
+      "defect_types": [
+        "frame_freeze"
+      ],
+      "confidence": 0.758,
+      "spans": "frame_freeze:[14.625, 17.375]",
+      "notes": "qc_detectors_v2 temporal rules（CPU）；emitted=['frame_freeze']（≥emit_conf 0.55）；rejected=['temporal_swap_known_cuts']；role=signal_only"
+    }
+  },
+  "inputs": {
+    "clip": "out/m2/marketing_ep01/cp11/master.mp4",
+    "frames_dir": null,
+    "judge_files": {
+      "J6": "out/m2/marketing_ep01/judges/detectors/marketing_ep01.qc2.json",
+      "J1": "out/m2/marketing_ep01/judges/glm8/marketing_ep01.json",
+      "J5": "out/m2/marketing_ep01/judges/videochat3/marketing_ep01.json",
+      "J3": "out/m2/marketing_ep01/judges/omnijev/run_metadata.json"
+    }
+  },
+  "episode_verdict": {
+    "score": 24.2,
+    "mean_shot_score": 24.2,
+    "worst_shot_score": 24.2,
+    "formula": "0.7*mean+0.3*worst",
+    "verdict": "pass",
+    "params_ref": "cp12.gate.master_score_min",
+    "shot_qc_refs": [
+      {
+        "shot_id": "marketing_ep01",
+        "qc_report_fingerprint": "f0b64ca97b90f52add1bebd22f5ccb45c677dc6ea4c4738ad8d0f9b6295a30db"
+      }
+    ]
+  },
+  "human_review": {
+    "queue": [
+      {
+        "ref": "marketing_ep01",
+        "reason": "J3 通道 frame_freeze P=0.7110 落灰区 [0.71,0.90)（judges.J3_omnijev.gray_zone），未达 auto_reject_p=0.90——检出待人工复核",
+        "params_ref": "judges.J3_omnijev.gray_zone",
+        "outcome": "pending"
+      },
+      {
+        "ref": "marketing_ep01",
+        "reason": "J1 glm8 检出 identity_drift (confidence=0.62)——judge 缺陷登记（C 组口径不自动否决）",
+        "params_ref": "ensemble.definitions.E10",
+        "outcome": "pending"
+      },
+      {
+        "ref": "marketing_ep01",
+        "reason": "J6v2 frame_freeze emitted conf=0.758 ≥ emit_conf=0.55，span 14.625-17.375s（kind=zero_diff_run，run_diff_med=0.1911，run_pairs=66）——span 落 shot_05 静态全景镜（CP3 move=static 固定机位为设计声明；生成侧 2.75s 近零帧差）；judges.J6_detectors_v2 role=signal_only 不作否决，检出待人工裁决",
+        "params_ref": "judges.J6_detectors_v2.rule_params.emit_conf",
+        "outcome": "pending"
+      }
+    ],
+    "escalation_rate": 0.1667,
+    "params_ref": "cp12.gate.human_escalation_rate_max"
+  },
+  "qc_context": {
+    "profile": null,
+    "known_cuts": [
+      4.75,
+      7.542,
+      11.625,
+      14.625,
+      17.417
+    ],
+    "l0_preflight": {
+      "clip": "out/m2/marketing_ep01/cp11/master.mp4",
+      "expect_duration_s": 20.0,
+      "profile": null,
+      "failures": [],
+      "checks": {
+        "duration": {
+          "measured_s": 20.0,
+          "rule": "dev_max",
+          "dev": 0.0,
+          "dev_max": 0.02
+        },
+        "black_mono_ratio": {
+          "n_samples": 64,
+          "black_luma_max": 8.0,
+          "mono_std_max": 2.0,
+          "ratio_max": 0.5,
+          "used": 64,
+          "bad_frames": 0,
+          "ratio": 0.0
+        }
+      }
+    }
+  },
+  "errors": {
+    "J2": "未部署（E10 判据族无 J2）",
+    "B_group": "B 组专用小模型未部署——弃权形（主控验收修订语义）"
+  }
+}

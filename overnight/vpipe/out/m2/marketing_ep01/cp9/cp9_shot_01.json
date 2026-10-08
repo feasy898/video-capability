@@ -1,0 +1,52 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp9",
+  "artifact_type": "final_render",
+  "fingerprint": "e9c4c3e0e5cf192b7610ba002f3df621026c16e9546a1483859b39bfefbb3fa0",
+  "produced_by": "gen_api",
+  "produced_at": "2026-10-08T21:14:19Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "972211e4b2f6a32be405eed343697c5f811bf6b9b5fb0ae7c7dc8fe9e32acdbe"
+    },
+    {
+      "cp_id": "cp8",
+      "fingerprint": "bef1b40a4171a14fa7c3d824a1fbae522b16c43dc9d8be5149009b21ca4e4d1b"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp9.gate.credit_cap_per_shot",
+    "result": "pass",
+    "note": "实耗(估) 280 = 56积分/s × 5s（单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）（5s 标准档，等于上限）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=y9PkwVLK8Eoy。【口播镜降级路由留痕】原路由=api_vidu_avatar（G9a 专线，cp8_shot_01.json 路由记录、cp7 avatar_planned 设计）。降级触发证据（CP9 实测亲检 2026-10-09）：5 支产品镜终稿（shot_02..06 第 60 帧，_probe/mk01_frames）均无人物——shot_04 仅一只手（gen_avatar 官方约束=1 张单人图，不构成）；本线无 CP4 定妆照。「营销线口播主体参考图缺位」成立 → 按任务书 owner 预留降级路径处理：该镜改为产品旁白+字幕卡（no-talking-head 变体），不伪造人物图（不挪用短剧线参考图，不用图像 API 凭空生成主持人形象）。本镜实际通道=api_h3max（第 6 次 H3-Max 调用，线红线 ≤6 次正好用满）；avatar 真实调用 0 次（≤2 次红线内）。变体保留 CP3 shot_01 场景（明亮卧室窗边）/镜别（medium_close）/机位（固定带微呼吸感），口播主体=产品；seg_01 台词转产品旁白（CP10 TTS 不变，字幕卡=CP11 烧录字幕）。G7 产品恒存：琥珀玻璃瓶+实木底座+藤条与 5 支产品镜同款。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp9.gate.repro_log_complete",
+      "result": "pass",
+      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 c9148002f1662e44… + task_id 落盘 shot_01.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "shot_id": "shot_01",
+    "channel": "api_h3max",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "b65defdbc460d5b45d8a09525abed4f82009bc921d481301a326f79aa3fb3c92",
+      "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_01.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "c9148002f1662e44d2f802e76c91e3863f87cca8578ab700bc658bd8fa460933",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+  },
+  "notes": "营销线单镜终稿件（CP9 权威形态，schema cp9_final_render 分支 jsonschema EXIT 见 build log）。credit_spent 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=y9PkwVLK8Eoy；分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_mode=text-to-video 显式）。资产 sha256=b65defdbc460d5b4…（ffprobe+sha256 本地亲核）。【口播镜降级路由留痕】原路由=api_vidu_avatar（G9a 专线，cp8_shot_01.json 路由记录、cp7 avatar_planned 设计）。降级触发证据（CP9 实测亲检 2026-10-09）：5 支产品镜终稿（shot_02..06 第 60 帧，_probe/mk01_frames）均无人物——shot_04 仅一只手（gen_avatar 官方约束=1 张单人图，不构成）；本线无 CP4 定妆照。「营销线口播主体参考图缺位」成立 → 按任务书 owner 预留降级路径处理：该镜改为产品旁白+字幕卡（no-talking-head 变体），不伪造人物图（不挪用短剧线参考图，不用图像 API 凭空生成主持人形象）。本镜实际通道=api_h3max（第 6 次 H3-Max 调用，线红线 ≤6 次正好用满）；avatar 真实调用 0 次（≤2 次红线内）。变体保留 CP3 shot_01 场景（明亮卧室窗边）/镜别（medium_close）/机位（固定带微呼吸感），口播主体=产品；seg_01 台词转产品旁白（CP10 TTS 不变，字幕卡=CP11 烧录字幕）。G7 产品恒存：琥珀玻璃瓶+实木底座+藤条与 5 支产品镜同款。"
+}

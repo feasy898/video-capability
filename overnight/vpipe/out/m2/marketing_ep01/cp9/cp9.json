@@ -1,0 +1,154 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp9",
+  "artifact_type": "final_render",
+  "fingerprint": "8188f46f7a07b1a9e35f44d3d64161e035f667197c2fc32551b870b5617eee6e",
+  "produced_by": "gen_api",
+  "produced_at": "2026-10-08T21:14:19Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "972211e4b2f6a32be405eed343697c5f811bf6b9b5fb0ae7c7dc8fe9e32acdbe"
+    },
+    {
+      "cp_id": "cp8",
+      "fingerprint": "bef1b40a4171a14fa7c3d824a1fbae522b16c43dc9d8be5149009b21ca4e4d1b"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp9.gate.credit_cap_per_shot",
+    "result": "pass",
+    "note": "6 镜精修（5 产品镜 + shot_01 口播镜降级变体 no-talking-head）：est 合计 1680（56积分/s × 30s 提交秒数，cp9_prompts.json total_submitted_seconds=30 同源）＜ 线集级上限 2016（cp1.budget.credit_cap_total；--credit-cap 实跑守卫，超限 exit 3）；单镜 280 为 5s 标准档锚点，>5s 镜 warn 标注（CP3 分镜守恒 ceil 所致，单镜口径详见各单镜件；本批全部 5s 标准档）。H3-Max 真实调用合计 6 次（线红线 ≤6 次正好用满）；avatar 真实调用 0 次（参考图缺位降级，理由见 cp9_shot_01.json gate.note）。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp9.gate.repro_log_complete",
+      "result": "pass",
+      "note": "6/6 镜 submit_params 指纹 + task_id + 参数全量落盘 gen_meta.json。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "shots": [
+      {
+        "work_id": "marketing_ep01",
+        "shot_id": "shot_01",
+        "channel": "api_h3max",
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "b65defdbc460d5b45d8a09525abed4f82009bc921d481301a326f79aa3fb3c92",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_01.final.mp4"
+        },
+        "resolution": "768P",
+        "repro_level": "submit_params",
+        "submit_params_fingerprint": "c9148002f1662e44d2f802e76c91e3863f87cca8578ab700bc658bd8fa460933",
+        "seed_recorded": null,
+        "credit_spent": 280,
+        "credit_cap_per_shot": 280,
+        "draft_task_id": null,
+        "rework_route": null
+      },
+      {
+        "work_id": "marketing_ep01",
+        "shot_id": "shot_02",
+        "channel": "api_h3max",
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "857e0d9888307c8b1f25862b5128a7195acad83c709adca9e0d79b8da5784e4d",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_02.final.mp4"
+        },
+        "resolution": "768P",
+        "repro_level": "submit_params",
+        "submit_params_fingerprint": "fb2d84cf35028e2bd7d16fc3931bb46b451b6613e2d01e57afdd730f13beef7f",
+        "seed_recorded": null,
+        "credit_spent": 280,
+        "credit_cap_per_shot": 280,
+        "draft_task_id": null,
+        "rework_route": null
+      },
+      {
+        "work_id": "marketing_ep01",
+        "shot_id": "shot_03",
+        "channel": "api_h3max",
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "1a38758741ab59c0f3f6541cde6023ad6079c4059fb27fc94acb0450515356b9",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_03.final.mp4"
+        },
+        "resolution": "768P",
+        "repro_level": "submit_params",
+        "submit_params_fingerprint": "1b82a8cae35b39c5929b605b1a5f9b8e8627af96ea2cd69023f1eebd4b9aa58c",
+        "seed_recorded": null,
+        "credit_spent": 280,
+        "credit_cap_per_shot": 280,
+        "draft_task_id": null,
+        "rework_route": null
+      },
+      {
+        "work_id": "marketing_ep01",
+        "shot_id": "shot_04",
+        "channel": "api_h3max",
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "a49cece2d459bd5e9264ebaaafcf3ea9ba8be134ae0e66317e61346ce3beafa7",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_04.final.mp4"
+        },
+        "resolution": "768P",
+        "repro_level": "submit_params",
+        "submit_params_fingerprint": "3547503c3c927487e28d1d13efeb5066fb78a83f971d7e197144551cf86fb808",
+        "seed_recorded": null,
+        "credit_spent": 280,
+        "credit_cap_per_shot": 280,
+        "draft_task_id": null,
+        "rework_route": null
+      },
+      {
+        "work_id": "marketing_ep01",
+        "shot_id": "shot_05",
+        "channel": "api_h3max",
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "3ed08636c1fca2c87d06c319d398d500debf494d7d9eebc86511e40890f3c28f",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_05.final.mp4"
+        },
+        "resolution": "768P",
+        "repro_level": "submit_params",
+        "submit_params_fingerprint": "79aaa438a9e86f5fddfcfefa8b0101e48454a28683f0b4d5e9d5b2398459360d",
+        "seed_recorded": null,
+        "credit_spent": 280,
+        "credit_cap_per_shot": 280,
+        "draft_task_id": null,
+        "rework_route": null
+      },
+      {
+        "work_id": "marketing_ep01",
+        "shot_id": "shot_06",
+        "channel": "api_h3max",
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "6a90bf504741c1bc56b1f7442cf725a75685cb327988d5d416b99f171fe74502",
+          "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_06.final.mp4"
+        },
+        "resolution": "768P",
+        "repro_level": "submit_params",
+        "submit_params_fingerprint": "09a848560242fe4317a3cb6f77ccbcc1344a84f5e91eb49728a67a77f24e8a37",
+        "seed_recorded": null,
+        "credit_spent": 280,
+        "credit_cap_per_shot": 280,
+        "draft_task_id": null,
+        "rework_route": null
+      }
+    ],
+    "est_credit_total": 1680,
+    "h3max_real_calls": 6,
+    "budget": {
+      "episode_cap": 2016,
+      "est_total": 1680,
+      "headroom": 336
+    }
+  },
+  "notes": "营销线 EP01 CP9 聚合件（后半程）：单镜权威件=cp9_shot_XX.json。"
+}

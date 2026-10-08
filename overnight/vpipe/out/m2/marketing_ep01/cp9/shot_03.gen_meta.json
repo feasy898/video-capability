@@ -1,0 +1,49 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_03",
+ "work_id": "marketing_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "l7xJ2mybd23b",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 05:09:00",
+ "elapsed_s": 31.1,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Extreme close-up, static camera: natural rattan reeds standing in the neck of an amber glass diffuser bottle, gentle light glints sliding along the glass shoulder, dark soft bedroom background, the bottle and reeds keep a perfectly rigid unchanged shape. The reeds are dry natural rattan with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly travels along the curve; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+  "duration": 5,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "1b82a8cae35b39c5929b605b1a5f9b8e8627af96ea2cd69023f1eebd4b9aa58c",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 280,
+  "credit_spent_est": 280,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_* 三字段如实 null）"
+ },
+ "asset": {
+  "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_03.final.mp4",
+  "sha256": "1a38758741ab59c0f3f6541cde6023ad6079c4059fb27fc94acb0450515356b9",
+  "size_bytes": 3496896
+ },
+ "probe": {
+  "width": 768,
+  "height": 1344,
+  "duration_s": 5.184,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "fps": "24/1"
+ },
+ "download_url_present": true,
+ "notes": "产物 URL 24h 失效不入留痕；视频已落盘 asset.path（官方纪律）。"
+}

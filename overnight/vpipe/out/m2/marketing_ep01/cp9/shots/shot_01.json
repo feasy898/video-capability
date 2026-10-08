@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_01",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Medium close-up, static camera with a subtle breathing drift: an amber glass reed diffuser bottle on its round walnut wooden base standing on a bright bedroom windowsill, natural rattan reeds catching soft morning light, sheer curtains glowing with gentle window light, bright cozy bedroom. The amber glass glows warm honey-gold, the rattan reeds dry and fibrous; deep cedar green-gold tones in bright warm morning bedroom light. Premium photorealistic product commercial look, delicate glass reflections and micro highlights, rich micro-contrast, shallow depth of field, slow subtle motion, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.. The product is a bedroom reed diffuser: thick amber glass with a warm honey-gold inner glow, a lathe-turned walnut wooden base with fine visible grain, natural rattan reeds with dry fibrous texture; graded in deep cedar green-gold tones under soft warm bedroom light. Premium photorealistic product commercial look, delicate glass reflections and micro highlights, rich micro-contrast, shallow depth of field, graceful slow motion, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max，营销线后半程）。CP3 声明镜长 4.78s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt=CP3 shot_01 场景/镜别/机位的产品变体（降级路径，见下）。色彩/质感/光影/风格段为 CP9 新补全（栖野香薰：琥珀玻璃瓶/天然藤条/雪松绿金调/卧室暖光；SPIKE-REPORT 发现 B：草稿色偏不可信，色彩全由 prompt 承载）。G2 纪律：品牌名/价格不进生成侧，no readable label 显式。image_mode=云通道显式 text-to-video（纯 T2V，无参考图）。【口播镜降级变体 no-talking-head】原路由=api_vidu_avatar（G9a 专线，cp8_shot_01.json 路由记录），实测降级触发：5 支 CP9 终稿亲检均无人物（shot_04 仅一只手，不构成 gen_avatar 官方要求的单人参考图）；本线无 CP4 定妆照——「营销线口播主体参考图缺位」成立，按任务书 owner 预留降级路径处理（该镜改为产品旁白+字幕卡变体），不伪造人物图。保留 CP3 shot_01 场景（明亮卧室窗边）/镜别/机位，口播主体=产品；seg_01 台词转产品旁白（CP10 TTS 不变）。"
+}

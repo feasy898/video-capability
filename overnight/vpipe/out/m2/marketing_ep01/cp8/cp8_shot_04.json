@@ -1,0 +1,68 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp8",
+  "artifact_type": "selection",
+  "fingerprint": "20d04188aa10859d0bdc7ab02ee075f926d1e62205f4a2dc86c706550d6236c4",
+  "produced_by": "agent.selector",
+  "produced_at": "2026-10-08T21:11:02Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp7",
+      "fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+    },
+    {
+      "cp_id": "cp3",
+      "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp8.gate.pareto_rule",
+    "result": "pass",
+    "note": "候选 N=1（T2 草稿每镜一支，cp7 唯一草稿）：硬校验向量复测全绿（黑帧 0/NaN 0/时长 dev=0.0≤0.02，L0 accepted）且构图核验成立（cp7/composition_check.json 亲检 pass）→ 单候选平凡 Pareto 支配（无第二候选可比，params_ref=cp8.gate.pareto_rule=top1_strict_dominance）→ 本镜进 CP9 精修。A/B 组否决缺陷 0（veto_defects=[]）。"
+  },
+  "aux_gates": [
+    {
+      "type": "judge_rank",
+      "params_ref": "ensemble.definitions.E10",
+      "result": "pass",
+      "note": "相对线本轮空转：N=1 无次序可排，E10 判据族不设绝对通过线（白皮书 CP8 两层不可混）；构图/运动/节奏预演结论由硬校验+构图核验承重。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "shot_id": "shot_04",
+    "candidates": [
+      {
+        "candidate_id": "shot_04@ltx2b_draft",
+        "draft_fingerprint": "d6121b6d3803a61acfc78a99838a562b00521c239429ee6a3b385d31b5830f52",
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "black_frames_tensor_lt2": 0,
+          "black_frames_decoded_lt2": 0,
+          "nan_detected": false,
+          "duration_declared_s": 1.375,
+          "duration_actual_s": 1.375,
+          "duration_dev": 0.0,
+          "l0_accepted": true,
+          "l0_evidence_ref": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_04.draft.l0.json",
+          "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+          "sha256_reattest": "d6121b6d3803a61acfc78a99838a562b00521c239429ee6a3b385d31b5830f52",
+          "thresholds": {
+            "black_frame_ratio_max": 0.5,
+            "duration_dev_max": 0.02
+          },
+          "composition_verdict": "pass",
+          "composition_evidence": "overnight/vpipe/out/m2/marketing_ep01/cp7/shot_04_mid.jpg"
+        }
+      }
+    ],
+    "top1_candidate_id": "shot_04@ltx2b_draft",
+    "pareto_dominant": true,
+    "veto_defects": [],
+    "escalated_to_human": false,
+    "structural_difficult": false
+  },
+  "notes": "营销线 EP01 单镜择优件（CP8 权威形态，checkpoint.schema cp8_selection 分支 jsonschema 校验 EXIT 见 build log）；sha256 本程复测与 cp7 声明指纹一致（hard_verify.sha256_reattest）；CP3 声明镜长与草稿 1.375s 差异沿 cp7 口径登记。草稿色偏已知（SPIKE-REPORT 发现 B）不入判定。"
+}

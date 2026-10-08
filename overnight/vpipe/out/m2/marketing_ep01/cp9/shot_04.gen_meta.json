@@ -1,0 +1,49 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_04",
+ "work_id": "marketing_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "Rg1JYQLZzx7g",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 05:09:32",
+ "elapsed_s": 31.2,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Medium close-up, static camera: a woman's hand gently swaps and tilts the rattan reeds of an amber glass diffuser bottle on a wooden bedside table beside a warm glowing lamp, cozy evening bedroom, slow calm motion, five distinct fingers. The amber glass bottle glows honey-gold in the lamp light on its walnut wooden base, the rattan reeds dry and fibrous, the hand moving slowly and calmly; deep cedar green-gold tone grade wrapped in warm lamplight, cozy evening bedroom atmosphere. Premium photorealistic product commercial look, natural detailed skin texture on the hand, anatomically correct five fingers, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+  "duration": 5,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "3547503c3c927487e28d1d13efeb5066fb78a83f971d7e197144551cf86fb808",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 280,
+  "credit_spent_est": 280,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_* 三字段如实 null）"
+ },
+ "asset": {
+  "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_04.final.mp4",
+  "sha256": "a49cece2d459bd5e9264ebaaafcf3ea9ba8be134ae0e66317e61346ce3beafa7",
+  "size_bytes": 3157961
+ },
+ "probe": {
+  "width": 768,
+  "height": 1344,
+  "duration_s": 5.184,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "fps": "24/1"
+ },
+ "download_url_present": true,
+ "notes": "产物 URL 24h 失效不入留痕；视频已落盘 asset.path（官方纪律）。"
+}

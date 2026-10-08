@@ -1,0 +1,170 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "marketing_ep01",
+ "generated_at": "2026-10-09T05:29:28",
+ "qc_mode": "online",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.711,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['identity_drift'], conf=0.62)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.711"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.711,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.711
+    }
+   }
+  },
+  {
+   "type": "identity_drift",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.62,
+   "evidence": {
+    "J1": {
+     "confidence": 0.62,
+     "notes": "主体（香薰瓶）跨帧外观突变：f01-f06 及 f08 瓶身均为无标签的纯琥珀色玻璃瓶，唯独 f07 瓶身突然出现带白色标签（含小字）的外观；同时藤条数量在不同镜头间明显不一致，f01-f03 约 8-10 根，f07 仅约 5-6 根，同一产品前后形态不统一。其余维度检查：f04-f05 构图相近但属同一慢推镜头，未见定格；f01→f02、f02→f03 等为正常转场，无时序错乱；字幕文字均通顺"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.711,
+   "flicker": 0.4519,
+   "color_shift": 0.6517,
+   "face_blur": 0.2243,
+   "garble_text": 0.0603,
+   "temporal_swap": 0.6574,
+   "pixelate": 0.2516,
+   "ghosting": 0.4752
+  },
+  "overall": 0.6358,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f06-f08（主体外观不一致，f07 最明显）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=0.2解码"
+   }
+  }
+ ],
+ "judges": {
+  "J6": {
+   "clip_id": "marketing_ep01",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 在线规则引擎（emit@0.55）"
+  },
+  "J1": {
+   "clip_id": "marketing_ep01",
+   "defect_detected": true,
+   "defect_types": [
+    "identity_drift"
+   ],
+   "confidence": 0.62,
+   "spans": "f06-f08（主体外观不一致，f07 最明显）",
+   "notes": "主体（香薰瓶）跨帧外观突变：f01-f06 及 f08 瓶身均为无标签的纯琥珀色玻璃瓶，唯独 f07 瓶身突然出现带白色标签（含小字）的外观；同时藤条数量在不同镜头间明显不一致，f01-f03 约 8-10 根，f07 仅约 5-6 根，同一产品前后形态不统一。其余维度检查：f04-f05 构图相近但属同一慢推镜头，未见定格；f01→f02、f02→f03 等为正常转场，无时序错乱；字幕文字均通顺无乱码；f06 手部手指数目与形态正常；无 flicker/color_shift/pixelate/ghosting 证据。故仅报主体一致性缺陷。"
+  },
+  "J5": {
+   "clip_id": "marketing_ep01",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=0.2解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "marketing_ep01",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "temporal_swap"
+   ],
+   "confidence": 0.711,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.711 flicker=0.452 color_shift=0.652 face_blur=0.224 garble_text=0.060 temporal_swap=0.657 pixelate=0.252 ghosting=0.475; overall=0.636; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "out/m2/marketing_ep01/cp11/master.mp4",
+  "frames_dir": null,
+  "judge_files": {
+   "J6": "out/m2/marketing_ep01/judges/detectors/marketing_ep01.qc2.json",
+   "J1": "out/m2/marketing_ep01/judges/glm8/marketing_ep01.json",
+   "J5": "out/m2/marketing_ep01/judges/videochat3/marketing_ep01.json",
+   "J3": "out/m2/marketing_ep01/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {},
+ "qc_context": {
+  "profile": null,
+  "known_cuts": [
+   4.75,
+   7.542,
+   11.625,
+   14.625,
+   17.417
+  ],
+  "l0_preflight": {
+   "clip": "out/m2/marketing_ep01/cp11/master.mp4",
+   "expect_duration_s": 20.0,
+   "profile": null,
+   "failures": [],
+   "checks": {
+    "duration": {
+     "measured_s": 20.0,
+     "rule": "dev_max",
+     "dev": 0.0,
+     "dev_max": 0.02
+    },
+    "black_mono_ratio": {
+     "n_samples": 64,
+     "black_luma_max": 8.0,
+     "mono_std_max": 2.0,
+     "ratio_max": 0.5,
+     "used": 64,
+     "bad_frames": 0,
+     "ratio": 0.0
+    }
+   }
+  }
+ }
+}

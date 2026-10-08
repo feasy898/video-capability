@@ -1,0 +1,169 @@
+{
+ "work_id": "marketing_ep01",
+ "produced_at": "2026-10-09T05:15:41",
+ "method_note": "ffprobe 实测 tts_seg_XX.wav（与 tts.py meta duration_s 双源一致）；合成位置=GPU 机 root@100.64.0.7 /data/night/mk01-cp10（6 句并行，key 经 --env-file 内存态零回显；TTS 真实调用 6 次 ≤8 红线，0 重试），wav+meta 逐字节回传本仓（sha256 对账一致）；对账基准=CP2 estimated_duration_s（4.6字/s 估时）；CP6 帧域/subtitle_segments 冻结不动（CP6 门已过、指纹冻结），超窗句由 CP10 装配消化：silenceremove 修剪 + atempo 压缩入窗（factor=trimmed/window，逐句留痕于本件 rows），音频起点=镜起点−sound_lead_in_frames/fps（声先入 2 帧），budget=CP6 窗口，句间零碰撞。营销线音色=cixingnansheng（短剧线已验证音色，本线口播镜为 no-talking-head 变体无画面人物，无音画性别错配问题）。",
+ "summary": {
+  "n_segments": 6,
+  "over_20pct_segments": [
+   "seg_02",
+   "seg_03",
+   "seg_04",
+   "seg_05"
+  ],
+  "n_over_20pct": 4,
+  "sum_tts_measured_s": 25.96,
+  "sum_cp6_window_s": 20.0,
+  "sum_fitted_s": 19.747,
+  "max_atempo_factor": 1.7527,
+  "fit_overflow_segments": [],
+  "frame_domain_adjusted": false,
+  "frame_domain_note": "超估句经修剪+压缩入 CP6 原窗口（Σfitted≤Σwindow），帧域无需微调——不改 CP6。"
+ },
+ "verbatim_check_pass": true,
+ "rows": [
+  {
+   "segment_id": "seg_01",
+   "shot_id": "shot_01",
+   "cp2_estimated_s": 4.78,
+   "cp6_window_s": 4.75,
+   "tts_measured_s": 5.72,
+   "est_deviation_pct": 19.7,
+   "over_20pct": false,
+   "trim_silence_params": {
+    "thr": "-40dB",
+    "lead_keep_s": 0.12,
+    "pause_trigger_s": 0.4,
+    "pause_keep_s": 0.35,
+    "tail_keep_s": 0.35
+   },
+   "trimmed_s": 5.532,
+   "atempo_factor": 1.177,
+   "fitted_s": 4.705,
+   "fits_window": true,
+   "audio_start_s": 0.0,
+   "tts_meta_sha256": "306ad99e8c5b2aae3da49624fafd48c8578662f6428d37c993f64b16a6b4608b",
+   "tts_request_id": null,
+   "tts_latency_s": 139.117
+  },
+  {
+   "segment_id": "seg_02",
+   "shot_id": "shot_02",
+   "cp2_estimated_s": 2.83,
+   "cp6_window_s": 2.792,
+   "tts_measured_s": 5.0,
+   "est_deviation_pct": 76.7,
+   "over_20pct": true,
+   "trim_silence_params": {
+    "thr": "-40dB",
+    "lead_keep_s": 0.12,
+    "pause_trigger_s": 0.4,
+    "pause_keep_s": 0.35,
+    "tail_keep_s": 0.35
+   },
+   "trimmed_s": 4.806,
+   "atempo_factor": 1.7527,
+   "fitted_s": 2.748,
+   "fits_window": true,
+   "audio_start_s": 4.666667,
+   "tts_meta_sha256": "8057d4796783c759f8a604825b4272069ade6ef4c6745d197003514fec12175a",
+   "tts_request_id": null,
+   "tts_latency_s": 138.821
+  },
+  {
+   "segment_id": "seg_03",
+   "shot_id": "shot_03",
+   "cp2_estimated_s": 4.13,
+   "cp6_window_s": 4.083,
+   "tts_measured_s": 5.2,
+   "est_deviation_pct": 25.9,
+   "over_20pct": true,
+   "trim_silence_params": {
+    "thr": "-40dB",
+    "lead_keep_s": 0.12,
+    "pause_trigger_s": 0.4,
+    "pause_keep_s": 0.35,
+    "tail_keep_s": 0.35
+   },
+   "trimmed_s": 4.875,
+   "atempo_factor": 1.2088,
+   "fitted_s": 4.049,
+   "fits_window": true,
+   "audio_start_s": 7.458667,
+   "tts_meta_sha256": "91f03c9a22e6d17e48f91d9f3a3889a812ceda0ff106ca239d1cd7f183cf3be2",
+   "tts_request_id": null,
+   "tts_latency_s": 138.326
+  },
+  {
+   "segment_id": "seg_04",
+   "shot_id": "shot_04",
+   "cp2_estimated_s": 3.04,
+   "cp6_window_s": 3.0,
+   "tts_measured_s": 3.68,
+   "est_deviation_pct": 21.1,
+   "over_20pct": true,
+   "trim_silence_params": {
+    "thr": "-40dB",
+    "lead_keep_s": 0.12,
+    "pause_trigger_s": 0.4,
+    "pause_keep_s": 0.35,
+    "tail_keep_s": 0.35
+   },
+   "trimmed_s": 3.495,
+   "atempo_factor": 1.1847,
+   "fitted_s": 2.953,
+   "fits_window": true,
+   "audio_start_s": 11.541667,
+   "tts_meta_sha256": "c3ed4f7f5b367adadef6f470d2df70731de94abae86a758d37b35c4bd3e3e2c7",
+   "tts_request_id": null,
+   "tts_latency_s": 138.192
+  },
+  {
+   "segment_id": "seg_05",
+   "shot_id": "shot_05",
+   "cp2_estimated_s": 2.83,
+   "cp6_window_s": 2.792,
+   "tts_measured_s": 3.44,
+   "est_deviation_pct": 21.6,
+   "over_20pct": true,
+   "trim_silence_params": {
+    "thr": "-40dB",
+    "lead_keep_s": 0.12,
+    "pause_trigger_s": 0.4,
+    "pause_keep_s": 0.35,
+    "tail_keep_s": 0.35
+   },
+   "trimmed_s": 3.249,
+   "atempo_factor": 1.1849,
+   "fitted_s": 2.752,
+   "fits_window": true,
+   "audio_start_s": 14.541667,
+   "tts_meta_sha256": "7ccdb4b51f950aaba1e1d7f40e9d1ed6bc9f3c1ae8b6cd773db3ac763280bcd4",
+   "tts_request_id": null,
+   "tts_latency_s": 138.657
+  },
+  {
+   "segment_id": "seg_06",
+   "shot_id": "shot_06",
+   "cp2_estimated_s": 2.61,
+   "cp6_window_s": 2.583,
+   "tts_measured_s": 2.92,
+   "est_deviation_pct": 11.9,
+   "over_20pct": false,
+   "trim_silence_params": {
+    "thr": "-40dB",
+    "lead_keep_s": 0.12,
+    "pause_trigger_s": 0.4,
+    "pause_keep_s": 0.35,
+    "tail_keep_s": 0.35
+   },
+   "trimmed_s": 2.711,
+   "atempo_factor": 1.0703,
+   "fitted_s": 2.54,
+   "fits_window": true,
+   "audio_start_s": 17.333667,
+   "tts_meta_sha256": "50ddbab5d6e3f40055fa7e6d6bb9defa4a5289708673d1160d7b8667f8c9df9d",
+   "tts_request_id": null,
+   "tts_latency_s": 138.038
+  }
+ ]
+}

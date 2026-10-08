@@ -1,0 +1,42 @@
+{
+ "record_type": "line_routing",
+ "schema_note": "路由记录件（非 cp8_selection 分支：无草稿候选可比，candidates≥1 的择优语义不适用）；权威择优/终稿件由 CP9 口播段工件承担。",
+ "work_id": "marketing_ep01",
+ "shot_id": "shot_01",
+ "decision": "route_avatar_line",
+ "channel": "api_vidu_avatar",
+ "route_basis": {
+  "cp3_channel_hint": "api_vidu_avatar",
+  "cp7_design_ref": "cp7/cp7_prompts.json avatar_planned（generated_here=false）",
+  "reason": "口播主体镜按 G9a 专线（工程方案v3.1 §2.4/数字人实验报告 §3 G9 细分）：TTS→Vidu avatar 直出（image+audio 模式，口型由 TTS 音频直驱），不经 LTX 草稿层——短剧线钩子段已验证该链路。"
+ },
+ "ref_image_precondition": {
+  "gen_avatar_constraint": "官方仅 1 张单人图（gen_avatar.py --image 必填）",
+  "candidate_sources": [
+   "① 本线 CP9 渲染的产品镜含人物的镜抽帧",
+   "② CP4 定妆照：本线无 CP4（前半程未产出 keyframes 件）"
+  ],
+  "resolution_note": "参考图可用性在 CP9 口播段装配时实测判定；两源皆缺则按任务书 owner 预留降级路径处理（no-talking-head 变体，如实记录理由，不伪造人物图）。"
+ },
+ "upstream_refs": [
+  {
+   "cp_id": "cp7",
+   "fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+  },
+  {
+   "cp_id": "cp3",
+   "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a"
+  }
+ ],
+ "produced_at": "2026-10-08T21:11:02Z",
+ "resolution": {
+  "resolved_at": "2026-10-08T21:32:02Z",
+  "outcome": "ref_image_missing -> owner_fallback_no_talking_head",
+  "evidence": [
+   "CP9 5 支产品镜终稿亲检（第 60 帧）：均无人物——shot_04 仅一只手（不构成 gen_avatar 官方要求的单人参考图）",
+   "本线无 CP4 定妆照（前半程未产出 keyframes 件）",
+   "证据帧归档 out/m2/marketing_ep01/cp9/_probe/mk01_frames/"
+  ],
+  "action": "按任务书 owner 预留降级路径处理：shot_01 改 no-talking-head 产品旁白变体（H3-Max 第 6 次调用渲染，产品旁白+字幕卡），不伪造人物图；avatar 真实调用 0 次。权威留痕=cp9_shot_01.json gate.note。"
+ }
+}

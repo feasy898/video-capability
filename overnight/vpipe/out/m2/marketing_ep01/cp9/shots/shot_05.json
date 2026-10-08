@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Wide shot, static camera: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people. The diffuser is an amber glass bottle on a walnut wooden base with natural rattan reeds, catching a warm highlight from the lamp; the room graded in deep cedar green-gold dusk tones with warm bedroom lamplight, soft linen and wood textures. Premium photorealistic product commercial look, calm premium lifestyle mood, rich micro-contrast, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max，营销线后半程）。CP3 声明镜长 2.83s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（draft shot_05@ltx2b_draft，CP8 单镜件 upstream），色彩/质感/光影/风格段为 CP9 新补全（栖野香薰：琥珀玻璃瓶/天然藤条/雪松绿金调/卧室暖光；SPIKE-REPORT 发现 B：草稿色偏不可信，色彩全由 prompt 承载）。G2 纪律：品牌名/价格不进生成侧，no readable label 显式。image_mode=云通道显式 text-to-video（纯 T2V，无参考图）。"
+}

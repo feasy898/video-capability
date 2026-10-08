@@ -1,0 +1,156 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp8",
+  "artifact_type": "selection",
+  "fingerprint": "bef1b40a4171a14fa7c3d824a1fbae522b16c43dc9d8be5149009b21ca4e4d1b",
+  "produced_by": "agent.selector",
+  "produced_at": "2026-10-08T21:11:02Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp7",
+      "fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+    },
+    {
+      "cp_id": "cp3",
+      "fingerprint": "998db45e13c1472dc88b5dba1f75a79385802601443145c35646c93f9547832a"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp8.gate.pareto_rule",
+    "result": "pass",
+    "note": "5 次择优判定累计：5 镜草稿（shot_02..06）全部进 CP9（进 5/退 0，每镜 sha256 本程复测与 cp7 声明一致）；shot_01 口播镜按 G9a 专线登记 avatar 路由（cp8_shot_01.json 路由记录，无草稿候选，权威判定由 CP9 口播段承担）。草稿层 ROI：本批无候选被拒，回炉环 0 轮。"
+  },
+  "aux_gates": [
+    {
+      "type": "judge_rank",
+      "params_ref": "ensemble.definitions.E10",
+      "result": "pass",
+      "note": "相对线空转：每镜 N=1 无次序可排（白皮书 CP8 两层不可混——本批由绝对门承重）。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "candidates": [
+      {
+        "shot_id": "shot_02",
+        "candidate_id": "shot_02@ltx2b_draft",
+        "draft_fingerprint": "6aa22e680901479121c49bc0608f1bc3b67cb2a2695ab8f027712fff5b03c3a4",
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "nan_detected": false,
+          "duration_dev": 0.0,
+          "l0_accepted": true,
+          "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+          "sha256_reattest": "6aa22e680901479121c49bc0608f1bc3b67cb2a2695ab8f027712fff5b03c3a4",
+          "composition_verdict": "pass"
+        },
+        "veto_defects": [],
+        "top1_candidate_id": "shot_02@ltx2b_draft",
+        "pareto_dominant": true,
+        "composition_verdict": "pass",
+        "decision": "advance_cp9",
+        "artifact_ref": "overnight/vpipe/out/m2/marketing_ep01/cp8/cp8_shot_02.json",
+        "upstream_cp7_fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+      },
+      {
+        "shot_id": "shot_03",
+        "candidate_id": "shot_03@ltx2b_draft",
+        "draft_fingerprint": "83eafc280432abf1e3cdd4ca58812d0ef940de37e0715dcc535c3438455f62a1",
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "nan_detected": false,
+          "duration_dev": 0.0,
+          "l0_accepted": true,
+          "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+          "sha256_reattest": "83eafc280432abf1e3cdd4ca58812d0ef940de37e0715dcc535c3438455f62a1",
+          "composition_verdict": "pass"
+        },
+        "veto_defects": [],
+        "top1_candidate_id": "shot_03@ltx2b_draft",
+        "pareto_dominant": true,
+        "composition_verdict": "pass",
+        "decision": "advance_cp9",
+        "artifact_ref": "overnight/vpipe/out/m2/marketing_ep01/cp8/cp8_shot_03.json",
+        "upstream_cp7_fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+      },
+      {
+        "shot_id": "shot_04",
+        "candidate_id": "shot_04@ltx2b_draft",
+        "draft_fingerprint": "d6121b6d3803a61acfc78a99838a562b00521c239429ee6a3b385d31b5830f52",
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "nan_detected": false,
+          "duration_dev": 0.0,
+          "l0_accepted": true,
+          "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+          "sha256_reattest": "d6121b6d3803a61acfc78a99838a562b00521c239429ee6a3b385d31b5830f52",
+          "composition_verdict": "pass"
+        },
+        "veto_defects": [],
+        "top1_candidate_id": "shot_04@ltx2b_draft",
+        "pareto_dominant": true,
+        "composition_verdict": "pass",
+        "decision": "advance_cp9",
+        "artifact_ref": "overnight/vpipe/out/m2/marketing_ep01/cp8/cp8_shot_04.json",
+        "upstream_cp7_fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+      },
+      {
+        "shot_id": "shot_05",
+        "candidate_id": "shot_05@ltx2b_draft",
+        "draft_fingerprint": "9741c2021dd49f9ecb87b200201050c223885c7cea6cce82345aecd9bedcf8cb",
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "nan_detected": false,
+          "duration_dev": 0.0,
+          "l0_accepted": true,
+          "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+          "sha256_reattest": "9741c2021dd49f9ecb87b200201050c223885c7cea6cce82345aecd9bedcf8cb",
+          "composition_verdict": "pass"
+        },
+        "veto_defects": [],
+        "top1_candidate_id": "shot_05@ltx2b_draft",
+        "pareto_dominant": true,
+        "composition_verdict": "pass",
+        "decision": "advance_cp9",
+        "artifact_ref": "overnight/vpipe/out/m2/marketing_ep01/cp8/cp8_shot_05.json",
+        "upstream_cp7_fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+      },
+      {
+        "shot_id": "shot_06",
+        "candidate_id": "shot_06@ltx2b_draft",
+        "draft_fingerprint": "f4548e21079a980afea5303c2e089653237f3a7be5f9a046dec4c87b2c47f77c",
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "nan_detected": false,
+          "duration_dev": 0.0,
+          "l0_accepted": true,
+          "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+          "sha256_reattest": "f4548e21079a980afea5303c2e089653237f3a7be5f9a046dec4c87b2c47f77c",
+          "composition_verdict": "pass"
+        },
+        "veto_defects": [],
+        "top1_candidate_id": "shot_06@ltx2b_draft",
+        "pareto_dominant": true,
+        "composition_verdict": "pass",
+        "decision": "advance_cp9",
+        "artifact_ref": "overnight/vpipe/out/m2/marketing_ep01/cp8/cp8_shot_06.json",
+        "upstream_cp7_fingerprint": "83c803675eed118ab16676fd23d4655b6ff09c59e1c112ff974219994a6a6426"
+      }
+    ],
+    "line_routing": {
+      "shot_id": "shot_01",
+      "record_ref": "overnight/vpipe/out/m2/marketing_ep01/cp8/cp8_shot_01.json",
+      "decision": "route_avatar_line",
+      "channel": "api_vidu_avatar"
+    },
+    "summary": {
+      "draft_shots": 5,
+      "advance_cp9": 5,
+      "rejected": 0,
+      "routed_avatar_line": 1
+    }
+  },
+  "notes": "营销线 EP01 CP8 聚合件：5/5 草稿镜进 CP9 + shot_01 avatar 专线路由。单镜权威件（schema cp8_selection 校验）=cp8_shot_02..06.json；shot_01 无草稿（cp7 avatar_planned），路由记录件 cp8_shot_01.json。硬校验复测口径：ffprobe 三元组逐镜实测 + sha256 对账 cp7 声明指纹（不符即 fail-closed）+ L0 证据引用。"
+}

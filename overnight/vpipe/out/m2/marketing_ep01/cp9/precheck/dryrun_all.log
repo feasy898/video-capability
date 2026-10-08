@@ -1,0 +1,14 @@
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 5,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Close-up with a slow push-in: an amber glass reed diffuser bottle standing on a round wooden base, natural rattan reeds fanning out of the bottle neck, soft daylight from a bedroom window, background melting into warm bokeh, the bottle geometry stays perfectly rigid. The product is a bedroom reed diffuser: thick amber glass with a warm honey-gold inner glow, a lathe-turned walnut wooden base with fine visible grain, natural rattan reeds with dry fibrous texture; graded in deep cedar green-gold tones under soft warm bedroom light. Premium photorealistic product commercial look, delicate glass reflections and micro highlights, rich micro-contrast, shallow depth of field, graceful slow motion, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+    "duration": 5,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}

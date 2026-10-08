@@ -1,0 +1,120 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp12",
+  "artifact_type": "qc_master",
+  "fingerprint": "a72f69aef0f510a92520a59fb8cd5913ec2b83f67ee3c57ad0c0776ada5bea79",
+  "produced_by": "agent.cp12_inspector.qc_orch_v2",
+  "produced_at": "2026-10-08T21:34:29Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp11",
+      "fingerprint": "dbe69328a19344b809d1c9fb6eaef29b1a17b4716b697c0616840be6232e3910"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "f12671e98561b5a79a46e5e211e4791dd9093296cf8a95b885c38527372732d6"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "8188f46f7a07b1a9e35f44d3d64161e035f667197c2fc32551b870b5617eee6e"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "972211e4b2f6a32be405eed343697c5f811bf6b9b5fb0ae7c7dc8fe9e32acdbe"
+    }
+  ],
+  "status": "gated",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp12.gate.a_group_recall_min",
+    "result": "warn",
+    "applied_versions": {
+      "spec_version": "vpipe-spec-v2.0+1d7773149b31",
+      "registry_version": "bf4739195429",
+      "prompt_version": "23b918011af0"
+    },
+    "note": "四维实跑（master 20.000s/480 帧）：缺陷维 E10=J1∨J3@0.71（judges.J3_omnijev.thr）判定 True / decision=manual_review → gate.result=warn；J3 全通道最高 P=frame_freeze 0.7110 灰区；A 组程序规则（J6v2 时序+L0）：0 否决缺陷 0 误拒（5 登记切点全豁免，judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5），J6v2 emitted 1 条 frame_freeze（conf 0.758，span 14.625-17.375s，落 shot_05 静态全景镜）按 role=signal_only 不作否决、入 defects[]+人工队列；B 组未部署弃权；C 组 judge flag 入人工队列语义；D 组 0 个 warn-only 窗。组级 recall/fpr=本片真空空洞值，金标 40 条群体校准值不进组级（主控验收修订语义沿短剧线 v2）。"
+  },
+  "aux_gates": [
+    {
+      "type": "judge_absolute",
+      "params_ref": "cp12.gate.master_score_min",
+      "result": "warn",
+      "note": "成片分 24.2（=0.7×24.2+0.3×24.2，6 段继承成片单镜合议分——镜级 QCReport 本链未产出，按任务预案单镜近似并声明），未达→warn 标注不否决 70 warn 阈；70 warn 阈（cp12.gate.master_score_min）只作排序依据，人评锚定（120 片段）未完成不作自动放行/否决（白皮书 §7 非目标 8），composite verdict 不因此翻转"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp12.gate.human_escalation_rate_max",
+      "result": "pass",
+      "note": "人工上升率实测 2/12 = 0.17（口径=TASK_v4.md:279-289 验收脚本 review_count/total_cps，CP 粒度：CP1 owner pending 计 1 + CP3/CP5/CP6 子代理自检通过未上升计 0 + CP12 队列非空计 1）；CP12 队列明细 3 条（J1 identity_drift 1 + J3 frame_freeze 灰区 1 + J6v2 frame_freeze emitted 1——J3 与 J6v2 为同一 span 互证，指向 2 个底层信号：shot_05 静态全景镜近零帧差 + shot_05 瓶身标签外观不一致）；对照口径（队列条目粒度，每条 pending 计 1）=4/12 = 0.33：超限（如实并记）；thresholds 键 cp12.gate.human_escalation_rate_max=0.20：未超；TASK_v4 §3.3/W9 营销线 pilot 上限 0.10：超限（如实登记）（两条口径均如实登记；登记值采用 TASK_v4 验收脚本原文口径，非口径放水——队列明细全量披露于 qc_report_v2.human_review.queue）"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "master_fingerprint": "43fc1c087b80f795e97704fe2b9d996627f1a2117c8d710e53c32e8412ed0e1d",
+    "episode_verdict": {
+      "score": 24.2,
+      "mean_shot_score": 24.2,
+      "worst_shot_score": 24.2,
+      "formula": "0.7*mean+0.3*worst",
+      "verdict": "pass"
+    },
+    "gate_groups": {
+      "a_group": {
+        "recall": 1.0,
+        "fpr": 0.0,
+        "verdict": "pass",
+        "note": "本片真空实测：A 组程序规则（J6v2 时序+L0）0 否决缺陷、0 误拒（L0 全绿：时长 dev=0/黑场 0；5 登记切点零未登记检出（known_cuts_whitelist 豁免 5 接缝，judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）；J6v2 emitted 1 条按 role=signal_only 不作否决缺陷，入 defects[]+人工队列）；单片无真值不可测群体召回/误拒，1.0/0.0 为本片空洞值非金标群体校准"
+      },
+      "b_group": {
+        "abstain": true,
+        "reason": "B 组专用小模型未部署（TASK_v4 M2-W7 范围外，M2 试点未装机）——弃权不参与 veto_groups",
+        "note": "弃权形（主控验收修订语义）：不填占位指标伪装实测"
+      },
+      "c_group": {
+        "recall": 1.0,
+        "fpr": 0.0,
+        "verdict": "pass",
+        "note": "本片真空：judge 检出不自动否决（白皮书 §3 CP12/§7 非目标 3），flag 全部入人工队列 pending；本片 judge 检出状况见 defects[]/human_review（J6v2 信号 1 条入队）——0 自动否决即 0 误拒；单片无真值不可测群体召回/误拒，1.0/0.0 为本片空洞值非金标群体校准"
+      },
+      "d_group": {
+        "warn_only": true,
+        "flagged_count": 0,
+        "verdict": "warn"
+      }
+    },
+    "human_escalation_rate": 0.1667,
+    "retry_round": 0,
+    "shot_qc_refs": [
+      {
+        "shot_id": "marketing_ep01",
+        "qc_report_fingerprint": "f0b64ca97b90f52add1bebd22f5ccb45c677dc6ea4c4738ad8d0f9b6295a30db"
+      }
+    ],
+    "human_review": {
+      "queue": [
+        {
+          "ref": "marketing_ep01",
+          "reason": "J3 通道 frame_freeze P=0.7110 落灰区 [0.71,0.90)（judges.J3_omnijev.gray_zone），未达 auto_reject_p=0.90——检出待人工复核",
+          "params_ref": "judges.J3_omnijev.gray_zone",
+          "outcome": "pending"
+        },
+        {
+          "ref": "marketing_ep01",
+          "reason": "J1 glm8 检出 identity_drift (confidence=0.62)——judge 缺陷登记（C 组口径不自动否决）",
+          "params_ref": "ensemble.definitions.E10",
+          "outcome": "pending"
+        },
+        {
+          "ref": "marketing_ep01",
+          "reason": "J6v2 frame_freeze emitted conf=0.758 ≥ emit_conf=0.55，span 14.625-17.375s（kind=zero_diff_run，run_diff_med=0.1911，run_pairs=66）——span 落 shot_05 静态全景镜（CP3 move=static 固定机位为设计声明；生成侧 2.75s 近零帧差）；judges.J6_detectors_v2 role=signal_only 不作否决，检出待人工裁决",
+          "params_ref": "judges.J6_detectors_v2.rule_params.emit_conf",
+          "outcome": "pending"
+        }
+      ],
+      "escalation_rate": 0.1667,
+      "note": "队列与 qc_report_v2.json 同源同步（主控验收修订 2026-10-09：cp12 原 human_review=null 而 qc_report 有 3 条，工件间不一致）"
+    }
+  },
+  "notes": "《雪松晚安香》EP1（栖野卧室无火香薰·20s 竖屏带货口播）CP12 质检成片（被检对象=master.mp4 sha256=43fc1c087b80f795…480 帧/20.0s）。【判官链】J1 glm8（API glm-5.3-flash 8帧 rubric，judges_src/glm8_batch.py，BIGMODEL_API_KEY 由 GPU 机 overnight/secrets/api_keys.env ZHIPU_API_KEY 服务端 env 注入零回显零落盘；latency 322.2s）检出；J3 omnijev（OmniJev-4B-v1.1，GPU0，venv-judge，起跑前复测 gpu0=J3=310MiB、J5=310MiB，峰值 11737.3MB，latency 72.7s）全通道最高 P=frame_freeze 0.7110；J5 videochat3（VideoChat3-4B，GPU0，venv-vc3，声明参数 fps=0.25/max_pixels=133072 沿短剧线配方，decord 直读，latency 2.4s）判净；J6v2 qc_detectors_v2（CPU，known_cuts=cp11 登记 5 硬切点）emitted frame_freeze 1 条（conf 0.758，span 14.625-17.375s=shot_05 静态全景镜整窗，zero_diff_run 2.75s——CP3 move=static 固定机位为设计声明，生成侧近零帧差待人工裁决）。判官原始六字段输出一字不改嵌入 qc_report_v2.judges。【成片分映射（声明）】D=max(J3 触发通道 P≥0.71，J1/J5 detected→confidence，J6v2 emitted conf≥0.55)=0.758 → clip_score=100×(1−D)=24.2；6 段继承成片单镜分 mean=worst=24.2，分数只作排序依据不作放行门（锚定未完成）。【四组】a=0 否决缺陷/0 误拒（本片真空）；b=弃权形；c=judge flag 入人工队列；d=warn-only 0 窗。【口播镜降级单列声明】shot_01 按 G9a 专线设计（cp7 avatar_planned），CP9 实测触发 owner 预留降级路径：5 支产品镜终稿亲检均无人物（shot_04 仅一只手）+ 本线无 CP4 定妆照 → 「营销线口播主体参考图缺位」，改 no-talking-head 产品旁白变体（不伪造人物图；avatar 真实调用 0 次，vidu_credit 消耗 0），证据链=cp9_shot_01.json gate.note + cp9/_probe/mk01_frames/。【已知生成侧瑕疵登记】shot_05 瓶身生成侧乱码标签（cp9/_probe/mk01_frames/shot_05_label_zoom.jpg，G2 风险点；H3-Max 6 次红线用满无重渲余量，如实登记交判官/人工判定——J1/J3/J5 判定见 judges/）。【人工】队列 3 条 pending（J3+J6v2 同 span 互证 shot_05 静态镜 frame_freeze、J1 shot_05 标签 identity_drift——待 human.owner 裁决）；人工上升率 0.17（TASK_v4 CP 粒度口径；对照条目粒度 0.33 如实并记）；CP12 签字待 human.owner，本工件 verdict=门禁计算结果非人工签字。"
+}

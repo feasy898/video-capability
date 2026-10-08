@@ -1,0 +1,15 @@
+[gen_api 05:07:57] [gateway] 云网关探活 ok（GET /minimax/v1/models/config）
+[gen_api 05:07:57] [wallet] 云通道无钱包端点（手册§7 未探明）→ 守卫降级为估算累计: 已耗(估)=0 上限=2016（56积分/s 口径）
+[gen_api 05:07:57] [seed] 云通道不发送 seed（DTO 无此字段）；probe_seed 为 windev 专属，跳过
+[gen_api 05:07:57] [run] shot_02@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:08:29] [ok ] shot_02@MiniMax-H3-Max -> out/m2/marketing_ep01/cp9/gen/shot_02@MiniMax-H3-Max.mp4 (31.4s, 4469453B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:08:29] [run] shot_03@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:09:01] [ok ] shot_03@MiniMax-H3-Max -> out/m2/marketing_ep01/cp9/gen/shot_03@MiniMax-H3-Max.mp4 (31.1s, 3496896B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:09:01] [run] shot_04@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:09:33] [ok ] shot_04@MiniMax-H3-Max -> out/m2/marketing_ep01/cp9/gen/shot_04@MiniMax-H3-Max.mp4 (31.2s, 3157961B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:09:33] [run] shot_05@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:10:05] [ok ] shot_05@MiniMax-H3-Max -> out/m2/marketing_ep01/cp9/gen/shot_05@MiniMax-H3-Max.mp4 (31.1s, 2975118B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:10:05] [run] shot_06@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 05:10:37] [ok ] shot_06@MiniMax-H3-Max -> out/m2/marketing_ep01/cp9/gen/shot_06@MiniMax-H3-Max.mp4 (31.3s, 3461005B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 05:10:37] [done] 本次处理 5（成功 5/失败 0）；结果: out/m2/marketing_ep01/cp9/gen/api_results.jsonl
+RUN_EXIT=0

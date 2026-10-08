@@ -1,0 +1,148 @@
+{
+ "tool": "assemble_cp11.py",
+ "verdict": "ok",
+ "generated_at": "2026-10-08T21:16:59Z",
+ "master_sha256": "43fc1c087b80f795e97704fe2b9d996627f1a2117c8d710e53c32e8412ed0e1d",
+ "master_bytes": 5849156,
+ "frame_domain": {
+  "cp6_frames": 480,
+  "declared_duration_s": 20.0,
+  "measured_duration_s": 20.0,
+  "measured_nb_frames": 480,
+  "measured_nb_read_frames": 480,
+  "fps": 24
+ },
+ "known_cuts": [
+  4.75,
+  7.542,
+  11.625,
+  14.625,
+  17.417
+ ],
+ "measured_cuts_op0.3": [
+  {
+   "t": 4.75,
+   "score": 0.5276
+  },
+  {
+   "t": 7.542,
+   "score": 0.6237
+  },
+  {
+   "t": 11.625,
+   "score": 0.4964
+  },
+  {
+   "t": 14.625,
+   "score": 0.5399
+  },
+  {
+   "t": 17.417,
+   "score": 0.6138
+  }
+ ],
+ "unregistered_cuts": [],
+ "blackdetect": {
+  "intervals": 0,
+  "black_total_s": 0
+ },
+ "shot_internal_cuts_op0.3_precheck": "6/6 镜终稿 select scene=0.3 实测 0 内部切痕（装配前实测，无桥接/trim 修复需求）",
+ "audio_note": "纯配音轨（6 句 fit.wav adelay+amix normalize=0）；CP9 镜内生成音轨不采用；BGM 无授权音源（口径同短剧线）",
+ "probe": {
+  "width": 1080,
+  "height": 1920,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "r_frame_rate": "24/1",
+  "sample_rate": "48000",
+  "channels": 1,
+  "nb_read_frames": 480
+ },
+ "inputs": {
+  "cp9_finals": [
+   "cp9/shot_01.final.mp4",
+   "cp9/shot_02.final.mp4",
+   "cp9/shot_03.final.mp4",
+   "cp9/shot_04.final.mp4",
+   "cp9/shot_05.final.mp4",
+   "cp9/shot_06.final.mp4"
+  ],
+  "vo": [
+   "cp10/fit/tts_seg_01.fit.wav",
+   "cp10/fit/tts_seg_02.fit.wav",
+   "cp10/fit/tts_seg_03.fit.wav",
+   "cp10/fit/tts_seg_04.fit.wav",
+   "cp10/fit/tts_seg_05.fit.wav",
+   "cp10/fit/tts_seg_06.fit.wav"
+  ],
+  "ass": "out/m2/marketing_ep01/cp10/subs.ass",
+  "filter_complex": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/marketing_ep01/cp11/filter_complex.txt"
+ },
+ "steps": [
+  {
+   "name": "encode_master",
+   "argv": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-nostats",
+    "-y",
+    "-i",
+    "out/m2/marketing_ep01/cp9/shot_01.final.mp4",
+    "-i",
+    "out/m2/marketing_ep01/cp9/shot_02.final.mp4",
+    "-i",
+    "out/m2/marketing_ep01/cp9/shot_03.final.mp4",
+    "-i",
+    "out/m2/marketing_ep01/cp9/shot_04.final.mp4",
+    "-i",
+    "out/m2/marketing_ep01/cp9/shot_05.final.mp4",
+    "-i",
+    "out/m2/marketing_ep01/cp9/shot_06.final.mp4",
+    "-i",
+    "out/m2/marketing_ep01/cp10/fit/tts_seg_01.fit.wav",
+    "-i",
+    "out/m2/marketing_ep01/cp10/fit/tts_seg_02.fit.wav",
+    "-i",
+    "out/m2/marketing_ep01/cp10/fit/tts_seg_03.fit.wav",
+    "-i",
+    "out/m2/marketing_ep01/cp10/fit/tts_seg_04.fit.wav",
+    "-i",
+    "out/m2/marketing_ep01/cp10/fit/tts_seg_05.fit.wav",
+    "-i",
+    "out/m2/marketing_ep01/cp10/fit/tts_seg_06.fit.wav",
+    "-filter_complex_script",
+    "out/m2/marketing_ep01/cp11/filter_complex.txt",
+    "-map",
+    "[vout]",
+    "-map",
+    "[aout]",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "20",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "1",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-movflags",
+    "+faststart",
+    "-t",
+    "20.000000",
+    "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/marketing_ep01/cp11/master.mp4"
+   ],
+   "rc": 0,
+   "stderr_tail": ""
+  }
+ ],
+ "errors": []
+}
