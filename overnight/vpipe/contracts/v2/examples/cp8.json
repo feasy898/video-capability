@@ -14,7 +14,7 @@
   "status": "passed",
   "gate": {
     "type": "composite",
-    "params_ref": "cp8.gate.pareto_rule",
+    "params_ref": "ensemble.definitions.E10",
     "result": "pass",
     "note": "top-1（shot_01@cand_02）硬校验向量 Pareto 支配 top-2（无单项更差且总分更低）；A/B 组否决缺陷 0。"
   },
@@ -33,26 +33,54 @@
       {
         "candidate_id": "shot_01@cand_01",
         "draft_fingerprint": "1f2e789ef4c8781b35993e6a6847caeca3f88d11f4ebf2ce1d8bfa173fadefb4",
-        "hard_verify": { "black_mono_ratio": 0.02, "duration_dev": 0.012, "nan_detected": false },
-        "judge_scores": { "rank": 3, "panel_disagreement": 0.08 }
+        "hard_verify": {
+          "black_mono_ratio": 0.02,
+          "duration_dev": 0.012,
+          "nan_detected": false
+        },
+        "judge_scores": {
+          "rank": 3,
+          "panel_disagreement": 0.08
+        }
       },
       {
         "candidate_id": "shot_01@cand_02",
         "draft_fingerprint": "f093f08f9ceb5dfeabd993e13ddf4c6c57b6714518f88b402fd8493fd4c2d8f9",
-        "hard_verify": { "black_mono_ratio": 0.0, "duration_dev": 0.004, "nan_detected": false },
-        "judge_scores": { "rank": 1, "panel_disagreement": 0.08 }
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "duration_dev": 0.004,
+          "nan_detected": false
+        },
+        "judge_scores": {
+          "rank": 1,
+          "panel_disagreement": 0.08
+        }
       },
       {
         "candidate_id": "shot_01@cand_03",
         "draft_fingerprint": "c946516aa542b3dc6c373c04bce1b0f65ef1b76044b61c6ce6e64a8a506f432a",
-        "hard_verify": { "black_mono_ratio": 0.11, "duration_dev": 0.016, "nan_detected": false },
-        "judge_scores": { "rank": 4, "panel_disagreement": 0.08 }
+        "hard_verify": {
+          "black_mono_ratio": 0.11,
+          "duration_dev": 0.016,
+          "nan_detected": false
+        },
+        "judge_scores": {
+          "rank": 4,
+          "panel_disagreement": 0.08
+        }
       },
       {
         "candidate_id": "shot_01@cand_04",
         "draft_fingerprint": "459137ad697156028d0ac5ee78830443e2e404cfd46d750780989e5361272336",
-        "hard_verify": { "black_mono_ratio": 0.0, "duration_dev": 0.009, "nan_detected": false },
-        "judge_scores": { "rank": 2, "panel_disagreement": 0.08 }
+        "hard_verify": {
+          "black_mono_ratio": 0.0,
+          "duration_dev": 0.009,
+          "nan_detected": false
+        },
+        "judge_scores": {
+          "rank": 2,
+          "panel_disagreement": 0.08
+        }
       }
     ],
     "top1_candidate_id": "shot_01@cand_02",

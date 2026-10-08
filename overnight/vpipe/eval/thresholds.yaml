@@ -8,7 +8,14 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 3                   # 2026-10-07：judges.J3_omnijev.thr 0.70→0.71（判官数据重跑后
+version: 4                   # 2026-10-08（v4）：末尾新增 checkpoints 段（12 CP 级 gate 参数，
+                             #   逐键落实 contracts/v2/checkpoint.schema.json + examples/cp1..12.json
+                             #   全部 params_ref 引用，键清单见该段头注释）；v3 段（ensemble/judges/
+                             #   eval_admission/l0_preflight）一字未改——纯只增升版，J3_omnijev.thr
+                             #   仍 0.71、准入线不动；run_v3_checks ALL PASS + eval ACCEPT 零偏差后
+                             #   生效（逐键口径与 M2 校准计划见 evidence/thresholds/
+                             #   v3-to-v4-migration.md）。
+                             # 2026-10-07：judges.J3_omnijev.thr 0.70→0.71（判官数据重跑后
                              #   按 §修改规程 重扫工作点，证据见该行注记与 g01-full-relock.json）。
                              # 2026-10-01（v2）：J6_detectors_v2 增低运动平台豁免/known_cuts；
                              #   l0_preflight 增采样与 avatar 垫尾参数（工程方案v3.1 P0-1/P0-2）。
@@ -171,3 +178,168 @@ l0_preflight:
                                 # （数字人实验报告 §7-4：成片时长=ceil(音频时长)+垫尾不是缺陷；
                                 #   实测垫尾 0.4-1.0s，取 1.0 上界）
   avatar_profiles: [avatar_talk]  # 享受垫尾豁免的 profile 声明名单（声明制，与检测器豁免同名）
+
+# =====================================================================
+# v4 · CP 级门禁段（2026-10-08 新增；以上 v3 段一字未改，本段只增不改）
+# ---------------------------------------------------------------------
+# 依据：contracts/v2/checkpoint.schema.json 全部 gate.params_ref 引用 + examples/cp1..12.json
+#       实际引用值（schema 红线①：一切判定数值不进契约，一律经 params_ref 引用本文件具名键）。
+#       键清单由 schema+examples 全文 grep 盘点：32 处引用 = 24 个 cpN.gate.* 新键 + 8 处既有段
+#       引用（l0_preflight.black_frame_ratio_max / duration_dev_max / avatar_tail_max_s、
+#       judges.J6_detectors_v2.rule_params.known_cuts_tol_s、ensemble.definitions.E10——均已在上方 v3 段落定，此处不复制数值）。
+# 解析口径（v4 修正，2026-10-08 主控验收：原注记误称 J6/ensemble 在文件根，实际不成立）：
+#       cpN.gate.* → checkpoints.cpN.gate.*（v4 根命名空间）；l0_preflight.* → 文件根；
+#       judges.J6_detectors_v2.rule_params.* → 实际路径（v3 起在 judges 下，主控验收修正）；
+#       ensemble.definitions.E10 → 实际路径（E10 是定义名不是可调键）。
+# 数值来源：research/2026-10-08/工业化视频流水线-白皮书.md §3 各 CP「客观验收门禁」行 +
+#       §4 各 T 层门禁行/成本可信度表；白皮书没有明确数值的键在行内注明「v4 初值，M2 校准」
+#       （M2=§6 试跑 W6–W9，校准窗口）。逐键的出处/初值理由/校准计划全量版：
+#       evidence/thresholds/v3-to-v4-migration.md。
+# 效力：v2 门禁校验器（src/gate/ 包，M1 落地）按本段判 CP 工件；eval_run.py / qc_orch /
+#       qc_detectors_v2 不读本段，v3 判定行为零影响（复跑证据见 migration 文档）。
+# =====================================================================
+checkpoints:
+  cp1:                              # CP1 意图单（白皮书 §3 CP1「客观验收门禁」行）
+    gate:
+      forbidden_defect_code_registry:   # 禁区→已注册缺陷码注册表。schema：defect_code 必须能在
+                                        #   thresholds.yaml 查到（注册表不进 schema）；白皮书 CP1：
+                                        #   禁区无对应缺陷码→拒收并要求 owner 裁决（全链唯一死胡同）。
+                                        #   码表=工程方案v3.md §1.1 G1–G8 边界轴 + SPECS_V2.md §3
+                                        #   G7 物体恒存门禁定名；示例 cp1.json 引用 G7/G2 两码。
+        G1_手部: 手部解剖失真（融指/断指，golden_021/033）
+        G2_画面内文字: 画面内渲染文字必乱（小字/密集必乱 golden_038/005；绕行=后期字牌）
+        G3_计数空间: 精确计数失真（8+苹果/40+方块；精确计数绕行分镜改述）
+        G4_物理时序: 物理时序失真（篮球刚性丧失；复合计数失败 golden_019）
+        G5_多角色一致性: 多角色身份漂移（LTX 三连报 0.82–0.95；多参考注入必须 API）
+        G6_运镜: 运镜语义失真（环绕 180° 被渲成画面滚转，语义非精确）
+        G7_物体恒存: 物体恒存/参考图一致性（SPECS_V2 §3：食物形变 12.3%→0；白皮书 CP1 映射示例原码）
+        G8_风格化: 风格化漂移（G8-35 水墨→彩色工笔）
+      owner_confirmation: required      # cp1 示例工件 aux_gates 引用（type=human 工位：owner 确认意图卡，
+                                        #   白皮书 §3 谱首段 CP1=设计内人工介入点）。非数值键，取值
+                                        #   required=确认环节不可跳过；确认动作本身不设数值阈。
+  cp2:                              # CP2 剧本与台词本（白皮书 §3 CP2「客观验收门禁」行）
+    gate:
+      duration_dev_max: 0.02        # Σ estimated_duration vs 目标集时长偏差 ≤2%（白皮书 §3 CP2 原文；
+                                    #   与既有键 l0_preflight.duration_dev_max 同值同单位，但判的是
+                                    #   剧本估算层不是成片实测层，各自独立成键）。
+      line_shot_ratio:              # 台词条数/预计镜头数比值带 [1.0, 1.5]（白皮书 §3 CP2 原文：
+        min: 1.0                    #   「台词过少或过碎都拒」；cp3.gate.shot_line_count_match 是同
+        max: 1.5                    #   一约束在分镜侧的等式形式，两侧同源）。
+  cp3:                              # CP3 分镜表（白皮书 §3 CP3「客观验收门禁」行）
+    gate:
+      max_shot_duration_s: 15.0     # 引擎单段时长上限：H3 实测 4–15s（白皮书 §3 CP3 引 VDL_v2_草案 R3；
+                                    #   与 schema duration_s.maximum:15 的结构兜底同值，逐通道上限
+                                    #   收紧走本键不改契约）。
+      word_anchor_valid: true       # 词锚定合法（@{} 引用必须存在于本镜台词内）——布尔强制键，
+                                    #   true=违例即拒（AI视频生产流水线方案.md §3.2 校验器七条）。
+      shot_line_count_match: true   # 镜头数==CP2 台词条数（白皮书 §3 CP3 门禁行；布尔强制键）。
+  cp4:                              # CP4 关键帧（白皮书 §3 CP4 + §4 T1 门禁行，全部程序化零 VLM）
+    gate:
+      pixel_map_rule: true          # 分辨率/比例符合 CP1 deliverable（白皮书 §3 CP4 门禁行；布尔强制键，
+                                    #   对照 deliverable.pixel_map 判等，无独立数值）。
+      black_frame_ratio_max: 0.0    # 黑图率=0（白皮书 §3 CP4 原文「黑图率=0（fp16 NaN 是 V100 已知失败
+                                    #   模式）」，§4 T1 门禁行同文。静帧比视频 L0 的 0.50 严——单张
+                                    #   关键帧黑图没有任何豁免空间）。
+      identity_coverage: true       # 在场检测 detected ⊇ expected（白皮书 §3 CP4，DramaClaw 唯一标记色
+                                    #   +检出态思路；布尔强制键）。
+      identity_cosine_min: 0.60     # ArcFace 跨身份余弦 ≥0.60（白皮书 §3 CP4 引 AI视频生产流水线方案.md
+                                    #   表 2-1 统一口径；示例 cp4.json 实测 0.68–0.71 有余量）。
+  cp5:                              # CP5 动作脚本（白皮书 §3 CP5「客观验收门禁」行）
+    gate:
+      pose_frame_max: 72            # 姿态序列帧数上限：MimicMotion 72 帧 @576×1024（白皮书 §3 CP5 引
+                                    #   cheap-draft-and-programmatic-tools.md:219；超限走分段+
+                                    #   progressive latent fusion，拼接缝登记 known_cuts）。
+      frame_time_monotonic: true    # 帧时间单调递增（白皮书 §3 CP5 门禁行；布尔强制键）。
+      speech_fullbody_lip_layer: true   # speech=full-body 必须存在独立口型层路径，否则拆镜（白皮书
+                                        #   §3 CP5 引 AI视频生产流水线方案.md §3.3；分镜层规避，
+                                        #   禁止质检环节自动改景别；布尔强制键）。
+  cp6:                              # CP6 时间线与节奏轨（白皮书 §3 CP6「客观验收门禁」行）
+    gate:
+      duration_conservation_frames: 1   # Σ shot.duration_frames vs total_frames 守恒容差 ±1 帧
+                                        #   （白皮书 §3 CP6 原文「Σ shot.duration == 集时长（±1 帧）」）。
+      subtitle_align_ms_max: 40     # 字幕段 vs 音轨词级时间偏差 ≤40ms（白皮书 §3 CP6 原文；
+                                    #   whisperx SemanticTake 对齐口径，示例 cp6.json 实测 32ms）。
+      rhythm_segment_s:             # 节奏段长度 warn 带（白皮书 §3 CP6：无 <0.8s 或 >12s 段落，
+        warn_min: 0.8               #   warn-only 起不否决；超限上升人类一次带三个候选方案，
+        warn_max: 12.0              #   不自动改）。
+  cp7:                              # CP7 草稿视频：无 cp7.gate.* 新键。schema CP7 主门定义原文
+                                    #   「全部数值沿既有段 l0_preflight.* 引用（拒收 exit 4 已实装）」，
+                                    #   示例 cp7.json 实证只引既有键——为防第二套数值，本 CP 不立新值。
+    gate:
+      uses_existing_keys:
+        - l0_preflight.black_frame_ratio_max   # 黑场/单色占比 ≤50%（cp7 示例主门）
+        - l0_preflight.duration_dev_max        # 时长偏差 ≤2%（cp7 示例副门）
+                                    # NaN/黑帧与帧率/分辨率两项是布尔/声明符合性（白皮书 §3 CP7
+                                    # 「无 NaN/黑帧；帧率/分辨率符合档位声明」），无独立数值阈。
+  cp8:                              # CP8 择优（白皮书 §3 CP8，两层不可混：judge_rank 只排序 + 绝对门）
+    gate:
+      pareto_rule: top1_strict_dominance    # 绝对门规则名：候选集内 top-1 须在硬校验向量上 Pareto 支配
+                                            #   （无单项比 top-2 差且总分更低，白皮书 §3 CP8 原文）。
+                                            #   值=规则选择符非数值；判据实现归 M1 校验器。
+      judge_disagreement_delta: 0.15        # judge 间分歧上升人工阈 δ（白皮书 §3 CP8「judge 间分歧 > δ
+                                            #   或与硬校验方向矛盾时看」——δ 未给数值）。v4 初值，M2 校准：
+                                            #   初值 0.15 仅由示例 cp8.json 反推下界（panel_disagreement
+                                            #   =0.08 未触发上升，故 δ>0.08）；M2 以 judge 分歧实测
+                                            #   分布定标。与硬校验方向矛盾=无条件上升，不走本阈。
+      retry_max: 2                  # 单镜重试上限 2 次，超限转人工工单并标「结构性困难镜」（白皮书
+                                    #   §3 CP8 失败回退行原文；schema structural_difficult 行同）。
+                                    # 相对线（judge_rank）键=ensemble.E10（既有段，v3 零改动）：
+                                    #   示例 cp8.json aux_gates 引用 ensemble.E10，只决定次序
+                                    #   不设绝对通过线（白皮书 CP8 两层不可混）。
+  cp9:                              # CP9 终稿渲染（白皮书 §3 CP9 + §4 T4 门禁行）
+    gate:
+      credit_cap_per_shot: 280      # 单镜积分硬上限：H3-Max 280 积分/条（5s 768P 含音轨）=56 积分/s
+                                    #   （白皮书 §4 成本可信度表「仓内实测钱包逐条可对，工程方案v3.md:
+                                    #   125」；超限 exit 3，DTO 校验先于扣费零损失；标准档单集预算
+                                    #   6720=24 镜×280，白皮书 §4 同表）。示例 cp9.json 实耗=上限=280。
+      repro_log_complete: true      # 参数级复现留痕齐备（提交参数+seed+指纹落盘一致；白皮书 §3 CP9
+                                    #   门禁行；不做像素级 md5 承诺——owner 明令废止，schema
+                                    #   repro_level 行）；布尔强制键，缺任一留痕即拒。
+  cp10:                             # CP10 字幕与音轨（白皮书 §3 CP10「客观验收门禁」行）
+    gate:
+      cer_max: 0.05                 # whisper CER small/medium 双口径 ≤5%（白皮书 §3 CP10 原文；
+                                    #   同音字以 pinyin 归一口径分析不凑数，INTENT.md:89；示例
+                                    #   cp10.json 实测 small 3.1%/medium 4.2%）。CER 超标优先改分句。
+      loudness_lufs_target: -16.0   # 混音响度目标 −16 LUFS（白皮书 §3 CP10 原文；示例 cp10.json
+                                    #   实测 −16.0）。判等容差（±LU）白皮书未给——v4 初值按达标
+                                    #   即过（示例口径），M2 若出现系统性偏差再立容差带。
+                                    # 时长守恒（avatar 线=ceil(音频秒)）沿既有段
+                                    #   l0_preflight.avatar_tail_max_s（示例 cp10.json 副门实证）。
+  cp11:                             # CP11 合成（白皮书 §3 CP11 + §4 T0 门禁行，CRADLE 六道挂载点）
+    gate:
+      duration_tol_s: 1.0           # 成片总时长 vs CP6 时间线 ±1s（白皮书 §3 CP11「ffprobe 校验
+                                    #   （总时长 ±1s…）」原文；示例 cp11.json 副门）。
+      shot_count_match: true        # 切镜数==分镜表镜头数（白皮书 §3 CP11 门禁行；CRADLE 六道之一；
+                                    #   布尔强制键，不符退回定位哪一镜多/少切）。
+                                    # 另两道沿既有段，不立新值防第二套数值：
+                                    #   拼接切点白名单容差=judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5
+                                    #   （示例 cp11.json 主门实证；不登记则同人物同构图硬切后向重入
+                                    #   相似度 0.9784>0.85 必误报 temporal_swap，工程方案v3.1.md:170）；
+                                    #   黑场占比=l0_preflight.black_frame_ratio_max=0.50（schema CP11
+                                    #   门禁行「黑场占比」）；竖版 1088×1920 与 h264+aac 是 CP1
+                                    #   deliverable 的契约校验项，非阈值。
+  cp12:                             # CP12 质检与成片（白皮书 §3 CP12「客观验收门禁」行五条 + §6 M2 验收②③）
+    gate:
+      master_score_min: 70          # 成片绝对门：judge 标定分 ≥70（≙人评 7.0/10 的映射值，白皮书
+                                    #   §3 CP12 原文，公式 0.7*mean+0.3*worst 短板惩罚已由 schema
+                                    #   const 固化）。锚定未完成（120 片段人评未做）前 70 仅作 warn
+                                    #   阈与人工队列排序依据，不作自动放行（白皮书 §7 非目标 8）；
+                                    #   M2 校准=完成人评锚定后回填映射值（schema episode_verdict 行）。
+      a_group_recall_min: 0.99      # A 组程序规则召回 ≥99%（白皮书 §3 CP12 原文；§6 M2 验收门禁②
+                                    #   「规格服从维 A 组召回 ≥99%、误报 ≤1%」同值互证）。
+      a_group_fpr_max: 0.01         # A 组误报 ≤1%（同上两处出处）。
+      b_group_recall_min: 0.95      # B 组专用小模型召回 ≥95%（白皮书 §3 CP12 原文）。
+      b_group_fpr_max: 0.15         # B 组误报 ≤15%（同上；LSE-D 硬门仅特写/近景，全身镜头降
+                                    #   warn-only——降档是 profile 逻辑非阈值，归校验器实现）。
+      c_group_recall_min: 0.80      # C 组 VLM judge 类内召回 ≥80%（白皮书 §3 CP12 原文；judge 缺陷
+                                    #   不允许自动否决，C 组不进 veto_groups）。
+      c_group_fpr_max: 0.15         # C 组误报 ≤15%（同上出处）。
+      veto_groups: [a_group, b_group]   # 一票否决组名册=A/B（白皮书 §3 CP8「任一 A/B 组否决缺陷存在→
+                                        #   候选直接出局」+ CP12「任一镜头存在 A/B 组否决缺陷→成片门
+                                        #   直接不通过」；C 只标注、D 恒 warn-only——D 组 warn-only
+                                        #   已由 schema d_group.warn_only const:true 固化，非阈值）。
+                                        #   与 cp8.veto_defects 同源防两套（schema veto_defects 行）。
+      human_escalation_rate_max: 0.20   # 人工上升率 ≤20%（白皮书 §3 CP12 门禁行原文；§6 M2 验收门禁③
+                                        #   同值；周复核误杀/漏放并回滚权重=M2 校准机制）。
+      retry_round_max: 2            # 成片门重试 ≤2 轮，仍不过→人工工单+标记结构性困难+进金标扩样
+                                    #   队列（白皮书 §3 CP12 失败回退行原文「重试 ≤2 轮」）。

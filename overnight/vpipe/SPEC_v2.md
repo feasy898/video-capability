@@ -75,7 +75,7 @@ params_ref}` / 可选 `aux_gates[]`）+ CP 专属 `payload`。门禁类型词表
 | CP8 择优 | selection | agent.selector → cp9 | candidates[]（draft_fingerprint、hard_verify 向量、judge_scores）、top1_candidate_id、pareto_dominant、veto_defects[] | composite（① 相对线 judge_rank 只排序；② Pareto 支配 + A/B 否决一票出局；`cp8.gate.pareto_rule`） |
 | CP9 终稿渲染 | final_render | gen_api → cp10/cp11 | channel、asset、resolution(≥768P)、repro_level、submit_params_fingerprint、credit_spent/credit_cap_per_shot、draft_task_id(Seedance) | rule（参数级复现留痕 + 单镜成本闸门 exit 3；`cp9.gate.credit_cap_per_shot`） |
 | CP10 字幕音轨 | subtitle_audio | tts.py + 字幕链 → human.owner（听音色）→ cp11 | tts{channel, voice_id, gender_match_confirmed}、subtitles{ass, verbatim, cer 双口径}、loudness_lufs、duration_conservation | composite（ffprobe 守恒 + ASS 零错字 + whisper CER + 响度；`cp10.gate.cer_max`） |
-| CP11 合成 | composite | synth → cp12 | master_asset、container/codec 三元组、duration_s、master_shot_segments vs storyboard_shot_count、known_cuts[]、all_cuts_registered | hard_verify（ffprobe 全项 + 切镜数 + 切点全登记，容差沿 `J6_detectors_v2.known_cuts_tol_s`） |
+| CP11 合成 | composite | synth → cp12 | master_asset、container/codec 三元组、duration_s、master_shot_segments vs storyboard_shot_count、known_cuts[]、all_cuts_registered | hard_verify（ffprobe 全项 + 切镜数 + 切点全登记，容差沿 `judges.J6_detectors_v2.rule_params.known_cuts_tol_s`） |
 | CP12 质检成片 | qc_master | gate 包 → human.owner（设计内介入④：灰区队列 + D 类 + 签字）→ 交付 | master_fingerprint、episode_verdict{score=0.7×mean+0.3×worst, verdict}、gate_groups{a/b/c/d}、human_escalation_rate、shot_qc_refs[]、routed_reworks[] | composite（成片绝对门 judge_absolute + 四组 + 人工上升率；`cp12.gate.a_group_recall_min` 等） |
 
 设计内人工介入点：**CP1 / CP3 / CP5 / CP6 / CP12**（白皮书 §3 谱首段；M2 实测计数

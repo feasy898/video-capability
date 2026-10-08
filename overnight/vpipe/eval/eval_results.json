@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-09-30T18:07:35",
- "qc_dir": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\out\\qc_reports_v2check",
- "golden": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\eval\\golden_manifest.json",
- "thresholds": "D:\\workspace\\video-capability-research\\overnight\\vpipe\\eval\\thresholds.yaml",
- "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00",
+ "generated_at": "2026-10-08T21:05:52",
+ "qc_dir": "overnight/vpipe/out/qc_reports_v3post",
+ "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
+ "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",
+ "thresholds_sha256": "b2eb7066dc0fd07e72446803eb71ddb8e6de15d88f88b72c0a508e3bad9cb8ae",
  "ensemble_recommended": "E10",
  "measured_baseline_报告E10": {
   "tp": 16,
@@ -52,7 +52,7 @@
   "flicker": {
    "n": 2,
    "recall_clip": 1.0,
-   "recall_type": 1.0,
+   "recall_type": 0.5,
    "missed": []
   },
   "color_shift": {
@@ -94,15 +94,16 @@
  },
  "B": {
   "n": 12,
-  "flag_rate": 0.8333,
-  "intent_strict": 0.75,
-  "intent_lenient": 0.75,
+  "flag_rate": 0.5833,
+  "intent_strict": 0.3333,
+  "intent_lenient": 0.3333,
   "rows": [
    {
     "clip_id": "golden_005",
     "expected": "text_render_garble",
     "detected": true,
     "types": [
+     "flicker",
      "garble_text"
     ],
     "strict_hit": true,
@@ -111,13 +112,12 @@
    {
     "clip_id": "golden_007",
     "expected": "hand_anatomy_distortion",
-    "detected": true,
+    "detected": false,
     "types": [
-     "garble_text",
-     "hand_anomaly"
+     "garble_text"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_011",
@@ -132,11 +132,8 @@
    {
     "clip_id": "golden_019",
     "expected": "physics_temporal_violation",
-    "detected": true,
-    "types": [
-     "identity_drift",
-     "count_error"
-    ],
+    "detected": false,
+    "types": [],
     "strict_hit": false,
     "lenient_hit": false
    },
@@ -145,20 +142,19 @@
     "expected": "count_error",
     "detected": true,
     "types": [
-     "count_error",
      "frame_freeze"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_021",
     "expected": "hand_anatomy_distortion",
     "detected": true,
     "types": [
-     "hand_anomaly",
+     "garble_text",
      "ghosting",
-     "garble_text"
+     "hand_anomaly"
     ],
     "strict_hit": true,
     "lenient_hit": true
@@ -168,7 +164,6 @@
     "expected": "hand_anatomy_distortion",
     "detected": false,
     "types": [
-     "hand_anomaly",
      "garble_text"
     ],
     "strict_hit": false,
@@ -179,33 +174,31 @@
     "expected": "count_error",
     "detected": true,
     "types": [
-     "count_error"
+     "frame_freeze"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_033",
     "expected": "hand_anatomy_distortion",
-    "detected": true,
+    "detected": false,
     "types": [
-     "hand_anomaly",
      "garble_text"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_035",
     "expected": "physics_temporal_violation",
     "detected": true,
     "types": [
-     "ghosting",
      "garble_text",
-     "physics_error"
+     "ghosting"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_038",
@@ -222,9 +215,9 @@
     "expected": "text_render_garble",
     "detected": true,
     "types": [
+     "flicker",
      "garble_text",
-     "ghosting",
-     "flicker"
+     "ghosting"
     ],
     "strict_hit": true,
     "lenient_hit": true
@@ -233,7 +226,7 @@
  },
  "fp_clips": [
   "golden_010",
-  "golden_025",
+  "golden_013",
   "golden_032"
  ],
  "fn_clips": [],
@@ -245,25 +238,25 @@
   "golden_012": "auto_reject",
   "golden_014": "auto_reject",
   "golden_015": "auto_reject",
-  "golden_016": "manual_review",
+  "golden_016": "auto_reject",
   "golden_017": "manual_review",
   "golden_018": "auto_reject",
   "golden_022": "manual_review",
   "golden_023": "auto_reject",
   "golden_028": "manual_review",
-  "golden_030": "manual_review",
+  "golden_030": "auto_reject",
   "golden_034": "auto_reject",
   "golden_036": "auto_reject",
   "golden_001": "pass",
   "golden_006": "pass",
   "golden_009": "pass",
   "golden_010": "manual_review",
-  "golden_013": "pass",
+  "golden_013": "manual_review",
   "golden_024": "pass",
-  "golden_025": "manual_review",
+  "golden_025": "pass",
   "golden_026": "pass",
   "golden_027": "pass",
-  "golden_032": "manual_review",
+  "golden_032": "auto_reject",
   "golden_037": "pass",
   "golden_039": "pass"
  },
@@ -286,7 +279,7 @@
   {
    "name": "b_flag_min",
    "passed": true,
-   "detail": "B_flag 0.8333 vs ≥0.5"
+   "detail": "B_flag 0.5833 vs ≥0.5"
   }
  ],
  "all_passed": true

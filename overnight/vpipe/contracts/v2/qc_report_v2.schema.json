@@ -1,0 +1,353 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "vpipe/contracts/v2/qc_report_v2.schema.json",
+  "title": "QCReport v2",
+  "description": "质检报告契约 v2.0（SPEC_v2.md §0 目录计划位，P1-M2 落地；TASK_v4 §3.1）。v1 QCReport（contracts/qc_report.schema.json，1.0/1.1，冻结不动）的向后兼容超集：v1 的 clip_id/generated_at/qc_mode/verdict/defects/scores/spans/judges/inputs/qc_context/errors 全部原样保留为合法字段——v1 clip 级报告转 v2 = 内容原样 + schema_version 升 \"2.0\"（可校验实例：examples/qc_report_v2_compat_v1.json）；纯 v1 文件（schema_version=1.0/1.1）仍归 v1 契约管辖、继续合法，文件级版本判定隔离（v1 引擎见 \"2.0\" fail-fast 拒收，同 checkpoint.schema.json definitions.schema_version 纪律）。v2 新增三件（白皮书 §5.2「QCReport 的阶段维度」差距行：v1 全是 clip 级，而检查点是工序级——同一 clip 在 CP7 草稿与 CP9 终稿各有判定，CP12 还要有成片级聚合判定）：① checkpoint{cp_id, artifact_ref}——本报告服务哪个 CP 的哪件工件；② episode_verdict——成片级聚合判定（0.7×均值+0.3×最差，短板惩罚），与 checkpoint.schema.json qc_master payload.episode_verdict 同构同值（qc_master 工件是登记视图，本报告承载判定全量证据；qc_report_v2 未落地前该角色暂由 qc_master payload 承载，SPEC_v2 §5 已知边界第 10 条，本契约落地即解除）；③ human_review{queue, escalation_rate}——CP12 人工灰区队列登记位（白皮书 §3 CP12 人类三件事之一：只看闸门标出的灰区队列，不看全片）。红线（SPEC_v2 §0 纪律 3）：一切判定数值不进本契约，一律经 params_ref 引用 eval/thresholds.yaml——既有键如 judges.J3_omnijev.gray_zone、ensemble.recommended，v4 CP 级段命名 cp12.gate.*（TASK_v4 §3.1 P0-M0-W2）；episode_verdict.formula 的 const 是聚合恒等式（防实现漂移），不是判定阈。",
+  "type": "object",
+  "required": ["schema_version", "clip_id", "generated_at", "verdict", "defects", "scores"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["2.0"],
+      "description": "契约版本。v2.0 = 2026-10-08 落地（SPEC_v2 §0 目录 qc_report_v2 计划位）：v1 全字段兼容超集 + checkpoint/episode_verdict/human_review 三新增。enum 只收 \"2.0\"：1.0/1.1 报告继续归 v1 契约（contracts/qc_report.schema.json）管辖、不因本契约存在而失效；升位时内容原样、仅改版本号（examples/qc_report_v2_compat_v1.json 为可校验实例）。文件级版本判定：v1 消费者见 \"2.0\" 拒收，防 v2 工件流入冻结的 v1 管线。"
+    },
+    "clip_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.@-]{0,127}$",
+      "description": "被检 clip 的 ID。金标集为 golden_NNN；生成矩阵为 <shot_id>@<model>。与 asset_manifest 的 asset_id、golden manifest 的 clip_id 对齐。v2 成片级报告中本字段填集/成片 ID（如 shortdrama_ep01），与 work_id 及 checkpoint.artifact_ref 指向的 CP 工件对齐。"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "报告生成时刻 ISO-8601。"
+    },
+    "work_id": {
+      "$ref": "#/definitions/work_id",
+      "description": "v2 新增（可选）：集/作品 ID，checkpoint.schema.json definitions.work_id 明文它是「CP 工件回链 VDL 包与 QCReport v2 的键」。clip 级报告可省；成片级报告与 checkpoint.artifact_ref 指向的 qc_master payload.work_id 同值。"
+    },
+    "qc_mode": {
+      "type": "string",
+      "enum": ["tonight_replay", "online"],
+      "description": "tonight_replay=从今晚已落盘的判官输出回放合议（本模式不重跑模型）；online=现场跑检测器管线+判官。eval_run.py 两种模式一视同仁，只看 verdict/defects/scores。"
+    },
+    "checkpoint": {
+      "type": "object",
+      "description": "v2 新增：QCReport 的阶段维度落点——本报告服务的检查点与工件。报告从「只认 clip」升级为「认工序」：同一 clip 在 CP7（草稿）与 CP9（终稿）各有报告（两份判定），成片级报告挂 CP12（白皮书 §5.2 差距行）。artifact_ref = 被服务 CP 工件（contracts/v2/checkpoint.schema.json 12 分支之一的顶层 fingerprint 字段值），沿 asset_manifest「sha256 是身份，path 只是登记视图」纪律；失效传播：上游工件 payload 变更 → 其 fingerprint 变更 → 本报告锚点悬空（悬空引用拒收为校验器规则，src/gate/ 包 M1 落地，沿 v2 §3.2 R1，本 schema 只登记不判）。",
+      "required": ["cp_id", "artifact_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "cp_id": { "$ref": "#/definitions/cp_id" },
+        "artifact_ref": { "$ref": "#/definitions/fingerprint" }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "description": "clip 级最终判定（合议结果）。判定算法由 thresholds.yaml 的 ensemble 段定义（当前 E10: J1∨J3@0.70），qc_orch 不许内置第二套阈值。v2 成片级报告中本字段保留镜级/成片合议的 verdict 层原语义，成片聚合另见 episode_verdict。",
+      "required": ["defect_detected", "decision", "confidence", "decided_by"],
+      "additionalProperties": false,
+      "properties": {
+        "defect_detected": {
+          "type": "boolean",
+          "description": "合议检出与否 = 盲测协议的 defect_detected。eval_run.py 的召回/FPR 全部用本字段算（与 judge基准报告.md 口径一致）。"
+        },
+        "decision": {
+          "type": "string",
+          "enum": ["auto_reject", "manual_review", "pass"],
+          "description": "处置决策（基准报告 §11.1）：auto_reject=自动打回（J3 任一通道 P≥0.90，该区间实测 8/8 全对）；manual_review=灰区人工复核（检出但最大 P<0.90，即 0.70-0.90 灰区或仅 J1 检出）；pass=放行。manual_review 的条目在 v2 经 human_review.queue 登记（入队规则键 judges.J3_omnijev.gray_zone）。"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "合议置信度 = 参与合议通道中的最大缺陷侧信号强度（J3 被触发通道的最大 P，无则 J1 的 confidence）。"
+        },
+        "decided_by": {
+          "type": "string",
+          "description": "判定来源标识，如 \"E10:J1∨J3@0.70\"。必须是 thresholds.yaml ensemble.recommended 的 id（成片级为 CP12 composite 门标识），保证判定可复算。"
+        },
+        "reasons": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "人读判定依据，逐条一句话（哪个 judge 哪条规则什么数值）。"
+        }
+      }
+    },
+    "defects": {
+      "type": "array",
+      "description": "结构化缺陷列表 = 所有参与 judge 报出的缺陷按类型归并（同类型多 judge 合并 source 列表，confidence 取最大）。J6 仅作信号时 source 仍如实记录，但 verdict 不因 J6 翻转（基准报告 §11.1 L3：修复前只作信号不作否决）。v2 成片级报告中 A/B 组否决缺陷的存在与否直接决定 episode_verdict.verdict（否决组归属经 cp12.gate.veto_groups 引用，不进本契约）。",
+      "items": {
+        "type": "object",
+        "required": ["type", "sources", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "缺陷类型。8 种注入缺陷为规范词表：frame_freeze/flicker/color_shift/face_blur/garble_text/temporal_swap/pixelate/ghosting；允许的扩展词：identity_drift（J6 ArcFace 跨人）/hand_anomaly/count_error/physics_error/text_error（=garble_text 别名，B 类意图映射）/other。"
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "pattern": "^J[1-7]$" },
+            "description": "报出该缺陷的 judge 代码列表（J1-J7，对应基准报告 §1.1）。"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "该类型缺陷的合并置信度 = 各 source 置信度最大值（J6 取规则 conf；J3 取通道 P；J1/J2/J5 取整体 confidence）。"
+          },
+          "span": {
+            "type": "object",
+            "description": "缺陷时间区间（J6 规则可给精确区间；帧级 judge 缺省全片）。",
+            "additionalProperties": false,
+            "properties": {
+              "start_s": { "type": "number", "minimum": 0 },
+              "end_s": { "type": "number", "minimum": 0 }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "description": "证据原样保留（J6 规则的 rule kind/score、J3 的通道概率、J1 的 notes 摘录等），保证可追溯、可复核。自由结构。"
+          }
+        }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "description": "概率层：概率型判官（J3/J4）的 8+1 通道概率与本次判定实际使用的阈值（写进报告 = 判定完全可复算）。",
+      "required": ["per_type", "overall", "thresholds_applied"],
+      "additionalProperties": false,
+      "properties": {
+        "per_type": {
+          "type": "object",
+          "description": "8 种规范缺陷类型 → [0,1] 概率。无概率型判官参与时置 null 并在 errors 说明。",
+          "additionalProperties": false,
+          "properties": {
+            "frame_freeze": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "flicker": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "color_shift": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "face_blur": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "garble_text": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "temporal_swap": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "pixelate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "ghosting": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+          }
+        },
+        "overall": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "「存在任何缺陷」的总概率通道（J3 q_overall）。"
+        },
+        "thresholds_applied": {
+          "type": "object",
+          "description": "本次判定快照：{ensemble_id, j3_thr, auto_reject_p, j6_emit_conf, thresholds_sha256}。eval_run 用它确认报告与 thresholds.yaml 版本一致。"
+        }
+      }
+    },
+    "spans": {
+      "type": "array",
+      "description": "盲测协议 spans 字段的结构化收容：J6 规则区间（{type,start_s,end_s,evidence}）或帧级 judge 的采样描述字符串。协议要求『spans 可为任意标注』，这里冻结为对象数组或字符串数组的并集不再允许——统一为对象数组，字符串降为 {type:\"note\", evidence:{text}}。",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string", "description": "缺陷类型或 note。" },
+          "start_s": { "type": "number" },
+          "end_s": { "type": "number" },
+          "evidence": { "type": "object" }
+        }
+      }
+    },
+    "judges": {
+      "type": "object",
+      "description": "每个参与 judge 的原始协议输出（六字段，一字不改地嵌入）= 超集的『子集层』。eval 与追溯永远可以回到盲测协议原貌。键为 J1-J7。",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^J[1-7]$": {
+          "type": "object",
+          "description": "盲测协议原始 JSON：{clip_id, defect_detected, defect_types[], confidence, spans, notes?}。spans 在原始输出里可为字符串/数组，原样保留不做归一。",
+          "required": ["clip_id", "defect_detected", "defect_types", "confidence"],
+          "properties": {
+            "clip_id": { "type": "string" },
+            "defect_detected": { "type": "boolean" },
+            "defect_types": { "type": "array", "items": { "type": "string" } },
+            "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+            "spans": {},
+            "notes": { "type": "string" }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "description": "输入溯源：clip 与帧目录路径、各判官输出文件路径（相对 overnight/数据 或绝对）。可复现性要求字段。",
+      "additionalProperties": false,
+      "properties": {
+        "clip": { "type": ["string", "null"] },
+        "frames_dir": { "type": ["string", "null"] },
+        "judge_files": {
+          "type": "object",
+          "description": "judge 代码 → 输入文件路径。"
+        }
+      }
+    },
+    "episode_verdict": {
+      "type": "object",
+      "description": "v2 新增：成片级聚合判定（白皮书 §3 CP12：成片分 = 0.7×镜头分均值 + 0.3×最差镜头分，短板惩罚，AI视频生产流水线方案.md:162）。QCReport 判定层次从 clip 级升到成片级的落点；与 checkpoint.schema.json qc_master payload.episode_verdict 同构同值——CP12 工件登记判定结果（登记视图），本报告承载判定全量证据（逐镜输入见 shot_qc_refs，缺陷明细见 defects[]，判官原话见 judges.*）。任一镜存在 A/B 组否决缺陷 → 成片门直接不通过，与本字段数值无关。",
+      "required": ["score", "verdict", "formula", "shot_qc_refs"],
+      "additionalProperties": false,
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "成片门实测分（0-100 标定分）。绝对门阈不进本契约，经 params_ref 引用 thresholds v4 CP 级段锚点键 cp12.gate.master_score_min；judge 标定分必须是人评锚定后的映射值，锚定（120 片段人评）完成前只作 warn 阈与人工队列排序依据，不作自动放行绝对门（白皮书 §7 非目标 8）。"
+        },
+        "mean_shot_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "镜头分均值（公式第一项），登记以保 score 可复算。"
+        },
+        "worst_shot_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "最差镜头分（公式第二项，短板惩罚项），登记以保 score 可复算。"
+        },
+        "formula": {
+          "type": "string",
+          "const": "0.7*mean+0.3*worst",
+          "description": "成片分公式，const 固化防实现漂移（与 checkpoint.schema.json qc_master.episode_verdict.formula 同 const）。公式是聚合恒等式不是判定数值——判定阈一律走 params_ref，不因本 const 破坏「数值单点」红线。"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["pass", "reject"],
+          "description": "成片级放行/驳回（CP12 人工三件事之三：签字或驳回）。C 组 judge 缺陷不允许自动否决、D 组默认 warn-only（白皮书 §3 CP12）；驳回按缺陷类型路由回具体 CP（身份→cp4，动作→cp5，节奏→cp6，字幕→cp10，不允许成片级重抽），路由记录在 checkpoint.artifact_ref 指向的 qc_master 工件 payload.routed_reworks。"
+        },
+        "params_ref": {
+          "$ref": "#/definitions/params_ref",
+          "description": "score 门禁阈的 thresholds 键路径（thresholds v4 CP 级段，如 cp12.gate.master_score_min）。"
+        },
+        "shot_qc_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/shot_qc_ref" },
+          "description": "参与聚合的逐镜 QCReport（v1/v2 clip 级报告）资产指纹引用 = 成片分公式的输入。与 checkpoint.schema.json qc_master.payload.shot_qc_refs 同构同值；指纹经 asset_manifest 登记（sha256 是身份，报告文件路径只是登记视图）。"
+        }
+      }
+    },
+    "human_review": {
+      "type": "object",
+      "description": "v2 新增：CP12 人工灰区队列登记位（白皮书 §3 CP12 人类三件事之一：只看闸门标出的灰区队列，不看全片；白皮书 §2 原则 3：人工只看程序标出的条目）。入队规则与上升率上限不进本契约：条目级 params_ref 引用入队规则（既有键如 judges.J3_omnijev.gray_zone = v1 manual_review 灰区口径；v4 CP 级段 cp12.gate.*），human_review.params_ref 引用上升率上限（如 cp12.gate.human_escalation_rate_max）。D 组 warn-only flag 的时间窗同在此登记（物理/时序类自动否决不存在，白皮书 §3 CP12）。",
+      "required": ["queue", "escalation_rate"],
+      "additionalProperties": false,
+      "properties": {
+        "queue": {
+          "type": "array",
+          "description": "灰区队列登记（空数组 = 本片无人审条目）。",
+          "items": {
+            "type": "object",
+            "required": ["ref", "reason"],
+            "additionalProperties": false,
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "被复核对象 ID：镜 ID（如 shot_03）或 clip_id。"
+              },
+              "reason": {
+                "type": "string",
+                "description": "人读入队理由，逐条一句话（哪个判官哪条规则什么数值），沿 v1 verdict.reasons 风格。"
+              },
+              "params_ref": {
+                "$ref": "#/definitions/params_ref",
+                "description": "该条目入队规则的 thresholds 键路径（如 judges.J3_omnijev.gray_zone）。"
+              },
+              "outcome": {
+                "type": "string",
+                "enum": ["pending", "pass", "reject"],
+                "description": "人工处置结果：pending=待复核；pass/reject=复核结论（CP12 签字或驳回的条目级留痕，处置是数据不静默）。"
+              }
+            }
+          }
+        },
+        "escalation_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "人工上升率实测（0-1，按本集 QC 判定流计量，与 checkpoint.artifact_ref 指向的 qc_master payload.human_escalation_rate 同值）。上限阈不进本契约，经 human_review.params_ref 引用；周复核误杀/漏放并回滚权重（白皮书 §3 CP12）。"
+        },
+        "params_ref": {
+          "$ref": "#/definitions/params_ref",
+          "description": "人工上升率上限的 thresholds 键路径（如 cp12.gate.human_escalation_rate_max）。"
+        }
+      }
+    },
+    "qc_context": {
+      "type": "object",
+      "description": "契约 1.1 新增（2026-10-01）：上游声明的 QC 上下文，全部为「声明制」——检测器/编排器不自行推断，只如实记录上游给了什么，保证豁免可审计。缺省（回放模式/未声明）不落本字段。",
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "type": ["string", "null"],
+          "description": "素材 profile 声明（如 avatar_talk=口播数字人）。qc_detectors_v2 据此对低运动平台 ghost 候选做豁免（工程方案v3.1 §3.4 机理1）；未声明时检测器行为不变。"
+        },
+        "known_cuts": {
+          "type": "array",
+          "description": "已知拼接切点（秒）白名单（工程方案v3.1 §3.4 机理2）：来自装配 manifest 的硬切点登记，qc_detectors_v2 对落入容差的 junction 不报 temporal_swap。",
+          "items": { "type": "number", "minimum": 0 }
+        },
+        "l0_preflight": {
+          "type": ["object", "null"],
+          "description": "L0 确定性预检结果快照（qc_orch_v2 在线模式实测数字：时长/黑屏占比/所用阈值），拒收件不产 QCReport、证据在 <clip_id>.l0.json。"
+        }
+      }
+    },
+    "errors": {
+      "type": "object",
+      "description": "降级记录：缺失判官、规则失败、输入损坏等（方案 §4：失败本身如实记录，不许静默吞）。errors 非空时 verdict 必须在 reasons 里说明降级情况。"
+    }
+  },
+  "definitions": {
+    "cp_id": {
+      "type": "string",
+      "pattern": "^cp([1-9]|1[0-2])$",
+      "description": "检查点 ID，词形与语义同 checkpoint.schema.json definitions.cp_id（白皮书 §3 十二选一：cp1 意图单 … cp12 质检成片）。本报告登记它服务的工序。"
+    },
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "内容指纹（sha256 十六进制小写），同 checkpoint.schema.json definitions.fingerprint：工件身份 = payload 规范化 JSON 的 sha256，path 只是登记视图；上游变更 → 指纹变更 → 引用悬空（校验器规则）。"
+    },
+    "params_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+(\\.[A-Za-z0-9_]+){1,5}$",
+      "description": "eval/thresholds.yaml 键路径（点分 2-6 段），词形同 checkpoint.schema.json gate.params_ref。判定数值单点纪律（SPEC_v2 §0 纪律 3）：本契约零判定数值，全部经本形态字段引用——既有键如 judges.J3_omnijev.gray_zone、ensemble.recommended，v4 CP 级段命名 cpN.gate.*。"
+    },
+    "work_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "description": "集/作品 ID，同 checkpoint.schema.json definitions.work_id（vdl_package.work_id 同词形同语义）。"
+    },
+    "shot_qc_ref": {
+      "type": "object",
+      "required": ["shot_id", "qc_report_fingerprint"],
+      "additionalProperties": false,
+      "properties": {
+        "shot_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.@-]{0,127}$",
+          "description": "镜 ID（v1 shot/clip 词形，生成矩阵报告即 <shot_id>@<model>）。"
+        },
+        "qc_report_fingerprint": {
+          "$ref": "#/definitions/fingerprint",
+          "description": "该镜 QCReport 文件的资产指纹（经 asset_manifest 登记）。"
+        }
+      },
+      "description": "单个逐镜 QCReport 引用，结构同 checkpoint.schema.json qc_master.payload.shot_qc_refs 条目（同构同值，防两套）。"
+    }
+  }
+}

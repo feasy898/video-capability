@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/buC_id1.mp4",
- "generated_at": "2026-10-08T20:38:35",
+ "generated_at": "2026-10-08T21:06:51",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 12.0,
@@ -100,6 +100,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 2.02
+  "analyze_sec": 1.09
  }
 }

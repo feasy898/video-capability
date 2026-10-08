@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "vpipe/contracts/v2/checkpoint.schema.json",
   "title": "Checkpoint Artifact v2",
-  "description": "检查点工件契约 v2.0（12 CP 谱）。依据：research/2026-10-08/工业化视频流水线-白皮书.md §3（CP1 意图单 / CP2 剧本 / CP3 分镜表 / CP4 关键帧 / CP5 动作脚本 / CP6 时间线 / CP7 草稿视频 / CP8 择优 / CP9 终稿渲染 / CP10 字幕音轨 / CP11 合成 / CP12 质检成片）+ §8 整合铁律（v1 契约零修改，本契约是 v2 并行的第四份新增）。结构：顶层 oneOf 按 cp_id 分派到 12 个自包含分支（definitions.cp1_intent_card .. cp12_qc_master），每个分支含公共头字段 + CP 专属 payload。三条红线（本 schema 自身遵守，消费者必须遵守）：① 一切判定数值不进本契约，一律经 gate.params_ref 引用 eval/thresholds.yaml 的具名键路径（thresholds v4 起 CP 级段命名 cpN.gate.*；既有段直接引用，如 l0_preflight.black_frame_ratio_max、J6_detectors_v2.known_cuts_tol_s）；② engine 通道字段（channel）只存 channel_id 字符串，其枚举唯一来源是 contracts/v2/model_tiers.yaml（白皮书 §8 铁律 2），本 schema 只做词形约束不收编枚举；③ 人工介入只出现在白皮书 §3 声明的设计内介入点（CP1/CP3/CP5/CP6/CP12），schema 以 gate.type=human 表达，不许为「保险」加人工字段。",
+  "description": "检查点工件契约 v2.0（12 CP 谱）。依据：research/2026-10-08/工业化视频流水线-白皮书.md §3（CP1 意图单 / CP2 剧本 / CP3 分镜表 / CP4 关键帧 / CP5 动作脚本 / CP6 时间线 / CP7 草稿视频 / CP8 择优 / CP9 终稿渲染 / CP10 字幕音轨 / CP11 合成 / CP12 质检成片）+ §8 整合铁律（v1 契约零修改，本契约是 v2 并行的第四份新增）。结构：顶层 oneOf 按 cp_id 分派到 12 个自包含分支（definitions.cp1_intent_card .. cp12_qc_master），每个分支含公共头字段 + CP 专属 payload。三条红线（本 schema 自身遵守，消费者必须遵守）：① 一切判定数值不进本契约，一律经 gate.params_ref 引用 eval/thresholds.yaml 的具名键路径（thresholds v4 起 CP 级段命名 cpN.gate.*；既有段直接引用，如 l0_preflight.black_frame_ratio_max、judges.J6_detectors_v2.rule_params.known_cuts_tol_s）；② engine 通道字段（channel）只存 channel_id 字符串，其枚举唯一来源是 contracts/v2/model_tiers.yaml（白皮书 §8 铁律 2），本 schema 只做词形约束不收编枚举；③ 人工介入只出现在白皮书 §3 声明的设计内介入点（CP1/CP3/CP5/CP6/CP12），schema 以 gate.type=human 表达，不许为「保险」加人工字段。",
   "oneOf": [
     { "$ref": "#/definitions/cp1_intent_card" },
     { "$ref": "#/definitions/cp2_script" },
@@ -86,7 +86,7 @@
         "params_ref": {
           "type": "string",
           "pattern": "^[A-Za-z0-9_]+(\\.[A-Za-z0-9_]+){1,5}$",
-          "description": "本门禁全部判定数值的键路径，必须解析到 eval/thresholds.yaml 中真实存在的键（如 cp12.gate.a_group_recall_min、l0_preflight.black_frame_ratio_max、J6_detectors_v2.known_cuts_tol_s）。CP 级新段由 thresholds v4 增补（TASK_v4 §3.1 P0-M0-W2），命名 cpN.gate.*。schema/yaml/source 任何一处出现第二套判定数值即验收失败（SPEC.md §0 纪律 3 继承）。"
+          "description": "本门禁全部判定数值的键路径，必须解析到 eval/thresholds.yaml 中真实存在的键（如 cp12.gate.a_group_recall_min、l0_preflight.black_frame_ratio_max、judges.J6_detectors_v2.rule_params.known_cuts_tol_s）。CP 级新段由 thresholds v4 增补（TASK_v4 §3.1 P0-M0-W2），命名 cpN.gate.*。schema/yaml/source 任何一处出现第二套判定数值即验收失败（SPEC.md §0 纪律 3 继承）。"
         },
         "result": {
           "type": "string",
@@ -654,7 +654,7 @@
         "known_cuts": {
           "type": "array",
           "items": { "type": "number", "minimum": 0 },
-          "description": "全部硬切点登记（秒）。白名单容差沿既有段 J6_detectors_v2.known_cuts_tol_s 引用——拼接切点不登记会对同人物同构图硬切误报 temporal_swap（实测后向重入相似度 0.9784 > swap_single_back_min=0.85，工程方案v3.1.md:170）。"
+          "description": "全部硬切点登记（秒）。白名单容差沿既有段 judges.J6_detectors_v2.rule_params.known_cuts_tol_s 引用——拼接切点不登记会对同人物同构图硬切误报 temporal_swap（实测后向重入相似度 0.9784 > swap_single_back_min=0.85，工程方案v3.1.md:170）。"
         },
         "all_cuts_registered": { "type": "boolean", "description": "拼接切点是否全部在 known_cuts 白名单内登记（无登记硬切点 → exit 非 0，TASK_v4 M1-W5 known_cuts 强制登记）。" },
         "black_ratio": { "type": "number", "minimum": 0, "maximum": 1, "description": "黑场占比实测（CRADLE 六道硬校验之一，挂到合成产物，白皮书 §4 T0 门禁行）。" }
@@ -973,7 +973,7 @@
             { "$ref": "#/definitions/gate" },
             { "properties": { "type": { "enum": ["composite"] } } }
           ],
-          "description": "CP8 主门（composite，两层不可混）：① 相对线 judge_rank 只排序（ensemble.E10 判据族）；② 绝对门 hard_verify Pareto 支配 + A/B 组否决缺陷一票出局。params_ref 例：cp8.gate.pareto_rule。"
+          "description": "CP8 主门（composite，两层不可混）：① 相对线 judge_rank 只排序（ensemble.definitions.E10 判据族）；② 绝对门 hard_verify Pareto 支配 + A/B 组否决缺陷一票出局。params_ref 例：cp8.gate.pareto_rule。"
         },
         "aux_gates": { "$ref": "#/definitions/aux_gates" },
         "payload": { "$ref": "#/definitions/selection" },
@@ -1054,7 +1054,7 @@
             { "$ref": "#/definitions/gate" },
             { "properties": { "type": { "enum": ["hard_verify"] } } }
           ],
-          "description": "CP11 主门：ffprobe 全项（总时长 ±1s、竖版、h264+aac）+ 切镜数==分镜表镜头数 + 黑场占比 + 拼接切点全部在 known_cuts 白名单（容差沿 J6_detectors_v2.known_cuts_tol_s）。CRADLE 六道硬校验挂载点（白皮书 §4 T0 门禁行）。"
+          "description": "CP11 主门：ffprobe 全项（总时长 ±1s、竖版、h264+aac）+ 切镜数==分镜表镜头数 + 黑场占比 + 拼接切点全部在 known_cuts 白名单（容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s）。CRADLE 六道硬校验挂载点（白皮书 §4 T0 门禁行）。"
         },
         "aux_gates": { "$ref": "#/definitions/aux_gates" },
         "payload": { "$ref": "#/definitions/composite" },

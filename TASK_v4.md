@@ -494,7 +494,7 @@ git diff 71f719d..HEAD -- overnight/vpipe/eval/thresholds.yaml | grep -E "^[+-]"
 |---|---|---|---|---|---|
 | R1 | Wan2.2-5B spike 不通过 | 中 | 中 | 接受 LTX-2B 单一草稿路径 | M0-W2 末 |
 | R2 | Seedance 2.5 核价未通过/通道不通 | 中 | 低 | T5 退化为 H3-Max 独占 | M0-W1 末 |
-| R3 | 卡 1 共享窗被其他项目挤压 | 中 | 高 | 提前协调 anolis-gpu-01 GPU 排期 | 任意周末 |
+| R3 | 卡 1 共享窗被其他项目挤压（已实证：一剧N国 xdng 三服务 7×24 常驻 27.7GB，显存平台线无自然空闲窗） | **高** | 高 | owner 与一剧N国 owner 约定 10-09 10:00–12:00 停服窗；video-capability 侧不得代杀进程（红线）；拿不到窗则 M1 骨架期（零 GPU）先行解耦 | 已裁决：见 evidence/env/gpu1-memory-window.md §6 主控裁决（卡 0 路线已否） |
 | R4 | Wan2.2-5B spike 通过但显存 <30GB 临界 | 低 | 中 | 进 Wan2.2-5B Q4 档（更小但更慢） | M0-W2 末 |
 | R5 | 70 分人评锚定未做导致 CP12 审美维无门 | 高 | 中 | 审美维长期 warn-only（白皮书 §7 非目标 8 已声明） | M2-W7 末 |
 | R6 | CP 级夹具库工作量被低估 | 中 | 中 | 按 CP 优先级分批（先 CP11/CP12） | M3-W10 末 |

@@ -22,9 +22,9 @@
   "status": "passed",
   "gate": {
     "type": "hard_verify",
-    "params_ref": "J6_detectors_v2.known_cuts_tol_s",
+    "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
     "result": "pass",
-    "note": "3 个拼接硬切点（5.0/12.0/20.0s）全部登记 known_cuts 白名单，容差 0.5s 沿 thresholds 既有段 J6_detectors_v2.known_cuts_tol_s；J6v2 未误报 temporal_swap（不登记则同人物同构图硬切后向重入相似度 0.9784 > 0.85 必误报，工程方案v3.1.md:170）。"
+    "note": "3 个拼接硬切点（5.0/12.0/20.0s）全部登记 known_cuts 白名单，容差 0.5s 沿 thresholds 既有段 judges.J6_detectors_v2.rule_params.known_cuts_tol_s；J6v2 未误报 temporal_swap（不登记则同人物同构图硬切后向重入相似度 0.9784 > 0.85 必误报，工程方案v3.1.md:170）。"
   },
   "aux_gates": [
     {
@@ -55,7 +55,11 @@
     "duration_s": 30.0,
     "master_shot_segments": 4,
     "storyboard_shot_count": 4,
-    "known_cuts": [5.0, 12.0, 20.0],
+    "known_cuts": [
+      5.0,
+      12.0,
+      20.0
+    ],
     "all_cuts_registered": true,
     "black_ratio": 0.0
   },
