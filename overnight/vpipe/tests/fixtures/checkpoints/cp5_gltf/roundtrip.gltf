@@ -1,0 +1,283 @@
+{
+ "asset": {
+  "version": "2.0",
+  "generator": "vpipe blocking_to_gltf (CP5 M1-W4 glTF 2.0 armature roundtrip; TASK_v4.md:197,525 decision 2026-10-08-b)"
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "vpipe_blocking",
+   "nodes": [
+    0
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "name": "shot_03:root",
+   "children": [
+    1
+   ]
+  },
+  {
+   "name": "shot_03:hips",
+   "children": [
+    2,
+    11,
+    14
+   ]
+  },
+  {
+   "name": "shot_03:spine",
+   "children": [
+    3,
+    5,
+    8
+   ]
+  },
+  {
+   "name": "shot_03:neck",
+   "children": [
+    4
+   ]
+  },
+  {
+   "name": "shot_03:head"
+  },
+  {
+   "name": "shot_03:leftShoulder",
+   "children": [
+    6
+   ]
+  },
+  {
+   "name": "shot_03:leftElbow",
+   "children": [
+    7
+   ]
+  },
+  {
+   "name": "shot_03:leftWrist"
+  },
+  {
+   "name": "shot_03:rightShoulder",
+   "children": [
+    9
+   ]
+  },
+  {
+   "name": "shot_03:rightElbow",
+   "children": [
+    10
+   ]
+  },
+  {
+   "name": "shot_03:rightWrist"
+  },
+  {
+   "name": "shot_03:leftHip",
+   "children": [
+    12
+   ]
+  },
+  {
+   "name": "shot_03:leftKnee",
+   "children": [
+    13
+   ]
+  },
+  {
+   "name": "shot_03:leftAnkle"
+  },
+  {
+   "name": "shot_03:rightHip",
+   "children": [
+    15
+   ]
+  },
+  {
+   "name": "shot_03:rightKnee",
+   "children": [
+    16
+   ]
+  },
+  {
+   "name": "shot_03:rightAnkle"
+  }
+ ],
+ "animations": [
+  {
+   "name": "shot_03:blocking",
+   "channels": [
+    {
+     "sampler": 0,
+     "target": {
+      "node": 8,
+      "path": "rotation"
+     }
+    },
+    {
+     "sampler": 1,
+     "target": {
+      "node": 9,
+      "path": "rotation"
+     }
+    },
+    {
+     "sampler": 2,
+     "target": {
+      "node": 0,
+      "path": "rotation"
+     }
+    }
+   ],
+   "samplers": [
+    {
+     "input": 0,
+     "interpolation": "LINEAR",
+     "output": 1
+    },
+    {
+     "input": 2,
+     "interpolation": "LINEAR",
+     "output": 3
+    },
+    {
+     "input": 4,
+     "interpolation": "LINEAR",
+     "output": 5
+    }
+   ]
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 3,
+   "type": "SCALAR",
+   "min": [
+    0.0
+   ],
+   "max": [
+    1.2
+   ]
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 3,
+   "type": "VEC4",
+   "min": [
+    0.0,
+    0.0,
+    -0.5226872289306592,
+    0.8525245220595057
+   ],
+   "max": [
+    0.0,
+    0.0,
+    0.14943813247359924,
+    0.9887710779360424
+   ]
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 3,
+   "type": "SCALAR",
+   "min": [
+    0.0
+   ],
+   "max": [
+    1.2
+   ]
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5126,
+   "count": 3,
+   "type": "VEC4",
+   "min": [
+    -0.644217687237691,
+    0.0,
+    0.0,
+    0.7648421872844885
+   ],
+   "max": [
+    -0.09983341664682815,
+    0.0,
+    0.0,
+    0.9950041652780258
+   ]
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5126,
+   "count": 2,
+   "type": "SCALAR",
+   "min": [
+    0.0
+   ],
+   "max": [
+    1.2
+   ]
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 2,
+   "type": "VEC4",
+   "min": [
+    0.0,
+    0.0,
+    0.0,
+    0.9950041652780258
+   ],
+   "max": [
+    0.0,
+    0.09983341664682815,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteOffset": 0,
+   "byteLength": 12
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 12,
+   "byteLength": 48
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 60,
+   "byteLength": 12
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 72,
+   "byteLength": 48
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 120,
+   "byteLength": 8
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 128,
+   "byteLength": 32
+  }
+ ],
+ "buffers": [
+  {
+   "uri": "data:application/octet-stream;base64,AAAAAAAAAD+amZk/AAAAAAAAAABPBhk+GiB9PwAAAAAAAAAAzbPevrSDZj8AAAAAAAAAANXOBb8MP1o/AAAAAAAAAD+amZk/dnXMvQAAAAAAAAAAmLh+P2mMEL8AAAAAAAAAADJJUz9z6yS/AAAAAAAAAACzzEM/AAAAAJqZmT8AAAAAAAAAAAAAAAAAAIA/AAAAAHZ1zD0AAAAAmLh+Pw==",
+   "byteLength": 160
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+  "converter": "blocking_to_gltf",
+  "task": "M1-W4 CP5 blocking → glTF 2.0 armature 往返（TASK_v4.md:197,525 决策 2026-10-08-b）",
+  "artifact": "tests/fixtures/checkpoints/cp5_gltf/cp5_lip_fixture.json",
+  "schema": "/home/pan-ding/workspace/视频能力/overnight/vpipe/contracts/v2/checkpoint.schema.json",
+  "output": "tests/fixtures/checkpoints/cp5_gltf/cp5_lip.gltf",
+  "report": "tests/fixtures/checkpoints/cp5_gltf/cp5_lip_check.json",
+  "verdict": "pass",
+  "exit_code": 0,
+  "lossless": true,
+  "summary": {
+    "nodes": 18,
+    "max_depth": 6,
+    "animations": 1,
+    "channels": 3,
+    "keyframes": 11,
+    "samplers": 3,
+    "max_time_abs_err": 4.768371586472142e-08,
+    "max_euler_abs_err_rad": 3.766376072134037e-09,
+    "bytes": 4053
+  },
+  "lip_layer": [
+    {
+      "shot": "shot_lip_01",
+      "status": "written",
+      "joint": "jaw",
+      "frames": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2,
+          0.18,
+          0.0,
+          0.0
+        ],
+        [
+          0.4,
+          0.04,
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.22,
+          0.0,
+          0.0
+        ],
+        [
+          0.9,
+          0.08,
+          0.0,
+          0.0
+        ],
+        [
+          1.2,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "reason": "--lip-layer 提供的 jaw 轨道→ 写为 shot_lip_01:jaw 节点（head 之下）"
+    }
+  ],
+  "checks": [
+    {
+      "id": "input_blocking_valid",
+      "title": "转换前置：blocking 数据可无损表示（关节词表/轨道引用/帧时间/rotation-only）",
+      "source_ref": "contracts/v2/checkpoint.schema.json#definitions/blocking + cheap-draft-and-programmatic-tools.md:57-59",
+      "result": "pass",
+      "detail": "1 个序列、2 条轨道（+1 条 jaw）全部可无损映射",
+      "problems": [],
+      "warnings": []
+    },
+    {
+      "id": "gltf_structure",
+      "title": "c1 glTF 结构：asset 2.0 / 场景根 / 节点数 / 父子层级 / 深度（重新读回）",
+      "source_ref": "glTF 2.0 spec + mannequin 拓扑（cheap-draft-and-programmatic-tools.md:57-59）",
+      "result": "pass",
+      "detail": "nodes=18（期望 18），最大深度=6",
+      "problems": [],
+      "warnings": []
+    },
+    {
+      "id": "animations_samplers",
+      "title": "c2 动画与采样器：数量 / input=output 等长 / 时间严格单调 / 缓冲字节对账",
+      "source_ref": "glTF 2.0 spec §animations（LINEAR；input 需 min/max）",
+      "result": "pass",
+      "detail": "animations=1 samplers=3 channels=3 keyframes=11",
+      "problems": [],
+      "warnings": []
+    },
+    {
+      "id": "keyframe_lossless",
+      "title": "c3 关键帧零丢失：时间一致（float32 容差）+ 单位四元数 + 弧度往返 ≤1e-5 rad",
+      "source_ref": "TASK_v4.md:525 决策 2026-10-08-b 验收等价物（往返零丢失）",
+      "result": "pass",
+      "detail": "逐关键帧核对：max|Δt|=4.77e-08s，max|Δ弧度|=3.77e-09rad（容差 t≤1e-6+1e-6|t|，弧度≤1e-05）",
+      "problems": [],
+      "warnings": []
+    },
+    {
+      "id": "lip_layer",
+      "title": "c4 口型层 jaw 轨道：written / skipped 如实记录",
+      "source_ref": "白皮书 §3 CP5（motion.speech=full-body 须有独立口型层路径）",
+      "result": "pass",
+      "detail": "shot_lip_01:written",
+      "problems": [],
+      "warnings": []
+    }
+  ],
+  "problems": [],
+  "warnings": []
+}

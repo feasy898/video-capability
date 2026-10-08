@@ -1,0 +1,289 @@
+{
+ "asset": {
+  "version": "2.0",
+  "generator": "vpipe blocking_to_gltf (CP5 M1-W4 glTF 2.0 armature roundtrip; TASK_v4.md:197,525 decision 2026-10-08-b)"
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "vpipe_blocking",
+   "nodes": [
+    0
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "name": "shot_lip_01:root",
+   "children": [
+    1
+   ]
+  },
+  {
+   "name": "shot_lip_01:hips",
+   "children": [
+    2,
+    11,
+    14
+   ]
+  },
+  {
+   "name": "shot_lip_01:spine",
+   "children": [
+    3,
+    5,
+    8
+   ]
+  },
+  {
+   "name": "shot_lip_01:neck",
+   "children": [
+    4
+   ]
+  },
+  {
+   "name": "shot_lip_01:head",
+   "children": [
+    17
+   ]
+  },
+  {
+   "name": "shot_lip_01:leftShoulder",
+   "children": [
+    6
+   ]
+  },
+  {
+   "name": "shot_lip_01:leftElbow",
+   "children": [
+    7
+   ]
+  },
+  {
+   "name": "shot_lip_01:leftWrist"
+  },
+  {
+   "name": "shot_lip_01:rightShoulder",
+   "children": [
+    9
+   ]
+  },
+  {
+   "name": "shot_lip_01:rightElbow",
+   "children": [
+    10
+   ]
+  },
+  {
+   "name": "shot_lip_01:rightWrist"
+  },
+  {
+   "name": "shot_lip_01:leftHip",
+   "children": [
+    12
+   ]
+  },
+  {
+   "name": "shot_lip_01:leftKnee",
+   "children": [
+    13
+   ]
+  },
+  {
+   "name": "shot_lip_01:leftAnkle"
+  },
+  {
+   "name": "shot_lip_01:rightHip",
+   "children": [
+    15
+   ]
+  },
+  {
+   "name": "shot_lip_01:rightKnee",
+   "children": [
+    16
+   ]
+  },
+  {
+   "name": "shot_lip_01:rightAnkle"
+  },
+  {
+   "name": "shot_lip_01:jaw"
+  }
+ ],
+ "animations": [
+  {
+   "name": "shot_lip_01:blocking",
+   "channels": [
+    {
+     "sampler": 0,
+     "target": {
+      "node": 4,
+      "path": "rotation"
+     }
+    },
+    {
+     "sampler": 1,
+     "target": {
+      "node": 0,
+      "path": "rotation"
+     }
+    },
+    {
+     "sampler": 2,
+     "target": {
+      "node": 17,
+      "path": "rotation"
+     }
+    }
+   ],
+   "samplers": [
+    {
+     "input": 0,
+     "interpolation": "LINEAR",
+     "output": 1
+    },
+    {
+     "input": 2,
+     "interpolation": "LINEAR",
+     "output": 3
+    },
+    {
+     "input": 4,
+     "interpolation": "LINEAR",
+     "output": 5
+    }
+   ]
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 3,
+   "type": "SCALAR",
+   "min": [
+    0.0
+   ],
+   "max": [
+    1.2
+   ]
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 3,
+   "type": "VEC4",
+   "min": [
+    0.0,
+    0.0,
+    0.0,
+    0.9974020859723018
+   ],
+   "max": [
+    0.03991737497674754,
+    0.05991604167008062,
+    0.0023979206942760065,
+    1.0
+   ]
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 2,
+   "type": "SCALAR",
+   "min": [
+    0.0
+   ],
+   "max": [
+    1.2
+   ]
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5126,
+   "count": 2,
+   "type": "VEC4",
+   "min": [
+    0.0,
+    -0.07492970727274234,
+    0.0,
+    0.9971888181122075
+   ],
+   "max": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5126,
+   "count": 6,
+   "type": "SCALAR",
+   "min": [
+    0.0
+   ],
+   "max": [
+    1.2
+   ]
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 6,
+   "type": "VEC4",
+   "min": [
+    0.0,
+    0.0,
+    0.0,
+    0.9939560979566968
+   ],
+   "max": [
+    0.10977830083717481,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteOffset": 0,
+   "byteLength": 12
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 12,
+   "byteLength": 48
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 60,
+   "byteLength": 8
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 68,
+   "byteLength": 32
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 100,
+   "byteLength": 24
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 124,
+   "byteLength": 96
+  }
+ ],
+ "buffers": [
+  {
+   "uri": "data:application/octet-stream;base64,AAAAAJqZGT+amZk/AAAAAAAAAAAAAAAAAACAP2eAIz2GanU9byYdO75Vfz8AAAAAAAAAAAAAAAAAAIA/AAAAAJqZmT8AAAAAAAAAAAAAAAAAAIA/AAAAAL90mb0AAAAAxEd/PwAAAADNzEw+zczMPpqZGT9mZmY/mpmZPwAAAAAAAAAAAAAAAAAAgD8/Erg9AAAAAAAAAADC9n4/PtSjPAAAAAAAAAAA5fJ/P3LT4D0AAAAAAAAAAOhzfj/byyM9AAAAAAAAAACUy38/AAAAAAAAAAAAAAAAAACAPw==",
+   "byteLength": 220
+  }
+ ]
+}

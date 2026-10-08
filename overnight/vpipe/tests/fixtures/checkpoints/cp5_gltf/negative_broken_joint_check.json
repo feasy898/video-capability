@@ -1,0 +1,28 @@
+{
+  "converter": "blocking_to_gltf",
+  "task": "M1-W4 CP5 blocking → glTF 2.0 armature 往返（TASK_v4.md:197,525 决策 2026-10-08-b）",
+  "artifact": "tests/fixtures/checkpoints/cp5_gltf/negative_broken_joint_ref.json",
+  "schema": "/home/pan-ding/workspace/视频能力/overnight/vpipe/contracts/v2/checkpoint.schema.json",
+  "output": "/tmp/cp5_neg.gltf",
+  "report": "tests/fixtures/checkpoints/cp5_gltf/negative_broken_joint_check.json",
+  "verdict": "fail",
+  "exit_code": 1,
+  "lossless": false,
+  "problems": [
+    "sequences[0](shot_neg_01): tracks[1].joint='leftThigh' 不在本序列 joint_names 词表内（track 引用不存在的关节；schema 16 关节词表=['hips', 'spine', 'neck', 'head', 'leftShoulder', 'leftElbow', 'leftWrist', 'rightShoulder', 'rightElbow', 'rightWrist', 'leftHip', 'leftKnee', 'leftAnkle', 'rightHip', 'rightKnee', 'rightAnkle']）——无法建节点，拒绝转换"
+  ],
+  "warnings": [],
+  "checks": [
+    {
+      "id": "input_blocking_valid",
+      "title": "转换前置：blocking 数据可无损表示（关节词表/轨道引用/帧时间/rotation-only）",
+      "source_ref": "contracts/v2/checkpoint.schema.json#definitions/blocking + cheap-draft-and-programmatic-tools.md:57-59",
+      "result": "fail",
+      "detail": "存在不可无损转换的数据，未写出任何 .gltf",
+      "problems": [
+        "sequences[0](shot_neg_01): tracks[1].joint='leftThigh' 不在本序列 joint_names 词表内（track 引用不存在的关节；schema 16 关节词表=['hips', 'spine', 'neck', 'head', 'leftShoulder', 'leftElbow', 'leftWrist', 'rightShoulder', 'rightElbow', 'rightWrist', 'leftHip', 'leftKnee', 'leftAnkle', 'rightHip', 'rightKnee', 'rightAnkle']）——无法建节点，拒绝转换"
+      ],
+      "warnings": []
+    }
+  ]
+}

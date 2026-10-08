@@ -1,0 +1,54 @@
+{
+  "joint": "jaw",
+  "note": "口型层关键帧（ToonFlow track 形状：{joint, frames:[{time, rotation{x,y,z}}]}，欧拉 XYZ 弧度、相对父关节）。由 blocking_to_gltf.py --lip-layer 消费，写为 {shot}:jaw 节点（head 之下）的 rotation 通道。张合绕 x 轴。",
+  "frames": [
+    {
+      "time": 0.0,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "time": 0.2,
+      "rotation": {
+        "x": 0.18,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "time": 0.4,
+      "rotation": {
+        "x": 0.04,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "time": 0.6,
+      "rotation": {
+        "x": 0.22,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "time": 0.9,
+      "rotation": {
+        "x": 0.08,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "time": 1.2,
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  ]
+}

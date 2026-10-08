@@ -1,0 +1,107 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp5",
+  "artifact_type": "blocking",
+  "fingerprint": "b7a1c0de51fee9d70a41e64137993e97a944de5f9638e3a9d4eb4e2a52c0ffee",
+  "produced_by": "agent.blockingCompiler",
+  "produced_at": "2026-10-08T23:55:00Z",
+  "upstream_refs": [],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp5.gate.speech_fullbody_lip_layer",
+    "result": "pass",
+    "note": "cp5_gltf 口型层分支用例：speech_mode=independent_lip_layer（full-body 对白镜已声明独立口型层路径）——validate_cp5 ⑤ 判 pass 并附 warn 提示。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp5.gate.frame_time_monotonic",
+      "result": "pass",
+      "note": "全部轨道帧时间单调递增。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "sequences": [
+      {
+        "shot_id": "shot_lip_01",
+        "joint_names": [
+          "hips",
+          "spine",
+          "neck",
+          "head",
+          "leftShoulder",
+          "leftElbow",
+          "leftWrist",
+          "rightShoulder",
+          "rightElbow",
+          "rightWrist",
+          "leftHip",
+          "leftKnee",
+          "leftAnkle",
+          "rightHip",
+          "rightKnee",
+          "rightAnkle"
+        ],
+        "bone_length_constant": true,
+        "speech_mode": "independent_lip_layer",
+        "tracks": [
+          {
+            "joint": "head",
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              {
+                "time": 0.6,
+                "rotation": {
+                  "x": 0.08,
+                  "y": 0.12,
+                  "z": 0.0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              }
+            ]
+          },
+          {
+            "joint": null,
+            "frames": [
+              {
+                "time": 0.0,
+                "rotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              {
+                "time": 1.2,
+                "rotation": {
+                  "x": 0.0,
+                  "y": -0.15,
+                  "z": 0.0
+                }
+              }
+            ]
+          }
+        ],
+        "frame_count": 24,
+        "known_cuts": []
+      }
+    ]
+  },
+  "notes": "cp5_gltf 口型层分支用例（M1-W4）：full-body 对白镜（speech_mode=independent_lip_layer）。口型层 keyframe 在 blocking payload 之外（schema additionalProperties:false 装不下），由 lip_layer_jaw.json 经 --lip-layer 提供——预期额外写 {shot}:jaw 节点（head 之下）+ jaw 轨道。"
+}
