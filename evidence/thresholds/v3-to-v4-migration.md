@@ -178,3 +178,33 @@ contracts/、eval_run.py、golden_manifest.json 本次零改动。
   这是白皮书 §7 非目标 8 的要求，不是阈值管理员的裁量。
 - 本段效力对象是 M1 落地的 `src/gate/` 校验器；现行 `qc_orch*`/`qc_detectors_v2`/
   `eval_run.py` 不读 `checkpoints:` 段（本次验收 2/3 通过即为其零影响的实证）。
+
+---
+
+## 6. 追记（v4→v5，2026-10-08）：`checkpoints.cost.episode_budget` 段新增
+
+- 性质：**只增不改**——`version: 4→5` 一行替换 + `checkpoints:` 末尾新增 `cost.episode_budget`
+  两键；v3 段与 v4 既有 12 CP 段语义逐键相等（python 深比较实证）。
+- 批准：M2-W9 成本台账工程师按红线「判定数值不许硬编码、新键先报告主控」上报，主控
+  2026-10-08 当场批准按推导链落地。
+- 消费方：`src/cost/ledger.py` report 的「单集成本 vs 标准档 ×1.2」对照行
+  （TASK_v4 §4 M2 验收④）。
+
+| 键 | 值 | 来源口径 | 初值理由 / M2 校准 |
+|---|---|---|---|
+| `standard_episode_shots` | 24 | 白皮书 §4 成本可信度表「标准档 120s 单集 24 镜 × 280」行 | 档位定义非判定魔法数；M2 三样片（60s/30s/20s）实跑镜数≠24 时，对照行仍按标准档 24 镜口径算上限，实耗/上限比值即预算占用率 |
+| `budget_multiplier` | 1.2 | TASK_v4 §4 M2 验收④「单集成本 ≤ 标准档 ×1.2」 | 验收明数。M2 校准：×1.3 重试系数（白皮书 §4 同表「含 1.3 重试系数 ≈8,736」）在 M2 实测重试率落定后再议是否拆第二键 |
+
+- 推导口径（**不单存乘积，防第二套数值**）：单集预算上限 =
+  `standard_episode_shots × checkpoints.cp9.gate.credit_cap_per_shot × budget_multiplier`
+  = 24 × 280 × 1.2。阈值文件内不落总额字面量（新增注释与键值零 `8064`/`6720`）；
+  cp9 既有注释中的预算算式文字为 v4 原文，本次零改动。
+- 复跑留痕（G0-3 全绿）：
+  1. `git diff`：`1 file changed, 20 insertions(+), 1 deletion(-)`，删除行仅 `version: 4 …`；
+  2. `python overnight/vpipe/tests/run_v3_checks.py` → **ALL PASS，EXIT=0**；
+  3. `python overnight/vpipe/eval/eval_run.py --qc-dir overnight/vpipe/out/qc_reports_v3post`
+     → **ACCEPT，EXIT=0**（R=1.0 / FPR=0.25 / F1=0.9143 / B_flag=0.5833，误报仍
+     010/013/032 原 trio——判定行为零变化）；
+  4. `sha256sum overnight/vpipe/eval/thresholds.yaml` =
+     `a7f8808de916ad3edd59be99bef353f0c60ad74186b6b7f1a0d1af53ff303cfa`
+     与重生成的 `eval/eval_results.json.thresholds_sha256` 一致。

@@ -8,7 +8,14 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 4                   # 2026-10-08（v4）：末尾新增 checkpoints 段（12 CP 级 gate 参数，
+version: 5                   # 2026-10-08（v5）：checkpoints 下新增 cost.episode_budget 段
+                             #   （M2-W9 成本台账 report 的单集预算对照数值，主控 2026-10-08 批准；
+                             #   推导口径见该段注释——单集预算上限 = standard_episode_shots ×
+                             #   checkpoints.cp9.gate.credit_cap_per_shot × budget_multiplier，
+                             #   三键乘积实算，文件内不落总额字面量防第二套数值）；v3 段与 v4 既有
+                             #   12 CP 段一字未改，E10 合议与全部判定阈未动；run_v3_checks ALL PASS
+                             #   + eval ACCEPT 零偏差后生效（G0-3 sha256 对账同步 eval_results.json）。
+                             # 2026-10-08（v4）：末尾新增 checkpoints 段（12 CP 级 gate 参数，
                              #   逐键落实 contracts/v2/checkpoint.schema.json + examples/cp1..12.json
                              #   全部 params_ref 引用，键清单见该段头注释）；v3 段（ensemble/judges/
                              #   eval_admission/l0_preflight）一字未改——纯只增升版，J3_omnijev.thr
@@ -343,3 +350,15 @@ checkpoints:
                                         #   同值；周复核误杀/漏放并回滚权重=M2 校准机制）。
       retry_round_max: 2            # 成片门重试 ≤2 轮，仍不过→人工工单+标记结构性困难+进金标扩样
                                     #   队列（白皮书 §3 CP12 失败回退行原文「重试 ≤2 轮」）。
+  cost:                             # 成本台账（M2-W9 交付物 src/cost/ledger.py）单集预算对照数值段。
+                                    #   2026-10-08 主控批准新增（非 CP 工件门禁——ledger report 的
+                                    #   判定数值来源，SPEC_v2 §0 纪律 3 判定数值单点的台账形态）。
+    episode_budget:
+      standard_episode_shots: 24    # 标准档 120s 单集 24 镜（白皮书 §4 成本可信度表「标准档 120s 单集
+                                    #   24 镜 × 280 积分」行；档位定义，非判定魔法数）。
+      budget_multiplier: 1.2        # TASK_v4 §4 M2 验收④「单集成本 ≤ 标准档 ×1.2」上浮系数。
+                                    # 单集预算上限由三键乘积实算（report 对照行）：
+                                    #   standard_episode_shots × checkpoints.cp9.gate.credit_cap_per_shot
+                                    #   × budget_multiplier = 24 × 280 × 1.2；
+                                    #   不单存乘积防第二套数值；换通道/换价时只改 cp9 键与本段两键
+                                    #   （evidence/thresholds/v3-to-v4-migration.md CP9 行 M2 校准计划同口径）。
