@@ -1,0 +1,227 @@
+{
+  "task": "wan22-ti2v-5b-spike",
+  "host": "anolis-gpu-01",
+  "generated_at": "2026-10-09T03:27:39+0800",
+  "errors": [],
+  "git_head": "fdaa1cd386502dcbcf0f38f07f24edba9cd35b9b",
+  "model": {
+    "path": "/data/night/models/Wan2.2-TI2V-5B",
+    "repo_downloaded": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+    "dtype": "float16"
+  },
+  "params": {
+    "prompt_en": "An orange cat sits on a windowsill basking in the sun, with slow-moving clouds outside the window.",
+    "prompt_zh": "一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云",
+    "negative_prompt": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+    "height": 704,
+    "width": 1280,
+    "num_frames": 33,
+    "num_inference_steps": 50,
+    "guidance_scale": 5.0,
+    "seed": 42,
+    "fps_out": 24,
+    "resolution_note": "720P 档：官方 README「720P resolution of the Text-Image-to-Video task is 1280*704 or 704*1280」diffusers 用例 height=704,width=1280",
+    "steps_note": "官方 diffusers 用例 num_inference_steps=50 / guidance_scale=5.0"
+  },
+  "gpu": {
+    "name": "Tesla V100S-PCIE-32GB",
+    "capability": "7.0",
+    "bf16_supported": true,
+    "bf16_used": false,
+    "bf16_note": "torch 报 is_bf16_supported=True 为模拟路径（主控修正后口径），V100S 实跑仍全程 fp16"
+  },
+  "vae_scale_factors": {
+    "spatial": 16,
+    "temporal": 4
+  },
+  "pipeline": {
+    "class": "Wan22ModularPipeline",
+    "adapter": "manual component load + update_components (diffusers 0.39.0 from_pretrained 对 legacy 仓崩溃，见脚本头注)",
+    "boundary_ratio": 0.0,
+    "boundary_note": "TI2V-5B 单模型适配：t>=0 恒真 → 恒走 transformer 分支（官方单模型 CFG5.0 等价语义）",
+    "guidance_scale_config": 5.0,
+    "scheduler_class": "UniPCMultistepScheduler",
+    "transformer_class": "WanTransformer3DModel",
+    "transformer_dtype": "torch.float16",
+    "text_encoder_dtype": "torch.float16",
+    "vae_dtype": "torch.float16",
+    "vae_tiling": true,
+    "vae_tiling_config": {
+      "tile_sample_min_height": 256,
+      "tile_sample_min_width": 256,
+      "tile_sample_stride": null,
+      "use_tiling": true
+    },
+    "video_processor_scale": 16
+  },
+  "frames_layout": [
+    {
+      "src": "ndarray",
+      "in_shape": [
+        1,
+        33,
+        704,
+        1280,
+        3
+      ],
+      "out_shape": [
+        33,
+        704,
+        1280,
+        3
+      ]
+    },
+    {
+      "src": "ndarray",
+      "in_shape": [
+        1,
+        33,
+        704,
+        1280,
+        3
+      ],
+      "out_shape": [
+        33,
+        704,
+        1280,
+        3
+      ]
+    },
+    {
+      "src": "ndarray",
+      "in_shape": [
+        1,
+        33,
+        704,
+        1280,
+        3
+      ],
+      "out_shape": [
+        33,
+        704,
+        1280,
+        3
+      ]
+    }
+  ],
+  "quality": {
+    "run_en": {
+      "nan_count": 0,
+      "black_frames_lt2": 0,
+      "black_frame_ratio": 0.0,
+      "frame_mean_min": 119.851,
+      "frame_mean_max": 120.306,
+      "frame_mean_overall": 120.015
+    },
+    "run_en_2nd": {
+      "nan_count": 0,
+      "black_frames_lt2": 0,
+      "black_frame_ratio": 0.0,
+      "frame_mean_min": 119.851,
+      "frame_mean_max": 120.306,
+      "frame_mean_overall": 120.015
+    },
+    "run_zh": {
+      "nan_count": 0,
+      "black_frames_lt2": 0,
+      "black_frame_ratio": 0.0,
+      "frame_mean_min": 128.405,
+      "frame_mean_max": 132.582,
+      "frame_mean_overall": 130.457
+    }
+  },
+  "timing_s": {
+    "load": 12.0,
+    "gen_run_en": 229.5,
+    "gen_run_en_2nd": 230.1,
+    "gen_run_zh": 230.63,
+    "encode_en_run1": 1.268,
+    "encode_en_run2": 0.98,
+    "encode_zh": 1.039,
+    "total": 713.26
+  },
+  "vram": {
+    "baseline_used_mib": 618,
+    "nvidia_smi_max_used_mib_card0": 25640,
+    "nvidia_smi_delta_mib_card0": 25022,
+    "card1_max_used_mib_untouched": 26706,
+    "torch_peak_allocated_mib_load": 23657.8,
+    "torch_peak_allocated_mib_run_en": 24681.6,
+    "torch_peak_allocated_mib_run_en_2nd": 24681.6,
+    "torch_peak_allocated_mib_run_zh": 24681.6,
+    "nvidia_smi_samples": 353
+  },
+  "output": {
+    "path": "/data/night/g01-rerun/video-capability/evidence/spike/wan22_out.mp4",
+    "size_bytes": 641016,
+    "sha256": "8380f5dad7559d6abdfa8ba4abbf1aad14ab1c61f5aeb269cfdea8b71c4e7463",
+    "ffprobe": {
+      "codec_name": "h264",
+      "pix_fmt": "yuv420p",
+      "width": 1280,
+      "height": 704,
+      "avg_frame_rate": "24/1",
+      "nb_frames": "33",
+      "duration_s": 1.375,
+      "bit_rate": "3729547",
+      "rc": 0
+    },
+    "second_encode": {
+      "path": "/data/night/g01-rerun/video-capability/evidence/spike/wan22_out_encode2.mp4",
+      "size_bytes": 641016
+    },
+    "zh_output": {
+      "path": "/data/night/g01-rerun/video-capability/evidence/spike/wan22_out_zh.mp4",
+      "size_bytes": 875293,
+      "md5": "598bfa0bad48b9e220e40a38d61264f5",
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 1280,
+        "height": 704,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "5092613",
+        "rc": 0
+      }
+    },
+    "end_to_end_decode": {
+      "decoded_frames": 33,
+      "black_frames_lt2": 0,
+      "frame_mean_min": 113.026,
+      "frame_mean_overall": 113.253,
+      "decode_rc": 0
+    }
+  },
+  "determinism": {
+    "encode_md5_run1": "6c9d2ffaaf673193f54056dce59d5338",
+    "encode_md5_run2": "6c9d2ffaaf673193f54056dce59d5338",
+    "encode_md5_equal": true,
+    "frame_sample_indices": [
+      0,
+      8,
+      16,
+      24,
+      32
+    ],
+    "mae_per_sample": {
+      "0": 0.0,
+      "8": 0.0,
+      "16": 0.0,
+      "24": 0.0,
+      "32": 0.0
+    },
+    "mae_mean_sampled": 0.0,
+    "mae_all_frames": 0.0,
+    "note": "MAE=0 表示同 seed 逐比特可复现；>0 表示该硬件/内核路径存在非确定性"
+  },
+  "l0_precheck_substitute": {
+    "criterion": "black_frame_ratio<=0.5 (替代黑场时长占比) AND duration_dev<=2% (expect 33/24=1.375s)",
+    "black_frame_ratio": 0.0,
+    "duration_s": 1.375,
+    "duration_dev": 0.0,
+    "passed": true
+  },
+  "ok": true
+}

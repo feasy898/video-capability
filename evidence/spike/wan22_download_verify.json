@@ -1,0 +1,195 @@
+{
+ "checked_at": "2026-10-09T01:12:49+0800",
+ "files": [
+  {
+   "path": ".gitattributes",
+   "status": "OK",
+   "size": 2137,
+   "sha256": null
+  },
+  {
+   "path": "assets/comp_effic.png",
+   "status": "OK",
+   "size": 202156,
+   "sha256": null
+  },
+  {
+   "path": "vae/config.json",
+   "status": "OK",
+   "size": 1701,
+   "sha256": null
+  },
+  {
+   "path": "transformer/config.json",
+   "status": "OK",
+   "size": 495,
+   "sha256": null
+  },
+  {
+   "path": "text_encoder/config.json",
+   "status": "OK",
+   "size": 855,
+   "sha256": null
+  },
+  {
+   "path": "configuration.json",
+   "status": "OK",
+   "size": 74,
+   "sha256": null
+  },
+  {
+   "path": "transformer/diffusion_pytorch_model-00001-of-00005.safetensors",
+   "status": "OK",
+   "size": 4978254344,
+   "sha256": "511bec832a201caa410d09c5ce7dbbf8ad2708c345d82038f684fc74cce982be"
+  },
+  {
+   "path": "transformer/diffusion_pytorch_model-00002-of-00005.safetensors",
+   "status": "OK",
+   "size": 4846784976,
+   "sha256": "7c42724912b1911429125dc50c0e9a49ccbada5a601b657d4ed2e15e7597c193"
+  },
+  {
+   "path": "transformer/diffusion_pytorch_model-00003-of-00005.safetensors",
+   "status": "OK",
+   "size": 4972658392,
+   "sha256": "e9c3d0c76de786566382f8258101fea973ae37681c6e9fe0e5fe1fb93b806424"
+  },
+  {
+   "path": "transformer/diffusion_pytorch_model-00004-of-00005.safetensors",
+   "status": "OK",
+   "size": 4846785080,
+   "sha256": "a331121771790939678db6f585553fd5184609f7d02593c699a4d241b0d834c5"
+  },
+  {
+   "path": "transformer/diffusion_pytorch_model-00005-of-00005.safetensors",
+   "status": "OK",
+   "size": 354751840,
+   "sha256": "78b655685c47efdb2349f36826bb101264e9f212a16325d584aeb5f53c88e719"
+  },
+  {
+   "path": "vae/diffusion_pytorch_model.safetensors",
+   "status": "OK",
+   "size": 2818777808,
+   "sha256": "62cd18f19438e35b32ac63020e2852f566e9b02f46b6cdbd87972a356e3c6f4b"
+  },
+  {
+   "path": "transformer/diffusion_pytorch_model.safetensors.index.json",
+   "status": "OK",
+   "size": 73297,
+   "sha256": null
+  },
+  {
+   "path": "examples/i2v_input.JPG",
+   "status": "OK",
+   "size": 250628,
+   "sha256": null
+  },
+  {
+   "path": "assets/logo.png",
+   "status": "OK",
+   "size": 56322,
+   "sha256": null
+  },
+  {
+   "path": "text_encoder/model-00001-of-00003.safetensors",
+   "status": "OK",
+   "size": 4935812536,
+   "sha256": "a8e861969c7433e707cc5a74065d795d36cca07ec96eb6763eb4083df7248f58"
+  },
+  {
+   "path": "text_encoder/model-00002-of-00003.safetensors",
+   "status": "OK",
+   "size": 4983103192,
+   "sha256": "d57d948ece4837d850b7a859a4415121d57cacf8b9ee1d4db200c67f592902d7"
+  },
+  {
+   "path": "text_encoder/model-00003-of-00003.safetensors",
+   "status": "OK",
+   "size": 1442935480,
+   "sha256": "0da9ee284e21d1406df708788db1d502d95d75f69faa25cd26151bf8829b7c5f"
+  },
+  {
+   "path": "text_encoder/model.safetensors.index.json",
+   "status": "OK",
+   "size": 22476,
+   "sha256": null
+  },
+  {
+   "path": "model_index.json",
+   "status": "OK",
+   "size": 499,
+   "sha256": null
+  },
+  {
+   "path": "assets/moe_2.png",
+   "status": "OK",
+   "size": 527914,
+   "sha256": null
+  },
+  {
+   "path": "assets/moe_arch.png",
+   "status": "OK",
+   "size": 74900,
+   "sha256": null
+  },
+  {
+   "path": "assets/performance.png",
+   "status": "OK",
+   "size": 306535,
+   "sha256": null
+  },
+  {
+   "path": "README.md",
+   "status": "OK",
+   "size": 17633,
+   "sha256": null
+  },
+  {
+   "path": "scheduler/scheduler_config.json",
+   "status": "OK",
+   "size": 820,
+   "sha256": null
+  },
+  {
+   "path": "tokenizer/special_tokens_map.json",
+   "status": "OK",
+   "size": 7079,
+   "sha256": null
+  },
+  {
+   "path": "tokenizer/spiece.model",
+   "status": "OK",
+   "size": 4548313,
+   "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458"
+  },
+  {
+   "path": "tokenizer/tokenizer.json",
+   "status": "OK",
+   "size": 16837459,
+   "sha256": "20a46ac256746594ed7e1e3ef733b83fbc5a6f0922aa7480eda961743de080ef"
+  },
+  {
+   "path": "tokenizer/tokenizer_config.json",
+   "status": "OK",
+   "size": 61758,
+   "sha256": null
+  },
+  {
+   "path": "assets/vae.png",
+   "status": "OK",
+   "size": 165486,
+   "sha256": null
+  }
+ ],
+ "mismatches": [],
+ "summary": {
+  "manifest_files": 30,
+  "ok": 30,
+  "missing_or_mismatch": 0,
+  "extra_local_files": [],
+  "total_bytes_downloaded": 34203022185,
+  "total_GiB": 31.854,
+  "verify_wall_s": 106.1
+ }
+}

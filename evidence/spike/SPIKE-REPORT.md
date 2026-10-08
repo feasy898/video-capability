@@ -118,3 +118,124 @@
 - 判别证据：`ltx_diag.json` / `ltx_diag_round2.json` / `ltx_diag_round3.json` + 11 张中帧 PNG（`ltx_diag_f16_*.png`、`preview_f{0,16,32}.png`）+ 各变体 mp4
 - 脚本与日志：`ltx_baseline.py` / `ltx_baseline.log` / `ltx_diag_round2.py` / `ltx_diag_round3.py` / 各轮 .log
 - 失败存档：`ltx_baseline.json.attempt1`（首轮 fatal 记录，§5）
+
+## 7. Wan2.2-TI2V-5B spike（Wan2.2 节，追加——任务书所称「§6」因报告已有 §6 产物清单，顺延为 §7）
+
+- 执行：2026-10-08 23:34 – 10-09 03:42 (+0800)，卡 0（CUDA_VISIBLE_DEVICES=0），权重 31.854 GiB 实测落盘
+- 授权：TASK_v4 §8 决策 2026-10-08-e（解除 20GB 下载自限，纪律不变：仅卡 0 / 跑前复测 / 不 kill / 不 pip install）
+- 运行时不变（torch 2.7.0+cu126 / diffusers 0.39.0 / modelscope 1.40.1）；git HEAD 实测 `fdaa1cd`——**较主控最新（e322c37，含 b72ca96 授权记录）落后 3 个提交**，均为 docs/evidence/J1 收编提交，不影响本 spike；授权以任务书原文为准，未在 GPU 机整仓 pull（遵守「GPU 机上只写 evidence/spike/ 与模型目录」红线）
+
+### 7.1 任务 1：下载对账（完成，波折如实记录）
+
+**落盘结果：30 个文件（blob）/ 34,203,022,185 字节 = 31.854 GiB，逐文件 sha256 对 ModelScope manifest 全量匹配（wan22_download_verify.json），无多余文件。**
+
+| 口径 | 文件数 | 体积 | 说明 |
+|---|---|---|---|
+| 主控预期 | 14 | 31.83 GiB | 与两仓实测均不符，14 的来源无法复原 |
+| ModelScope API 实测·原始仓 `Wan-AI/Wan2.2-TI2V-5B` | 26 blob | 31.854 GiB | 无 model_index.json，diffusers 0.39.0 不可直载（§3(a) 预警的「适配层」本体） |
+| ModelScope API 实测·`Wan-AI/Wan2.2-TI2V-5B-Diffusers` | 30 blob（API 列 37 项含 7 个目录节点） | 31.854 GiB | **实际下载仓**：带 model_index.json 子目录布局 |
+| **实得（=Diffusers 仓）** | **30** | **31.854 GiB** | 字节与主控预期差 +0.024 GiB（+0.08%），文件数差 +16 |
+
+下载仓替换说明（与任务书「Wan-AI/Wan2.2-TI2V-5B」字面不同，须主控知悉）：两仓**同权重同体积**（transformer 18.625 + T5 10.582 + VAE 2.625 GiB 完全同源），但原始仓是 ComfyUI 式布局（.pth T5/VAE + 根级分片 safetensors、无 model_index.json），diffusers 0.39.0 的 Wan22ModularPipeline 无法加载，手写转换器工作量与失败风险大；磁盘 45G 只容一仓，故选 Wan-AI 官方发布的 Diffusers 打包仓落红线许可路径 `/data/night/models/Wan2.2-TI2V-5B/`。完整性不依赖此选择：全部 30 文件 sha256 对 ModelScope manifest（内容寻址）逐文件核验通过。
+
+下载时间线（wan22_fetch.log 全程留痕）：
+1. 23:34 modelscope CLI 发车 → 实测聚合 **290 KB/s**（31.8GiB 需 ~33h，主控预估 ~11MB/s 不成立）→ 弃用（杀的是自己 10 分钟前起的下载进程，非 GPU/他人进程）。
+2. 23:44/23:49 自写抓取 v1/v2 两次脚本错误（xargs -I 行解析、漏 import threading）→ 23:52 v3（curl 直连 cdn-lfs-cn-1，3 并发 + 断点续传）起步 **10 MB/s**。
+3. 累计 ~15GB 后 ModelScope CDN 限速至 **182 KB/s/连接**（实测），切换 hf-mirror.com（单连接实测 **8.88 MB/s**，HTTP 206 正常）→ v4 4 并发。
+4. v3 被停时 3 个 curl 孤儿进程继续写 → 与 v4 双写竞态致 transformer 分片 00004/00005、VAE 超长损坏（got>want 24.7MB/49KB）→ 杀孤儿、删 3 文件、单源重拉。
+5. 01:10:55 全部 30/30 完成，01:12:41 sha256 对账 30/30 OK（106s）。总窗口 96.8 min（纯传输约 73 min，有效均速 ~7.2 MiB/s）。
+
+### 7.2 diffusers 0.39.0 × Wan2.2 的四处不兼容（适配层实证，均在内存中绕过、零 site-packages/模型目录改动）
+
+| # | 缺陷 | 现象 | 绕过 |
+|---|---|---|---|
+| 1 | `ModularPipeline.from_pretrained` 对仅有 model_index.json 的 legacy 仓直接崩 | `UnboundLocalError: blocks_class`（modular_model_index.json 缺失时 `_blocks_class_name` 分支未赋值；load_config 把 model_index.json 当 modular config 读回） | 手动加载 5 组件（WanTransformer3DModel/UMT5EncoderModel/AutoTokenizer/AutoencoderKLWan/UniPCMultistepScheduler，全 fp16）+ `update_components` 注入 |
+| 2 | `Wan22LoopDenoiser` 按 A14B MoE 双专家写死 | `t<boundary` 取 `transformer_2`=None → 首个低噪步 `'NoneType' object is not callable`（TI2V-5B 单模型，model_index 中 transformer_2=null） | `update_components(boundary_ratio=0.0)` 使 t≥0 恒走 transformer + guider(CFG 5.0)，等价官方单模型语义（注：首试误设 1.1 方向搞反即崩，如实记录） |
+| 3 | `vae_scale_factor_spatial` 属性用 Wan2.1 启发式 `2**len(temperal_downsample)=8` | Wan2.2 VAE config 显式 `scale_factor_spatial:16` → latents 算大 4×（88×160 而非 44×80）：解码出 1408×2560（目标 2 倍边长）、denoise 多耗 9.15×（38.3→4.19 s/it） | 运行时改类属性 property 读 config（内存补丁） |
+| 4 | `VideoProcessor` from_config 默认 `vae_scale_factor=8` | 与 #3 同源的后处理缩放错误 | `update_components(video_processor=VideoProcessor(vae_scale_factor=16))` |
+
+另：720P 全帧 fp16 VAE 解码 OOM（需 1.72GiB、仅剩 220MiB；denoise 峰值后 27.81GiB 已分配）→ `vae.enable_tiling()`（tile 256×256，Wan 类模型产线标准配置）后通过。
+
+### 7.3 spike 指标（wan22_baseline.json，ok=true，errors=[]）
+
+配置：EN/ZH 双 prompt（语义等价）+ 官方 README 中文负向词 / **704×1280（720P 档官方口径，README:124,166-167）** / 33 帧 / **50 步（官方 diffusers 用例值）** / CFG 5.0（guider 配置默认） / seed 42 / 全组件 fp16（V100S cc7.0，bf16 禁用） / 24fps 导出 / VAE tiling。
+
+| 指标 | 值 |
+|---|---|
+| 加载（page cache 热） | 12.0s |
+| **生成墙钟（含 tiling 解码）** | **EN 229.5s / EN二遍 230.1s / ZH 230.6s**（4.19s/it × 50 + 解码 ~40s） |
+| **峰值显存·nvidia-smi 全卡（353 次采样）** | **25,640 MiB = 25.04 GiB**（基线 618MiB，Δ25.02GiB） |
+| 峰值显存·torch allocated | 24,681.6 MiB（load 阶段 23,657.8） |
+| 黑帧 / NaN | **0 / 0**（三跑生成张量帧均值 EN 119.85–120.31、ZH 128.41–132.58） |
+| ffprobe 三元组 | h264 / yuv420p / **1280×704** / 24fps / 33 帧 / 1.375s / 3.73 Mbps（EN）；ZH 5.09 Mbps |
+| sha256 | wan22_out.mp4 `8380f5da…c4e7463`（641,016 B） |
+| 确定性·编码 | 两遍 md5 相同 `6c9d2ffa…` ✓ |
+| 确定性·生成 | 同 seed 二遍 5 帧抽样 + 全帧 **MAE 全 0.0（逐比特复现）** ✓ |
+| 端到端回检 | ffmpeg 解码 33 帧，0 黑帧 ✓ |
+| **L0 预检（替代口径）** | **passed=true**（黑帧率 0.0 ≤50% + 时长偏差 0.0% ≤2%；vpipe L0 未接入，沿用任务书允许的黑帧率+ffprobe 替代，与 §4 LTX 同口径） |
+
+### 7.4 中英 prompt 对照·人检（preview_wan22_en_mid.png / preview_wan22_zh_mid.png，本执行员目检）
+
+- **EN 帧**：橘猫背影坐窗台、窗外蓝天白云+绿色丘陵、木窗框、暖阳光——prompt 语义元素全部到位，构图完整，色彩正常，720P 细节清晰，未见可见伪影。
+- **ZH 帧**：「一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云」语义同样完整成立（橘猫/窗台/窗外云层与绿野/暖光），阴天观感、玻璃反光感、构图略异，同样可用，无糊斑无语义崩坏。
+- **裁决：UMT5 中文直喂可用**——与 LTX 的发现 A（T5-XXL 中文 100% 糊斑、必须加翻译层）形成决定性对比；若 T2 升 Wan，翻译层可以不建。
+
+### 7.5 M0-W2 门槛判定（主控判据：峰值 <30GB + 黑帧率 0 + ≥1 条过 L0 + 720P/24fps 成立）
+
+| 门槛 | 判定 | 证据 |
+|---|---|---|
+| 峰值 <30GB | **✓ 25.04 GiB**（nvidia-smi 全卡；torch 口径 24.10 GiB） | vram.*，353 次采样 |
+| 黑帧率 0 | **✓ 0/33**（三跑均 0） | quality.* |
+| ≥1 条过 L0 | **✓ EN 主条 passed**（替代口径，同 §4） | l0_precheck_substitute |
+| 720P/24fps 直出成立 | **✓ 1280×704@24fps 33 帧原生直出**（无插帧/超分） | output.ffprobe |
+
+**四项全过。** 对照白皮书 §6 M0-W2 原话（`research/2026-10-08/工业化视频流水线-白皮书.md:343`「若过，产线从 480P/16fps 直上 720P/24fps，插帧与超分（E12）可能整段砍掉」）。
+
+### 7.6 与 LTX-2B 的对照表（同机同卡同 venv，§1 LTX 数据 vs 本节）
+
+| 维度 | LTX-2B（0.9.1） | Wan2.2-TI2V-5B | 差异 |
+|---|---|---|---|
+| 原生分辨率/帧率 | 704×480 @24fps 导出 | **1280×704 @24fps 原生** | 像素 2.67×，720P 直出（E12 可砍的前提） |
+| 生成墙钟/条 | 5.39s（15 步） | **229.5s（50 步官方档）** | **42.6×**；同 33 帧口径 |
+| 归一 | 0.163 s/帧；0.359 s/step | 6.96 s/帧；4.59 s/step | 逐帧 42.6×，逐 step 12.8×（含 2.67× 像素） |
+| 峰值显存 | 18.34 GiB | **25.04 GiB** | +6.7GiB；32GB 卡上与常驻服务共存余量收窄 |
+| 黑帧/NaN | 0 / 0 | 0 / 0 | 持平 |
+| 同 seed 复现 | MAE 0.0 逐比特 | MAE 0.0 逐比特 | 持平（白皮书原则二利好保持） |
+| 编码确定性 | md5 一致 | md5 一致 | 持平 |
+| 中文 prompt | **100% 糊斑（不可用）** | **可用（人检成立）** | **UMT5 中文支持成立，翻译层可不建** |
+| 色彩 | 蓝偏固有（checkpoint 级，不可修） | 正常（人检） | LTX 最大质量缺陷在 Wan 不存在 |
+| 语义质量 | 结构成立但色彩废 | 语义/色彩/细节三全 | 质量档跃升 |
+| 栈适配成本 | 开箱即用 | **需四点适配层**（§7.2）+ VAE tiling | diffusers 0.39.0 的债，须固化进仓 |
+
+（注：LTX 白皮书记录 76.7s/条为 121 帧档不同口径，不能直接比；此处两列均为本次 33 帧同题实测。）
+
+### 7.7 T2 层升级裁决建议（供主控裁决）
+
+**按主控预设判据：M0-W2 四项门槛全过 → 建议「升」，但以「有条件升」落地，条件如下（均为本次实测的一手证据）：**
+
+1. **720P/24fps 直出成立**：25.04GiB 峰值、黑帧 0、L0 过、原生 1280×704@24fps——白皮书 §6 的「E12 插帧/超分整段砍掉」前提满足。质量上语义/色彩/细节三全（人检两帧），且 LTX 的两大质量硬伤（中文糊斑、固有色偏）在 Wan 上均不存在，**中英 prompt 均可直喂，翻译层可省**。
+2. **代价如实（速度）**：官方 50 步档 229.5s/条（LTX 的 42.6×，0.163→6.96 s/帧）。草稿层若按此默认档吞吐将降 42×——**升默认的前提是接受草稿层变慢**，或后续测降步数档（15/30 步、CFG=1.0 提速路径本次未测，不敢报数）；另显存余量 25.04/32GB，卡 0 上再叠常驻服务的空间比 LTX（18.34）收窄 6.7GiB。
+3. **工程条件**：§7.2 的四处适配（手动组件加载、boundary_ratio=0.0、两个 scale_factor 修正）+ VAE tiling 必须先固化为仓内适配层并加回归用例——本次全靠脚本内内存补丁，`Wan22ModularPipeline.from_pretrained` 官方路径在 diffusers 0.39.0 上对 TI2V-5B 实际不可用（换 diffusers 新版含 legacy Wan22 支持是另一条更干净的路径，但属新依赖决策）。
+4. **未测项（不装作已测）**：I2V 档（Wan22Image2Video 通道）、121 帧满档、fp16 下长程稳定性（3 条短跑 NaN=0 不足以外推）、批量吞吐与超时行为、VRAM 25GiB 与卡 0 现有 306MiB 常驻进程长期共存的 OOM 边界。
+
+### 7.8 失败与重跑清单（全程如实）
+
+| # | 发车 | 结果 | 处置 |
+|---|---|---|---|
+| 1 | 01:16 | from_pretrained UnboundLocalError 崩 | 改手动组件加载 |
+| 2 | 01:19 | 50 步中第 ~13 步 transformer_2=None 崩（boundary 0.875 默认） | 判定 MoE 双专家缺陷 |
+| 3 | 01:40 | boundary=1.1（方向误判）首步即崩 | 修正为 0.0 |
+| 4 | 01:51 | 50 步跑完但 VAE 解码 OOM（未 tiling + latents 4× 偏大） | enable_tiling + expandable_segments |
+| 5 | 02:30 | 生成完成但输出 1408×2560（scale 8 误算）→ 形状断言失败 | 查出 vae_scale_factor_spatial 启发式缺陷 |
+| 6 | 03:07 | 发车瞬间卡 0 读到 9,158MiB（上轮进程退出瞬态）>1GB 门槛 | **主动停掉自己 15s 前的进程**，回落后合规重发（红线执行记录） |
+| 7 | 03:09 | 仍 38.3s/it（VideoProcessor 不影响 latents 计算）→ 主动停 | 深挖出 #3 属性缺陷 |
+| 8 | 03:19 | KeyError（脚本内 RESULT 键序 bug） | 修正 |
+| 9 | 03:27 | **成功**：ok=true，713.3s 全程 | — |
+
+红线执行：仅卡 0（每轮发车前 nvidia-smi 内联复测，除 #6 瞬态 9,158MiB 当轮主动废止外全部 ≤1GB 才发车）；卡 1 全程 26,706–26,708MiB 一个字节未动；未 kill 任何他人/GPU 进程（仅自身的下载/发车进程 5 次，均记录在案）；未 pip install；除 Wan 权重外无 >1GB 下载；产物全 644（find 实测 18 个 wan22* 文件全 644）；GPU 机写入仅 evidence/spike/ 与 /data/night/models/Wan2.2-TI2V-5B/。
+
+### 7.9 本节产物（evidence/spike/，均 644）
+
+- **核心交付**：`wan22_baseline.json`（结构化指标，ok=true）、`wan22_out.mp4`（EN 正片 720P，sha256 8380f5da…）、`wan22_out_zh.mp4`（ZH 对照）、`preview_wan22_{en,zh}_mid.png`（人检帧）
+- 下载对账链：`wan22_manifest.json/.tsv`（ModelScope API size+sha256 基准）、`wan22_download_verify.json`（30/30 全对账）、`wan22_fetch.log`（全时间线）、`wan22_fetch.py`（v4 终版）、`wan22_fetch.sh`（v1 失败存档）、`wan22_download.log`（CLI 尝试）
+- 脚本与日志：`wan22_baseline.py`（含四点适配层与脚本头注释）、`wan22_baseline.log`、`wan22_build_manifest.py`、`wan22_download_verify.py`
