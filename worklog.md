@@ -34,3 +34,20 @@
 - GPU 解锁：owner 授权「GPU 没在跑就直接用」。卡 0 当前 310MiB/util 0%，spike 改卡 0 执行
   （跑前复测纪律保留；卡 1 不碰）。M1 第一批规则校验器（CP2/CP3/CP5/CP6/CP11，纯代码零 GPU）
   与 GPU spike（LTX 基线+Wan2.2-5B）双工作流并行派发（GLM-5.3-Flash 工作代理，主控验收模式）。
+
+# worklog append — v4 M1 收官与 M2 开工（2026-10-08 深夜~10-09）
+
+- M1 三段全部验收入库：批一 5 校验器（1c93987，主控修 4 处：CP3 fail-closed/指纹口径/
+  schema during/gate.result pending，全量回归 42→51/0）；批二 glTF 往返+像素回归
+  （410820b/a6d39a4，3 用例两遍 md5 逐字节一致）；M3-a CP11 夹具 2+3/validate_cp12/
+  收敛曲线（638644d，79 单测）。验收方法论备忘：shell `$?` 不得置于 `$(...)` 命令替换
+  之后（三次误报均因此），回归脚本 ec=$? 先存口径为正解。
+- M2-a 短剧线 CP1→CP6 工件链验收通过（c533e8b）：《雨夜合约》EP1，11 镜/60s/1440 帧守恒，
+  5 工件指纹实算+链式引用逐环核对+4 门禁 exit 全 0；cp1 的 owner 确认 pilot pending。
+- spike 与判据修正：LTX-2B 5.39s/条/18.34GiB/MAE=0（决策 f：英文 prompt 层+色偏限草稿用途）；
+  bf16 判据修正（b72ca96：torch2.7 SM70 is_bf16_supported=True 模拟路径，四模型出局真因显存）；
+  Wan2.2-TI2V-5B 31.83GiB 下载授权（决策 e）后 spike 进行中。
+- TTS（38bd887：15 单测+真实调用 200+401 负控制；延迟 122.7s/次→CP10 需并行化）、
+  判官收编（e322c37 glm8_batch.py+Zhipu key 闭环）、成本台账（476fea1：28 单测+thresholds
+  v5+8064 三键乘积推导）、样片结构（3 条 structure.json+Σ 时长对账）。
+- 累计提交 20 笔；进行中：Wan2.2 spike、M2-b CP7 草稿（11 镜英文 prompt）。待 owner：Vidu key。
