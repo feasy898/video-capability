@@ -1,0 +1,132 @@
+{
+  "schema": "cp7_prompts/1.0",
+  "work_id": "shortdrama_ep01",
+  "generated_at": "2026-10-09T00:19:06+0800",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "pipeline": "LTXPipeline",
+    "dtype": "float16"
+  },
+  "params": {
+    "height": 480,
+    "width": 704,
+    "fps": 24,
+    "duration_frames": 33,
+    "steps": 15,
+    "guidance": 3.0,
+    "seed_rule": "42 + shot ordinal (1-based): shot_01->43 ... shot_11->53"
+  },
+  "hard_conditions_ref": "evidence/spike/SPIKE-REPORT.md §1 发现A(英文层)/发现B(色偏固有)",
+  "shots": [
+    {
+      "shot_id": "shot_01",
+      "action_zh": "雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍小满面部大特写，水珠沿发梢滴落",
+      "prompt_en": "Extreme close-up at a low angle: a young woman pushes open a heavy wooden door of an old mansion on a rainy night and steps into the foyer, her face filling the frame, backlit by the glowing rain curtain behind her, water droplets dripping from her hair, static camera, shallow depth of field",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 43,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_02",
+      "action_zh": "林父举杯的手停在半空，杯中酒晃出涟漪；镜头缓推越过杯沿，他抬手示意门口保安，宾客回头",
+      "prompt_en": "Medium shot at a crowded banquet: an elderly man in a dark suit freezes with a raised wine glass, red wine rippling in the bowl, the camera slowly pushing in over the rim of the glass as he lifts his other hand to beckon a guard at the door, guests turning their heads",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 44,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_03",
+      "action_zh": "小满把修车扳手放上白桌布，金属反光划过扳手轮廓特写，镜头缓推但不离开扳手，扳手金属体不形变",
+      "prompt_en": "Close-up: a young woman places a steel wrench on a white tablecloth, light glinting along the rigid metal body, the camera slowly pushing in while staying locked on the wrench, the banquet hall melted into soft bokeh behind",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 45,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_04",
+      "action_zh": "林父把合约文件拍在桌面，手指重重点在签名栏，合约纸面特写压住半个画面，纸面文字不作为可读元素呈现",
+      "prompt_en": "Close-up: an elderly man slams a contract dossier onto the table and presses his finger hard on the signature line, the paper sheet dominating half of the frame with soft illegible printed lines, static camera, dramatic side light",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 46,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_05",
+      "action_zh": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景一镜不切",
+      "prompt_en": "Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each other across a banquet table, she slides the last page of a contract across the table with one fingertip, both in frame, no cuts",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 47,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_06",
+      "action_zh": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化，镜头缓推压向瞳孔",
+      "prompt_en": "Extreme close-up: an elderly man's eyes widen and his pupil contracts in shock, his fingers trembling as they pinch the paper page, guests behind him blurred into round bokeh, the camera slowly pushing in toward his eye",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 48,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_07",
+      "action_zh": "同机位前后对切：左半幅五年前汽修工装沾油渍，右半幅今日董事西装笔挺，眼神不变",
+      "prompt_en": "Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit, the same steady unwavering gaze in both halves",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 49,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_08",
+      "action_zh": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，手持微晃低机位拍他失神的脸",
+      "prompt_en": "Handheld medium close-up from a low angle with a slight shake: an elderly man staggers half a step and grips the table edge, his wine glass topples and red wine soaks into the white tablecloth, his face draining into blank shock",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 50,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_09",
+      "action_zh": "小满缓步逼近镜头，竖屏面部大特写逐渐占满画面，身后满堂宾客虚成光斑，跟移不脱焦",
+      "prompt_en": "Extreme close-up tracking shot: a young woman walks slowly straight toward the camera, her face gradually filling the frame while a hall full of guests dissolves into glowing bokeh behind her, the camera gliding backward with her, focus locked on her eyes",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 51,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_10",
+      "action_zh": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉，固定机位不给他镜头遮羞",
+      "prompt_en": "Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated, white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 52,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    },
+    {
+      "shot_id": "shot_11",
+      "action_zh": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，镜头拉出至门厅全景，雨幕重新合拢",
+      "prompt_en": "Wide shot: a young woman downs her drink in one gulp with the glass tilted fully vertical, turns and walks out through the front door, the camera pulling back and rising to reveal the whole mansion foyer as the rain curtain closes behind her silhouette",
+      "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+      "seed": 53,
+      "duration_frames": 33,
+      "guidance": 3.0,
+      "steps": 15
+    }
+  ]
+}

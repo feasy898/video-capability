@@ -1,0 +1,24 @@
+{
+  "shot_id": "shot_05",
+  "asset": "shot_05.draft.mp4",
+  "ts": "2026-10-09T00:18:28+0800",
+  "thresholds_ref": "eval/thresholds.yaml:178-181 l0_preflight",
+  "checks": {
+    "black_frames_tensor_lt2": 0,
+    "black_frames_decoded_lt2": 0,
+    "nan_count_tensor": 0,
+    "duration_dev": 0.0,
+    "duration_dev_max": 0.02,
+    "black_frame_ratio": 0.0,
+    "black_frame_ratio_max": 0.5,
+    "ffprobe_triple": {
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "wh": "704x480",
+      "fps": "24/1",
+      "nb_frames": "33",
+      "nb_frames_type": "string(fixup: int() 比较后判定)"
+    }
+  },
+  "accepted": true
+}

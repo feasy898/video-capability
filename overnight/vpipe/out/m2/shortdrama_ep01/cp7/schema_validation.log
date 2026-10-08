@@ -1,0 +1,22 @@
+# CP7 schema validation log — 2026-10-09T00:22:35+08:00
+# cwd=/home/pan-ding/workspace/视频能力
+# 命令口径 = SPEC_v2.md:145 canonical: python3 -c "import json,jsonschema,pathlib; s=json.loads(pathlib.Path('overnight/vpipe/contracts/v2/checkpoint.schema.json').read_text()); jsonschema.validate(artifact, s)"
+
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_01.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_02.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_03.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_04.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_05.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_06.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_07.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_08.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_09.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_10.json
+EXIT=0 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_shot_11.json
+
+--- aggregate（任务书要求形态 payload.shots[]）---
+EXIT=1 overnight/vpipe/out/m2/shortdrama_ep01/cp7.json
+
+--- aggregate 校验错误详情（jsonschema.ValidationError 摘要）---
+ValidationError: {'schema_version': '2.0', 'cp_id': 'cp7', 'artifact_type': 'draft_clip', 'fingerprint': 'b706a786918c004c07e9aa8d41eebc36644593b009b12a21f2527841e45b8094', 'produced_by': 'agent.cp7_draft_generator', 'produced_at': '2026-10-08T16:21:58Z', 'upstream_refs': [{'cp_id': 'cp3', 'fingerprint': '3ea3bf92d6
+validator: oneOf | schema path: ['oneOf']

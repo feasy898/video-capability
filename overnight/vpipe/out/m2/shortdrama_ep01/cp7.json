@@ -1,0 +1,580 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp7",
+  "artifact_type": "draft_clip",
+  "fingerprint": "b706a786918c004c07e9aa8d41eebc36644593b009b12a21f2527841e45b8094",
+  "produced_by": "agent.cp7_draft_generator",
+  "produced_at": "2026-10-08T16:21:58Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "a5af54917b8f13c92b0c29894e47306627387fe79b4d3d93531e4a6b503bfb19"
+    },
+    {
+      "cp_id": "cp6",
+      "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "l0_preflight.black_frame_ratio_max",
+    "result": "pass",
+    "note": "黑帧 0：11/11 镜帧级均值<2 计数=0（生成张量与 mp4 端到端回检双侧），black_mono_ratio 全 0.0 ≤ 0.50（thresholds.yaml:180 l0_preflight.black_frame_ratio_max）；NaN=0；逐镜 L0 证据 <shot_id>.draft.l0.json。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "l0_preflight.duration_dev_max",
+      "result": "pass",
+      "note": "11/11 镜实测 1.375s == 声明 1.375s（33帧@24fps，dev=0.0% ≤ 2%，thresholds.yaml:179 l0_preflight.duration_dev_max）。声明值=本批资产规格：任务书固定 33 帧档（spike 验证包络），CP3 分镜声明镜长 3.48–6.74s 与草稿时长差异如实登记于 shots[].cp3_duration_s，节奏预演按帧数比例。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp7.gate.uses_existing_keys",
+      "result": "pass",
+      "note": "NaN/黑帧布尔项=0/0；帧率 24/1、分辨率 704x480（480x704 HxW 口径）符合声明档；ffprobe 三元组逐镜 h264/yuv420p/33帧；确定性抽验 shot_03 二遍生成全帧 MAE=0.0（SPIKE-REPORT ③ 复证）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "channel": "local_ltx_2b",
+    "model": {
+      "path": "/data/night/models/LTX-Video",
+      "pipeline": "LTXPipeline",
+      "dtype": "float16"
+    },
+    "params": {
+      "num_frames": 33,
+      "height": 480,
+      "width": 704,
+      "steps": 15,
+      "guidance_scale": 3.0,
+      "fps": 24,
+      "seed_rule": "42 + shot ordinal (1-based): shot_01->43 ... shot_11->53"
+    },
+    "prompts_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_prompts.json",
+    "determinism": {
+      "shot_id": "shot_03",
+      "method": "same seed/params second generation, full-frame MAE",
+      "gen2_s": 4.95,
+      "mae_all_frames": 0.0,
+      "frames_compared": 33,
+      "equal_bits": true
+    },
+    "run_report_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_run_report.json",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "prompt_en": "Extreme close-up at a low angle: a young woman pushes open a heavy wooden door of an old mansion on a rainy night and steps into the foyer, her face filling the frame, backlit by the glowing rain curtain behind her, water droplets dripping from her hair, static camera, shallow depth of field",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 43,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "86cd48c54b63aed997618c61647f66f2f55b3d8d7fdb86c8123de04845d2e572",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_01.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 4.78,
+        "cp3_action_zh": "雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍小满面部大特写，水珠沿发梢滴落",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_01.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "1160110"
+        },
+        "mp4_md5": "0a3d0f53ee5bf289eb019530463cb120",
+        "gen_s": 5.18,
+        "encode_s": 0.557,
+        "shot_wall_s": 6.02
+      },
+      {
+        "shot_id": "shot_02",
+        "prompt_en": "Medium shot at a crowded banquet: an elderly man in a dark suit freezes with a raised wine glass, red wine rippling in the bowl, the camera slowly pushing in over the rim of the glass as he lifts his other hand to beckon a guard at the door, guests turning their heads",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 44,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "5c54b579729e7d158774dbd0113563b718115e327fb481322305596e1743a4ab",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_02.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 6.3,
+        "cp3_action_zh": "林父举杯的手停在半空，杯中酒晃出涟漪；镜头缓推越过杯沿，他抬手示意门口保安，宾客回头",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_02.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "3380101"
+        },
+        "mp4_md5": "4beabb30505e2fb14fa26ae00ddaee53",
+        "gen_s": 4.94,
+        "encode_s": 0.396,
+        "shot_wall_s": 5.65
+      },
+      {
+        "shot_id": "shot_03",
+        "prompt_en": "Close-up: a young woman places a steel wrench on a white tablecloth, light glinting along the rigid metal body, the camera slowly pushing in while staying locked on the wrench, the banquet hall melted into soft bokeh behind",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 45,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "9595006b469224ae03aeab06ddf017bc10cb2485f9c728c2f8a6ef975306f050",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_03.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 6.74,
+        "cp3_action_zh": "小满把修车扳手放上白桌布，金属反光划过扳手轮廓特写，镜头缓推但不离开扳手，扳手金属体不形变",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_03.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "184418"
+        },
+        "mp4_md5": "9a068efd175064cf8793263beec7b1ca",
+        "gen_s": 4.94,
+        "encode_s": 0.318,
+        "shot_wall_s": 5.54
+      },
+      {
+        "shot_id": "shot_04",
+        "prompt_en": "Close-up: an elderly man slams a contract dossier onto the table and presses his finger hard on the signature line, the paper sheet dominating half of the frame with soft illegible printed lines, static camera, dramatic side light",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 46,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "9a723a3fea64ed24f6233b59e287dcc669bab4409e4a7d1be179793c15b02b70",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_04.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 6.3,
+        "cp3_action_zh": "林父把合约文件拍在桌面，手指重重点在签名栏，合约纸面特写压住半个画面，纸面文字不作为可读元素呈现",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_04.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "295389"
+        },
+        "mp4_md5": "eff983142af4b1f071b34dd69b4312cc",
+        "gen_s": 4.96,
+        "encode_s": 0.326,
+        "shot_wall_s": 5.57
+      },
+      {
+        "shot_id": "shot_05",
+        "prompt_en": "Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each other across a banquet table, she slides the last page of a contract across the table with one fingertip, both in frame, no cuts",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 47,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "31226475c2de20b039cff93eb0379d59414bdd4d78b99244c24ebef84b3c5ac4",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_05.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 5.43,
+        "cp3_action_zh": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景一镜不切",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_05.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "210781"
+        },
+        "mp4_md5": "58334c902bdf52152fd57ffbf393c066",
+        "gen_s": 4.97,
+        "encode_s": 0.273,
+        "shot_wall_s": 5.51
+      },
+      {
+        "shot_id": "shot_06",
+        "prompt_en": "Extreme close-up: an elderly man's eyes widen and his pupil contracts in shock, his fingers trembling as they pinch the paper page, guests behind him blurred into round bokeh, the camera slowly pushing in toward his eye",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 48,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "6f70bc2624cf6f6f6a8f24a4aa41ca68e2d7ab3ce97435f6fe5ca38d18d2217d",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_06.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 5.87,
+        "cp3_action_zh": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化，镜头缓推压向瞳孔",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_06.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "371165"
+        },
+        "mp4_md5": "2440715723d29ebbdf25867fb54b1a99",
+        "gen_s": 4.92,
+        "encode_s": 0.325,
+        "shot_wall_s": 5.51
+      },
+      {
+        "shot_id": "shot_07",
+        "prompt_en": "Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit, the same steady unwavering gaze in both halves",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 49,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "43c597f94c60f4edce9cb1b8608e7ad8def79aaf64383a9acb8cf0cec7236811",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_07.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 5.87,
+        "cp3_action_zh": "同机位前后对切：左半幅五年前汽修工装沾油渍，右半幅今日董事西装笔挺，眼神不变",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_07.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "234699"
+        },
+        "mp4_md5": "94c6ca23b483a5120b8a7cf2380a52d0",
+        "gen_s": 4.94,
+        "encode_s": 0.302,
+        "shot_wall_s": 5.51
+      },
+      {
+        "shot_id": "shot_08",
+        "prompt_en": "Handheld medium close-up from a low angle with a slight shake: an elderly man staggers half a step and grips the table edge, his wine glass topples and red wine soaks into the white tablecloth, his face draining into blank shock",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 50,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "2829165d12a822bb34c5f336d490870c8d05fd99bd13421651712daca2eff85a",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_08.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 3.48,
+        "cp3_action_zh": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，手持微晃低机位拍他失神的脸",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_08.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "338059"
+        },
+        "mp4_md5": "3b5f1e77508f20a0f444af42c7553d17",
+        "gen_s": 4.93,
+        "encode_s": 0.307,
+        "shot_wall_s": 5.51
+      },
+      {
+        "shot_id": "shot_09",
+        "prompt_en": "Extreme close-up tracking shot: a young woman walks slowly straight toward the camera, her face gradually filling the frame while a hall full of guests dissolves into glowing bokeh behind her, the camera gliding backward with her, focus locked on her eyes",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 51,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "47cb5583ee12f2c1fccb65da317c0cdb7362b6a8db71d029b1ef1acc08521cf4",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_09.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 6.52,
+        "cp3_action_zh": "小满缓步逼近镜头，竖屏面部大特写逐渐占满画面，身后满堂宾客虚成光斑，跟移不脱焦",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_09.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "256843"
+        },
+        "mp4_md5": "524f738731809e3e5156cc419ee0edca",
+        "gen_s": 4.92,
+        "encode_s": 0.316,
+        "shot_wall_s": 5.51
+      },
+      {
+        "shot_id": "shot_10",
+        "prompt_en": "Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated, white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 52,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "427b8e1c07aed791f5570ef07dc1ac2356d547a060b77043e2052f02a19b1bbd",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_10.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 3.48,
+        "cp3_action_zh": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉，固定机位不给他镜头遮羞",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_10.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "251630"
+        },
+        "mp4_md5": "4d47cf3962bfc18d78ecbf031c19bb64",
+        "gen_s": 4.92,
+        "encode_s": 0.292,
+        "shot_wall_s": 5.48
+      },
+      {
+        "shot_id": "shot_11",
+        "prompt_en": "Wide shot: a young woman downs her drink in one gulp with the glass tilted fully vertical, turns and walks out through the front door, the camera pulling back and rising to reveal the whole mansion foyer as the rain curtain closes behind her silhouette",
+        "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
+        "seed": 53,
+        "asset": {
+          "kind": "clip",
+          "fingerprint": "a08842f1cf12b908dc659f96179b68761844a21d1dd73c39f22581e930500a4d",
+          "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_11.draft.mp4"
+        },
+        "pixel": {
+          "width": 704,
+          "height": 480
+        },
+        "width": 704,
+        "height": 480,
+        "fps": 24,
+        "duration_frames": 33,
+        "declared_duration_s": 1.375,
+        "actual_duration_s": 1.375,
+        "duration_dev": 0.0,
+        "cp3_duration_s": 5.87,
+        "cp3_action_zh": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，镜头拉出至门厅全景，雨幕重新合拢",
+        "black_mono_ratio": 0.0,
+        "black_frames_tensor": 0,
+        "black_frames_decoded": 0,
+        "nan_detected": false,
+        "l0_preflight": {
+          "accepted": true,
+          "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_11.draft.l0.json"
+        },
+        "ffprobe": {
+          "codec_name": "h264",
+          "pix_fmt": "yuv420p",
+          "width": 704,
+          "height": 480,
+          "avg_frame_rate": "24/1",
+          "nb_frames": "33",
+          "duration_s": 1.375,
+          "bit_rate": "815586"
+        },
+        "mp4_md5": "0b5420bc25a322ca0d6c5a0dc852459b",
+        "gen_s": 4.94,
+        "encode_s": 0.339,
+        "shot_wall_s": 5.55
+      }
+    ]
+  },
+  "notes": "聚合工件（任务书要求形态 payload.shots[]，11 镜逐镜留痕 asset/pixel/fps/declared_vs_actual/black_mono_ratio/nan_detected/seed/l0_preflight/prompt_en）。⚠ 契约矛盾声明：checkpoint.schema.json definitions.draft_clip 为单镜形态（additionalProperties:false + 顶层单镜必备字段），payload.shots[] 与「过 checkpoint.schema cp7 分支」按现行契约不可同时成立；契约自身粒度为每镜一件（contracts/v2/examples/cp7.json notes「本集 4 镜各一份」）。本件按任务书原样落盘并如实记录其 jsonschema exit，合规形态见 cp7_shot_01..11.json（11/11 过 schema）。两者裁决留 owner。【硬条件】英文 prompt 层（SPIKE-REPORT 发现 A，中文直喂=100% 废片）；色偏为 checkpoint 固有（发现 B）只记录不修——草稿色彩不可依赖，CP8 择优与 CP9 精修不看草稿色彩；确定性 shot_03 同参数二遍全帧 MAE=0.0（发现 ③ 复证）。【时长口径】任务书固定 33 帧档（480x704 HxW/15步/guidance 3.0/24fps），declared=1.375s 为资产规格，L0 时长门禁校验编码一致性（实测=声明，dev=0.0%）；CP3 镜长 3.48–6.74s 与草稿差异逐镜登记于 shots[].cp3_duration_s。【红线】只卡 0：起跑前卡0=310MiB/卡1=26706MiB 未触碰；全程卡0 nvidia-smi 峰值 18776MiB（本进程）；不 kill/不 pip/不下载。"
+}
