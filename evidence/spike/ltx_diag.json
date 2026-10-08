@@ -1,0 +1,58 @@
+{
+  "load_s": 7.94,
+  "variants": {
+    "zh_neg": {
+      "prompt_lang": "zh",
+      "negative": "worst quality, inconsistent motion, blur",
+      "vae_decode_dtype": "fp16",
+      "gen_s": 5.28,
+      "mp4": "/data/night/g01-rerun/video-capability/evidence/spike/ltx_diag_zh_neg.mp4",
+      "stats": {
+        "nan": 0,
+        "black_lt2": 0,
+        "mean": 192.44,
+        "std": 20.83
+      }
+    },
+    "en_noneg": {
+      "prompt_lang": "en",
+      "negative": "",
+      "vae_decode_dtype": "fp16",
+      "gen_s": 4.94,
+      "mp4": "/data/night/g01-rerun/video-capability/evidence/spike/ltx_diag_en_noneg.mp4",
+      "stats": {
+        "nan": 0,
+        "black_lt2": 0,
+        "mean": 166.79,
+        "std": 54.78
+      }
+    },
+    "en_neg": {
+      "prompt_lang": "en",
+      "negative": "worst quality, inconsistent motion, blur",
+      "vae_decode_dtype": "fp16",
+      "gen_s": 4.95,
+      "mp4": "/data/night/g01-rerun/video-capability/evidence/spike/ltx_diag_en_neg.mp4",
+      "stats": {
+        "nan": 0,
+        "black_lt2": 0,
+        "mean": 179.76,
+        "std": 44.62
+      }
+    },
+    "en_neg_vae32": {
+      "prompt_lang": "en",
+      "negative": "worst quality, inconsistent motion, blur",
+      "vae_decode_dtype": "fp32",
+      "gen_s": 5.7,
+      "mp4": "/data/night/g01-rerun/video-capability/evidence/spike/ltx_diag_en_neg_vae32.mp4",
+      "stats": {
+        "nan": 0,
+        "black_lt2": 0,
+        "mean": 179.74,
+        "std": 44.62
+      }
+    }
+  },
+  "generated_at": "2026-10-08T22:59:25+0800"
+}

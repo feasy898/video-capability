@@ -1,0 +1,40 @@
+{
+  "task": "ltx-2b-baseline-spike",
+  "host": "anolis-gpu-01",
+  "generated_at": "2026-10-08T22:48:38+0800",
+  "errors": [
+    "fatal: ValueError: Image must have 1, 2, 3 or 4 channels"
+  ],
+  "git_head": "fdaa1cd386502dcbcf0f38f07f24edba9cd35b9b",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "dtype": "float16"
+  },
+  "params": {
+    "prompt": "一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云",
+    "negative_prompt": "",
+    "height": 480,
+    "width": 704,
+    "num_frames": 33,
+    "num_inference_steps": 15,
+    "guidance_scale": 3.0,
+    "seed": 42,
+    "fps_out": 24,
+    "resolution_note": "480P（高480x宽704），任务书口径 480x704 按 HxW 解读"
+  },
+  "gpu": {
+    "name": "Tesla V100S-PCIE-32GB",
+    "capability": "7.0",
+    "bf16_supported": true
+  },
+  "quality": {
+    "run1_raw": {
+      "nan_count": 0,
+      "black_frames_lt2": 0,
+      "frame_mean_min": 113.799,
+      "frame_mean_max": 131.856,
+      "frame_mean_overall": 123.34
+    }
+  },
+  "ok": false
+}

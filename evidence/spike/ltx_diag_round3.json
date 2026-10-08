@@ -1,0 +1,29 @@
+{
+  "variants": {
+    "t5fp32emb": {
+      "steps": 15,
+      "embeds": "fp32_t5_cast_fp16",
+      "gen_s": 4.85,
+      "torch_peak_mib": 16629,
+      "mean": 166.68,
+      "std": 56.37
+    },
+    "steps8": {
+      "steps": 8,
+      "embeds": "fp16_t5",
+      "gen_s": 2.93,
+      "torch_peak_mib": 16629,
+      "mean": 187.27,
+      "std": 41.05
+    }
+  },
+  "fp16_embeds_check": {
+    "finite": true,
+    "nan": 0,
+    "inf": 0,
+    "abs_max": 6.062,
+    "vs_fp32_mae": 0.10215,
+    "vs_fp32_max_abs_diff": 5.2188
+  },
+  "generated_at": "2026-10-08T23:17:25+0800"
+}

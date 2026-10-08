@@ -1,0 +1,145 @@
+{
+  "task": "ltx-2b-baseline-spike",
+  "host": "anolis-gpu-01",
+  "generated_at": "2026-10-08T22:53:12+0800",
+  "errors": [],
+  "git_head": "fdaa1cd386502dcbcf0f38f07f24edba9cd35b9b",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "dtype": "float16"
+  },
+  "params": {
+    "prompt": "一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云",
+    "negative_prompt": "",
+    "height": 480,
+    "width": 704,
+    "num_frames": 33,
+    "num_inference_steps": 15,
+    "guidance_scale": 3.0,
+    "seed": 42,
+    "fps_out": 24,
+    "resolution_note": "480P（高480x宽704），任务书口径 480x704 按 HxW 解读"
+  },
+  "gpu": {
+    "name": "Tesla V100S-PCIE-32GB",
+    "capability": "7.0",
+    "bf16_supported": true
+  },
+  "frames_layout": [
+    {
+      "src": "list",
+      "in_shape": [
+        1,
+        33,
+        480,
+        704,
+        3
+      ],
+      "out_shape": [
+        33,
+        480,
+        704,
+        3
+      ]
+    },
+    {
+      "src": "list",
+      "in_shape": [
+        1,
+        33,
+        480,
+        704,
+        3
+      ],
+      "out_shape": [
+        33,
+        480,
+        704,
+        3
+      ]
+    }
+  ],
+  "quality": {
+    "run1_raw": {
+      "nan_count": 0,
+      "black_frames_lt2": 0,
+      "frame_mean_min": 101.402,
+      "frame_mean_max": 126.027,
+      "frame_mean_overall": 121.184
+    },
+    "run2_raw": {
+      "nan_count": 0,
+      "black_frames_lt2": 0,
+      "frame_mean_min": 101.402,
+      "frame_mean_max": 126.027,
+      "frame_mean_overall": 121.184
+    }
+  },
+  "timing_s": {
+    "load": 7.45,
+    "gen_run1": 5.39,
+    "gen_run2": 4.96,
+    "encode_run1": 0.52,
+    "encode_run2": 0.43,
+    "total": 25.0
+  },
+  "vram": {
+    "baseline_used_mib": 618,
+    "nvidia_smi_max_used_mib": 18776,
+    "nvidia_smi_delta_mib": 18158,
+    "torch_peak_allocated_mib_load": 15505.7,
+    "torch_peak_allocated_mib_run1": 16623.3,
+    "torch_peak_allocated_mib_run2": 16623.6,
+    "nvidia_smi_samples": 13
+  },
+  "output": {
+    "path": "/data/night/g01-rerun/video-capability/evidence/spike/ltx_out.mp4",
+    "size_bytes": 109770,
+    "sha256": "a3ecb43c25c65970a9e39b3113c4c5e17b5dbf078f913c70000c3ff83bbab7be",
+    "ffprobe": {
+      "codec_name": "h264",
+      "pix_fmt": "yuv420p",
+      "width": 704,
+      "height": 480,
+      "avg_frame_rate": "24/1",
+      "nb_frames": "33",
+      "duration_s": 1.375,
+      "bit_rate": "638661",
+      "rc": 0
+    },
+    "second_encode": {
+      "path": "/data/night/g01-rerun/video-capability/evidence/spike/ltx_out_encode2.mp4",
+      "size_bytes": 109770
+    },
+    "end_to_end_decode": {
+      "decoded_frames": 33,
+      "black_frames_lt2": 0,
+      "frame_mean_min": 129.021,
+      "frame_mean_overall": 133.745,
+      "decode_rc": 0
+    }
+  },
+  "determinism": {
+    "encode_md5_run1": "462551c916ab3302d8dde00eddeea156",
+    "encode_md5_run2": "462551c916ab3302d8dde00eddeea156",
+    "encode_md5_equal": true,
+    "frame_sample_indices": [
+      0,
+      8,
+      16,
+      24,
+      32
+    ],
+    "mae_per_sample": {
+      "0": 0.0,
+      "8": 0.0,
+      "16": 0.0,
+      "24": 0.0,
+      "32": 0.0
+    },
+    "mae_mean_sampled": 0.0,
+    "mae_all_frames": 0.0,
+    "note": "MAE=0 表示同 seed 逐比特可复现；>0 表示该硬件/内核路径存在非确定性"
+  },
+  "ok": true
+}
