@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_029",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -9,75 +9,31 @@
   "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.70"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "hand_anomaly",
-   "sources": [
-    "J2"
-   ],
-   "confidence": 0.95,
-   "evidence": {
-    "J2": {
-     "notes": "十指交扣特写呈编织状多层指团，可见远超两手指数量的堆叠指节，指节无法分离计数、解剖结构不成立"
-    }
-   }
-  },
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.7176622152328491,
-   "evidence": {
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 0.718
-    }
-   },
-   "span": {
-    "start_s": 0.323,
-    "end_s": 4.844
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.6369,
-   "flicker": 0.3735,
-   "color_shift": 0.5339,
-   "face_blur": 0.6369,
+   "frame_freeze": 0.6617,
+   "flicker": 0.5279,
+   "color_shift": 0.5923,
+   "face_blur": 0.6868,
    "garble_text": 0.0457,
-   "temporal_swap": 0.2633,
-   "pixelate": 0.2646,
-   "ghosting": 0.3645
+   "temporal_swap": 0.2902,
+   "pixelate": 0.1968,
+   "ghosting": 0.3649
   },
-  "overall": 0.5919,
+  "overall": 0.535,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
-  {
-   "type": "note",
-   "evidence": {
-    "text": "全片",
-    "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08 全程",
-    "source": "J2"
-   }
-  },
   {
    "type": "note",
    "evidence": {
@@ -91,19 +47,9 @@
    "clip_id": "golden_029",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.65,
-   "spans": "全片",
-   "notes": "十指交叉特写持续推近，逐帧连续，交叠手指数与解剖形态合理，未见多指/畸形"
-  },
-  "J2": {
-   "clip_id": "golden_029",
-   "defect_detected": true,
-   "defect_types": [
-    "hand_anomaly"
-   ],
-   "confidence": 0.95,
-   "spans": "f01/f05/f08 全程",
-   "notes": "十指交扣特写呈编织状多层指团，可见远超两手指数量的堆叠指节，指节无法分离计数、解剖结构不成立"
+   "confidence": 0.7,
+   "spans": "",
+   "notes": "全片为双手十指交扣的暗调特写。f01-f08 姿态连续：手指缓慢收拢、镜头缓推，帧间均有位移，无定格（f01 与 f02、f07 与 f08 对比可见明显指节移动）。可见指头含顶部 2 根拇指共约 8-9 根，未超过两只手 10 指的常识总数；横向指列的指尖朝向左右交替（如 f01 上排指甲在右、下排指甲在左），符合交扣/互握姿势的侧视结构，无法确证多指或融指。指甲与指节皱纹位置跨帧连续（f01 右端指甲在 f02-f08 中位置一致），无身份漂移、无时序跳变。画面亮度与暖色调稳定，无闪烁、无色偏、无文字、无像素块、无拖影；双手支撑于桌面，运动合理无穿模。皮肤质感偏超写实、手指略显修长，但属风格化表现，依据现有 8 帧证据不构成可确证的解剖或物理违例，判为干净。"
   },
   "J5": {
    "clip_id": "golden_029",
@@ -113,52 +59,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_029",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.718,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.323,
-     "end_s": 4.844,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.359,
-      "frames": [
-       0,
-       7
-      ],
-      "mean_scores": [
-       0.296,
-       0.655
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_029",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.6369,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.637; flicker=0.373; color_shift=0.534; face_blur=0.637; garble_text=0.046; temporal_swap=0.263; pixelate=0.265; ghosting=0.364; overall=0.592"
+   "confidence": 0.6868,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.662; flicker=0.528; color_shift=0.592; face_blur=0.687; garble_text=0.046; temporal_swap=0.290; pixelate=0.197; ghosting=0.365; overall=0.535"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_029.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_029.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_029.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_029.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_029.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_029.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_029.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_029.json"
+ }
 }

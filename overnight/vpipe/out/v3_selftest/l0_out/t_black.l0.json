@@ -1,5 +1,5 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/vpipe/out/v3_selftest/media/black_5s.mp4",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/v3_selftest/media/black_5s.mp4",
  "expect_duration_s": 5.0,
  "profile": null,
  "failures": [

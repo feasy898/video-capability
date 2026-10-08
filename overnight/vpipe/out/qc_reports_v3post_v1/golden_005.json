@@ -1,12 +1,12 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_005",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.8,
+  "confidence": 0.78,
   "decided_by": "E10",
   "reasons": [
    "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
@@ -14,55 +14,56 @@
  },
  "defects": [
   {
-   "type": "garble_text",
+   "type": "flicker",
    "sources": [
-    "J1",
-    "J2"
+    "J1"
    ],
-   "confidence": 0.8,
+   "confidence": 0.78,
    "evidence": {
     "J1": {
-     "notes": "放大裁剪确认状态栏时间为'8:134'（非法格式乱码）；f07-f08蓝色气泡内白色字形与输入框'好'不符且不可读；'明天见'气泡及键盘QWERTY正常，手部形态正常"
-    },
-    "J2": {
-     "notes": "手机屏幕状态栏出现非法时间文本；键盘候选区汉字散布近似 iOS 拼音键盘属正常，故仅低置信度判文字异常"
+     "notes": "f01-f05 内容连贯：手持手机，输入框先出现光标（f02）后键入'好'（f03-f05），无定格、无色偏、无像素化，手型正常。异常一：f06 聊天区右上方突现蓝色已发送气泡（f07 完整显示），其位置位于接收消息'明天见'的上方，时序/层级颠倒，且发送后输入框仍残留'好'；到 f08 该蓝色气泡在无任何操作的情况下"
+    }
+   }
+  },
+  {
+   "type": "garble_text",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.78,
+   "evidence": {
+    "J1": {
+     "notes": "f01-f05 内容连贯：手持手机，输入框先出现光标（f02）后键入'好'（f03-f05），无定格、无色偏、无像素化，手型正常。异常一：f06 聊天区右上方突现蓝色已发送气泡（f07 完整显示），其位置位于接收消息'明天见'的上方，时序/层级颠倒，且发送后输入框仍残留'好'；到 f08 该蓝色气泡在无任何操作的情况下"
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.4052,
-   "flicker": 0.3842,
-   "color_shift": 0.5972,
-   "face_blur": 0.1667,
-   "garble_text": 0.2487,
-   "temporal_swap": 0.3417,
-   "pixelate": 0.1855,
-   "ghosting": 0.3943
+   "frame_freeze": 0.4443,
+   "flicker": 0.3392,
+   "color_shift": 0.6226,
+   "face_blur": 0.2184,
+   "garble_text": 0.2296,
+   "temporal_swap": 0.3205,
+   "pixelate": 0.2039,
+   "ghosting": 0.3515
   },
-  "overall": 0.5027,
+  "overall": 0.464,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "状态栏时间全8帧异常；f07-f08顶部蓝色已发送气泡文字",
+    "text": "f06-f08（蓝色消息气泡凭空出现后又消失）；f01-f08（状态栏时间乱码）",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01 状态栏时间显示 8:134（非法时间格式），顶栏联系人小字模糊难辨",
-    "source": "J2"
    }
   },
   {
@@ -78,21 +79,12 @@
    "clip_id": "golden_005",
    "defect_detected": true,
    "defect_types": [
+    "flicker",
     "garble_text"
    ],
-   "confidence": 0.8,
-   "spans": "状态栏时间全8帧异常；f07-f08顶部蓝色已发送气泡文字",
-   "notes": "放大裁剪确认状态栏时间为'8:134'（非法格式乱码）；f07-f08蓝色气泡内白色字形与输入框'好'不符且不可读；'明天见'气泡及键盘QWERTY正常，手部形态正常"
-  },
-  "J2": {
-   "clip_id": "golden_005",
-   "defect_detected": true,
-   "defect_types": [
-    "text_error"
-   ],
-   "confidence": 0.5,
-   "spans": "f01 状态栏时间显示 8:134（非法时间格式），顶栏联系人小字模糊难辨",
-   "notes": "手机屏幕状态栏出现非法时间文本；键盘候选区汉字散布近似 iOS 拼音键盘属正常，故仅低置信度判文字异常"
+   "confidence": 0.78,
+   "spans": "f06-f08（蓝色消息气泡凭空出现后又消失）；f01-f08（状态栏时间乱码）",
+   "notes": "f01-f05 内容连贯：手持手机，输入框先出现光标（f02）后键入'好'（f03-f05），无定格、无色偏、无像素化，手型正常。异常一：f06 聊天区右上方突现蓝色已发送气泡（f07 完整显示），其位置位于接收消息'明天见'的上方，时序/层级颠倒，且发送后输入框仍残留'好'；到 f08 该蓝色气泡在无任何操作的情况下完全消失，同区域恢复空白，前后内容不连续，属帧间内容交替闪烁/时序不一致（f06-f08）。异常二：状态栏时间全程显示为'8:134'（f01-f04 清晰可辨），为无意义文字，属文字渲染错误（garble_text）。未发现人脸、手部解剖、对象计数或物理违例等其他缺陷。"
   },
   "J5": {
    "clip_id": "golden_005",
@@ -102,32 +94,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_005",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 1.0,
-   "spans": []
-  },
   "J3": {
    "clip_id": "golden_005",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.5972,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.405; flicker=0.384; color_shift=0.597; face_blur=0.167; garble_text=0.249; temporal_swap=0.342; pixelate=0.185; ghosting=0.394; overall=0.503"
+   "confidence": 0.6226,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.444; flicker=0.339; color_shift=0.623; face_blur=0.218; garble_text=0.230; temporal_swap=0.321; pixelate=0.204; ghosting=0.351; overall=0.464"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_005.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_005.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_005.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_005.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_005.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_005.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_005.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_005.json"
+ }
 }

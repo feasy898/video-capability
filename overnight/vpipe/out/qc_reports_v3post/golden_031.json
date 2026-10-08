@@ -1,51 +1,50 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_031",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.6,
+  "confidence": 0.714,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['count_error'], conf=0.6)",
-   "J3@0.7 flag=False hits=[] max_channel_P=0.5977"
+   "J1(detected=False, types=[], conf=0.75)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.714"
   ]
  },
  "defects": [
   {
-   "type": "count_error",
+   "type": "frame_freeze",
    "sources": [
-    "J1"
+    "J3"
    ],
-   "confidence": 0.6,
+   "confidence": 0.714,
    "evidence": {
-    "J1": {
-     "confidence": 0.6,
-     "notes": "8帧均为数十个完全相同的蓝色方块瓷砖状密铺（可见约40+个），对象过度重复疑似计数异常；帧间无定格/闪烁/色偏/糊化等注入伪影，但是否违背prompt数量盲测下无法确证。"
+    "J3": {
+     "channel_P": 0.714
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.5977,
-   "flicker": 0.244,
-   "color_shift": 0.3186,
-   "face_blur": 0.0261,
-   "garble_text": 0.041,
-   "temporal_swap": 0.2799,
-   "pixelate": 0.5863,
-   "ghosting": 0.2819
+   "frame_freeze": 0.714,
+   "flicker": 0.281,
+   "color_shift": 0.3685,
+   "face_blur": 0.0239,
+   "garble_text": 0.0399,
+   "temporal_swap": 0.3069,
+   "pixelate": 0.604,
+   "ghosting": 0.3106
   },
-  "overall": 0.5257,
+  "overall": 0.4959,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -53,7 +52,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "全片 f01-f08"
+    "text": "无"
    }
   },
   {
@@ -74,13 +73,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_031",
-   "defect_detected": true,
-   "defect_types": [
-    "count_error"
-   ],
-   "confidence": 0.6,
-   "spans": "全片 f01-f08",
-   "notes": "8帧均为数十个完全相同的蓝色方块瓷砖状密铺（可见约40+个），对象过度重复疑似计数异常；帧间无定格/闪烁/色偏/糊化等注入伪影，但是否违背prompt数量盲测下无法确证。"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.75,
+   "spans": "无",
+   "notes": "8帧均为同一场景：金属托盘内整齐码放的蓝色方块（f01-f08）。逐项核对：各帧整体亮度、蓝色调一致，无明暗交替闪烁（f01-f08对比）；无色偏；无人脸；无乱码文字，底排方块上缘的小深色印记（f01底部约x300-510处）在各帧位置形态稳定，为方块本身印刷标记而非乱码；无像素化与拖影。f01-f08画面高度相似但非完全定格：中部横向细线（切割线/缝隙）的可见度在f04-f08间有渐变（f05起中线变淡、f07-f08中部线状痕迹减弱），右侧竖向堆叠块的接缝可见度亦有小幅变化，说明场景存在细微连续运动而非数秒定格。方块排列有序、支撑合理，无悬浮穿模，数量排布符合托盘码放常识，无计数异常。综合判定为干净视频。"
   },
   "J5": {
    "clip_id": "golden_031",
@@ -97,9 +94,9 @@
     "frame_freeze",
     "pixelate"
    ],
-   "confidence": 0.5977,
+   "confidence": 0.714,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.598 flicker=0.244 color_shift=0.319 face_blur=0.026 garble_text=0.041 temporal_swap=0.280 pixelate=0.586 ghosting=0.282; overall=0.526; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.714 flicker=0.281 color_shift=0.368 face_blur=0.024 garble_text=0.040 temporal_swap=0.307 pixelate=0.604 ghosting=0.311; overall=0.496; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_031",
@@ -107,17 +104,17 @@
    "defect_types": [],
    "confidence": 1.0,
    "spans": [],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_031.mp4",
   "frames_dir": "frames/golden_031/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_031.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_031.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_031.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_031.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_031.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_031.qc.json"
   }
  },
  "errors": {}

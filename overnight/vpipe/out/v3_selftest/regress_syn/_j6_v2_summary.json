@@ -93,16 +93,16 @@
    "spans": [
     {
      "type": "flicker",
-     "start_s": 1.458,
+     "start_s": 1.417,
      "end_s": 3.542,
      "evidence": {
       "kind": "sign_alternation",
       "channel": "luma",
-      "events": 49,
-      "rate_per_s": 23.52,
-      "start_s": 1.458,
+      "events": 50,
+      "rate_per_s": 23.53,
+      "start_s": 1.417,
       "end_s": 3.542,
-      "dur_s": 2.083
+      "dur_s": 2.125
      }
     }
    ]
@@ -126,8 +126,8 @@
       "dur_s": 2.0,
       "start_s": 5.125,
       "end_s": 7.125,
-      "run_diff_med": 0.0011,
-      "lap_guard": 1.0
+      "run_diff_med": 0.0001,
+      "lap_guard": 1.001
      }
     },
     {
@@ -139,11 +139,11 @@
       "junctions": [
        {
         "cut_t": 7.167,
-        "diff": 19.96,
-        "back_score": 0.898,
-        "match_t": 4.5,
-        "pre_score": 0.8092,
-        "margin": 0.0888
+        "diff": 27.82,
+        "back_score": 0.8522,
+        "match_t": 0.542,
+        "pre_score": -0.3992,
+        "margin": 1.2514
        }
       ]
      }
@@ -161,17 +161,17 @@
     {
      "type": "ghosting",
      "start_s": 1.25,
-     "end_s": 3.542,
+     "end_s": 3.5,
      "evidence": {
       "kind": "rect_dip_blend",
       "start_s": 1.25,
-      "end_s": 3.542,
-      "dur_s": 2.292,
-      "dip_ratio": 0.709,
-      "out_med": 1324.729,
-      "in_med": 939.117,
-      "boundary_ratio": 1.38,
-      "branch": "lap_dip",
+      "end_s": 3.5,
+      "dur_s": 2.25,
+      "dip_ratio": 0.506,
+      "out_med": 6.117,
+      "in_med": 3.097,
+      "boundary_ratio": 1.99,
+      "branch": "diff_dip",
       "low_motion_plateau": false
      }
     }
@@ -188,25 +188,17 @@
     {
      "type": "temporal_swap",
      "start_s": 2.5,
-     "end_s": 3.5,
+     "end_s": 2.5,
      "evidence": {
-      "kind": "cuts_backward_reentry",
+      "kind": "single_cut_repeat",
       "junctions": [
        {
         "cut_t": 2.5,
-        "diff": 28.48,
-        "back_score": 0.8396,
-        "match_t": 1.083,
-        "pre_score": 0.7287,
-        "margin": 0.1109
-       },
-       {
-        "cut_t": 3.5,
-        "diff": 27.15,
-        "back_score": 0.8482,
-        "match_t": 2.083,
-        "pre_score": 0.7916,
-        "margin": 0.0566
+        "diff": 34.58,
+        "back_score": 0.9349,
+        "match_t": 0.5,
+        "pre_score": -0.3796,
+        "margin": 1.3146
        }
       ]
      }

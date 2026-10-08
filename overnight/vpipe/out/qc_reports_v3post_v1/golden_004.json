@@ -1,137 +1,79 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_004",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.9,
+  "confidence": 0.837,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[color_shift] 最大P=0.834）"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[color_shift] 最大P=0.837）"
   ]
  },
  "defects": [
-  {
-   "type": "flicker",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.9,
-   "evidence": {
-    "J1": {
-     "notes": "实测均值（PIL/HSV）：f01/f02/f07/f08 V≈62.8、S≈5.95，而f03-f06 V≈49.7、S≈10.0，中段2s窗口曝光/饱和度异常跳变（flicker族），鸽子f07-f08白色蓬羽为理羽运动非拖影"
-    }
-   }
-  },
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.85,
-   "evidence": {
-    "J6": {
-     "kind": "uniform_low_conf",
-     "conf_src": 0.85
-    }
-   },
-   "span": {
-    "start_s": 0.0,
-    "end_s": 5.042
-   }
-  },
   {
    "type": "color_shift",
    "sources": [
     "J3"
    ],
-   "confidence": 0.8342,
+   "confidence": 0.837,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.6639,
-      "flicker": 0.6767,
-      "color_shift": 0.8342,
-      "face_blur": 0.0272,
-      "garble_text": 0.0346,
-      "temporal_swap": 0.3899,
-      "pixelate": 0.3159,
-      "ghosting": 0.2454
+      "frame_freeze": 0.4746,
+      "flicker": 0.601,
+      "color_shift": 0.837,
+      "face_blur": 0.0403,
+      "garble_text": 0.0357,
+      "temporal_swap": 0.3366,
+      "pixelate": 0.505,
+      "ghosting": 0.4416
      },
-     "overall": 0.6221
+     "overall": 0.533
     }
    }
   },
   {
-   "type": "temporal_swap",
+   "type": "count_error",
    "sources": [
-    "J6"
+    "J1"
    ],
-   "confidence": 0.75,
+   "confidence": 0.62,
    "evidence": {
-    "J6": {
-     "kind": "scene_cut_mid",
-     "conf_src": 0.75
+    "J1": {
+     "notes": "f01-f05 画面中始终只有2只鸟（左侧白鸟、右侧黑鸟），黑鸟身后的栏杆和檐台背景清晰可见、无其他个体；f06 起黑鸟身后突然完整出现第三只白色蓬松鸟（f06-f08 持续存在），且其出现位置紧贴黑鸟背后，此前各帧（f01-f05）该区域均为空背景，帧间无任何入场过程可见，对象数量在相邻采样帧间由2突变为3，疑似凭空"
     }
-   },
-   "span": {
-    "start_s": 1.042,
-    "end_s": 2.042
-   }
-  },
-  {
-   "type": "frame_freeze",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.6849999999999999,
-   "evidence": {
-    "J6": {
-     "kind": null,
-     "conf_src": 0.685
-    }
-   },
-   "span": {
-    "start_s": 4.097,
-    "end_s": 4.727
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.6639,
-   "flicker": 0.6767,
-   "color_shift": 0.8342,
-   "face_blur": 0.0272,
-   "garble_text": 0.0346,
-   "temporal_swap": 0.3899,
-   "pixelate": 0.3159,
-   "ghosting": 0.2454
+   "frame_freeze": 0.4746,
+   "flicker": 0.601,
+   "color_shift": 0.837,
+   "face_blur": 0.0403,
+   "garble_text": 0.0357,
+   "temporal_swap": 0.3366,
+   "pixelate": 0.505,
+   "ghosting": 0.4416
   },
-  "overall": 0.6221,
+  "overall": 0.533,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f03-f06（约1.6-3.5s）全画幅",
+    "text": "f05-f08 (约2.8s-4.7s)",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -147,19 +89,11 @@
    "clip_id": "golden_004",
    "defect_detected": true,
    "defect_types": [
-    "flicker"
+    "count_error"
    ],
-   "confidence": 0.9,
-   "spans": "f03-f06（约1.6-3.5s）全画幅",
-   "notes": "实测均值（PIL/HSV）：f01/f02/f07/f08 V≈62.8、S≈5.95，而f03-f06 V≈49.7、S≈10.0，中段2s窗口曝光/饱和度异常跳变（flicker族），鸽子f07-f08白色蓬羽为理羽运动非拖影"
-  },
-  "J2": {
-   "clip_id": "golden_004",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.45,
-   "spans": "f01/f05/f08",
-   "notes": "两只鸟立于栏杆，三帧曝光/色彩肉眼无可辨差异；逐帧闪变类缺陷在0.6s以上抽帧间隔下难以确认"
+   "confidence": 0.62,
+   "spans": "f05-f08 (约2.8s-4.7s)",
+   "notes": "f01-f05 画面中始终只有2只鸟（左侧白鸟、右侧黑鸟），黑鸟身后的栏杆和檐台背景清晰可见、无其他个体；f06 起黑鸟身后突然完整出现第三只白色蓬松鸟（f06-f08 持续存在），且其出现位置紧贴黑鸟背后，此前各帧（f01-f05）该区域均为空背景，帧间无任何入场过程可见，对象数量在相邻采样帧间由2突变为3，疑似凭空生成物体，判为对象计数异常。其余维度未见明显缺陷：无定格（f02 双鸟头部有明显运动、f05-f06 黑鸟转头）、无整体色偏、无乱码文字、无场景切换、无像素块；f02 头部模糊属快速运动的运动模糊而非拖影残影。因0.7s采样间隔下个体从黑鸟身后走入存在一定可能性，故确信度取中等偏低。"
   },
   "J5": {
    "clip_id": "golden_004",
@@ -169,67 +103,28 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_004",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text",
-    "temporal_swap",
-    "frame_freeze"
-   ],
-   "confidence": 0.85,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.0,
-     "end_s": 5.042,
-     "evidence": {
-      "kind": "uniform_low_conf",
-      "max_mean": 0.195
-     }
-    },
-    {
-     "type": "temporal_swap",
-     "start_s": 1.042,
-     "end_s": 2.042,
-     "evidence": {
-      "cut_s": 1.542,
-      "kind": "scene_cut_mid"
-     }
-    },
-    {
-     "type": "frame_freeze",
-     "start_s": 4.096,
-     "end_s": 4.727,
-     "evidence": {
-      "pair": 6,
-      "score": 0.378,
-      "median": 1.432
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_004",
    "defect_detected": true,
    "defect_types": [
     "color_shift"
    ],
-   "confidence": 0.8342,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.664; flicker=0.677; color_shift=0.834; face_blur=0.027; garble_text=0.035; temporal_swap=0.390; pixelate=0.316; ghosting=0.245; overall=0.622"
+   "confidence": 0.837,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.475; flicker=0.601; color_shift=0.837; face_blur=0.040; garble_text=0.036; temporal_swap=0.337; pixelate=0.505; ghosting=0.442; overall=0.533"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_004.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_004.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_004.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_004.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_004.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_004.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_004.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_004.json"
+ }
 }

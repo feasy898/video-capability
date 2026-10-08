@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_011",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -9,61 +9,36 @@
   "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.70"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.8170340359210968,
-   "evidence": {
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 0.817
-    }
-   },
-   "span": {
-    "start_s": 0.323,
-    "end_s": 2.261
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.6246,
-   "flicker": 0.2917,
-   "color_shift": 0.5969,
-   "face_blur": 0.0899,
-   "garble_text": 0.0423,
-   "temporal_swap": 0.3157,
-   "pixelate": 0.1783,
-   "ghosting": 0.4448
+   "frame_freeze": 0.7031,
+   "flicker": 0.2905,
+   "color_shift": 0.6037,
+   "face_blur": 0.0979,
+   "garble_text": 0.0393,
+   "temporal_swap": 0.3192,
+   "pixelate": 0.1917,
+   "ghosting": 0.4689
   },
-  "overall": 0.4778,
+  "overall": 0.4998,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "无",
+    "text": "全片 f01-f08 无明显缺陷",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f05 手部呈无指节分界的拳头状",
-    "source": "J2"
    }
   },
   {
@@ -79,17 +54,9 @@
    "clip_id": "golden_011",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.85,
-   "spans": "无",
-   "notes": "8帧中吉他手扫弦动作连续自然、灯光色彩稳定，无定格/闪烁/色偏/拖影等异常"
-  },
-  "J2": {
-   "clip_id": "golden_011",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.5,
-   "spans": "f05 手部呈无指节分界的拳头状",
-   "notes": "扫弦手在 f05 完全无法分辨独立手指，但 f08 可见手指握拨片属正常姿态，运动模糊下拳状形态难以定性为解剖异常"
+   "confidence": 0.82,
+   "spans": "全片 f01-f08 无明显缺陷",
+   "notes": "逐帧核对：f01-f08 手部持续呈现扫弦的往复运动（f01 张开、f02-f03 收拢/下压、f04/f07/f08 可见红色拨片），无定格嫌疑；背景蓝色聚光灯光斑位置与强度、吉他琥珀色渐变漆面、黑色皮腕带等元素跨帧完全一致，无闪烁与色偏；无文字与人脸出现；f05 手指与琴弦存在运动模糊，但方向与扫弦动作一致，属自然动态模糊而非拖影重影；手部解剖在 f01/f03/f06/f08 各姿态下指节、拇指数量与形态均合理，拨片随角度时隐时现符合真实扫弦；琴弦数量约 6 根、拾音器/琴桥结构前后一致，无计数与物理违例；主体身份与外观无漂移。判定为干净片段。"
   },
   "J5": {
    "clip_id": "golden_011",
@@ -99,52 +66,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_011",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.817,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.323,
-     "end_s": 2.26,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.409,
-      "frames": [
-       3,
-       0
-      ],
-      "mean_scores": [
-       0.188,
-       0.596
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_011",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.6246,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.625; flicker=0.292; color_shift=0.597; face_blur=0.090; garble_text=0.042; temporal_swap=0.316; pixelate=0.178; ghosting=0.445; overall=0.478"
+   "confidence": 0.7031,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.703; flicker=0.290; color_shift=0.604; face_blur=0.098; garble_text=0.039; temporal_swap=0.319; pixelate=0.192; ghosting=0.469; overall=0.500"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_011.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_011.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_011.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_011.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_011.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_011.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_011.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_011.json"
+ }
 }

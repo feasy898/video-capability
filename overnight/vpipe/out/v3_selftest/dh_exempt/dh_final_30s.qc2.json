@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/digital_human/dh_final_30s.mp4",
- "generated_at": "2026-10-01T18:06:53",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/digital_human/dh_final_30s.mp4",
+ "generated_at": "2026-10-08T20:37:34",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 30.042,
@@ -25,25 +25,25 @@
    "exempted_junctions": [
     {
      "cut_t": 13.917,
-     "diff": 31.46,
-     "back_score": 0.9775,
-     "match_t": 0.042,
-     "pre_score": 0.4811,
-     "margin": 0.4964
+     "diff": 26.71,
+     "back_score": 0.9452,
+     "match_t": 0.458,
+     "pre_score": 0.0521,
+     "margin": 0.8931
     }
    ]
   },
   "ghosting": {
-   "start_s": 1.0,
-   "end_s": 3.25,
+   "start_s": 1.5,
+   "end_s": 3.75,
    "dur_s": 2.25,
-   "dip_ratio": 0.425,
-   "out_med": 3.83,
-   "in_med": 1.628,
-   "boundary_ratio": 1.93,
+   "dip_ratio": 0.423,
+   "out_med": 1.667,
+   "in_med": 0.705,
+   "boundary_ratio": 2.38,
    "branch": "diff_dip",
    "low_motion_plateau": true,
-   "rejected_by": "low_motion_plateau(profile=avatar_talk, in_med=1.628 < 2.0)"
+   "rejected_by": "low_motion_plateau(profile=avatar_talk, in_med=0.705 < 2.0)"
   }
  },
  "temporal_protocol": {
@@ -132,6 +132,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 3.8
+  "analyze_sec": 7.56
  }
 }

@@ -1,16 +1,16 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_023",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "auto_reject",
-  "confidence": 0.9602,
+  "confidence": 0.9517,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['pixelate'], conf=1.0)",
-   "J3@0.7 flag=True hits=['pixelate', 'ghosting'] max_channel_P=0.9602",
+   "J1(detected=True, types=['pixelate'], conf=0.95)",
+   "J3@0.71 flag=True hits=['pixelate', 'ghosting'] max_channel_P=0.9517",
    "J6 信号(仅信号不否决): garble_text@0.85"
   ]
  },
@@ -37,10 +37,10 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.8736,
+   "confidence": 0.8353,
    "evidence": {
     "J3": {
-     "channel_P": 0.8736
+     "channel_P": 0.8353
     }
    }
   },
@@ -51,14 +51,14 @@
     "J3",
     "J5"
    ],
-   "confidence": 1.0,
+   "confidence": 0.9517,
    "evidence": {
     "J1": {
-     "confidence": 1.0,
-     "notes": "f01-f02与f07-f08为正常公路红车画面；中段四帧中央出现明显约12px块状马赛克，块内路面标线与车辆碎成色斑，边界清晰；其余各帧无定格/闪烁/色偏"
+     "confidence": 0.95,
+     "notes": "f01-f02画面清晰正常，高速公路与车辆无异常。从f03开始，画面中央出现大面积马赛克像素块，覆盖中间车道及多辆红色车辆区域，像素化区域在f03-f05持续存在且位置随镜头略有移动，f06仍有明显残留像素块，f07-f08恢复正常。该缺陷为典型局部像素化（pixelate）。另注：f05起底部中央突然出现一辆近距离红色轿车，f01-f02及f03-f04（被像素块遮挡）中均不可见，但因像素化遮挡"
     },
     "J3": {
-     "channel_P": 0.9602
+     "channel_P": 0.9517
     },
     "J5": {
      "confidence": 0.8
@@ -68,22 +68,22 @@
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.1652,
-   "flicker": 0.2134,
-   "color_shift": 0.2978,
-   "face_blur": 0.622,
-   "garble_text": 0.5197,
-   "temporal_swap": 0.455,
-   "pixelate": 0.9602,
-   "ghosting": 0.8736
+   "frame_freeze": 0.2106,
+   "flicker": 0.1914,
+   "color_shift": 0.3962,
+   "face_blur": 0.5076,
+   "garble_text": 0.1961,
+   "temporal_swap": 0.4329,
+   "pixelate": 0.9517,
+   "ghosting": 0.8353
   },
-  "overall": 0.7203,
+  "overall": 0.728,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -100,7 +100,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03–f06（约中段，画面中央 x≈230-480 / y≈155-330 大块粗颗粒马赛克）"
+    "text": "f03-f06（约1.6s-3.5s）"
    }
   },
   {
@@ -125,9 +125,9 @@
    "defect_types": [
     "pixelate"
    ],
-   "confidence": 1.0,
-   "spans": "f03–f06（约中段，画面中央 x≈230-480 / y≈155-330 大块粗颗粒马赛克）",
-   "notes": "f01-f02与f07-f08为正常公路红车画面；中段四帧中央出现明显约12px块状马赛克，块内路面标线与车辆碎成色斑，边界清晰；其余各帧无定格/闪烁/色偏"
+   "confidence": 0.95,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "f01-f02画面清晰正常，高速公路与车辆无异常。从f03开始，画面中央出现大面积马赛克像素块，覆盖中间车道及多辆红色车辆区域，像素化区域在f03-f05持续存在且位置随镜头略有移动，f06仍有明显残留像素块，f07-f08恢复正常。该缺陷为典型局部像素化（pixelate）。另注：f05起底部中央突然出现一辆近距离红色轿车，f01-f02及f03-f04（被像素块遮挡）中均不可见，但因像素化遮挡无法确认是否为时序异常，故不另报physics_error/temporal_swap。整体判定主要命中pixelate。"
   },
   "J5": {
    "clip_id": "golden_023",
@@ -144,13 +144,12 @@
    "defect_detected": true,
    "defect_types": [
     "face_blur",
-    "garble_text",
     "pixelate",
     "ghosting"
    ],
-   "confidence": 0.9602,
+   "confidence": 0.9517,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.165 flicker=0.213 color_shift=0.298 face_blur=0.622 garble_text=0.520 temporal_swap=0.455 pixelate=0.960 ghosting=0.874; overall=0.720; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.211 flicker=0.191 color_shift=0.396 face_blur=0.508 garble_text=0.196 temporal_swap=0.433 pixelate=0.952 ghosting=0.835; overall=0.728; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_023",
@@ -170,17 +169,17 @@
      }
     }
    ],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_023.mp4",
   "frames_dir": "frames/golden_023/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_023.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_023.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_023.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_023.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_023.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_023.qc.json"
   }
  },
  "errors": {}

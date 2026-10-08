@@ -1,16 +1,16 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_040",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.8394,
+  "confidence": 0.833,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['garble_text'], conf=0.8)",
-   "J3@0.7 flag=True hits=['flicker', 'ghosting'] max_channel_P=0.8394",
+   "J1(detected=False, types=[], conf=0.8)",
+   "J3@0.71 flag=True hits=['flicker', 'ghosting'] max_channel_P=0.833",
    "J6 信号(仅信号不否决): garble_text@0.81"
   ]
  },
@@ -20,17 +20,16 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.7417,
+   "confidence": 0.7345,
    "evidence": {
     "J3": {
-     "channel_P": 0.7417
+     "channel_P": 0.7345
     }
    }
   },
   {
    "type": "garble_text",
    "sources": [
-    "J1",
     "J6"
    ],
    "confidence": 0.8087,
@@ -39,10 +38,6 @@
     "end_s": 4.746
    },
    "evidence": {
-    "J1": {
-     "confidence": 0.8,
-     "notes": "夜间霓虹招牌文字为无意义混排\"天天HID十EEN\"（疑为HIDDEN的乱码渲染）且两侧为无意义涂鸦字形；招牌红→蓝变色及亮度脉动经分区域RGB统计（树木区119/42/44→115/35/41恒定）确认仅限招牌及其倒影，属内容级动画而非全局色偏/帧闪"
-    },
     "J6": {
      "kind": "conf_drop",
      "drop": 0.404,
@@ -62,32 +57,32 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.8394,
+   "confidence": 0.833,
    "evidence": {
     "J3": {
-     "channel_P": 0.8394
+     "channel_P": 0.833
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.5508,
-   "flicker": 0.7417,
-   "color_shift": 0.6617,
-   "face_blur": 0.0396,
-   "garble_text": 0.3376,
-   "temporal_swap": 0.3177,
-   "pixelate": 0.3508,
-   "ghosting": 0.8394
+   "frame_freeze": 0.5938,
+   "flicker": 0.7345,
+   "color_shift": 0.6794,
+   "face_blur": 0.0429,
+   "garble_text": 0.519,
+   "temporal_swap": 0.3317,
+   "pixelate": 0.3539,
+   "ghosting": 0.833
   },
-  "overall": 0.5062,
+  "overall": 0.51,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -112,7 +107,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "全程（f01-f08霓虹招牌文字）"
+    "text": "无"
    }
   },
   {
@@ -133,13 +128,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_040",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
+   "defect_detected": false,
+   "defect_types": [],
    "confidence": 0.8,
-   "spans": "全程（f01-f08霓虹招牌文字）",
-   "notes": "夜间霓虹招牌文字为无意义混排\"天天HID十EEN\"（疑为HIDDEN的乱码渲染）且两侧为无意义涂鸦字形；招牌红→蓝变色及亮度脉动经分区域RGB统计（树木区119/42/44→115/35/41恒定）确认仅限招牌及其倒影，属内容级动画而非全局色偏/帧闪"
+   "spans": "无",
+   "notes": "8帧为夜间霓虹灯牌场景，镜头缓慢向前推进，主体灯牌在f01-f08中尺寸逐渐变大、路面反光随之变化，运动连续无定格。主灯牌颜色由红色（f01）渐变为蓝白色（f03-f08），过渡平滑且仅限灯牌自身，符合霓虹灯的变色/点亮动画特征，周围红色霓虹元素与天空始终保持一致，非整体色偏。牌面文字'天天HID十EN'与左侧球形图案在各帧形状、内容稳定一致，为设计化标识而非乱码，也无时序跳变、像素化、拖影或人脸/手部等语义异常，判定为干净。"
   },
   "J5": {
    "clip_id": "golden_040",
@@ -156,11 +149,12 @@
     "frame_freeze",
     "flicker",
     "color_shift",
+    "garble_text",
     "ghosting"
    ],
-   "confidence": 0.8394,
+   "confidence": 0.833,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.551 flicker=0.742 color_shift=0.662 face_blur=0.040 garble_text=0.338 temporal_swap=0.318 pixelate=0.351 ghosting=0.839; overall=0.506; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.594 flicker=0.735 color_shift=0.679 face_blur=0.043 garble_text=0.519 temporal_swap=0.332 pixelate=0.354 ghosting=0.833; overall=0.510; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_040",
@@ -188,17 +182,17 @@
      }
     }
    ],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_040.mp4",
   "frames_dir": "frames/golden_040/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_040.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_040.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_040.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_040.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_040.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_040.qc.json"
   }
  },
  "errors": {}

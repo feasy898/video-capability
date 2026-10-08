@@ -1,37 +1,37 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_024",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
   "decision": "pass",
-  "confidence": 0.85,
+  "confidence": 0.88,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.85)",
-   "J3@0.7 flag=False hits=[] max_channel_P=0.577"
+   "J1(detected=False, types=[], conf=0.88)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5445"
   ]
  },
  "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.2309,
-   "flicker": 0.32,
-   "color_shift": 0.3081,
-   "face_blur": 0.0415,
-   "garble_text": 0.0356,
-   "temporal_swap": 0.2668,
-   "pixelate": 0.1014,
-   "ghosting": 0.577
+   "frame_freeze": 0.2875,
+   "flicker": 0.3378,
+   "color_shift": 0.2683,
+   "face_blur": 0.038,
+   "garble_text": 0.0348,
+   "temporal_swap": 0.2906,
+   "pixelate": 0.0916,
+   "ghosting": 0.5445
   },
-  "overall": 0.4438,
+  "overall": 0.4727,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -39,7 +39,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f01–f08 全程检查"
+    "text": "无"
    }
   },
   {
@@ -62,9 +62,9 @@
    "clip_id": "golden_024",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.85,
-   "spans": "f01–f08 全程检查",
-   "notes": "玻璃壶向直筒玻璃杯倒水：水位随帧连续上升，水流扭曲形态自然，气泡水花合理，光影灰白基调一致；无定格/闪烁/色偏/马赛克/拖影，无文字与人脸"
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "8帧均为水壶向玻璃杯倒水的连续画面：水位自f01至f08单调平稳上升，水流轨迹、气泡与泡沫形态逐帧自然演变（f02-f06泡沫增多、f07-f08水位渐高），无明显定格或时序跳变；整体灰白影调和光照各帧一致，无闪烁或色偏；画面无文字、无人脸；水流与杯壁边缘清晰锐利，未见像素块或运动残影（f01杯内流水的多重线条可由玻璃折射解释）；场景仅一杯一壶，计数正常，倒水物理过程合理，未见悬浮或穿模。判定为干净片段。"
   },
   "J5": {
    "clip_id": "golden_024",
@@ -80,9 +80,9 @@
    "defect_types": [
     "ghosting"
    ],
-   "confidence": 0.577,
+   "confidence": 0.5445,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.231 flicker=0.320 color_shift=0.308 face_blur=0.042 garble_text=0.036 temporal_swap=0.267 pixelate=0.101 ghosting=0.577; overall=0.444; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.287 flicker=0.338 color_shift=0.268 face_blur=0.038 garble_text=0.035 temporal_swap=0.291 pixelate=0.092 ghosting=0.544; overall=0.473; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_024",
@@ -90,17 +90,17 @@
    "defect_types": [],
    "confidence": 1.0,
    "spans": [],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_024.mp4",
   "frames_dir": "frames/golden_024/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_024.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_024.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_024.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_024.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_024.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_024.qc.json"
   }
  },
  "errors": {}

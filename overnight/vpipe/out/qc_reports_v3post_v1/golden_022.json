@@ -1,125 +1,93 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_022",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.8077,
+  "confidence": 0.8782,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[frame_freeze,color_shift] 最大P=0.808）"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[face_blur,ghosting] 最大P=0.878）"
   ]
  },
  "defects": [
   {
-   "type": "frame_freeze",
-   "sources": [
-    "J3"
-   ],
-   "confidence": 0.8077,
-   "evidence": {
-    "J3": {
-     "channel_probs": {
-      "frame_freeze": 0.8077,
-      "flicker": 0.1761,
-      "color_shift": 0.8039,
-      "face_blur": 0.0203,
-      "garble_text": 0.0407,
-      "temporal_swap": 0.2391,
-      "pixelate": 0.3574,
-      "ghosting": 0.4919
-     },
-     "overall": 0.4419
-    }
-   }
-  },
-  {
-   "type": "color_shift",
-   "sources": [
-    "J3"
-   ],
-   "confidence": 0.8039,
-   "evidence": {
-    "J3": {
-     "channel_probs": {
-      "frame_freeze": 0.8077,
-      "flicker": 0.1761,
-      "color_shift": 0.8039,
-      "face_blur": 0.0203,
-      "garble_text": 0.0407,
-      "temporal_swap": 0.2391,
-      "pixelate": 0.3574,
-      "ghosting": 0.4919
-     },
-     "overall": 0.4419
-    }
-   }
-  },
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.7066428065299988,
-   "evidence": {
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 0.707
-    }
-   },
-   "span": {
-    "start_s": 0.315,
-    "end_s": 2.206
-   }
-  },
-  {
    "type": "ghosting",
    "sources": [
-    "J2"
+    "J1",
+    "J3"
    ],
-   "confidence": 0.6,
+   "confidence": 0.8782,
    "evidence": {
-    "J2": {
-     "notes": "中帧相比首尾帧细节明显丢失、呈邻帧混合的双重曝光质感，符合拖影/帧混合特征，但静帧下与运动模糊难完全区分故置信度中等"
+    "J1": {
+     "notes": "f04 整帧出现明显运动模糊（背景书架、桌面同时糊化），f05-f06 中人物快速左移时躯干与头部呈现明显拖影/运动残影，人像轮廓被拉丝糊化而背景书架相对清晰，符合运动残影类缺陷特征；f07-f08 人物停止运动后画面恢复清晰，说明拖影集中于快速移动段。其余维度核对：f01-f03 与 f06-f08 无定格、无明暗闪"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.2049,
+      "flicker": 0.237,
+      "color_shift": 0.2634,
+      "face_blur": 0.7889,
+      "garble_text": 0.0489,
+      "temporal_swap": 0.4539,
+      "pixelate": 0.222,
+      "ghosting": 0.8782
+     },
+     "overall": 0.6483
+    }
+   }
+  },
+  {
+   "type": "face_blur",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7889,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.2049,
+      "flicker": 0.237,
+      "color_shift": 0.2634,
+      "face_blur": 0.7889,
+      "garble_text": 0.0489,
+      "temporal_swap": 0.4539,
+      "pixelate": 0.222,
+      "ghosting": 0.8782
+     },
+     "overall": 0.6483
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.8077,
-   "flicker": 0.1761,
-   "color_shift": 0.8039,
-   "face_blur": 0.0203,
-   "garble_text": 0.0407,
-   "temporal_swap": 0.2391,
-   "pixelate": 0.3574,
-   "ghosting": 0.4919
+   "frame_freeze": 0.2049,
+   "flicker": 0.237,
+   "color_shift": 0.2634,
+   "face_blur": 0.7889,
+   "garble_text": 0.0489,
+   "temporal_swap": 0.4539,
+   "pixelate": 0.222,
+   "ghosting": 0.8782
   },
-  "overall": 0.4419,
+  "overall": 0.6483,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f01–f08 全程检查",
+    "text": "f04-f06 (约2.2s-3.5s)",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f05（约片中段）：整画面云层与山地纹理变软发虚",
-    "source": "J2"
    }
   },
   {
@@ -133,21 +101,13 @@
  "judges": {
   "J1": {
    "clip_id": "golden_022",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.55,
-   "spans": "f01–f08 全程检查",
-   "notes": "云雾山谷航拍慢速漂移：8帧亮度117.3→107.0、饱和度41.4→51.4严格单调（排除段落错乱/定格/闪烁阶跃），全局与局部Laplacian方差无中段凹陷，帧间差3.3→5.6平滑升降；目视与数值均未见拖影证据。慢速雾景下轻微tblend拖影在静帧中接近不可检，故置信度仅中等"
-  },
-  "J2": {
-   "clip_id": "golden_022",
    "defect_detected": true,
    "defect_types": [
     "ghosting"
    ],
    "confidence": 0.6,
-   "spans": "f05（约片中段）：整画面云层与山地纹理变软发虚",
-   "notes": "中帧相比首尾帧细节明显丢失、呈邻帧混合的双重曝光质感，符合拖影/帧混合特征，但静帧下与运动模糊难完全区分故置信度中等"
+   "spans": "f04-f06 (约2.2s-3.5s)",
+   "notes": "f04 整帧出现明显运动模糊（背景书架、桌面同时糊化），f05-f06 中人物快速左移时躯干与头部呈现明显拖影/运动残影，人像轮廓被拉丝糊化而背景书架相对清晰，符合运动残影类缺陷特征；f07-f08 人物停止运动后画面恢复清晰，说明拖影集中于快速移动段。其余维度核对：f01-f03 与 f06-f08 无定格、无明暗闪烁、无色偏、无人脸异常模糊（f07-f08 侧脸清晰）、无明显乱码文字、无像素块；时序连贯（人物沿书架左行后停步俯看，无场景跳变），人物着装与背包外观跨帧一致，未见手部解剖异常或物理违例。综合判定主要问题为 f04-f06 的运动拖影，因不能完全排除为快速移动导致的自然运动模糊，置信度取中等。"
   },
   "J5": {
    "clip_id": "golden_022",
@@ -155,57 +115,31 @@
    "defect_types": [],
    "confidence": 0.8,
    "spans": "full_clip:fps=1.0解码",
-   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
-  },
-  "J6": {
-   "clip_id": "golden_022",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.707,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.315,
-     "end_s": 2.206,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.353,
-      "frames": [
-       0,
-       3
-      ],
-      "mean_scores": [
-       0.421,
-       0.774
-      ]
-     }
-    }
-   ]
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物移动流畅，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等明显缺陷\"}"
   },
   "J3": {
    "clip_id": "golden_022",
    "defect_detected": true,
    "defect_types": [
-    "frame_freeze",
-    "color_shift"
+    "face_blur",
+    "ghosting"
    ],
-   "confidence": 0.8077,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.808; flicker=0.176; color_shift=0.804; face_blur=0.020; garble_text=0.041; temporal_swap=0.239; pixelate=0.357; ghosting=0.492; overall=0.442"
+   "confidence": 0.8782,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.205; flicker=0.237; color_shift=0.263; face_blur=0.789; garble_text=0.049; temporal_swap=0.454; pixelate=0.222; ghosting=0.878; overall=0.648"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_022.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_022.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_022.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_022.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_022.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_022.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_022.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_022.json"
+ }
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "t_good",
- "generated_at": "2026-10-01T18:06:44",
+ "generated_at": "2026-10-08T20:37:17",
  "qc_mode": "online",
  "verdict": {
   "defect_detected": false,
@@ -29,16 +29,16 @@
   "overall": null,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [],
  "judges": {},
  "inputs": {
-  "clip": "/opt/gpumachine/projects/video-capability/overnight/vpipe/out/v3_selftest/media/good_5s.mp4",
+  "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/v3_selftest/media/good_5s.mp4",
   "frames_dir": null,
   "judge_files": {}
  },
@@ -51,7 +51,7 @@
   "profile": null,
   "known_cuts": [],
   "l0_preflight": {
-   "clip": "/opt/gpumachine/projects/video-capability/overnight/vpipe/out/v3_selftest/media/good_5s.mp4",
+   "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/v3_selftest/media/good_5s.mp4",
    "expect_duration_s": 5.0,
    "profile": null,
    "failures": [],

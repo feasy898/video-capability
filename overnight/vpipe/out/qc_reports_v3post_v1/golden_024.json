@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_024",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -9,43 +9,36 @@
   "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.70"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
  "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.2309,
-   "flicker": 0.32,
-   "color_shift": 0.3081,
-   "face_blur": 0.0415,
-   "garble_text": 0.0356,
-   "temporal_swap": 0.2668,
-   "pixelate": 0.1014,
-   "ghosting": 0.577
+   "frame_freeze": 0.2875,
+   "flicker": 0.3378,
+   "color_shift": 0.2683,
+   "face_blur": 0.038,
+   "garble_text": 0.0348,
+   "temporal_swap": 0.2906,
+   "pixelate": 0.0916,
+   "ghosting": 0.5445
   },
-  "overall": 0.4438,
+  "overall": 0.4727,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f01–f08 全程检查",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -61,17 +54,9 @@
    "clip_id": "golden_024",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.85,
-   "spans": "f01–f08 全程检查",
-   "notes": "玻璃壶向直筒玻璃杯倒水：水位随帧连续上升，水流扭曲形态自然，气泡水花合理，光影灰白基调一致；无定格/闪烁/色偏/马赛克/拖影，无文字与人脸"
-  },
-  "J2": {
-   "clip_id": "golden_024",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.8,
-   "spans": "f01/f05/f08",
-   "notes": "倒水入杯三帧均锐利，水柱与气泡形态自然，无可见缺陷"
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "8帧均为水壶向玻璃杯倒水的连续画面：水位自f01至f08单调平稳上升，水流轨迹、气泡与泡沫形态逐帧自然演变（f02-f06泡沫增多、f07-f08水位渐高），无明显定格或时序跳变；整体灰白影调和光照各帧一致，无闪烁或色偏；画面无文字、无人脸；水流与杯壁边缘清晰锐利，未见像素块或运动残影（f01杯内流水的多重线条可由玻璃折射解释）；场景仅一杯一壶，计数正常，倒水物理过程合理，未见悬浮或穿模。判定为干净片段。"
   },
   "J5": {
    "clip_id": "golden_024",
@@ -81,32 +66,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_024",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 1.0,
-   "spans": []
-  },
   "J3": {
    "clip_id": "golden_024",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.577,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.231; flicker=0.320; color_shift=0.308; face_blur=0.042; garble_text=0.036; temporal_swap=0.267; pixelate=0.101; ghosting=0.577; overall=0.444"
+   "confidence": 0.5445,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.287; flicker=0.338; color_shift=0.268; face_blur=0.038; garble_text=0.035; temporal_swap=0.291; pixelate=0.092; ghosting=0.544; overall=0.473"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_024.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_024.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_024.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_024.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_024.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_024.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_024.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_024.json"
+ }
 }

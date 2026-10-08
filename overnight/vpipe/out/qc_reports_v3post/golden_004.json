@@ -1,16 +1,16 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_004",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.8342,
+  "confidence": 0.837,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['flicker'], conf=0.9)",
-   "J3@0.7 flag=True hits=['color_shift'] max_channel_P=0.8342",
+   "J1(detected=True, types=['count_error'], conf=0.62)",
+   "J3@0.71 flag=True hits=['color_shift'] max_channel_P=0.837",
    "J6 信号(仅信号不否决): frame_freeze@0.69, garble_text@0.85, temporal_swap@0.75"
   ]
  },
@@ -20,23 +20,23 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.8342,
+   "confidence": 0.837,
    "evidence": {
     "J3": {
-     "channel_P": 0.8342
+     "channel_P": 0.837
     }
    }
   },
   {
-   "type": "flicker",
+   "type": "count_error",
    "sources": [
     "J1"
    ],
-   "confidence": 0.9,
+   "confidence": 0.62,
    "evidence": {
     "J1": {
-     "confidence": 0.9,
-     "notes": "实测均值（PIL/HSV）：f01/f02/f07/f08 V≈62.8、S≈5.95，而f03-f06 V≈49.7、S≈10.0，中段2s窗口曝光/饱和度异常跳变（flicker族），鸽子f07-f08白色蓬羽为理羽运动非拖影"
+     "confidence": 0.62,
+     "notes": "f01-f05 画面中始终只有2只鸟（左侧白鸟、右侧黑鸟），黑鸟身后的栏杆和檐台背景清晰可见、无其他个体；f06 起黑鸟身后突然完整出现第三只白色蓬松鸟（f06-f08 持续存在），且其出现位置紧贴黑鸟背后，此前各帧（f01-f05）该区域均为空背景，帧间无任何入场过程可见，对象数量在相邻采样帧间由2突变为3，疑似凭空生成物体，判为对象计数异常。其余维度未见明显缺陷：无定格（f02 双鸟头部有明显"
     }
    }
   },
@@ -94,22 +94,22 @@
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.6639,
-   "flicker": 0.6767,
-   "color_shift": 0.8342,
-   "face_blur": 0.0272,
-   "garble_text": 0.0346,
-   "temporal_swap": 0.3899,
-   "pixelate": 0.3159,
-   "ghosting": 0.2454
+   "frame_freeze": 0.4746,
+   "flicker": 0.601,
+   "color_shift": 0.837,
+   "face_blur": 0.0403,
+   "garble_text": 0.0357,
+   "temporal_swap": 0.3366,
+   "pixelate": 0.505,
+   "ghosting": 0.4416
   },
-  "overall": 0.6221,
+  "overall": 0.533,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -144,7 +144,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03-f06（约1.6-3.5s）全画幅"
+    "text": "f05-f08 (约2.8s-4.7s)"
    }
   },
   {
@@ -167,11 +167,11 @@
    "clip_id": "golden_004",
    "defect_detected": true,
    "defect_types": [
-    "flicker"
+    "count_error"
    ],
-   "confidence": 0.9,
-   "spans": "f03-f06（约1.6-3.5s）全画幅",
-   "notes": "实测均值（PIL/HSV）：f01/f02/f07/f08 V≈62.8、S≈5.95，而f03-f06 V≈49.7、S≈10.0，中段2s窗口曝光/饱和度异常跳变（flicker族），鸽子f07-f08白色蓬羽为理羽运动非拖影"
+   "confidence": 0.62,
+   "spans": "f05-f08 (约2.8s-4.7s)",
+   "notes": "f01-f05 画面中始终只有2只鸟（左侧白鸟、右侧黑鸟），黑鸟身后的栏杆和檐台背景清晰可见、无其他个体；f06 起黑鸟身后突然完整出现第三只白色蓬松鸟（f06-f08 持续存在），且其出现位置紧贴黑鸟背后，此前各帧（f01-f05）该区域均为空背景，帧间无任何入场过程可见，对象数量在相邻采样帧间由2突变为3，疑似凭空生成物体，判为对象计数异常。其余维度未见明显缺陷：无定格（f02 双鸟头部有明显运动、f05-f06 黑鸟转头）、无整体色偏、无乱码文字、无场景切换、无像素块；f02 头部模糊属快速运动的运动模糊而非拖影残影。因0.7s采样间隔下个体从黑鸟身后走入存在一定可能性，故确信度取中等偏低。"
   },
   "J5": {
    "clip_id": "golden_004",
@@ -185,13 +185,13 @@
    "clip_id": "golden_004",
    "defect_detected": true,
    "defect_types": [
-    "frame_freeze",
     "flicker",
-    "color_shift"
+    "color_shift",
+    "pixelate"
    ],
-   "confidence": 0.8342,
+   "confidence": 0.837,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.664 flicker=0.677 color_shift=0.834 face_blur=0.027 garble_text=0.035 temporal_swap=0.390 pixelate=0.316 ghosting=0.245; overall=0.622; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.475 flicker=0.601 color_shift=0.837 face_blur=0.040 garble_text=0.036 temporal_swap=0.337 pixelate=0.505 ghosting=0.442; overall=0.533; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_004",
@@ -231,17 +231,17 @@
      }
     }
    ],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_004.mp4",
   "frames_dir": "frames/golden_004/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_004.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_004.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_004.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_004.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_004.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_004.qc.json"
   }
  },
  "errors": {}

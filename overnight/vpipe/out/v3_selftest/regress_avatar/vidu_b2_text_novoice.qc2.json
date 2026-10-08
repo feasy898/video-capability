@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/vidu_b2_text_novoice.mp4",
- "generated_at": "2026-10-01T18:08:03",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/vidu_b2_text_novoice.mp4",
+ "generated_at": "2026-10-08T20:39:08",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 6.0,
@@ -100,6 +100,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 0.49
+  "analyze_sec": 0.63
  }
 }

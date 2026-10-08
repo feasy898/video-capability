@@ -1,82 +1,67 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_034",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "auto_reject",
-  "confidence": 0.9295,
+  "confidence": 0.9164,
   "decided_by": "E10",
   "reasons": [
-   "J3 最大通道 P=0.929 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+   "J3 最大通道 P=0.916 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
   ]
  },
  "defects": [
   {
    "type": "ghosting",
    "sources": [
-    "J1",
-    "J2",
     "J3"
    ],
-   "confidence": 0.9295,
+   "confidence": 0.9164,
    "evidence": {
-    "J1": {
-     "notes": "列车驶过场景中段帧火车车身呈双重曝光式拖影、路灯光头出现叠影，明显重于首尾帧f01/f02/f07/f08的清晰车窗，符合相邻帧50%混合的拖影注入特征。"
-    },
-    "J2": {
-     "notes": "中帧相比尾帧明显更糊且呈邻帧混合质感，但本片为快速横摇运动模糊素材，静帧下与运动模糊难完全区分"
-    },
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.4494,
-      "flicker": 0.2782,
-      "color_shift": 0.6672,
-      "face_blur": 0.5533,
-      "garble_text": 0.0668,
-      "temporal_swap": 0.3293,
-      "pixelate": 0.3848,
-      "ghosting": 0.9295
+      "frame_freeze": 0.477,
+      "flicker": 0.2393,
+      "color_shift": 0.6968,
+      "face_blur": 0.4234,
+      "garble_text": 0.0783,
+      "temporal_swap": 0.2932,
+      "pixelate": 0.4305,
+      "ghosting": 0.9164
      },
-     "overall": 0.5138
+     "overall": 0.5457
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.4494,
-   "flicker": 0.2782,
-   "color_shift": 0.6672,
-   "face_blur": 0.5533,
-   "garble_text": 0.0668,
-   "temporal_swap": 0.3293,
-   "pixelate": 0.3848,
-   "ghosting": 0.9295
+   "frame_freeze": 0.477,
+   "flicker": 0.2393,
+   "color_shift": 0.6968,
+   "face_blur": 0.4234,
+   "garble_text": 0.0783,
+   "temporal_swap": 0.2932,
+   "pixelate": 0.4305,
+   "ghosting": 0.9164
   },
-  "overall": 0.5138,
+  "overall": 0.5457,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "中段 f03-f06（约1.5-3.5s）",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f05（约片中段）：列车与天线边缘双重发虚、背景植被平滑",
-    "source": "J2"
    }
   },
   {
@@ -90,23 +75,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_034",
-   "defect_detected": true,
-   "defect_types": [
-    "ghosting"
-   ],
-   "confidence": 0.8,
-   "spans": "中段 f03-f06（约1.5-3.5s）",
-   "notes": "列车驶过场景中段帧火车车身呈双重曝光式拖影、路灯光头出现叠影，明显重于首尾帧f01/f02/f07/f08的清晰车窗，符合相邻帧50%混合的拖影注入特征。"
-  },
-  "J2": {
-   "clip_id": "golden_034",
-   "defect_detected": true,
-   "defect_types": [
-    "ghosting"
-   ],
-   "confidence": 0.5,
-   "spans": "f05（约片中段）：列车与天线边缘双重发虚、背景植被平滑",
-   "notes": "中帧相比尾帧明显更糊且呈邻帧混合质感，但本片为快速横摇运动模糊素材，静帧下与运动模糊难完全区分"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "无",
+   "notes": "逐帧核对8帧：画面为黄昏天空下列车行驶场景。f01-f08背景元素（电线杆、架空线、路面'16'标线、草地）位置稳定，天空紫橙渐变色调一致，无帧间明暗闪烁或整体色偏（f01 vs f08）；列车全程沿轨道连续移动，车窗纹理逐帧推进（f02-f06可见明显位移），无定格、无时序跳变或场景切换；列车高速运动产生的方向性运动模糊属黄昏低快门下的自然成像效果，未见半透明重影或残影错位；画面无文字乱码（'16'标线清晰正常）、无人脸区域、无像素块。物理层面列车贴轨行驶、支撑合理，主体外观跨帧一致，无身份漂移或计数异常。综合判定为干净样本。"
   },
   "J5": {
    "clip_id": "golden_034",
@@ -116,34 +89,28 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中火车移动流畅，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_034",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 1.0,
-   "spans": []
-  },
   "J3": {
    "clip_id": "golden_034",
    "defect_detected": true,
    "defect_types": [
     "ghosting"
    ],
-   "confidence": 0.9295,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.449; flicker=0.278; color_shift=0.667; face_blur=0.553; garble_text=0.067; temporal_swap=0.329; pixelate=0.385; ghosting=0.929; overall=0.514"
+   "confidence": 0.9164,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.477; flicker=0.239; color_shift=0.697; face_blur=0.423; garble_text=0.078; temporal_swap=0.293; pixelate=0.430; ghosting=0.916; overall=0.546"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_034.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_034.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_034.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_034.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_034.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_034.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_034.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_034.json"
+ }
 }

@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/buA_30s.mp4",
- "generated_at": "2026-10-01T18:07:34",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/buA_30s.mp4",
+ "generated_at": "2026-10-08T20:38:19",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 30.0,
@@ -16,18 +16,18 @@
   "ghosting": {
    "conf": 0.685,
    "kind": "rect_dip_blend",
-   "start_s": 8.0,
-   "end_s": 9.75,
+   "start_s": 7.75,
+   "end_s": 9.5,
    "dur_s": 1.75,
-   "dip_ratio": 0.562,
-   "out_med": 2.456,
-   "in_med": 1.38,
-   "boundary_ratio": 1.98,
+   "dip_ratio": 0.56,
+   "out_med": 1.315,
+   "in_med": 0.736,
+   "boundary_ratio": 1.79,
    "branch": "diff_dip",
    "low_motion_plateau": true,
    "span": [
-    8.0,
-    9.75
+    7.75,
+    9.5
    ]
   }
  },
@@ -42,17 +42,17 @@
   "spans": [
    {
     "type": "ghosting",
-    "start_s": 8.0,
-    "end_s": 9.75,
+    "start_s": 7.75,
+    "end_s": 9.5,
     "evidence": {
      "kind": "rect_dip_blend",
-     "start_s": 8.0,
-     "end_s": 9.75,
+     "start_s": 7.75,
+     "end_s": 9.5,
      "dur_s": 1.75,
-     "dip_ratio": 0.562,
-     "out_med": 2.456,
-     "in_med": 1.38,
-     "boundary_ratio": 1.98,
+     "dip_ratio": 0.56,
+     "out_med": 1.315,
+     "in_med": 0.736,
+     "boundary_ratio": 1.79,
      "branch": "diff_dip",
      "low_motion_plateau": true
     }
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 3.77
+  "analyze_sec": 4.22
  }
 }

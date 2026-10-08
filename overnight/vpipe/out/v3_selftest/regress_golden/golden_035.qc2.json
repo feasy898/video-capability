@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/golden/clips/golden_035.mp4",
- "generated_at": "2026-10-01T18:07:09",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/_archive-20261005/golden/clips/golden_035.mp4",
+ "generated_at": "2026-10-08T20:37:50",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 5.042,

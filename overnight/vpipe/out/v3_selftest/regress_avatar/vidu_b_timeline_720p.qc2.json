@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/vidu_b_timeline_720p.mp4",
- "generated_at": "2026-10-01T18:08:06",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/vidu_b_timeline_720p.mp4",
+ "generated_at": "2026-10-08T20:39:12",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 26.0,
@@ -16,18 +16,18 @@
   "ghosting": {
    "conf": 0.837,
    "kind": "rect_dip_blend",
-   "start_s": 8.0,
-   "end_s": 10.5,
-   "dur_s": 2.5,
-   "dip_ratio": 0.643,
-   "out_med": 1792.903,
-   "in_med": 1152.313,
-   "boundary_ratio": 1.54,
-   "branch": "lap_dip",
-   "low_motion_plateau": false,
+   "start_s": 7.75,
+   "end_s": 10.0,
+   "dur_s": 2.25,
+   "dip_ratio": 0.353,
+   "out_med": 2.989,
+   "in_med": 1.054,
+   "boundary_ratio": 2.84,
+   "branch": "diff_dip",
+   "low_motion_plateau": true,
    "span": [
-    8.0,
-    10.5
+    7.75,
+    10.0
    ]
   }
  },
@@ -42,19 +42,19 @@
   "spans": [
    {
     "type": "ghosting",
-    "start_s": 8.0,
-    "end_s": 10.5,
+    "start_s": 7.75,
+    "end_s": 10.0,
     "evidence": {
      "kind": "rect_dip_blend",
-     "start_s": 8.0,
-     "end_s": 10.5,
-     "dur_s": 2.5,
-     "dip_ratio": 0.643,
-     "out_med": 1792.903,
-     "in_med": 1152.313,
-     "boundary_ratio": 1.54,
-     "branch": "lap_dip",
-     "low_motion_plateau": false
+     "start_s": 7.75,
+     "end_s": 10.0,
+     "dur_s": 2.25,
+     "dip_ratio": 0.353,
+     "out_med": 2.989,
+     "in_med": 1.054,
+     "boundary_ratio": 2.84,
+     "branch": "diff_dip",
+     "low_motion_plateau": true
     }
    }
   ]
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 3.24
+  "analyze_sec": 4.05
  }
 }

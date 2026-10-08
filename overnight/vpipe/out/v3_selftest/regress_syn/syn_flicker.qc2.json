@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/j6_v2/synthetic/syn_flicker.mp4",
- "generated_at": "2026-10-01T18:07:12",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/j6_v2/synthetic/syn_flicker.mp4",
+ "generated_at": "2026-10-08T20:37:54",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 5.167,
@@ -17,13 +17,13 @@
    "conf": 0.95,
    "kind": "sign_alternation",
    "channel": "luma",
-   "events": 49,
-   "rate_per_s": 23.52,
-   "start_s": 1.458,
+   "events": 50,
+   "rate_per_s": 23.53,
+   "start_s": 1.417,
    "end_s": 3.542,
-   "dur_s": 2.083,
+   "dur_s": 2.125,
    "span": [
-    1.458,
+    1.417,
     3.542
    ]
   }
@@ -39,16 +39,16 @@
   "spans": [
    {
     "type": "flicker",
-    "start_s": 1.458,
+    "start_s": 1.417,
     "end_s": 3.542,
     "evidence": {
      "kind": "sign_alternation",
      "channel": "luma",
-     "events": 49,
-     "rate_per_s": 23.52,
-     "start_s": 1.458,
+     "events": 50,
+     "rate_per_s": 23.53,
+     "start_s": 1.417,
      "end_s": 3.542,
-     "dur_s": 2.083
+     "dur_s": 2.125
     }
    }
   ]
@@ -132,6 +132,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 0.78
+  "analyze_sec": 0.79
  }
 }

@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/j6_v2/synthetic/syn_freeze.mp4",
- "generated_at": "2026-10-01T18:07:14",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/j6_v2/synthetic/syn_freeze.mp4",
+ "generated_at": "2026-10-08T20:37:55",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 7.833,
@@ -20,8 +20,8 @@
    "dur_s": 2.0,
    "start_s": 5.125,
    "end_s": 7.125,
-   "run_diff_med": 0.0011,
-   "lap_guard": 1.0,
+   "run_diff_med": 0.0001,
+   "lap_guard": 1.001,
    "span": [
     5.125,
     7.125
@@ -29,15 +29,15 @@
   },
   "temporal_swap": {
    "kind": "single_cut_repeat",
-   "conf": 0.614,
+   "conf": 0.553,
    "junctions": [
     {
      "cut_t": 7.167,
-     "diff": 19.96,
-     "back_score": 0.898,
-     "match_t": 4.5,
-     "pre_score": 0.8092,
-     "margin": 0.0888
+     "diff": 27.82,
+     "back_score": 0.8522,
+     "match_t": 0.542,
+     "pre_score": -0.3992,
+     "margin": 1.2514
     }
    ],
    "span": [
@@ -66,8 +66,8 @@
      "dur_s": 2.0,
      "start_s": 5.125,
      "end_s": 7.125,
-     "run_diff_med": 0.0011,
-     "lap_guard": 1.0
+     "run_diff_med": 0.0001,
+     "lap_guard": 1.001
     }
    },
    {
@@ -79,11 +79,11 @@
      "junctions": [
       {
        "cut_t": 7.167,
-       "diff": 19.96,
-       "back_score": 0.898,
-       "match_t": 4.5,
-       "pre_score": 0.8092,
-       "margin": 0.0888
+       "diff": 27.82,
+       "back_score": 0.8522,
+       "match_t": 0.542,
+       "pre_score": -0.3992,
+       "margin": 1.2514
       }
      ]
     }
@@ -169,6 +169,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 1.18
+  "analyze_sec": 0.98
  }
 }

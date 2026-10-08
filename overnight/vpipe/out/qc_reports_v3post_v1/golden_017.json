@@ -1,15 +1,15 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_017",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.77,
+  "confidence": 0.7315,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[frame_freeze] 最大P=0.770）"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.732）"
   ]
  },
  "defects": [
@@ -18,74 +18,50 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.77,
+   "confidence": 0.7315,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.77,
-      "flicker": 0.1972,
-      "color_shift": 0.4315,
-      "face_blur": 0.0513,
-      "garble_text": 0.0394,
-      "temporal_swap": 0.4323,
-      "pixelate": 0.1425,
-      "ghosting": 0.6287
+      "frame_freeze": 0.7315,
+      "flicker": 0.1638,
+      "color_shift": 0.3506,
+      "face_blur": 0.046,
+      "garble_text": 0.0381,
+      "temporal_swap": 0.2942,
+      "pixelate": 0.1011,
+      "ghosting": 0.5066
      },
-     "overall": 0.6412
+     "overall": 0.5818
     }
-   }
-  },
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.6166307747364044,
-   "evidence": {
-    "J6": {
-     "kind": "uniform_low_conf",
-     "conf_src": 0.617
-    }
-   },
-   "span": {
-    "start_s": 0.0,
-    "end_s": 6.56
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.77,
-   "flicker": 0.1972,
-   "color_shift": 0.4315,
-   "face_blur": 0.0513,
-   "garble_text": 0.0394,
-   "temporal_swap": 0.4323,
-   "pixelate": 0.1425,
-   "ghosting": 0.6287
+   "frame_freeze": 0.7315,
+   "flicker": 0.1638,
+   "color_shift": 0.3506,
+   "face_blur": 0.046,
+   "garble_text": 0.0381,
+   "temporal_swap": 0.2942,
+   "pixelate": 0.1011,
+   "ghosting": 0.5066
   },
-  "overall": 0.6412,
+  "overall": 0.5818,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08（0.4s-6.2s）",
+    "text": "全片 f01-f08",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -101,17 +77,9 @@
    "clip_id": "golden_017",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.7,
-   "spans": "全片 f01-f08（0.4s-6.2s）",
-   "notes": "海岛航拍匀速推镜，8帧内容单调连续变化，相邻帧像素差均匀（MAD 27-50，无近似零差对，排除定格）；无色偏/闪烁/模糊区/乱码文字/像素化/拖影。"
-  },
-  "J2": {
-   "clip_id": "golden_017",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.45,
-   "spans": "f01/f05/f08",
-   "notes": "海岛航拍三帧曝光色彩一致、镜头缓移自然；抽帧间隔下无法捕捉可能存在的局部定格段"
+   "confidence": 0.8,
+   "spans": "全片 f01-f08",
+   "notes": "逐项核对8帧：主体一致性良好，岛屿、白色房车及车辆从f01到f08外观与相对位置保持连续，无身份漂移、无段落错乱（f01→f02背景由平直海平线过渡为圆形环礁/鱼眼式'小行星'背景，属镜头后拉的风格化呈现，岛屿与车辆位置连续，非场景切换）；f02-f04三帧内容高度相近，判为镜头静止hold而非定格缺陷，f05起镜头继续推进/环绕，运动恢复自然，不构成'数秒不动'的frame_freeze实锤；f05右上角亮条纹为云层/镜头光晕的运动模糊痕迹，非拖影或鬼影；画面无乱码文字、无人脸区域、无马赛克像素块、无整体色偏（全片保持一致的蓝色调）；语义层面车辆停靠在岛屿顶部、支撑合理，无悬浮穿模，数量（1房车+2车）无异常。综合判定该片段干净，未命中8类标准缺陷及语义缺陷。"
   },
   "J5": {
    "clip_id": "golden_017",
@@ -121,46 +89,28 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_017",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.617,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.0,
-     "end_s": 6.56,
-     "evidence": {
-      "kind": "uniform_low_conf",
-      "max_mean": 0.556
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_017",
    "defect_detected": true,
    "defect_types": [
     "frame_freeze"
    ],
-   "confidence": 0.77,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.770; flicker=0.197; color_shift=0.431; face_blur=0.051; garble_text=0.039; temporal_swap=0.432; pixelate=0.142; ghosting=0.629; overall=0.641"
+   "confidence": 0.7315,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.732; flicker=0.164; color_shift=0.351; face_blur=0.046; garble_text=0.038; temporal_swap=0.294; pixelate=0.101; ghosting=0.507; overall=0.582"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_017.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_017.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_017.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_017.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_017.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_017.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_017.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_017.json"
+ }
 }

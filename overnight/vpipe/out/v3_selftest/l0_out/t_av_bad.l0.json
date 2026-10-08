@@ -1,5 +1,5 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/vpipe/out/v3_selftest/media/dur_12p5s.mp4",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/v3_selftest/media/dur_12p5s.mp4",
  "expect_duration_s": 10.0,
  "profile": "avatar_talk",
  "failures": [

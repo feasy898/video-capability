@@ -1,16 +1,16 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_038",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.9,
+  "confidence": 0.82,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['garble_text'], conf=0.9)",
-   "J3@0.7 flag=False hits=[] max_channel_P=0.6352",
+   "J1(detected=True, types=['garble_text'], conf=0.82)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6457",
    "J6 信号(仅信号不否决): garble_text@0.72"
   ]
  },
@@ -21,15 +21,15 @@
     "J1",
     "J6"
    ],
-   "confidence": 0.9,
+   "confidence": 0.82,
    "span": {
     "start_s": 0.0,
     "end_s": 5.167
    },
    "evidence": {
     "J1": {
-     "confidence": 0.9,
-     "notes": "旧报纸\"号外\"大标题可读，但正文小字全为重复伪汉字（如\"閱関閖閰\"循环）且栏头为无意义词（\"賌方稅何浴\"\"薗英邪逳陲仜\"），属乱码文字；镜头拉远连贯、亮度饱和度单调漂移，无其他注入特征"
+     "confidence": 0.82,
+     "notes": "画面主体为一张中文旧报纸'号外'，镜头全程缓慢拉远、无冻结/闪烁/拖影，纸张在桌面上的形态与折痕跨帧一致（f01-f08），物理表现正常。但报纸文字为AI生成的伪汉字：除大标题'号外'外，各竖排标题如'崇方税何沦'（f01-f08右侧）、'董英邪道嗤伍'（f03-f08左侧）、'盍禾豆恤丹'（f06-f08右侧）均非有意义的中文词句，正文小字密排的'汉字'也多为无意义字符堆叠，属于典型的文字渲染失"
     },
     "J6": {
      "kind": "uniform_low_conf",
@@ -40,22 +40,22 @@
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.2329,
-   "flicker": 0.3524,
-   "color_shift": 0.6352,
-   "face_blur": 0.0328,
-   "garble_text": 0.0774,
-   "temporal_swap": 0.338,
-   "pixelate": 0.0971,
-   "ghosting": 0.2729
+   "frame_freeze": 0.2931,
+   "flicker": 0.3891,
+   "color_shift": 0.6457,
+   "face_blur": 0.036,
+   "garble_text": 0.0582,
+   "temporal_swap": 0.3006,
+   "pixelate": 0.0863,
+   "ghosting": 0.2752
   },
-  "overall": 0.5782,
+  "overall": 0.5309,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -72,7 +72,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "全程（f01-f08报纸正文与栏头）"
+    "text": "f01-f08 全程"
    }
   },
   {
@@ -97,9 +97,9 @@
    "defect_types": [
     "garble_text"
    ],
-   "confidence": 0.9,
-   "spans": "全程（f01-f08报纸正文与栏头）",
-   "notes": "旧报纸\"号外\"大标题可读，但正文小字全为重复伪汉字（如\"閱関閖閰\"循环）且栏头为无意义词（\"賌方稅何浴\"\"薗英邪逳陲仜\"），属乱码文字；镜头拉远连贯、亮度饱和度单调漂移，无其他注入特征"
+   "confidence": 0.82,
+   "spans": "f01-f08 全程",
+   "notes": "画面主体为一张中文旧报纸'号外'，镜头全程缓慢拉远、无冻结/闪烁/拖影，纸张在桌面上的形态与折痕跨帧一致（f01-f08），物理表现正常。但报纸文字为AI生成的伪汉字：除大标题'号外'外，各竖排标题如'崇方税何沦'（f01-f08右侧）、'董英邪道嗤伍'（f03-f08左侧）、'盍禾豆恤丹'（f06-f08右侧）均非有意义的中文词句，正文小字密排的'汉字'也多为无意义字符堆叠，属于典型的文字渲染失败/乱码文字缺陷。未检出人脸、手部、计数或身份漂移类问题。"
   },
   "J5": {
    "clip_id": "golden_038",
@@ -115,9 +115,9 @@
    "defect_types": [
     "color_shift"
    ],
-   "confidence": 0.6352,
+   "confidence": 0.6457,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.233 flicker=0.352 color_shift=0.635 face_blur=0.033 garble_text=0.077 temporal_swap=0.338 pixelate=0.097 ghosting=0.273; overall=0.578; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.293 flicker=0.389 color_shift=0.646 face_blur=0.036 garble_text=0.058 temporal_swap=0.301 pixelate=0.086 ghosting=0.275; overall=0.531; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_038",
@@ -137,17 +137,17 @@
      }
     }
    ],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_038.mp4",
   "frames_dir": "frames/golden_038/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_038.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_038.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_038.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_038.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_038.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_038.qc.json"
   }
  },
  "errors": {}

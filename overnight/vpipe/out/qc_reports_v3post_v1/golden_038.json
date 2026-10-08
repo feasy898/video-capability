@@ -1,12 +1,12 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_038",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.9,
+  "confidence": 0.82,
   "decided_by": "E10",
   "reasons": [
    "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
@@ -16,62 +16,42 @@
   {
    "type": "garble_text",
    "sources": [
-    "J1",
-    "J2",
-    "J6"
+    "J1"
    ],
-   "confidence": 0.9,
+   "confidence": 0.82,
    "evidence": {
     "J1": {
-     "notes": "旧报纸\"号外\"大标题可读，但正文小字全为重复伪汉字（如\"閱関閖閰\"循环）且栏头为无意义词（\"賌方稅何浴\"\"薗英邪逳陲仜\"），属乱码文字；镜头拉远连贯、亮度饱和度单调漂移，无其他注入特征"
-    },
-    "J2": {
-     "notes": "大标题号外正确，但副标题与正文大量字形为拼凑伪汉字（非真实汉语词组，部首错乱），判定文字渲染乱码"
-    },
-    "J6": {
-     "kind": "uniform_low_conf",
-     "conf_src": 0.72
+     "notes": "画面主体为一张中文旧报纸'号外'，镜头全程缓慢拉远、无冻结/闪烁/拖影，纸张在桌面上的形态与折痕跨帧一致（f01-f08），物理表现正常。但报纸文字为AI生成的伪汉字：除大标题'号外'外，各竖排标题如'崇方税何沦'（f01-f08右侧）、'董英邪道嗤伍'（f03-f08左侧）、'盍禾豆恤丹'（f06-f08右侧）均非有"
     }
-   },
-   "span": {
-    "start_s": 0.0,
-    "end_s": 5.167
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.2329,
-   "flicker": 0.3524,
-   "color_shift": 0.6352,
-   "face_blur": 0.0328,
-   "garble_text": 0.0774,
-   "temporal_swap": 0.338,
-   "pixelate": 0.0971,
-   "ghosting": 0.2729
+   "frame_freeze": 0.2931,
+   "flicker": 0.3891,
+   "color_shift": 0.6457,
+   "face_blur": 0.036,
+   "garble_text": 0.0582,
+   "temporal_swap": 0.3006,
+   "pixelate": 0.0863,
+   "ghosting": 0.2752
   },
-  "overall": 0.5782,
+  "overall": 0.5309,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全程（f01-f08报纸正文与栏头）",
+    "text": "f01-f08 全程",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08 报纸副标题与正文小字",
-    "source": "J2"
    }
   },
   {
@@ -89,19 +69,9 @@
    "defect_types": [
     "garble_text"
    ],
-   "confidence": 0.9,
-   "spans": "全程（f01-f08报纸正文与栏头）",
-   "notes": "旧报纸\"号外\"大标题可读，但正文小字全为重复伪汉字（如\"閱関閖閰\"循环）且栏头为无意义词（\"賌方稅何浴\"\"薗英邪逳陲仜\"），属乱码文字；镜头拉远连贯、亮度饱和度单调漂移，无其他注入特征"
-  },
-  "J2": {
-   "clip_id": "golden_038",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.7,
-   "spans": "f01/f05/f08 报纸副标题与正文小字",
-   "notes": "大标题号外正确，但副标题与正文大量字形为拼凑伪汉字（非真实汉语词组，部首错乱），判定文字渲染乱码"
+   "confidence": 0.82,
+   "spans": "f01-f08 全程",
+   "notes": "画面主体为一张中文旧报纸'号外'，镜头全程缓慢拉远、无冻结/闪烁/拖影，纸张在桌面上的形态与折痕跨帧一致（f01-f08），物理表现正常。但报纸文字为AI生成的伪汉字：除大标题'号外'外，各竖排标题如'崇方税何沦'（f01-f08右侧）、'董英邪道嗤伍'（f03-f08左侧）、'盍禾豆恤丹'（f06-f08右侧）均非有意义的中文词句，正文小字密排的'汉字'也多为无意义字符堆叠，属于典型的文字渲染失败/乱码文字缺陷。未检出人脸、手部、计数或身份漂移类问题。"
   },
   "J5": {
    "clip_id": "golden_038",
@@ -111,44 +81,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_038",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.72,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.0,
-     "end_s": 5.167,
-     "evidence": {
-      "kind": "uniform_low_conf",
-      "max_mean": 0.486
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_038",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.6352,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.233; flicker=0.352; color_shift=0.635; face_blur=0.033; garble_text=0.077; temporal_swap=0.338; pixelate=0.097; ghosting=0.273; overall=0.578"
+   "confidence": 0.6457,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.293; flicker=0.389; color_shift=0.646; face_blur=0.036; garble_text=0.058; temporal_swap=0.301; pixelate=0.086; ghosting=0.275; overall=0.531"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_038.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_038.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_038.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_038.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_038.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_038.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_038.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_038.json"
+ }
 }

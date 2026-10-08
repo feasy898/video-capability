@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/j6_v2/synthetic/syn_swap.mp4",
- "generated_at": "2026-10-01T18:07:15",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/j6_v2/synthetic/syn_swap.mp4",
+ "generated_at": "2026-10-08T20:37:56",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 5.167,
@@ -14,29 +14,21 @@
  },
  "temporal_candidates": {
   "temporal_swap": {
-   "kind": "cuts_backward_reentry",
+   "kind": "single_cut_repeat",
    "conf": 0.663,
    "junctions": [
     {
      "cut_t": 2.5,
-     "diff": 28.48,
-     "back_score": 0.8396,
-     "match_t": 1.083,
-     "pre_score": 0.7287,
-     "margin": 0.1109
-    },
-    {
-     "cut_t": 3.5,
-     "diff": 27.15,
-     "back_score": 0.8482,
-     "match_t": 2.083,
-     "pre_score": 0.7916,
-     "margin": 0.0566
+     "diff": 34.58,
+     "back_score": 0.9349,
+     "match_t": 0.5,
+     "pre_score": -0.3796,
+     "margin": 1.3146
     }
    ],
    "span": [
     2.5,
-    3.5
+    2.5
    ]
   }
  },
@@ -52,25 +44,17 @@
    {
     "type": "temporal_swap",
     "start_s": 2.5,
-    "end_s": 3.5,
+    "end_s": 2.5,
     "evidence": {
-     "kind": "cuts_backward_reentry",
+     "kind": "single_cut_repeat",
      "junctions": [
       {
        "cut_t": 2.5,
-       "diff": 28.48,
-       "back_score": 0.8396,
-       "match_t": 1.083,
-       "pre_score": 0.7287,
-       "margin": 0.1109
-      },
-      {
-       "cut_t": 3.5,
-       "diff": 27.15,
-       "back_score": 0.8482,
-       "match_t": 2.083,
-       "pre_score": 0.7916,
-       "margin": 0.0566
+       "diff": 34.58,
+       "back_score": 0.9349,
+       "match_t": 0.5,
+       "pre_score": -0.3796,
+       "margin": 1.3146
       }
      ]
     }
@@ -156,6 +140,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 0.74
+  "analyze_sec": 0.62
  }
 }

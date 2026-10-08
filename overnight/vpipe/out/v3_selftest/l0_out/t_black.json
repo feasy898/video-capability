@@ -1,0 +1,75 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "t_black",
+ "generated_at": "2026-10-08T20:12:27",
+ "qc_mode": "online",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1 缺席（弃权）",
+   "J3 概率缺席（弃权）",
+   "降级: J3; J6; verdict"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": null,
+   "flicker": null,
+   "color_shift": null,
+   "face_blur": null,
+   "garble_text": null,
+   "temporal_swap": null,
+   "pixelate": null,
+   "ghosting": null
+  },
+  "overall": null,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
+  }
+ },
+ "spans": [],
+ "judges": {},
+ "inputs": {
+  "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/v3_selftest/media/black_5s.mp4",
+  "frames_dir": null,
+  "judge_files": {}
+ },
+ "errors": {
+  "J6": "未提供 --detector-json（检测器弃权）",
+  "J3": "未提供 --judge-probs J3=...（概率通道弃权）",
+  "verdict": "confidence 无信号源（J3 未触发且 J1 缺失/无效），置 0.0"
+ },
+ "qc_context": {
+  "profile": null,
+  "known_cuts": [],
+  "l0_preflight": {
+   "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/v3_selftest/media/black_5s.mp4",
+   "expect_duration_s": 5.0,
+   "profile": null,
+   "failures": [],
+   "checks": {
+    "duration": {
+     "measured_s": 5.0,
+     "rule": "dev_max",
+     "dev": 0.0,
+     "dev_max": 0.02
+    },
+    "black_mono_ratio": {
+     "n_samples": 64,
+     "black_luma_max": 8.0,
+     "mono_std_max": 2.0,
+     "ratio_max": 0.5,
+     "skipped": "cv2 未安装（黑屏检查弃权）"
+    }
+   }
+  }
+ }
+}

@@ -1,78 +1,39 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_019",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.85,
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "identity_drift",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.85,
-   "evidence": {
-    "J1": {
-     "notes": "放大比对证实尚未倒下的后排骨牌颜色顺序逐帧突变（f03 G,B,R→f04 G,R,Y→f05 G,R,B→f06 Y,G），静态物体颜色/身份跨帧不一致；倒下运动本身方向一致、链式走完。对照源prompt（G4-20：二十张骨牌）：首张与末张均在片中出现、可见骨牌总数仅约8张，数量严重不足。"
-    }
-   }
-  },
-  {
-   "type": "count_error",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.85,
-   "evidence": {
-    "J1": {
-     "notes": "放大比对证实尚未倒下的后排骨牌颜色顺序逐帧突变（f03 G,B,R→f04 G,R,Y→f05 G,R,B→f06 Y,G），静态物体颜色/身份跨帧不一致；倒下运动本身方向一致、链式走完。对照源prompt（G4-20：二十张骨牌）：首张与末张均在片中出现、可见骨牌总数仅约8张，数量严重不足。"
-    }
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.5555,
-   "flicker": 0.3557,
-   "color_shift": 0.2391,
-   "face_blur": 0.1385,
-   "garble_text": 0.0389,
-   "temporal_swap": 0.2474,
-   "pixelate": 0.1109,
-   "ghosting": 0.3201
+   "frame_freeze": 0.674,
+   "flicker": 0.3387,
+   "color_shift": 0.2486,
+   "face_blur": 0.1353,
+   "garble_text": 0.0424,
+   "temporal_swap": 0.2902,
+   "pixelate": 0.1234,
+   "ghosting": 0.3348
   },
-  "overall": 0.4169,
+  "overall": 0.4261,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
-  {
-   "type": "note",
-   "evidence": {
-    "text": "identity_drift：f03-f06（约1.9s-3.8s）后排未倒骨牌区；count_error：全片",
-    "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
-   }
-  },
   {
    "type": "note",
    "evidence": {
@@ -84,22 +45,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_019",
-   "defect_detected": true,
-   "defect_types": [
-    "identity_drift",
-    "count_error"
-   ],
-   "confidence": 0.85,
-   "spans": "identity_drift：f03-f06（约1.9s-3.8s）后排未倒骨牌区；count_error：全片",
-   "notes": "放大比对证实尚未倒下的后排骨牌颜色顺序逐帧突变（f03 G,B,R→f04 G,R,Y→f05 G,R,B→f06 Y,G），静态物体颜色/身份跨帧不一致；倒下运动本身方向一致、链式走完。对照源prompt（G4-20：二十张骨牌）：首张与末张均在片中出现、可见骨牌总数仅约8张，数量严重不足。"
-  },
-  "J2": {
-   "clip_id": "golden_019",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.4,
-   "spans": "f01/f05/f08",
-   "notes": "骨牌推倒过程动态连贯无物理穿帮；可见骨牌总数约5-6张，缺少 prompt 无法判定数量是否违约"
+   "confidence": 0.72,
+   "spans": "",
+   "notes": "逐项核查未见明显缺陷。手部：f01-f02 仅单根手指按压红色骨牌，指甲与指形自然，无多指/融指。物理与时序：f02 红牌被推动起倒，f03 呈阶梯式依次倚靠的连锁倒塌（红→蓝→绿→黄，底边原地旋转、无悬浮穿模），f04-f06 倒塌前沿沿队列向右单调推进，f06 末端绿牌前倾、f07 已倒平，传播方向与速度连续合理。f07 与 f08 画面相近为骨牌倒完后自然静止收尾（间隔仅0.6s，非数秒定格）。对象一致性：f01/f02 可见队列红-蓝-绿-黄-绿(-蓝)与 f03 中红-蓝-绿-黄已倒、绿-蓝-红站立相衔接，颜色序列跨帧基本连续，未见同一骨牌颜色/数量突变（f04-f06 阴影中深色块存在绿/蓝判读歧义，但不构成明确突变证据）。画面左侧白色顶面为顶部强光下骨牌顶面过曝所致，非新增异物。无闪烁、色偏、像素化、拖影、乱码文字或人脸异常。综合判定干净。"
   },
   "J5": {
    "clip_id": "golden_019",
@@ -109,52 +59,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_019",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.548,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 2.26,
-     "end_s": 2.906,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.274,
-      "frames": [
-       3,
-       4
-      ],
-      "mean_scores": [
-       0.349,
-       0.623
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_019",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.5555,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.555; flicker=0.356; color_shift=0.239; face_blur=0.139; garble_text=0.039; temporal_swap=0.247; pixelate=0.111; ghosting=0.320; overall=0.417"
+   "confidence": 0.674,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.674; flicker=0.339; color_shift=0.249; face_blur=0.135; garble_text=0.042; temporal_swap=0.290; pixelate=0.123; ghosting=0.335; overall=0.426"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_019.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_019.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_019.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_019.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_019.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_019.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_019.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_019.json"
+ }
 }

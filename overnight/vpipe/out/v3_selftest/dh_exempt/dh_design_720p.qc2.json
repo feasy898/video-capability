@@ -1,6 +1,6 @@
 {
- "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/dh_design_720p.mp4",
- "generated_at": "2026-10-01T18:06:49",
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/dh_design_720p.mp4",
+ "generated_at": "2026-10-08T20:37:26",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 17.0,
@@ -15,16 +15,16 @@
  "temporal_candidates": {},
  "temporal_rejected": {
   "ghosting": {
-   "start_s": 4.0,
-   "end_s": 5.583,
-   "dur_s": 1.583,
-   "dip_ratio": 0.594,
-   "out_med": 2.199,
-   "in_med": 1.307,
-   "boundary_ratio": 1.33,
+   "start_s": 3.75,
+   "end_s": 5.25,
+   "dur_s": 1.5,
+   "dip_ratio": 0.518,
+   "out_med": 3.237,
+   "in_med": 1.678,
+   "boundary_ratio": 1.89,
    "branch": "diff_dip",
    "low_motion_plateau": true,
-   "rejected_by": "low_motion_plateau(profile=avatar_talk, in_med=1.307 < 2.0)"
+   "rejected_by": "low_motion_plateau(profile=avatar_talk, in_med=1.678 < 2.0)"
   }
  },
  "temporal_protocol": {
@@ -113,6 +113,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 2.35
+  "analyze_sec": 4.58
  }
 }

@@ -1,16 +1,16 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_002",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-08T20:39:16",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "auto_reject",
-  "confidence": 0.9212,
+  "confidence": 0.9627,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['garble_text'], conf=0.98)",
-   "J3@0.7 flag=True hits=['garble_text'] max_channel_P=0.9212"
+   "J1(detected=True, types=['garble_text'], conf=0.95)",
+   "J3@0.71 flag=True hits=['garble_text'] max_channel_P=0.9627"
   ]
  },
  "defects": [
@@ -20,36 +20,36 @@
     "J1",
     "J3"
    ],
-   "confidence": 0.98,
+   "confidence": 0.9627,
    "evidence": {
     "J1": {
-     "confidence": 0.98,
-     "notes": "f03起叠加黑色底乱码文字块'yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP'，f07消失；其余帧无冻结/色偏/糊脸"
+     "confidence": 0.95,
+     "notes": "f03-f05 画面下方出现黑底白字的文字块，内容为 'yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP'，为随机无意义字符组合（乱码文字），且该文字在 f02 之前不存在、f06 又突然消失，属典型的生成乱码文字缺陷（garble_text）。其余维度核对：人物姿态在 f06-f08 有连续抬手动作，无定格；场景、光照、色彩各帧一致，无闪烁与色偏；人"
     },
     "J3": {
-     "channel_P": 0.9212
+     "channel_P": 0.9627
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.3031,
-   "flicker": 0.2547,
-   "color_shift": 0.2968,
-   "face_blur": 0.2341,
-   "garble_text": 0.9212,
-   "temporal_swap": 0.3565,
-   "pixelate": 0.2921,
-   "ghosting": 0.4807
+   "frame_freeze": 0.3193,
+   "flicker": 0.279,
+   "color_shift": 0.4135,
+   "face_blur": 0.2087,
+   "garble_text": 0.9627,
+   "temporal_swap": 0.3151,
+   "pixelate": 0.2659,
+   "ghosting": 0.4483
   },
-  "overall": 0.5594,
+  "overall": 0.477,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
@@ -57,7 +57,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03-f06（约1.6-3.5s）画面下半部出现黑色文字块"
+    "text": "f03-f05（约1.6s-2.8s）"
    }
   },
   {
@@ -82,9 +82,9 @@
    "defect_types": [
     "garble_text"
    ],
-   "confidence": 0.98,
-   "spans": "f03-f06（约1.6-3.5s）画面下半部出现黑色文字块",
-   "notes": "f03起叠加黑色底乱码文字块'yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP'，f07消失；其余帧无冻结/色偏/糊脸"
+   "confidence": 0.95,
+   "spans": "f03-f05（约1.6s-2.8s）",
+   "notes": "f03-f05 画面下方出现黑底白字的文字块，内容为 'yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP'，为随机无意义字符组合（乱码文字），且该文字在 f02 之前不存在、f06 又突然消失，属典型的生成乱码文字缺陷（garble_text）。其余维度核对：人物姿态在 f06-f08 有连续抬手动作，无定格；场景、光照、色彩各帧一致，无闪烁与色偏；人脸区域清晰无模糊；画面无像素化与拖影；手部在 f01-f02（双手交握）、f07-f08（抬手/摊掌）形态正常，未见多指或融指；桌上器物与场景主体跨帧外观稳定，无身份漂移或物理违例。"
   },
   "J5": {
    "clip_id": "golden_002",
@@ -100,9 +100,9 @@
    "defect_types": [
     "garble_text"
    ],
-   "confidence": 0.9212,
+   "confidence": 0.9627,
    "spans": "full_clip:16帧均匀采样4x4拼图",
-   "notes": "noul概率 frame_freeze=0.303 flicker=0.255 color_shift=0.297 face_blur=0.234 garble_text=0.921 temporal_swap=0.356 pixelate=0.292 ghosting=0.481; overall=0.559; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+   "notes": "noul概率 frame_freeze=0.319 flicker=0.279 color_shift=0.413 face_blur=0.209 garble_text=0.963 temporal_swap=0.315 pixelate=0.266 ghosting=0.448; overall=0.477; 阈值0.5; 16帧4x4时间戳拼图整体判定"
   },
   "J6": {
    "clip_id": "golden_002",
@@ -110,17 +110,17 @@
    "defect_types": [],
    "confidence": 0.6,
    "spans": [],
-   "notes": "qc_orch_v2 规则引擎重建（阈值=/opt/gpumachine/projects/video-capability/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
+   "notes": "qc_orch_v2 规则引擎重建（阈值=/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml emit@0.55）"
   }
  },
  "inputs": {
   "clip": "clips/golden_002.mp4",
   "frames_dir": "frames/golden_002/",
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_002.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_002.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/raw/golden_002.qc.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_002.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_002.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "J6": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_002.qc.json"
   }
  },
  "errors": {}

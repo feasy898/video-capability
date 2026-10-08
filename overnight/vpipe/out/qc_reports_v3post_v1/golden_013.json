@@ -1,69 +1,57 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_013",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": false,
-  "decision": "pass",
-  "confidence": 0.0,
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.7,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.70"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
   ]
  },
  "defects": [
   {
-   "type": "face_blur",
+   "type": "frame_freeze",
    "sources": [
-    "J6"
+    "J1"
    ],
-   "confidence": 0.7867059111595154,
+   "confidence": 0.7,
    "evidence": {
-    "J6": {
-     "kind": null,
-     "conf_src": 0.787
+    "J1": {
+     "notes": "f01-f06 呈现连贯的落座与播报动作：f01 女主播站立持稿，f02 落座整理稿件，f03-f06 口型持续变化、左手有抬起/放下手势，说明画面处于正常播报运动状态，人脸清晰、背景演播室灯光稳定，无色偏、闪烁、像素化、拖影或身份漂移；手部形态（f02 持稿、f03/f04 执笔、f06-f08 左手张开）均未见多指"
     }
-   },
-   "span": {
-    "start_s": 0.323,
-    "end_s": 0.969
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.3881,
-   "flicker": 0.2778,
-   "color_shift": 0.5943,
-   "face_blur": 0.1514,
-   "garble_text": 0.04,
-   "temporal_swap": 0.3015,
-   "pixelate": 0.1632,
-   "ghosting": 0.3278
+   "frame_freeze": 0.303,
+   "flicker": 0.2403,
+   "color_shift": 0.5831,
+   "face_blur": 0.1441,
+   "garble_text": 0.0382,
+   "temporal_swap": 0.2777,
+   "pixelate": 0.1608,
+   "ghosting": 0.3068
   },
-  "overall": 0.5164,
+  "overall": 0.4709,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "无",
+    "text": "f07-f08（约4.2s-4.8s）",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -77,19 +65,13 @@
  "judges": {
   "J1": {
    "clip_id": "golden_013",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.8,
-   "spans": "无",
-   "notes": "新闻主播身份服装8帧一致、人脸清晰、口型手势自然；稿纸小字模糊为源素材质感，非注入乱码"
-  },
-  "J2": {
-   "clip_id": "golden_013",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.85,
-   "spans": "f01/f05/f08",
-   "notes": "演播室主播三帧人脸清晰、手部与稿件正常，无可见缺陷（稿件小字分辨率不足无法核读）"
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.7,
+   "spans": "f07-f08（约4.2s-4.8s）",
+   "notes": "f01-f06 呈现连贯的落座与播报动作：f01 女主播站立持稿，f02 落座整理稿件，f03-f06 口型持续变化、左手有抬起/放下手势，说明画面处于正常播报运动状态，人脸清晰、背景演播室灯光稳定，无色偏、闪烁、像素化、拖影或身份漂移；手部形态（f02 持稿、f03/f04 执笔、f06-f08 左手张开）均未见多指、融指等解剖异常。但 f07 与 f08 画面几乎完全一致：左手摊开的角度、右手笔的指向、稿件位置、口型与表情均无任何变化。前序帧（f03-f06）显示主播口型在持续变化（说话中），而相邻 0.6s 内画面完全静止、口型毫无变动，不符合自然播报节奏，判定结尾处存在画面定格（frame_freeze），其余 7 项标准缺陷均未发现。"
   },
   "J5": {
    "clip_id": "golden_013",
@@ -99,44 +81,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_013",
-   "defect_detected": true,
-   "defect_types": [
-    "face_blur"
-   ],
-   "confidence": 0.787,
-   "spans": [
-    {
-     "type": "face_blur",
-     "start_s": 0.323,
-     "end_s": 0.969,
-     "evidence": {
-      "pair": 0,
-      "cos": 0.3427
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_013",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.5943,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.388; flicker=0.278; color_shift=0.594; face_blur=0.151; garble_text=0.040; temporal_swap=0.301; pixelate=0.163; ghosting=0.328; overall=0.516"
+   "confidence": 0.5831,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.303; flicker=0.240; color_shift=0.583; face_blur=0.144; garble_text=0.038; temporal_swap=0.278; pixelate=0.161; ghosting=0.307; overall=0.471"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_013.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_013.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_013.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_013.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_013.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_013.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_013.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_013.json"
+ }
 }

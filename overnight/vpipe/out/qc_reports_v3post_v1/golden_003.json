@@ -1,15 +1,15 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_003",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.8449,
+  "confidence": 0.8794,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[color_shift,face_blur] 最大P=0.845）"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[color_shift,face_blur] 最大P=0.879）"
   ]
  },
  "defects": [
@@ -18,20 +18,20 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.8449,
+   "confidence": 0.8794,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.3992,
-      "flicker": 0.5009,
-      "color_shift": 0.8449,
-      "face_blur": 0.7889,
-      "garble_text": 0.0425,
-      "temporal_swap": 0.3276,
-      "pixelate": 0.3499,
-      "ghosting": 0.6183
+      "frame_freeze": 0.3542,
+      "flicker": 0.4751,
+      "color_shift": 0.8794,
+      "face_blur": 0.8052,
+      "garble_text": 0.0393,
+      "temporal_swap": 0.3464,
+      "pixelate": 0.4222,
+      "ghosting": 0.656
      },
-     "overall": 0.5262
+     "overall": 0.5255
     }
    }
   },
@@ -40,78 +40,50 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.7889,
+   "confidence": 0.8052,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.3992,
-      "flicker": 0.5009,
-      "color_shift": 0.8449,
-      "face_blur": 0.7889,
-      "garble_text": 0.0425,
-      "temporal_swap": 0.3276,
-      "pixelate": 0.3499,
-      "ghosting": 0.6183
+      "frame_freeze": 0.3542,
+      "flicker": 0.4751,
+      "color_shift": 0.8794,
+      "face_blur": 0.8052,
+      "garble_text": 0.0393,
+      "temporal_swap": 0.3464,
+      "pixelate": 0.4222,
+      "ghosting": 0.656
      },
-     "overall": 0.5262
+     "overall": 0.5255
     }
-   }
-  },
-  {
-   "type": "temporal_swap",
-   "sources": [
-    "J1",
-    "J6"
-   ],
-   "confidence": 0.75,
-   "evidence": {
-    "J1": {
-     "notes": "背影剪影本应单调走近，f04→f05人物变小、左侧小路重现（倒退跳变），f06→f07背景突变为密林（前跳），中段时间轴非单调；剪影限制了判读精度"
-    },
-    "J6": {
-     "kind": "scene_cut_mid",
-     "conf_src": 0.75
-    }
-   },
-   "span": {
-    "start_s": 1.02,
-    "end_s": 2.02
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.3992,
-   "flicker": 0.5009,
-   "color_shift": 0.8449,
-   "face_blur": 0.7889,
-   "garble_text": 0.0425,
-   "temporal_swap": 0.3276,
-   "pixelate": 0.3499,
-   "ghosting": 0.6183
+   "frame_freeze": 0.3542,
+   "flicker": 0.4751,
+   "color_shift": 0.8794,
+   "face_blur": 0.8052,
+   "garble_text": 0.0393,
+   "temporal_swap": 0.3464,
+   "pixelate": 0.4222,
+   "ghosting": 0.656
   },
-  "overall": 0.5262,
+  "overall": 0.5255,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f04→f05 与 f06→f07 交界处（约2.2-2.8s、3.4-4.1s）",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -125,21 +97,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_003",
-   "defect_detected": true,
-   "defect_types": [
-    "temporal_swap"
-   ],
-   "confidence": 0.65,
-   "spans": "f04→f05 与 f06→f07 交界处（约2.2-2.8s、3.4-4.1s）",
-   "notes": "背影剪影本应单调走近，f04→f05人物变小、左侧小路重现（倒退跳变），f06→f07背景突变为密林（前跳），中段时间轴非单调；剪影限制了判读精度"
-  },
-  "J2": {
-   "clip_id": "golden_003",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.4,
-   "spans": "f01/f05/f08",
-   "notes": "三帧均为林间行走背影剪影，画面正常；但静帧抽样无法验证段落时序类缺陷，置信度低"
+   "confidence": 0.8,
+   "spans": "无",
+   "notes": "8帧均显示一名男子背对镜头沿林间小路行走，画面连续自然。f01-f08 人物步态与背景树木位置渐变推进，无定格；整体为明亮的绿色林间日光，帧间明暗稳定，无闪烁与色偏；人物全程背对镜头，无人脸区域可评，头部剪影轮廓清晰；画面中无文字；场景为同一林间小路连续行进，无时序跳变或段落错乱；未见马赛克像素块，也无重影/拖影（整体轻微柔化符合运动跟拍造成的动态模糊）。语义层面：单一人物、衣着发型跨帧一致（f01与f08相同深色上衣），无手部出现、无计数异常、无悬浮穿模等物理违例，无身份漂移。综合判定该片段干净。"
   },
   "J5": {
    "clip_id": "golden_003",
@@ -149,25 +111,6 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物和环境均无明显异常，无定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影现象\"}"
   },
-  "J6": {
-   "clip_id": "golden_003",
-   "defect_detected": true,
-   "defect_types": [
-    "temporal_swap"
-   ],
-   "confidence": 0.75,
-   "spans": [
-    {
-     "type": "temporal_swap",
-     "start_s": 1.02,
-     "end_s": 2.02,
-     "evidence": {
-      "cut_s": 1.52,
-      "kind": "scene_cut_mid"
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_003",
    "defect_detected": true,
@@ -175,21 +118,22 @@
     "color_shift",
     "face_blur"
    ],
-   "confidence": 0.8449,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.399; flicker=0.501; color_shift=0.845; face_blur=0.789; garble_text=0.043; temporal_swap=0.328; pixelate=0.350; ghosting=0.618; overall=0.526"
+   "confidence": 0.8794,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.354; flicker=0.475; color_shift=0.879; face_blur=0.805; garble_text=0.039; temporal_swap=0.346; pixelate=0.422; ghosting=0.656; overall=0.525"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_003.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_003.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_003.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_003.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_003.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_003.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_003.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_003.json"
+ }
 }

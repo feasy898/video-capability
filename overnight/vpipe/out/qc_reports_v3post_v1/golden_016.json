@@ -1,15 +1,15 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_016",
- "generated_at": "2026-10-01T18:08:09",
+ "generated_at": "2026-10-08T20:39:19",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.98,
+  "decision": "auto_reject",
+  "confidence": 0.9037,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[frame_freeze,flicker,color_shift,temporal_swap] 最大P=0.886）"
+   "J3 最大通道 P=0.904 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
   ]
  },
  "defects": [
@@ -17,56 +17,26 @@
    "type": "color_shift",
    "sources": [
     "J1",
-    "J2",
-    "J3",
-    "J6"
+    "J3"
    ],
-   "confidence": 1.0,
+   "confidence": 0.9037,
    "evidence": {
     "J1": {
-     "notes": "中段4帧整场景色相旋转为强绿、玻璃体边缘泛洋红，前后帧为正常暖棕木桌，仅颜色突变而几何连续，属典型色偏注入。"
-    },
-    "J2": {
-     "notes": "中帧全画面发生剧烈色相偏移（木桌与手均呈绿色且饱和度异常升高），首尾帧色彩正常，判定色偏缺陷"
+     "notes": "主体液滴的运动过程本身连贯合理：f01-f02液滴下落并入液面形成冠状溅起并带自然运动模糊，f03-f08液滴稳定为半球形，无冻结、乱码、像素化或明显拖影。但整体色彩存在异常跳变：f01-f02桌面为正常棕色木纹，f03-f06整幅画面突然变为绿色木纹（木质纹理仍在，仅颜色整体偏移），f07-f08又恢复棕色，同一镜头"
     },
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.7454,
-      "flicker": 0.7953,
-      "color_shift": 0.8865,
-      "face_blur": 0.0368,
-      "garble_text": 0.0418,
-      "temporal_swap": 0.75,
-      "pixelate": 0.1554,
-      "ghosting": 0.6982
+      "frame_freeze": 0.6616,
+      "flicker": 0.8469,
+      "color_shift": 0.9037,
+      "face_blur": 0.0418,
+      "garble_text": 0.0394,
+      "temporal_swap": 0.7909,
+      "pixelate": 0.1835,
+      "ghosting": 0.6206
      },
-     "overall": 0.6137
-    },
-    "J6": {
-     "kind": "hue_shift",
-     "conf_src": 1.0
+     "overall": 0.6241
     }
-   },
-   "span": {
-    "start_s": 0.945,
-    "end_s": 1.576
-   }
-  },
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 1.0,
-   "evidence": {
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 1.0
-    }
-   },
-   "span": {
-    "start_s": 0.315,
-    "end_s": 1.576
    }
   },
   {
@@ -74,119 +44,72 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.7953,
+   "confidence": 0.8469,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.7454,
-      "flicker": 0.7953,
-      "color_shift": 0.8865,
-      "face_blur": 0.0368,
-      "garble_text": 0.0418,
-      "temporal_swap": 0.75,
-      "pixelate": 0.1554,
-      "ghosting": 0.6982
+      "frame_freeze": 0.6616,
+      "flicker": 0.8469,
+      "color_shift": 0.9037,
+      "face_blur": 0.0418,
+      "garble_text": 0.0394,
+      "temporal_swap": 0.7909,
+      "pixelate": 0.1835,
+      "ghosting": 0.6206
      },
-     "overall": 0.6137
+     "overall": 0.6241
     }
    }
   },
   {
    "type": "temporal_swap",
    "sources": [
-    "J3",
-    "J6"
+    "J3"
    ],
-   "confidence": 0.75,
+   "confidence": 0.7909,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.7454,
-      "flicker": 0.7953,
-      "color_shift": 0.8865,
-      "face_blur": 0.0368,
-      "garble_text": 0.0418,
-      "temporal_swap": 0.75,
-      "pixelate": 0.1554,
-      "ghosting": 0.6982
+      "frame_freeze": 0.6616,
+      "flicker": 0.8469,
+      "color_shift": 0.9037,
+      "face_blur": 0.0418,
+      "garble_text": 0.0394,
+      "temporal_swap": 0.7909,
+      "pixelate": 0.1835,
+      "ghosting": 0.6206
      },
-     "overall": 0.6137
-    },
-    "J6": {
-     "kind": "scene_cut_mid",
-     "conf_src": 0.75
+     "overall": 0.6241
     }
-   },
-   "span": {
-    "start_s": 1.042,
-    "end_s": 2.042
-   }
-  },
-  {
-   "type": "frame_freeze",
-   "sources": [
-    "J3",
-    "J6"
-   ],
-   "confidence": 0.7454,
-   "evidence": {
-    "J3": {
-     "channel_probs": {
-      "frame_freeze": 0.7454,
-      "flicker": 0.7953,
-      "color_shift": 0.8865,
-      "face_blur": 0.0368,
-      "garble_text": 0.0418,
-      "temporal_swap": 0.75,
-      "pixelate": 0.1554,
-      "ghosting": 0.6982
-     },
-     "overall": 0.6137
-    },
-    "J6": {
-     "kind": null,
-     "conf_src": 0.654
-    }
-   },
-   "span": {
-    "start_s": 4.097,
-    "end_s": 4.727
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.7454,
-   "flicker": 0.7953,
-   "color_shift": 0.8865,
-   "face_blur": 0.0368,
-   "garble_text": 0.0418,
-   "temporal_swap": 0.75,
-   "pixelate": 0.1554,
-   "ghosting": 0.6982
+   "frame_freeze": 0.6616,
+   "flicker": 0.8469,
+   "color_shift": 0.9037,
+   "face_blur": 0.0418,
+   "garble_text": 0.0394,
+   "temporal_swap": 0.7909,
+   "pixelate": 0.1835,
+   "ghosting": 0.6206
   },
-  "overall": 0.6137,
+  "overall": 0.6241,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "f5d1e6512c18745e9dcdc1e0a20aab5fb29902acf57ee3956b995a42e3ff9be0"
+   "thresholds_sha256": "0b6d894afbed609cf0336bd3415ac18e1ccafbea0fece2a3d341c4cfc39e068f"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f03-f06（约1.9s-3.8s，中段）；f01-f02与f07-f08正常",
+    "text": "f03-f06（约1.6s-3.5s）",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f05（约片中段）：整画面色相偏移为高饱和绿色，f01/f08 为正常暖棕木色",
-    "source": "J2"
    }
   },
   {
@@ -204,19 +127,9 @@
    "defect_types": [
     "color_shift"
    ],
-   "confidence": 0.98,
-   "spans": "f03-f06（约1.9s-3.8s，中段）；f01-f02与f07-f08正常",
-   "notes": "中段4帧整场景色相旋转为强绿、玻璃体边缘泛洋红，前后帧为正常暖棕木桌，仅颜色突变而几何连续，属典型色偏注入。"
-  },
-  "J2": {
-   "clip_id": "golden_016",
-   "defect_detected": true,
-   "defect_types": [
-    "color_shift"
-   ],
-   "confidence": 0.98,
-   "spans": "f05（约片中段）：整画面色相偏移为高饱和绿色，f01/f08 为正常暖棕木色",
-   "notes": "中帧全画面发生剧烈色相偏移（木桌与手均呈绿色且饱和度异常升高），首尾帧色彩正常，判定色偏缺陷"
+   "confidence": 0.8,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "主体液滴的运动过程本身连贯合理：f01-f02液滴下落并入液面形成冠状溅起并带自然运动模糊，f03-f08液滴稳定为半球形，无冻结、乱码、像素化或明显拖影。但整体色彩存在异常跳变：f01-f02桌面为正常棕色木纹，f03-f06整幅画面突然变为绿色木纹（木质纹理仍在，仅颜色整体偏移），f07-f08又恢复棕色，同一镜头内场景色彩反复异常偏移再复原，属整体色偏（color_shift），受影响段为f03-f06。f05右上角仅见绿色模糊物体入画，无法确认手部解剖细节，不据此报手部异常。"
   },
   "J5": {
    "clip_id": "golden_016",
@@ -226,89 +139,30 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_016",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text",
-    "color_shift",
-    "temporal_swap",
-    "frame_freeze"
-   ],
-   "confidence": 1.0,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.315,
-     "end_s": 1.576,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.533,
-      "frames": [
-       0,
-       2
-      ],
-      "mean_scores": [
-       0.329,
-       0.862
-      ]
-     }
-    },
-    {
-     "type": "color_shift",
-     "start_s": 0.945,
-     "end_s": 1.576,
-     "evidence": {
-      "kind": "hue_shift",
-      "pair": 1,
-      "hue_delta_deg": 125.3
-     }
-    },
-    {
-     "type": "temporal_swap",
-     "start_s": 1.042,
-     "end_s": 2.042,
-     "evidence": {
-      "cut_s": 1.542,
-      "kind": "scene_cut_mid"
-     }
-    },
-    {
-     "type": "frame_freeze",
-     "start_s": 4.096,
-     "end_s": 4.727,
-     "evidence": {
-      "pair": 6,
-      "score": 0.415,
-      "median": 3.106
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_016",
    "defect_detected": true,
    "defect_types": [
-    "frame_freeze",
     "flicker",
     "color_shift",
     "temporal_swap"
    ],
-   "confidence": 0.8865,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.745; flicker=0.795; color_shift=0.886; face_blur=0.037; garble_text=0.042; temporal_swap=0.750; pixelate=0.155; ghosting=0.698; overall=0.614"
+   "confidence": 0.9037,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.662; flicker=0.847; color_shift=0.904; face_blur=0.042; garble_text=0.039; temporal_swap=0.791; pixelate=0.183; ghosting=0.621; overall=0.624"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm8/golden_016.json",
-   "J2": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/glm3/golden_016.json",
-   "J5": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/videochat3/golden_016.json",
-   "J6": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/detectors/golden_016.json",
-   "J3": "/opt/gpumachine/projects/video-capability/overnight/数据/judges/omnijev/run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_016.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_016.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_016.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_016.json"
+ }
 }
