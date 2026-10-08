@@ -523,6 +523,9 @@ git diff 71f719d..HEAD -- overnight/vpipe/eval/thresholds.yaml | grep -E "^[+-]"
 | 2026-10-08 | M0-W2 末决定 Wan2.2-5B 是否进产线 | 白皮书 §6 M0-W2 spike；若不通过，接受 LTX 单一草稿路径，不影响白皮书结构 | §4 M0-W2 |
 | 2026-10-08 | 「单镜头判官合议」结构丢弃（保留实现） | 与白皮书分段门禁骨架冲突（白皮书 §5.3） | §3.2 丢弃清单 |
 | 2026-10-08-b | M1-W4 Blender 连通性验证改为 **glTF 2.0 armature 往返** | 双机（本地+GPU 机）均无 Blender；安装 ~300MB 只为一项目连通性检查不成比例，且 glTF 是 mannequin schema 的标准交换格式、纯 Python 可写可验（确定性、无 GUI 依赖，合白皮书 §7 非目标 7 精神）。验收等价物：往返后关节层级+关键帧时间/弧度零丢失 | M1 第二批 brief |
+| 2026-10-08-e | **授权 Wan2.2-TI2V-5B 下载（31.83GiB，解除自设 20GB 上限）** | 20GB 上限是给只读核查员的自限红线、非 owner 约束；M0-W2 spike 是「T2 层 480P/16fps→720P/24fps 升级」的路线图最大单笔收益决策项（白皮书 §6 M0-W2），权重测需权重。ModelScope API 独立复算 31.83GiB 与执行员报告一致；纪律不变（仅卡 0、跑前复测、不 kill、不 pip install >20GB 禁令对本次解除） | ModelScope API 实测 + evidence/spike/SPIKE-REPORT.md |
+| 2026-10-08-f | **T2 默认通道维持 LTX-2B，附三硬条件** | spike 实测：5.39s/条（33 帧口径）、峰值 18.34GiB、二遍编码 md5 相等+全帧 MAE=0.0、黑帧/NaN=0——速度/显存/确定性全绿。但两硬缺陷：① LTX 0.9.1 T5-XXL 不支持中文 prompt（中文出糊斑、英文立即成立）→ v4 用 LTX 必须加英文翻译层；② 蓝猫绿斑色偏为 checkpoint×diffusers 0.39.0 固有（9 变体判别未消除）→ LTX 草稿限构图/运动/节奏用途，色彩不可依赖，或换 0.9.5+ checkpoint（待下载决策）。白皮书 §4「LTX 42/42 全成」判定「部分推翻/需加条件」 | evidence/spike/ltx_baseline.json + ltx_diag*.json/mp4/png |
+| 2026-10-08-d | **修正「bf16 物理不支持」判据**（白皮书 §4/§5.3 的排除理由作废） | torch 2.7.0 实测 is_bf16_supported()=True on SM70（including_emulation 默认真算试探通过，CUDA 12 支持 bf16 存储+转换、算术模拟）。四模型出局的真实硬约束是显存（80/60/60GB 超 2×32GB 无 NVLink）；CogVideoX1.5-5B 改判待重评。影响：model_tiers.yaml 与 SPEC_v2 §5-6 已同步；白皮书本体加勘误注记（不静改） | evidence/spike/ltx_baseline.json（附带核实）+ GPU 机 torch 源码 inspect |
 | 2026-10-08-c | GPU spike 执行位定**卡 0**（owner 10-08 授权「没在跑就直接用」覆盖 10-08 早前裁决） | 早前裁决等卡 1 协调窗；owner 当晚授权直接用空闲 GPU；卡 0 实测 310MiB/util 0%。纪律保留：只跑卡 0、跑前 5 分钟复测、卡 1 不碰 | evidence/env/gpu1-memory-window.md §6 追记 |
 
 ---

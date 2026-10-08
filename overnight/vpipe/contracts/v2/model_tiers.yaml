@@ -21,10 +21,15 @@ cost_confidence_semantics:
   reported: "白皮书/方案文档转引记录，有出处但本仓未复核"
   unverified: "未确证：不得进任何预算基线，cost_value 只能为 null 或区间（notes 内说明）"
 
-# V100S 兼容判据（物理事实，不是调优问题）：
-#   torch is_bf16_supported() 要求 major >= 8；V100S 是 SM70 / major 7 / 仅 fp16
-#   （research/2026-10-08/cheap-draft-and-programmatic-tools.md:187）。
-#   bf16 / flash-attention / fp8 路线一律不进 owner 硬件产线（白皮书 §5.3 丢弃清单）。
+# V100S 兼容判据（2026-10-08 主控验收修正，原判据不成立）：
+#   torch 2.7.0 实测 is_bf16_supported()=True（默认 including_emulation=True：
+#   major>=8 走快速路径，SM70 落到 _check_bf16_tensor_supported 真算试探，CUDA 12
+#   支持 bf16 存储+转换指令、算术上行转换模拟——2026-10-08 GPU 机实测确认）。
+#   故 bf16 不是硬出局理由；下列模型的真实硬约束是【显存/速度】：
+#   Wan2.2-A14B 官方门槛 ≥80GB、HunyuanVideo-1.5 ≥60GB、Mochi ≥60GB——
+#   均超 2×V100S-32GB 且无 NVLink 不可模型切分（显存硬出局）。
+#   CogVideoX1.5-5B 改判【待重评】：fp16 转换路径 + ~10GB 权重可入 32GB，
+#   速度未实测，不作出局、不进产线（白皮书 §5.3 原「bf16 物理不支持」判据作废）。
 # v100s_compatible 语义：可在 owner 2×V100S-32GB（卡1，卡0 绝不占用，INTENT.md:97）
 #   硬件上进入产线。API/进程通道不占卡，恒为 true。
 

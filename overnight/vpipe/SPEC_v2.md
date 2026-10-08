@@ -202,7 +202,7 @@ CP1–CP6/CP10/CP11 八项示例工件过 schema + 门禁判定（零人工）�
 | 3 | **审美维与合规维先 warn-only**：70 分人评锚定（120 片段）12 周内不做（P3 级投入）；在此之前 70 只作 warn 阈与人工队列排序依据，不作自动放行绝对门；CP12 schema 的 `master_score_min` 引用不影响该边界 | 白皮书 §7 非目标 8 / §6 M2 风险 |
 | 4 | **Seedance 2.5 未核价不进预算基线**：单价 unverified（2.0 编辑档 28 元/M token 为文档记录；46 元/M token 媒体转述明文未确证；hypit 案例无逐项账单）；核不出就明文标未确证，confirmed=false 不得进预算基线 | 白皮书 §4 成本可信度表 / §6 M0-W1；TASK_v4 §4 |
 | 5 | **API 层无像素级复现承诺**：API seed 零控制力（同 prompt+seed 两片 aHash 汉明 102.75 > 无 seed 51.75，工程方案v3.md:38）；任何排产表不许把 API 产物写进 md5 回归基线；CP9 `repro_level=submit_params` 是诚实上限 | 白皮书 §2 原则 4；SPEC.md §2.2 |
-| 6 | **bf16/flash-attention/fp8 路线不进产线**：SM70 major=7 物理不支持；Wan2.2-5B 必须 `--convert_model_dtype` 降 fp16 | 白皮书 §4 T2 / §5.3 |
+| 6 | **显存/速度硬出局（判据已修正）**：torch 2.7 实测 bf16 在 SM70 上模拟可用（is_bf16_supported()=True，including_emulation 默认路径），故出局理由是显存（A14B≥80GB/HunyuanVideo-1.5≥60GB/Mochi≥60GB 超 2×32GB 无 NVLink）而非 bf16；CogVideoX1.5-5B 待重评（fp16 转换可入 32GB、速度未测）；Wan2.2-5B 仍建议 fp16 转换保速度 | 2026-10-08 GPU 机实测（spike 附带核实）+ TASK_v4 §8 决策记录 |
 | 7 | **CP4 身份锁止边界**：在场检测 + ArcFace 身份级余弦（≥0.60 统一口径），不是 IP-Adapter 级像素同一性；「跨镜变脸已解决」的说法不许出现在任何 v2 工件 | 白皮书 §3 CP4 边界说明 |
 | 8 | **人工介入只减不增**：设计内介入点 CP1/CP3/CP5/CP6/CP12，其余 CP 零人工；加人必须回答「补的是哪个已知失效模式」；owner 介入形态仅三种（文字反馈/圈改/给参考），不引入第四种 | 白皮书 §3 谱使用规则 2 / §7 非目标 2 |
 | 9 | **跨币种只许同体系比较**：MiniMax 积分 / Vidu 积分 / StepFun ¥ / 本地墙钟四套货币不可换算，成本台账须显式声明折算口径，不许给出无依据的 ¥ 汇总 | 白皮书 §5.4 成本记账重写行 |
