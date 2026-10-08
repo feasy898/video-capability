@@ -1,0 +1,6 @@
+# 产物目录：mp4/派生工件全部由 run_regression.py + synth.py 程序生成
+#（ffmpeg lavfi 内建源，零模型零下载；同输入重跑 master.mp4 md5 一致）。
+# 红线「优先生成器脚本而非二进制入库」——克隆后一键再生成：
+#   python3 run_regression.py
+*
+!.gitignore

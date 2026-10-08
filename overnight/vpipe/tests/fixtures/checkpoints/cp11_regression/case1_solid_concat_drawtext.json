@@ -1,0 +1,89 @@
+{
+  "case_id": "case1_solid_concat_drawtext",
+  "description": "回归用例 1（M1-W5）：2 段纯色拼接 + 1 条 drawtext 字幕，9s。验 concat 硬切拼接缝登记（切点 4.5s）与 drawtext 字幕道的确定性。",
+  "timeline": {
+    "size": "360x640",
+    "fps": 30,
+    "duration_s": 9.0,
+    "mode": "concat",
+    "shots": [
+      {
+        "input": "seg_bright",
+        "start": 0.0,
+        "duration": 4.5
+      },
+      {
+        "input": "seg_dark",
+        "start": 4.5,
+        "duration": 4.5
+      }
+    ]
+  },
+  "inputs": {
+    "seg_bright": {
+      "kind": "lavfi",
+      "source": "color=c=0xEEDD22:size=360x640:rate=30"
+    },
+    "seg_dark": {
+      "kind": "lavfi",
+      "source": "color=c=0x222266:size=360x640:rate=30"
+    }
+  },
+  "subtitles": {
+    "mode": "drawtext",
+    "items": [
+      {
+        "text": "CASE ONE SOLID CONCAT",
+        "start": 0.5,
+        "end": 8.5,
+        "font": "DejaVu Sans",
+        "fontsize": 24,
+        "fontcolor": "white",
+        "box": true,
+        "boxcolor": "black@0.5",
+        "x": "center",
+        "y": "bottom"
+      }
+    ]
+  },
+  "audio": {
+    "kind": "lavfi",
+    "source": "sine=frequency=440:sample_rate=44100"
+  },
+  "output": {
+    "container": "mp4",
+    "video": {
+      "codec": "libx264",
+      "preset": "veryfast",
+      "crf": 28,
+      "pix_fmt": "yuv420p",
+      "threads": 1
+    },
+    "audio": {
+      "codec": "aac",
+      "bitrate": "64k"
+    }
+  },
+  "cp11": {
+    "work_id": "cp11_regression_case1",
+    "storyboard_shot_count": 2,
+    "known_cuts": [
+      4.5
+    ],
+    "all_cuts_registered": true,
+    "upstream_refs": [
+      {
+        "cp_id": "cp3",
+        "fingerprint": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "cp_id": "cp9",
+        "fingerprint": "2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      {
+        "cp_id": "cp10",
+        "fingerprint": "3333333333333333333333333333333333333333333333333333333333333333"
+      }
+    ]
+  }
+}

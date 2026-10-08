@@ -1,0 +1,31 @@
+{
+  "case_id": "case3_xfade_loudnorm",
+  "description": "回归用例 3（M1-W5）：1 段 testsrc2 视频 + 1 段纯色，xfade 过渡成片 6s（4s+4s 重叠 2s），音轨 loudnorm 两遍归一（EBU R128：I=-16/TP=-1.5/LRA=11）。验过渡链与响度归一道（loudnorm 测量遍+linear 归一遍两步均确定性）。无硬切拼接缝 → 不产 cp11 工件（known_cuts 登记语义不适用）。",
+  "timeline": {
+    "size": "360x640",
+    "fps": 30,
+    "duration_s": 6.0,
+    "mode": "xfade",
+    "shots": [
+      { "input": "seg_video", "start": 0.0, "duration": 4.0 },
+      { "input": "seg_teal", "start": 2.0, "duration": 4.0 }
+    ],
+    "transitions": [
+      { "after_shot": 0, "type": "fade", "duration": 2.0 }
+    ]
+  },
+  "inputs": {
+    "seg_video": { "kind": "lavfi", "source": "testsrc2=size=360x640:rate=30" },
+    "seg_teal": { "kind": "lavfi", "source": "color=c=0x228888:size=360x640:rate=30" }
+  },
+  "audio": {
+    "kind": "lavfi",
+    "source": "sine=frequency=330:sample_rate=44100",
+    "normalize": { "mode": "loudnorm_two_pass", "I": -16.0, "TP": -1.5, "LRA": 11.0 }
+  },
+  "output": {
+    "container": "mp4",
+    "video": { "codec": "libx264", "preset": "veryfast", "crf": 28, "pix_fmt": "yuv420p", "threads": 1 },
+    "audio": { "codec": "aac", "bitrate": "64k" }
+  }
+}

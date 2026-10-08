@@ -1,0 +1,44 @@
+{
+  "case_id": "case2_testsrc_ass",
+  "description": "回归用例 2（M1-W5）：3 段 testsrc 族片段拼接 + ASS 字幕烧录（libass），9s。验多段硬切切点登记（切点 3.0/6.0s）与 ass 烧录道的确定性。",
+  "timeline": {
+    "size": "360x640",
+    "fps": 30,
+    "duration_s": 9.0,
+    "mode": "concat",
+    "shots": [
+      { "input": "seg_testsrc", "start": 0.0, "duration": 3.0 },
+      { "input": "seg_rgbtestsrc", "start": 3.0, "duration": 3.0 },
+      { "input": "seg_testsrc2", "start": 6.0, "duration": 3.0 }
+    ]
+  },
+  "inputs": {
+    "seg_testsrc": { "kind": "lavfi", "source": "testsrc=size=360x640:rate=30" },
+    "seg_rgbtestsrc": { "kind": "lavfi", "source": "rgbtestsrc=size=360x640:rate=30" },
+    "seg_testsrc2": { "kind": "lavfi", "source": "testsrc2=size=360x640:rate=30" }
+  },
+  "subtitles": {
+    "mode": "ass",
+    "content": "[Script Info]\n; CP11 回归用例 2 字幕轨（synth.py 落盘后 ass= 烧录；文本用 ASCII——\n; 夹具字体固定 DejaVu Sans 不含 CJK 字形，中文渲染属 CP10/CP12 域）\nScriptType: v4.00+\nPlayResX: 360\nPlayResY: 640\nScaledBorderAndShadow: yes\nWrapStyle: 0\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: Base,DejaVu Sans,30,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,1,2,20,20,60,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.50,0:00:04.50,Base,,0,0,0,,{\\an2}CASE TWO ASS BURN LINE 1\nDialogue: 0,0:00:04.50,0:00:08.50,Base,,0,0,0,,{\\an2}CASE TWO ASS BURN LINE 2\n"
+  },
+  "audio": {
+    "kind": "lavfi",
+    "source": "sine=frequency=523:sample_rate=44100"
+  },
+  "output": {
+    "container": "mp4",
+    "video": { "codec": "libx264", "preset": "veryfast", "crf": 28, "pix_fmt": "yuv420p", "threads": 1 },
+    "audio": { "codec": "aac", "bitrate": "64k" }
+  },
+  "cp11": {
+    "work_id": "cp11_regression_case2",
+    "storyboard_shot_count": 3,
+    "known_cuts": [3.0, 6.0],
+    "all_cuts_registered": true,
+    "upstream_refs": [
+      { "cp_id": "cp3", "fingerprint": "1111111111111111111111111111111111111111111111111111111111111111" },
+      { "cp_id": "cp9", "fingerprint": "2222222222222222222222222222222222222222222222222222222222222222" },
+      { "cp_id": "cp10", "fingerprint": "3333333333333333333333333333333333333333333333333333333333333333" }
+    ]
+  }
+}

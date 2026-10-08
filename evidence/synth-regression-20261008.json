@@ -1,0 +1,141 @@
+{
+  "evidence_type": "cp11_synth_pixel_regression",
+  "task": "TASK_v4 M1-W5：CP11 合成层像素级回归 ≥3 用例（同输入二遍 md5 一致，白皮书 §3 CP11 + §4 T0）",
+  "spec_refs": [
+    "白皮书 §3 CP11（合成：所有片段+字幕+音轨→成片）",
+    "白皮书 §4 T0（确定性层：像素级回归用例 ≥3）",
+    "TASK_v4 §3.1 M1-W5（3 个用例同输入同输出，md5 一致）",
+    "工程方案v3.1.md:218（合成层同参数二遍编码 md5 一致口径）"
+  ],
+  "generated_at": "2026-10-08T15:52:02Z",
+  "tool": {
+    "synth": "overnight/vpipe/src/gate/synth.py",
+    "synth_sha256": "d92bd470e7535da60cbe807abdcda9151cbd04482ce9c8617576ceb6eca71d5f",
+    "validator": "overnight/vpipe/src/gate/validate_cp11.py",
+    "validator_sha256": "2837eafa680947d9632ff6d0e987d1d5eaa8c02062dbf604c08cd96156379e0e",
+    "runs_per_case": 2
+  },
+  "ffmpeg": {
+    "version": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+    "ffprobe": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers"
+  },
+  "cases": [
+    {
+      "case": "case1_solid_concat_drawtext.json",
+      "case_path": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/case1_solid_concat_drawtext.json",
+      "case_sha256": "90e1e3e46871f7f2ba402d3cee35e20401a37c40392b7d55827beaaebee07991",
+      "runs": [
+        {
+          "run": 1,
+          "out_dir": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/out/case1_solid_concat_drawtext/run1",
+          "exit": 0,
+          "master_md5": "5e909d568a30bc629df59a5a82698b79",
+          "master_bytes": 93556,
+          "md5_txt": "5e909d568a30bc629df59a5a82698b79  master.mp4\n"
+        },
+        {
+          "run": 2,
+          "out_dir": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/out/case1_solid_concat_drawtext/run2",
+          "exit": 0,
+          "master_md5": "5e909d568a30bc629df59a5a82698b79",
+          "master_bytes": 93556,
+          "md5_txt": "5e909d568a30bc629df59a5a82698b79  master.mp4\n"
+        }
+      ],
+      "ok": true,
+      "master_md5_all_equal": true,
+      "md5_txt_identical": true,
+      "validator": {
+        "applicable": true,
+        "runs": [
+          {
+            "run": 1,
+            "exit": 0,
+            "verdict": "pass",
+            "stderr_tail": ""
+          },
+          {
+            "run": 2,
+            "exit": 0,
+            "verdict": "pass",
+            "stderr_tail": ""
+          }
+        ]
+      }
+    },
+    {
+      "case": "case2_testsrc_ass.json",
+      "case_path": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/case2_testsrc_ass.json",
+      "case_sha256": "7e1a173a97725f9d43382d5cc3e46e36fd19eb3f11c8e30828f08189ac07d5b8",
+      "runs": [
+        {
+          "run": 1,
+          "out_dir": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/out/case2_testsrc_ass/run1",
+          "exit": 0,
+          "master_md5": "e086e1150a02d159606d98d936083f3f",
+          "master_bytes": 257169,
+          "md5_txt": "89b66844ef84688b1ac184f95197bdeb  case2_testsrc_ass.ass\ne086e1150a02d159606d98d936083f3f  master.mp4\n"
+        },
+        {
+          "run": 2,
+          "out_dir": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/out/case2_testsrc_ass/run2",
+          "exit": 0,
+          "master_md5": "e086e1150a02d159606d98d936083f3f",
+          "master_bytes": 257169,
+          "md5_txt": "89b66844ef84688b1ac184f95197bdeb  case2_testsrc_ass.ass\ne086e1150a02d159606d98d936083f3f  master.mp4\n"
+        }
+      ],
+      "ok": true,
+      "master_md5_all_equal": true,
+      "md5_txt_identical": true,
+      "validator": {
+        "applicable": true,
+        "runs": [
+          {
+            "run": 1,
+            "exit": 0,
+            "verdict": "pass",
+            "stderr_tail": ""
+          },
+          {
+            "run": 2,
+            "exit": 0,
+            "verdict": "pass",
+            "stderr_tail": ""
+          }
+        ]
+      }
+    },
+    {
+      "case": "case3_xfade_loudnorm.json",
+      "case_path": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/case3_xfade_loudnorm.json",
+      "case_sha256": "194bfc0b53451fe229fb68186956406ef957aae95fb73e29af07861de1ae33d2",
+      "runs": [
+        {
+          "run": 1,
+          "out_dir": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/out/case3_xfade_loudnorm/run1",
+          "exit": 0,
+          "master_md5": "3604c960e6dcd0d70f55853332438146",
+          "master_bytes": 226498,
+          "md5_txt": "3604c960e6dcd0d70f55853332438146  master.mp4\n"
+        },
+        {
+          "run": 2,
+          "out_dir": "overnight/vpipe/tests/fixtures/checkpoints/cp11_regression/out/case3_xfade_loudnorm/run2",
+          "exit": 0,
+          "master_md5": "3604c960e6dcd0d70f55853332438146",
+          "master_bytes": 226498,
+          "md5_txt": "3604c960e6dcd0d70f55853332438146  master.mp4\n"
+        }
+      ],
+      "ok": true,
+      "master_md5_all_equal": true,
+      "md5_txt_identical": true,
+      "validator": {
+        "applicable": false,
+        "reason": "本用例无硬切拼接缝（xfade 过渡≠硬切），CP11 known_cuts 登记铁律与切镜数等式均针对硬切拼接语义；且校验器 known_cuts 须非空数组，空登记册必 fail——故不产 cp11 工件、门禁不适用（合成确定性仍由本驱动 md5 比对覆盖）。"
+      }
+    }
+  ],
+  "all_pass": true
+}
