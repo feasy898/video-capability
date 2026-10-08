@@ -284,3 +284,15 @@ def test_cloud_payload_whitelist():
                       "generate_audio", "reference_images"}
     assert len(p["prompt"]) == 7000 and p["duration"] == 4
     assert p["generate_audio"] is False and p["reference_images"] == ["https://e/1.png"]
+
+
+def test_cloud_payload_t2v_image_mode_explicit():
+    """T2V（零参考图）必须显式 image_mode=text-to-video（T4 notes：default=reference 零参考图即 500）。"""
+    shot = {"shot_id": "x2", "prompt": "p", "duration_s": 5, "aspect": "9:16",
+            "resolution": "768P", "audio": {"generate": True}}
+    p = gen_api.build_cloud_payload(shot, "MiniMax-H3-Max", [])
+    assert p["image_mode"] == "text-to-video"
+    assert "reference_images" not in p
+    # 带参考图时不发 image_mode（reference 语义由 reference_images 自证；本字段未经云通道实测）
+    p2 = gen_api.build_cloud_payload(shot, "MiniMax-H3-Max", ["https://e/1.png"])
+    assert "image_mode" not in p2 and p2["reference_images"] == ["https://e/1.png"]

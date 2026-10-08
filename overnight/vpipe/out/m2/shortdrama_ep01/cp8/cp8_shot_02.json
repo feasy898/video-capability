@@ -1,0 +1,67 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp8",
+ "artifact_type": "selection",
+ "fingerprint": "f9613fd6a1ef079500de096eb20352b59df01315e19e4be99545214edb1758b1",
+ "produced_by": "agent.selector",
+ "produced_at": "2026-10-09T00:50:00Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp7",
+   "fingerprint": "236ac40128d1c8d15038a364d63564f15114fdcb2f83c1246784e03dd829293d"
+  },
+  {
+   "cp_id": "cp3",
+   "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "composite",
+  "params_ref": "cp8.gate.pareto_rule",
+  "result": "pass",
+  "note": "候选 N=1（T2 草稿每镜一支，cp7 唯一草稿）：硬校验向量全绿（黑帧 0/NaN 0/时长 dev=0.0≤0.02，L0 accepted）且构图核验成立（pass）→ 单候选平凡 Pareto 支配（无第二候选可比，params_ref=cp8.gate.pareto_rule=top1_strict_dominance）→ 本镜进 CP9 精修。A/B 组否决缺陷 0（veto_defects=[]）。"
+ },
+ "aux_gates": [
+  {
+   "type": "judge_rank",
+   "params_ref": "ensemble.definitions.E10",
+   "result": "pass",
+   "note": "相对线本轮空转：N=1 无次序可排，E10 判据族不设绝对通过线（白皮书 CP8 两层不可混）；构图/运动/节奏预演结论由硬校验+构图核验承重。"
+  }
+ ],
+ "payload": {
+  "work_id": "shortdrama_ep01",
+  "shot_id": "shot_02",
+  "candidates": [
+   {
+    "candidate_id": "shot_02@ltx2b_draft",
+    "draft_fingerprint": "5c54b579729e7d158774dbd0113563b718115e327fb481322305596e1743a4ab",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_02.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_02.png"
+    }
+   }
+  ],
+  "top1_candidate_id": "shot_02@ltx2b_draft",
+  "pareto_dominant": true,
+  "veto_defects": [],
+  "escalated_to_human": false,
+  "structural_difficult": false
+ },
+ "notes": "单镜择优件（CP8 权威形态，checkpoint.schema cp8 分支 jsonschema 校验）；构图核验=本会话代理亲看草稿逐帧（证据 _probe/cp8_sheets/shot_02.png），主裁已看镜仅在 shot_01（ecd9b80）——CP8 默认零人工（judge 分歧/硬校验矛盾才上升，本批 N=1 无分歧）。草稿色偏已知（SPIKE-REPORT 发现 B）不入判定；硬校验向量只承黑帧/NaN/时长三目。CP3 声明镜长 6.3s vs 草稿 1.375s 差异沿 cp7 口径登记于 hard_verify.duration_declared_s/actual_s。"
+}

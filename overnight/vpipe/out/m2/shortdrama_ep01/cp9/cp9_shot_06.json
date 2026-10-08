@@ -1,0 +1,52 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp9",
+ "artifact_type": "final_render",
+ "fingerprint": "a9a6a51b1c5dbedb5bdb42504d57af0fe9944c26f86aebae1ce4f4c65b06c8c7",
+ "produced_by": "gen_api",
+ "produced_at": "2026-10-09 00:49:48",
+ "upstream_refs": [
+  {
+   "cp_id": "cp6",
+   "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+  },
+  {
+   "cp_id": "cp8",
+   "fingerprint": "de53ac3441129f9933035c9d34cfb98325b70c5a9dfbf9e7e6db601d17ca9474"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "rule",
+  "params_ref": "cp9.gate.credit_cap_per_shot",
+  "result": "warn",
+  "note": "实耗(估) 336 = 56积分/s × 6s（≈单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）；本镜 6s>5s 系 CP3 分镜时长守恒 ceil 所致 → warn 标注不否决，集级硬闸门=--credit-cap 8064 实跑生效（超限 exit 3），本批累计估算 见聚合件；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=AP9OrvYJ79xg。"
+ },
+ "aux_gates": [
+  {
+   "type": "rule",
+   "params_ref": "cp9.gate.repro_log_complete",
+   "result": "pass",
+   "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 6749162b3e7feb2b… + task_id 落盘 shot_06.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+  }
+ ],
+ "payload": {
+  "work_id": "shortdrama_ep01",
+  "shot_id": "shot_06",
+  "channel": "api_h3max",
+  "asset": {
+   "kind": "clip",
+   "fingerprint": "d568d53bb66a758d702aa68c9e9b541af85a536bda19bf73489bad5c6bb458c3",
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_06.final.mp4"
+  },
+  "resolution": "768P",
+  "repro_level": "submit_params",
+  "submit_params_fingerprint": "6749162b3e7feb2bc1913e7bdf29df470d788db408bd8bd52b459dd8a76eaf0a",
+  "seed_recorded": null,
+  "credit_spent": 336,
+  "credit_cap_per_shot": 280,
+  "draft_task_id": null,
+  "rework_route": null
+ },
+ "notes": "单镜终稿件（CP9 权威形态，schema cp9 分支 jsonschema EXIT=0）。credit_spent=336 为 56积分/s 估算值（云通道无钱包端点，非实扣，schema credit_spent 行描述同款降级语义）；云任务 task_id=AP9OrvYJ79xg（schema 无 task_id 字段，登记于此与 gen_meta）；draft_task_id=null（H3-Max 非 Seedance Draft 通道，schema 字段语义）。分辨率实测 768x1344（768P 9:16 档）、h264+aac、6.592000s（提交 6s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_conditioned 留待 files/upload 核验后）。资产 sha256=d568d53bb66a758d…（ffprobe+sha256 本地亲核）。"
+}

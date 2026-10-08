@@ -1,0 +1,369 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp8",
+ "artifact_type": "selection",
+ "fingerprint": "31677b5912fbb97c32c879f8a144db23a2982158b5a5c0d08c89a3ec55781125",
+ "produced_by": "agent.selector",
+ "produced_at": "2026-10-09T00:50:00Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp7",
+   "fingerprint": "b706a786918c004c07e9aa8d41eebc36644593b009b12a21f2527841e45b8094"
+  },
+  {
+   "cp_id": "cp3",
+   "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7"
+  }
+ ],
+ "status": "gated",
+ "gate": {
+  "type": "composite",
+  "params_ref": "cp8.gate.pareto_rule",
+  "result": "pass",
+  "note": "11 镜择优：10 镜进 CP9（硬校验全绿+构图成立），1 镜 shot_09 构图不成立→rework_cp3 不进 CP9（草稿层 ROI：负样本在计费层之前被拦下）。逐镜权威件 cp8/cp8_shot_01..11.json（jsonschema 11/11，本聚合件粒度矛盾见 notes）。"
+ },
+ "aux_gates": [
+  {
+   "type": "judge_rank",
+   "params_ref": "ensemble.definitions.E10",
+   "result": "pass",
+   "note": "相对线空转：每镜 N=1 无次序可排（白皮书 CP8 两层不可混——本批由绝对门承重）。"
+  }
+ ],
+ "payload": {
+  "work_id": "shortdrama_ep01",
+  "candidates": [
+   {
+    "shot_id": "shot_01",
+    "candidate_id": "shot_01@ltx2b_draft",
+    "draft_fingerprint": "86cd48c54b63aed997618c61647f66f2f55b3d8d7fdb86c8123de04845d2e572",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_01.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_01.png + 01_full_1/3.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_01@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_01.json",
+    "upstream_cp7_fingerprint": "6435527ac5c36a7f149725c3406ad2b4ae1e0a359735ba2f42d45c1beb30c360"
+   },
+   {
+    "shot_id": "shot_02",
+    "candidate_id": "shot_02@ltx2b_draft",
+    "draft_fingerprint": "5c54b579729e7d158774dbd0113563b718115e327fb481322305596e1743a4ab",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_02.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_02.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_02@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_02.json",
+    "upstream_cp7_fingerprint": "236ac40128d1c8d15038a364d63564f15114fdcb2f83c1246784e03dd829293d"
+   },
+   {
+    "shot_id": "shot_03",
+    "candidate_id": "shot_03@ltx2b_draft",
+    "draft_fingerprint": "9595006b469224ae03aeab06ddf017bc10cb2485f9c728c2f8a6ef975306f050",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_03.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_03.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_03@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_03.json",
+    "upstream_cp7_fingerprint": "e74efa352f12644dc12b0e24b61ff2604a650fa05420f121e2cd51dff285dd20"
+   },
+   {
+    "shot_id": "shot_04",
+    "candidate_id": "shot_04@ltx2b_draft",
+    "draft_fingerprint": "9a723a3fea64ed24f6233b59e287dcc669bab4409e4a7d1be179793c15b02b70",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_04.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_04.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_04@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_04.json",
+    "upstream_cp7_fingerprint": "68401e31c3b2c7cc25ce235520b43d73608ae6ddf112d1766b47a54e9c85015d"
+   },
+   {
+    "shot_id": "shot_05",
+    "candidate_id": "shot_05@ltx2b_draft",
+    "draft_fingerprint": "31226475c2de20b039cff93eb0379d59414bdd4d78b99244c24ebef84b3c5ac4",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_05.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_05.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_05@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_05.json",
+    "upstream_cp7_fingerprint": "e6a481dc19369abc527e620656899daa1fde3ddc2310f42e15bab2daa4434e5c"
+   },
+   {
+    "shot_id": "shot_06",
+    "candidate_id": "shot_06@ltx2b_draft",
+    "draft_fingerprint": "6f70bc2624cf6f6f6a8f24a4aa41ca68e2d7ab3ce97435f6fe5ca38d18d2217d",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_06.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_06.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_06@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_06.json",
+    "upstream_cp7_fingerprint": "d3fbc1346b6b3541c54232cc9a32081c7289d95d93a7e4b2ecd6cceb95386c97"
+   },
+   {
+    "shot_id": "shot_07",
+    "candidate_id": "shot_07@ltx2b_draft",
+    "draft_fingerprint": "43c597f94c60f4edce9cb1b8608e7ad8def79aaf64383a9acb8cf0cec7236811",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_07.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_07.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_07@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_07.json",
+    "upstream_cp7_fingerprint": "d4fdeafc7787d888d13c9cf73f31dba4921f0041054304b55cf4e0f4f1a7d7ae"
+   },
+   {
+    "shot_id": "shot_08",
+    "candidate_id": "shot_08@ltx2b_draft",
+    "draft_fingerprint": "2829165d12a822bb34c5f336d490870c8d05fd99bd13421651712daca2eff85a",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_08.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_08.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_08@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_08.json",
+    "upstream_cp7_fingerprint": "b2eebee2e153da286e96575b5153567aa62c2ef570f47b4945316a9e971525fb"
+   },
+   {
+    "shot_id": "shot_09",
+    "candidate_id": "shot_09@ltx2b_draft",
+    "draft_fingerprint": "47cb5583ee12f2c1fccb65da317c0cdb7362b6a8db71d029b1ef1acc08521cf4",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_09.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "fail",
+     "composition_evidence": "_probe/cp8_sheets/shot_09.png + 09_full_1/2/3.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_09@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "fail",
+    "decision": "rework_cp3",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_09.json",
+    "upstream_cp7_fingerprint": "dfcec1e20e875a3f78a1931463f7eac8964cfca750581b2170d2f697073d12b0"
+   },
+   {
+    "shot_id": "shot_10",
+    "candidate_id": "shot_10@ltx2b_draft",
+    "draft_fingerprint": "427b8e1c07aed791f5570ef07dc1ac2356d547a060b77043e2052f02a19b1bbd",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_10.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_10.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_10@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_10.json",
+    "upstream_cp7_fingerprint": "47ac52cfd7585915dfadd95a55dc7b96b41df68ccca58acce78e8edf6fa49283"
+   },
+   {
+    "shot_id": "shot_11",
+    "candidate_id": "shot_11@ltx2b_draft",
+    "draft_fingerprint": "a08842f1cf12b908dc659f96179b68761844a21d1dd73c39f22581e930500a4d",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_11.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "pass",
+     "composition_evidence": "_probe/cp8_sheets/shot_11.png"
+    },
+    "veto_defects": [],
+    "top1_candidate_id": "shot_11@ltx2b_draft",
+    "pareto_dominant": true,
+    "composition_verdict": "pass",
+    "decision": "advance_cp9",
+    "artifact_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_11.json",
+    "upstream_cp7_fingerprint": "49e4a3dbe28b15c435dd559db8df5ba3542e573ea5b8376f31b4b08a1230ef6a"
+   }
+  ]
+ },
+ "notes": "聚合视图（任务书形态 payload.candidates[] 每镜一条：draft_fingerprint/hard_verify 向量/veto_defects[]，top1=本镜唯一草稿）。⚠ 契约矛盾沿 ecd9b80 主控裁决双形态纪律：checkpoint.schema.json definitions.selection 为单镜形态（additionalProperties:false + 必备 shot_id 单值），聚合 candidates[]11 镜与「过 schema cp8 分支」不可同时成立（与 cp7.json 同款 EXIT=1）；权威形态=cp8/cp8_shot_01..11.json（单镜件，过 schema），本件供 episode 级簿记。【择优规则】L0 等价物（black_mono_ratio=0.0≤0.50、NaN=0、时长 dev=0.0≤2%、ffprobe 三元组）+ 构图核验（代理亲看 11 支草稿 contact sheet，shot_01/09 另做全分辨率帧 0/16/32 复核）双过才进 CP9；shot_09 全程无可辨主体→rework_cp3。【结果】进 CP9 10 镜 / rework_cp3 1 镜。色彩不入判定（发现 B）。"
+}

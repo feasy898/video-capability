@@ -1,0 +1,219 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp9",
+ "artifact_type": "final_render",
+ "fingerprint": "cdc8172c7e4f21dee7dc348eba1942790dcf63ff2b218f6f19dd3313f0d69ade",
+ "produced_by": "gen_api",
+ "produced_at": "2026-10-09 00:51:58",
+ "upstream_refs": [
+  {
+   "cp_id": "cp6",
+   "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+  },
+  {
+   "cp_id": "cp8",
+   "fingerprint": "31677b5912fbb97c32c879f8a144db23a2982158b5a5c0d08c89a3ec55781125"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "rule",
+  "params_ref": "cp9.gate.credit_cap_per_shot",
+  "result": "warn",
+  "note": "10 镜精修：est 合计 3360（56积分/s × 60s 提交秒数）＜ 集级上限 8064（--credit-cap 实跑守卫，超限 exit 3）；单镜 280 为 5s 标准档锚点，>5s 镜 warn 标注（CP3 分镜守恒 ceil 所致，单镜口径详见各单镜件）。shot_09 已被 CP8 拒绝不在本批。"
+ },
+ "aux_gates": [
+  {
+   "type": "rule",
+   "params_ref": "cp9.gate.repro_log_complete",
+   "result": "pass",
+   "note": "10/10 镜 submit_params 指纹 + task_id + 参数全量落盘 gen_meta.json，零缺失。"
+  }
+ ],
+ "payload": {
+  "work_id": "shortdrama_ep01",
+  "shots": [
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_01",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "17f69e904b1c4d0ea396b6f408465b4f02443b785b147319648e86c6ddd7642c",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_01.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "00acc765562399cbfea0dbdd26aee9c98b257e3a8609f0a12252ded82663a7b8",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_02",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "0d12adef8ec5a32f6807b09979117831b9220d76e61f3eba72016a58c5f87ef4",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_02.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "07b3b6a5634fd059d72f0656555d2c49ecabdb01efc464157fe5539fa7b45913",
+    "seed_recorded": null,
+    "credit_spent": 392,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_03",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "4132426206be38d80ec82298db24776f55a06d45cc08bf4a1d7a94c1bef79791",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_03.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "679ac6e275eda43f66b55152849f55501b761be0825b683547f2ab9e591a5f6f",
+    "seed_recorded": null,
+    "credit_spent": 392,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_04",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "9a123ab0b4732ecfaffbc251dc75930e16506d103a85def355d94eed0665863c",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_04.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "1eb88b6d9692d70359aae514f9043a01097ac6320eaed65b106c0043be9aa048",
+    "seed_recorded": null,
+    "credit_spent": 392,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_05",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "12373505afc2afb53410e16c21f33200a30df8576e6d4f1621537408193972a3",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_05.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "afd6b3dba417c46d4670f24cb242b2003d2371d9e7f87e1f0d4efd3a6ef499e7",
+    "seed_recorded": null,
+    "credit_spent": 336,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_06",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "d568d53bb66a758d702aa68c9e9b541af85a536bda19bf73489bad5c6bb458c3",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_06.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "6749162b3e7feb2bc1913e7bdf29df470d788db408bd8bd52b459dd8a76eaf0a",
+    "seed_recorded": null,
+    "credit_spent": 336,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_07",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "ce3c94c7a44cd6e4011a263182f0768200a726de4a9c5391724db33bb046657e",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_07.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "182473e1a368d97d63eee1ab6907e559bd2440410d5a4261a5e43a78b3d2dbea",
+    "seed_recorded": null,
+    "credit_spent": 336,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_08",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "f49d393321d20d16cea4548caff11561f1f7016ecbe6ad3e71fd4a3714990dcc",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_08.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "9c32c99b276c18ac88e6d45279602b8523adde37dec1a18bf9b45cb7f59a7d15",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_10",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "522b93e67ed4cb8efd0ace4a4423abefaf40310228c647780998bf4d0e87c428",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_10.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "d7249810455d51101555fa518ad13a6d5a488858d123bee9a546c1aa61647b60",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   },
+   {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_11",
+    "channel": "api_h3max",
+    "asset": {
+     "kind": "clip",
+     "fingerprint": "805939cbdf11550bc36cd4b6c0d0498d1f115b4e451d995fc982468499051abe",
+     "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_11.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "b734fb11bfa0abc93e4a3e887981f897dad01195bc6dccae97c1eb7478f951cf",
+    "seed_recorded": null,
+    "credit_spent": 336,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+   }
+  ]
+ },
+ "notes": "聚合视图（payload.shots[] 每镜一份 final_render payload，各镜含 channel/asset/resolution(768P≥档)/repro_level/submit_params_fingerprint/credit_spent(=est 估算口径)/credit_cap_per_shot/draft_task_id）。⚠ 双形态纪律（ecd9b80 主控裁决）：checkpoint.schema.json definitions.final_render 为单镜形态，聚合 payload.shots[] 过不了 schema cp9 分支（jsonschema EXIT=1，与 cp7/cp8 聚合件同款如实记录）；权威形态=cp9/cp9_shot_XX.json（单镜件 EXIT=0）。【通道】api_h3max（model_tiers.yaml T4 现役默认），higress 云通道三步流，T2V 显式 image_mode=text-to-video（T4 notes；2026-10-09 实测云 DTO 接受）。【seed】云 DTO 白名单无 seed → 一律不发送，seed_recorded=null。【参考图】image-conditioned 本批未用：CP2 注册表无 http(s) URL，本地路径 fail-closed（reference_unsupported_on_cloud）不许伪造/绕过，留待 files/upload 核验后。【成本】credit_spent 全部为 56积分/s 估算值（云通道无钱包端点，credit_before/after/cost 如实 null）；真实调用 10 次（shot_01 兼链路验证首条）。【单镜超 280 锚点镜】shot_02、shot_03、shot_04、shot_05、shot_06、shot_07、shot_11（>5s 时长镜，warn 标注）。【时长口径】提交秒数=ceil(CP3 声明镜长) 夹 H3-Max [5,15]；云侧封装时长略大于提交值（如 5→5.184s）逐镜留痕 gen_meta.ffprobe。"
+}

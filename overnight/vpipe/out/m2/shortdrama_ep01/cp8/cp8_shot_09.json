@@ -1,0 +1,67 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp8",
+ "artifact_type": "selection",
+ "fingerprint": "bb6995facd2c0e3be15025cd42ecb21ccd8a7b563ddfd05b33fa9159afd130c8",
+ "produced_by": "agent.selector",
+ "produced_at": "2026-10-09T00:50:00Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp7",
+   "fingerprint": "dfcec1e20e875a3f78a1931463f7eac8964cfca750581b2170d2f697073d12b0"
+  },
+  {
+   "cp_id": "cp3",
+   "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7"
+  }
+ ],
+ "status": "rejected",
+ "gate": {
+  "type": "composite",
+  "params_ref": "cp8.gate.pareto_rule",
+  "result": "fail",
+  "note": "硬校验向量本身达标（黑帧 0/NaN 0/时长 dev=0.0，L0 accepted），但构图核验不成立：帧 0/16/32 全分辨率复核：全程无可辨人物/面部特征/轮廓边缘，纯模糊光斑团；CP3 核心『面部大特写逐渐占满画面』主体缺失，构图不成立 → 不进 CP9，标记 rework_cp3（白皮书 §3 CP8 失败回退行；构图回退目标=CP3，schema rework_route 词表含 cp3）。 → 本镜不出线进 CP9（草稿层价值=挡烂片，白皮书 §4 T2 ROI 算法），标记 rework_cp3：回退 CP3 改 prompt/action（候选动作『缓步逼近+面部占满画面+满堂宾客虚化』对 T2 层过载，建议拆解为简化逼近/静态背景两拍）。回退不得跳过 CP6 直接换时间。"
+ },
+ "aux_gates": [
+  {
+   "type": "judge_rank",
+   "params_ref": "ensemble.definitions.E10",
+   "result": "pass",
+   "note": "相对线本轮空转：N=1 无次序可排；否决来自绝对门侧构图核验，与 judge 无涉。"
+  }
+ ],
+ "payload": {
+  "work_id": "shortdrama_ep01",
+  "shot_id": "shot_09",
+  "candidates": [
+   {
+    "candidate_id": "shot_09@ltx2b_draft",
+    "draft_fingerprint": "47cb5583ee12f2c1fccb65da317c0cdb7362b6a8db71d029b1ef1acc08521cf4",
+    "hard_verify": {
+     "black_mono_ratio": 0.0,
+     "black_frames_tensor_lt2": 0,
+     "black_frames_decoded_lt2": 0,
+     "nan_detected": false,
+     "duration_declared_s": 1.375,
+     "duration_actual_s": 1.375,
+     "duration_dev": 0.0,
+     "l0_accepted": true,
+     "l0_evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_09.draft.l0.json",
+     "ffprobe_triple": "h264/yuv420p/704x480@24/1/33f",
+     "thresholds": {
+      "black_frame_ratio_max": 0.5,
+      "duration_dev_max": 0.02
+     },
+     "composition_verdict": "fail",
+     "composition_evidence": "_probe/cp8_sheets/shot_09.png + 09_full_1/2/3.png"
+    }
+   }
+  ],
+  "top1_candidate_id": "shot_09@ltx2b_draft",
+  "pareto_dominant": true,
+  "veto_defects": [],
+  "escalated_to_human": false,
+  "structural_difficult": false
+ },
+ "notes": "单镜择优件（CP8 权威形态，checkpoint.schema cp8 分支 jsonschema 校验）；构图核验=本会话代理亲看草稿逐帧（证据 _probe/cp8_sheets/shot_09.png + 09_full_1/2/3.png），主裁已看镜仅在 shot_01（ecd9b80）——CP8 默认零人工（judge 分歧/硬校验矛盾才上升，本批 N=1 无分歧）。草稿色偏已知（SPIKE-REPORT 发现 B）不入判定；硬校验向量只承黑帧/NaN/时长三目。CP3 声明镜长 6.52s vs 草稿 1.375s 差异沿 cp7 口径登记于 hard_verify.duration_declared_s/actual_s。"
+}
