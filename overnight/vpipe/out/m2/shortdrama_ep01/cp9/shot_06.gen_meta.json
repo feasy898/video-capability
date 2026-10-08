@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_06",
+ "work_id": "shortdrama_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "AP9OrvYJ79xg",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 00:49:48",
+ "elapsed_s": 31.2,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Extreme close-up: an elderly man's eyes widen and his pupil contracts in shock, his fingers trembling as they pinch the paper page, guests behind him blurred into round bokeh, the camera slowly pushing in toward his eye. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The contracting pupil catches a single spark of candlelight; weathered skin with deep wrinkles and silver eyebrow hairs rendered in fine detail; the ivory page edge trembles in his grip; the background bokeh burns warm gold with faint red lantern accents; a cold blue rim light separates his temple from the gloom. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+  "duration": 6,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "6749162b3e7feb2bc1913e7bdf29df470d788db408bd8bd52b459dd8a76eaf0a",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 336,
+  "credit_spent_est": 336,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "d568d53bb66a758d702aa68c9e9b541af85a536bda19bf73489bad5c6bb458c3",
+  "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_06.final.mp4",
+  "size_bytes": 6095979,
+  "sha256": "d568d53bb66a758d702aa68c9e9b541af85a536bda19bf73489bad5c6bb458c3"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "6.592000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "158"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_06.json",
+  "shot_contract": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shots/shot_06.json"
+ }
+}

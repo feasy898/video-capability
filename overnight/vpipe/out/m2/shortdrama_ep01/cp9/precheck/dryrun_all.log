@@ -1,0 +1,162 @@
+# CP9 dry-run 逐镜预检（零 HTTP，gen_api.py --dry-run）— 2026-10-09T00:45:24+08:00
+# 模型表口径: MiniMax-H3-Max duration[5,15]整数 resolutions=(480P,768P) (gen_api.CLOUD_MODEL_CONSTRAINTS / 手册 §2)
+--- shot_01
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Extreme close-up at a low angle: a young woman pushes open a heavy carved wooden door of an old mansion on a rainy night and steps into the foyer, her face filling the frame, backlit by the glowing rain curtain behind her, water droplets dripping from her hair. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. Cool steel-blue moonlight from the storm outside rims her silhouette and the thousands of backlit rain streaks; a warm dim amber foyer lamp wraps one side of her cheek; the old door's wet walnut wood grain glistens; thin mist drifts through the backlight beam. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 5,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_02
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Medium shot at a crowded banquet: an elderly man in a dark suit freezes with a raised wine glass, red wine rippling in the bowl, the camera slowly pushing in over the rim of the glass as he lifts his other hand to beckon a guard at the door, guests turning their heads. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The crystal goblet refracts warm golden chandelier light, the wine a deep garnet red catching a spark; white damask tablecloth, candle flames in soft bokeh, guests in black-tie dissolving into warm golden circles; his silver hair glossed by the chandelier, cut-glass reflections trembling across his brow. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 7,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_03
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Close-up: a young woman places a steel wrench on a white tablecloth, light glinting along the rigid metal body, the camera slowly pushing in while staying locked on the wrench, the banquet hall melted into soft bokeh behind. The wrench is brushed drop-forged steel with machined edges, its silhouette streaked by golden chandelier reflections; the cloth is crisp white damask with woven gloss; the steel body stays perfectly rigid and undeformed through the whole move; her hand entering frame is Xiaoman's, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. warm amber key light rakes across the metal, cool blue window fill keeps the shadows neutral. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 7,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_04
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Close-up: an elderly man slams a contract dossier onto the table and presses his finger hard on the signature line, the paper sheet dominating half of the frame with soft illegible printed lines, static camera, dramatic side light. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The contract paper is aged ivory with a visible tooth and soft unreadable printed rules; his weathered hand, veins and a heavy gold signet ring, dents the page; the table is dark polished walnut mirroring a knife-edge of warm amber lamplight; dust motes hang in the raking side beam; deep shadow swallows the background. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 7,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_05
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each other across a banquet table, she slides the last page of a contract across the table with one fingertip, both in frame, no cuts. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm candle centerpiece burns between them, carving her youthful jaw against his deep frown lines; the contract page is bright ivory against dark walnut; crystal and cutlery glint at the frame edges; the background falls into warm amber gloom with faint cold blue window light far behind. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 6,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_06
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Extreme close-up: an elderly man's eyes widen and his pupil contracts in shock, his fingers trembling as they pinch the paper page, guests behind him blurred into round bokeh, the camera slowly pushing in toward his eye. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The contracting pupil catches a single spark of candlelight; weathered skin with deep wrinkles and silver eyebrow hairs rendered in fine detail; the ivory page edge trembles in his grip; the background bokeh burns warm gold with faint red lantern accents; a cold blue rim light separates his temple from the gloom. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 6,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_07
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit, the same steady unwavering gaze in both halves. She is Xiaoman, a Chinese woman in her early twenties with sleek black shoulder-length hair and calm defiant dark eyes. Left half: cold blue-green fluorescent garage light, oil-stained orange canvas overalls with grease marks, concrete wall and tool board behind, faint dust in the air. Right half: warm golden chandelier banquet light, a sharp charcoal-black tailored suit with a subtle sheen, dark walnut and amber gloom behind. The two halves meet on a clean vertical seam; her gaze never changes across the seam. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 6,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_08
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Handheld medium close-up from a low angle with a slight shake: an elderly man staggers half a step and grips the table edge, his wine glass topples and red wine soaks into the white tablecloth, his face draining into blank shock. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The garnet-red wine blooms and bleeds through the white damask weave; the crystal glass rolls on its side; chandelier light smears warm across the frame with the handheld sway; his silver hair falls loose over the furrowed brow; a cold blue window edge glows far behind the guests' bokeh. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 5,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_10
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated, white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm overhead lamp carves deep shadows into his wrinkles and silver hair while a cold blue night window rims his shoulder; the burgundy tie hangs loose, the navy suit jacket creasing as his frame gives way; crystal glassware glints dimly at the table edge; the banquet gloom swallows the background. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 5,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0
+--- shot_11
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Wide shot: a young woman downs her drink in one gulp with the glass tilted fully vertical, turns and walks out through the front door, the camera pulling back and rising to reveal the whole mansion foyer as the rain curtain closes behind her silhouette. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. The last swallow of garnet-red wine catches the chandelier flame; the double-height marble foyer glows warm amber from wall sconces while the open door pours in cold silver-blue storm light and curtains of rain; her charcoal blazer reads as a crisp dark silhouette against the downpour; wet marble floor mirrors both light worlds. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 6,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}
+exit=0

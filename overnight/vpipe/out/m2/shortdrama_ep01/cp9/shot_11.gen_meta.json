@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_11",
+ "work_id": "shortdrama_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "0yrLn4Knnp9n",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 00:51:58",
+ "elapsed_s": 31.3,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Wide shot: a young woman downs her drink in one gulp with the glass tilted fully vertical, turns and walks out through the front door, the camera pulling back and rising to reveal the whole mansion foyer as the rain curtain closes behind her silhouette. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. The last swallow of garnet-red wine catches the chandelier flame; the double-height marble foyer glows warm amber from wall sconces while the open door pours in cold silver-blue storm light and curtains of rain; her charcoal blazer reads as a crisp dark silhouette against the downpour; wet marble floor mirrors both light worlds. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+  "duration": 6,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "b734fb11bfa0abc93e4a3e887981f897dad01195bc6dccae97c1eb7478f951cf",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 336,
+  "credit_spent_est": 336,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "805939cbdf11550bc36cd4b6c0d0498d1f115b4e451d995fc982468499051abe",
+  "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_11.final.mp4",
+  "size_bytes": 8469649,
+  "sha256": "805939cbdf11550bc36cd4b6c0d0498d1f115b4e451d995fc982468499051abe"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "6.592000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "158"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_11.json",
+  "shot_contract": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shots/shot_11.json"
+ }
+}

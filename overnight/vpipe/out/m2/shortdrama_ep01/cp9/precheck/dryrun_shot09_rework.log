@@ -1,0 +1,14 @@
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Extreme close-up, centered: a young Chinese woman stands still facing the camera, her face filling the frame from the very first moment, calm defiant eyes locked on the lens, breathing gently, only her hair strands swaying faintly; the camera creeps forward very slowly, locked on her eyes, while the banquet hall guests behind her melt into a still field of round bokeh, no walking, shallow depth of field She is Xiaoman, a Chinese woman in her early twenties, pale flawless skin, sleek black shoulder-length hair, calm defiant dark eyes with a faint triumphant glint, wearing a tailored charcoal-black wool blazer over a white shirt. The banquet hall glows with warm amber chandelier light; golden bokeh circles from candles and glassware drift in the background; a cool blue rim light from the doorway grazes one side of her hair. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+    "duration": 7,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}

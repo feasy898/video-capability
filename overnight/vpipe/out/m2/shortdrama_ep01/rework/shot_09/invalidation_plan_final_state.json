@@ -1,0 +1,214 @@
+{
+  "changed": "cp3.json",
+  "changed_fingerprint": {
+    "declared": "ca1f0a7e88bf86c6cbac103fea60ddf3dce6d22e610a250dec5e14aedcc5cf6c",
+    "computed_from_payload": "ca1f0a7e88bf86c6cbac103fea60ddf3dce6d22e610a250dec5e14aedcc5cf6c",
+    "payload_drifted": false,
+    "note": "payload 与声明指纹一致：plan 视为模拟变更（该工件重跑后指纹必变）"
+  },
+  "invalidated": [
+    {
+      "path": "cp5.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp6.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_01.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_02.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_03.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_04.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_05.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_06.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_07.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_08.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_09.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 ca1f0a7e88bf…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_10.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_11.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_01.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_02.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_03.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_04.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_05.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_06.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_07.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_08.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_09.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 ca1f0a7e88bf…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_10.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp8/cp8_shot_11.json",
+      "reason": "upstream_ref 悬空：指向 cp3 的指纹 3ea3bf92d6af… 在图内无匹配（cp3 payload 已变更/已 relink）→ 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp9/cp9_shot_09.json",
+      "reason": "upstream_ref 指纹失配：引用 cp8(cp8/cp8_shot_09.json) 的 67c2bf13d52a…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp8/cp8_shot_09.json"
+    }
+  ],
+  "invalidated_count": 27,
+  "unaffected": [
+    "cp1.json",
+    "cp2.json",
+    "cp9.json",
+    "cp9/cp9_shot_01.json",
+    "cp9/cp9_shot_02.json",
+    "cp9/cp9_shot_03.json",
+    "cp9/cp9_shot_04.json",
+    "cp9/cp9_shot_05.json",
+    "cp9/cp9_shot_06.json",
+    "cp9/cp9_shot_07.json",
+    "cp9/cp9_shot_08.json",
+    "cp9/cp9_shot_10.json",
+    "cp9/cp9_shot_11.json"
+  ],
+  "unaffected_count": 13,
+  "slot": null,
+  "closure_mode": "artifact_level",
+  "graph": {
+    "artifacts": 41,
+    "edges": 89,
+    "skipped_non_artifact": [
+      "cp7/cp7_prompts.json",
+      "cp7/cp7_run_report.json",
+      "cp7/cp7_shot09_rework_report.json",
+      "cp7/shot_01.draft.l0.json",
+      "cp7/shot_02.draft.l0.json",
+      "cp7/shot_03.draft.l0.json",
+      "cp7/shot_04.draft.l0.json",
+      "cp7/shot_05.draft.l0.json",
+      "cp7/shot_06.draft.l0.json",
+      "cp7/shot_07.draft.l0.json",
+      "cp7/shot_08.draft.l0.json",
+      "cp7/shot_09.draft.l0.json",
+      "cp7/shot_10.draft.l0.json",
+      "cp7/shot_11.draft.l0.json",
+      "cp7_prompts.json",
+      "cp9/cp9_prompts.json",
+      "cp9/precheck/negctl_dur.json",
+      "cp9/rework_shot09_gen/api_state.json",
+      "cp9/shot_01.gen_meta.json",
+      "cp9/shot_02.gen_meta.json",
+      "cp9/shot_03.gen_meta.json",
+      "cp9/shot_04.gen_meta.json",
+      "cp9/shot_05.gen_meta.json",
+      "cp9/shot_06.gen_meta.json",
+      "cp9/shot_07.gen_meta.json",
+      "cp9/shot_08.gen_meta.json",
+      "cp9/shot_09.gen_meta.json",
+      "cp9/shot_10.gen_meta.json",
+      "cp9/shot_11.gen_meta.json",
+      "cp9/shots/shot_01.json",
+      "cp9/shots/shot_02.json",
+      "cp9/shots/shot_03.json",
+      "cp9/shots/shot_04.json",
+      "cp9/shots/shot_05.json",
+      "cp9/shots/shot_06.json",
+      "cp9/shots/shot_07.json",
+      "cp9/shots/shot_08.json",
+      "cp9/shots/shot_09.json",
+      "cp9/shots/shot_10.json",
+      "cp9/shots/shot_11.json",
+      "rework/shot_09/invalidation_plan_after_cp3_edit.json",
+      "rework/shot_09/invalidation_plan_cp3_driftmode.json",
+      "rework/shot_09/invalidation_plan_final_state.json"
+    ]
+  }
+}

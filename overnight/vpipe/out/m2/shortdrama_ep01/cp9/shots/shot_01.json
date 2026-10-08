@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_01",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Extreme close-up at a low angle: a young woman pushes open a heavy carved wooden door of an old mansion on a rainy night and steps into the foyer, her face filling the frame, backlit by the glowing rain curtain behind her, water droplets dripping from her hair. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. Cool steel-blue moonlight from the storm outside rims her silhouette and the thousands of backlit rain streaks; a warm dim amber foyer lamp wraps one side of her cheek; the old door's wet walnut wood grain glistens; thin mist drifts through the backlight beam. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max）。CP3 声明镜长 4.78s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（asset 86cd48c54b63aed9…），色彩/质感/光影/风格段为 CP9 补全（SPIKE-REPORT §4：草稿色偏不可信）。CP8 择优件 upstream。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

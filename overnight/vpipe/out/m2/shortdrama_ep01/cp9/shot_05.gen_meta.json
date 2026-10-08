@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_05",
+ "work_id": "shortdrama_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "GWkORWxQG3dv",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 00:49:16",
+ "elapsed_s": 31.3,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each other across a banquet table, she slides the last page of a contract across the table with one fingertip, both in frame, no cuts. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm candle centerpiece burns between them, carving her youthful jaw against his deep frown lines; the contract page is bright ivory against dark walnut; crystal and cutlery glint at the frame edges; the background falls into warm amber gloom with faint cold blue window light far behind. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+  "duration": 6,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "afd6b3dba417c46d4670f24cb242b2003d2371d9e7f87e1f0d4efd3a6ef499e7",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 336,
+  "credit_spent_est": 336,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "12373505afc2afb53410e16c21f33200a30df8576e6d4f1621537408193972a3",
+  "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_05.final.mp4",
+  "size_bytes": 4811446,
+  "sha256": "12373505afc2afb53410e16c21f33200a30df8576e6d4f1621537408193972a3"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "6.592000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "158"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_05.json",
+  "shot_contract": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shots/shot_05.json"
+ }
+}

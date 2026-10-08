@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_10",
+ "work_id": "shortdrama_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "4xgLPEqVVKZW",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 00:51:25",
+ "elapsed_s": 31.2,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated, white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm overhead lamp carves deep shadows into his wrinkles and silver hair while a cold blue night window rims his shoulder; the burgundy tie hangs loose, the navy suit jacket creasing as his frame gives way; crystal glassware glints dimly at the table edge; the banquet gloom swallows the background. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+  "duration": 5,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "d7249810455d51101555fa518ad13a6d5a488858d123bee9a546c1aa61647b60",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 280,
+  "credit_spent_est": 280,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "522b93e67ed4cb8efd0ace4a4423abefaf40310228c647780998bf4d0e87c428",
+  "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_10.final.mp4",
+  "size_bytes": 4348057,
+  "sha256": "522b93e67ed4cb8efd0ace4a4423abefaf40310228c647780998bf4d0e87c428"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "5.184000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "124"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_10.json",
+  "shot_contract": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shots/shot_10.json"
+ }
+}

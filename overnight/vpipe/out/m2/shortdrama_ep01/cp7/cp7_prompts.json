@@ -100,8 +100,8 @@
     },
     {
       "shot_id": "shot_09",
-      "action_zh": "小满缓步逼近镜头，竖屏面部大特写逐渐占满画面，身后满堂宾客虚成光斑，跟移不脱焦",
-      "prompt_en": "Extreme close-up tracking shot: a young woman walks slowly straight toward the camera, her face gradually filling the frame while a hall full of guests dissolves into glowing bokeh behind her, the camera gliding backward with her, focus locked on her eyes",
+      "action_zh": "小满驻步正面直视镜头，竖屏面部大特写开场即占满画面，镜头极缓推近锁定双眼，身后满堂宾客虚成静止光斑",
+      "prompt_en": "Extreme close-up, centered: a young Chinese woman stands still facing the camera, her face filling the frame from the very first moment, calm defiant eyes locked on the lens, breathing gently, only her hair strands swaying faintly; the camera creeps forward very slowly, locked on her eyes, while the banquet hall guests behind her melt into a still field of round bokeh, no walking, shallow depth of field",
       "negative": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles",
       "seed": 51,
       "duration_frames": 33,
@@ -128,5 +128,15 @@
       "guidance": 3.0,
       "steps": 15
     }
-  ]
+  ],
+  "rework_shot09_round2": {
+    "reworked_at": "2026-10-08T17:13:13Z",
+    "reason": "CP8 rework_cp3：v1 草稿全程无可辨主体（三重运动/构图/环境负荷超 33 帧容量）",
+    "changed_fields": [
+      "action_zh",
+      "prompt_en"
+    ],
+    "unchanged": "seed=51（42+镜序规则不动）、negative/duration_frames/guidance/steps 全部不动；v1 原文见 git 历史",
+    "v1_prompt_en": "Extreme close-up tracking shot: a young woman walks slowly straight toward the camera, her face gradually filling the frame while a hall full of guests dissolves into glowing bokeh behind her, the camera gliding backward with her, focus locked on her eyes"
+  }
 }

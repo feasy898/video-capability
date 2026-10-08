@@ -1,52 +1,52 @@
 {
- "schema_version": "2.0",
- "cp_id": "cp9",
- "artifact_type": "final_render",
- "fingerprint": "158311b0e5fdc50829a720842751b127693529ed6e9b9e0a14aed0d69d0ca7af",
- "produced_by": "gen_api",
- "produced_at": "2026-10-09 00:48:12",
- "upstream_refs": [
-  {
-   "cp_id": "cp6",
-   "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+  "schema_version": "2.0",
+  "cp_id": "cp9",
+  "artifact_type": "final_render",
+  "fingerprint": "158311b0e5fdc50829a720842751b127693529ed6e9b9e0a14aed0d69d0ca7af",
+  "produced_by": "gen_api",
+  "produced_at": "2026-10-09 00:48:12",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+    },
+    {
+      "cp_id": "cp8",
+      "fingerprint": "850eacfba37ba8deba55b0a1f0218ea3e8a504759d588dfa0d140609ff96bc59"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp9.gate.credit_cap_per_shot",
+    "result": "warn",
+    "note": "实耗(估) 392 = 56积分/s × 7s（≈单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）；本镜 7s>5s 系 CP3 分镜时长守恒 ceil 所致 → warn 标注不否决，集级硬闸门=--credit-cap 8064 实跑生效（超限 exit 3），本批累计估算 见聚合件；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=l7xd3oXdRoZJ。"
   },
-  {
-   "cp_id": "cp8",
-   "fingerprint": "850eacfba37ba8deba55b0a1f0218ea3e8a504759d588dfa0d140609ff96bc59"
-  }
- ],
- "status": "passed",
- "gate": {
-  "type": "rule",
-  "params_ref": "cp9.gate.credit_cap_per_shot",
-  "result": "warn",
-  "note": "实耗(估) 392 = 56积分/s × 7s（≈单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）；本镜 7s>5s 系 CP3 分镜时长守恒 ceil 所致 → warn 标注不否决，集级硬闸门=--credit-cap 8064 实跑生效（超限 exit 3），本批累计估算 见聚合件；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=l7xd3oXdRoZJ。"
- },
- "aux_gates": [
-  {
-   "type": "rule",
-   "params_ref": "cp9.gate.repro_log_complete",
-   "result": "pass",
-   "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 679ac6e275eda43f… + task_id 落盘 shot_03.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
-  }
- ],
- "payload": {
-  "work_id": "shortdrama_ep01",
-  "shot_id": "shot_03",
-  "channel": "api_h3max",
-  "asset": {
-   "kind": "clip",
-   "fingerprint": "4132426206be38d80ec82298db24776f55a06d45cc08bf4a1d7a94c1bef79791",
-   "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_03.final.mp4"
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp9.gate.repro_log_complete",
+      "result": "pass",
+      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 679ac6e275eda43f… + task_id 落盘 shot_03.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_03",
+    "channel": "api_h3max",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "4132426206be38d80ec82298db24776f55a06d45cc08bf4a1d7a94c1bef79791",
+      "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_03.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "679ac6e275eda43f66b55152849f55501b761be0825b683547f2ab9e591a5f6f",
+    "seed_recorded": null,
+    "credit_spent": 392,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
   },
-  "resolution": "768P",
-  "repro_level": "submit_params",
-  "submit_params_fingerprint": "679ac6e275eda43f66b55152849f55501b761be0825b683547f2ab9e591a5f6f",
-  "seed_recorded": null,
-  "credit_spent": 392,
-  "credit_cap_per_shot": 280,
-  "draft_task_id": null,
-  "rework_route": null
- },
- "notes": "单镜终稿件（CP9 权威形态，schema cp9 分支 jsonschema EXIT=0）。credit_spent=392 为 56积分/s 估算值（云通道无钱包端点，非实扣，schema credit_spent 行描述同款降级语义）；云任务 task_id=l7xd3oXdRoZJ（schema 无 task_id 字段，登记于此与 gen_meta）；draft_task_id=null（H3-Max 非 Seedance Draft 通道，schema 字段语义）。分辨率实测 768x1344（768P 9:16 档）、h264+aac、7.296000s（提交 7s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_conditioned 留待 files/upload 核验后）。资产 sha256=4132426206be38d8…（ffprobe+sha256 本地亲核）。"
+  "notes": "单镜终稿件（CP9 权威形态，schema cp9 分支 jsonschema EXIT=0）。credit_spent=392 为 56积分/s 估算值（云通道无钱包端点，非实扣，schema credit_spent 行描述同款降级语义）；云任务 task_id=l7xd3oXdRoZJ（schema 无 task_id 字段，登记于此与 gen_meta）；draft_task_id=null（H3-Max 非 Seedance Draft 通道，schema 字段语义）。分辨率实测 768x1344（768P 9:16 档）、h264+aac、7.296000s（提交 7s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_conditioned 留待 files/upload 核验后）。资产 sha256=4132426206be38d8…（ffprobe+sha256 本地亲核）。"
 }

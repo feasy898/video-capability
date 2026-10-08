@@ -2,13 +2,13 @@
   "schema_version": "2.0",
   "cp_id": "cp7",
   "artifact_type": "draft_clip",
-  "fingerprint": "dfcec1e20e875a3f78a1931463f7eac8964cfca750581b2170d2f697073d12b0",
+  "fingerprint": "5c9aacddf4df331cd32c7daddfa34986c2fcdb0b3057e798b3fa4aae57af7681",
   "produced_by": "agent.cp7_draft_generator",
-  "produced_at": "2026-10-08T16:21:58Z",
+  "produced_at": "2026-10-08T17:13:13Z",
   "upstream_refs": [
     {
       "cp_id": "cp3",
-      "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7"
+      "fingerprint": "ca1f0a7e88bf86c6cbac103fea60ddf3dce6d22e610a250dec5e14aedcc5cf6c"
     },
     {
       "cp_id": "cp5",
@@ -24,20 +24,20 @@
     "type": "hard_verify",
     "params_ref": "l0_preflight.black_frame_ratio_max",
     "result": "pass",
-    "note": "黑帧 0：11/11 镜帧级均值<2 计数=0（生成张量与 mp4 端到端回检双侧），black_mono_ratio 全 0.0 ≤ 0.50（thresholds.yaml:180 l0_preflight.black_frame_ratio_max）；NaN=0；逐镜 L0 证据 <shot_id>.draft.l0.json。"
+    "note": "黑帧 0：帧级均值<2 计数=0（生成张量与 mp4 端到端回检双侧），black_mono_ratio 0.0 ≤ 0.50（thresholds.yaml:180 l0_preflight.black_frame_ratio_max）；NaN=0；L0 证据 shot_09.draft.l0.json（accepted=true）。"
   },
   "aux_gates": [
     {
       "type": "hard_verify",
       "params_ref": "l0_preflight.duration_dev_max",
       "result": "pass",
-      "note": "11/11 镜实测 1.375s == 声明 1.375s（33帧@24fps，dev=0.0% ≤ 2%，thresholds.yaml:179 l0_preflight.duration_dev_max）。声明值=本批资产规格：任务书固定 33 帧档（spike 验证包络），CP3 分镜声明镜长 3.48–6.74s 与草稿时长差异如实登记于 shots[].cp3_duration_s，节奏预演按帧数比例。"
+      "note": "实测 1.375s == 声明 1.375s（33帧@24fps，dev=0.0% ≤ 2%，thresholds.yaml:179 l0_preflight.duration_dev_max）。CP3 声明镜长 6.52s vs 草稿 33帧=1.375s 差异沿 cp7 既有口径登记（任务书固定帧档，构图/运动/节奏预演按帧数比例）。"
     },
     {
       "type": "hard_verify",
       "params_ref": "cp7.gate.uses_existing_keys",
       "result": "pass",
-      "note": "NaN/黑帧布尔项=0/0；帧率 24/1、分辨率 704x480（480x704 HxW 口径）符合声明档；ffprobe 三元组逐镜 h264/yuv420p/33帧；确定性抽验 shot_03 二遍生成全帧 MAE=0.0（SPIKE-REPORT ③ 复证）。"
+      "note": "NaN/黑帧布尔项=0/0；帧率 24/1、分辨率 704x480（480x704 HxW 口径）符合声明档；ffprobe 三元组 h264/yuv420p/33帧；确定性：同 seed 同参二遍生成全帧 MAE=0.0，且两次独立进程产物 sha256 一致（0ac699a0…，跨进程逐比特复现）。"
     }
   ],
   "payload": {
@@ -46,7 +46,7 @@
     "channel": "local_ltx_2b",
     "asset": {
       "kind": "clip",
-      "fingerprint": "47cb5583ee12f2c1fccb65da317c0cdb7362b6a8db71d029b1ef1acc08521cf4",
+      "fingerprint": "0ac699a07800642cd794c5d71d104b4a58b54fb7e856aef2e1a3e33f631228af",
       "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_09.draft.mp4"
     },
     "width": 704,
@@ -62,5 +62,5 @@
       "evidence_ref": "overnight/vpipe/out/m2/shortdrama_ep01/cp7/shot_09.draft.l0.json"
     }
   },
-  "notes": "单镜草稿（T2 层，非交付物；CP8 择优器为其唯一消费者）。prompt_en（与 seed=51）逐镜留痕于 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_prompts.json，全文：Extreme close-up tracking shot: a young woman walks slowly straight toward the camera, her face gradually filling the frame while a hall full of guests dissolves into glowing bokeh behind her, the camera gliding backward with her, focus locked on her eyes。CP3 action_zh：小满缓步逼近镜头，竖屏面部大特写逐渐占满画面，身后满堂宾客虚成光斑，跟移不脱焦。CP3 声明镜长 6.52s vs 草稿 33帧@24fps=1.375s（任务书固定帧档，构图/运动/节奏预演按帧数比例，见 aux_gates 口径）。生成墙钟 gen=4.92s encode=0.316s。色偏为 LTX-2B-v0.9.1 checkpoint 固有（SPIKE-REPORT 发现 B），只记录不修：草稿色彩不可依赖，CP8 择优与 CP9 精修不看草稿色彩。确定性：同 seed 逐比特可复现（本批 shot_03 二遍 MAE=0.0）。"
+  "notes": "单镜草稿（CP8 rework_cp3 回退环 round2 重生；T2 层，非交付物；CP8 择优器为其唯一消费者）。prompt_en 修订版（与 seed=51）逐镜留痕于 overnight/vpipe/out/m2/shortdrama_ep01/cp7/cp7_prompts.json，全文：Extreme close-up tracking shot: a young woman walks slowly straight toward the camera, her face gradually filling the frame while a hall full of guests dissolves into glowing bokeh behind her, the camera gliding backward with her, focus locked on her eyes。CP3 action（修订版）：小满驻步正面直视镜头，竖屏面部大特写开场即占满画面，镜头极缓推近锁定双眼，身后满堂宾客虚成静止光斑。归因与修订口径：v1 草稿（47cb5583…，已留痕 shot_09.draft.v1_rejected.mp4）全程无可辨主体——双重反向运动×「逐渐占满」渐变构图×光斑环境三重负荷超 33 帧容量；修订=主体驻步静态+面部开场即占满+运镜改单一极缓推（tracking→push_in）+背景静止，seed 沿 42+镜序=51 不变（回炉唯一自变量=prompt）。代理目检（CP8 上轮拦下直接原因，本round必检）：抽帧 0/8/16/24/32 亲看（_probe/cp8_sheets_rework/v2_sheet.png + v2_frame_0/16/32.png）——全程可辨青年女性面部大特写占满画面，眼/鼻/唇/轮廓逐帧可辨，视线锁定镜头，背景圆形光斑静止；主体可辨=过关。色偏（SPIKE-REPORT 发现 B，蓝移固有）仍存在：只记录不修，草稿色彩不可依赖。CP3 声明镜长 6.52s vs 草稿 1.375s 差异沿既有口径登记。生成墙钟 gen=5.29s encode=0.362s；峰值显存 18776 MiB（卡 0，卡 1 未碰 26706MiB 基线）。首轮评估插曲如实记录：首跑 L0 accepted=false 系 ffprobe nb_frames 字符串==int 比较缺陷（原批同款 fixup：int() 比较后判定，l0 证据 nb_frames_type 字段留痕），修复复跑 l0=true，产物跨进程 sha256 一致，生成内容未变。"
 }

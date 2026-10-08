@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "axis": "OTHER",
+ "duration_s": 6,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each other across a banquet table, she slides the last page of a contract across the table with one fingertip, both in frame, no cuts. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm candle centerpiece burns between them, carving her youthful jaw against his deep frown lines; the contract page is bright ivory against dark walnut; crystal and cutlery glint at the frame edges; the background falls into warm amber gloom with faint cold blue window light far behind. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max）。CP3 声明镜长 5.43s → ceil=6s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（asset 31226475c2de20b0…），色彩/质感/光影/风格段为 CP9 补全（SPIKE-REPORT §4：草稿色偏不可信）。CP8 择优件 upstream。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_10",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated, white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm overhead lamp carves deep shadows into his wrinkles and silver hair while a cold blue night window rims his shoulder; the burgundy tie hangs loose, the navy suit jacket creasing as his frame gives way; crystal glassware glints dimly at the table edge; the banquet gloom swallows the background. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max）。CP3 声明镜长 3.48s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（asset 427b8e1c07aed791…），色彩/质感/光影/风格段为 CP9 补全（SPIKE-REPORT §4：草稿色偏不可信）。CP8 择优件 upstream。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

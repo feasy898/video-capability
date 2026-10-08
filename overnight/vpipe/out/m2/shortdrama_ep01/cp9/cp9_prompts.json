@@ -9,8 +9,9 @@
   "added": "色彩/质感/光影/风格描述全部由 prompt 本身承载（SPIKE-REPORT §4 发现 B：草稿色偏不可依赖）",
   "duration": "ceil(CP3 声明镜长) 夹到 H3-Max [5,15] 整数秒（MiniMax-Design-接入手册 §2 模型表）",
   "image_mode": "text-to-video（T2V 必须显式；reference_images 未用——参考图仅 http(s) URL 可直传，CP2 注册表无 URL，本地路径 fail-closed）",
-  "total_submitted_seconds": 60,
-  "est_credit_total": 3360
+  "total_submitted_seconds": 67,
+  "est_credit_total": 3752,
+  "rework_shot09_round2": "shot_09 回炉重生后并入：总提交秒数 60→67s，est_credit_total 3360→3752（56积分/s 口径不变）"
  },
  "shots": [
   {
@@ -142,6 +143,20 @@
    "base_ref": "cp7 payload.shots[].prompt_en（构图/运动/节奏基底）",
    "color_texture_lighting": "CP9 新补全段（本表 prompt 第 2 段起）",
    "reference_images": "none（T2V 纯文生；image-conditioned 留待 files/upload 核验后，本次未用）"
+  },
+  {
+   "shot_id": "shot_09",
+   "cp3_duration_s": 6.52,
+   "submitted_duration_s": 7,
+   "aspect": "9:16",
+   "resolution": "768P",
+   "model": "MiniMax-H3-Max",
+   "prompt_en": "Extreme close-up, centered: a young Chinese woman stands still facing the camera, her face filling the frame from the very first moment, calm defiant eyes locked on the lens, breathing gently, only her hair strands swaying faintly; the camera creeps forward very slowly, locked on her eyes, while the banquet hall guests behind her melt into a still field of round bokeh, no walking, shallow depth of field She is Xiaoman, a Chinese woman in her early twenties, pale flawless skin, sleek black shoulder-length hair, calm defiant dark eyes with a faint triumphant glint, wearing a tailored charcoal-black wool blazer over a white shirt. The banquet hall glows with warm amber chandelier light; golden bokeh circles from candles and glassware drift in the background; a cool blue rim light from the doorway grazes one side of her hair. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+   "prompt_chars": 1211,
+   "base_ref": "cp7 round2 重生草稿验证构图（cp7_prompts.json shot_09 修订版 prompt_en 抄底；asset 0ac699a0…）",
+   "color_texture_lighting": "CP9 新补全段（本表 prompt 第 2 段起）",
+   "reference_images": "none（T2V 纯文生）",
+   "rework": "CP8 rework_cp3 回炉环 round2 新增（v1 批 shot_09 被 CP8 拒绝未进本表）"
   }
  ]
 }

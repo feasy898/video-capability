@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_09",
+ "axis": "OTHER",
+ "duration_s": 7,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Extreme close-up, centered: a young Chinese woman stands still facing the camera, her face filling the frame from the very first moment, calm defiant eyes locked on the lens, breathing gently, only her hair strands swaying faintly; the camera creeps forward very slowly, locked on her eyes, while the banquet hall guests behind her melt into a still field of round bokeh, no walking, shallow depth of field She is Xiaoman, a Chinese woman in her early twenties, pale flawless skin, sleek black shoulder-length hair, calm defiant dark eyes with a faint triumphant glint, wearing a tailored charcoal-black wool blazer over a white shirt. The banquet hall glows with warm amber chandelier light; golden bokeh circles from candles and glassware drift in the background; a cool blue rim light from the doorway grazes one side of her hair. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修回炉（T4 api_h3max，CP8 rework_cp3 环 round2）。CP3 声明镜长 6.52s → ceil=7s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=重生草稿验证构图（asset 0ac699a07800642d…，代理目检主体可辨），色彩/质感/光影/风格段为 CP9 补全（SPIKE-REPORT §4：草稿色偏不可依赖）。CP8 择优件 upstream：cp8_shot_09.json=67c2bf13…（round2 改判 passed）。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_08",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Handheld medium close-up from a low angle with a slight shake: an elderly man staggers half a step and grips the table edge, his wine glass topples and red wine soaks into the white tablecloth, his face draining into blank shock. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The garnet-red wine blooms and bleeds through the white damask weave; the crystal glass rolls on its side; chandelier light smears warm across the frame with the handheld sway; his silver hair falls loose over the furrowed brow; a cold blue window edge glows far behind the guests' bokeh. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max）。CP3 声明镜长 3.48s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（asset 2829165d12a822bb…），色彩/质感/光影/风格段为 CP9 补全（SPIKE-REPORT §4：草稿色偏不可信）。CP8 择优件 upstream。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

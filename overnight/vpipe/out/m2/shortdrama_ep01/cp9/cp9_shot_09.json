@@ -1,0 +1,52 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp9",
+  "artifact_type": "final_render",
+  "fingerprint": "d6df6b2126af56372c6cfcca55506f5bbf5a252f671e63fd30b1ea98183b9786",
+  "produced_by": "gen_api",
+  "produced_at": "2026-10-08 17:17:55",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+    },
+    {
+      "cp_id": "cp8",
+      "fingerprint": "67c2bf13d52a2e6f2ee578120a419f4939554a8a47d6ecc718e1f869dc4564d8"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp9.gate.credit_cap_per_shot",
+    "result": "warn",
+    "note": "实耗(估) 392 = 56积分/s × 7s（≈单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）；本镜 7s>5s 系 CP3 分镜时长守恒 ceil 所致 → warn 标注不否决，集级硬闸门=--credit-cap 8064 实跑生效（超限 exit 3）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=nJXy80j0dkzb。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp9.gate.repro_log_complete",
+      "result": "pass",
+      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 cb1f5d25404d5dd5… + task_id 落盘 shot_09.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "shot_id": "shot_09",
+    "channel": "api_h3max",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "4ff15fe557d80e606980f565148ba891b05468c4d2d4f518fe6fe5d3955415ec",
+      "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_09.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "cb1f5d25404d5dd5baca24ed3e33cd49da435e4705b3f3aaf4ed46bdf228ca3b",
+    "seed_recorded": null,
+    "credit_spent": 392,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+  },
+  "notes": "单镜终稿件（CP9 权威形态，schema cp9 分支 jsonschema EXIT=0）——CP8 rework_cp3 回炉环 round2 重生镜。credit_spent=392 为 56积分/s 估算值（云通道无钱包端点，非实扣，schema credit_spent 行描述同款降级语义）；云任务 task_id=nJXy80j0dkzb（schema 无 task_id 字段，登记于此与 gen_meta）。分辨率实测 768x1344（768P 9:16 档）、h264+aac、7.296000s（提交 7s，云侧封装偏差如实留痕，同 v1 批口径）。参考图未用（纯 T2V）。资产 sha256=4ff15fe557d80e60…（ffprobe+sha256 本地亲核，与 api_results 一致）。代理另抽帧目检终稿（0/60/120/174 帧，_probe/cp8_sheets_rework/v2final_sheet.png）：主体可辨、构图=修订版 action（面部大特写占满+琥珀宴会光斑），色彩由 prompt 色彩段承载无草稿蓝移。"
+}

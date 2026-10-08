@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_02",
+ "work_id": "shortdrama_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "V2azPLPG4r7A",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 00:47:40",
+ "elapsed_s": 31.3,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Medium shot at a crowded banquet: an elderly man in a dark suit freezes with a raised wine glass, red wine rippling in the bowl, the camera slowly pushing in over the rim of the glass as he lifts his other hand to beckon a guard at the door, guests turning their heads. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The crystal goblet refracts warm golden chandelier light, the wine a deep garnet red catching a spark; white damask tablecloth, candle flames in soft bokeh, guests in black-tie dissolving into warm golden circles; his silver hair glossed by the chandelier, cut-glass reflections trembling across his brow. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+  "duration": 7,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "07b3b6a5634fd059d72f0656555d2c49ecabdb01efc464157fe5539fa7b45913",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 392,
+  "credit_spent_est": 392,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "0d12adef8ec5a32f6807b09979117831b9220d76e61f3eba72016a58c5f87ef4",
+  "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_02.final.mp4",
+  "size_bytes": 6623395,
+  "sha256": "0d12adef8ec5a32f6807b09979117831b9220d76e61f3eba72016a58c5f87ef4"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "7.296000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "175"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_02.json",
+  "shot_contract": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shots/shot_02.json"
+ }
+}

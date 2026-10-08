@@ -1,0 +1,2 @@
+{"schema_version": 1, "ts": "2026-10-08T17:19:05Z", "cp_id": "cp3", "round": 1, "residual_count": 1, "fixed_count": 0, "new_failures": 1, "note": "shot_09 首轮草稿主体不可辨"}
+{"schema_version": 1, "ts": "2026-10-08T17:19:05Z", "cp_id": "cp3", "round": 2, "residual_count": 0, "fixed_count": 1, "new_failures": 0, "note": "修订 action+prompt 后重生过关"}

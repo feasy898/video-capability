@@ -1,0 +1,98 @@
+{
+  "task": "cp7-shot09-rework-round2",
+  "host": "anolis-gpu-01",
+  "generated_at": "2026-10-09T01:11:23+0800",
+  "model": {
+    "path": "/data/night/models/LTX-Video",
+    "dtype": "float16",
+    "pipeline": "LTXPipeline"
+  },
+  "params": {
+    "height": 480,
+    "width": 704,
+    "num_frames": 33,
+    "num_inference_steps": 15,
+    "guidance_scale": 3.0,
+    "seed": 51,
+    "seed_rationale": "seed 规则 42+镜序不动；回炉唯一自变量=prompt 修订",
+    "fps_out": 24,
+    "declared_duration_s": 1.375,
+    "negative_prompt": "worst quality, inconsistent motion, blurry, jittery, distorted, text, watermark, subtitles"
+  },
+  "provenance": {
+    "cp8_rejection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_09.json status=rejected rework_cp3",
+    "cp3_revision": "cp3.json fingerprint ca1f0a7e88bf86c6…（action/move 修订，validate_cp3 exit 0）",
+    "attribution": "双重反向运动×渐变构图×光斑环境三重负荷超 33 帧容量，主体被环境吞没"
+  },
+  "shots": [
+    {
+      "shot_id": "shot_09",
+      "seed": 51,
+      "round": 2,
+      "gen_s": 5.29,
+      "torch_peak_mib": 16623.3,
+      "tensor_stats": {
+        "frames": 33,
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 46.484,
+        "frame_mean_max": 46.833,
+        "frame_mean_overall": 46.717
+      },
+      "encode_s": 0.362,
+      "mp4_sha256": "0ac699a07800642cd794c5d71d104b4a58b54fb7e856aef2e1a3e33f631228af",
+      "mp4_size_bytes": 21482,
+      "ffprobe": {
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p",
+        "width": 704,
+        "height": 480,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "33",
+        "duration_s": 1.375,
+        "bit_rate": "124986"
+      },
+      "end_to_end_decode": {
+        "decoded_frames": 33,
+        "black_frames_lt2": 0,
+        "frame_mean_min": 208.23,
+        "frame_mean_overall": 208.433
+      },
+      "declared_duration_s": 1.375,
+      "actual_duration_s": 1.375,
+      "duration_dev": 0.0,
+      "l0_accepted": true,
+      "determinism": {
+        "method": "same seed/params second generation, full-frame MAE",
+        "gen2_s": 4.94,
+        "mae_all_frames": 0.0,
+        "equal_bits": true
+      }
+    }
+  ],
+  "errors": [],
+  "v1_rejected_archive": {
+    "note": "现行 draft 非 v1 废片，不归档不改名",
+    "sha256": "0ac699a07800642cd794c5d71d104b4a58b54fb7e856aef2e1a3e33f631228af"
+  },
+  "preflight": {
+    "ts": "2026-10-09T01:11:25+0800",
+    "card0_used_mib": 310,
+    "card1_used_mib": 26706
+  },
+  "gpu": {
+    "name": "Tesla V100S-PCIE-32GB",
+    "capability": "7.0",
+    "bf16_supported": true
+  },
+  "timing_s": {
+    "load": 6.89,
+    "total": 21.45
+  },
+  "vram": {
+    "baseline_used_mib": 618,
+    "nvidia_smi_max_used_mib": 18776,
+    "nvidia_smi_samples": 11
+  },
+  "ok": true
+}

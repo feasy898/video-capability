@@ -1,0 +1,57 @@
+{
+ "schema_version": "2.0",
+ "shot_id": "shot_07",
+ "work_id": "shortdrama_ep01",
+ "cp_id": "cp9",
+ "channel": "api_h3max",
+ "model": "MiniMax-H3-Max",
+ "backend": "minimax_cloud_v3",
+ "task_id": "X7PG0DkzXlmg",
+ "status": "succeeded",
+ "submitted_at": "2026-10-09 00:50:20",
+ "elapsed_s": 31.3,
+ "submit_params": {
+  "model": "MiniMax-H3-Max",
+  "prompt": "Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit, the same steady unwavering gaze in both halves. She is Xiaoman, a Chinese woman in her early twenties with sleek black shoulder-length hair and calm defiant dark eyes. Left half: cold blue-green fluorescent garage light, oil-stained orange canvas overalls with grease marks, concrete wall and tool board behind, faint dust in the air. Right half: warm golden chandelier banquet light, a sharp charcoal-black tailored suit with a subtle sheen, dark walnut and amber gloom behind. The two halves meet on a clean vertical seam; her gaze never changes across the seam. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+  "duration": 6,
+  "resolution": "768P",
+  "ratio": "9:16",
+  "generate_audio": true,
+  "image_mode": "text-to-video"
+ },
+ "submit_params_fingerprint": "182473e1a368d97d63eee1ab6907e559bd2440410d5a4261a5e43a78b3d2dbea",
+ "repro_level": "submit_params",
+ "seed_sent": false,
+ "seed_recorded": null,
+ "credit": {
+  "est_credit": 336,
+  "credit_spent_est": 336,
+  "credit_before": null,
+  "credit_after": null,
+  "credit_cost": null,
+  "basis": "56积分/s 估算口径（云通道无钱包端点，SPEC §2.2 如实降级；credit_*三字段如实 null）"
+ },
+ "reference_images_used": [],
+ "image_conditioned": "未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测→fail-closed 不绕过）",
+ "asset": {
+  "kind": "clip",
+  "fingerprint": "ce3c94c7a44cd6e4011a263182f0768200a726de4a9c5391724db33bb046657e",
+  "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shot_07.final.mp4",
+  "size_bytes": 6491962,
+  "sha256": "ce3c94c7a44cd6e4011a263182f0768200a726de4a9c5391724db33bb046657e"
+ },
+ "ffprobe": {
+  "width": 768,
+  "height": 1344,
+  "duration": "6.592000",
+  "video_codec": "h264",
+  "pix_fmt": "yuv420p",
+  "avg_frame_rate": "24/1",
+  "audio_codec": "aac",
+  "nb_frames": "158"
+ },
+ "upstream": {
+  "cp8_selection": "overnight/vpipe/out/m2/shortdrama_ep01/cp8/cp8_shot_07.json",
+  "shot_contract": "overnight/vpipe/out/m2/shortdrama_ep01/cp9/shots/shot_07.json"
+ }
+}

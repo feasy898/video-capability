@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_07",
+ "axis": "OTHER",
+ "duration_s": 6,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit, the same steady unwavering gaze in both halves. She is Xiaoman, a Chinese woman in her early twenties with sleek black shoulder-length hair and calm defiant dark eyes. Left half: cold blue-green fluorescent garage light, oil-stained orange canvas overalls with grease marks, concrete wall and tool board behind, faint dust in the air. Right half: warm golden chandelier banquet light, a sharp charcoal-black tailored suit with a subtle sheen, dark walnut and amber gloom behind. The two halves meet on a clean vertical seam; her gaze never changes across the seam. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 精修（T4 api_h3max）。CP3 声明镜长 5.87s → ceil=6s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（asset 43c597f94c60f4ed…），色彩/质感/光影/风格段为 CP9 补全（SPIKE-REPORT §4：草稿色偏不可信）。CP8 择优件 upstream。image_conditioned=未用（CP2 注册表无 http(s) 参考 URL；files/upload 手册未实测 → fail-closed 不绕过）。"
+}

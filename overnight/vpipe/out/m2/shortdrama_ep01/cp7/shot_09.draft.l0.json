@@ -1,7 +1,8 @@
 {
   "shot_id": "shot_09",
   "asset": "shot_09.draft.mp4",
-  "ts": "2026-10-09T00:18:50+0800",
+  "round": 2,
+  "ts": "2026-10-09T01:11:42+0800",
   "thresholds_ref": "eval/thresholds.yaml:178-181 l0_preflight",
   "checks": {
     "black_frames_tensor_lt2": 0,

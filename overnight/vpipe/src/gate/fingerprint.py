@@ -15,7 +15,8 @@ upstream_refs/status/gate 等信封字段不参与（信封变、内容不变 = 
 CLI：
     python3 src/gate/fingerprint.py compute <artifact.json>     # 打印计算值
     python3 src/gate/fingerprint.py verify <artifact.json>      # 与声明值比对，exit 0/1
-    python3 src/gate/fingerprint.py relink <dir> [--write]      # 重算目录内全部工件的
+    python3 src/gate/fingerprint.py relink <dir> [--write] [--remap OLD=NEW ...]
+                                                               # 重算目录树内全部工件的
                                                                # fingerprint 与 upstream_refs
                                                                # （--write 才落盘，否则 dry-run）
 """
@@ -61,71 +62,85 @@ def cmd_verify(path: Path) -> int:
     return 1
 
 
-def cmd_relink(directory: Path, write: bool) -> int:
-    """重算目录内全部 *.json 工件的 fingerprint，并按实算值重写 upstream_refs 引用。
+def cmd_relink(directory: Path, write: bool, remaps: list[str] | None = None) -> int:
+    """重算目录树内全部工件的 fingerprint，并按「旧指纹→新指纹」映射重写 upstream_refs。
 
-    upstream_refs 条目形如 {cp_id, fingerprint}——这里按「被引用工件的主名/id」匹配
-    目录内其它工件的实算指纹。匹配不到的引用保持原值并在输出中标注。
+    目录树语义（2026-10-09 主控修订）：relink 递归遍历 directory 下所有子目录的
+    *.json 工件（episode 树形态：根级 cpN.json 聚合件 + cpN/ 子目录逐镜件）。
+    引用重指向按**声明指纹匹配**（ref.fingerprint == 目标工件的 declared
+    fingerprint）解析到该工件当前的实算指纹——逐镜工件（cp8_shot_01→cp7_shot_01）
+    由此无歧义解析；按 cp_id 首匹配对一父多子形态是错的，已废弃。
+    payload.source_script_fingerprint 同样参与重指向。
+
+    --remap OLD=NEW（可重复）：显式身份转换。回炉工作流中目标工件的声明指纹可能
+    已被更新（旧身份从树内丢失），此时 relink 无法反查旧身份——用本参数把已知的
+    旧指纹映射到新指纹（如回炉报告记录的 3ea3bf92…→ca1f0a7e…）。
     """
-    files = sorted(directory.glob("*.json"))
+    files = sorted(directory.rglob("*.json"))
     arts = {}
     skipped = []
     for f in files:
-        a = load(f)
+        try:
+            a = load(f)
+        except Exception:
+            skipped.append(f.name)
+            continue
         if not isinstance(a, dict) or "payload" not in a:
             skipped.append(f.name)
             continue
-        arts[f.name] = a
+        arts[f] = a
     if skipped:
-        print(f"跳过非 CP 工件（无 payload）: {skipped}")
-    # 主名（如 cp2.json / cp3.json）→ 实算指纹
-    fp_by_stem = {name: compute_fingerprint(a) for name, a in arts.items()}
-    # 兼容按 work_id 引用：建立 work_id → 指纹
-    fp_by_work = {}
-    for a in arts.values():
-        wid = (a.get("payload") or {}).get("work_id")
-        if wid:
-            fp_by_work.setdefault(wid, compute_fingerprint(a))
+        print(f"跳过非 CP 工件（无 payload/不可解析）: {skipped}")
+    # 声明指纹（旧身份）→ 实算指纹（新身份）；声明指纹缺失的工件不入映射
+    old_to_new = {}
+    for f, a in arts.items():
+        declared = a.get("fingerprint")
+        computed = compute_fingerprint(a)
+        if declared:
+            old_to_new.setdefault(declared, computed)
+    # 显式身份转换（--remap OLD=NEW）
+    for spec in remaps or []:
+        if "=" not in spec:
+            print(f"--remap 参数缺 '='：{spec!r}（忽略）")
+            continue
+        old, new = spec.split("=", 1)
+        old, new = old.strip(), new.strip()
+        if old in old_to_new and old_to_new[old] != new:
+            print(f"--remap 冲突：{old[:12]}… 树内已映射到 {old_to_new[old][:12]}…，显式值 {new[:12]}… 不覆盖")
+            continue
+        old_to_new[old] = new
+        print(f"--remap 已登记：{old[:12]}… → {new[:12]}…")
     changed = 0
     unmatched = []
-    for name, art in arts.items():
-        new_fp = fp_by_stem[name]
-        old_fp = art.get("fingerprint")
-        refs = art.get("upstream_refs") or []
-        for r in refs:
+    for f, art in arts.items():
+        new_fp = compute_fingerprint(art)
+        for r in art.get("upstream_refs") or []:
             if not isinstance(r, dict):
                 continue
-            # 引用目标：优先按 cp_id+work_id 同链匹配
-            cp = r.get("cp_id")
-            hit = None
-            for other_name, other in arts.items():
-                if other_name == name:
-                    continue
-                if other.get("cp_id") == cp:
-                    hit = fp_by_stem[other_name]
-                    break
-            if hit is None:
-                unmatched.append(f"{name}→{cp}")
-                continue
-            if r.get("fingerprint") != hit:
-                r["fingerprint"] = hit
-                changed += 1
-        if old_fp != new_fp:
+            fp = r.get("fingerprint")
+            if fp in old_to_new:
+                if r["fingerprint"] != old_to_new[fp]:
+                    r["fingerprint"] = old_to_new[fp]
+                    changed += 1
+            else:
+                unmatched.append(f"{f.name}→{r.get('cp_id')}")
+        ssf = (art.get("payload") or {}).get("source_script_fingerprint")
+        if ssf and ssf in old_to_new and old_to_new[ssf] != ssf:
+            art["payload"]["source_script_fingerprint"] = old_to_new[ssf]
+            changed += 1
+        if art.get("fingerprint") != new_fp:
             art["fingerprint"] = new_fp
             changed += 1
     if not write:
-        for name, a in sorted(arts.items()):
-            print(f"[dry-run] {name}: fingerprint={fp_by_stem[name][:16]}…")
+        for f in sorted(arts):
+            print(f"[dry-run] {f.relative_to(directory)}: fingerprint={compute_fingerprint(arts[f])[:16]}…")
         print(f"[dry-run] 将改动 {changed} 处（--write 落盘）")
         return 0
-    for f in files:
-        if f.name not in arts:
-            continue  # 跳过的非 CP 工件原样不动
-        f.write_text(json.dumps(arts[f.name], ensure_ascii=False, indent=2) + "\n",
-                     encoding="utf-8")
-    print(f"已重算并落盘 {len(files)} 个工件，改动 {changed} 处")
+    for f, a in arts.items():
+        f.write_text(json.dumps(a, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"已重算并落盘 {len(arts)} 个工件（目录树 {directory}），改动 {changed} 处")
     if unmatched:
-        print(f"未匹配引用（保持原值）: {unmatched}")
+        print(f"未匹配引用（声明指纹不在树内且无 --remap，保持原值）: {unmatched}")
     return 0
 
 
@@ -139,7 +154,9 @@ def main(argv: list[str]) -> int:
     if cmd == "verify":
         return cmd_verify(path)
     if cmd == "relink":
-        return cmd_relink(path, write="--write" in argv[3:])
+        rest = argv[3:]
+        remaps = [a[len("--remap="):] for a in rest if a.startswith("--remap=")]
+        return cmd_relink(path, write="--write" in rest, remaps=remaps)
     print(f"未知命令: {cmd}")
     return 2
 
