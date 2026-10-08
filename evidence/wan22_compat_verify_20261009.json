@@ -1,0 +1,289 @@
+{
+  "task": "wan22-compat-verify",
+  "date": "2026-10-09",
+  "what": "TASK_v4 §8 决策 g（2026-10-09-g）上线前置条件验收：把 spike 脚本内 4 处 diffusers 0.39.0 不兼容内存补丁固化为仓内模块 overnight/vpipe/src/gen_wan22.py 后，与 spike 完全同参跑一次真实生成，以输出 sha256 与 spike 逐字节一致性证明补丁确定性等价",
+  "delivered": {
+    "module": "overnight/vpipe/src/gen_wan22.py",
+    "module_sha256_final": "c5317e371921e20ce8124e7c9ba1b79bdc0de6793c03eb866386eeeeafb5c08b",
+    "module_sha256_gpu_run_build": "5d321cb3f92b6c7fdd704b939512a820f2d66aa59fba56152f9da10d74eb2e49",
+    "module_diff_note": "GPU 实跑版本与最终版唯一差异：最终版新增 meta['pipeline_state_checks'] 序列化一行（verify_pipeline_state 的 4 项核验记录落 meta；生成路径零改动）。实跑版该核验已通过（fail-closed 门未过则不会进入生成），本 run 的 4 项事实由 meta.pipeline / vae_scale_factors 逐项记录：boundary 0.0 / spatial 16 / vp 16 / tiling true",
+    "tests": "overnight/vpipe/tests/test_gen_wan22.py",
+    "tests_sha256": "0c84fc50f0f1ba15a6f2e843ad9b4e39b01db024936c9cef27a452c524734860",
+    "run_meta_gpu": "/data/night/g01-rerun/video-capability/evidence/wan22_compat_verify_20261009/wan22_meta.json",
+    "run_outputs_gpu": [
+      "/data/night/g01-rerun/video-capability/evidence/wan22_compat_verify_20261009/wan22_out.mp4",
+      "/data/night/g01-rerun/video-capability/evidence/wan22_compat_verify_20261009/wan22_out_run_2.mp4",
+      "/data/night/g01-rerun/video-capability/evidence/wan22_compat_verify_20261009/wan22_preview_mid.png",
+      "/data/night/g01-rerun/video-capability/evidence/wan22_compat_verify_20261009/run.log"
+    ]
+  },
+  "four_patches固化形态": [
+    {
+      "id": "1",
+      "spike位置": "wan22_baseline.py:281-288（手动加载+update_components）",
+      "module函数": "load_components_manual()（build_pipeline 内调用）",
+      "defect": "diffusers 0.39.0 ModularPipeline.from_pretrained 对仅 model_index.json 的 legacy 仓 UnboundLocalError: blocks_class",
+      "fix": "按声明类手动加载 5 组件（全 fp16）+ update_components 注入；前置 validate_model_dir fail-closed"
+    },
+    {
+      "id": "2",
+      "spike位置": "wan22_baseline.py:292",
+      "module函数": "patch_boundary_ratio(pipe, 0.0)",
+      "defect": "Wan22LoopDenoiser MoE 双专家写死，t<boundary 取 transformer_2=None 崩（默认 0.875 实崩）",
+      "fix": "boundary_ratio=0.0 使 t>=0 恒走 transformer + guider(CFG5.0)，官方单模型等价语义"
+    },
+    {
+      "id": "3",
+      "spike位置": "wan22_baseline.py:303-312",
+      "module函数": "patch_vae_scale_factor_spatial(cls=WanModularPipeline)",
+      "defect": "vae_scale_factor_spatial 属性用 Wan2.1 启发式 2**len(temperal_downsample)=8 ≠ Wan2.2 VAE config scale_factor_spatial=16",
+      "fix": "运行时类属性 property：优先读 vae.config，缺失回退启发式（内存补丁，零 site-packages/模型目录改动）"
+    },
+    {
+      "id": "4",
+      "spike位置": "wan22_baseline.py:298-299",
+      "module函数": "patch_video_processor(pipe, 16)",
+      "defect": "VideoProcessor from_config 默认 vae_scale_factor=8（与 #3 同源）",
+      "fix": "update_components(video_processor=VideoProcessor(vae_scale_factor=16)) 显式覆盖"
+    }
+  ],
+  "patch_entry": "apply_compat_patches(pipe)（#2→#4→#3 统一入口，任一失败抛 CompatPatchError 带补丁号）+ enable_vae_tiling(vae)（tile 256x256 产线标准配置，非兼容补丁）+ verify_pipeline_state(pipe)（4 项落地核验，不符 fail-closed 拒发）；幂等性由单测 A 组证明（双调无副作用）",
+  "unit_tests": {
+    "command": "cd overnight/vpipe && python3 tests/test_gen_wan22.py",
+    "local": "ALL PASS（85 项 check，exit 0；A 幂等性/B property 两分支/C 手动加载参数逐项一致/D 失败路由/E CLI/F dry-run 零加载+meta 结构+fail-closed）",
+    "gpu_machine": "/data/night/venv/bin/python tests/test_gen_wan22.py → ALL PASS（exit 0）",
+    "note": "mock 级零 GPU：fake diffusers/transformers/torch 注入 + 子进程 dry-run；不依赖 pytest"
+  },
+  "同参对照表": {
+    "prompt_zh": {
+      "spike": "一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云",
+      "module": "一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云",
+      "match": true
+    },
+    "negative_prompt": {
+      "spike": "色调艳丽，过曝，静态，细节模糊不清，字幕…",
+      "module": "色调艳丽，过曝，静态，细节模糊不清，字幕…",
+      "match": true
+    },
+    "height_x_width": {
+      "spike": [
+        704,
+        1280
+      ],
+      "module": [
+        704,
+        1280
+      ],
+      "match": true
+    },
+    "num_frames": {
+      "spike": 33,
+      "module": 33,
+      "match": true
+    },
+    "num_inference_steps": {
+      "spike": 50,
+      "module": 50,
+      "match": true
+    },
+    "guidance_scale": {
+      "spike": 5.0,
+      "module": 5.0,
+      "note": "两者均不显式下发、取 guider 组件配置默认 5.0（module meta guidance_explicit=false；spike 同口径）",
+      "match": true
+    },
+    "seed": {
+      "spike": 42,
+      "module": 42,
+      "match": true
+    },
+    "fps_out": {
+      "spike": 24,
+      "module": 24,
+      "match": true
+    },
+    "dtype": {
+      "spike": "torch.float16（全组件）",
+      "module": "torch.float16（全组件）",
+      "match": true
+    },
+    "vae_tiling": {
+      "spike": {
+        "tile_sample_min_height": 256,
+        "tile_sample_min_width": 256,
+        "tile_sample_stride": null,
+        "use_tiling": true
+      },
+      "module": {
+        "tile_sample_min_height": 256,
+        "tile_sample_min_width": 256,
+        "tile_sample_stride": null,
+        "use_tiling": true
+      },
+      "match": true
+    },
+    "boundary_ratio": {
+      "spike": 0.0,
+      "module": 0.0,
+      "match": true
+    },
+    "vae_scale_factors": {
+      "spike": {
+        "spatial": 16,
+        "temporal": 4
+      },
+      "module": {
+        "spatial": 16,
+        "temporal": 4
+      },
+      "match": true
+    },
+    "video_processor_scale": {
+      "spike": 16,
+      "module": 16,
+      "match": true
+    },
+    "all_match": true
+  },
+  "sha256_compare": {
+    "spike_wan22_out_zh_mp4": {
+      "path": "/data/night/g01-rerun/video-capability/evidence/spike/wan22_out_zh.mp4",
+      "sha256": "6e67edd2914f663201a7dc7a898ac97859977de8eb8ea58fc0f03830beca2d86",
+      "size_bytes": 875293
+    },
+    "module_run_1_wan22_out_mp4": {
+      "path": "/data/night/g01-rerun/video-capability/evidence/wan22_compat_verify_20261009/wan22_out.mp4",
+      "sha256": "6e67edd2914f663201a7dc7a898ac97859977de8eb8ea58fc0f03830beca2d86",
+      "size_bytes": 875293
+    },
+    "module_run_2_wan22_out_run_2_mp4": {
+      "sha256": "6e67edd2914f663201a7dc7a898ac97859977de8eb8ea58fc0f03830beca2d86",
+      "size_bytes": 875293
+    },
+    "match_run1_vs_spike": true,
+    "match_run2_vs_spike": true,
+    "verdict": "一致：三份 mp4 sha256 逐字节相同（同 875,293 B）——固化补丁与 spike 脚本内补丁行为确定性等价成立"
+  },
+  "real_run_metrics": {
+    "command": "/data/night/venv/bin/python src/gen_wan22.py --prompt 「一只橘猫坐在窗台上晒太阳，窗外是慢速移动的云」 --zh --seed 42 --frames 33 --steps 50 --determinism-runs 2 --model /data/night/models/Wan2.2-TI2V-5B --out evidence/wan22_compat_verify_20261009",
+    "host": "anolis-gpu-01",
+    "preflight_card0_mib": {
+      "card0_used_mib": 310,
+      "card1_used_mib": 26706,
+      "limit_mib": 1024,
+      "at": "2026-10-09T04:06:30"
+    },
+    "gen_wall_clock_s": {
+      "run_1": 230.67,
+      "run_2": 230.26,
+      "spike_run_zh": 230.63
+    },
+    "load_s": {
+      "module": 14.68,
+      "spike": 12.0
+    },
+    "peak_vram": {
+      "nvidia_smi_card0_mib": 25982,
+      "nvidia_smi_card0_delta_mib": 25364,
+      "torch_peak_allocated_mib": {
+        "load": 23673.0,
+        "run_1": 24697.8,
+        "run_2": 24700.6
+      },
+      "card1_max_used_mib_untouched": 26706,
+      "nvidia_smi_samples": 240,
+      "spike_reference": {
+        "nvidia_smi_card0_mib": 25640,
+        "torch_peak_run_zh": 24681.6
+      }
+    },
+    "quality": {
+      "run_1": {
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "black_frame_ratio": 0.0,
+        "frame_mean_min": 128.405,
+        "frame_mean_max": 132.582,
+        "frame_mean_overall": 130.457
+      },
+      "run_2": {
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "black_frame_ratio": 0.0,
+        "frame_mean_min": 128.405,
+        "frame_mean_max": 132.582,
+        "frame_mean_overall": 130.457
+      },
+      "spike_run_zh": {
+        "nan_count": 0,
+        "black_frames_lt2": 0,
+        "black_frame_ratio": 0.0,
+        "frame_mean_min": 128.405,
+        "frame_mean_max": 132.582,
+        "frame_mean_overall": 130.457
+      }
+    },
+    "determinism": {
+      "runs_compared": [
+        "run_1",
+        "run_2"
+      ],
+      "seed": 42,
+      "frame_sample_indices": [
+        0,
+        8,
+        16,
+        24,
+        32
+      ],
+      "mae_per_sample": {
+        "0": 0.0,
+        "8": 0.0,
+        "16": 0.0,
+        "24": 0.0,
+        "32": 0.0
+      },
+      "mae_mean_sampled": 0.0,
+      "mae_all_frames": 0.0,
+      "encode_sha256_equal": true,
+      "note": "MAE=0 表示同 seed 逐比特可复现；>0 表示该硬件/内核路径存在非确定性"
+    },
+    "output_ffprobe": {
+      "codec_name": "h264",
+      "pix_fmt": "yuv420p",
+      "width": 1280,
+      "height": 704,
+      "avg_frame_rate": "24/1",
+      "nb_frames": "33",
+      "duration_s": 1.375,
+      "bit_rate": "5092613",
+      "rc": 0
+    },
+    "end_to_end_decode": {
+      "decoded_frames": 33,
+      "black_frames_lt2": 0,
+      "frame_mean_min": 99.233,
+      "frame_mean_overall": 100.87,
+      "decode_rc": 0
+    },
+    "l0_precheck_substitute": {
+      "criterion": "black_frame_ratio<=0.5 (替代黑场时长占比) AND duration_dev<=2% (expect 33/24=1.375s)",
+      "black_frame_ratio": 0.0,
+      "duration_s": 1.375,
+      "duration_dev": 0.0,
+      "passed": true
+    },
+    "total_s": 485.05,
+    "errors": [],
+    "ok": true
+  },
+  "redlines": {
+    "只卡0且跑前复测": "发车前 ssh 侧 nvidia-smi 复测卡 0=310MiB ≤1024MiB 才发（启动链内 [ $C0 -le 1024 ] 硬门）；模块内 preflight_card0 二次复测同值记录于 meta.gpu_preflight",
+    "卡1不碰": "240 次 nvidia-smi 采样卡 1 全程 26,706MiB（基线值）零变化",
+    "不kill不pip_install": "未 kill 任何进程；未 pip install；补丁为仓内代码（内存态类属性/组件注入），site-packages 零改动",
+    "不下载": "HF_HUB_OFFLINE=1 + TRANSFORMERS_OFFLINE=1，权重只读 /data/night/models/Wan2.2-TI2V-5B",
+    "产物644": "mp4/png/meta 模块内 os.chmod 0o644；GPU 机上 ls -la 实测全 644",
+    "写入范围": "GPU 机仅写 overnight/vpipe/src/gen_wan22.py、overnight/vpipe/tests/test_gen_wan22.py、evidence/wan22_compat_verify_20261009/（run 产物）与本文件"
+  },
+  "conclusion": "验收通过：①4 处补丁固化为显式函数（load_components_manual / patch_boundary_ratio / patch_vae_scale_factor_spatial / patch_video_processor + apply_compat_patches 统一入口），每处注明 diffusers 0.39.0 缺陷与原理，mock 级单测 85 项 ALL PASS；②与 spike 完全同参（ZH prompt/704x1280/33帧/50步/CFG5.0 guider 默认/seed42/fp16/tiling）真实生成 sha256=6e67edd2…2d86 与 spike wan22_out_zh.mp4 逐字节一致——补丁确定性等价证明成立，未调任何参数；③黑帧 0/NaN 0/L0 替代口径 passed/同 seed 二跑 MAE=0.0/卡 1 未碰。TASK_v4 §8 决策 g 的上线前置条件满足，Wan2.2 质轨从「已验证未接线」转为「已接线」"
+}
