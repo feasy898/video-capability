@@ -1,0 +1,192 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp2",
+  "artifact_type": "script",
+  "fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca",
+  "produced_by": "agent.writer",
+  "produced_at": "2026-10-08T15:42:40Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp1",
+      "fingerprint": "9e3def20066145b5e3846d1eec6510bab78f4403a491de036c17768e72e515ea"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp2.gate.duration_dev_max",
+    "result": "pass",
+    "note": "Σ estimated_duration_s=60.64s vs 目标 60.0s，偏差 1.07% ≤ 2%（checkpoints.cp2.gate.duration_dev_max=0.02，thresholds.yaml:228-230）；逐段估时按 StepFun stepaudio-2.5-tts 实测 4.6 字/s（工程方案v3.1.md:53，src/tts.py:84 CHARS_PER_SEC_EST 同值同口径），与 validate_cp2.py 独立重算一致，exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp2.gate.line_shot_ratio",
+      "result": "pass",
+      "note": "台词条数 11 / 预计镜头数 11（契约 payload 不收 expected_shot_count，按白皮书 §3 CP2 注「逐行一拍一镜」取=台词条数）= 1.0，在 [1.0, 1.5] 内（checkpoints.cp2.gate.line_shot_ratio，thresholds.yaml:231-233）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "target_duration_s": 60.0,
+    "estimated_total_duration_s": 60.64,
+    "narration_segments": [
+      {
+        "segment_id": "seg_01",
+        "narration_text": "林伯，好兴致啊。雨这么大，晚宴还照开——就不怕故人上门？",
+        "visual_description": "雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍面部大特写",
+        "estimated_duration_s": 4.78,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_02",
+        "narration_text": "你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！",
+        "visual_description": "林父举着酒杯的手停在半空，杯中酒晃出涟漪，抬手示意门口保安，宾客回头",
+        "estimated_duration_s": 6.3,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_goblet_01"
+        ]
+      },
+      {
+        "segment_id": "seg_03",
+        "narration_text": "轰我可以。先认认这个——我在你们厂修了三年车，被扫地出门那天，就带走了它。",
+        "visual_description": "小满把修车扳手放上白桌布，金属反光划过特写，镜头不离开扳手轮廓",
+        "estimated_duration_s": 6.74,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": [
+          "prop_wrench_01"
+        ]
+      },
+      {
+        "segment_id": "seg_04",
+        "narration_text": "一把旧扳手，装什么排面。少废话，合约就在这儿——签字，老宅地皮明天过户。",
+        "visual_description": "林父把合约文件拍在桌面，手指重重点在签名栏，特写压住半个画面",
+        "estimated_duration_s": 6.3,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_contract_01"
+        ]
+      },
+      {
+        "segment_id": "seg_05",
+        "narration_text": "签字不急。您先翻到最后一页，看看这一回，该谁给谁低头签字。",
+        "visual_description": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景不切",
+        "estimated_duration_s": 5.43,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman",
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_contract_01"
+        ]
+      },
+      {
+        "segment_id": "seg_06",
+        "narration_text": "这……这是恒盛集团的法人章？新任董事接盘林氏产业……怎么可能是他？！",
+        "visual_description": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化",
+        "estimated_duration_s": 5.87,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_contract_01"
+        ]
+      },
+      {
+        "segment_id": "seg_07",
+        "narration_text": "五年前，一纸合约把我赶出这道门；五年后，我连门带楼，全买了回来。",
+        "visual_description": "同机位前后对切：左半身汽修工装沾油渍，右半身董事西装笔挺，眼神不变",
+        "estimated_duration_s": 5.87,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_08",
+        "narration_text": "不可能……你哪来的钱？谁在背后给你撑腰？",
+        "visual_description": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，低机位拍他失神的脸",
+        "estimated_duration_s": 3.48,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_goblet_01"
+        ]
+      },
+      {
+        "segment_id": "seg_09",
+        "narration_text": "撑腰的人不重要。重要的是，从今晚起，林家每一份合约，都得先经过我的手。",
+        "visual_description": "小满缓步逼近镜头，竖屏面部大特写占满画面，身后满堂宾客虚成光斑",
+        "estimated_duration_s": 6.52,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_10",
+        "narration_text": "好……好啊。林家欠你的，今天连本带利，认了。",
+        "visual_description": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉",
+        "estimated_duration_s": 3.48,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_11",
+        "narration_text": "这杯我干了。新合约明早九点放你桌上——记住，从今往后，规矩我来定。",
+        "visual_description": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，雨幕重新合拢",
+        "estimated_duration_s": 5.87,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": [
+          "prop_goblet_01"
+        ]
+      }
+    ],
+    "cast": [
+      {
+        "char_id": "cast_xiaoman"
+      },
+      {
+        "char_id": "cast_lin"
+      }
+    ],
+    "props": [
+      {
+        "prop_id": "prop_wrench_01"
+      },
+      {
+        "prop_id": "prop_contract_01"
+      },
+      {
+        "prop_id": "prop_goblet_01"
+      }
+    ]
+  },
+  "notes": "60s 竖屏短剧《雨夜合约》第 1 集：11 句台词（8-12 带内），单一明确反转点=seg_06 林父翻到合约最后一页发现新任集团董事竟是小满（修车工→收购者身份反转，沿 CP1 意图卡三次反转踩点的第一次落地），seg_07 工装/西装同机位对切坐实，seg_10-11 林父认输+新钩子收口；叙事节奏沿 CP1 登记的结构先验 dy01v3（快切对白戏、特写主导、低机位固定机位），人物/台词/场景原创。【cast/props 冗余说明】schema cp2_script 分支 cast/props 条目 additionalProperties=false 只收 ID，一句话人设与道具名称登记于此（沿 CP1 reference 对象入 notes 的同款处置）：cast_xiaoman=小满（28 岁汽修工学徒，五年前被林家扫地出门，实为新收购林氏产业的恒盛集团新任董事）；cast_lin=林伯（林家家主，五年前驱逐小满的旧东家，雨夜晚宴上逼签过户合约反被将了一军）。prop_wrench_01=修车扳手（CP1 must_keep 镜级实物，金属恒存不形变，seg_03 特写）；prop_contract_01=合约文件（过户合约，seg_04/05/06 道具，G7 形变禁区登记物）；prop_goblet_01=晚宴酒杯（seg_02/08/11，G7 禁区的餐具代表）。cast/props ID 与 CP1 must_keep/forbidden_zones 提法逐一对应（cast_xiaoman/cast_lin/prop_wrench_01 同名），CP3 refs 直接引用。【TTS】11 段 narration_text 全部口语短句，无生僻字/控制符/画面内文字引用，tts_safe=true 声明+validate_cp2.py 复核双过；台词只走 CP10 后期字牌字幕（small_text_policy=post_render_plate），画面描述不含可读文字元素。【数值口径】estimated_duration_s=billing_units(汉字计数，src/tts.py:162-167 同法)÷4.6 字/s 后 round 2 位（src/tts.py:186-188 同法）；4.6 字/s 出处=工程方案v3.1.md:53（StepFun stepaudio-2.5-tts 实测）；Σ=60.64s 与 target 60.0s 偏差 1.07%。fingerprint=sha256(canonical payload JSON) 实算（src/gate/fingerprint.py 同算法，payload 变更即重算）；upstream_refs.cp1.fingerprint 为 fingerprint.py compute 对 cp1.json 实算值（与 cp1 声明值一致）。"
+}

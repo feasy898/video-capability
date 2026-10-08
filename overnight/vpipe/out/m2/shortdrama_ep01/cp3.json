@@ -1,0 +1,237 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7",
+  "produced_by": "agent.boardArtist",
+  "produced_at": "2026-10-08T15:47:30Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pass",
+    "note": "11 镜最长 shot_03=6.74s ≤ 15.0s（checkpoints.cp3.gate.max_shot_duration_s=15.0，thresholds.yaml:237-238；H3 实测 4–15s，VDL_v2_草案 R3），validate_cp3.py 实跑 exit 0。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.word_anchor_valid",
+      "result": "pass",
+      "note": "11 处词锚 @{…} 剥壳后均为对应 segment narration_text 连续子串（checkpoints.cp3.gate.word_anchor_valid=true，thresholds.yaml:240-241），validate_cp3.py 实跑核过。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.shot_line_count_match",
+      "result": "pass",
+      "note": "镜头数 11 == CP2 台词条数 11（逐行一拍一镜，cp2.gate.line_shot_ratio 的等式另一侧；checkpoints.cp3.gate.shot_line_count_match=true，thresholds.yaml:242-243）。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "source_script_fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "extreme_close",
+        "move": "static",
+        "duration_s": 4.78,
+        "action": "雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍小满面部大特写，水珠沿发梢滴落",
+        "refs": [
+          "cast_xiaoman"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{故人上门}",
+            "segment_id": "seg_01"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "medium",
+        "move": "push_in",
+        "duration_s": 6.3,
+        "action": "林父举杯的手停在半空，杯中酒晃出涟漪；镜头缓推越过杯沿，他抬手示意门口保安，宾客回头",
+        "refs": [
+          "cast_lin",
+          "prop_goblet_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{也配踏进林家的门}",
+            "segment_id": "seg_02"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "close",
+        "move": "push_in",
+        "duration_s": 6.74,
+        "action": "小满把修车扳手放上白桌布，金属反光划过扳手轮廓特写，镜头缓推但不离开扳手，扳手金属体不形变",
+        "refs": [
+          "cast_xiaoman",
+          "prop_wrench_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{修了三年车}",
+            "segment_id": "seg_03"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_04",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 6.3,
+        "action": "林父把合约文件拍在桌面，手指重重点在签名栏，合约纸面特写压住半个画面，纸面文字不作为可读元素呈现",
+        "refs": [
+          "cast_lin",
+          "prop_contract_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{签字}",
+            "segment_id": "seg_04"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_05",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 5.43,
+        "action": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景一镜不切",
+        "refs": [
+          "cast_xiaoman",
+          "cast_lin",
+          "prop_contract_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{该谁给谁低头签字}",
+            "segment_id": "seg_05"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_06",
+        "shot_scale": "extreme_close",
+        "move": "push_in",
+        "duration_s": 5.87,
+        "action": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化，镜头缓推压向瞳孔",
+        "refs": [
+          "cast_lin",
+          "prop_contract_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{恒盛集团的法人章}",
+            "segment_id": "seg_06"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_07",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 5.87,
+        "action": "同机位前后对切：左半幅五年前汽修工装沾油渍，右半幅今日董事西装笔挺，眼神不变",
+        "refs": [
+          "cast_xiaoman"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{全买了回来}",
+            "segment_id": "seg_07"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_08",
+        "shot_scale": "medium_close",
+        "move": "handheld",
+        "duration_s": 3.48,
+        "action": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，手持微晃低机位拍他失神的脸",
+        "refs": [
+          "cast_lin",
+          "prop_goblet_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{谁在背后给你撑腰}",
+            "segment_id": "seg_08"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_09",
+        "shot_scale": "extreme_close",
+        "move": "tracking",
+        "duration_s": 6.52,
+        "action": "小满缓步逼近镜头，竖屏面部大特写逐渐占满画面，身后满堂宾客虚成光斑，跟移不脱焦",
+        "refs": [
+          "cast_xiaoman"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{都得先经过我的手}",
+            "segment_id": "seg_09"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_10",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 3.48,
+        "action": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉，固定机位不给他镜头遮羞",
+        "refs": [
+          "cast_lin"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{连本带利}",
+            "segment_id": "seg_10"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      },
+      {
+        "shot_id": "shot_11",
+        "shot_scale": "wide",
+        "move": "pull_out",
+        "duration_s": 5.87,
+        "action": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，镜头拉出至门厅全景，雨幕重新合拢",
+        "refs": [
+          "cast_xiaoman",
+          "prop_goblet_01"
+        ],
+        "word_anchors": [
+          {
+            "anchor": "@{规矩我来定}",
+            "segment_id": "seg_11"
+          }
+        ],
+        "channel_hint": "api_h3max"
+      }
+    ]
+  },
+  "notes": "《雨夜合约》EP1 分镜表：11 镜一一对应 CP2 seg_01–seg_11（逐行一拍一镜），Σ duration_s=60.64s 与 CP2 estimated_total_duration_s 逐镜守恒（每镜 duration_s=该段 estimated_duration_s，供 CP6 时间线直接承接）。【景别/运镜分配】短剧叙事需要：特写给情绪——shot_01 推门仰拍大特写、shot_06 反转点瞳孔大特写+缓推、shot_09 逼近跟移大特写；中/近景给对话——shot_02 推镜越杯沿、shot_05 双人近景一镜不切、shot_07 同机位工装/西装对切、shot_08 手持踉跄、shot_10 固定机位拍垮掉；全景给空间——shot_11 拉出门厅全景收口、雨幕合拢呼应 shot_01。运镜逐镜沿 CP2 visual_description。【refs 红线】全部 19 个 ref 解析到 CP2 payload.cast/props 5 项注册表（cast_xiaoman/cast_lin/prop_wrench_01/prop_contract_01/prop_goblet_01），validate_cp3.py ⑦ 实跑核过。【词锚红线】11 处词锚 @{…} 形式（SVML 词形），逐条=对应 segment narration_text 连续子串，validate_cp3.py ③ 实跑核过。【禁区投影】CP1/CP2 禁区投影到镜级：prop_wrench_01 金属恒存不形变（shot_03 action）；prop_contract_01/prop_goblet_01 G7 形变禁区登记物不形变（shot_02/04/05/06/08/11）；画面无可读文字元素，台词只走 CP10 后期字牌（沿 CP2 small_text_policy=post_render_plate）。【通道】全部 channel_hint=api_h3max（model_tiers.yaml:257；shot_05 双人同框多身份→必须 API，白皮书 §3 CP3 AI·程序辅助行）。【指纹】fingerprint 与 payload.source_script_fingerprint、upstream_refs[0].fingerprint 三处同源：前者=sha256(本工件 canonical payload)（src/gate/fingerprint.py compute 同算法），后两者=对 cp2.json 实算 a7b72d34…f57ca（fingerprint.py compute 实跑值，与 CP2 声明值一致）。【无 during】逐行一拍一镜无需跨镜引用，④⑤ 两条按无可判项通过；本件为设计内人工介入点（CP3 人工管构图），构图判读留 owner 确认，机判七条全过。"
+}

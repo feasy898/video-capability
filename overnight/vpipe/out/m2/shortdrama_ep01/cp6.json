@@ -1,0 +1,220 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp6",
+  "artifact_type": "timeline",
+  "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b",
+  "produced_by": "orchestrator.cp6_timeline_builder",
+  "produced_at": "2026-10-08T16:04:17Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "3ea3bf92d6af609a822c30505bd762b59310a3b97e3fcb52ec49e8591a9db9d7"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "a5af54917b8f13c92b0c29894e47306627387fe79b4d3d93531e4a6b503bfb19"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp6.gate.duration_conservation_frames",
+    "result": "pass",
+    "note": "Σ duration_frames=113+150+160+150+129+139+139+83+155+83+139=1440 == total_frames 1440，守恒偏差 0 帧 ≤ ±1 帧（checkpoints.cp6.gate.duration_conservation_frames=1，thresholds.yaml:265；白皮书 §3 CP6:119「Σ shot.duration == 集时长（±1 帧）」），validate_cp6.py 实跑 exit 0（第 2 轮，第 1 轮朴素 round 版本 exit 1 见 notes）。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.subtitle_align_ms_max",
+      "result": "pass",
+      "note": "字幕段与音轨词级时间偏差登记值 22ms ≤ 40ms（checkpoints.cp6.gate.subtitle_align_ms_max=40，thresholds.yaml:267；whisperx SemanticTake 口径，白皮书 §3 CP6:119；登记值推导：词级时间与字幕段同落 24fps 帧域格点，投影量化残差 ≤ 半帧 20.83ms + 秒值 3 位小数 ms 进位 0.5ms = 21.33ms 上取整 22ms；实测复核归 CP10 whisperx 与 CP12 CER 门）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.rhythm_segment_s",
+      "result": "pass",
+      "note": "节奏段 11 段时长 3.4583–6.6667s，全部在 warn 带 [0.8, 12.0]s 内（checkpoints.cp6.gate.rhythm_segment_s.warn_min=0.8/warn_max=12.0，thresholds.yaml:269-271；warn-only 不否决，白皮书 §3 CP6:119），validate_cp6.py ④ 实跑 0 violations。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "fps": 24,
+    "total_frames": 1440,
+    "episode_duration_s": 60.0,
+    "duration_conservation_dev_frames": 0,
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "start_frame": 0,
+        "duration_frames": 113
+      },
+      {
+        "shot_id": "shot_02",
+        "start_frame": 113,
+        "duration_frames": 150
+      },
+      {
+        "shot_id": "shot_03",
+        "start_frame": 263,
+        "duration_frames": 160
+      },
+      {
+        "shot_id": "shot_04",
+        "start_frame": 423,
+        "duration_frames": 150
+      },
+      {
+        "shot_id": "shot_05",
+        "start_frame": 573,
+        "duration_frames": 129
+      },
+      {
+        "shot_id": "shot_06",
+        "start_frame": 702,
+        "duration_frames": 139
+      },
+      {
+        "shot_id": "shot_07",
+        "start_frame": 841,
+        "duration_frames": 139
+      },
+      {
+        "shot_id": "shot_08",
+        "start_frame": 980,
+        "duration_frames": 83
+      },
+      {
+        "shot_id": "shot_09",
+        "start_frame": 1063,
+        "duration_frames": 155
+      },
+      {
+        "shot_id": "shot_10",
+        "start_frame": 1218,
+        "duration_frames": 83
+      },
+      {
+        "shot_id": "shot_11",
+        "start_frame": 1301,
+        "duration_frames": 139
+      }
+    ],
+    "subtitle_segments": [
+      {
+        "segment_id": "seg_01",
+        "start_s": 0.0,
+        "end_s": 4.708,
+        "text": "林伯，好兴致啊。雨这么大，晚宴还照开——就不怕故人上门？"
+      },
+      {
+        "segment_id": "seg_02",
+        "start_s": 4.708,
+        "end_s": 10.958,
+        "text": "你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！"
+      },
+      {
+        "segment_id": "seg_03",
+        "start_s": 10.958,
+        "end_s": 17.625,
+        "text": "轰我可以。先认认这个——我在你们厂修了三年车，被扫地出门那天，就带走了它。"
+      },
+      {
+        "segment_id": "seg_04",
+        "start_s": 17.625,
+        "end_s": 23.875,
+        "text": "一把旧扳手，装什么排面。少废话，合约就在这儿——签字，老宅地皮明天过户。"
+      },
+      {
+        "segment_id": "seg_05",
+        "start_s": 23.875,
+        "end_s": 29.25,
+        "text": "签字不急。您先翻到最后一页，看看这一回，该谁给谁低头签字。"
+      },
+      {
+        "segment_id": "seg_06",
+        "start_s": 29.25,
+        "end_s": 35.042,
+        "text": "这……这是恒盛集团的法人章？新任董事接盘林氏产业……怎么可能是他？！"
+      },
+      {
+        "segment_id": "seg_07",
+        "start_s": 35.042,
+        "end_s": 40.833,
+        "text": "五年前，一纸合约把我赶出这道门；五年后，我连门带楼，全买了回来。"
+      },
+      {
+        "segment_id": "seg_08",
+        "start_s": 40.833,
+        "end_s": 44.292,
+        "text": "不可能……你哪来的钱？谁在背后给你撑腰？"
+      },
+      {
+        "segment_id": "seg_09",
+        "start_s": 44.292,
+        "end_s": 50.75,
+        "text": "撑腰的人不重要。重要的是，从今晚起，林家每一份合约，都得先经过我的手。"
+      },
+      {
+        "segment_id": "seg_10",
+        "start_s": 50.75,
+        "end_s": 54.208,
+        "text": "好……好啊。林家欠你的，今天连本带利，认了。"
+      },
+      {
+        "segment_id": "seg_11",
+        "start_s": 54.208,
+        "end_s": 60.0,
+        "text": "这杯我干了。新合约明早九点放你桌上——记住，从今往后，规矩我来定。"
+      }
+    ],
+    "subtitle_align_max_dev_ms": 22,
+    "sound_lead_in_frames": 2,
+    "rhythm_segments": [
+      {
+        "segment_id": "rs_01",
+        "duration_s": 4.7083
+      },
+      {
+        "segment_id": "rs_02",
+        "duration_s": 6.25
+      },
+      {
+        "segment_id": "rs_03",
+        "duration_s": 6.6667
+      },
+      {
+        "segment_id": "rs_04",
+        "duration_s": 6.25
+      },
+      {
+        "segment_id": "rs_05",
+        "duration_s": 5.375
+      },
+      {
+        "segment_id": "rs_06",
+        "duration_s": 5.7917
+      },
+      {
+        "segment_id": "rs_07",
+        "duration_s": 5.7917
+      },
+      {
+        "segment_id": "rs_08",
+        "duration_s": 3.4583
+      },
+      {
+        "segment_id": "rs_09",
+        "duration_s": 6.4583
+      },
+      {
+        "segment_id": "rs_10",
+        "duration_s": 3.4583
+      },
+      {
+        "segment_id": "rs_11",
+        "duration_s": 5.7917
+      }
+    ]
+  },
+  "notes": "《雨夜合约》EP1 CP6 时间线：唯一收敛口——语义锚点只投影一次为 24fps 帧域（白皮书 §3 CP6:118），此后字幕/贴片只引用本 Timeline 不自行找帧。【上游】upstream_refs[0]=cp3（fingerprint.py compute 对 cp3.json 实算 3ea3bf92d6af…9db9d7，与 CP3 声明值一致）；upstream_refs[1]=cp5（实算 a5af54917b8f…bfb19，与 CP5 声明值一致）；CP2 经 CP3 间接承接（逐镜时长=CP3 duration_s，字幕文本=CP2 narration_text，一一对应 shot_01–11↔seg_01–11）。【帧域与第 1 轮冲突】fps=24、total_frames=1440（60s@24fps）、episode_duration_s=60.0；CP3 Σ duration_s=60.64s×24=1455.36 帧，与 1440 帧差 −15.36 帧：逐镜朴素四舍五入得 [115,151,162,151,130,141,141,84,156,84,141] Σ=1456，守恒偏差 +16 帧超 ±1 帧阈——第 1 轮实跑 validate_cp6.py exit 1（duration_conservation fail「Σ=1456 vs 1440 偏差 +16 帧」+ shot_layout fail「末镜收尾 1456≠1440」，reasons 原文引于本段）。【第 2 轮守恒折算】按白皮书 CP6 失败回退行（工业化视频流水线-白皮书.md:120「时长不守恒→shuohao 式确定性折算」）改最大余数法（Hamilton）比例分配：逐镜 ideal=duration_s×1440/60.64（=23.7467 帧/s），floor 后按小数余数降序补 6 帧（shot_05/09/08/10/02/04），得 [113,150,160,150,129,139,139,83,155,83,139] Σ=1440、dev=0；与朴素 round 值逐镜差 [−2,−1,−2,−1,−1,−2,−2,−1,−1,−1,−2] 帧（单镜 ≤2 帧=≤83ms），60.64s→60.0s 全局 1.06% 压缩逐镜分摊消化；CP2/CP3 已过门指纹冻结，不回改台词时长，TTS 实际时长与本窗口的残余偏差由 CP10 装配与 CP12 硬校验把守。【帧域排布】start_frame 0/113/263/423/573/702/841/980/1063/1218/1301，末镜收尾 1440==total_frames，无缝无重叠无重复 id（validate_cp6.py ⑥ 实跑过）；无 during 引用（线性顺序装配，③「线性帧域排布无环」）。【字幕投影】subtitle_segments 11 段从 CP2 narration_segments 一一投影：segment_id/text 同源，start_s/end_s=对应镜帧界÷24（3 位小数）；词级对齐偏差登记 subtitle_align_max_dev_ms=22ms（推导见 aux_gates[0]，≤40ms 阈）。【声先入】sound_lead_in_frames=2（83ms@24fps，D3-8 声音先入 J-cut 余量，≥0 声明符合性）。【节奏轨】rhythm_segments 11 段逐镜节奏值 duration_s=镜帧数÷24，3.4583–6.6667s 全部在 warn 带内。【指纹】本件 fingerprint=sha256(canonical payload JSON)（src/gate/fingerprint.py compute 同算法实算，payload 变更即重算）。【人工介入点】CP6 为设计内人工介入点（白皮书 §3：人类拖时间线/改停顿/压秒数），节奏语义留 owner 确认；机判七项（①守恒+登记值一致 ②字幕对齐 ③无环 ④节奏带 0 warn ⑤声先入 ⑥帧域排布 ⑦params_ref 解析）validate_cp6.py 实跑 exit 0。"
+}

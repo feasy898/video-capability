@@ -1,0 +1,64 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp1",
+  "artifact_type": "intent_card",
+  "fingerprint": "9e3def20066145b5e3846d1eec6510bab78f4403a491de036c17768e72e515ea",
+  "produced_by": "agent.director",
+  "produced_at": "2026-10-08T15:34:21Z",
+  "upstream_refs": [],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp1.gate.forbidden_defect_code_registry",
+    "result": "pass",
+    "note": "producer 声明：禁区 3 条全部映射到 thresholds.yaml checkpoints.cp1.gate.forbidden_defect_code_registry 已注册缺陷码（G7_物体恒存:222 / G2_画面内文字:217 / G5_多角色一致性:220）；credit_cap_total=8064 整数非零；deliverable.pixel_map(1088×1920 9:16)+encode_contract(mp4/h264/aac) 齐备；结构由 checkpoint.schema.json cp1 分支 jsonschema 全量校验承担（CP1 无独立校验器，validate_cp1.py 不存在）。"
+  },
+  "aux_gates": [
+    {
+      "type": "human",
+      "params_ref": "cp1.gate.owner_confirmation",
+      "result": "pending",
+      "note": "pilot 期 owner 未实时确认意图卡，记 pending owner review——CP1 是设计内人工介入点（白皮书 §3 谱首段：人类在这一步花的时间应该最多），不许 agent 代签；M2 报告将上抛该 pending 项。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "theme": "竖屏都市逆袭短剧《雨夜合约》：五年前被林家逐出宅门的汽修工学徒小满，雨夜以新任集团董事身份重返旧宅签约——旧东家的合约晚宴当场变成对质。同结构不同内容：沿用 dy01v3 结构先验（31 镜快切对白戏、镜均 1.78s、特写主导 17/31、双人全身镜穿插、低机位固定机位），人物/台词/场景全部原创；参考样片仅为叙事节奏对位，不是内容来源",
+    "selling_point": "60 秒三次身份反转踩点：修车工装→董事西装的同框换装特写 + 雨夜晚宴全员微表情反应链，全程竖屏面部大特写压迫感",
+    "must_keep": [
+      "prop_wrench_01 修车扳手特写（金属恒存不形变，镜级实物一致）",
+      "cast_xiaoman/cast_lin 同框镜头双主角身份不漂移",
+      "台词与片名小字一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"
+    ],
+    "forbidden_zones": [
+      {
+        "description": "道具/食物形变（雨夜晚宴餐具与合约文件）",
+        "defect_code": "G7_物体恒存"
+      },
+      {
+        "description": "画面内渲染小字与硬字幕（生成侧自由渲染必乱，绕行走后期字牌）",
+        "defect_code": "G2_画面内文字"
+      },
+      {
+        "description": "同框双主角身份漂移（工装/西装换装特写易串脸）",
+        "defect_code": "G5_多角色一致性"
+      }
+    ],
+    "deliverable": {
+      "pixel_map": {
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16"
+      },
+      "encode_contract": {
+        "container": "mp4",
+        "video_codec": "h264",
+        "audio_codec": "aac"
+      }
+    },
+    "budget": {
+      "credit_cap_total": 8064
+    }
+  },
+  "notes": "reference（dy01v3 结构参考）：source=douyin(经一剧N国项目转运)，clip=short-drama/dy01v3.mp4（sha256 dc845d9b5f72085fa7f2809922530a3f10b41b7a49f802bb07eb762129eab04a，dy01v3.meta.json），role=structure_reference——镜头结构/叙事节奏先验（M2-LINE-MAPPING.md 短剧主参考行），非内容来源；schema intent_card 分支 additionalProperties=false 不收编 reference 对象，故登记于本 notes 字段。budget.credit_cap_total=8064 推导：24 镜 × 280 积分/镜（120s 单集晋升标准档，工程方案v3.md:139『24×280=6,720』）× 1.2 冗余系数 = 8,064（TASK_v4.md:77 与 :269 assert ≤8064 同口径）；MiniMax 走 higress 云通道。pixel_map 1088×1920 沿 INTENT.md:89 竖版口径。fingerprint=sha256(规范化 payload JSON)，src/gate/fingerprint.py compute 实算，非占位。"
+}
