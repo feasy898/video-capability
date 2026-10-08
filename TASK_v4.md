@@ -194,7 +194,7 @@ print(f\"OK thresholds_sha256={r['thresholds_sha256']}\")
 |---|---|---|---|
 | W3 | CP2 剧本 schema + 时长守恒校验 | 校验器 + 5 条示例 | 5 条 Σ estimated_duration 偏差全 ≤2% |
 | W3 | CP3 分镜表 schema + 校验器七条 | 校验器 + 12 镜示例 | 校验器零误报（12 镜全过） |
-| W4 | CP5 `blocking` schema + Blender 端到端连通 | 1 个示例 blocking 序列 + Blender export_scene 输出 PNG | 16 关节 Euler 弧度合法 + 帧时间单调 + 骨长恒定 |
+| W4 | CP5 `blocking` schema + glTF 2.0 armature 端到端连通（Blender 缺位替代，见 §8 决策记录 2026-10-08-b） | 1 个示例 blocking 序列 + 导出 glTF（skins+animation channels）+ 往返重载 | 16 关节 Euler 弧度合法 + 帧时间单调 + 骨长恒定 + glTF 往返后关节层级/关键帧零丢失 |
 | W4 | CP6 单一帧域 Timeline | 1 个 30s 样例 | Σ shot.duration == 集时长（±1 帧）+ 字幕段与音轨词级偏差 ≤40ms |
 | W5 | CP11 合成层硬校验挂载 + 像素级回归 | ffmpeg/HyperFrames 合成 + 3 个回归用例 | 3 个用例同输入同输出（md5 一致） |
 | W5 | known_cuts 强制登记 | qc_orch 增 --require-known-cuts 开关 | 无登记的硬切点 → exit 非 0 |
@@ -522,6 +522,8 @@ git diff 71f719d..HEAD -- overnight/vpipe/eval/thresholds.yaml | grep -E "^[+-]"
 | 2026-10-08 | MiniMax 钱包 40k 硬上限不变 | 已实测 65.5% 消耗，余 13.8k；M2 单集标准档 6,720 ×1.2 = 8,064，余量够 1 集试跑 | §2.5 |
 | 2026-10-08 | M0-W2 末决定 Wan2.2-5B 是否进产线 | 白皮书 §6 M0-W2 spike；若不通过，接受 LTX 单一草稿路径，不影响白皮书结构 | §4 M0-W2 |
 | 2026-10-08 | 「单镜头判官合议」结构丢弃（保留实现） | 与白皮书分段门禁骨架冲突（白皮书 §5.3） | §3.2 丢弃清单 |
+| 2026-10-08-b | M1-W4 Blender 连通性验证改为 **glTF 2.0 armature 往返** | 双机（本地+GPU 机）均无 Blender；安装 ~300MB 只为一项目连通性检查不成比例，且 glTF 是 mannequin schema 的标准交换格式、纯 Python 可写可验（确定性、无 GUI 依赖，合白皮书 §7 非目标 7 精神）。验收等价物：往返后关节层级+关键帧时间/弧度零丢失 | M1 第二批 brief |
+| 2026-10-08-c | GPU spike 执行位定**卡 0**（owner 10-08 授权「没在跑就直接用」覆盖 10-08 早前裁决） | 早前裁决等卡 1 协调窗；owner 当晚授权直接用空闲 GPU；卡 0 实测 310MiB/util 0%。纪律保留：只跑卡 0、跑前 5 分钟复测、卡 1 不碰 | evidence/env/gpu1-memory-window.md §6 追记 |
 
 ---
 
