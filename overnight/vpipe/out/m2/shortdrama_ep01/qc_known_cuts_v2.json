@@ -1,0 +1,16 @@
+{
+ "cuts": [
+  4.0,
+  8.708,
+  14.958,
+  21.625,
+  27.875,
+  33.25,
+  39.042,
+  44.833,
+  48.292,
+  54.75,
+  58.208
+ ],
+ "source": "overnight/vpipe/out/m2/shortdrama_ep01/cp11/cp11_v2.json payload.known_cuts (CP11 v2 合成层 11 硬切点全部登记: avatar 段边界 4.000s + 原 10 切点 +4.000s 平移)"
+}

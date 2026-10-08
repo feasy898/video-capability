@@ -1,0 +1,144 @@
+{
+ "tool": "assemble_cp11_v2.py",
+ "verdict": "ok",
+ "generated_at": "2026-10-08T20:07:08Z",
+ "master_v2_sha256": "4080ce07d6fca0e3ed3936cd6966b388e340910484b7469ac8789141d04c3a6b",
+ "master_v2_bytes": 28212354,
+ "frame_domain": {
+  "avatar_frames": 96,
+  "cp6_frames": 1440,
+  "total_declared_frames": 1536,
+  "measured_nb_frames": "1536",
+  "declared_duration_s": 64.0,
+  "measured_duration_s": 64.0,
+  "fps": 24
+ },
+ "hook_verbatim_check_pass": true,
+ "known_cuts_v2": [
+  4.0,
+  8.708,
+  14.958,
+  21.625,
+  27.875,
+  33.25,
+  39.042,
+  44.833,
+  48.292,
+  54.75,
+  58.208
+ ],
+ "measured_cuts_op0.3": [
+  {
+   "t": 4.0,
+   "score": 0.4615
+  },
+  {
+   "t": 8.708,
+   "score": 0.4742
+  },
+  {
+   "t": 14.958,
+   "score": 0.7307
+  },
+  {
+   "t": 21.625,
+   "score": 0.642
+  },
+  {
+   "t": 27.875,
+   "score": 0.4875
+  },
+  {
+   "t": 33.25,
+   "score": 0.4486
+  },
+  {
+   "t": 39.042,
+   "score": 0.5611
+  },
+  {
+   "t": 44.833,
+   "score": 0.5687
+  },
+  {
+   "t": 48.292,
+   "score": 0.5551
+  },
+  {
+   "t": 54.75,
+   "score": 0.553
+  },
+  {
+   "t": 58.208,
+   "score": 0.4421
+  }
+ ],
+ "unregistered_cuts": [],
+ "blackdetect": {
+  "intervals": 0,
+  "black_total_s": 0
+ },
+ "loudness_note": "volumedetect 装配前实测：avatar mean=-17.3dB/max=-0.5dB vs master mean=-16.3dB/max=-0.0dB（Δmean 1dB，不做归一）",
+ "probe": {
+  "width": 1080,
+  "height": 1920,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "r_frame_rate": "24/1",
+  "sample_rate": "48000",
+  "channels": 1
+ },
+ "inputs": {
+  "avatar_clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/avatar/avatar_1005868177546022912.mp4",
+  "master_v1": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/master.mp4",
+  "hook_ass": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/hook_subs.ass",
+  "filter_complex": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/filter_complex_v2.txt"
+ },
+ "steps": [
+  {
+   "name": "encode_master_v2",
+   "argv": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-nostats",
+    "-y",
+    "-i",
+    "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/avatar/avatar_1005868177546022912.mp4",
+    "-i",
+    "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/master.mp4",
+    "-filter_complex_script",
+    "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/filter_complex_v2.txt",
+    "-map",
+    "[vout]",
+    "-map",
+    "[aout]",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "20",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "1",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-movflags",
+    "+faststart",
+    "-t",
+    "64.000000",
+    "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/master_v2.mp4"
+   ],
+   "rc": 0,
+   "stderr_tail": ""
+  }
+ ],
+ "errors": []
+}

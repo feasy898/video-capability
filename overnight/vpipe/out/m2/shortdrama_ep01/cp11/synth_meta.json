@@ -1,0 +1,169 @@
+{
+ "tool": "assemble_cp11.py",
+ "verdict": "ok",
+ "generated_at": "2026-10-08T18:21:51Z",
+ "master_sha256": "b701fc7f6f56f7e2775e093e3b67ae476bb2affb84ab758eddc4389085f4bdad",
+ "master_bytes": 27676527,
+ "assembly_fixes": {
+  "shot_03": {
+   "split_a_end": 2.375,
+   "xfade_start": 2.0,
+   "xfade_dur": 0.375
+  },
+  "shot_04_trim_start": 0.75
+ },
+ "steps": [
+  {
+   "name": "encode_master",
+   "argv": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-nostats",
+    "-y",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_01.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_02.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_03.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_04.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_05.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_06.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_07.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_08.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_09.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_10.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp9/shot_11.final.mp4",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_01.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_02.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_03.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_04.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_05.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_06.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_07.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_08.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_09.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_10.fit.wav",
+    "-i",
+    "out/m2/shortdrama_ep01/cp10/fit/tts_seg_11.fit.wav",
+    "-filter_complex_script",
+    "out/m2/shortdrama_ep01/cp11/filter_complex.txt",
+    "-map",
+    "[vout]",
+    "-map",
+    "[aout]",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "20",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "1",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-movflags",
+    "+faststart",
+    "-t",
+    "60.000000",
+    "out/m2/shortdrama_ep01/cp11/master.mp4"
+   ],
+   "rc": 0,
+   "stderr_tail": ""
+  }
+ ],
+ "probe": {
+  "duration_s": 60.0,
+  "nb_read_frames": 1440,
+  "expected_frames": 1440,
+  "width": 1080,
+  "height": 1920,
+  "r_frame_rate": "24/1",
+  "vcodec": "h264",
+  "acodec": "aac",
+  "container": "mov,mp4,m4a,3gp,3g2,mj2",
+  "scene_cuts": [
+   {
+    "t": 4.708,
+    "score": 0.4741
+   },
+   {
+    "t": 10.958,
+    "score": 0.7305
+   },
+   {
+    "t": 17.625,
+    "score": 0.6419
+   },
+   {
+    "t": 23.875,
+    "score": 0.4872
+   },
+   {
+    "t": 29.25,
+    "score": 0.4482
+   },
+   {
+    "t": 35.042,
+    "score": 0.5592
+   },
+   {
+    "t": 40.833,
+    "score": 0.5682
+   },
+   {
+    "t": 44.292,
+    "score": 0.5546
+   },
+   {
+    "t": 50.75,
+    "score": 0.5518
+   },
+   {
+    "t": 54.208,
+    "score": 0.4418
+   }
+  ],
+  "black_intervals": [],
+  "black_total_s": 0,
+  "mix_lufs_input_i": "-16.11",
+  "known_cuts": [
+   4.708,
+   10.958,
+   17.625,
+   23.875,
+   29.25,
+   35.042,
+   40.833,
+   44.292,
+   50.75,
+   54.208
+  ]
+ }
+}

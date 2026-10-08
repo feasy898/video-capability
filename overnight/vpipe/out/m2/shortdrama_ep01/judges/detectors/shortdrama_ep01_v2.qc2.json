@@ -1,0 +1,230 @@
+{
+ "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/shortdrama_ep01/cp11/master_v2.mp4",
+ "generated_at": "2026-10-09T04:20:44",
+ "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
+ "clip_meta": {
+  "duration_sec": 64.0,
+  "fps": 24.0,
+  "n_frames": 1536,
+  "width": 160
+ },
+ "qc_context": {
+  "profile": null,
+  "known_cuts": [
+   4.0,
+   8.708,
+   14.958,
+   21.625,
+   27.875,
+   33.25,
+   39.042,
+   44.833,
+   48.292,
+   54.75,
+   58.208
+  ]
+ },
+ "temporal_candidates": {
+  "ghosting": {
+   "conf": 0.79,
+   "kind": "rect_dip_blend",
+   "start_s": 58.5,
+   "end_s": 60.75,
+   "dur_s": 2.25,
+   "dip_ratio": 0.56,
+   "out_med": 5.485,
+   "in_med": 3.074,
+   "boundary_ratio": 1.3,
+   "branch": "diff_dip",
+   "low_motion_plateau": false,
+   "span": [
+    58.5,
+    60.75
+   ]
+  }
+ },
+ "temporal_rejected": {
+  "frame_freeze": {
+   "run_pairs": 72,
+   "dur_s": 3.0,
+   "start_s": 0.875,
+   "end_s": 3.875,
+   "run_diff_med": 0.366,
+   "lap_guard": 0.703,
+   "rejected_by": "lap_guard"
+  },
+  "temporal_swap_known_cuts": {
+   "reason": "known_cuts_whitelist",
+   "tol_s": 0.5,
+   "cutlist": [
+    4.0,
+    8.708,
+    14.958,
+    21.625,
+    27.875,
+    33.25,
+    39.042,
+    44.833,
+    48.292,
+    54.75,
+    58.208
+   ],
+   "exempted_junctions": [
+    {
+     "cut_t": 4.0,
+     "diff": 54.1,
+     "back_score": 0.1697,
+     "match_t": 0.75,
+     "pre_score": 0.9876,
+     "margin": -0.8179
+    },
+    {
+     "cut_t": 8.708,
+     "diff": 58.6,
+     "back_score": 0.3256,
+     "match_t": 5.708,
+     "pre_score": 0.2019,
+     "margin": 0.1237
+    },
+    {
+     "cut_t": 14.958,
+     "diff": 86.4,
+     "back_score": -0.0626,
+     "match_t": 3.417,
+     "pre_score": 0.3905,
+     "margin": -0.4532
+    },
+    {
+     "cut_t": 21.625,
+     "diff": 75.69,
+     "back_score": 0.1886,
+     "match_t": 17.167,
+     "pre_score": 0.3798,
+     "margin": -0.1913
+    },
+    {
+     "cut_t": 27.875,
+     "diff": 57.02,
+     "back_score": 0.1913,
+     "match_t": 16.708,
+     "pre_score": -0.1576,
+     "margin": 0.3489
+    },
+    {
+     "cut_t": 33.25,
+     "diff": 53.79,
+     "back_score": 0.2314,
+     "match_t": 12.25,
+     "pre_score": -0.1629,
+     "margin": 0.3943
+    },
+    {
+     "cut_t": 39.042,
+     "diff": 69.05,
+     "back_score": 0.3496,
+     "match_t": 5.708,
+     "pre_score": -0.268,
+     "margin": 0.6176
+    },
+    {
+     "cut_t": 44.833,
+     "diff": 68.03,
+     "back_score": 0.3431,
+     "match_t": 8.708,
+     "pre_score": 0.3273,
+     "margin": 0.0158
+    },
+    {
+     "cut_t": 48.292,
+     "diff": 70.14,
+     "back_score": 0.5595,
+     "match_t": 3.458,
+     "pre_score": 0.1249,
+     "margin": 0.4346
+    },
+    {
+     "cut_t": 54.75,
+     "diff": 65.98,
+     "back_score": 0.3174,
+     "match_t": 4.5,
+     "pre_score": 0.0992,
+     "margin": 0.2182
+    },
+    {
+     "cut_t": 58.208,
+     "diff": 53.52,
+     "back_score": 0.501,
+     "match_t": 50.667,
+     "pre_score": 0.0772,
+     "margin": 0.4239
+    }
+   ]
+  }
+ },
+ "temporal_protocol": {
+  "clip_id": "master_v2",
+  "defect_detected": true,
+  "defect_types": [
+   "ghosting"
+  ],
+  "confidence": 0.79,
+  "spans": [
+   {
+    "type": "ghosting",
+    "start_s": 58.5,
+    "end_s": 60.75,
+    "evidence": {
+     "kind": "rect_dip_blend",
+     "start_s": 58.5,
+     "end_s": 60.75,
+     "dur_s": 2.25,
+     "dip_ratio": 0.56,
+     "out_med": 5.485,
+     "in_med": 3.074,
+     "boundary_ratio": 1.3,
+     "branch": "diff_dip",
+     "low_motion_plateau": false
+    }
+   }
+  ]
+ },
+ "params": {
+  "feat_width": 160.0,
+  "sim_width": 80.0,
+  "freeze_diff_thr": 0.8,
+  "freeze_min_s": 2.0,
+  "freeze_lap_guard": 0.75,
+  "flicker_amp_min": 6.0,
+  "flicker_sat_amp_min": 0.08,
+  "flicker_rate_min": 6.0,
+  "flicker_min_s": 1.0,
+  "cut_abs_min": 15.0,
+  "cut_rel_k": 3.5,
+  "reentry_win_s": 0.4,
+  "reentry_gap_s": 0.5,
+  "reentry_margin": 0.05,
+  "swap_multi_min_cuts": 2.0,
+  "swap_multi_back_min": 0.62,
+  "swap_single_back_min": 0.85,
+  "swap_span_s": 3.0,
+  "ghost_dip_ratio": 0.65,
+  "ghost_out_min": 1.2,
+  "ghost_min_s": 1.2,
+  "ghost_cut_free": 15.0,
+  "ghost_interior_s": 0.5,
+  "ghost_boundary_ratio": 1.3,
+  "ghost_lap_ratio": 0.85,
+  "ghost_lap_out_min": 300.0,
+  "ghost_lap_boundary": 1.15,
+  "ghost_plateau_in_max": 2.0,
+  "ghost_plateau_exempt_profiles": [
+   "avatar_talk"
+  ],
+  "known_cuts_tol_s": 0.5,
+  "emit_conf": 0.55
+ },
+ "errors": {},
+ "meta": {
+  "analyze_sec": 28.2
+ }
+}

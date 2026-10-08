@@ -1,0 +1,36 @@
+{
+ "module": "agent.avatar_segment_inspector",
+ "generated_at": "2026-10-09T04:05:00+08:00",
+ "segment_id": "avatar_hook_01",
+ "subject_clip": "out/m2/shortdrama_ep01/avatar/avatar_1005868177546022912.mp4",
+ "method": "代理亲看（多模态目检抽帧条带）+ 程序化曲线（逐帧嘴部区域亮度 × 逐帧音频 RMS 互相关）",
+ "evidence_files": [
+  "out/m2/shortdrama_ep01/avatar/frames_check/identity_pair.jpg",
+  "out/m2/shortdrama_ep01/avatar/frames_check/contact6.jpg",
+  "out/m2/shortdrama_ep01/avatar/frames_check/strip_c1early.png",
+  "out/m2/shortdrama_ep01/avatar/frames_check/strip_c2.png",
+  "out/m2/shortdrama_ep01/avatar/frames_check/strip_c3.png",
+  "out/m2/shortdrama_ep01/avatar/frames_check/strip_gap.png",
+  "out/m2/shortdrama_ep01/avatar/frames_check/mouth_yavg.txt",
+  "out/m2/shortdrama_ep01/avatar/frames_check/hook.pcm"
+ ],
+ "identity_check": {
+  "verdict": "pass",
+  "human_conclusion": "抽 6 时刻全帧 + ref 并排目检：avatar 人物与 ref_shot09_mid.png（shot_09 终稿帧，已验证正片身份保持）为同一角色——中分黑发齐肩、眉形/眼型/鼻唇/左耳耳钉一致、深色西装配白领 V 上衣同一套、同一宴会厅水晶吊灯背景；avatar 渲染略柔化（S2 由静帧再生成所致），身份无漂移",
+  "program_conclusion": "视觉比对（identity_pair.jpg 左右并排）；本环境无 face embedding 模型（红线禁 pip install），未跑数值身份相似度——以人工目检为准"
+ },
+ "lip_sync_check": {
+  "verdict": "pass_with_caveats",
+  "audio_timeline_note": "fit.wav（3.577s）三语音块 c1=0.11-1.45s『五年前你们赶我走』/ c2=1.75-2.27s『今晚』/ c3=2.62-3.46s『我回来了』；avatar 音轨实测起始 ~0.17s（aac 复码偏移），与视频帧域对齐",
+  "human_conclusion": "三个语音窗各抽 12 帧嘴部区域条带目检：c1early(0.29-0.79s) 开合分明（闭→露齿→圆唇→再开），c2『今晚』(1.71-2.21s) 有开合（起音露齿→闭→再分→合），c3『回来了』(2.92-3.42s) 有开合但幅度偏小；静音窗 strip_gap 句间停顿嘴唇微张未完全闭合（自然说话停顿姿态）；片尾 0.42s 无音频段嘴部完全闭合静止（contact6 t=3.90 帧）——嘴部确由音频驱动",
+  "program_conclusion": "逐帧嘴部盒(260x90@150,430) YAVG 开度曲线 × 逐帧 48kHz RMS 包络：lag0 相关 0.190，峰值相关 0.638 @ -8 帧（-0.333s，宏形状主导欠可信）；逐帧明细显示语音起始后 2-4 帧（83-166ms）内嘴部展开、语尾（fr84-91，音频=0）开度单调收敛至闭合——程序曲线粗粒度达标，细粒度 viseme 级同步无法用亮度代理确证（本环境无 SyncNet/LSE 工具）",
+  "caveats": [
+   "两个句内停顿（本装配期修剪静音所得 0.30/0.35s 间隙）期间嘴唇保持微张未闭合",
+   "c2/c3 短语开合幅度明显小于 c1（后两短语仅 3-4 字且语速快）",
+   "语音起始嘴部展开滞后音频 2-4 帧（83-166ms），在口播可接受带内但非零"
+  ],
+  "retry_decision": "不触发重试：三语音窗 articulation 可见、静音尾静止、起始滞后 <170ms——三项主判据达标；瑕疵属幅度/停顿姿态级，重试（预算内剩 1 次/4 积分）预期收益低于风险，如实记录瑕疵转量产前改进（克隆音色+整句合成不做人工静音修剪）"
+ },
+ "gender_voice_disclosure": "角色为女性（画面），配音为 cixingnansheng 男声（StepFun 默认音色）——音画性别错配，pilot 期按任务预案接受并如实记录；量产前步骤=零样本克隆女声音色（tts.py --clone 已实现未启用）",
+ "verdict": "pass"
+}

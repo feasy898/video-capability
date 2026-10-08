@@ -1,0 +1,75 @@
+{
+ "schema_version": "2.0",
+ "cp_id": "cp11",
+ "artifact_type": "composite",
+ "fingerprint": "ab799f5cab7ae126bb6258914f748873a97b37935a80273771d482d220d6cf20",
+ "produced_by": "agent.cp11_assembler_v2.ffmpeg",
+ "produced_at": "2026-10-08T20:07:08Z",
+ "upstream_refs": [
+  {
+   "cp_id": "cp6",
+   "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+  },
+  {
+   "cp_id": "cp10",
+   "fingerprint": "54f562bea824fbfd37e8f1f604f2d4e43c1e05723ecf0ae69816294bb2c11c48"
+  },
+  {
+   "cp_id": "cp9",
+   "fingerprint": "13f7236d2f4ea6342e91fb2c19b1a22f5fe6c0e90507c672d6a10205628092c4"
+  }
+ ],
+ "status": "passed",
+ "gate": {
+  "type": "hard_verify",
+  "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
+  "result": "pass",
+  "note": "11 个硬切点（avatar 段边界 4.000s + 原 10 切点整体 +4.000s 平移）全部登记 known_cuts 白名单，容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5；master_v2 实测切点与登记逐一重合由 validate_cp11.py --probe 复核（exit 码见 validate_cp11_report_v2.json）；avatar 段内无切点（单次生成整段）。"
+ },
+ "aux_gates": [
+  {
+   "type": "hard_verify",
+   "params_ref": "cp11.gate.duration_tol_s",
+   "result": "pass",
+   "note": "duration_conservation 帧域核算：avatar 96 帧（实测 nb_frames，4.000s@24fps 整）+ CP6 total_frames 1440 帧 = 1536 帧声明 = 64.000s；ffprobe 实测 64.000s/1536 帧，由校验器 ±1s 门复核。"
+  },
+  {
+   "type": "hard_verify",
+   "params_ref": "cp11.gate.shot_count_match",
+   "result": "pass",
+   "note": "master_shot_segments=12==storyboard_shot_count=12。声明重基：CP6 分镜表仍 11 镜；成片段计划=1 avatar 口播钩子段（avatar_hook_01，非分镜镜）+11 镜正片=12 段，本工件按成片实测段数口径登记 12，偏差在此显式声明（validate_cp11 切镜数等式要求实测段数==声明段数==登记切点数+1）。"
+  }
+ ],
+ "payload": {
+  "work_id": "shortdrama_ep01",
+  "master_asset": {
+   "kind": "clip",
+   "fingerprint": "4080ce07d6fca0e3ed3936cd6966b388e340910484b7469ac8789141d04c3a6b",
+   "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp11/master_v2.mp4"
+  },
+  "container": "mp4",
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "width": 1080,
+  "height": 1920,
+  "duration_s": 64.0,
+  "master_shot_segments": 12,
+  "storyboard_shot_count": 12,
+  "known_cuts": [
+   4.0,
+   8.708,
+   14.958,
+   21.625,
+   27.875,
+   33.25,
+   39.042,
+   44.833,
+   48.292,
+   54.75,
+   58.208
+  ],
+  "all_cuts_registered": true,
+  "black_ratio": 0.0
+ },
+ "notes": "《雨夜合约》EP1 CP11 修订合成件 v2（TASK_v4 D-1 完整态）：片头前置 Vidu S2 avatar 口播钩子段 avatar_hook_01（3-4s 窗取 4.000s 整=96 帧），后接 CP11 原 11 镜正片（master.mp4 内容原样随行，含已烧录 CP10 字幕与配音轨，时间轴整体 +4.000s）。【台词】『五年前你们赶我走，今晚我回来了。』（14 字，自拟，贴 CP1 《雨夜合约》premise；逐字校验 segment_card.line==tts_hook01 输入==hook_subs.ass 文本，verbatim_check_pass）。【上游】schema upstream_refs.cp_id 枚举限 cp1-12 不收编非 CP 上游，avatar 段指纹在此登记替代：clip sha256=6c5efd35c8a8d78850deecd27678005d802d45eb6315a05cf0a0a0861c7c1028（task 1005868177546022912，548x944/24fps/96 帧，credits=4 走通用池 562→558 实测差值），证明链=out/m2/shortdrama_ep01/avatar/{segment_card.json,tts_hook01*.meta.json,avatar_1005868177546022912.meta.json,avatar_segment_qc.json}；ref 图=shot_09 终稿帧（cp9 资产内容，身份保持已验）。【段 QC】代理亲看+程序曲线双结论：身份 保持 pass、口型同步 pass_with_caveats（三语音窗 articulation 可见/静音尾静止/起始滞后 83-166ms；句内停顿唇未全闭、后两短语幅度偏小），详见 avatar_segment_qc.json；音画性别错配（女角色×cixingnansheng 男声）pilot 期接受并登记。【规格】1080x1920/24fps/h264+aac 48kHz mono（沿 CP11 v1 编码参数 libx264 veryfast crf20）；CP1 pixel_map=1088x1920 分歧沿 v1 旧注记保持（本轮仍从 ASK 1080x1920）。【字幕】钩子烧录 hook_subs.ass（0.30-3.90s 单条，样式沿 cp10 Dialogue 样式原文，\\N 两行各 8/7 字≤15）；正片字幕已烧于 master.mp4 随 concat 平移，零双烧零重叠。【音频】avatar 音轨 trim 4.000s 与 master 音轨（aac 48k mono）concat，响度差 Δmean 1dB 未归一（volumedetect 实测登记 synth_meta_v2.json）。【known_cuts】11 点=[4.000]+原 10 点+4.000 平移；段内无切点。【复跑】python3 assemble_cp11_v2.py（cwd 任意，内部 cwd=vpipe 定位素材）。"
+}

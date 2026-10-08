@@ -1,0 +1,29 @@
+{
+  "judge": "glm8",
+  "model": "glm-5.3-flash",
+  "base_url": "https://open.bigmodel.cn/api/coding/paas/v4",
+  "frames_root": "/data/night/cp12-run2/frames",
+  "workers": 2,
+  "protocol": "边界测试方案.md §2.3 六字段（judge_common.py 冻结）",
+  "rubric_source": "DEFECT_ZH=judge_common.py 原文; B类词表=原夜glm8输出实证; 盲测无金标信息",
+  "started_at": "2026-10-09 04:12:37",
+  "clips": [
+    {
+      "clip_id": "shortdrama_ep01_v2",
+      "ok": true,
+      "detected": false,
+      "types": [],
+      "confidence": 0.88,
+      "latency_s": 312.9
+    }
+  ],
+  "n_clips": 1,
+  "n_ok": 1,
+  "n_fail": 0,
+  "usage_total": {
+    "prompt_tokens": 22163,
+    "completion_tokens": 1930
+  },
+  "wall_seconds": 313.0,
+  "finished_at": "2026-10-09 04:17:50"
+}

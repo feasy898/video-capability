@@ -1,0 +1,235 @@
+{
+  "schema_version": "2.0",
+  "clip_id": "shortdrama_ep01_v2",
+  "generated_at": "2026-10-08T20:26:13Z",
+  "work_id": "shortdrama_ep01",
+  "qc_mode": "online",
+  "checkpoint": {
+    "cp_id": "cp12",
+    "artifact_ref": "eecc5df6dacc0b451038eda74b6b7606d76acc0668d81e4f0d084d834244ccaa"
+  },
+  "verdict": {
+    "defect_detected": false,
+    "decision": "pass",
+    "confidence": 0.88,
+    "decided_by": "cp12.composite(E10=J1∨J3@0.71 成片合议 + cp12.gate.master_score_min 成片绝对门)",
+    "reasons": [
+      "J1(detected=False, types=[], conf=0.88)",
+      "J3@0.71 flag=False hits=[] max_channel_P=0.6011",
+      "降级: J6",
+      "成片分 21.0 = 0.7×mean(21.0) + 0.3×worst(21.0)，12 段（avatar 钩子段+11 镜）继承成片单镜分（镜级 QCReport 未产出，按任务预案单镜近似并声明）；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与排序依据）",
+      "J6v2 成片重跑：11 拼接切点（avatar 段边界 4.000s + CP6 帧界累计 +4.000s 平移）全部落入 known_cuts 白名单（judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）被豁免，零 temporal_swap 误报——合成层硬切点登记制生效（含 avatar 段边界）",
+      "J6v2 emitted ghosting conf=0.79（span 58.5-60.75s，v1 无此信号；对应 v1 时间轴 54.5-56.75s，二次装配重编码代损疑为推高因素，待人工裁决）按 role=signal_only 不翻 verdict、入 defects[]+人工队列",
+      "avatar 段（0-4.0s）单列 QC：身份保持 pass、口型同步 pass_with_caveats（人工+程序双结论）；音画性别错配 pilot 期接受并登记——详见 avatar/avatar_segment_qc.json",
+      "人工上升率实测 0.17 =（CP1 pending 1 + CP12 队列 1）/12；TASK_v4 §3.3 短剧线 ≤0.25未超"
+    ]
+  },
+  "defects": [
+    {
+      "type": "ghosting",
+      "sources": [
+        "J6"
+      ],
+      "confidence": 0.79
+    }
+  ],
+  "scores": {
+    "per_type": {
+      "frame_freeze": 0.4016,
+      "flicker": 0.4567,
+      "color_shift": 0.5335,
+      "face_blur": 0.2269,
+      "garble_text": 0.0442,
+      "temporal_swap": 0.6011,
+      "pixelate": 0.3194,
+      "ghosting": 0.3571
+    },
+    "overall": 0.4259,
+    "thresholds_applied": {
+      "ensemble_id": "E10",
+      "j3_thr": 0.71,
+      "auto_reject_p": 0.9,
+      "j6_emit_conf": 0.55,
+      "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+    }
+  },
+  "spans": [
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J1",
+        "text": "无"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J3",
+        "text": "full_clip:16帧均匀采样4x4拼图"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "judge": "J5",
+        "text": "full_clip:fps=0.2解码"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J6v2 known_cuts 豁免记录：11 个 junction（cut_t=4.0…58.208）全部 exempted（证据 judges/detectors/shortdrama_ep01_v2.qc2.json temporal_rejected.temporal_swap_known_cuts）"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "J3 未达判定阈(0.71)的次高通道只登记数据不入队列：temporal_swap=0.6011; color_shift=0.5335; flicker=0.4567；J3 拼图判官不知 known_cuts 白名单，11 个登记硬切点（avatar 边界+CP6 帧界累计）可解释其 temporal_swap 信号"
+      }
+    },
+    {
+      "type": "note",
+      "evidence": {
+        "text": "avatar 段单列 QC（avatar_hook_01，0-4.0s）：身份保持=pass（与 shot_09 终稿帧 ref 目检同一角色）；口型同步=pass_with_caveats（三语音窗 articulation 可见/静音尾静止/起始滞后 83-166ms；句内停顿唇未全闭、后两短语幅度偏小）；音画性别错配（女角色×cixingnansheng 男声）pilot 期接受——人工+程序双结论全文见 out/m2/shortdrama_ep01/avatar/avatar_segment_qc.json，证据帧 frames_check/{identity_pair,contact6,strip_*}.jpg"
+      }
+    }
+  ],
+  "judges": {
+    "J1": {
+      "clip_id": "shortdrama_ep01_v2",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.88,
+      "spans": "无",
+      "notes": "逐帧核对8帧未见标准缺陷：f01-f08场景推进连贯（开门→宴会对峙→亮印章→身份反转→立威饮酒），无时序错乱；f02老人面部虚焦属镜头焦点在酒杯上的浅景深设计，非face_blur，f03/f05/f07人脸细节清晰；f06左右分屏（工装/西装）为刻意叙事构图，两侧五官一致无identity_drift；各帧字幕均为通顺中文无乱码；f08手部握杯手指解剖正常，酒液顺嘴角滴落符合物理逻辑；f04老人肩部白色飞溅点与剧情（泼酒）吻合；整体色调冷暖差异（f03冷调雨夜、f02/f07暖调宴会）属场景灯光风格而非color_shift；无定格、闪烁、像素化、拖影证据。"
+    },
+    "J3": {
+      "clip_id": "shortdrama_ep01_v2",
+      "defect_detected": true,
+      "defect_types": [
+        "color_shift",
+        "temporal_swap"
+      ],
+      "confidence": 0.6011,
+      "spans": "full_clip:16帧均匀采样4x4拼图",
+      "notes": "noul概率 frame_freeze=0.402 flicker=0.457 color_shift=0.533 face_blur=0.227 garble_text=0.044 temporal_swap=0.601 pixelate=0.319 ghosting=0.357; overall=0.426; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+    },
+    "J5": {
+      "clip_id": "shortdrama_ep01_v2",
+      "defect_detected": false,
+      "defect_types": [],
+      "confidence": 0.8,
+      "spans": "full_clip:fps=0.2解码",
+      "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"视频画面流畅，无明显缺陷\"}"
+    },
+    "J6": {
+      "clip_id": "master_v2",
+      "defect_detected": true,
+      "defect_types": [
+        "ghosting"
+      ],
+      "confidence": 0.79,
+      "spans": [
+        {
+          "type": "ghosting",
+          "start_s": 58.5,
+          "end_s": 60.75,
+          "evidence": {
+            "kind": "rect_dip_blend",
+            "start_s": 58.5,
+            "end_s": 60.75,
+            "dur_s": 2.25,
+            "dip_ratio": 0.56,
+            "out_med": 5.485,
+            "in_med": 3.074,
+            "boundary_ratio": 1.3,
+            "branch": "diff_dip",
+            "low_motion_plateau": false
+          }
+        }
+      ]
+    }
+  },
+  "inputs": {
+    "clip": "overnight/vpipe/out/m2/shortdrama_ep01/cp11/master_v2.mp4",
+    "frames_dir": "overnight/vpipe/out/m2/shortdrama_ep01/qc_frames/shortdrama_ep01_v2",
+    "judge_files": {
+      "J1": "out/m2/shortdrama_ep01/judges/glm8/shortdrama_ep01_v2.json",
+      "J3": "out/m2/shortdrama_ep01/judges/omnijev/run_metadata_v2.json",
+      "J5": "out/m2/shortdrama_ep01/judges/videochat3/shortdrama_ep01_v2.json",
+      "J6": "out/m2/shortdrama_ep01/judges/detectors/shortdrama_ep01_v2.qc2.json"
+    }
+  },
+  "episode_verdict": {
+    "score": 21.0,
+    "mean_shot_score": 21.0,
+    "worst_shot_score": 21.0,
+    "formula": "0.7*mean+0.3*worst",
+    "verdict": "pass",
+    "params_ref": "cp12.gate.master_score_min",
+    "shot_qc_refs": [
+      {
+        "shot_id": "shortdrama_ep01_v2",
+        "qc_report_fingerprint": "1cae8f46a0b1bdab28d46fdcdc5e8f06caf3cb4307c6e5f30f152789c1d904a5"
+      }
+    ]
+  },
+  "human_review": {
+    "queue": [
+      {
+        "ref": "shortdrama_ep01_v2",
+        "reason": "J6v2 ghosting emitted conf=0.79 ≥ emit_conf=0.55，span 58.500-60.750s（kind=rect_dip_blend）——judges.J6_detectors_v2 role=signal_only 不作否决，检出待人工裁决",
+        "params_ref": "judges.J6_detectors_v2.rule_params.emit_conf",
+        "outcome": "pending"
+      }
+    ],
+    "escalation_rate": 0.1667,
+    "params_ref": "cp12.gate.human_escalation_rate_max"
+  },
+  "qc_context": {
+    "profile": null,
+    "known_cuts": [
+      4.0,
+      8.708,
+      14.958,
+      21.625,
+      27.875,
+      33.25,
+      39.042,
+      44.833,
+      48.292,
+      54.75,
+      58.208
+    ],
+    "l0_preflight": {
+      "clip": "out/m2/shortdrama_ep01/cp11/master_v2.mp4",
+      "expect_duration_s": 64.0,
+      "profile": null,
+      "failures": [],
+      "checks": {
+        "duration": {
+          "measured_s": 64.0,
+          "rule": "dev_max",
+          "dev": 0.0,
+          "dev_max": 0.02
+        },
+        "black_mono_ratio": {
+          "n_samples": 64,
+          "black_luma_max": 8.0,
+          "mono_std_max": 2.0,
+          "ratio_max": 0.5,
+          "used": 64,
+          "bad_frames": 0,
+          "ratio": 0.0
+        }
+      }
+    }
+  },
+  "errors": {
+    "J2": "J2 glm3 备用判官不在本次配方（E10 不消费 J2），未跑非失败",
+    "B_group": "B 组专用小模型未部署——弃权形登记（主控验收修订语义），不填占位指标；gate_groups.b_group.abstain=true",
+    "J6": "未提供 --detector-json（检测器弃权）——J6v2 已另行 standalone 实跑（CPU，known_cuts=11 点白名单），其协议视图一字不改嵌入本报告 judges.J6；未走 --detector-json 是因 qc_detectors_v2 输出契约与 qc_orch_v2 内建 v1 规则引擎消费的 qc_detectors.py 契约不同",
+    "J1_key_source": "J1 BIGMODEL_API_KEY 由 GPU 机 overnight/secrets/api_keys.env 的 ZHIPU_API_KEY 在远端 shell 服务端注入（env 传递零回显零落盘），与 v1『agent-tools/llm-env zhipu』同源不同注入通道，如实登记",
+    "j35_first_attempt_abort": "J3/J5 首次起跑前复测（04:14）测得 GPU0=25982MiB（外部瞬态任务占用），按红线 ABORT 不抢卡；等位复测 310MiB 通过后重跑成功——两次复测均留痕 watch_j35.log"
+  }
+}

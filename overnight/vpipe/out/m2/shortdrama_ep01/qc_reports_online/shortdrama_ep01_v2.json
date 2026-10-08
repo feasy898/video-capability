@@ -1,0 +1,141 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "shortdrama_ep01_v2",
+ "generated_at": "2026-10-09T04:23:45",
+ "qc_mode": "online",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.88,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.88)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6011",
+   "降级: J6"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4016,
+   "flicker": 0.4567,
+   "color_shift": 0.5335,
+   "face_blur": 0.2269,
+   "garble_text": 0.0442,
+   "temporal_swap": 0.6011,
+   "pixelate": 0.3194,
+   "ghosting": 0.3571
+  },
+  "overall": 0.4259,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=0.2解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "shortdrama_ep01_v2",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "逐帧核对8帧未见标准缺陷：f01-f08场景推进连贯（开门→宴会对峙→亮印章→身份反转→立威饮酒），无时序错乱；f02老人面部虚焦属镜头焦点在酒杯上的浅景深设计，非face_blur，f03/f05/f07人脸细节清晰；f06左右分屏（工装/西装）为刻意叙事构图，两侧五官一致无identity_drift；各帧字幕均为通顺中文无乱码；f08手部握杯手指解剖正常，酒液顺嘴角滴落符合物理逻辑；f04老人肩部白色飞溅点与剧情（泼酒）吻合；整体色调冷暖差异（f03冷调雨夜、f02/f07暖调宴会）属场景灯光风格而非color_shift；无定格、闪烁、像素化、拖影证据。"
+  },
+  "J5": {
+   "clip_id": "shortdrama_ep01_v2",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=0.2解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"视频画面流畅，无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "shortdrama_ep01_v2",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "temporal_swap"
+   ],
+   "confidence": 0.6011,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.402 flicker=0.457 color_shift=0.533 face_blur=0.227 garble_text=0.044 temporal_swap=0.601 pixelate=0.319 ghosting=0.357; overall=0.426; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "out/m2/shortdrama_ep01/cp11/master_v2.mp4",
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "out/m2/shortdrama_ep01/judges/glm8/shortdrama_ep01_v2.json",
+   "J5": "out/m2/shortdrama_ep01/judges/videochat3/shortdrama_ep01_v2.json",
+   "J3": "out/m2/shortdrama_ep01/judges/omnijev/run_metadata_v2.json"
+  }
+ },
+ "errors": {
+  "J6": "未提供 --detector-json（检测器弃权）"
+ },
+ "qc_context": {
+  "profile": null,
+  "known_cuts": [
+   4.0,
+   8.708,
+   14.958,
+   21.625,
+   27.875,
+   33.25,
+   39.042,
+   44.833,
+   48.292,
+   54.75,
+   58.208
+  ],
+  "l0_preflight": {
+   "clip": "out/m2/shortdrama_ep01/cp11/master_v2.mp4",
+   "expect_duration_s": 64.0,
+   "profile": null,
+   "failures": [],
+   "checks": {
+    "duration": {
+     "measured_s": 64.0,
+     "rule": "dev_max",
+     "dev": 0.0,
+     "dev_max": 0.02
+    },
+    "black_mono_ratio": {
+     "n_samples": 64,
+     "black_luma_max": 8.0,
+     "mono_std_max": 2.0,
+     "ratio_max": 0.5,
+     "used": 64,
+     "bad_frames": 0,
+     "ratio": 0.0
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "segment_id": "avatar_hook_01",
+ "segment_kind": "avatar_talk_hook",
+ "position": "episode_opening_preroll",
+ "line": "五年前你们赶我走，今晚我回来了。",
+ "line_chars": 14,
+ "line_intent": "片头 3-4s 口播钩子：小满直视镜头的『归来』宣言开场，一句话锚定《雨夜合约》premise（五年前被林家逐出的汽修工学徒，雨夜以新任董事身份归来对质）；衔接正片 seg_01『林伯，好兴致啊……』的推门而入",
+ "ref_image": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+ "ref_image_note": "shot_09 终稿 3.6s 帧（已验证与正片身份保持），角色=cast_xiaoman",
+ "source": "vidu-s2-avatar-offline",
+ "endpoint": "POST /ent/s_avatar/offline（官方 S2 avatar 非实时档；客户端 overnight/vpipe/src/gen_avatar.py）",
+ "mode": "audio",
+ "resolution": "540p",
+ "watermark": false,
+ "voice": {
+  "pipeline": "StepFun stepaudio-2.5-tts（src/tts.py）",
+  "voice_id": "cixingnansheng",
+  "voice_gender": "male",
+  "character_gender": "female",
+  "mismatch_disclosure": "pilot 期接受音色性别错配并在报告如实记录；克隆音色（零样本克隆闭环 tts.py --clone）是量产前步骤，本段不实施"
+ },
+ "target_duration_s": [3.0, 4.0],
+ "credits_basis": "1积分/s×ceil(音频)",
+ "billing_note": "官方定价：1 积分/秒（0.03125 元），按输入音频实际时长向上取整；实扣以 GET /ent/v2/tasks/{id}/creations .credits 为准；走通用池（2026-10-09 smoke 实测：提交校验按通用池，avatar 专属池不被 offline 任务采纳）",
+ "budget_guard": "avatar 全任务 ≤2 次真实调用（~8 积分上限）；TTS ≤2 次",
+ "upstream_refs": {
+  "cp1": "雨夜合约 premise（五年前被逐出/雨夜归来）",
+  "cp2": "seg_01 口吻衔接（台词自拟，非 CP2 十一句之内的增句）",
+  "cp9_shot09": "身份参考帧来源镜"
+ }
+}

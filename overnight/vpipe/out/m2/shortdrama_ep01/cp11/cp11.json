@@ -1,0 +1,74 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp11",
+  "artifact_type": "composite",
+  "fingerprint": "8ef16ef8ed9e66a2e882d714888b8b7df6b86369259d1ba91c2542ecfb06f0b3",
+  "produced_by": "agent.cp11_assembler.ffmpeg",
+  "produced_at": "2026-10-08T18:22:45Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "54f562bea824fbfd37e8f1f604f2d4e43c1e05723ecf0ae69816294bb2c11c48"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "13f7236d2f4ea6342e91fb2c19b1a22f5fe6c0e90507c672d6a10205628092c4"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
+    "result": "pass",
+    "note": "10 个拼接硬切点（[4.708, 10.958, 17.625, 23.875, 29.25, 35.042, 40.833, 44.292, 50.75, 54.208]）全部登记 known_cuts 白名单，容差沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s；master 实测 10 切点与登记逐一重合（select 滤器，工作点 0.3），validate_cp11.py --probe 复核。（validate_cp11.py --probe 实跑 exit 0，13/13 checks 全绿；status gated→passed）"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.duration_tol_s",
+      "result": "pass",
+      "note": "声明 60s == CP6 total_frames/fps = 1440/24；ffprobe 实测 60.0s / 1440 帧，±1s 门由校验器复核。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.shot_count_match",
+      "result": "pass",
+      "note": "master_shot_segments 11 == storyboard_shot_count 11（CP6 shots 数）；实测切点 10（+1 段=11 段）由校验器复核。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "master_asset": {
+      "kind": "clip",
+      "fingerprint": "b701fc7f6f56f7e2775e093e3b67ae476bb2affb84ab758eddc4389085f4bdad",
+      "path": "overnight/vpipe/out/m2/shortdrama_ep01/cp11/master.mp4"
+    },
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "width": 1080,
+    "height": 1920,
+    "duration_s": 60.0,
+    "master_shot_segments": 11,
+    "storyboard_shot_count": 11,
+    "known_cuts": [
+      4.708,
+      10.958,
+      17.625,
+      23.875,
+      29.25,
+      35.042,
+      40.833,
+      44.292,
+      50.75,
+      54.208
+    ],
+    "all_cuts_registered": true,
+    "black_ratio": 0.0
+  },
+  "notes": "《雨夜合约》EP1 CP11 合成件。【合成器】TASK 预案路径：src/gate/synth.py 只收 kind=lavfi 的程序源（synth.py:186-189），CP9 真实终稿无法入 case，改 ffmpeg filter_complex 直拼（assemble_cp11.py，argv/探针全量留痕 synth_meta.json）。【规格】1080x1920/24fps/h264+aac（ASK 指定）；⚠CP1 deliverable.pixel_map=1088x1920 与 ASK 1080x1920 存在分歧，本轮从 ASK，分歧在此登记（CP12 复核时注意）。【时间线】CP9 终稿依 CP6 shots 顺序硬切拼接，每镜 trim=duration_frames/24（帧域冻结，Σ=1440 帧实测=1440）；768x1344 cover-crop 到 1080x1920（水平裁 18px≈1.6%），setsar=1。【known_cuts】10 缝=CP6 镜帧界累计/24，与 select 实测切点逐一重合（0 偏差）。【装配级修复 2 处，证据=slect 场景滤器实测】① shot_03 内部生成拼接痕 scene=0.5718@2.375s：以 0.375s fade（dissolve）桥接（A=trim end 2.375s、B=trim start 2.375s、offset=2.0——初版 offset 错接时间线连续点致 dissolve 成直通，已修并复测 0 事件）；② shot_04 头部瞬态 scene=0.2997@0.667s（贴门阈 0.3，重编码恐越阈）：trim start=0.75s 消化（7.296s 素材 −0.75 ≥ 6.25s 窗口）。两处均为生成伪影修复级装配，非叙事剪辑，实测后切点数=10。【配音轨】cp10/fit/tts_seg_XX.fit.wav：TTS 实测时长普遍超 CP2 估时（7/11 句 >20%，详见 cp10/duration_reconciliation.json），CP6 帧域冻结不改，逐句 silenceremove 修剪（-40dB，lead 0.12s/句内停顿>0.4s 截到 0.35s）+ atempo 压缩入窗（factor 1.10–1.51，seg_07 最大 1.5081，语速风险如实登记）；音频起点=镜起点−sound_lead_in_frames(2帧)/24（声先入），句间零碰撞。【混音】amix normalize=0，响度实测 −16.11 LUFS（loudnorm input_i），未做归一；BGM 无授权音源（仓内仅 avatar_demo 历史件，跨作品不授权），纯配音轨如实记录。【字幕】cp10/subs.ass 烧录：CP6 subtitle_segments 窗口 × CP2 narration_text 逐字文本（verbatim_check_pass=true，逐字校验见 duration_reconciliation.json；手动 \\N 分行 ≤15 字/行——libass 自动换列实测不生效，去 \\N 后全文与 CP2 一致）；Noto Sans CJK SC 字号 64（≥48）、竖版安全区 MarginV=220/MarginL|R=64。【black_ratio】blackdetect（d=0.1/pix_th 0.10/pic_th 0.98）实测 0 区间。【cp10 指纹】upstream_refs[cp10] 为 cp10 交付物清单（11×wav+meta sha256 + subs.ass + duration_reconciliation.json）规范化 JSON sha256——CP10 未立 schema 工件（cp10_subtitle_audio required 的 cer_small/cer_medium 需 whisper 双口径实测，本环境无 ASR 且红线禁 pip install，不伪造数值），CER 门留待 CP12/后续环境补跑。"
+}

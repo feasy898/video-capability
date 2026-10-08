@@ -1,0 +1,153 @@
+{
+  "cp_id": "cp11",
+  "gate": "hard_verify",
+  "verdict": "pass",
+  "checks": [
+    {
+      "name": "artifact_shape",
+      "ok": true,
+      "detail": "cp11 分支识别成立，payload 必备键齐"
+    },
+    {
+      "name": "subtitle_dialogue_mount",
+      "ok": true,
+      "detail": "upstream_refs 含 cp10（字幕逐字硬校验挂载于 CP10 门，upstream=['cp10', 'cp6', 'cp9']）"
+    },
+    {
+      "name": "known_cuts_registry_shape",
+      "ok": true,
+      "detail": "known_cuts 登记册规范：10 点，升序无重非负 [4.708,10.958,17.625,23.875,29.25,35.042,40.833,44.292,50.75,54.208]"
+    },
+    {
+      "name": "declared_all_cuts_registered",
+      "ok": true,
+      "detail": "all_cuts_registered=true（登记声明完备）"
+    },
+    {
+      "name": "cuts_segments_coherence",
+      "ok": true,
+      "detail": "known_cuts 数 == master_shot_segments-1（硬切拼接语义下恒等）"
+    },
+    {
+      "name": "shot_count_match_declared",
+      "ok": true,
+      "detail": "master_shot_segments 11 == storyboard_shot_count 11（cp11.gate.shot_count_match=true，白皮书 §3 CP11 门禁行）"
+    },
+    {
+      "name": "duration_tol",
+      "ok": true,
+      "detail": "ffprobe 实测 60.000s vs 声明 60s，偏差 0.000s ≤ cp11.gate.duration_tol_s=1s"
+    },
+    {
+      "name": "resolution",
+      "ok": true,
+      "detail": "ffprobe 实测 1080x1920 == 声明 1080x1920"
+    },
+    {
+      "name": "fps_cradle",
+      "ok": true,
+      "detail": "ffprobe 实测 r_frame_rate=24 fps（avg=24）；cp11 契约 payload 无 fps 声明侧字段（additionalProperties=false），声明比对 M2 经 aux_gates 挂 CP6 timeline.fps"
+    },
+    {
+      "name": "container_codecs",
+      "ok": true,
+      "detail": "容器/双流编解码实测（v='h264', a='aac', 封装 'mov,mp4,m4a,3gp,3g2,mj2'）与声明一致（container='mp4', video_codec='h264', audio_codec='aac'）"
+    },
+    {
+      "name": "black_ratio_cradle",
+      "ok": true,
+      "detail": "blackdetect 实测黑场 0.000s/60.000s=0.0000 ≤ l0_preflight.black_frame_ratio_max=0.5（0 个黑场区间）"
+    },
+    {
+      "name": "known_cuts_registered",
+      "ok": true,
+      "detail": "实测硬切点 [4.708,10.958,17.625,23.875,29.25,35.042,40.833,44.292,50.75,54.208] 全部在 known_cuts [4.708,10.958,17.625,23.875,29.25,35.042,40.833,44.292,50.75,54.208] ±known_cuts_tol_s=0.5s 白名单内登记（TASK_v4 M1-W5：无登记硬切点 = fail）"
+    },
+    {
+      "name": "shot_count_match_measured",
+      "ok": true,
+      "detail": "实测切点数 10（+1 段 = 11）== master_shot_segments 11 == storyboard_shot_count 11（CRADLE 切镜数道）"
+    }
+  ],
+  "evidence": {
+    "probe_path": "out/m2/shortdrama_ep01/cp11/master.mp4",
+    "ffprobe": {
+      "duration_s": 60.0,
+      "width": 1080,
+      "height": 1920,
+      "fps": 24.0,
+      "avg_fps": 24.0,
+      "container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "vcodec": "h264",
+      "acodec": "aac",
+      "has_audio": true,
+      "n_streams": 2
+    },
+    "scene_threshold_op": 0.3,
+    "fps_vfr_hint": false,
+    "blackdetect": {
+      "filter": "blackdetect=d=0.1:pix_th=0.1:pic_th=0.98",
+      "intervals": [],
+      "black_total_s": 0,
+      "ratio": 0.0,
+      "warn": null
+    },
+    "scene_cuts": {
+      "filter": "select='gt(scene,0.3)',metadata=print:file=-",
+      "cuts": [
+        {
+          "t": 4.708,
+          "score": 0.4741
+        },
+        {
+          "t": 10.958,
+          "score": 0.7305
+        },
+        {
+          "t": 17.625,
+          "score": 0.6419
+        },
+        {
+          "t": 23.875,
+          "score": 0.4872
+        },
+        {
+          "t": 29.25,
+          "score": 0.4482
+        },
+        {
+          "t": 35.042,
+          "score": 0.5592
+        },
+        {
+          "t": 40.833,
+          "score": 0.5682
+        },
+        {
+          "t": 44.292,
+          "score": 0.5546
+        },
+        {
+          "t": 50.75,
+          "score": 0.5518
+        },
+        {
+          "t": 54.208,
+          "score": 0.4418
+        }
+      ],
+      "measured_shots": 11,
+      "unregistered": [],
+      "registered_not_redetected": []
+    }
+  },
+  "thresholds_keys_used": [
+    "checkpoints.cp11.gate.duration_tol_s",
+    "checkpoints.cp11.gate.shot_count_match",
+    "l0_preflight.black_frame_ratio_max",
+    "judges.J6_detectors_v2.rule_params.known_cuts_tol_s"
+  ],
+  "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
+  "artifact": "out/m2/shortdrama_ep01/cp11/cp11.json",
+  "probe": "out/m2/shortdrama_ep01/cp11/master.mp4"
+}
