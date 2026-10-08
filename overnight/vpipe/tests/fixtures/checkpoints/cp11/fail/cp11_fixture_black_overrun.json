@@ -1,0 +1,65 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp11",
+  "artifact_type": "composite",
+  "fingerprint": "064c53d626bf5082d64f99bd51fc8442b2d10603777c32c874dda10aa64c46c8",
+  "produced_by": "fixture.gen",
+  "produced_at": "2026-10-08T00:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  ],
+  "status": "gated",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
+    "result": "pass",
+    "note": "（黑场超差件）唯一换本锚点切点 4.5s 已登记——主门自认 pass；本件缺陷在黑场道，blackdetect 实测应抓黑场占比 ≈0.99 > l0_preflight.black_frame_ratio_max=0.50。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.duration_tol_s",
+      "result": "pass",
+      "note": "成片 9s vs 声明 9s，±1s 内（ffprobe 实测由校验器复核）。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.shot_count_match",
+      "result": "pass",
+      "note": "实测切点数 1（+1 段 = 2）== master_shot_segments 2 == storyboard_shot_count 2（切点=4.5s 处 1 帧白板换本锚）。"
+    }
+  ],
+  "payload": {
+    "work_id": "cp11_fixture_black",
+    "master_asset": {
+      "kind": "clip",
+      "fingerprint": "61834957f7b2a4d55a60d6b09b6f8c9ee3fe0e56e277ab44c08bc50433e8cedd",
+      "path": "tests/fixtures/checkpoints/cp11/master_black_9s.mp4"
+    },
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "width": 360,
+    "height": 640,
+    "duration_s": 9.0,
+    "master_shot_segments": 2,
+    "storyboard_shot_count": 2,
+    "known_cuts": [
+      4.5
+    ],
+    "all_cuts_registered": true,
+    "black_ratio": 0.0
+  },
+  "notes": "黑场超限夹具：全黑 9s，仅 4.5s 处嵌 1 帧白板作换本锚点（known_cuts 非空铁律与切镜数道需要可复现实测切点，纯全黑无切点会让切镜数道附带误伤、判因不干净）。blackdetect 实测黑场占比 ≈0.99 > 0.50 → --probe fail 由黑场道独家裁决；无 --probe 时声明道全过（black_ratio 声明侧仅 warn 不否决）。由 make_fixture.py 生成，重跑字节级复现。"
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp12",
+  "artifact_type": "qc_master",
+  "fingerprint": "691d9e5473242e42eb68eab811ec5ed62d0525c8b117a26e52f999f5d5f37b6e",
+  "produced_by": "gate.episode_judge",
+  "produced_at": "2026-10-08T16:30:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp11",
+      "fingerprint": "3a73b4552c2f6268b89d0d2e8631a831f3d9c32456b0eb6dd35a43fa7ce1d602"
+    }
+  ],
+  "status": "gated",
+  "gate": {
+    "type": "composite",
+    "params_ref": "cp12.gate.a_group_recall_min",
+    "result": "fail",
+    "note": "成片分公式被改：score 70.3 是按 0.5×mean+0.5×worst 计得，与 schema const 公式 0.7*mean+0.3*worst 复算值 70.5 不符（短板惩罚被稀释）——结构层不可见（formula 字段仍是 const），规则门 ① 拒。"
+  },
+  "aux_gates": [
+    {
+      "type": "judge_absolute",
+      "params_ref": "cp12.gate.master_score_min",
+      "result": "pass",
+      "note": "成片分对照 cp12.gate.master_score_min=70（warn 阈）：人评锚定（120 片段）完成前仅作 warn 阈与人工队列排序依据，不作自动放行绝对门（白皮书 §7 非目标 8）。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp12.gate.human_escalation_rate_max",
+      "result": "pass",
+      "note": "人工上升率对照 cp12.gate.human_escalation_rate_max=0.20。"
+    }
+  ],
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "master_fingerprint": "20dd1ebc22c8b5e3acbd9afdeb9603196045bcccbf2bafdc174584d2b1811c70",
+    "episode_verdict": {
+      "score": 70.3,
+      "mean_shot_score": 70.8,
+      "worst_shot_score": 69.8,
+      "formula": "0.7*mean+0.3*worst",
+      "verdict": "pass"
+    },
+    "gate_groups": {
+      "a_group": {
+        "recall": 1.0,
+        "fpr": 0.0,
+        "verdict": "pass"
+      },
+      "b_group": {
+        "recall": 0.96,
+        "fpr": 0.1,
+        "verdict": "pass"
+      },
+      "c_group": {
+        "recall": 0.82,
+        "fpr": 0.14,
+        "verdict": "pass"
+      },
+      "d_group": {
+        "warn_only": true,
+        "flagged_count": 2,
+        "verdict": "warn"
+      }
+    },
+    "human_escalation_rate": 0.2,
+    "retry_round": 0,
+    "routed_reworks": [],
+    "shot_qc_refs": [
+      {
+        "shot_id": "shot_01",
+        "qc_report_fingerprint": "daecaf38ce30c533a92d6a211c7a006f3eeec5345cddbe3c7186f989c1844caf"
+      },
+      {
+        "shot_id": "shot_02",
+        "qc_report_fingerprint": "03c47c218b47430848ff8cc3b8981d358e721ad943d1141e49aedf3bad25655d"
+      },
+      {
+        "shot_id": "shot_03",
+        "qc_report_fingerprint": "dec29102700c39ccafc4b5c17f3ff469c880725025d2db26b6d251d3bfcb03e7"
+      },
+      {
+        "shot_id": "shot_04",
+        "qc_report_fingerprint": "daecaf38ce30c533a92d6a211c7a006f3eeec5345cddbe3c7186f989c1844caf"
+      }
+    ]
+  },
+  "notes": "fail/cp12_fail_score_formula：score 按 0.5×mean+0.5×worst 计（70.3≠复算 70.5）——仅规则层可拦（FIXTURES-LAYERING.md 第 1 类），余项与 pass_02 全同。"
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp11",
+  "artifact_type": "composite",
+  "fingerprint": "11e9f37e680dd17934c1ae0499e3969e1e36fdc96e5a59a74b183b8769d4808e",
+  "produced_by": "fixture.gen",
+  "produced_at": "2026-10-08T00:00:00Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "cp_id": "cp9",
+      "fingerprint": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "cp_id": "cp10",
+      "fingerprint": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  ],
+  "status": "gated",
+  "gate": {
+    "type": "hard_verify",
+    "params_ref": "judges.J6_detectors_v2.rule_params.known_cuts_tol_s",
+    "result": "pass",
+    "note": "3 个拼接硬切点（2.0/4.0/6.0s）全部登记 known_cuts 白名单，容差 0.5s 沿 judges.J6_detectors_v2.rule_params.known_cuts_tol_s；参数组 320x240 横版 24fps 与主夹具 360x640 竖版 30fps 错开。"
+  },
+  "aux_gates": [
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.duration_tol_s",
+      "result": "pass",
+      "note": "成片 8s vs 声明 8s，±1s 内（ffprobe 实测由校验器复核）。"
+    },
+    {
+      "type": "hard_verify",
+      "params_ref": "cp11.gate.shot_count_match",
+      "result": "pass",
+      "note": "实测切点数 3（+1 段 = 4）== master_shot_segments 4 == storyboard_shot_count 4。"
+    }
+  ],
+  "payload": {
+    "work_id": "cp11_fixture_alt",
+    "master_asset": {
+      "kind": "clip",
+      "fingerprint": "fa7e99dde8af12bc5f6b6920b3a63f93d3efb9521fd51942872766cd34390537",
+      "path": "tests/fixtures/checkpoints/cp11/master_8s_alt.mp4"
+    },
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "width": 320,
+    "height": 240,
+    "duration_s": 8.0,
+    "master_shot_segments": 4,
+    "storyboard_shot_count": 4,
+    "known_cuts": [
+      2.0,
+      4.0,
+      6.0
+    ],
+    "all_cuts_registered": true,
+    "black_ratio": 0.0
+  },
+  "notes": "参数错开合规夹具：smptehdbars/testsrc 两内建源交替成 4 段、硬切点 2.0/4.0/6.0 全登记；分辨率/帧率/时长/切点位置与主 pass 夹具全错开，证明门禁不吃参数特例。由 make_fixture.py 生成，重跑字节级复现。"
+}
