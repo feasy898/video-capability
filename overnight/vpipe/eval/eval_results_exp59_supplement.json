@@ -1,0 +1,55 @@
+{
+ "generated_at": "2026-10-09T13:26:00",
+ "purpose": "D-3 扩样补缺（C 组「API 产物标签乱码」2 条，golden_058/059）后 E10 复核 supplement：工作点状态 + exp57→exp59 位级对比 + 机制明细 + 数据一致性注记（G0-2 双处登记之 eval 留痕侧，另一处=thresholds.yaml v8 注记）",
+ "pair_file": "eval/eval_results_exp59.json（= canonical eval_results.json，59 条 REJECT）",
+ "thresholds_note": "thresholds.yaml v8 注记（eval_admission.class_counts {A28,B14,C17} + min_clips_required 59；准入线四值 recall_min/fpr_max/f1_min/b_flag_min 一字未动）",
+ "e10_exp59_metrics": {
+  "recall": 0.8929,
+  "fpr": 0.4706,
+  "f1": 0.8197,
+  "b_flag": 0.6429,
+  "tp": 25,
+  "fn": 3,
+  "fp": 8,
+  "tn": 9
+ },
+ "admission": {
+  "recall_min": 0.9,
+  "fpr_max": 0.3,
+  "f1_min": 0.85,
+  "b_flag_min": 0.5
+ },
+ "fails": [
+  "recall_min 0.8929<0.90",
+  "fpr_max 0.4706>0.30",
+  "f1_min 0.8197<0.85"
+ ],
+ "exp57_vs_exp59_bitlevel": {
+  "exp57_register": "eval_results_exp57_supplement.json e10_exp57_metrics（R=0.8929/FPR=0.40/F1=0.8475/B_flag=0.6429，tp25/fn3/fp6/tn9）",
+  "delta": {
+   "recall": "0.8929→0.8929（不变，A 类 28 条检出集合零变化）",
+   "fpr": "0.40→0.4706（+2/17：FP 6→8，新增 golden_058/059）",
+   "f1": "0.8475→0.8197（-0.0278，纯由 FPR 上升带动）",
+   "b_flag": "0.6429→0.6429（不变，B 类 14 条零变化）"
+  },
+  "old57_verdicts": "旧 57 条 QC 报告 verdict 位级零变化（qc_reports_exp57 vs qc_reports_exp59 逐条 verdict 四元组+reasons 全等；唯一内容差异=scores.thresholds_applied.thresholds_sha256 随 v7→v8 指纹更新，属登记字段非判定字段）",
+  "fp_clips_exp59": ["golden_010", "golden_013", "golden_032", "golden_055", "golden_056", "golden_057", "golden_058", "golden_059"],
+  "fn_clips_exp59": ["golden_045", "golden_046", "golden_052"]
+ },
+ "new_fp_mechanism": "FP +2（golden_058/059）不是 judge 退化：两条是本轮补缺入金标的 C 组带真缺陷正例（MiniMax-H3-Max 生成侧自发标签乱码，逐帧亲检确认），J1 以 garble_text 检出（conf 0.97/0.92）、J3@0.71 以 frame_freeze 通道 flag（0.869/0.800）——语义上是真阳性检出，被现行 eval_run 的「C 类整体作负类」机械口径计入 FP。可比基线口径：剔除 058/059 后 57 条的指标与 exp57 登记基线完全一致（R=0.8929/FPR=0.40/F1=0.8475）。金标 C 组语义已分裂为『干净对照』与『带真缺陷正例』两形态，是否在 eval_run 引入第三类记账（如 C_defect）由 owner 裁决——本轮零放水不动判定口径",
+ "blind_test_new2": {
+  "recipe": "g04-cgarble（GPU 机 anolis-gpu-01 卡 0，跑前复测 310MiB/0%，配方同 g03-expansion/JUDGES-RERUN.md；等位不抢卡，卡 1 未碰）",
+  "J1_glm8": "2/2 detected，defect_types=[garble_text]，conf 0.97/0.92——notes 逐词引用乱码证据（如 'Mid minge bordtiote…'、'Therwidarewoid in Parc Frey…'）并指出批次号跨帧字符不一致；方案 §2.1 验收判据「J1 identity_drift/G2 检出 ≥1/2」达成（J1 直接走 garble_text 通道，强于营销线 shot_05 的 identity_drift conf=0.62 形态）",
+  "J3_omnijev": "2/2 detected（frame_freeze=0.869/0.800 均>0.71 阈；garble_text 通道仅 0.075/0.174）——静态产品特写触发其已知 frame_freeze 过信机理（thresholds known_fp_mechanism），类型归属不准但 E10 flag 为真",
+  "J5_videochat3": "0/2 判净（『画面稳定，无明显缺陷』）——与登记证据 role=cheap_signal recall 0.312 的低召回画像一致，如实记录",
+  "usage": "J1 API 22762 prompt + 1927 completion tokens（judge 0 积分口径：glm8 走 Zhipu coding-plan）；H3-Max 生成实耗 2 次=预算上限，est 560 积分"
+ },
+ "working_point_note": "exp57 已登记 111 点重扫 0 feasible（该状态不变）；exp59 的 +2 FP 全部来自 C 组真缺陷条目，纯 J3 阈扫描无法消除（须 thr>0.90 方可压过 golden_032 ghosting=0.930，会再把 041 转 FN 使 recall 跌至 24/28）——不在此重扫放线，维持「判官配方迭代预案上抛 owner」状态（evidence/judge-recipe-iteration-plan.md，未执行）",
+ "data_consistency_note": "两份 golden manifest（数据/golden/manifest.json 与 eval/golden_manifest.json）字节一致，counts A28/B14/C17=59；thresholds.yaml v8 与 eval_results.json thresholds_sha256=661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981 对账一致（G0-3）；qc_reports_exp59/v2check/v3post 三目录 59 报告语义一致（除 generated_at）",
+ "next_steps_owner": [
+  "判官配方迭代预案（A 分通道阈+低运动豁免 / B J1 rubric 补时序 / C J6v2 并合议）维持上抛状态，未执行",
+  "新增：金标 C 组语义分裂（干净对照 vs 带真缺陷正例）的记账方式（是否引入 C_defect 类）待 owner 裁决；裁决前 E10 判读以 058/059 之外 57 条为可比口径",
+  "J3 garble 通道对真乱码 0.075-0.174 的低响应与 frame_freeze 通道过信，可作为判官配方迭代的输入证据"
+ ],
+ "judge_recipe": "J3: venv-judge + OmniJev-4B-v1.1/Qwen3.5-4B 卡 0（81s/条）；J5: venv-vc3 + VideoChat3-4B decord（3s/条）；J1: glm8_batch.py@/data/night/g01-rerun（帧 f01..f08，workers=2）。三判官隔离盲测：判官输入不含金标标签，输出六字段协议（judge_common.py 冻结）"
+}

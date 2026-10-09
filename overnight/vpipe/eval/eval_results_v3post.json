@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-09T11:55:10",
+ "generated_at": "2026-10-09T13:37:20",
  "qc_dir": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post",
  "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
  "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",
- "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2",
+ "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
  "ensemble_recommended": "E10",
  "measured_baseline_报告E10": {
   "tp": 16,
@@ -29,18 +29,18 @@
  "counts": {
   "A": 28,
   "B": 14,
-  "C": 15,
-  "n_reports": 57
+  "C": 17,
+  "n_reports": 59
  },
  "main": {
   "tp": 25,
   "fn": 3,
-  "fp": 6,
+  "fp": 8,
   "tn": 9,
   "recall": 0.8929,
-  "fpr": 0.4,
-  "precision": 0.8065,
-  "f1": 0.8475
+  "fpr": 0.4706,
+  "precision": 0.7576,
+  "f1": 0.8197
  },
  "per_type": {
   "frame_freeze": {
@@ -256,7 +256,9 @@
   "golden_032",
   "golden_055",
   "golden_056",
-  "golden_057"
+  "golden_057",
+  "golden_058",
+  "golden_059"
  ],
  "fn_clips": [
   "golden_045",
@@ -306,7 +308,9 @@
   "golden_039": "pass",
   "golden_055": "manual_review",
   "golden_056": "manual_review",
-  "golden_057": "manual_review"
+  "golden_057": "manual_review",
+  "golden_058": "manual_review",
+  "golden_059": "manual_review"
  },
  "checks": [
   {
@@ -317,12 +321,12 @@
   {
    "name": "fpr_max",
    "passed": false,
-   "detail": "FPR 0.4 vs ≤0.3"
+   "detail": "FPR 0.4706 vs ≤0.3"
   },
   {
    "name": "f1_min",
    "passed": false,
-   "detail": "F1 0.8475 vs ≥0.85"
+   "detail": "F1 0.8197 vs ≥0.85"
   },
   {
    "name": "b_flag_min",

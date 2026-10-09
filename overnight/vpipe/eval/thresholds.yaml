@@ -8,7 +8,19 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 7                   # 2026-10-09（v7）：D-3 金标扩样数据形态键随数据集登记——
+version: 8                   # 2026-10-09（v8）：D-3 扩样补缺——C 组「API 产物标签乱码」2 条
+                             #   （golden_058/059，MiniMax-H3-Max 云通道真实生成、生成侧自发乱码
+                             #   2/2 逐帧亲检，无注入/伪造）入金标：
+                             #   eval_admission.class_counts {A28,B14,C15}→{A28,B14,C17}、
+                             #   min_clips_required 57→59（两份 manifest expanded_c_garble_at=
+                             #   2026-10-09，字节一致）。两键仍是金标身份校验非判定阈；准入线
+                             #   recall_min/fpr_max/f1_min/b_flag_min 四值一字未动（不许放线）。
+                             #   评审口径注意（与 manifest expansion_c_garble_note 双处登记）：
+                             #   现行 eval_run.py 把 C 类整体作负类，058/059 的真实标签乱码被
+                             #   judge 检出会计入 FP——如实呈现，不许改判定口径消化；E10 与
+                             #   058/059 之外 57 条可比。G0-2 双处登记：本注记 +
+                             #   eval_results_exp59_supplement.json（vs exp57 基线位级对比）。
+                             # 2026-10-09（v7）：D-3 金标扩样数据形态键随数据集登记——
                              #   eval_admission.class_counts {A16,B12,C12}→{A28,B14,C15}、
                              #   min_clips_required 40→57（overnight/数据/golden/manifest.json
                              #   expanded_at=2026-10-09，+17：A 组时序注入 12 + B 组口播意图 2 +
@@ -223,8 +235,8 @@ eval_admission:
   fpr_max: 0.30
   f1_min: 0.85
   b_flag_min: 0.50
-  min_clips_required: 57        # 金标全量（2026-10-09 扩样后 A28/B14/C15=57；v6 前 40），少于即判 eval 无效
-  class_counts: { A: 28, B: 14, C: 15 }
+  min_clips_required: 59        # 金标全量（2026-10-09 v8 补缺后 A28/B14/C17=59；v7 时 57、v6 前 40），少于即判 eval 无效
+  class_counts: { A: 28, B: 14, C: 17 }   # v8：C +2（golden_058/059 API 标签乱码正例，缺陷为生成侧自发）
 
 # ---------------------------------------------------------------
 # L0 确定性预检（§11.1：拒收层。2026-10-01 挂进 qc_orch_v2 在线模式：

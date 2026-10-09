@@ -205,17 +205,18 @@ def main():
     check("E qc_orch_v2 回放 exit=0", r.returncode == 0, "exit=%s" % r.returncode)
     r = run([PY, HERE / "eval" / "eval_run.py", "--qc-dir", HERE / "out" / "qc_reports_v3post",
              "--out", HERE / "eval" / "eval_results_v3post.json"])
-    # D-3 扩样后（2026-10-09）：金标 57 条上 E10=REJECT 是已登记状态
-    # （eval_results_exp57_supplement.json；准入线未放水、重扫 111 点 0 feasible）。
+    # D-3 补缺后（2026-10-09 v8）：金标 59 条上 E10=REJECT 是已登记状态
+    # （eval_results_exp59_supplement.json；准入线未放水；+2 FP 为 C 组真缺陷
+    # 条目检出的机械记账，可比口径=剔除 058/059 后 57 条与 exp57 基线一致）。
     # 本检查的纪律是「零未声明偏差」：位级等于登记基线即通过；
     # 质量门未达的事实是已上抛 owner 的开放项，不在此处伪装 ACCEPT。
-    reg = HERE / "eval" / "eval_results_exp57_supplement.json"
+    reg = HERE / "eval" / "eval_results_exp59_supplement.json"
     if reg.is_file():
-        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_exp57_metrics", {})
+        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_exp59_metrics", {})
         cur = json.loads((HERE / "eval" / "eval_results_v3post.json").read_text(encoding="utf-8"))
         m = cur.get("main", {})
         drift = {k: (m.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if m.get(k) != base.get(k)}
-        check("E eval_run(57 条金标) 位级等于登记基线（零未声明偏差）", not drift,
+        check("E eval_run(59 条金标) 位级等于登记基线（零未声明偏差）", not drift,
               "drift=%s" % drift if drift else "R=%.4f/FPR=%.4f/F1=%.4f 与登记基线一致"
               % (m.get("recall", 0), m.get("fpr", 0), m.get("f1", 0)))
     else:
@@ -228,13 +229,13 @@ def main():
     check("E qc_orch v1 回放 exit=0", r.returncode == 0, "exit=%s" % r.returncode)
     r = run([PY, HERE / "eval" / "eval_run.py", "--qc-dir", HERE / "out" / "qc_reports_v3post_v1",
              "--out", HERE / "eval" / "eval_results_v3post_v1.json"])
-    reg = HERE / "eval" / "eval_results_exp57_supplement.json"
+    reg = HERE / "eval" / "eval_results_exp59_supplement.json"
     if reg.is_file():
-        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_exp57_metrics", {})
+        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_exp59_metrics", {})
         cur = json.loads((HERE / "eval" / "eval_results_v3post_v1.json").read_text(encoding="utf-8"))
         m = cur.get("main", {})
         drift = {k: (m.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if m.get(k) != base.get(k)}
-        check("E eval_run v1(1.0 兼容, 57 条) 位级等于登记基线", not drift,
+        check("E eval_run v1(1.0 兼容, 59 条) 位级等于登记基线", not drift,
               "drift=%s" % drift if drift else "与登记基线一致")
     else:
         check("E eval_run(v1/1.0 兼容) ACCEPT exit=0", r.returncode == 0,

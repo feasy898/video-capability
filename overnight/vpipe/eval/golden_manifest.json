@@ -13,8 +13,8 @@
  "counts": {
   "A": 28,
   "B": 14,
-  "C": 15,
-  "total": 57
+  "C": 17,
+  "total": 59
  },
  "failures": [],
  "items": [
@@ -2219,10 +2219,120 @@
      "meta_file": "_avatar_expansion/vidu/avatar_1005951268516036608.meta.json"
     }
    }
+  },
+  {
+   "clip_id": "golden_058",
+   "class": "C",
+   "defect_type": "api_label_garbled",
+   "expected_defect": "api_label_garbled",
+   "probable": true,
+   "inject_pos": null,
+   "source_clip": "_cgarble_20261009/gen/golden_058@MiniMax-H3-Max.mp4",
+   "source_prompt_id": "golden_058",
+   "axis": "G2",
+   "model": "MiniMax-H3-Max",
+   "observed_evidence": "标签满版细密小字伪英文（逐词可读但语义乱，如 'Nid ninge bordhiote, helettiere…'、'T20% Poenocctiules…'、'20005 15TKQ)'），f01–f08 持续存在、逐帧稳定；画面其余（琥珀玻璃瓶/胡桃木面/影棚布光）干净——『干净画面+标签乱码』G2 形态成立。亲检=构造员逐帧（f01/f05/f07 2x 放大 + label_zoom），zoom=_cgarble_20261009/golden_058_label_zoom.jpg",
+   "paths": {
+    "clip": "clips/golden_058.mp4",
+    "frames": "frames/golden_058/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09 13:01:14",
+    "method": "gen_api.py 云通道（higress）MiniMax-H3-Max T2V 真实生成：prompt 复刻营销线 shot_05 乱码标签场景形态（amber glass product bottle + printed label bearing dense fine text + close-up + studio lighting，768P 9:16 5s 整）；标签乱码为生成侧自发，无任何注入/伪造（§2.1 验收判据口径）。转码统一 libx264 crf18 preset medium yuv420p -an + 均匀抽 8 帧（fps=8/dur，jpg q=2），同金标协议（build_golden.py encode_copy/extract_frames 同配方）（058 与 059 prompt 措辞微异以去相关；两 prompt 原文存 _cgarble_20261009/shots/）",
+    "tool": "overnight/vpipe/src/gen_api.py@cloud（image_mode=text-to-video，DTO 零凭据）",
+    "seed": null,
+    "seed_note": "云通道 DTO 白名单无 seed 字段一律不发送（gen_api.py build_cloud_payload），不可控；如实记 null",
+    "sha256": "33dbc8b88c834518cd7db6341324d59ead97fd058a9fa50f5b1360cafd21f065",
+    "personal_inspection": {
+     "inspector": "金标补缺构造员（本工作流）",
+     "frames_checked": "f01..f08 全量，f01/f05/f07 2x 放大细看",
+     "garble_readability": "可读乱码（伪英文逐词成形、语义不通）",
+     "verdict": "api_label_garbled 成立"
+    },
+    "upstream_generation": {
+     "channel": "minimax_cloud_v3",
+     "task_id": "mZzbyvv9jGXX",
+     "submitted_at": "2026-10-09 13:01:14",
+     "duration_s": 5,
+     "resolution": "768P",
+     "generate_audio": false,
+     "est_credit": 280,
+     "credit_basis": "56积分/s 估算口径（云通道无钱包端点，credit_* 如实 null）",
+     "download_sha256_pretranscode": "97f5e7ccd8a7d7a4b0cc91c84a4280bdc41f5335d6222fe82a4f56a1f384a2f5",
+     "api_results": "_cgarble_20261009/gen/api_results.jsonl",
+     "gen_meta": "_cgarble_20261009/gen/api_results.jsonl（rid=golden_058@MiniMax-H3-Max）"
+    }
+   }
+  },
+  {
+   "clip_id": "golden_059",
+   "class": "C",
+   "defect_type": "api_label_garbled",
+   "expected_defect": "api_label_garbled",
+   "probable": true,
+   "inject_pos": null,
+   "source_clip": "_cgarble_20261009/gen/golden_059@MiniMax-H3-Max.mp4",
+   "source_prompt_id": "golden_059",
+   "axis": "G2",
+   "model": "MiniMax-H3-Max",
+   "observed_evidence": "标签整面被细密伪英文小字覆盖（如 'Therethverssaid In Pour Frery…'），且 f01→f05→f07 字形逐帧漂移（时序不稳，乱码附加签名）；瓶底刻字 'MEE 0-B %. GG' 同为乱码；画面其余干净。亲检=构造员逐帧（f01/f05/f07 2x 放大 + label_zoom），zoom=_cgarble_20261009/golden_059_label_zoom.jpg",
+   "paths": {
+    "clip": "clips/golden_059.mp4",
+    "frames": "frames/golden_059/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09 13:01:49",
+    "method": "gen_api.py 云通道（higress）MiniMax-H3-Max T2V 真实生成：prompt 复刻营销线 shot_05 乱码标签场景形态（amber glass product bottle + printed label bearing dense fine text + close-up + studio lighting，768P 9:16 5s 整）；标签乱码为生成侧自发，无任何注入/伪造（§2.1 验收判据口径）。转码统一 libx264 crf18 preset medium yuv420p -an + 均匀抽 8 帧（fps=8/dur，jpg q=2），同金标协议（build_golden.py encode_copy/extract_frames 同配方）（059 与 058 prompt 措辞微异以去相关；两 prompt 原文存 _cgarble_20261009/shots/）",
+    "tool": "overnight/vpipe/src/gen_api.py@cloud（image_mode=text-to-video，DTO 零凭据）",
+    "seed": null,
+    "seed_note": "云通道 DTO 白名单无 seed 字段一律不发送（gen_api.py build_cloud_payload），不可控；如实记 null",
+    "sha256": "26713185f47ccadacb2c2fb22ee456b59666aef55a49820c2994f5abc1d7e533",
+    "personal_inspection": {
+     "inspector": "金标补缺构造员（本工作流）",
+     "frames_checked": "f01..f08 全量，f01/f05/f07 2x 放大细看",
+     "garble_readability": "可读乱码（伪英文逐词成形、语义不通）",
+     "verdict": "api_label_garbled 成立"
+    },
+    "upstream_generation": {
+     "channel": "minimax_cloud_v3",
+     "task_id": "NrGEOgNO18Dg",
+     "submitted_at": "2026-10-09 13:01:49",
+     "duration_s": 5,
+     "resolution": "768P",
+     "generate_audio": false,
+     "est_credit": 280,
+     "credit_basis": "56积分/s 估算口径（云通道无钱包端点，credit_* 如实 null）",
+     "download_sha256_pretranscode": "1f487de3d4a37fb1b3c234fac5067ae3c66ac826a5616a8a14be03cf452ac329",
+     "api_results": "_cgarble_20261009/gen/api_results.jsonl",
+     "gen_meta": "_cgarble_20261009/gen/api_results.jsonl（rid=golden_059@MiniMax-H3-Max）"
+    }
+   }
   }
  ],
  "repaired_at": "2026-09-30T18:09:38",
  "repair_note": "2026-09-30 勘误修复：A 类时序 5 条（017/028/004/030/022）注入未生效，经 inject_defects.py v2 重建并通过帧级签名自检；022 宿主源替换为 clips_local/G9-41__ltx.mp4（原因见 item.source_replaced）。旧损坏 clip 备份于 golden/_broken_20260930/。",
  "expanded_at": "2026-10-09T10:27:34",
- "expansion_note": "2026-10-09 D-3 扩样 +17（041-052 A 组时序注入 freeze/swap/ghosting/flicker 各+3，inject_a_timing.py v2 builder + 帧级签名自检全数生效并独立复核；053/054 B 组口播意图（053 音频+0.5s 延迟、054 音画交叉配对）；055-057 C 组口播干净 540p/720p 两档，-an 同协议）。与 evidence/golden-expansion-plan.md §2.1 的差异如实记录：①C 组 API 乱码正例 2 条（H3-Max）未构造——17 条新增中无 H3-Max 产物，该缺口仍在，J1 G2 召回在金标上仍无新正例可量；②B 组第 2 条构造方式为音画交叉配对（方案只写了音频错位）；③053/054 保留音轨（唇形评估必需，偏离 -an 协议）；④扩样后 A28/B14/C15=57。新增条目含 sha256/seed/generated_at/construction 字段（旧 40 条无此字段，保持原样）"
+ "expansion_note": "2026-10-09 D-3 扩样 +17（041-052 A 组时序注入 freeze/swap/ghosting/flicker 各+3，inject_a_timing.py v2 builder + 帧级签名自检全数生效并独立复核；053/054 B 组口播意图（053 音频+0.5s 延迟、054 音画交叉配对）；055-057 C 组口播干净 540p/720p 两档，-an 同协议）。与 evidence/golden-expansion-plan.md §2.1 的差异如实记录：①C 组 API 乱码正例 2 条（H3-Max）未构造——17 条新增中无 H3-Max 产物，该缺口仍在，J1 G2 召回在金标上仍无新正例可量；②B 组第 2 条构造方式为音画交叉配对（方案只写了音频错位）；③053/054 保留音轨（唇形评估必需，偏离 -an 协议）；④扩样后 A28/B14/C15=57。新增条目含 sha256/seed/generated_at/construction 字段（旧 40 条无此字段，保持原样）",
+ "expanded_c_garble_at": "2026-10-09T13:06:30",
+ "expansion_c_garble_note": "2026-10-09 D-3 扩样补缺 +2（058/059）：C 组「API 产物标签乱码」正例——前序 expansion_note ①缺口闭环。MiniMax-H3-Max 云通道真实生成（H3-Max 实耗 2 次=预算上限，est 560 积分），prompt 复刻营销线 shot_05 乱码标签场景形态；标签乱码为生成侧自发（2/2 命中，逐帧亲检，无注入/伪造），以 class=C + defect_type=api_label_garbled + probable=true 登记（C 组带确认缺陷的正例形态，区别于 C 组干净对照）。评审注意：现行 eval_run.py 把 C 类整体作负类（检出计 FP），058/059 的真实缺陷被 judge 检出会计入 FPR——这是金标语义新增形态的机械后果，如实呈现不许改判定口径消化；E10 读数以 058/059 之外 57 条为可比基线（本 note 与 eval_results_exp59_supplement.json 双处登记）。扩样后 A28/B14/C17=59。"
 }

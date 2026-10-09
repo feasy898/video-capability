@@ -3,7 +3,11 @@
 
 用法：python3 check_baseline_drift.py [--qc-dir DIR] [--golden-register PATH]
 判定：eval_run 在 --qc-dir 上的当前结果与登记基线（supplement JSON 的
-e10_exp57_metrics）位级一致 → exit 0；有漂移 → exit 1；无登记基线且当前 ACCEPT → exit 0。
+e10_exp59_metrics）位级一致 → exit 0；有漂移 → exit 1；无登记基线且当前 ACCEPT → exit 0。
+
+登记基线沿革：v8（2026-10-09 C 组补缺 +2，golden_058/059）起指向
+eval_results_exp57_supplement.json → eval_results_exp59_supplement.json
+（前轮 exp57 登记文件保留作历史，不删除）。
 """
 import argparse
 import json
@@ -18,7 +22,7 @@ VPIPE = HERE.parent
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--qc-dir", default=str(VPIPE / "out" / "qc_reports_v3post"))
-    ap.add_argument("--register", default=str(VPIPE / "eval" / "eval_results_exp57_supplement.json"))
+    ap.add_argument("--register", default=str(VPIPE / "eval" / "eval_results_exp59_supplement.json"))
     ap.add_argument("--results", default=str(VPIPE / "eval" / "eval_results.json"))
     args = ap.parse_args()
 
@@ -35,14 +39,15 @@ def main() -> int:
     if not reg.is_file():
         print("G0-2: REJECT 且无登记基线文件——按未登记偏差处理", file=sys.stderr)
         return 1
-    base = json.loads(reg.read_text(encoding="utf-8"))["e10_exp57_metrics"]
+    base = json.loads(reg.read_text(encoding="utf-8"))["e10_exp59_metrics"]
     cur = json.loads(Path(args.results).read_text(encoding="utf-8"))["main"]
     drift = {k: (cur.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if cur.get(k) != base.get(k)}
     if drift:
         print(f"G0-2: 未声明偏差 {drift}", file=sys.stderr)
         return 1
     print(f"G0-2: 位级等于登记基线（R={cur['recall']}/FPR={cur['fpr']}/F1={cur['f1']}）"
-          "——57 条扩样金标 REJECT 为已登记诚实状态，质量门未达已上抛 owner")
+          "——59 条补缺金标（C 组 API 标签乱码 2 条入册，+2 FP 为真缺陷检出的机械记账，"
+          "见 exp59 supplement）REJECT 为已登记诚实状态，质量门未达已上抛 owner")
     return 0
 
 
