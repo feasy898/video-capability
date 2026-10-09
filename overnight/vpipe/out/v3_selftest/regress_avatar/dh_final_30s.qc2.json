@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/dh_final_30s.mp4",
- "generated_at": "2026-10-09T17:53:04",
+ "generated_at": "2026-10-09T19:21:18",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 30.042,
@@ -175,6 +175,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 4.66
+  "analyze_sec": 5.35
  }
 }

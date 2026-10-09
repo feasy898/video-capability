@@ -1,11 +1,11 @@
 {
  "schema_version": "2.0",
  "work_id": "marketing_ep01",
- "compiled_at": "2026-10-09T17:53:45",
+ "compiled_at": "2026-10-09T19:21:59",
  "compiler": "vdl2_compile.py@vpipe2.0-dev",
  "source_package": {
   "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/40_marketing_ep01.yaml",
-  "sha256": "2914c60be48eb495dfed5d664796f9bc398d1482c092fa57a32e6314404e12a8"
+  "sha256": "f78dbaf2af8403db0bb26e1f73d7181be2d15b9786c25bd979792e61ffad2a91"
  },
  "validation": {
   "ok": true,
