@@ -23,14 +23,14 @@
 - 评测基线：`python overnight/vpipe/eval/eval_run.py`（overnight/vpipe 下）→ ACCEPT；阈值唯一来源 `overnight/vpipe/eval/thresholds.yaml`（sha256 留痕对账）
 - 完整生成链需要：GPU + 模型权重 + 各通道 API key（均不在仓内，见 TASK.md 阶段 (a)）
 
-## 验收基线（2026-10-01 实测两次）
+## 验收基线（2026-10-01 立表；2026-10-09 判官配方 A+B 收官后更新）
 
 | 门 | 命令 | 基线 |
 |---|---|---|
-| G0-1 v3 自检 | `python overnight/vpipe/tests/run_v3_checks.py` | **ALL PASS / EXIT=0（1m33s）**（A 预检/B 豁免/C 白名单/D 无声明回归/E eval 双模块全 PASS） |
-| G0-2 E10 基准 | eval_run 独立复跑 | ACCEPT；R=1.000 / FPR=0.250 / F1=0.9143 与基准位级一致 |
-| G0-3 阈值对账 | `sha256sum overnight/vpipe/eval/thresholds.yaml` 与 eval 留痕 JSON 内记录一致 | 一致 |
-| G0-4 密钥零入库 | `git ls-files | grep -i secret` | 空 |
+| G0-1 v3 自检 | `python overnight/vpipe/tests/run_v3_checks.py` | **ALL PASS / EXIT=0（~1.5 分钟）**（A 预检/B 豁免/C 白名单/D 无声明回归/E eval 双模块全 PASS） |
+| G0-2 E10 基准 | eval_run 独立复跑（59 条金标） | **ACCEPT；R=0.9286 / FPR=0.2353 / F1=0.8966 / B_flag=0.5，与登记基线 exp61 supplement 位级一致**（2026-10-09-h 决策：J3 分通道阈+低运动平台声明制豁免 × J1 rubric 时序帧对；准入线四值未放水。旧 40 条基线 R=1.000/FPR=0.250/F1=0.9143 为扩样前历史值） |
+| G0-3 阈值对账 | `sha256sum overnight/vpipe/eval/thresholds.yaml` 与 eval 留痕 JSON 内记录一致 | 一致（thresholds v11；三版本指纹 registry 379ff86216a2 / prompt 04faaf977765 / spec vpipe-spec-v2.0+1d77 实算 MATCH） |
+| G0-4 密钥零入库 | `git ls-files \| grep -i secret` | 空 |
 
 ## 已知问题
 

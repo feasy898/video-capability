@@ -82,7 +82,7 @@ owner 的验收口径经历三次显式升级，一脉相承——**从"看成�
 2. **v2（09-08）**：数字验收——G7 夹具拦截率 ≥90%（目标 100%）、pass_structural 误杀 ≤15%、pass_candidate 误杀 ≤25%；不对称原则写进门禁校准逻辑。【owner 拍板】
 3. **v3/现役（09-28 方法论 + 10-01 任务卡）**：资产与回归验收——spec+eval 是资产，模块冻结契约、可多次重生成；工程底线四门（TASK.md §2.0）：
    - G0-1 v3 确定性自检全绿：`python overnight/vpipe/tests/run_v3_checks.py` → ALL PASS + EXIT=0；
-   - G0-2 E10 基准零未声明偏差：eval_run 独立复跑 ACCEPT，R=1.000 / FPR=0.250 / F1=0.9143 位级一致；
+   - G0-2 E10 基准零未声明偏差：eval_run 独立复跑 ACCEPT，与登记基线位级一致（2026-10-09 判官配方 A+B 收官后现役口径=59 条金标 R=0.9286/FPR=0.2353/F1=0.8966/B_flag=0.5，登记于 eval_results_exp61_ab_accept_supplement.json + thresholds.yaml v11；扩样前 40 条历史值 R=1.000/FPR=0.250/F1=0.9143）；
    - G0-3 阈值唯一来源可对账：thresholds.yaml sha256 与 eval 留痕一致；
    - G0-4 密钥零入库：`git ls-files | grep -i secret` → 空。
 4. **横向长期口径**（09-28）：自动质检要推到「无人SOTA」「接近人类水平」，只有确需人判才上升人类；人类干预形态限定为「文字反馈 / 在图上圈出修改位置 / 给参考」三种；数字人必须能行走/手势/持物互动，不止对口型。
