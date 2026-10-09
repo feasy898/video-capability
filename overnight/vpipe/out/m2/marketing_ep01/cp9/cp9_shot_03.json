@@ -2,9 +2,9 @@
   "schema_version": "2.0",
   "cp_id": "cp9",
   "artifact_type": "final_render",
-  "fingerprint": "fe6d17ba004c9e987cd3c19e6ee4d7ba4bcfbf0a1d814f99e5015ef46e53d4a5",
+  "fingerprint": "2befb7b13ad73a26b4e9075e904e4a529fa0a668046920d03ccd13db46a60b88",
   "produced_by": "gen_api",
-  "produced_at": "2026-10-08T21:14:19Z",
+  "produced_at": "2026-10-09T04:46:52Z",
   "upstream_refs": [
     {
       "cp_id": "cp6",
@@ -20,14 +20,14 @@
     "type": "rule",
     "params_ref": "cp9.gate.credit_cap_per_shot",
     "result": "pass",
-    "note": "实耗(估) 280 = 56积分/s × 5s（单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）（5s 标准档，等于上限）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=l7xJ2mybd23b。"
+    "note": "实耗(估) 280 = 56积分/s × 5s（单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）（5s 标准档，等于上限）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=l7xOQ0PXLaDX。【CP12 二轮回炉重渲 2026-10-09】缘由=cp12.json human_review.queue 2 条指向本镜（span 9.083-11.250s = CP3 shot_03 的 7.542-11.625s 区间）：J3 omnijev frame_freeze P=0.7500 灰区（[0.71,0.90)，未达 auto_reject 0.90）+ J6v2 qc_detectors_v2 frame_freeze conf=0.617（kind=zero_diff_run，run_diff_med=0.5534 近零帧差，run_pairs=52，同 span 互证）；另有 J1 glm8 identity_drift conf=0.60（瓶身标签/瓶型与 shot_05 回炉后终稿不一致）。根因=v1 prompt 两缺陷：① 「static camera」+「the bottle and reeds keep a perfectly rigid unchanged shape」为零运动指令，微距特写+static 机位致画面运动过小；② 「an amber glass diffuser bottle」无瓶型约束 → 生成侧凭空玻璃罗纹颈。修订：① 删 rigid unchanged shape 条款，改「static camera with a subtle breathing drift」（shot_01/shot_05 已验证微运动配方）+ 增「the reed diffuser reeds sway gently as if touched by a soft breeze, light reflections drift slowly across the glass shoulder」（藤条轻摇+光影漂移，幅度小而持续可测，替换 v1 光斑滑移短语）；② 改「a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring」与 shot_05 回炉后终稿一致，并增「no text, no letters, no typography」空白标强化（G2 纪律）。场景（暗调卧室夜景）/景别（extreme close-up）/产品定义（天然藤条+琥珀玻璃）/色彩（雪松绿金）与 v1 一致。H3-Max 真实调用 1 次（本轮回炉任务书授权 ≤1 次），task_id=l7xOQ0PXLaDX，est 280 积分（ledger 行#81）；线累计 1960+280=2240 ＞ 原 cap 2016（超 224=owner 300 元口径授权内特批，如实登记不伪造合规）；v1 终稿+工件存档 archive_rework_r1/。"
   },
   "aux_gates": [
     {
       "type": "rule",
       "params_ref": "cp9.gate.repro_log_complete",
       "result": "pass",
-      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 1b82a8cae35b39c5… + task_id 落盘 shot_03.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 84205a2cd6bd653b… + task_id 落盘 shot_03.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
     }
   ],
   "payload": {
@@ -36,17 +36,17 @@
     "channel": "api_h3max",
     "asset": {
       "kind": "clip",
-      "fingerprint": "1a38758741ab59c0f3f6541cde6023ad6079c4059fb27fc94acb0450515356b9",
+      "fingerprint": "5acf927a1c3f132ab67275cc01f802999369c72e454400ea587695c806d6c635",
       "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_03.final.mp4"
     },
     "resolution": "768P",
     "repro_level": "submit_params",
-    "submit_params_fingerprint": "1b82a8cae35b39c5929b605b1a5f9b8e8627af96ea2cd69023f1eebd4b9aa58c",
+    "submit_params_fingerprint": "84205a2cd6bd653bbfda68b3df5e36d871be88b2507165bbb4a7632b1e8fe4ca",
     "seed_recorded": null,
     "credit_spent": 280,
     "credit_cap_per_shot": 280,
     "draft_task_id": null,
     "rework_route": null
   },
-  "notes": "营销线单镜终稿件（CP9 权威形态，schema cp9_final_render 分支 jsonschema EXIT 见 build log）。credit_spent 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=l7xJ2mybd23b；分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_mode=text-to-video 显式）。资产 sha256=1a38758741ab59c0…（ffprobe+sha256 本地亲核）。"
+  "notes": "营销线单镜终稿件（CP9 权威形态，schema cp9_final_render 分支 jsonschema EXIT 见 build log）。credit_spent 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=l7xOQ0PXLaDX；分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_mode=text-to-video 显式）。资产 sha256=5acf927a1c3f132a…（ffprobe+sha256 本地亲核）。rework_route=null：本次为 CP9 层 prompt 定向修订重渲，未走 cp3/cp4/cp5 回退路由（checkpoint.schema rework_route enum 无 cp9 值，如实留 null，回炉缘由与修订内容见 gate.note）。回炉亲检（代理看帧+实测 2026-10-09，不代判）：微运动实测同口径 160x90 灰度帧差中位 v1 0.5929 → v2 0.6267（p10 0.1780→0.4001、min 0.0714→0.2490，近零帧差段显著收敛，中位增幅有限如实登记）；瓶型宽肩琥珀瓶+瓶颈牛皮纸色空白环带无任何文字（像素级放大复核）；木色颈圈未以木纹质感呈现（瓶颈带为纸色，与 shot_05 终稿的木圈+浅色瓶身标仍有可见差异，偏差方向较 v1 玻璃罗纹颈收敛，如实登记交判官复判）。最终判定以 CP12 三判官对新 master 重跑为准，不以亲检代判。"
 }

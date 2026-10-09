@@ -2,9 +2,9 @@
   "schema_version": "2.0",
   "cp_id": "cp11",
   "artifact_type": "composite",
-  "fingerprint": "46315097eae445007b3a37472e626e1eea77344fa14b6f15d56547402d5313ee",
+  "fingerprint": "067d675b060c7b15c3e36a577df1e5c6cf8d49fb7447c43c0ec418dbddf31c88",
   "produced_by": "agent.cp11_assembler.ffmpeg",
-  "produced_at": "2026-10-09T00:38:05Z",
+  "produced_at": "2026-10-09T04:46:57Z",
   "upstream_refs": [
     {
       "cp_id": "cp6",
@@ -16,7 +16,7 @@
     },
     {
       "cp_id": "cp9",
-      "fingerprint": "85f6580916b672030e67e0ecc5c371cf8f4aa2c30f09fe67d5dcad79c7f01027"
+      "fingerprint": "549094c20f160852a88ba19651da0753bb36136767d79a569828bd52e2d68e92"
     },
     {
       "cp_id": "cp10",
@@ -48,7 +48,7 @@
     "work_id": "marketing_ep01",
     "master_asset": {
       "kind": "clip",
-      "fingerprint": "8c4b37306a8b241ba894aae17565a5445265781bee3c25d85ae1357878674634",
+      "fingerprint": "5401cdd8dda0bfc17eafb1f316fcad32a98da2d0531a526d31d69620db400867",
       "path": "overnight/vpipe/out/m2/marketing_ep01/cp11/master.mp4"
     },
     "container": "mp4",

@@ -1,0 +1,102 @@
+{
+  "model": "OmniJev-4B(v1.1)",
+  "clip_id": "marketing_ep01",
+  "clip": "/data/night/mk01-cp12-r2/clips/marketing_ep01.mp4",
+  "mosaic": "/data/night/mk01-cp12-r2/clips/marketing_ep01.mosaic.jpg",
+  "questions": {
+    "q_frame_freeze": {
+      "type": "noul",
+      "instructions": "该视频是否存在画面定格（数秒不动）（frame_freeze）"
+    },
+    "q_flicker": {
+      "type": "noul",
+      "instructions": "该视频是否存在帧闪（帧间明暗/内容快速交替闪烁）（flicker）"
+    },
+    "q_color_shift": {
+      "type": "noul",
+      "instructions": "该视频是否存在整体色偏（颜色异常偏移）（color_shift）"
+    },
+    "q_face_blur": {
+      "type": "noul",
+      "instructions": "该视频是否存在人脸模糊（人脸区域异常模糊）（face_blur）"
+    },
+    "q_garble_text": {
+      "type": "noul",
+      "instructions": "该视频是否存在乱码文字（画面出现乱码/无意义文字）（garble_text）"
+    },
+    "q_temporal_swap": {
+      "type": "noul",
+      "instructions": "该视频是否存在段落错乱（时序跳变/场景切换不连贯）（temporal_swap）"
+    },
+    "q_pixelate": {
+      "type": "noul",
+      "instructions": "该视频是否存在像素化（画面局部马赛克/像素块）（pixelate）"
+    },
+    "q_ghosting": {
+      "type": "noul",
+      "instructions": "该视频是否存在拖影（运动残影/重影）（ghosting）"
+    },
+    "q_overall": {
+      "type": "noul",
+      "instructions": "该视频是否存在上述任何一种缺陷或其他明显的画面异常/生成伪影"
+    }
+  },
+  "answers": {
+    "q_frame_freeze": {
+      "noul": 0.75,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_flicker": {
+      "noul": 0.4387,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_color_shift": {
+      "noul": 0.6581,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_face_blur": {
+      "noul": 0.2357,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_garble_text": {
+      "noul": 0.0587,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_temporal_swap": {
+      "noul": 0.6812,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_pixelate": {
+      "noul": 0.2256,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_ghosting": {
+      "noul": 0.4554,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    },
+    "q_overall": {
+      "noul": 0.6324,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
+    }
+  },
+  "probs": {
+    "frame_freeze": 0.75,
+    "flicker": 0.4387,
+    "color_shift": 0.6581,
+    "face_blur": 0.2357,
+    "garble_text": 0.0587,
+    "temporal_swap": 0.6812,
+    "pixelate": 0.2256,
+    "ghosting": 0.4554,
+    "overall": 0.6324
+  }
+}

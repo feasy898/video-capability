@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_03",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Extreme close-up, static camera with a subtle breathing drift: natural rattan reeds standing in the neck of a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring, dark soft bedroom background, the reed diffuser reeds sway gently as if touched by a soft breeze, light reflections drift slowly across the glass shoulder. The reeds are dry natural rattan with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly travels along the curve; the blank craft-paper label stays clean and empty, no text, no letters, no typography; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 二轮回炉重渲（CP12 人工队列 2 条指向本镜后的定向修订，回炉员 2026-10-09）。基线=cp9/shots/shot_03.json 原 prompt（cp9_prompts.json shot_03 v1 原文），仅两处差异：① 可见微运动——v1「static camera」+「the bottle and reeds keep a perfectly rigid unchanged shape」为零运动指令（根因）：微距特写+static 机位致全镜运动过小，J3 frame_freeze P=0.7500 灰区 + J6v2 zero_diff_run conf=0.617（run_diff_med=0.5534 近零帧差，span 9.083-11.250s 落本镜 7.542-11.625s）→ 删 rigid unchanged shape 条款，改「static camera with a subtle breathing drift」（shot_01/shot_05 已验证配方）+ 增「the reed diffuser reeds sway gently as if touched by a soft breeze, light reflections drift slowly across the glass shoulder」（藤条轻摇+光影漂移，幅度小而持续可测，替换 v1 光斑滑移短语）；② 瓶型统一——v1「an amber glass diffuser bottle」无瓶型约束，生成侧凭空玻璃罗纹颈，与 shot_05 回炉后终稿（宽肩琥珀瓶+空白牛皮纸标+木色颈圈）跨镜 identity_drift（J1 conf=0.60）→ 改「a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring」与 shot_05 终稿一致，并增「no text, no letters, no typography」空白标强化（微距下标签若入画必清晰，G2 纪律）。场景（暗调卧室夜景）/景别（extreme close-up）/产品定义（天然藤条+琥珀玻璃）/色彩（雪松绿金）与 v1 一致。duration 口径不变：CP3 声明 4.13s → ceil=5s。"
+}

@@ -1,0 +1,12 @@
+{
+  "clip_id": "marketing_ep01",
+  "defect_detected": true,
+  "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "temporal_swap"
+  ],
+  "confidence": 0.75,
+  "spans": "full_clip:16帧均匀采样4x4拼图",
+  "notes": "noul概率 frame_freeze=0.750 flicker=0.439 color_shift=0.658 face_blur=0.236 garble_text=0.059 temporal_swap=0.681 pixelate=0.226 ghosting=0.455; overall=0.632; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+}

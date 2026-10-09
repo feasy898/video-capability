@@ -2,9 +2,9 @@
   "schema_version": "2.0",
   "cp_id": "cp9",
   "artifact_type": "final_render",
-  "fingerprint": "85f6580916b672030e67e0ecc5c371cf8f4aa2c30f09fe67d5dcad79c7f01027",
+  "fingerprint": "549094c20f160852a88ba19651da0753bb36136767d79a569828bd52e2d68e92",
   "produced_by": "gen_api",
-  "produced_at": "2026-10-09T00:37:41Z",
+  "produced_at": "2026-10-09T04:46:52Z",
   "upstream_refs": [
     {
       "cp_id": "cp6",
@@ -20,7 +20,7 @@
     "type": "rule",
     "params_ref": "cp9.gate.credit_cap_per_shot",
     "result": "pass",
-    "note": "6 镜精修（5 产品镜 + shot_01 口播镜降级变体 no-talking-head）：现役 est 合计 1680（56积分/s × 30s 提交秒数，cp9_prompts.json total_submitted_seconds=30 同源）＜ 线集级上限 2016（cp1.budget.credit_cap_total；--credit-cap 实跑守卫，超限 exit 3）；单镜 280 为 5s 标准档锚点，>5s 镜 warn 标注（CP3 分镜守恒 ceil 所致，单镜口径详见各单镜件；全部 5s 标准档）。H3-Max 真实调用累计 7 次（v1 线红线 6 次用满 + CP12 回炉任务书授权 1 次，2026-10-09）；avatar 真实调用 0 次（参考图缺位降级，理由见 cp9_shot_01.json gate.note）。【回炉】shot_05 于 2026-10-09 定向修订重渲（CP12 队列 3 条清偿动作：J1 identity_drift 0.62 + J3 frame_freeze 0.711 灰区 + J6v2 zero_diff_run 0.758，均指 14.625-17.375s），缘由与 prompt 差异见 cp9_shot_05.json gate.note；v1 终稿与工件存档 rework/archive_rework_r1/；线累计消耗 1680+280=1960 ≤ 2016（rework 280 记账 ledger 行#80）。"
+    "note": "6 镜精修（5 产品镜 + shot_01 口播镜降级变体 no-talking-head）：现役 est 合计 1680（56积分/s × 30s 提交秒数）；回炉沉没累计 560（shot_05 2026-10-09 行#80 + shot_03 二轮回炉同日行#81），线累计 2240 ＞ 线集级原上限 2016（cp1.budget.credit_cap_total），超 224 为 owner 300 元口径授权内特批（如实登记，不伪造 cap 合规）；单镜 280 为 5s 标准档锚点（全部 5s 标准档）。H3-Max 真实调用累计 8 次（v1 线红线 6 次用满 + shot_05 回炉授权 1 次 + shot_03 二轮回炉授权 1 次，均 2026-10-09）；avatar 真实调用 0 次（参考图缺位降级，理由见 cp9_shot_01.json gate.note）。【回炉】shot_05 于 2026-10-09 一轮定向修订重渲（CP12 队列 3 条清偿动作，见 cp9_shot_05.json gate.note；v1 存档 rework/archive_rework_r1/）；shot_03 同日二轮定向修订重渲（CP12 残留队列 2 条清偿动作：J3 灰区 frame_freeze + J6v2 zero_diff_run 同指 9.083-11.250s，另 J1 identity_drift 瓶型跨镜不一致；缘由与差异见 cp9_shot_03.json gate.note；v1 存档 rework_r2/archive_rework_r1/）。"
   },
   "aux_gates": [
     {
@@ -75,12 +75,12 @@
         "channel": "api_h3max",
         "asset": {
           "kind": "clip",
-          "fingerprint": "1a38758741ab59c0f3f6541cde6023ad6079c4059fb27fc94acb0450515356b9",
+          "fingerprint": "5acf927a1c3f132ab67275cc01f802999369c72e454400ea587695c806d6c635",
           "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_03.final.mp4"
         },
         "resolution": "768P",
         "repro_level": "submit_params",
-        "submit_params_fingerprint": "1b82a8cae35b39c5929b605b1a5f9b8e8627af96ea2cd69023f1eebd4b9aa58c",
+        "submit_params_fingerprint": "84205a2cd6bd653bbfda68b3df5e36d871be88b2507165bbb4a7632b1e8fe4ca",
         "seed_recorded": null,
         "credit_spent": 280,
         "credit_cap_per_shot": 280,
@@ -143,15 +143,15 @@
       }
     ],
     "est_credit_total": 1680,
-    "h3max_real_calls": 7,
+    "h3max_real_calls": 8,
     "budget": {
       "episode_cap": 2016,
       "est_total": 1680,
-      "rework_sunk_credit": 280,
-      "cumulative_spent": 1960,
-      "headroom": 56,
-      "note": "现役 6 镜 est 合计 1680（30s 提交秒数）+ CP12 回炉 shot_05 重渲沉没 280 = 线累计 1960 ≤ 2016（cp1.budget.credit_cap_total）；ledger 行#80 记账"
+      "rework_sunk_credit": 560,
+      "cumulative_spent": 2240,
+      "headroom": -224,
+      "note": "现役 6 镜 est 合计 1680（30s 提交秒数）+ CP12 回炉沉没 560（shot_05 重渲 280=ledger 行#80 + shot_03 二轮回炉 280=行#81）= 线累计 2240 ＞ 原 cap 2016（cp1.budget.credit_cap_total），超 224：owner 300 元口径授权内特批，如实登记不伪造 cap 合规"
     }
   },
-  "notes": "营销线 EP01 CP9 聚合件（后半程）：单镜权威件=cp9_shot_XX.json。2026-10-09 CP12 回炉更新：shot_05 条目已替换为重渲版（新 sha256/参数指纹）；现役 est 合计 1680、回炉沉没 280、线累计 1960 ≤ 2016。"
+  "notes": "营销线 EP01 CP9 聚合件（后半程）：单镜权威件=cp9_shot_XX.json。2026-10-09 CP12 回炉更新（两轮）：shot_05（一轮）与 shot_03（二轮）条目均已替换为重渲版（新 sha256/参数指纹）；现役 est 合计 1680、线累计 2240（含回炉沉没 560，超原 cap 224 已如实登记）。"
 }

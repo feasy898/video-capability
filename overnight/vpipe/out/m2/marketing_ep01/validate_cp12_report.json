@@ -17,7 +17,7 @@
     {
       "name": "episode_score_formula",
       "ok": true,
-      "detail": "score 25 = 0.7×mean 25 + 0.3×worst 25（复算一致，短板惩罚恒等式；verdict='pass'）"
+      "detail": "score 100 = 0.7×mean 100 + 0.3×worst 100（复算一致，短板惩罚恒等式；verdict='pass'）"
     },
     {
       "name": "gate_groups_a_group",
@@ -47,7 +47,7 @@
     {
       "name": "human_escalation_rate_max",
       "ok": true,
-      "detail": "human_escalation_rate 0.1667 ≤ cp12.gate.human_escalation_rate_max=0.2（白皮书 §3 CP12：人工上升率 ≤20%；yaml 无按 episode 类型分档键，单键口径）"
+      "detail": "human_escalation_rate 0.0833 ≤ cp12.gate.human_escalation_rate_max=0.2（白皮书 §3 CP12：人工上升率 ≤20%；yaml 无按 episode 类型分档键，单键口径）"
     },
     {
       "name": "routed_reworks_legal",
@@ -57,7 +57,7 @@
     {
       "name": "retry_round_max",
       "ok": true,
-      "detail": "retry_round 1 ≤ cp12.gate.retry_round_max=2（白皮书 §3 CP12：重试 ≤2 轮仍不过 → 人工工单+标记结构性困难+进金标扩样队列）"
+      "detail": "retry_round 2 ≤ cp12.gate.retry_round_max=2（白皮书 §3 CP12：重试 ≤2 轮仍不过 → 人工工单+标记结构性困难+进金标扩样队列）"
     },
     {
       "name": "params_ref_resolvable",
@@ -67,7 +67,7 @@
     {
       "name": "master_score_warn_only",
       "ok": true,
-      "detail": "master_score_min=70 仅作 warn 阈（本件 score 25<阈）——不作自动放行门，键存在性已由 load_thresholds 保证（缺失 exit 2）"
+      "detail": "master_score_min=70 仅作 warn 阈（本件 score 100≥阈）——不作自动放行门，键存在性已由 load_thresholds 保证（缺失 exit 2）"
     },
     {
       "name": "episode_reject_is_data",
@@ -75,10 +75,8 @@
       "detail": "episode_verdict.verdict=pass（无自录驳回）"
     }
   ],
-  "warnings": [
-    "成片分 25 < cp12.gate.master_score_min=70：70 分人评锚定（120 片段）未完成前只作 warn 阈与人工队列排序依据，不作自动放行/否决门（白皮书 §7 非目标 8；SPEC_v2 §5 边界 3）——本件照常按①-⑤/s1 判定，warn 已登记灰区排序"
-  ],
-  "warn_only_count": 1,
+  "warnings": [],
+  "warn_only_count": 0,
   "evidence": {},
   "work_id": "marketing_ep01",
   "thresholds_keys_used": [
@@ -93,7 +91,7 @@
     "checkpoints.cp12.gate.human_escalation_rate_max",
     "checkpoints.cp12.gate.retry_round_max"
   ],
-  "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
+  "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2",
   "veto_groups": [
     "a_group",
     "b_group"

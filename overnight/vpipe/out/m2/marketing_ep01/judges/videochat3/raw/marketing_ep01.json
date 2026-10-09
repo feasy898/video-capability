@@ -1,7 +1,7 @@
 {
   "model": "VideoChat3-4B",
   "clip_id": "marketing_ep01",
-  "clip": "/data/night/mk01-cp12-r2/clips/marketing_ep01.mp4",
+  "clip": "/data/night/mk01-cp12-r3/clips/marketing_ep01.mp4",
   "inputs": {
     "mode": "video",
     "fps": 0.25,
@@ -15,5 +15,5 @@
     "method": "json",
     "reason": "画面中无明显缺陷"
   },
-  "gen_seconds": 2.13
+  "gen_seconds": 2.08
 }

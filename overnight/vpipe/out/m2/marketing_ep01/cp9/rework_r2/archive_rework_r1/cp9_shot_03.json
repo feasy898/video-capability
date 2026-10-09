@@ -1,0 +1,52 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp9",
+  "artifact_type": "final_render",
+  "fingerprint": "fe6d17ba004c9e987cd3c19e6ee4d7ba4bcfbf0a1d814f99e5015ef46e53d4a5",
+  "produced_by": "gen_api",
+  "produced_at": "2026-10-08T21:14:19Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp6",
+      "fingerprint": "972211e4b2f6a32be405eed343697c5f811bf6b9b5fb0ae7c7dc8fe9e32acdbe"
+    },
+    {
+      "cp_id": "cp8",
+      "fingerprint": "bef1b40a4171a14fa7c3d824a1fbae522b16c43dc9d8be5149009b21ca4e4d1b"
+    }
+  ],
+  "status": "passed",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp9.gate.credit_cap_per_shot",
+    "result": "pass",
+    "note": "实耗(估) 280 = 56积分/s × 5s（单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）（5s 标准档，等于上限）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=l7xJ2mybd23b。"
+  },
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp9.gate.repro_log_complete",
+      "result": "pass",
+      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 1b82a8cae35b39c5… + task_id 落盘 shot_03.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+    }
+  ],
+  "payload": {
+    "work_id": "marketing_ep01",
+    "shot_id": "shot_03",
+    "channel": "api_h3max",
+    "asset": {
+      "kind": "clip",
+      "fingerprint": "1a38758741ab59c0f3f6541cde6023ad6079c4059fb27fc94acb0450515356b9",
+      "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_03.final.mp4"
+    },
+    "resolution": "768P",
+    "repro_level": "submit_params",
+    "submit_params_fingerprint": "1b82a8cae35b39c5929b605b1a5f9b8e8627af96ea2cd69023f1eebd4b9aa58c",
+    "seed_recorded": null,
+    "credit_spent": 280,
+    "credit_cap_per_shot": 280,
+    "draft_task_id": null,
+    "rework_route": null
+  },
+  "notes": "营销线单镜终稿件（CP9 权威形态，schema cp9_final_render 分支 jsonschema EXIT 见 build log）。credit_spent 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=l7xJ2mybd23b；分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_mode=text-to-video 显式）。资产 sha256=1a38758741ab59c0…（ffprobe+sha256 本地亲核）。"
+}

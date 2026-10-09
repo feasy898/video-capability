@@ -5,7 +5,7 @@
  "duration_s": 5,
  "aspect": "9:16",
  "resolution": "768P",
- "prompt": "Extreme close-up, static camera: natural rattan reeds standing in the neck of an amber glass diffuser bottle, gentle light glints sliding along the glass shoulder, dark soft bedroom background, the bottle and reeds keep a perfectly rigid unchanged shape. The reeds are dry natural rattan with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly travels along the curve; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "prompt": "Extreme close-up, static camera with a subtle breathing drift: natural rattan reeds standing in the neck of a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring, dark soft bedroom background, the reed diffuser reeds sway gently as if touched by a soft breeze, light reflections drift slowly across the glass shoulder. The reeds are dry natural rattan with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly travels along the curve; the blank craft-paper label stays clean and empty, no text, no letters, no typography; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
  "audio": {
   "generate": true
  },
@@ -13,5 +13,5 @@
   "preferred": "api",
   "model": "MiniMax-H3-Max"
  },
- "notes": "CP9 精修（T4 api_h3max，营销线后半程）。CP3 声明镜长 4.13s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。prompt 基底=cp7 草稿验证构图（draft shot_03@ltx2b_draft，CP8 单镜件 upstream），色彩/质感/光影/风格段为 CP9 新补全（栖野香薰：琥珀玻璃瓶/天然藤条/雪松绿金调/卧室暖光；SPIKE-REPORT 发现 B：草稿色偏不可信，色彩全由 prompt 承载）。G2 纪律：品牌名/价格不进生成侧，no readable label 显式。image_mode=云通道显式 text-to-video（纯 T2V，无参考图）。"
+ "notes": "CP9 精修（T4 api_h3max，营销线后半程）。CP3 声明镜长 4.13s → ceil=5s（H3-Max 整数秒区间 [5,15]，不截动作拍）。2026-10-09 CP12 二轮回炉修订：① 删「the bottle and reeds keep a perfectly rigid unchanged shape」零运动指令，static camera → static camera with a subtle breathing drift（shot_01/shot_05 已验证微运动配方）+ 增藤条轻摇/光影漂移条款；② 瓶型统一为 wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring（与 shot_05 回炉后终稿一致）+ 空白标强化。场景/景别/产品定义/色彩与 v1 一致；修订缘由=cp12 队列 2 条指本镜（frame_freeze×2 互证 + J1 identity_drift），详见 cp9_shot_03.json gate.note。G2 纪律：品牌名/价格不进生成侧。image_mode=云通道显式 text-to-video。"
 }

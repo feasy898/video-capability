@@ -1,63 +1,47 @@
 {
  "schema_version": "2.0",
  "clip_id": "marketing_ep01",
- "generated_at": "2026-10-09T00:54:02Z",
+ "generated_at": "2026-10-09T05:00:12Z",
  "work_id": "marketing_ep01",
  "qc_mode": "online",
  "checkpoint": {
   "cp_id": "cp12",
-  "artifact_ref": "07af8a0c01f6ffbcd9088f123e11cf38c055be9ea8b49512f24201af4e7fe5ca"
+  "artifact_ref": "08b2034cbd14e29e877a2e4a8e6e8420cf679f4bf5a634d38a3c5b88fc4b741d"
  },
  "verdict": {
-  "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.75,
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.78,
   "decided_by": "cp12.composite(E10=J1∨J3@0.71 成片合议 + cp12.gate.master_score_min 成片绝对门)",
   "reasons": [
-   "J1(detected=True, types=['identity_drift'], conf=0.6)",
-   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.75",
-   "成片分 25.0 = 0.7×mean(25.0) + 0.3×worst(25.0)，6 段继承成片单镜分（镜级 QCReport 未产出，按任务预案单镜近似并声明）；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与排序依据）",
+   "J1(detected=False, types=[], conf=0.78)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6868",
+   "成片分 100.0 = 0.7×mean(100.0) + 0.3×worst(100.0)，6 段继承成片单镜分（镜级 QCReport 未产出，按任务预案单镜近似并声明）；绝对门阈见 params_ref=cp12.gate.master_score_min（人评锚定完成前仅 warn 阈与排序依据）",
    "J6v2 成片重跑：5 拼接切点（CP6 帧界累计 114/181/279/351/418÷24fps）全部落入 known_cuts 白名单（judges.J6_detectors_v2.rule_params.known_cuts_tol_s=0.5）被豁免，零 temporal_swap 误报——合成层硬切点登记制生效",
-   "J6v2 emitted frame_freeze（frame_freeze conf 0.617 span 9.083-11.250s 落 shot_03（7.542-11.625s，CP3 move=static））按 role=signal_only 不翻 verdict、入 defects[]+人工队列（回炉轮 r2：v1 shot_05 span 14.625-17.375s 信号已消除，残留以本轮实跑为准）",
-   "shot_01 口播镜降级 no-talking-head（参考图缺位，owner 预留路径），无 avatar 段无单列 avatar QC；【回炉轮 r2】shot_05 已重渲（标签空白化+微运动修订，H3-Max 1 次 task_id=1y1KngRVLRVj），v1 标签乱码瑕疵按本轮判官复判结果登记，判定见 judges/ 三家输出",
-   "人工上升率实测 0.17（TASK_v4 验收脚本 CP 粒度口径 =（CP1 pending 1 + CP12 队列非空 1）/12；队列明细 3 条含对照口径 0.33超限（如实并记））；TASK_v4 W9 营销线 ≤0.10超限（如实登记）；thresholds 0.20未超"
+   "J6v2 emitted 无（—）按 role=signal_only 不翻 verdict、入 defects[]+人工队列（回炉轮 r3：r2 残留 shot_03 span 9.083-11.250s 信号（zero_diff_run 0.617）经二轮回炉后以本轮实跑为准，残留如实登记）",
+   "shot_01 口播镜降级 no-talking-head（参考图缺位，owner 预留路径），无 avatar 段无单列 avatar QC；【回炉轮 r3】shot_03 已二轮回炉重渲（微运动+瓶型统一修订，H3-Max 1 次 task_id=l7xOQ0PXLaDX，线累计 2240 超原 cap 224 已如实登记），r2 残留 identity_drift/frame_freeze 瑕疵按本轮判官复判结果登记，判定见 judges/ 三家输出",
+   "人工上升率实测 0.08（TASK_v4 验收脚本 CP 粒度口径 =（CP1 pending 1 + CP12 队列非空 1）/12；队列明细 0 条含对照口径 0.08未超）；TASK_v4 W9 营销线 ≤0.10未超；thresholds 0.20未超"
   ]
  },
- "defects": [
-  {
-   "type": "frame_freeze",
-   "sources": [
-    "J3",
-    "J6"
-   ],
-   "confidence": 0.75
-  },
-  {
-   "type": "identity_drift",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.6
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.75,
-   "flicker": 0.4387,
-   "color_shift": 0.6581,
-   "face_blur": 0.2357,
-   "garble_text": 0.0587,
-   "temporal_swap": 0.6812,
-   "pixelate": 0.2256,
-   "ghosting": 0.4554
+   "frame_freeze": 0.6783,
+   "flicker": 0.5061,
+   "color_shift": 0.6721,
+   "face_blur": 0.2476,
+   "garble_text": 0.0578,
+   "temporal_swap": 0.6868,
+   "pixelate": 0.2238,
+   "ghosting": 0.4521
   },
-  "overall": 0.6324,
+  "overall": 0.6258,
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
   }
  },
  "spans": [
@@ -65,7 +49,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f07 (@16.2s)"
+    "text": "无"
    }
   },
   {
@@ -91,20 +75,18 @@
   {
    "type": "note",
    "evidence": {
-    "text": "J3 未达判定阈(0.71)的次高通道只登记数据不入队列：temporal_swap=0.6812; color_shift=0.6581; ghosting=0.4554；J3 拼图判官不知 known_cuts 白名单，5 个登记硬切点（CP6 帧界累计）可解释其 temporal_swap 信号"
+    "text": "J3 未达判定阈(0.71)的次高通道只登记数据不入队列：temporal_swap=0.6868; frame_freeze=0.6783; color_shift=0.6721；J3 拼图判官不知 known_cuts 白名单，5 个登记硬切点（CP6 帧界累计）可解释其 temporal_swap 信号"
    }
   }
  ],
  "judges": {
   "J1": {
    "clip_id": "marketing_ep01",
-   "defect_detected": true,
-   "defect_types": [
-    "identity_drift"
-   ],
-   "confidence": 0.6,
-   "spans": "f07 (@16.2s)",
-   "notes": "逐项核查：8类标准缺陷中，无定格（f04-f05为同一慢移镜头，构图有连续变化）、无闪烁、无整体色偏（f01-f02日光、f07黄昏、f08夕照均属场景性布光变化）、无人脸、字幕文字（f01/f03/f04/f06/f07/f08中文）渲染完整无乱码、场景切换为营销片正常硬切且叙事连贯（窗台→桌面→特写→床头→CTA），无像素化与拖影。手部方面，f06入镜的手为捏持藤条姿态，拇指与手指结构可辨，未见多指/融指等解剖异常；瓶内藤条呈扇形交叉属扩香藤条正常形态，不构成计数异常；物体支撑（瓶置于木垫/桌面）合理。唯一可疑点：主体产品外观跨帧突变——f01-f06与f08中为无标签的琥珀玻璃瓶，藤条直接插入玻璃瓶口、液面可见；而f07中瓶身多出白色标签，且瓶口出现浅色木质环状颈圈，瓶型轮廓亦略有差异（同为核心展示主体）。按rubric主体跨帧外观突变判为identity_drift；因不排除商家刻意展示带标款式，置信度中等。"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.78,
+   "spans": "无",
+   "notes": "逐帧核对8帧：f01-f02窗台日景、f03桌面暖光、f04-f05瓶颈特写、f06手拨藤条、f07-f08卧室夜景至下单引导，场景按日→夜→CTA顺序推进，属正常广告混剪节奏，无时序错乱。各帧字幕（f01/f02、f03、f04/f05、f06、f07、f08）中文渲染完整、语义通顺，无乱码。f06入镜的手五指形态自然、握持藤条动作合理，无多指/融指；瓶体始终有木质底座或台面支撑，藤条经瓶口插入瓶内呈散射状，符合物理。f04与f05间隔约2.4s画面高度相似，但为固定机位静物特写，属正常静止镜头而非定格。f04-f05暗绿背景与f07黄昏冷暖对比为布光设计，非整体色偏。f07远景瓶身隐约可见白色标签，与近景无标签略有差异，但瓶型、琥珀色玻璃、藤条等主体特征一致，跨场景呈现差异证据不足，不判identity_drift。未发现闪烁、拖影、像素化、计数异常，判定干净。"
   },
   "J3": {
    "clip_id": "marketing_ep01",
@@ -128,13 +110,11 @@
   },
   "J6": {
    "clip_id": "marketing_ep01",
-   "defect_detected": true,
-   "defect_types": [
-    "frame_freeze"
-   ],
-   "confidence": 0.617,
-   "spans": "frame_freeze:[9.083, 11.25]",
-   "notes": "qc_detectors_v2 temporal rules（CPU）；emitted=['frame_freeze']（≥emit_conf 0.55）；rejected=['temporal_swap_known_cuts']；role=signal_only"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": null,
+   "spans": "",
+   "notes": "qc_detectors_v2 temporal rules（CPU）；emitted=[]（≥emit_conf 0.55）；rejected=['temporal_swap_known_cuts']；role=signal_only"
   }
  },
  "inputs": {
@@ -148,41 +128,22 @@
   }
  },
  "episode_verdict": {
-  "score": 25.0,
-  "mean_shot_score": 25.0,
-  "worst_shot_score": 25.0,
+  "score": 100.0,
+  "mean_shot_score": 100.0,
+  "worst_shot_score": 100.0,
   "formula": "0.7*mean+0.3*worst",
   "verdict": "pass",
   "params_ref": "cp12.gate.master_score_min",
   "shot_qc_refs": [
    {
     "shot_id": "marketing_ep01",
-    "qc_report_fingerprint": "03360724f09271fa6d20a0521c70f695a586c0dccb35d23fd6c85ff48ca8a0f7"
+    "qc_report_fingerprint": "26402b48df090c4183e93649b8847e6cf7f84e3dbb255dfa5801e4aa15f7c3f4"
    }
   ]
  },
  "human_review": {
-  "queue": [
-   {
-    "ref": "marketing_ep01",
-    "reason": "J3 通道 frame_freeze P=0.7500 落灰区 [0.71,0.90)（judges.J3_omnijev.gray_zone），未达 auto_reject_p=0.90——检出待人工复核",
-    "params_ref": "judges.J3_omnijev.gray_zone",
-    "outcome": "pending"
-   },
-   {
-    "ref": "marketing_ep01",
-    "reason": "J1 glm8 检出 identity_drift (confidence=0.6)——judge 缺陷登记（C 组口径不自动否决）",
-    "params_ref": "ensemble.definitions.E10",
-    "outcome": "pending"
-   },
-   {
-    "ref": "marketing_ep01",
-    "reason": "J6v2 frame_freeze emitted conf=0.617 ≥ emit_conf=0.55，span 9.083-11.250s（kind=zero_diff_run，run_diff_med=0.5534，run_pairs=52）——span 落 shot_03（7.542-11.625s，CP3 move=static）；judges.J6_detectors_v2 role=signal_only 不作否决，检出待人工裁决",
-    "params_ref": "judges.J6_detectors_v2.rule_params.emit_conf",
-    "outcome": "pending"
-   }
-  ],
-  "escalation_rate": 0.1667,
+  "queue": [],
+  "escalation_rate": 0.0833,
   "params_ref": "cp12.gate.human_escalation_rate_max"
  },
  "qc_context": {

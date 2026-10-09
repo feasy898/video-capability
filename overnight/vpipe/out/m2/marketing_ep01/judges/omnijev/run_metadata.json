@@ -43,29 +43,29 @@
   },
   "threshold": 0.5,
   "chunk": 9,
-  "load_seconds": 47.1,
+  "load_seconds": 29.7,
   "clips": [
     {
       "clip_id": "marketing_ep01",
       "ok": true,
       "probs": {
-        "frame_freeze": 0.75,
-        "flicker": 0.4387,
-        "color_shift": 0.6581,
-        "face_blur": 0.2357,
-        "garble_text": 0.0587,
-        "temporal_swap": 0.6812,
-        "pixelate": 0.2256,
-        "ghosting": 0.4554,
-        "overall": 0.6324
+        "frame_freeze": 0.6783,
+        "flicker": 0.5061,
+        "color_shift": 0.6721,
+        "face_blur": 0.2476,
+        "garble_text": 0.0578,
+        "temporal_swap": 0.6868,
+        "pixelate": 0.2238,
+        "ghosting": 0.4521,
+        "overall": 0.6258
       },
       "peak_vram_mb": 11737.3,
-      "latency_s": 76.61
+      "latency_s": 80.51
     }
   ],
   "n_clips": 1,
   "n_ok": 1,
   "n_fail": 0,
   "torch": "2.7.0+cu126",
-  "finished_at": "2026-10-09 08:48:53"
+  "finished_at": "2026-10-09 12:57:14"
 }

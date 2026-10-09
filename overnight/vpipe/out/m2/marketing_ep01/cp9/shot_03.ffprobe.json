@@ -30,7 +30,7 @@
    "start_time": "0.000000",
    "duration_ts": 124000,
    "duration": "5.166667",
-   "bit_rate": "5224456",
+   "bit_rate": "6872028",
    "bits_per_raw_sample": "8",
    "nb_frames": "124",
    "extradata_size": 38,
@@ -82,7 +82,7 @@
    "start_time": "0.000000",
    "duration_ts": 165888,
    "duration": "5.184000",
-   "bit_rate": "179126",
+   "bit_rate": "194881",
    "nb_frames": "163",
    "extradata_size": 5,
    "disposition": {
@@ -120,14 +120,14 @@
   "format_long_name": "QuickTime / MOV",
   "start_time": "0.000000",
   "duration": "5.184000",
-  "size": "3496896",
-  "bit_rate": "5396444",
+  "size": "4571162",
+  "bit_rate": "7054262",
   "probe_score": 100,
   "tags": {
    "minor_version": "512",
    "major_brand": "isom",
    "compatible_brands": "isomiso2avc1mp41",
-   "AIGC": "{\"Label\":\"1\",\"ContentProducer\":\"MiniMax\",\"ProduceID\":\"6ac8064d00000000816a32b1330f16cd\",\"ReservedCode1\":\"{\\\"SecurityData\\\":{\\\"Type\\\":\\\"TC260PG\\\",\\\"Version\\\":1,\\\"PubSD\\\":[{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"LabelMataData\\\"},\\\"Signature\\\":\\\"67f7a6ab4139866667ade6594c8ec59d2c6fc016eee618f7974e3cc2c878927ff7e261c44811384892516869b78e6db1eda88f25f0d2627cb4594277fc272f7a\\\"},{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"Binding\\\",\\\"BType\\\":\\\"0\\\"},\\\"Signature\\\":\\\"8698c40569c4d16852358e5af0b3171101937783ab5c84f6035586dca69bafdbe851f4a0c9fbf42243fe0d447c9401e989504b832368e0667f3311fc515f2918\\\"},{\\\"Type\\\":\\\"PubKey\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"KeyValue\\\":\\\"00a0b3b0b6a0c9b0c89cab328342af4e8221ec5b40799cbe835ab4251f7b47e4fd\\\"}],\\\"Bindings\\\":[{\\\"Type\\\":\\\"Hash\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.401\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"Signature\\\":\\\"fb8d617fc038781ca6bfd8ea39daed4792393901235d80016305529129a1df7f\\\"}]}}\",\"ContentPropagator\":\"MiniMax\",\"PropagateID\":\"6ac8064d00000000816a32b1330f16cd\",\"ReservedCode2\":\"{\\\"SecurityData\\\":{\\\"Type\\\":\\\"TC260PG\\\",\\\"Version\\\":1,\\\"PubSD\\\":[{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"LabelMataData\\\"},\\\"Signature\\\":\\\"8a128bf7fd51a055587bff5fba5da369bfc0219f5344f7cec51780024699a28bb119d9dc3b1ff3aac52652177f786fff55fd24f1f0eff2fd45721a5328fe57dd\\\"},{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"Binding\\\",\\\"BType\\\":\\\"0\\\"},\\\"Signature\\\":\\\"d20bb03a4ade067e1bcf7d34b6961bc1a548ae55f20643b9d4307e11e97e6ef76f1bf8187a7cc25d799a8c1c3ea1c63c60b3f1a2fafc0192a4fe934e374311c8\\\"},{\\\"Type\\\":\\\"PubKey\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"KeyValue\\\":\\\"00a0b3b0b6a0c9b0c89cab328342af4e8221ec5b40799cbe835ab4251f7b47e4fd\\\"}],\\\"Bindings\\\":[{\\\"Type\\\":\\\"Hash\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.401\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"Signature\\\":\\\"fb8d617fc038781ca6bfd8ea39daed4792393901235d80016305529129a1df7f\\\"}]}}\"}",
+   "AIGC": "{\"Label\":\"1\",\"ContentProducer\":\"MiniMax\",\"ProduceID\":\"6ac870c200000000f6340b17c4d72f3e\",\"ReservedCode1\":\"{\\\"SecurityData\\\":{\\\"Type\\\":\\\"TC260PG\\\",\\\"Version\\\":1,\\\"PubSD\\\":[{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"LabelMataData\\\"},\\\"Signature\\\":\\\"2e58a8ac8e6b28640061a185c2f62f26748a5180badec53c9fff308651892ece9de8f0957cbc110438dd4354c431b9350936905b8b794f4e0094fc172cc20160\\\"},{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"Binding\\\",\\\"BType\\\":\\\"0\\\"},\\\"Signature\\\":\\\"4c9629001de2ea8a866f81ebdf815de7f8b3e8c0ff63f14a309336c116324338bc581c7b7fa16c9ed42d39fd1e101910a8ffa4cb24f4a38ca13d5233c7319ae9\\\"},{\\\"Type\\\":\\\"PubKey\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"KeyValue\\\":\\\"00a0b3b0b6a0c9b0c89cab328342af4e8221ec5b40799cbe835ab4251f7b47e4fd\\\"}],\\\"Bindings\\\":[{\\\"Type\\\":\\\"Hash\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.401\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"Signature\\\":\\\"68e2bc356b14ccadfa4e4482c41be2234d5d9c99bbe03e7e7283f0555fc35095\\\"}]}}\",\"ContentPropagator\":\"MiniMax\",\"PropagateID\":\"6ac870c200000000f6340b17c4d72f3e\",\"ReservedCode2\":\"{\\\"SecurityData\\\":{\\\"Type\\\":\\\"TC260PG\\\",\\\"Version\\\":1,\\\"PubSD\\\":[{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"LabelMataData\\\"},\\\"Signature\\\":\\\"3f77734c907f740e72fe1efbcd1153f1aa47c0b95ec458c440fb3279eb1d98dce6ab023c571b7b26eb4bd95449b332243388e636e934094596b52c3dcfb05375\\\"},{\\\"Type\\\":\\\"DS\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"Binding\\\",\\\"BType\\\":\\\"0\\\"},\\\"Signature\\\":\\\"0edeb0beedcdc407341a4efa54f9ef177b5f25085a0ce90a5328acfe3edcbeb6c4ba5c9dae0000c2d596f18d8a4bc472475fbc90118d91c1d63c425d49cbde91\\\"},{\\\"Type\\\":\\\"PubKey\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.501\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"KeyValue\\\":\\\"00a0b3b0b6a0c9b0c89cab328342af4e8221ec5b40799cbe835ab4251f7b47e4fd\\\"}],\\\"Bindings\\\":[{\\\"Type\\\":\\\"Hash\\\",\\\"AlgID\\\":\\\"1.2.156.10197.1.401\\\",\\\"TBSData\\\":{\\\"Type\\\":\\\"\\\"},\\\"Signature\\\":\\\"68e2bc356b14ccadfa4e4482c41be2234d5d9c99bbe03e7e7283f0555fc35095\\\"}]}}\"}",
    "encoder": "Lavf58.76.100"
   }
  }

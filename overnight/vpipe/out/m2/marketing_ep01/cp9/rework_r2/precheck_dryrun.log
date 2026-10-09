@@ -1,0 +1,14 @@
+{
+  "note": "dry-run：未发任何 HTTP",
+  "backend": "cloud",
+  "n_shots": 1,
+  "sample_payload": {
+    "model": "MiniMax-H3-Max",
+    "prompt": "Extreme close-up, static camera with a subtle breathing drift: natural rattan reeds standing in the neck of a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring, dark soft bedroom background, the reed diffuser reeds sway gently as if touched by a soft breeze, light reflections drift slowly across the glass shoulder. The reeds are dry natural rattan with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly travels along the curve; the blank craft-paper label stays clean and empty, no text, no letters, no typography; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+    "duration": 5,
+    "resolution": "768P",
+    "ratio": "9:16",
+    "generate_audio": true,
+    "image_mode": "text-to-video"
+  }
+}

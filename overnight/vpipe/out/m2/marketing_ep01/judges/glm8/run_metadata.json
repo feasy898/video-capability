@@ -2,21 +2,19 @@
   "judge": "glm8",
   "model": "glm-5.3-flash",
   "base_url": "https://open.bigmodel.cn/api/coding/paas/v4",
-  "frames_root": "/data/night/mk01-cp12-r2/frames",
+  "frames_root": "/data/night/mk01-cp12-r3/frames",
   "workers": 2,
   "protocol": "边界测试方案.md §2.3 六字段（judge_common.py 冻结）",
   "rubric_source": "DEFECT_ZH=judge_common.py 原文; B类词表=原夜glm8输出实证; 盲测无金标信息",
-  "started_at": "2026-10-09 08:40:57",
+  "started_at": "2026-10-09 12:49:27",
   "clips": [
     {
       "clip_id": "marketing_ep01",
       "ok": true,
-      "detected": true,
-      "types": [
-        "identity_drift"
-      ],
-      "confidence": 0.6,
-      "latency_s": 349.1
+      "detected": false,
+      "types": [],
+      "confidence": 0.78,
+      "latency_s": 355.3
     }
   ],
   "n_clips": 1,
@@ -24,8 +22,8 @@
   "n_fail": 0,
   "usage_total": {
     "prompt_tokens": 22155,
-    "completion_tokens": 2919
+    "completion_tokens": 3646
   },
-  "wall_seconds": 349.1,
-  "finished_at": "2026-10-09 08:46:46"
+  "wall_seconds": 355.4,
+  "finished_at": "2026-10-09 12:55:22"
 }

@@ -6,20 +6,20 @@
   "fps": 0.25,
   "max_pixels": 133072,
   "input_mode": "video(decord)",
-  "load_seconds": 14.9,
+  "load_seconds": 3.9,
   "clips": [
     {
       "clip_id": "marketing_ep01",
       "ok": true,
       "parse": "json",
       "types": [],
-      "gen_seconds": 2.13,
-      "latency_s": 2.68
+      "gen_seconds": 2.08,
+      "latency_s": 2.6
     }
   ],
   "n_clips": 1,
   "n_ok": 1,
   "n_fail": 0,
   "torch": "2.7.0+cu126",
-  "finished_at": "2026-10-09 08:49:17"
+  "finished_at": "2026-10-09 12:57:26"
 }

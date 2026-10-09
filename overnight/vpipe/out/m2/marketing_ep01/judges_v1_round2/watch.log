@@ -1,0 +1,7 @@
+[watch] start 
+[watch] J1 exit=0 
+[watch] preflight J3 gpu0_used=310MiB (require <=1024)
+[watch] J3 exit=0 
+[watch] preflight J5 gpu0_used=310MiB (require <=1024)
+[watch] J5 exit=0 
+[watch] all done 
