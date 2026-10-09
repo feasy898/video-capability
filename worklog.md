@@ -126,3 +126,21 @@
 - M0 逐卡复核：12 CP 契约+model_tiers+SPEC_v2、thresholds v11+G0-3、Seedance
   核价 confirmed=false（官方四通道失败，第三方价未进预算基线）、凭证 OpenBao 重建、
   LTX/Wan2.2 spike 决策 f/g、GPU 窗观测——全部在位。
+
+# worklog append — VDL v2 剩余三卡收官（2026-10-09 晚）
+
+- 三卡全部建成（vdl2-pilot-verdict §4 销项）：卡1 营销/漫剧示例包 40/50（validate+
+  compile 0err，纳入 POS）；卡2 反向骨架器 vdl2_skeleton.py（三线成包 0err）；
+  卡3 投影器 vdl2_project.py（短剧/营销往返 exit 0，五件 payload/指纹/upstream_refs
+  与手工参照链位级相等——主控独立复核确认）。
+- 独立复审两轮共提 14 项发现，主控逐条复验后：七项修复（陈旧包重生/d3 实读 cp5
+  known_cuts/import exit 2/notes 分类学边界显式声明/营销包 avatar 降级登记/README/
+  回归测试 6 例入套件），两项登记不修（comicanime 参照 cp6 负索引 bug——该线往返
+  exit 1 为诚实预期；cp2/cp6 段 ID 双口径潜伏项），另登记示例包 40/50 不可被投影器
+  直接消费（缺 cp3_shot_scale 登记位，已知形状延伸）。
+- evidence/vdl2-known-defects.md 立档（两缺陷+两笔 dated 追记，中间态数字被终态修复
+  取代按「加注不静改」追加）。
+- 终态门禁（主控实跑）：pytest 28 passed；五包 validate 全 0；三线往返 0/0/1；
+  run_v3_checks ALL PASS；run_m2m3_acceptance 25 PASS/0 FAIL。
+- 提交 bfd9a5d（三卡）+ af8bb3f（修复轮）。两个动态工作流（dwfrun-3a0245f1 建设 +
+  dwfrun-77fd9807 修复）均 GLM-5.3-Flash 子代理执行，累计约 2400 万 token。
