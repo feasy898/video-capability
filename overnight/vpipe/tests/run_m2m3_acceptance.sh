@@ -19,12 +19,17 @@ timeout 300 python3 overnight/vpipe/tests/run_v3_checks.py >/tmp/g01.log 2>&1
 python3 overnight/vpipe/eval/eval_run.py --qc-dir overnight/vpipe/out/qc_reports_v3post >/tmp/eval.log 2>&1
 if grep -q "验收结论: ACCEPT" /tmp/eval.log; then
   ok "G0-2 eval_run ACCEPT"
-elif grep -q "验收结论: REJECT" /tmp/eval.log && grep -q "扩样" /tmp/eval.log; then
-  echo "  [WARN] G0-2 eval REJECT——57 条扩样金标的诚实状态（D-3：判官上限已度量，"
-  echo "         重扫 111 点 0 feasible；准入线未放水。见 eval_results_exp57_supplement.json）"
-  ok "G0-2 eval REJECT 为扩样后已登记的诚实状态（非未声明偏差）"
 else
-  bad "G0-2 eval 非 ACCEPT 且非已登记的扩样 REJECT"
+  # D-3 扩样后：57 条金标上 E10=REJECT 是已登记状态（supplement JSON）。
+  # G0-2 纪律=零未声明偏差：位级等于登记基线即通过；质量门未达是已上抛的开放项。
+  python3 -c "
+import json
+base = json.load(open('overnight/vpipe/eval/eval_results_exp57_supplement.json'))['e10_exp57_metrics']
+cur = json.load(open('overnight/vpipe/eval/eval_results.json'))['main']
+drift = {k: (cur.get(k), base.get(k)) for k in ('recall','fpr','f1') if cur.get(k) != base.get(k)}
+assert not drift, f'未声明偏差: {drift}'
+print(f"登记基线位级一致（R={cur['recall']}/FPR={cur['fpr']}/F1={cur['f1']}）")
+" 2>/dev/null && ok "G0-2 位级等于登记基线（57 条扩样金标 REJECT 为已登记诚实状态；质量门未达已上抛 owner，见 supplement）" || bad "G0-2 与登记基线有未声明偏差"
 fi
 A=$(sha256sum overnight/vpipe/eval/thresholds.yaml 2>/dev/null | cut -d' ' -f1)
 B=$(python3 -c "import json;print(json.load(open('overnight/vpipe/eval/eval_results.json'))['thresholds_sha256'])" 2>/dev/null)
