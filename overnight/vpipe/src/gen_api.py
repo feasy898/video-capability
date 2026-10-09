@@ -316,6 +316,10 @@ def build_cloud_payload(shot, model_id, ref_urls):
     }
     if ref_urls:
         payload["reference_images"] = list(ref_urls)     # 参考图数组（URL）；首帧图另字段 first_frame_image
+    else:
+        # T2V 必须显式 text-to-video（model_tiers.yaml T4 api_h3max notes：default=reference
+        # 且零参考图即 500；2026-10-09 CP9 精修层按任务书显式发送）。
+        payload["image_mode"] = "text-to-video"
     return payload
 
 
