@@ -1,85 +1,44 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_007",
- "generated_at": "2026-09-30T18:07:34",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.75,
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 1.0,
-   "evidence": {
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 1.0
-    }
-   },
-   "span": {
-    "start_s": 0.316,
-    "end_s": 4.113
-   }
-  },
-  {
-   "type": "hand_anomaly",
-   "sources": [
-    "J1",
-    "J2"
-   ],
-   "confidence": 0.75,
-   "evidence": {
-    "J1": {
-     "notes": "中间粗指状物直接从拳头顶部长出且无掌指关节过渡，持卡侧手指结构混乱、指根粘连渐隐，手部解剖不成立"
-    },
-    "J2": {
-     "notes": "手部特写：f01 多根手指指根连接混乱难辨掌结构，f05/f08 两根手指直接从拳后竖起无手掌附着，指数量与解剖结构可疑"
-    }
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.5865,
-   "flicker": 0.2284,
-   "color_shift": 0.3363,
-   "face_blur": 0.168,
-   "garble_text": 0.0538,
-   "temporal_swap": 0.3641,
-   "pixelate": 0.5258,
-   "ghosting": 0.535
+   "frame_freeze": 0.6922,
+   "flicker": 0.2261,
+   "color_shift": 0.3729,
+   "face_blur": 0.3254,
+   "garble_text": 0.0524,
+   "temporal_swap": 0.3299,
+   "pixelate": 0.5675,
+   "ghosting": 0.4906
   },
-  "overall": 0.5047,
+  "overall": 0.4935,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08（0-5.1s），双手持卡特写各帧均可见",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08 全程可见",
-    "source": "J2"
    }
   },
   {
@@ -93,23 +52,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_007",
-   "defect_detected": true,
-   "defect_types": [
-    "hand_anomaly"
-   ],
-   "confidence": 0.75,
-   "spans": "全片 f01-f08（0-5.1s），双手持卡特写各帧均可见",
-   "notes": "中间粗指状物直接从拳头顶部长出且无掌指关节过渡，持卡侧手指结构混乱、指根粘连渐隐，手部解剖不成立"
-  },
-  "J2": {
-   "clip_id": "golden_007",
-   "defect_detected": true,
-   "defect_types": [
-    "hand_anomaly"
-   ],
-   "confidence": 0.7,
-   "spans": "f01/f05/f08 全程可见",
-   "notes": "手部特写：f01 多根手指指根连接混乱难辨掌结构，f05/f08 两根手指直接从拳后竖起无手掌附着，指数量与解剖结构可疑"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.78,
+   "spans": "无",
+   "notes": "8帧内容连贯：暗背景下双手持续做收拢/屈伸动作，f01-f05手指由张开逐渐握拳，f06-f08保持姿态并轻微屈伸，f07指尖在黑色小卡片上方自然露出，属正常指节运动。黑色卡片全程贴合指尖随手指同步移动，数量恒为1，无悬浮或穿模迹象；可见手指解剖正常，未见多指/融指/粘连；画面无定格、明暗闪烁、色偏、人脸、文字、像素块或运动残影，亦无时序跳变或主体外观突变。各帧证据未命中任何缺陷类别，判为干净。"
   },
   "J5": {
    "clip_id": "golden_007",
@@ -119,52 +66,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_007",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 1.0,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.316,
-     "end_s": 4.113,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.712,
-      "frames": [
-       0,
-       6
-      ],
-      "mean_scores": [
-       0.085,
-       0.796
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_007",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.5865,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.587; flicker=0.228; color_shift=0.336; face_blur=0.168; garble_text=0.054; temporal_swap=0.364; pixelate=0.526; ghosting=0.535; overall=0.505"
+   "confidence": 0.6922,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.692; flicker=0.226; color_shift=0.373; face_blur=0.325; garble_text=0.052; temporal_swap=0.330; pixelate=0.568; ghosting=0.491; overall=0.493"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_007.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_007.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_007.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_007.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_007.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_007.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_007.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_007.json"
+ }
 }

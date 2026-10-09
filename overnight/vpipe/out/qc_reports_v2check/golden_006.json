@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_006",
- "generated_at": "2026-09-30T18:07:35",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -9,61 +9,36 @@
   "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.70"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.6932049194971721,
-   "evidence": {
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 0.693
-    }
-   },
-   "span": {
-    "start_s": 2.906,
-    "end_s": 4.844
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.6317,
-   "flicker": 0.2831,
-   "color_shift": 0.5958,
-   "face_blur": 0.1947,
-   "garble_text": 0.0457,
-   "temporal_swap": 0.2881,
-   "pixelate": 0.1141,
-   "ghosting": 0.5963
+   "frame_freeze": 0.7069,
+   "flicker": 0.2886,
+   "color_shift": 0.6044,
+   "face_blur": 0.199,
+   "garble_text": 0.0404,
+   "temporal_swap": 0.3026,
+   "pixelate": 0.1321,
+   "ghosting": 0.505
   },
-  "overall": 0.5902,
+  "overall": 0.5822,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08（0-5.2s）",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -79,17 +54,9 @@
    "clip_id": "golden_006",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.85,
-   "spans": "全片 f01-f08（0-5.2s）",
-   "notes": "红裙女子花田中转头动作连续自然，8帧间色调/人脸/手部/服装均无异常，未见任何注入缺陷迹象"
-  },
-  "J2": {
-   "clip_id": "golden_006",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.85,
-   "spans": "f01/f05/f08",
-   "notes": "花田红裙女子三帧身份一致、人脸清晰、色彩自然，无可见缺陷"
+   "confidence": 0.87,
+   "spans": "无",
+   "notes": "逐项核对8帧：f01人物侧身站立，f02-f08头部自然转向镜头，转头动作连续无跳变（f01→f03），无temporal_swap；全程光线均匀、色调一致（红色连衣裙、绿野花海颜色稳定），无flicker/color_shift；人脸在各帧均清晰锐利（f02、f05、f08五官细节完整），无face_blur；画面无文字，无garble_text；无马赛克/像素块；f02-f04头发被风吹动的发丝边缘干净、无双影，无ghosting；手部自然垂放于体侧（f01-f08），指形正常无多指/融指；连衣裙下摆随微风自然摆动，人物站姿稳定，无悬浮穿模等physics_error；人物耳饰、发型、妆容、裙装款式跨帧一致，无identity_drift；花海为自然散布，无count_error。全片判定干净。"
   },
   "J5": {
    "clip_id": "golden_006",
@@ -99,52 +66,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物和背景均无明显异常，帧间过渡自然，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_006",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.693,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 2.906,
-     "end_s": 4.844,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.347,
-      "frames": [
-       7,
-       4
-      ],
-      "mean_scores": [
-       0.441,
-       0.788
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_006",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.6317,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.632; flicker=0.283; color_shift=0.596; face_blur=0.195; garble_text=0.046; temporal_swap=0.288; pixelate=0.114; ghosting=0.596; overall=0.590"
+   "confidence": 0.7069,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.707; flicker=0.289; color_shift=0.604; face_blur=0.199; garble_text=0.040; temporal_swap=0.303; pixelate=0.132; ghosting=0.505; overall=0.582"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_006.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_006.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_006.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_006.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_006.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_006.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_006.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_006.json"
+ }
 }

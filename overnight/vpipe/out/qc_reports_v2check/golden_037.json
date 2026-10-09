@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_037",
- "generated_at": "2026-09-30T18:07:34",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -9,63 +9,31 @@
   "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.70"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "garble_text",
-   "sources": [
-    "J6"
-   ],
-   "confidence": 0.7414467006921768,
-   "evidence": {
-    "J6": {
-     "kind": "uniform_low_conf",
-     "conf_src": 0.741
-    }
-   },
-   "span": {
-    "start_s": 0.0,
-    "end_s": 5.167
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.2078,
-   "flicker": 0.2699,
-   "color_shift": 0.4208,
-   "face_blur": 0.2003,
-   "garble_text": 0.041,
-   "temporal_swap": 0.2536,
-   "pixelate": 0.2089,
-   "ghosting": 0.2389
+   "frame_freeze": 0.24,
+   "flicker": 0.2706,
+   "color_shift": 0.3594,
+   "face_blur": 0.1633,
+   "garble_text": 0.0406,
+   "temporal_swap": 0.2877,
+   "pixelate": 0.1502,
+   "ghosting": 0.2837
   },
-  "overall": 0.5465,
+  "overall": 0.5473,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
-  {
-   "type": "note",
-   "evidence": {
-    "text": "全片8帧",
-    "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
-   }
-  },
   {
    "type": "note",
    "evidence": {
@@ -79,17 +47,9 @@
    "clip_id": "golden_037",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.8,
-   "spans": "全片8帧",
-   "notes": "老人坐秋日长椅，8帧镜头匀速推近，人脸全程锐利、身份/服饰一致，亮度饱和度仅平滑渐变（V 124→106，无相邻帧跳变），无定格/闪烁/色偏/糊脸/乱码"
-  },
-  "J2": {
-   "clip_id": "golden_037",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.85,
-   "spans": "f01/f05/f08",
-   "notes": "秋日公园老人三帧人脸细节清晰、扶拐双手解剖正常、场景稳定，无可见缺陷"
+   "confidence": 0.88,
+   "spans": "",
+   "notes": "8帧呈现连续平滑的推近镜头：f01-f05由全景渐推至中近景，f06-f08推至面部特写，过渡自然无时序跳变（无temporal_swap）。人物身份一致：灰色鸭舌帽、墨绿色麻花毛衣、棕色木拐杖、屈指握杖的坐姿在全部帧保持稳定（无identity_drift），f06-f08面部细节清晰锐利、皱纹与五官连贯（无face_blur）。手部结构正常，f05-f06可见自然交叠的十指与戒指，无多指/融指（无hand_anomaly）。坐姿支撑合理、拐杖触地（无physics_error），单主体单长椅计数正常。全片无文字（无garble_text），画面无定格、闪烁、色偏、像素块或拖影（f01-f08逐项核对均干净）。判定为干净片段。"
   },
   "J5": {
    "clip_id": "golden_037",
@@ -99,44 +59,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_037",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.741,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.0,
-     "end_s": 5.167,
-     "evidence": {
-      "kind": "uniform_low_conf",
-      "max_mean": 0.472
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_037",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.5465,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.208; flicker=0.270; color_shift=0.421; face_blur=0.200; garble_text=0.041; temporal_swap=0.254; pixelate=0.209; ghosting=0.239; overall=0.546"
+   "confidence": 0.5473,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.240; flicker=0.271; color_shift=0.359; face_blur=0.163; garble_text=0.041; temporal_swap=0.288; pixelate=0.150; ghosting=0.284; overall=0.547"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_037.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_037.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_037.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_037.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_037.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_037.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_037.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_037.json"
+ }
 }

@@ -1,74 +1,44 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_025",
- "generated_at": "2026-09-30T18:07:35",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.7519,
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[color_shift] 最大P=0.752）"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "color_shift",
-   "sources": [
-    "J3"
-   ],
-   "confidence": 0.7519,
-   "evidence": {
-    "J3": {
-     "channel_probs": {
-      "frame_freeze": 0.5345,
-      "flicker": 0.3289,
-      "color_shift": 0.7519,
-      "face_blur": 0.0558,
-      "garble_text": 0.0486,
-      "temporal_swap": 0.4506,
-      "pixelate": 0.2609,
-      "ghosting": 0.4588
-     },
-     "overall": 0.6883
-    }
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.5345,
-   "flicker": 0.3289,
-   "color_shift": 0.7519,
-   "face_blur": 0.0558,
-   "garble_text": 0.0486,
-   "temporal_swap": 0.4506,
-   "pixelate": 0.2609,
-   "ghosting": 0.4588
+   "frame_freeze": 0.3374,
+   "flicker": 0.3474,
+   "color_shift": 0.6887,
+   "face_blur": 0.0501,
+   "garble_text": 0.0652,
+   "temporal_swap": 0.4953,
+   "pixelate": 0.3133,
+   "ghosting": 0.4923
   },
-  "overall": 0.6883,
+  "overall": 0.696,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f01–f08 全程检查",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08",
-    "source": "J2"
    }
   },
   {
@@ -85,16 +55,8 @@
    "defect_detected": false,
    "defect_types": [],
    "confidence": 0.9,
-   "spans": "f01–f08 全程检查",
-   "notes": "镜头匀速右摇扫过老街商铺：招牌汉字『面馆』『药店』『超市』全部正确、清晰且跨帧稳定，店铺内部陈设随摇镜连续一致，烟雾自然；无闪烁/色偏/乱码/定格/马赛克"
-  },
-  "J2": {
-   "clip_id": "golden_025",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.85,
-   "spans": "f01/f05/f08",
-   "notes": "老街三块招牌（面馆/药店/超市）汉字均正确清晰，镜头平移自然，无乱码或伪影"
+   "spans": "无",
+   "notes": "8帧呈现一段平稳的从左向右横移镜头：f01面馆木门与柴炉烟雾，f02-f04移至药店（灯亮、货架可见），f05-f08移至关闭卷帘门的超市。逐项核对：无定格（各帧取景持续推进）；无明暗闪烁（整体光线一致偏暗的怀旧色调，f01-f08连续）；无色偏；无人脸；文字渲染正常且语义正确（面馆/药店/超市，无乱码）；无时序跳变（f01→f08取景连续衔接，店面相对位置渐进变化）；无像素化马赛克；烟雾上升形态自然无拖影重影；无手部、无计数异常、无悬浮穿模等物理违例、无主体身份漂移。判定为干净视频。"
   },
   "J5": {
    "clip_id": "golden_025",
@@ -104,54 +66,26 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_025",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.543,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.323,
-     "end_s": 3.552,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.271,
-      "frames": [
-       0,
-       5
-      ],
-      "mean_scores": [
-       0.729,
-       1.0
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_025",
-   "defect_detected": true,
-   "defect_types": [
-    "color_shift"
-   ],
-   "confidence": 0.7519,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.534; flicker=0.329; color_shift=0.752; face_blur=0.056; garble_text=0.049; temporal_swap=0.451; pixelate=0.261; ghosting=0.459; overall=0.688"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.696,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.337; flicker=0.347; color_shift=0.689; face_blur=0.050; garble_text=0.065; temporal_swap=0.495; pixelate=0.313; ghosting=0.492; overall=0.696"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_025.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_025.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_025.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_025.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_025.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_025.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_025.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_025.json"
+ }
 }

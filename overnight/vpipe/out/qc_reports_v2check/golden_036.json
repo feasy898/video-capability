@@ -1,15 +1,15 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_036",
- "generated_at": "2026-09-30T18:07:33",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "auto_reject",
-  "confidence": 0.97,
+  "confidence": 0.94,
   "decided_by": "E10",
   "reasons": [
-   "J3 最大通道 P=0.937 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+   "J3 最大通道 P=0.940 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
   ]
  },
  "defects": [
@@ -17,39 +17,26 @@
    "type": "garble_text",
    "sources": [
     "J1",
-    "J2",
-    "J3",
-    "J6"
+    "J3"
    ],
-   "confidence": 0.98,
+   "confidence": 0.94,
    "evidence": {
     "J1": {
-     "notes": "f03-f06帧画面下方出现随机字符文本块\"+M9pNx_ttDAvrj86vYt@Df 6B@br<pYaf9b/r6@7HH<nv\"，为典型乱码注入；全帧均值亮度在f03骤降31、f07回升28与黑底文本框出现/消失吻合，无其他异常"
-    },
-    "J2": {
-     "notes": "中帧出现随机字符乱码字幕块，首尾帧无该字幕条，判定乱码文字缺陷"
+     "notes": "1) garble_text：f03-f06 画面下方持续出现黑底白字的乱码文本'+M9pNx_ttDAvrj86vYt@Df 6B@br<pYaf9b/r6@7HH<nv'，为无意义随机字符，属明显乱码文字/文字渲染失败，f07 起该文本消失，出现与消失本身也造成内容突变。2) ghosting：f01-f02 人物"
     },
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.1314,
-      "flicker": 0.2356,
-      "color_shift": 0.9246,
-      "face_blur": 0.1838,
-      "garble_text": 0.9372,
-      "temporal_swap": 0.4389,
-      "pixelate": 0.4479,
-      "ghosting": 0.7331
+      "frame_freeze": 0.1208,
+      "flicker": 0.2251,
+      "color_shift": 0.9279,
+      "face_blur": 0.1817,
+      "garble_text": 0.94,
+      "temporal_swap": 0.4295,
+      "pixelate": 0.3892,
+      "ghosting": 0.7345
      },
-     "overall": 0.6254
-    },
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 0.838
+     "overall": 0.6618
     }
-   },
-   "span": {
-    "start_s": 2.206,
-    "end_s": 4.097
    }
   },
   {
@@ -57,79 +44,76 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.9246,
+   "confidence": 0.9279,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.1314,
-      "flicker": 0.2356,
-      "color_shift": 0.9246,
-      "face_blur": 0.1838,
-      "garble_text": 0.9372,
-      "temporal_swap": 0.4389,
-      "pixelate": 0.4479,
-      "ghosting": 0.7331
+      "frame_freeze": 0.1208,
+      "flicker": 0.2251,
+      "color_shift": 0.9279,
+      "face_blur": 0.1817,
+      "garble_text": 0.94,
+      "temporal_swap": 0.4295,
+      "pixelate": 0.3892,
+      "ghosting": 0.7345
      },
-     "overall": 0.6254
+     "overall": 0.6618
     }
    }
   },
   {
    "type": "ghosting",
    "sources": [
+    "J1",
     "J3"
    ],
-   "confidence": 0.7331,
+   "confidence": 0.85,
    "evidence": {
+    "J1": {
+     "notes": "1) garble_text：f03-f06 画面下方持续出现黑底白字的乱码文本'+M9pNx_ttDAvrj86vYt@Df 6B@br<pYaf9b/r6@7HH<nv'，为无意义随机字符，属明显乱码文字/文字渲染失败，f07 起该文本消失，出现与消失本身也造成内容突变。2) ghosting：f01-f02 人物"
+    },
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.1314,
-      "flicker": 0.2356,
-      "color_shift": 0.9246,
-      "face_blur": 0.1838,
-      "garble_text": 0.9372,
-      "temporal_swap": 0.4389,
-      "pixelate": 0.4479,
-      "ghosting": 0.7331
+      "frame_freeze": 0.1208,
+      "flicker": 0.2251,
+      "color_shift": 0.9279,
+      "face_blur": 0.1817,
+      "garble_text": 0.94,
+      "temporal_swap": 0.4295,
+      "pixelate": 0.3892,
+      "ghosting": 0.7345
      },
-     "overall": 0.6254
+     "overall": 0.6618
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.1314,
-   "flicker": 0.2356,
-   "color_shift": 0.9246,
-   "face_blur": 0.1838,
-   "garble_text": 0.9372,
-   "temporal_swap": 0.4389,
-   "pixelate": 0.4479,
-   "ghosting": 0.7331
+   "frame_freeze": 0.1208,
+   "flicker": 0.2251,
+   "color_shift": 0.9279,
+   "face_blur": 0.1817,
+   "garble_text": 0.94,
+   "temporal_swap": 0.4295,
+   "pixelate": 0.3892,
+   "ghosting": 0.7345
   },
-  "overall": 0.6254,
+  "overall": 0.6618,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f03-f06（约全片25%-75%区段）出现黑底乱码字幕块，f01/f02/f07/f08无",
+    "text": "garble_text: f03-f06 (约1.6s-3.5s); ghosting: f01-f02, f07-f08 (运动残影)",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f05（约片中段）：黑底白字乱码条 +M9pNx_ttDAvrj86vYt@Df / 6B@br<pYaf9b/r6@7HH<nv",
-    "source": "J2"
    }
   },
   {
@@ -145,21 +129,12 @@
    "clip_id": "golden_036",
    "defect_detected": true,
    "defect_types": [
-    "garble_text"
+    "garble_text",
+    "ghosting"
    ],
-   "confidence": 0.97,
-   "spans": "f03-f06（约全片25%-75%区段）出现黑底乱码字幕块，f01/f02/f07/f08无",
-   "notes": "f03-f06帧画面下方出现随机字符文本块\"+M9pNx_ttDAvrj86vYt@Df 6B@br<pYaf9b/r6@7HH<nv\"，为典型乱码注入；全帧均值亮度在f03骤降31、f07回升28与黑底文本框出现/消失吻合，无其他异常"
-  },
-  "J2": {
-   "clip_id": "golden_036",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.98,
-   "spans": "f05（约片中段）：黑底白字乱码条 +M9pNx_ttDAvrj86vYt@Df / 6B@br<pYaf9b/r6@7HH<nv",
-   "notes": "中帧出现随机字符乱码字幕块，首尾帧无该字幕条，判定乱码文字缺陷"
+   "confidence": 0.85,
+   "spans": "garble_text: f03-f06 (约1.6s-3.5s); ghosting: f01-f02, f07-f08 (运动残影)",
+   "notes": "1) garble_text：f03-f06 画面下方持续出现黑底白字的乱码文本'+M9pNx_ttDAvrj86vYt@Df 6B@br<pYaf9b/r6@7HH<nv'，为无意义随机字符，属明显乱码文字/文字渲染失败，f07 起该文本消失，出现与消失本身也造成内容突变。2) ghosting：f01-f02 人物躯干和腿部呈半透明拖影、多重重叠残影（迈步方向有模糊重影）；f08 人物躯干同样出现深色半透明双重残影，f07 腿部亦有涂抹状残影，属运动残影缺陷。3) 其他维度：人物整体身份（金发、深色上衣）跨帧基本一致，未见明显身份漂移或计数异常；无定格、色偏、像素化。综合判定存在乱码文字与拖影两类缺陷。"
   },
   "J5": {
    "clip_id": "golden_036",
@@ -169,33 +144,6 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_036",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.838,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 2.206,
-     "end_s": 4.096,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.419,
-      "frames": [
-       6,
-       3
-      ],
-      "mean_scores": [
-       0.581,
-       1.0
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_036",
    "defect_detected": true,
@@ -204,21 +152,22 @@
     "garble_text",
     "ghosting"
    ],
-   "confidence": 0.9372,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.131; flicker=0.236; color_shift=0.925; face_blur=0.184; garble_text=0.937; temporal_swap=0.439; pixelate=0.448; ghosting=0.733; overall=0.625"
+   "confidence": 0.94,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.121; flicker=0.225; color_shift=0.928; face_blur=0.182; garble_text=0.940; temporal_swap=0.429; pixelate=0.389; ghosting=0.735; overall=0.662"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_036.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_036.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_036.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_036.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_036.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_036.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_036.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_036.json"
+ }
 }

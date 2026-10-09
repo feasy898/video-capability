@@ -1,62 +1,37 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_040",
- "generated_at": "2026-09-30T18:07:34",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.8394,
+  "confidence": 0.833,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[flicker,ghosting] 最大P=0.839）"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[flicker,ghosting] 最大P=0.833）"
   ]
  },
  "defects": [
-  {
-   "type": "garble_text",
-   "sources": [
-    "J1",
-    "J2",
-    "J6"
-   ],
-   "confidence": 0.9,
-   "evidence": {
-    "J1": {
-     "notes": "夜间霓虹招牌文字为无意义混排\"天天HID十EEN\"（疑为HIDDEN的乱码渲染）且两侧为无意义涂鸦字形；招牌红→蓝变色及亮度脉动经分区域RGB统计（树木区119/42/44→115/35/41恒定）确认仅限招牌及其倒影，属内容级动画而非全局色偏/帧闪"
-    },
-    "J2": {
-     "notes": "主灯牌文字为中日英混杂伪文本（天天HD十叵N，非真实词组），两侧侧牌为无意义涂鸦字形，判定文字渲染乱码"
-    },
-    "J6": {
-     "kind": "conf_drop",
-     "conf_src": 0.809
-    }
-   },
-   "span": {
-    "start_s": 2.847,
-    "end_s": 4.746
-   }
-  },
   {
    "type": "ghosting",
    "sources": [
     "J3"
    ],
-   "confidence": 0.8394,
+   "confidence": 0.833,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.5508,
-      "flicker": 0.7417,
-      "color_shift": 0.6617,
-      "face_blur": 0.0396,
-      "garble_text": 0.3376,
-      "temporal_swap": 0.3177,
-      "pixelate": 0.3508,
-      "ghosting": 0.8394
+      "frame_freeze": 0.5938,
+      "flicker": 0.7345,
+      "color_shift": 0.6794,
+      "face_blur": 0.0429,
+      "garble_text": 0.519,
+      "temporal_swap": 0.3317,
+      "pixelate": 0.3539,
+      "ghosting": 0.833
      },
-     "overall": 0.5062
+     "overall": 0.51
     }
    }
   },
@@ -65,57 +40,50 @@
    "sources": [
     "J3"
    ],
-   "confidence": 0.7417,
+   "confidence": 0.7345,
    "evidence": {
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.5508,
-      "flicker": 0.7417,
-      "color_shift": 0.6617,
-      "face_blur": 0.0396,
-      "garble_text": 0.3376,
-      "temporal_swap": 0.3177,
-      "pixelate": 0.3508,
-      "ghosting": 0.8394
+      "frame_freeze": 0.5938,
+      "flicker": 0.7345,
+      "color_shift": 0.6794,
+      "face_blur": 0.0429,
+      "garble_text": 0.519,
+      "temporal_swap": 0.3317,
+      "pixelate": 0.3539,
+      "ghosting": 0.833
      },
-     "overall": 0.5062
+     "overall": 0.51
     }
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.5508,
-   "flicker": 0.7417,
-   "color_shift": 0.6617,
-   "face_blur": 0.0396,
-   "garble_text": 0.3376,
-   "temporal_swap": 0.3177,
-   "pixelate": 0.3508,
-   "ghosting": 0.8394
+   "frame_freeze": 0.5938,
+   "flicker": 0.7345,
+   "color_shift": 0.6794,
+   "face_blur": 0.0429,
+   "garble_text": 0.519,
+   "temporal_swap": 0.3317,
+   "pixelate": 0.3539,
+   "ghosting": 0.833
   },
-  "overall": 0.5062,
+  "overall": 0.51,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全程（f01-f08霓虹招牌文字）",
+    "text": "无",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08 全程霓虹灯牌",
-    "source": "J2"
    }
   },
   {
@@ -129,23 +97,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_040",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
+   "defect_detected": false,
+   "defect_types": [],
    "confidence": 0.8,
-   "spans": "全程（f01-f08霓虹招牌文字）",
-   "notes": "夜间霓虹招牌文字为无意义混排\"天天HID十EEN\"（疑为HIDDEN的乱码渲染）且两侧为无意义涂鸦字形；招牌红→蓝变色及亮度脉动经分区域RGB统计（树木区119/42/44→115/35/41恒定）确认仅限招牌及其倒影，属内容级动画而非全局色偏/帧闪"
-  },
-  "J2": {
-   "clip_id": "golden_040",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.9,
-   "spans": "f01/f05/f08 全程霓虹灯牌",
-   "notes": "主灯牌文字为中日英混杂伪文本（天天HD十叵N，非真实词组），两侧侧牌为无意义涂鸦字形，判定文字渲染乱码"
+   "spans": "无",
+   "notes": "8帧为夜间霓虹灯牌场景，镜头缓慢向前推进，主体灯牌在f01-f08中尺寸逐渐变大、路面反光随之变化，运动连续无定格。主灯牌颜色由红色（f01）渐变为蓝白色（f03-f08），过渡平滑且仅限灯牌自身，符合霓虹灯的变色/点亮动画特征，周围红色霓虹元素与天空始终保持一致，非整体色偏。牌面文字'天天HID十EN'与左侧球形图案在各帧形状、内容稳定一致，为设计化标识而非乱码，也无时序跳变、像素化、拖影或人脸/手部等语义异常，判定为干净。"
   },
   "J5": {
    "clip_id": "golden_040",
@@ -155,33 +111,6 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_040",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.809,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 2.848,
-     "end_s": 4.746,
-     "evidence": {
-      "kind": "conf_drop",
-      "drop": 0.404,
-      "frames": [
-       7,
-       4
-      ],
-      "mean_scores": [
-       0.537,
-       0.941
-      ]
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_040",
    "defect_detected": true,
@@ -189,21 +118,22 @@
     "flicker",
     "ghosting"
    ],
-   "confidence": 0.8394,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.551; flicker=0.742; color_shift=0.662; face_blur=0.040; garble_text=0.338; temporal_swap=0.318; pixelate=0.351; ghosting=0.839; overall=0.506"
+   "confidence": 0.833,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.594; flicker=0.735; color_shift=0.679; face_blur=0.043; garble_text=0.519; temporal_swap=0.332; pixelate=0.354; ghosting=0.833; overall=0.510"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_040.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_040.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_040.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_040.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_040.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_040.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_040.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_040.json"
+ }
 }

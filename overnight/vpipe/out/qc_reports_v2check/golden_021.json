@@ -1,107 +1,83 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_021",
- "generated_at": "2026-09-30T18:07:34",
+ "generated_at": "2026-10-09T09:03:51",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.9,
+  "decision": "auto_reject",
+  "confidence": 0.9114,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.70 触发[ghosting] 最大P=0.885）"
+   "J3 最大通道 P=0.911 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
   ]
  },
  "defects": [
   {
-   "type": "hand_anomaly",
-   "sources": [
-    "J1",
-    "J2"
-   ],
-   "confidence": 0.9,
-   "evidence": {
-    "J1": {
-     "notes": "双手交扣特写：上手手指与掌心处指状突起根部融合，f03/f04中央两根指状突起直接自掌纹处长出且带指甲，全片可辨指状突起约7-8个无法按正常手计数；亮度148-150/饱和度88.7→77.3单调平滑，无定格/闪烁/色偏/马赛克等注入痕迹"
-    },
-    "J2": {
-     "notes": "双手交叠处指结构崩坏：f08 上手可数出约6根手指，f05 手指间隙异常细长劈叉，f01 双手指节融合穿模"
-    }
-   }
-  },
-  {
    "type": "ghosting",
    "sources": [
+    "J1",
     "J3"
    ],
-   "confidence": 0.8853,
+   "confidence": 0.9114,
    "evidence": {
+    "J1": {
+     "notes": "全片主体为掌心向上的一只手掌叠加另一只手的结构，但手部解剖不成立：f05/f08 顶部可数出4根细长手指，加上左侧拇指状突起与右侧又一根指尖状突起，同一手部结构上呈现6根以上指状物；指节异常细长、顶部指间出现不自然的镂空/蹼状缺口，向下压在掌心的指尖（f01-f03 掌心中部）与手掌主体衔接处无有效手背/掌体支撑，整体"
+    },
     "J3": {
      "channel_probs": {
-      "frame_freeze": 0.4108,
-      "flicker": 0.315,
-      "color_shift": 0.6996,
-      "face_blur": 0.1099,
-      "garble_text": 0.0366,
-      "temporal_swap": 0.3783,
-      "pixelate": 0.3694,
-      "ghosting": 0.8853
+      "frame_freeze": 0.3851,
+      "flicker": 0.2814,
+      "color_shift": 0.5944,
+      "face_blur": 0.1458,
+      "garble_text": 0.0332,
+      "temporal_swap": 0.3195,
+      "pixelate": 0.2502,
+      "ghosting": 0.9114
      },
-     "overall": 0.7731
+     "overall": 0.8133
     }
    }
   },
   {
-   "type": "garble_text",
+   "type": "hand_anomaly",
    "sources": [
-    "J6"
+    "J1"
    ],
-   "confidence": 0.8471206843852996,
+   "confidence": 0.85,
    "evidence": {
-    "J6": {
-     "kind": "uniform_low_conf",
-     "conf_src": 0.847
+    "J1": {
+     "notes": "全片主体为掌心向上的一只手掌叠加另一只手的结构，但手部解剖不成立：f05/f08 顶部可数出4根细长手指，加上左侧拇指状突起与右侧又一根指尖状突起，同一手部结构上呈现6根以上指状物；指节异常细长、顶部指间出现不自然的镂空/蹼状缺口，向下压在掌心的指尖（f01-f03 掌心中部）与手掌主体衔接处无有效手背/掌体支撑，整体"
     }
-   },
-   "span": {
-    "start_s": 0.0,
-    "end_s": 5.042
    }
   }
  ],
  "scores": {
   "per_type": {
-   "frame_freeze": 0.4108,
-   "flicker": 0.315,
-   "color_shift": 0.6996,
-   "face_blur": 0.1099,
-   "garble_text": 0.0366,
-   "temporal_swap": 0.3783,
-   "pixelate": 0.3694,
-   "ghosting": 0.8853
+   "frame_freeze": 0.3851,
+   "flicker": 0.2814,
+   "color_shift": 0.5944,
+   "face_blur": 0.1458,
+   "garble_text": 0.0332,
+   "temporal_swap": 0.3195,
+   "pixelate": 0.2502,
+   "ghosting": 0.9114
   },
-  "overall": 0.7731,
+  "overall": 0.8133,
   "thresholds_applied": {
    "ensemble_id": "E10",
-   "j3_thr": 0.7,
+   "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "28f192cae0562f89f46a419b768d965aaf1d9298f6678eedfd93d63d2bb06f00"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全程 f01–f08",
+    "text": "f01-f08（手部解剖异常贯穿全片）；拖影最明显于 f01-f04",
     "source": "J1"
-   }
-  },
-  {
-   "type": "note",
-   "evidence": {
-    "text": "f01/f05/f08 全程",
-    "source": "J2"
    }
   },
   {
@@ -117,21 +93,12 @@
    "clip_id": "golden_021",
    "defect_detected": true,
    "defect_types": [
-    "hand_anomaly"
-   ],
-   "confidence": 0.9,
-   "spans": "全程 f01–f08",
-   "notes": "双手交扣特写：上手手指与掌心处指状突起根部融合，f03/f04中央两根指状突起直接自掌纹处长出且带指甲，全片可辨指状突起约7-8个无法按正常手计数；亮度148-150/饱和度88.7→77.3单调平滑，无定格/闪烁/色偏/马赛克等注入痕迹"
-  },
-  "J2": {
-   "clip_id": "golden_021",
-   "defect_detected": true,
-   "defect_types": [
-    "hand_anomaly"
+    "hand_anomaly",
+    "ghosting"
    ],
    "confidence": 0.85,
-   "spans": "f01/f05/f08 全程",
-   "notes": "双手交叠处指结构崩坏：f08 上手可数出约6根手指，f05 手指间隙异常细长劈叉，f01 双手指节融合穿模"
+   "spans": "f01-f08（手部解剖异常贯穿全片）；拖影最明显于 f01-f04",
+   "notes": "全片主体为掌心向上的一只手掌叠加另一只手的结构，但手部解剖不成立：f05/f08 顶部可数出4根细长手指，加上左侧拇指状突起与右侧又一根指尖状突起，同一手部结构上呈现6根以上指状物；指节异常细长、顶部指间出现不自然的镂空/蹼状缺口，向下压在掌心的指尖（f01-f03 掌心中部）与手掌主体衔接处无有效手背/掌体支撑，整体手型无法对应任何合理的双手姿态。另：f01-f04 顶部指尖及掌心下压指尖边缘出现明显的半透明双重轮廓与运动残影，而下方掌纹相对清晰，符合拖影/重影特征。未发现定格、色偏、乱码文字、像素化或时序跳变（f01-f08 运动连续）。"
   },
   "J5": {
    "clip_id": "golden_021",
@@ -141,46 +108,28 @@
    "spans": "full_clip:fps=1.0解码",
    "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
   },
-  "J6": {
-   "clip_id": "golden_021",
-   "defect_detected": true,
-   "defect_types": [
-    "garble_text"
-   ],
-   "confidence": 0.847,
-   "spans": [
-    {
-     "type": "garble_text",
-     "start_s": 0.0,
-     "end_s": 5.042,
-     "evidence": {
-      "kind": "uniform_low_conf",
-      "max_mean": 0.402
-     }
-    }
-   ]
-  },
   "J3": {
    "clip_id": "golden_021",
    "defect_detected": true,
    "defect_types": [
     "ghosting"
    ],
-   "confidence": 0.8853,
-   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.70",
-   "notes": "frame_freeze=0.411; flicker=0.315; color_shift=0.700; face_blur=0.110; garble_text=0.037; temporal_swap=0.378; pixelate=0.369; ghosting=0.885; overall=0.773"
+   "confidence": 0.9114,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.385; flicker=0.281; color_shift=0.594; face_blur=0.146; garble_text=0.033; temporal_swap=0.320; pixelate=0.250; ghosting=0.911; overall=0.813"
   }
  },
  "inputs": {
   "clip": null,
   "frames_dir": null,
   "judge_files": {
-   "J1": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm8\\golden_021.json",
-   "J2": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\glm3\\golden_021.json",
-   "J5": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\videochat3\\golden_021.json",
-   "J6": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\detectors\\golden_021.json",
-   "J3": "D:\\workspace\\video-capability-research\\overnight\\数据\\judges\\omnijev\\run_metadata.json"
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_021.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_021.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
   }
  },
- "errors": {}
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_021.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_021.json"
+ }
 }
