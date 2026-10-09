@@ -1,0 +1,451 @@
+# ============================================================================
+# 示例 4/5 · 营销线（marketing_ep01《雪松晚安香》6 镜 20s：G9a 口播专线 + G7 产品恒存
+#              + G1 手部使用镜 + G2 全部文字后期字牌绕行）
+# 依据：out/m2/marketing_ep01/ 真实 CP 工件投影（cp1 意图卡/cp2 剧本/cp3 分镜/cp5 动作/
+#       cp6 时间线/cp7 草稿；work_id/台词/镜序/时长/seed/预算全部取工件实值，不虚构剧情）。
+#       该线 CP 面=cp1/cp2/cp3/cp5/cp6/cp7——该线无 cp4（关键帧层未进 M2 执行面），
+#       包内不设关键帧类 intent（登记于各镜 notes，不编造）。
+# 校验：python src/vdl2/vdl2_validate.py --pkg examples/vdl2/40_marketing_ep01.yaml
+# 编译：python src/vdl2/vdl2_compile.py  --pkg examples/vdl2/40_marketing_ep01.yaml --out-dir out/vdl2/40
+# ============================================================================
+vdl_version: "2.0"
+work_id: marketing_ep01
+created: "2026-10-08T20:45:04Z"        # = cp1.produced_at（工件实值）
+default_prompt_mode: hybrid
+budget:
+  credit_cap_total: 2016               # cp1 实测口径：6 镜 × 280 积分/镜 × 1.2 冗余（cp1.notes 推导）
+  wallet_check_uri_note: "MiniMax /api/v1/credit/wallet（密钥只从 env 读，不入包）；avatar 口播段另列 Vidu /ent/v2/credits（vidu_credit 币种 1积分/s，不并入本包级上限）"
+
+# ---- VPO L2 意图（闸门 B 按 intent_type 分派 VPO 原版 schema 校验）----
+intents:
+  - $file: intents/i-cam-mk04.json     # CameraIntent·G1 手部使用镜（外置 $file 形态，闸门 B 一样深校验）
+
+  - identity: { intent_id: i-cam-mk01, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_01 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_01 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感"
+    value: "口播开场镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk01-avatar:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.medium       # CP3 shot_scale=medium_close → VPO 粗粒度词表 medium
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.50pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-mk02, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_02 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_02 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变"
+    value: "产品特写插入镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk02-product:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.80pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.push
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-mk03, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_03 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_03 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变"
+    value: "藤条微距镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk03-reeds:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.extreme_close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.80pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-mk05, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_05 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_05 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰"
+    value: "场景全景镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk05-scene:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.wide
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.30pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-mk06, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_06 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_06 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存"
+    value: "CTA 收尾镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk06-product:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.medium
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.50pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.push
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-pp-mk-sub, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.postprocess_intent
+    target: { kind: shot, ref: shot_01 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_01 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: {}
+    predicate: "全片 6 段口播台词后期字牌逐字烧录（CP6 subtitle_segments→CP10 装配），生成侧画面零文字（G2 禁区：营销信息全部绕行后期）"
+    value: "口播台词字牌"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk-sub:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.post_comp]
+    ops:
+      - op: vpo:delivery.postprocess_op.subtitle_burn
+        params:
+          max_chars_per_line_cjk: { value: 12, unit: chars, measurement_basis: "deliverable 1088x1920" }
+          anchor: "bottom_safe_area"
+    input_refs:
+      - "clip:shot_01@api_vidu_avatar"
+      - "clip:shot_02@api_h3max"
+      - "clip:shot_03@api_h3max"
+      - "clip:shot_04@api_h3max"
+      - "clip:shot_05@api_h3max"
+      - "clip:shot_06@api_h3max"
+    output_kind: vpo:delivery.deliverable_kind.master
+
+  - identity: { intent_id: i-pp-mk-cta, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.postprocess_intent
+    target: { kind: shot, ref: shot_06 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_06 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: {}
+    predicate: "CTA 字牌（产品名/价格/置顶链接）烧录于画面上缘留白区，逐字受控；生成侧不渲染任何文字（G2 禁区绕行）"
+    value: "CTA 字牌"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-mk-cta:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.post_comp]
+    ops:
+      - op: vpo:delivery.postprocess_op.subtitle_burn
+        params:
+          max_chars_per_line_cjk: { value: 12, unit: chars, measurement_basis: "deliverable 1088x1920" }
+          anchor: "top_safe_area"
+    input_refs: ["clip:shot_06@api_h3max"]
+    output_kind: vpo:delivery.deliverable_kind.master
+
+# ---- 执行计划 ----
+shots:
+  - schema_version: "2.0"
+    shot_id: shot_01
+    axis: G9a                            # 口播主体线：CP3 channel_hint=api_vidu_avatar（G9a 数字人专线）
+    duration_s: 4.78                     # = CP3 shots[0].duration_s = CP2 seg_01 估时
+    aspect: "9:16"
+    resolution: 480P                     # avatar 实际输出 540p/720p 由客户端参数定（20 例同款登记）
+    characters:
+      - char_id: cast_host
+        desc: "女主播，25-32 岁，邻家知性口吻"
+        ref_image: "assets/marketing/cast_host_ref.png"   # image 通道身份锚（G9a：avatar 参考图即身份）
+    camera: { movement: static, description: "半身近景口播机位，固定带微呼吸感" }
+    audio:
+      generate: true
+      speech: "卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。"   # = CP2 seg_01 narration_text（TTS 输入源）
+      music: ""
+    intent_refs: [i-cam-mk01]
+    prompt_mode: compiled                # 口播镜语义全来自意图（台词段不进 prompt，avatar 通道规则）
+    engine:
+      channel: api_vidu_avatar           # CP10 TTS→CP9 gen_avatar 直出口播段，不经草稿层（cp1/cp3 notes）
+      fallback: []                       # avatar 是唯一已验证口播通道（20 例同款）
+      route_rule: G9a_avatar_talk
+    continuity:
+      link: none
+      seed_policy: none                  # R2：api 通道禁 fix_for_iteration
+      lock_restatement: [characters]
+      d3_split_declared: true            # CP5 shot_01 序列 96 帧>72 窗→known_cuts[3.6]（工件实值）
+      tail_source: planned
+    cache:
+      strategy: submit_params            # R2：API 层只命中提交参数层
+      fingerprint_includes: [prompt_hash, speech_text, image_ref_sha]
+    edit_ops: []
+    acceptance_refs: [acc-mk01-avatar, acc-mk-sub]
+    budget: { credit_cap_per_shot: 6, max_retries: 1 }   # vidu_credit 币种：1积分/s×ceil(4.78s)=5，×1.2 冗余=6（cp1.notes）
+    notes: "M2 映射：CP3 shot_01→api_vidu_avatar（CP10 TTS→CP9 avatar 直出，不经草稿层）；CP5 序列 96 帧>72 窗→known_cuts[3.6]。本线 CP 面=cp1/cp2/cp3/cp5/cp6/cp7——该线无 cp4（关键帧层未进 M2 执行面），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_02
+    axis: G7                             # 产品恒存禁区镜（cp1 forbidden_zones G7_物体恒存）
+    duration_s: 2.83
+    aspect: "9:16"
+    resolution: 768P
+    seed: 44                             # CP7 草稿层实测登记值（API 通道 seed 零控制力，R2 口径）
+    camera: { movement: push_in, description: "缓推瓶身" }
+    audio:
+      generate: false                    # VO 由 CP10 TTS 统一后期铺装（mk01 音频层口径），生成侧不逐镜出音
+      speech: "植物精油，尾调雪松，越闻越安神。"   # = CP2 seg_02
+      music: ""
+    intent_refs: [i-cam-mk02]
+    prompt_mode: handwritten             # 手写底稿=CP3 action 实文；intents 仅登记
+    prompt: "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变"
+    engine:
+      channel: api_h3max
+      fallback: [api_h3, local_ltx]
+      route_rule: G7_object_permanence
+    continuity:
+      link: none                         # 逐行一拍一镜，无跨镜引用（cp3 notes：无 during）
+      seed_policy: vary
+      lock_restatement: [props]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-mk02-product]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_02（api_h3max）；G7 产品恒存禁区镜级投影。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_03
+    axis: G7
+    duration_s: 4.13
+    aspect: "9:16"
+    resolution: 768P
+    seed: 45
+    camera: { movement: static, description: "微距静止，光斑沿玻璃肩部流转" }
+    audio:
+      generate: false
+      speech: "一瓶扩香约六十天，睡前拨拨藤条，香感就回来。"   # = CP2 seg_03
+      music: ""
+    intent_refs: [i-cam-mk03]
+    prompt_mode: handwritten
+    prompt: "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G7_object_permanence }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [props]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-mk03-reeds]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_03（api_h3max）；G7 瓶体+藤条恒存。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_04
+    axis: G1                             # 手部禁区镜（cp1 forbidden_zones G1_手部：指尖拨藤条）
+    duration_s: 3.04
+    aspect: "9:16"
+    resolution: 768P
+    seed: 46
+    characters:
+      - { char_id: cast_host, desc: "女主播，25-32 岁，邻家知性口吻", ref_image: "assets/marketing/cast_host_ref.png" }
+    camera: { movement: static, description: "床头暖光台灯旁固定机位" }
+    audio:
+      generate: false
+      speech: "床头摆一瓶，像把雪松林搬进卧室。"   # = CP2 seg_04
+      music: ""
+    intent_refs: [i-cam-mk04]
+    prompt_mode: handwritten
+    prompt: "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G1_hand_qc_routed }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters, props]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-mk04-hand]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_04（api_h3max）；G1 手部禁区镜（hand_object_contact 挂 i-cam-mk04 外置意图）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_05
+    axis: G7
+    duration_s: 2.83
+    aspect: "9:16"
+    resolution: 768P
+    seed: 47
+    camera: { movement: static, description: "暮色卧室全景固定机位" }
+    audio:
+      generate: false
+      speech: "玻璃瓶身配木底座，摆哪都好看。"   # = CP2 seg_05
+      music: ""
+    intent_refs: [i-cam-mk05]
+    prompt_mode: handwritten
+    prompt: "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G7_object_permanence }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [props, scene]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-mk05-scene]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_05（api_h3max）；G7+画面零文字（G2）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_06
+    axis: G7
+    duration_s: 2.61
+    aspect: "9:16"
+    resolution: 768P
+    seed: 48
+    camera: { movement: push_in, description: "产品近景缓推收尾" }
+    audio:
+      generate: false
+      speech: "想要的点置顶链接，今晚下单。"   # = CP2 seg_06
+      music: ""
+    intent_refs: [i-cam-mk06]
+    prompt_mode: handwritten
+    prompt: "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G7_object_permanence }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [props]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-mk06-product, acc-mk-cta]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_06（api_h3max）；上缘留白供 i-pp-mk-cta CTA 字牌。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+# ---- 包级确定性后处理（post_comp 通道）----
+post_ops:
+  - intent_ref: i-pp-mk-sub             # 全片口播台词字牌：6 镜装配后统一烧录
+    run_after: [shot_01, shot_02, shot_03, shot_04, shot_05, shot_06]
+  - intent_ref: i-pp-mk-cta             # CTA 字牌：收尾镜后烧录
+    run_after: [shot_06]
+
+# ---- L4 验收层：执行前冻结（AcceptanceSpec 原样采用）----
+acceptance:
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk01-avatar
+    version: "1.0.0"
+    intent_path: "i-cam-mk01.predicate"
+    metric: "identity_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior, notes: "G9a 口播段身份一致性：数字人段与产品镜同一人物设定（cp1 must_keep），flag 级" }
+    gate: vpo:delivery.gate.flag
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk02-product
+    version: "1.0.0"
+    intent_path: "i-cam-mk02.predicate"
+    metric: "product_geometry_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G7：瓶体几何恒存，形变即打回
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk03-reeds
+    version: "1.0.0"
+    intent_path: "i-cam-mk03.predicate"
+    metric: "product_geometry_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G7：瓶体+藤条恒存
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk04-hand
+    version: "1.0.0"
+    intent_path: "i-cam-mk04.hand_object_contact"
+    metric: "hand_anomaly_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G1：融指/断指即打回（短剧线 acc-hand 同构）
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk05-scene
+    version: "1.0.0"
+    intent_path: "i-cam-mk05.predicate"
+    metric: "product_geometry_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G7：全景镜产品体量与恒存
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk06-product
+    version: "1.0.0"
+    intent_path: "i-cam-mk06.predicate"
+    metric: "product_geometry_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G7：收尾镜瓶体恒存
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk-sub
+    version: "1.0.0"
+    intent_path: "i-pp-mk-sub.ops[0]"
+    metric: "subtitle_verbatim_match"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # 确定性烧录：逐字不符即拒（可仪表验收）
+    detector_id: J6_detectors
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-mk-cta
+    version: "1.0.0"
+    intent_path: "i-pp-mk-cta.ops[0]"
+    metric: "subtitle_verbatim_match"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # CTA 字牌逐字核对（产品名/价格/链接零错字）
+    detector_id: J6_detectors
+    detector_version: "vpipe1.0"

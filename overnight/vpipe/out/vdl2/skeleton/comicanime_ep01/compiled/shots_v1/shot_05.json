@@ -1,0 +1,21 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "duration_s": 2.39,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [],
+ "camera": {
+  "movement": "static",
+  "description": "汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸，器物恒存不形变"
+ },
+ "audio": {
+  "speech": "锅还是那口锅，可惜姓了沈。"
+ },
+ "prompt": "Extreme close-up of an old stockpot, static camera: the worn rim with scratch marks and years of dark patina clearly visible across the metal lip, bright orange-blue gas flames clearly licking the pot bottom from below, thin steam curling up the side, no people in frame, no faces; the pot holds one constant solid shape. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_pot_01 | vdl2:prompt_hash=18a8c8da0ce6842f9d3ba10bc459c907c83beb3c64b8f0da8ebc4e84034c13a5"
+}

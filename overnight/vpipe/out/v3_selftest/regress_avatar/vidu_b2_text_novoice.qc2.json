@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/vidu_b2_text_novoice.mp4",
- "generated_at": "2026-10-09T16:29:16",
+ "generated_at": "2026-10-09T17:53:19",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 6.0,

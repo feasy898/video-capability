@@ -1,0 +1,397 @@
+{
+ "schema_version": "2.0",
+ "work_id": "marketing_ep01",
+ "compiled_at": "2026-10-09T17:53:45",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "source_package": {
+  "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/40_marketing_ep01.yaml",
+  "sha256": "2914c60be48eb495dfed5d664796f9bc398d1482c092fa57a32e6314404e12a8"
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ },
+ "default_prompt_mode": "hybrid",
+ "budget": {
+  "credit_cap_total": 2016,
+  "wallet_check_uri_note": "MiniMax /api/v1/credit/wallet（密钥只从 env 读，不入包）；avatar 口播段另列 Vidu /ent/v2/credits（vidu_credit 币种 1积分/s，不并入本包级上限）"
+ },
+ "deliverable": null,
+ "post_ops": [
+  {
+   "intent_ref": "i-pp-mk-sub",
+   "run_after": [
+    "shot_01",
+    "shot_02",
+    "shot_03",
+    "shot_04",
+    "shot_05",
+    "shot_06"
+   ]
+  },
+  {
+   "intent_ref": "i-pp-mk-cta",
+   "run_after": [
+    "shot_06"
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "shot_id": "shot_01",
+   "prompt_mode": "compiled",
+   "prompt_hash": "d6dab89b6f416c5266bd77b461c3fc0e51986f86de98e5f1d1af56bf09f11770",
+   "engine": {
+    "channel": "api_vidu_avatar",
+    "fallback": [],
+    "route_rule": "G9a_avatar_talk"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "speech_text",
+     "image_ref_sha"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 6,
+    "max_retries": 1
+   },
+   "acceptance_refs": [
+    "acc-mk01-avatar",
+    "acc-mk-sub"
+   ],
+   "intent_refs": [
+    "i-cam-mk01@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "lock_restatement": [
+     "characters"
+    ],
+    "d3_split_declared": true,
+    "tail_source": "planned"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_01.json",
+   "avatar": {
+    "tts_input": "卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。",
+    "image_ref": "assets/marketing/cast_host_ref.png",
+    "duration_follows": "audio",
+    "billing_rule": "1积分/s×ceil(音频秒)，失败不扣（b2_run.log credits=0）",
+    "wallet_endpoint": "/ent/v2/credits",
+    "watermark": false
+   }
+  },
+  {
+   "shot_id": "shot_02",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "5bffcffd5ac7800e491deea6ff155c4d161d557d12dc012c93c5866f69c1055d",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G7_object_permanence"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-mk02-product"
+   ],
+   "intent_refs": [
+    "i-cam-mk02@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "props"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_02.json"
+  },
+  {
+   "shot_id": "shot_03",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "95ee67243d19385e0095df8c95ec2bce4f36924ed5f9cc86e4aadc06eab06223",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G7_object_permanence"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-mk03-reeds"
+   ],
+   "intent_refs": [
+    "i-cam-mk03@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "props"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_03.json"
+  },
+  {
+   "shot_id": "shot_04",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "4c57a9de97b04bcc5a315544422b5e1339ae2811e9c5a80bd38046b1149a602e",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G1_hand_qc_routed"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-mk04-hand"
+   ],
+   "intent_refs": [
+    "i-cam-mk04@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters",
+     "props"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_04.json"
+  },
+  {
+   "shot_id": "shot_05",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "0a92964534949f7080932843c3c03fdc55c3d750612c5f0fe0a248a8cfdac984",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G7_object_permanence"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-mk05-scene"
+   ],
+   "intent_refs": [
+    "i-cam-mk05@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "props",
+     "scene"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_05.json"
+  },
+  {
+   "shot_id": "shot_06",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "09ef1d7a85730c0f05cd15f5be1ebc2ced5c0e2f371d40086c51a5070ec56186",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G7_object_permanence"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-mk06-product",
+    "acc-mk-cta"
+   ],
+   "intent_refs": [
+    "i-cam-mk06@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "props"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_06.json"
+  }
+ ],
+ "projection_manifest": [
+  {
+   "shot_id": "shot_01",
+   "intent_versions": [
+    "i-cam-mk01@1.0.0"
+   ],
+   "prompt_mode": "compiled",
+   "prompt_hash": "d6dab89b6f416c5266bd77b461c3fc0e51986f86de98e5f1d1af56bf09f11770",
+   "acceptance_refs": [
+    "acc-mk01-avatar",
+    "acc-mk-sub"
+   ],
+   "v1_shot": "shots_v1/shot_01.json",
+   "model_hint": "Vidu-avatar-offline"
+  },
+  {
+   "shot_id": "shot_02",
+   "intent_versions": [
+    "i-cam-mk02@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "5bffcffd5ac7800e491deea6ff155c4d161d557d12dc012c93c5866f69c1055d",
+   "acceptance_refs": [
+    "acc-mk02-product"
+   ],
+   "v1_shot": "shots_v1/shot_02.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_03",
+   "intent_versions": [
+    "i-cam-mk03@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "95ee67243d19385e0095df8c95ec2bce4f36924ed5f9cc86e4aadc06eab06223",
+   "acceptance_refs": [
+    "acc-mk03-reeds"
+   ],
+   "v1_shot": "shots_v1/shot_03.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_04",
+   "intent_versions": [
+    "i-cam-mk04@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "4c57a9de97b04bcc5a315544422b5e1339ae2811e9c5a80bd38046b1149a602e",
+   "acceptance_refs": [
+    "acc-mk04-hand"
+   ],
+   "v1_shot": "shots_v1/shot_04.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_05",
+   "intent_versions": [
+    "i-cam-mk05@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "0a92964534949f7080932843c3c03fdc55c3d750612c5f0fe0a248a8cfdac984",
+   "acceptance_refs": [
+    "acc-mk05-scene"
+   ],
+   "v1_shot": "shots_v1/shot_05.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_06",
+   "intent_versions": [
+    "i-cam-mk06@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "09ef1d7a85730c0f05cd15f5be1ebc2ced5c0e2f371d40086c51a5070ec56186",
+   "acceptance_refs": [
+    "acc-mk06-product",
+    "acc-mk-cta"
+   ],
+   "v1_shot": "shots_v1/shot_06.json",
+   "model_hint": "MiniMax-H3-Max"
+  }
+ ]
+}

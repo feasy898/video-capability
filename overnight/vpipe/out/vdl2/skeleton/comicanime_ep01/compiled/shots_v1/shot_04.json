@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_04",
+ "duration_s": 4.13,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_shenyu"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，面碗粗陶体不形变"
+ },
+ "audio": {
+  "speech": "沈聿下面收汤，动作和十年前教他的一分不差。"
+ },
+ "prompt": "Overhead close-up of hands, static camera: a cook lifts noodles into a rough ceramic bowl with a long wooden ladle, ladles golden broth over them, then drizzles sizzling hot oil from a small pot in one unbroken flow, steam rolling up past the top of the frame; the rough ceramic bowl and ladle keep perfectly rigid shapes, no deformation, one pair of hands only. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close; props=prop_bowl_01,prop_ladle_01 | vdl2:prompt_hash=83eb728d87139397b5ea319e9b3049d1562fac2be39b1356065d71f8292093b0"
+}

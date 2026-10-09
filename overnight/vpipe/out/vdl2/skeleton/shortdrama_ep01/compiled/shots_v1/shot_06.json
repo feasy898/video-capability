@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_06",
+ "duration_s": 5.87,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lin"
+  }
+ ],
+ "camera": {
+  "movement": "push_in",
+  "description": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化，镜头缓推压向瞳孔"
+ },
+ "audio": {
+  "speech": "这……这是恒盛集团的法人章？新任董事接盘林氏产业……怎么可能是他？！"
+ },
+ "prompt": "Extreme close-up: an elderly man's eyes widen and his pupil contracts in shock, his fingers trembling as they pinch the paper page, guests behind him blurred into round bokeh, the camera slowly pushing in toward his eye. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The contracting pupil catches a single spark of candlelight; weathered skin with deep wrinkles and silver eyebrow hairs rendered in fine detail; the ivory page edge trembles in his grip; the background bokeh burns warm gold with faint red lantern accents; a cold blue rim light separates his temple from the gloom. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_contract_01; cp2_visual_description=林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化; word_anchor_segment=seg_06; word_anchor_text=@{恒盛集团的法人章} | vdl2:prompt_hash=96119e763b2603e713b5ce532c68b652b478f9efafbe5b302e08b400671ef749"
+}

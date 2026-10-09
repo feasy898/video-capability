@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_04",
+ "duration_s": 3.04,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_host"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存"
+ },
+ "audio": {
+  "speech": "床头摆一瓶，像把雪松林搬进卧室。"
+ },
+ "prompt": "Medium close-up, static camera: a woman's hand gently swaps and tilts the rattan reeds of an amber glass diffuser bottle on a wooden bedside table beside a warm glowing lamp, cozy evening bedroom, slow calm motion, five distinct fingers. The amber glass bottle glows honey-gold in the lamp light on its walnut wooden base, the rattan reeds dry and fibrous, the hand moving slowly and calmly; deep cedar green-gold tone grade wrapped in warm lamplight, cozy evening bedroom atmosphere. Premium photorealistic product commercial look, natural detailed skin texture on the hand, anatomically correct five fingers, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01,prop_reeds_01 | vdl2:prompt_hash=8fba05dc04867b9d8c4f68e1171be36d7b7318dd9ecf3f6287cd537759ce6e7d"
+}

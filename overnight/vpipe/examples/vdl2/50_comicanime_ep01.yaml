@@ -1,0 +1,650 @@
+# ============================================================================
+# 示例 5/5 · 漫剧线（comicanime_ep01《头汤面》9 镜 30s：G8 风格化锁定 + G5 双男主同框
+#              + G7 道具恒存 + G2 台词/拟声词全后期字牌绕行）
+# 依据：out/m2/comicanime_ep01/ 真实 CP 工件投影（cp1 意图卡/cp2 剧本/cp3 分镜/cp5 动作/
+#       cp6 时间线/cp7 草稿；work_id/台词/镜序/时长/seed/预算全部取工件实值，不虚构剧情）。
+#       该线 CP 面=cp1/cp2/cp3/cp5/cp6/cp7——该线无 cp4（关键帧层未进 M2 执行面），
+#       包内不设关键帧类 intent（登记于各镜 notes，不编造）。
+# 校验：python src/vdl2/vdl2_validate.py --pkg examples/vdl2/50_comicanime_ep01.yaml
+# 编译：python src/vdl2/vdl2_compile.py  --pkg examples/vdl2/50_comicanime_ep01.yaml --out-dir out/vdl2/50
+# ============================================================================
+vdl_version: "2.0"
+work_id: comicanime_ep01
+created: "2026-10-08T20:44:31Z"        # = cp1.produced_at（工件实值）
+default_prompt_mode: hybrid
+budget:
+  credit_cap_total: 3360               # cp1 实测口径：10 镜 × 280 积分/镜 × 1.2 冗余；本集实落 9 镜在预算内未动上限（cp1.notes）
+  wallet_check_uri_note: "MiniMax /api/v1/credit/wallet（密钥只从 env 读，不入包）"
+
+# ---- VPO L2 意图（闸门 B 按 intent_type 分派 VPO 原版 schema 校验）----
+intents:
+  - $file: intents/i-cam-ca07.json     # CameraIntent·G5 双主角同框对质镜（外置 $file 形态，闸门 B 一样深校验）
+
+  # G8 风格化锁定（本线核心风格轴；cp1 禁区 G8_风格化——厚涂赛璐璐防漂写实）
+  - identity: { intent_id: i-style-ca, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.style_intent
+    target: { kind: work, ref: comicanime_ep01 }
+    scope: { level: vpo:delivery.scope.work, ref: comicanime_ep01 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "全片国漫厚涂赛璐璐风格锁定：2D 赛璐璐平涂+清晰线稿+高饱和暖色夜戏，禁止向写实/3D/水墨漂移（G8 禁区，风格词逐镜锁定防漂移）"
+    value: "风格锁定"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca01-style:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    medium_family: vpo:style.medium_family.flat_graphic
+    style_domain: "guoman_cel_shaded_night"
+    visual_tradition: "国漫厚涂赛璐璐（2D cel）"
+    mark_language: "粗黑描线"
+    substrate_appearance: "高饱和暖色夜戏光色（雨夜面摊灯笼暖光）"
+    line_and_shape_profile: "清晰线稿，粗黑描线"
+    shading_and_palette_profile: "赛璐璐平涂+厚涂质感，高饱和暖色"
+    mark_attachment: "画面零文字标记；台词与拟声词一律后期字牌（G2 绕行）"
+    temporal_mark_policy: "镜间风格恒定，无跨镜风格衰减（防 G8-35 同类写实漂移）"
+    motion_cadence_profile: "画格流定格节奏（cd01 结构先验：镜均 3.02s、近景/特写主导 13/19）"
+    protected_features: "双主角面部造型与服装识别特征；面碗/汤锅器物识别特征"
+    motion_budget: vpo:motion.motion_budget.l1_local
+    priority: vpo:style.priority.style
+    allowed_degradation: "无风格降级路径；G8 漂移即回炉重生成（cp12 缺陷路由 style→重生）"
+    reanchor_every_shot: true
+
+  - identity: { intent_id: i-cam-ca01, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_01 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_01 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边，画格流定格开场"
+    value: "画格流开场镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca01-style:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.medium
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.50pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca02, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_02 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_02 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边，画格流定格"
+    value: "点单近景镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca02-id:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.80pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca03, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_03 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_03 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话，画格流定格"
+    value: "灶后回话镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca03-id:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.medium
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.50pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca04, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_04 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_04 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，面碗粗陶体不形变"
+    value: "下面收汤镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca04-obj:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.50pct
+    camera_angle: vpo:cine.angle_coarse.high          # CP3 shot_04 俯拍案台
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca05, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_05 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_05 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸，器物恒存不形变"
+    value: "汤锅特写镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca05-obj:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.extreme_close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.80pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca06, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_06 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_06 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近"
+    value: "尝汤惊变镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca06-move:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.extreme_close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.80pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.push
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca08, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_08 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_08 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "沈聿后退半步扶住案沿，毛巾从手里滑落，近景拍他失神的脸，画格流定格"
+    value: "失神近景镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca08-id:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.close
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.80pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.static
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-cam-ca09, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.camera_intent
+    target: { kind: shot, ref: shot_09 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_09 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: { prompt_mode: vpo:delivery.prompt_mode.new }
+    predicate: "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃，收尾呼应开场，双主角身份不漂移"
+    value: "收尾拉出镜"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca09-id:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.text]
+    field_channels:
+      "characters[0].ref_image": [vpo:delivery.control_channel.image]
+      "duration_s": [vpo:delivery.control_channel.api_param]
+    shot_scale: vpo:cine.shot_scale_coarse.medium
+    subject_frame_ratio: vpo:cine.subject_frame_ratio.50pct
+    camera_angle: vpo:cine.angle_coarse.eye_level
+    movement: vpo:cine.movement_primary.pull
+    movement_speed: vpo:cine.movement_speed.slow
+    framing_anchor: vpo:cine.framing_anchor.center
+
+  - identity: { intent_id: i-pp-ca-sub, version: "1.0.0" }
+    intent_type: vpo:craft.intent_object.postprocess_intent
+    target: { kind: shot, ref: shot_01 }
+    scope: { level: vpo:delivery.scope.shot, ref: shot_01 }
+    temporal_extent: { time_base: { rate_num: 24, rate_den: 1 } }
+    reference_context: {}
+    predicate: "台词与漫剧式拟声词一律后期字牌逐字烧录（cd01 先验 14/19 带硬字幕→全后期；small_text_policy=post_render_plate），生成侧画面零文字（G2 禁区绕行）"
+    value: "台词拟声词字牌"
+    strength: vpo:delivery.strength.must
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    exceptions: []
+    acceptance_ref: "acc-ca-sub:v1.0.0"
+    authority: director
+    control_channel: [vpo:delivery.control_channel.post_comp]
+    ops:
+      - op: vpo:delivery.postprocess_op.subtitle_burn
+        params:
+          max_chars_per_line_cjk: { value: 12, unit: chars, measurement_basis: "deliverable 1088x1920" }
+          anchor: "bottom_safe_area"
+    input_refs:
+      - "clip:shot_01@api_h3max"
+      - "clip:shot_02@api_h3max"
+      - "clip:shot_03@api_h3max"
+      - "clip:shot_04@api_h3max"
+      - "clip:shot_05@api_h3max"
+      - "clip:shot_06@api_h3max"
+      - "clip:shot_07@api_h3max"
+      - "clip:shot_08@api_h3max"
+      - "clip:shot_09@api_h3max"
+    output_kind: vpo:delivery.deliverable_kind.master
+
+# ---- 执行计划 ----
+shots:
+  - schema_version: "2.0"
+    shot_id: shot_01
+    axis: G8                             # 本线核心风格轴（cp1 forbidden_zones G8_风格化）
+    duration_s: 5.22                     # = CP3 shots[0].duration_s = CP2 seg_01 估时
+    aspect: "9:16"
+    resolution: 768P
+    seed: 43                             # CP7 草稿层实测登记值（API 通道 seed 零控制力，R2 口径）
+    characters:
+      - char_id: cast_lu
+        desc: "陆星辞·被逐出师门的少东家"
+        ref_image: "assets/comicanime/cast_lu_ref.png"   # image 通道身份锚（G5/G7）
+    camera: { movement: static, description: "雨夜面摊棚全景固定机位，画格流定格" }
+    audio:
+      generate: false                    # 台词由 CP10 TTS 统一铺装（cp10/tts_seg_01..09.wav），生成侧不逐镜出音
+      speech: "雨夜，沈记面馆的灯还亮着。推门进来的人，十年没回来过了。"   # = CP2 seg_01
+      music: ""
+    intent_refs: [i-cam-ca01, i-style-ca]
+    prompt_mode: handwritten             # 手写底稿=CP3 action 实文；intents 仅登记
+    prompt: "雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边，画格流定格开场"
+    engine:
+      channel: api_h3max
+      fallback: [api_h3, local_ltx]
+      route_rule: G8_style_lock
+    continuity:
+      link: none
+      seed_policy: vary                  # R2：api 通道禁 fix_for_iteration
+      lock_restatement: [characters, scene]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache:
+      strategy: submit_params            # R2：API 层只命中提交参数层
+      fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas]
+    edit_ops: []
+    acceptance_refs: [acc-ca01-style, acc-ca-sub]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_01（api_h3max，画格流定格开场）。本线 CP 面=cp1/cp2/cp3/cp5/cp6/cp7——该线无 cp4（关键帧层未进 M2 执行面），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_02
+    axis: G5
+    duration_s: 3.48
+    aspect: "9:16"
+    resolution: 768P
+    seed: 44
+    characters:
+      - { char_id: cast_lu, desc: "陆星辞·被逐出师门的少东家", ref_image: "assets/comicanime/cast_lu_ref.png" }
+    camera: { movement: static, description: "案前点单近景固定机位" }
+    audio:
+      generate: false
+      speech: "老板，一碗头汤面。汤宽，面硬，葱花最后放。"   # = CP2 seg_02
+      music: ""
+    intent_refs: [i-cam-ca02, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边，画格流定格"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G5_multi_identity }
+    continuity:
+      link: none                         # 逐行一拍一镜，无跨镜引用（cp3 notes：无 during）
+      seed_policy: vary
+      lock_restatement: [characters]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca02-id]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_02（api_h3max）；主角面部身份锚。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_03
+    axis: G5
+    duration_s: 3.26
+    aspect: "9:16"
+    resolution: 768P
+    seed: 45
+    characters:
+      - { char_id: cast_shenyu, desc: "沈聿·接手面馆的师兄", ref_image: "assets/comicanime/cast_shenyu_ref.png" }
+    camera: { movement: static, description: "灶后中近景固定机位，不抬头回话" }
+    audio:
+      generate: false
+      speech: "头汤只卖一碗。这规矩，十年前就断了。"   # = CP2 seg_03
+      music: ""
+    intent_refs: [i-cam-ca03, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话，画格流定格"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G5_multi_identity }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca03-id]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_03（api_h3max）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_04
+    axis: G7                             # 面碗/汤勺恒存禁区镜
+    duration_s: 4.13
+    aspect: "9:16"
+    resolution: 768P
+    seed: 46
+    characters:
+      - { char_id: cast_shenyu, desc: "沈聿·接手面馆的师兄", ref_image: "assets/comicanime/cast_shenyu_ref.png" }
+    camera: { movement: static, description: "俯拍案台手部特写" }
+    audio:
+      generate: false
+      speech: "沈聿下面收汤，动作和十年前教他的一分不差。"   # = CP2 seg_04
+      music: ""
+    intent_refs: [i-cam-ca04, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，面碗粗陶体不形变"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G7_object_permanence }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters, props]
+      d3_split_declared: true            # CP5 shot_04 序列 83 帧>72 窗→known_cuts[3.6]（工件实值）
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca04-obj]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_04（api_h3max）；CP5 序列 83 帧>72 窗→known_cuts[3.6]（声明切点·无实体缝，cp11 白名单口径）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_05
+    axis: G7
+    duration_s: 2.39
+    aspect: "9:16"
+    resolution: 768P
+    seed: 47
+    camera: { movement: static, description: "汤锅特写固定机位" }
+    audio:
+      generate: false
+      speech: "锅还是那口锅，可惜姓了沈。"   # = CP2 seg_05
+      music: ""
+    intent_refs: [i-cam-ca05, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸，器物恒存不形变"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G7_object_permanence }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [props]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca05-obj]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_05（api_h3max）；G7 老汤锅恒存（cp1 must_keep）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_06
+    axis: G6                             # 极缓推近（运镜语义镜）
+    duration_s: 2.17
+    aspect: "9:16"
+    resolution: 768P
+    seed: 48
+    characters:
+      - { char_id: cast_shenyu, desc: "沈聿·接手面馆的师兄", ref_image: "assets/comicanime/cast_shenyu_ref.png" }
+    camera: { movement: push_in, description: "极缓推近面部大特写" }
+    audio:
+      generate: false
+      speech: "这手法……你到底跟谁学的？"   # = CP2 seg_06
+      music: ""
+    intent_refs: [i-cam-ca06, i-style-ca]
+    prompt_mode: compiled                # 本镜语义全来自意图（compiled 单源演示，R4 禁手写）
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G6_camera_semantic }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca06-move]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_06（api_h3max，push_in 极缓推近）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_07
+    axis: G5                             # 双主角同框（cp1 forbidden_zones G5_多角色一致性）
+    duration_s: 3.26
+    aspect: "9:16"
+    resolution: 768P
+    seed: 49
+    characters:
+      - { char_id: cast_lu, desc: "陆星辞·被逐出师门的少东家", ref_image: "assets/comicanime/cast_lu_ref.png" }
+      - { char_id: cast_shenyu, desc: "沈聿·接手面馆的师兄", ref_image: "assets/comicanime/cast_shenyu_ref.png" }
+    camera: { movement: static, description: "双人同框隔案对坐一镜不切" }
+    audio:
+      generate: false
+      speech: "跟一个老师傅。他说，味道在，人就还在。"   # = CP2 seg_07
+      music: ""
+    intent_refs: [i-cam-ca07, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切，双主角身份不漂移，画格流定格"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G5_multi_identity }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters, props]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca07-id]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_07（api_h3max）；G5 双主角同框禁区镜（CP5 序列 shot_07 独立建轨）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_08
+    axis: G5
+    duration_s: 3.04
+    aspect: "9:16"
+    resolution: 768P
+    seed: 50
+    characters:
+      - { char_id: cast_shenyu, desc: "沈聿·接手面馆的师兄", ref_image: "assets/comicanime/cast_shenyu_ref.png" }
+    camera: { movement: static, description: "失神近景固定机位" }
+    audio:
+      generate: false
+      speech: "师弟？！那道门是爹锁的，不关我的事！"   # = CP2 seg_08
+      music: ""
+    intent_refs: [i-cam-ca08, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "沈聿后退半步扶住案沿，毛巾从手里滑落，近景拍他失神的脸，画格流定格"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G5_multi_identity }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca08-id]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_08（api_h3max）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+  - schema_version: "2.0"
+    shot_id: shot_09
+    axis: G5
+    duration_s: 2.61
+    aspect: "9:16"
+    resolution: 768P
+    seed: 51
+    characters:
+      - { char_id: cast_lu, desc: "陆星辞·被逐出师门的少东家", ref_image: "assets/comicanime/cast_lu_ref.png" }
+      - { char_id: cast_shenyu, desc: "沈聿·接手面馆的师兄", ref_image: "assets/comicanime/cast_shenyu_ref.png" }
+    camera: { movement: pull_out, description: "缓缓拉出门棚收尾" }
+    audio:
+      generate: false
+      speech: "面凉了，雨声里谁都没先动筷。"   # = CP2 seg_09
+      music: ""
+    intent_refs: [i-cam-ca09, i-style-ca]
+    prompt_mode: handwritten
+    prompt: "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃，收尾呼应开场"
+    engine: { channel: api_h3max, fallback: [api_h3, local_ltx], route_rule: G5_multi_identity }
+    continuity:
+      link: none
+      seed_policy: vary
+      lock_restatement: [characters, props, scene]
+      d3_split_declared: false
+      tail_source: real_rendered
+    cache: { strategy: submit_params, fingerprint_includes: [prompt_hash, duration_s, aspect, resolution, ref_shas] }
+    edit_ops: []
+    acceptance_refs: [acc-ca09-id]
+    budget: { credit_cap_per_shot: 280, max_retries: 2 }
+    notes: "M2 映射：CP3 shot_09（api_h3max，pull_out 收尾呼应开场）。本线无 cp4（关键帧层），包内不设关键帧类 intent。"
+
+# ---- 包级确定性后处理（post_comp 通道）----
+post_ops:
+  - intent_ref: i-pp-ca-sub             # 台词/拟声词全后期字牌：9 镜装配后统一烧录
+    run_after: [shot_01, shot_02, shot_03, shot_04, shot_05, shot_06, shot_07, shot_08, shot_09]
+
+# ---- L4 验收层：执行前冻结（AcceptanceSpec 原样采用）----
+acceptance:
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca01-style
+    version: "1.0.0"
+    intent_path: "i-style-ca.protected_features"
+    metric: "style_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior, notes: "G8 本线核心风格轴：厚涂赛璐璐防漂写实/3D/水墨；CP12 实测为 CP9 后 9/9 代表帧人检" }
+    gate: vpo:delivery.gate.flag
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca02-id
+    version: "1.0.0"
+    intent_path: "i-cam-ca02.predicate"
+    metric: "identity_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G5：主角脸身份漂移即打回
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca03-id
+    version: "1.0.0"
+    intent_path: "i-cam-ca03.predicate"
+    metric: "identity_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G5
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca04-obj
+    version: "1.0.0"
+    intent_path: "i-cam-ca04.predicate"
+    metric: "object_geometry_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G7：面碗粗陶体恒存（cp1 must_keep）
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca05-obj
+    version: "1.0.0"
+    intent_path: "i-cam-ca05.predicate"
+    metric: "object_geometry_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G7：老汤锅恒存（锅沿磨痕全程一致）
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca06-move
+    version: "1.0.0"
+    intent_path: "i-cam-ca06.movement"
+    metric: "movement_direction_present"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior, notes: "G6 实测语义非精确，flag 级验收（短剧线 acc-cam 同构）" }
+    gate: vpo:delivery.gate.flag
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca07-id
+    version: "1.0.0"
+    intent_path: "i-cam-ca07.predicate"
+    metric: "identity_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G5：双男主同框串脸即打回（cp1 禁区）
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca08-id
+    version: "1.0.0"
+    intent_path: "i-cam-ca08.predicate"
+    metric: "identity_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G5
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca09-id
+    version: "1.0.0"
+    intent_path: "i-cam-ca09.predicate"
+    metric: "identity_drift_detected"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # G5：收尾双人镜身份恒定
+    detector_id: J1_glm8
+    detector_version: "vpipe1.0"
+  - schema: "https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json"
+    criterion_id: acc-ca-sub
+    version: "1.0.0"
+    intent_path: "i-pp-ca-sub.ops[0]"
+    metric: "subtitle_verbatim_match"
+    tolerance: { evidence_status: vpo:delivery.evidence_status.prior }
+    gate: vpo:delivery.gate.block       # 确定性烧录：台词/拟声词字牌逐字不符即拒
+    detector_id: J6_detectors
+    detector_version: "vpipe1.0"

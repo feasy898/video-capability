@@ -1,0 +1,374 @@
+{
+ "schema_version": "2.0",
+ "work_id": "shortdrama_ep01",
+ "compiled_at": "2026-10-09T17:50:17",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "source_package": {
+  "path": "overnight/vpipe/out/vdl2/skeleton/shortdrama_ep01/pkg.yaml",
+  "sha256": "eabd161be2982f34dddb9d8beafa7e1c47e966cbaebd857fd1ec43d489252dd8"
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 4
+ },
+ "default_prompt_mode": "handwritten",
+ "budget": {
+  "credit_cap_total": 8064
+ },
+ "deliverable": null,
+ "post_ops": [
+  {
+   "intent_ref": "i-pp-shortdrama_ep01-sub",
+   "run_after": [
+    "shot_01",
+    "shot_02",
+    "shot_03",
+    "shot_04",
+    "shot_05",
+    "shot_06",
+    "shot_07",
+    "shot_08",
+    "shot_09",
+    "shot_10",
+    "shot_11"
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "shot_id": "shot_01",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "50ae9e77d66dff05b7b7898b9fcfda52c8364383282dc59fa4c4f6f3e3a43bfd",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_01.json"
+  },
+  {
+   "shot_id": "shot_02",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "9a5293270ff5eb0c9cca466fa2cd0d7f5246c2b53a4c75cae5ce06f6d83d0f80",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_02.json"
+  },
+  {
+   "shot_id": "shot_03",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "1b0fab1d11a413b3c74f858b28717e229a8853690fce43d71bfd7cae9c39e2b4",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_03.json"
+  },
+  {
+   "shot_id": "shot_04",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "3a5c5e8c81232736b06dd38617e174d92b0b67aeeec9d017685878c22787853a",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_04.json"
+  },
+  {
+   "shot_id": "shot_05",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "29b7380afbfb3129fd1209a71ebd939bd45bb7db2aa155b5b645ea9d5c9ae411",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_05.json"
+  },
+  {
+   "shot_id": "shot_06",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "96119e763b2603e713b5ce532c68b652b478f9efafbe5b302e08b400671ef749",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_06.json"
+  },
+  {
+   "shot_id": "shot_07",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "8da48a661c61f20736232c8fe09a584ca2109558d46eef275691f2fb735ba617",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_07.json"
+  },
+  {
+   "shot_id": "shot_08",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "1092a924a81a0143a21a8bcac96715ab8274422d5a6c551e9b5362d6245c58c6",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_08.json"
+  },
+  {
+   "shot_id": "shot_09",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "fa655aa71c96402ee745d141c9b03a0fb288cccb4ebb33b10c5c6eb6e770db11",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_09.json"
+  },
+  {
+   "shot_id": "shot_10",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "a5fa985de7f2bb8393f89d305dd0f0af67f3b76cdbec77fd15714d187f912292",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_10.json"
+  },
+  {
+   "shot_id": "shot_11",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "418bbc3f2a0392951543c486835c471e1b8a3935d344a0bd5ae98e06dfcd1ca0",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_11.json"
+  }
+ ],
+ "projection_manifest": [
+  {
+   "shot_id": "shot_01",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "50ae9e77d66dff05b7b7898b9fcfda52c8364383282dc59fa4c4f6f3e3a43bfd",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_01.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_02",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "9a5293270ff5eb0c9cca466fa2cd0d7f5246c2b53a4c75cae5ce06f6d83d0f80",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_02.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_03",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "1b0fab1d11a413b3c74f858b28717e229a8853690fce43d71bfd7cae9c39e2b4",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_03.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_04",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "3a5c5e8c81232736b06dd38617e174d92b0b67aeeec9d017685878c22787853a",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_04.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_05",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "29b7380afbfb3129fd1209a71ebd939bd45bb7db2aa155b5b645ea9d5c9ae411",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_05.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_06",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "96119e763b2603e713b5ce532c68b652b478f9efafbe5b302e08b400671ef749",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_06.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_07",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "8da48a661c61f20736232c8fe09a584ca2109558d46eef275691f2fb735ba617",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_07.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_08",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "1092a924a81a0143a21a8bcac96715ab8274422d5a6c551e9b5362d6245c58c6",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_08.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_09",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "fa655aa71c96402ee745d141c9b03a0fb288cccb4ebb33b10c5c6eb6e770db11",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_09.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_10",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "a5fa985de7f2bb8393f89d305dd0f0af67f3b76cdbec77fd15714d187f912292",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_10.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_11",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "418bbc3f2a0392951543c486835c471e1b8a3935d344a0bd5ae98e06dfcd1ca0",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_11.json",
+   "model_hint": "MiniMax-H3-Max"
+  }
+ ]
+}

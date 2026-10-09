@@ -1,0 +1,21 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "duration_s": 2.83,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [],
+ "camera": {
+  "movement": "static",
+  "description": "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰"
+ },
+ "audio": {
+  "speech": "玻璃瓶身配木底座，摆哪都好看。"
+ },
+ "prompt": "Wide shot, static camera with a subtle breathing drift: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people. The bottle wears a clean blank craft-paper label, no text, no letters, no typography, no readable label on the bottle. The diffuser is an amber glass bottle on a walnut wooden base with natural rattan reeds, catching a warm highlight from the lamp; the room graded in deep cedar green-gold dusk tones with warm bedroom lamplight, soft linen and wood textures. Premium photorealistic product commercial look, calm premium lifestyle mood, rich micro-contrast, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=wide; props=prop_diffuser_01,prop_bedside_01 | vdl2:prompt_hash=ac5fc1873cd7b2686e48819933effd067d4f3110481b88e70865b8eccf57c08a"
+}

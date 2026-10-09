@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_08",
+ "duration_s": 3.48,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lin"
+  }
+ ],
+ "camera": {
+  "movement": "handheld",
+  "description": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，手持微晃低机位拍他失神的脸"
+ },
+ "audio": {
+  "speech": "不可能……你哪来的钱？谁在背后给你撑腰？"
+ },
+ "prompt": "Handheld medium close-up from a low angle with a slight shake: an elderly man staggers half a step and grips the table edge, his wine glass topples and red wine soaks into the white tablecloth, his face draining into blank shock. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The garnet-red wine blooms and bleeds through the white damask weave; the crystal glass rolls on its side; chandelier light smears warm across the frame with the handheld sway; his silver hair falls loose over the furrowed brow; a cold blue window edge glows far behind the guests' bokeh. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_goblet_01; cp2_visual_description=林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，低机位拍他失神的脸; word_anchor_segment=seg_08; word_anchor_text=@{谁在背后给你撑腰}; cp5_blocking={\"shot_id\":\"shot_08\",\"joint_names\":[\"hips\",\"spine\",\"neck\",\"head\",\"leftShoulder\",\"leftElbow\",\"leftWrist\",\"rightShoulder\",\"rightElbow\",\"rightWrist\",\"leftHip\",\"leftKnee\",\"leftAnkle\",\"rightHip\",\"rightKnee\",\"rightAnkle\"],\"bone_length_constant\":true,\"speech_mode\":\"independent_lip_layer\",\"tracks\":[{\"joint\":null,\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.04,\"y\":0,\"z\":0}},{\"time\":0.6,\"rotation\":{\"x\":0.08,\"y\":-0.05,\"z\":0}},{\"time\":1.4,\"rotation\":{\"x\":0.12,\"y\":0.03,\"z\":0}},{\"time\":2.2,\"rotation\":{\"x\":0.1,\"y\":0.02,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0.1,\"y\":0.02,\"z\":0}}]},{\"joint\":\"spine\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.06,\"y\":0,\"z\":0}},{\"time\":0.6,\"rotation\":{\"x\":0.1,\"y\":0,\"z\":0}},{\"time\":1.6,\"rotation\":{\"x\":0.18,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0.16,\"y\":0,\"z\":0}}]},{\"joint\":\"leftShoulder\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.25}},{\"time\":0.7,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.7}},{\"time\":1.5,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.95}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.9}}]},{\"joint\":\"leftElbow\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.25,\"y\":0,\"z\":0}},{\"time\":0.7,\"rotation\":{\"x\":-0.8,\"y\":0,\"z\":0}},{\"time\":1.5,\"rotation\":{\"x\":-1.15,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":-1.1,\"y\":0,\"z\":0}}]},{\"joint\":\"leftWrist\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":1.5,\"rotation\":{\"x\":0,\"y\":-0.4,\"z\":0}},{\"time\":2.5,\"rotation\":{\"x\":0,\"y\":-0.5,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":-0.5,\"z\":0}}]},{\"joint\":\"rightWrist\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":1.0,\"rotation\":{\"x\":0,\"y\":-0.7,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":0,\"y\":-0.8,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":-0.8,\"z\":0}}]}],\"frame_count\":70,\"known_cuts\":[]} | vdl2:prompt_hash=1092a924a81a0143a21a8bcac96715ab8274422d5a6c551e9b5362d6245c58c6"
+}

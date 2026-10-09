@@ -1,0 +1,64 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp1",
+  "artifact_type": "intent_card",
+  "fingerprint": "9e3def20066145b5e3846d1eec6510bab78f4403a491de036c17768e72e515ea",
+  "produced_by": "agent.vdl2Projector",
+  "produced_at": "2026-10-09T09:51:09Z",
+  "upstream_refs": [],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp1.gate.forbidden_defect_code_registry",
+    "result": "pending",
+    "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+  },
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "theme": "竖屏都市逆袭短剧《雨夜合约》：五年前被林家逐出宅门的汽修工学徒小满，雨夜以新任集团董事身份重返旧宅签约——旧东家的合约晚宴当场变成对质。同结构不同内容：沿用 dy01v3 结构先验（31 镜快切对白戏、镜均 1.78s、特写主导 17/31、双人全身镜穿插、低机位固定机位），人物/台词/场景全部原创；参考样片仅为叙事节奏对位，不是内容来源",
+    "selling_point": "60 秒三次身份反转踩点：修车工装→董事西装的同框换装特写 + 雨夜晚宴全员微表情反应链，全程竖屏面部大特写压迫感",
+    "must_keep": [
+      "prop_wrench_01 修车扳手特写（金属恒存不形变，镜级实物一致）",
+      "cast_xiaoman/cast_lin 同框镜头双主角身份不漂移",
+      "台词与片名小字一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"
+    ],
+    "forbidden_zones": [
+      {
+        "description": "道具/食物形变（雨夜晚宴餐具与合约文件）",
+        "defect_code": "G7_物体恒存"
+      },
+      {
+        "description": "画面内渲染小字与硬字幕（生成侧自由渲染必乱，绕行走后期字牌）",
+        "defect_code": "G2_画面内文字"
+      },
+      {
+        "description": "同框双主角身份漂移（工装/西装换装特写易串脸）",
+        "defect_code": "G5_多角色一致性"
+      }
+    ],
+    "deliverable": {
+      "pixel_map": {
+        "width": 1088,
+        "height": 1920,
+        "aspect": "9:16"
+      },
+      "encode_contract": {
+        "container": "mp4",
+        "video_codec": "h264",
+        "audio_codec": "aac"
+      }
+    },
+    "budget": {
+      "credit_cap_total": 8064
+    }
+  },
+  "notes": "投影器填充台账（vdl2_project.py 机械投影，语义创作=0；包是规格不是执行记录，本件 status/gate=pending 为未判定态非执行结论）：[派生] deliverable.pixel_map.aspect=9:16 ← shots[].aspect（首镜）；[恢复] must_keep 3 条 ← 首镜 notes「cp1_must_keep」登记位（骨架器自来源 cp1 保序反投影）；[恢复] forbidden_zones 3 条 ← 首镜 notes「cp1_forbidden_zones」登记位（骨架器自来源 cp1 反投影）；[恢复] theme ← 首镜 notes「cp1_theme」登记位（骨架器自来源 cp1 反投影）；[恢复] selling_point ← 首镜 notes「cp1_selling_point」登记位（骨架器自来源 cp1 反投影）；[惯例] deliverable width/height/encode_contract=1088×1920 / mp4·h264·aac（INTENT.md:89 竖版口径；包内无 deliverable 段，投影器惯例缺省）",
+  "aux_gates": [
+    {
+      "type": "human",
+      "params_ref": "cp1.gate.owner_confirmation",
+      "result": "pending",
+      "note": "CP1 设计内人工介入点：意图卡须 owner 确认，投影器不代签（pending）"
+    }
+  ]
+}

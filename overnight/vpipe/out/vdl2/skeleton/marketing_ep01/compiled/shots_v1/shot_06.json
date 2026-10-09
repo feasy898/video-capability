@@ -1,0 +1,21 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_06",
+ "duration_s": 2.61,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [],
+ "camera": {
+  "movement": "push_in",
+  "description": "产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存"
+ },
+ "audio": {
+  "speech": "想要的点置顶链接，今晚下单。"
+ },
+ "prompt": "Medium close-up with a slow push-in: an amber glass reed diffuser bottle with a round wooden base on a bedside table, warm lamp rim light, soft dusk window glow behind, clean empty space in the upper frame, premium calm product showcase, the bottle shape stays rigid. The amber glass glows honey-gold with a crisp rim highlight, the walnut base grain visible, the rattan reeds in soft focus; deep cedar green-gold tone grade in warm bedroom lamplight. Premium photorealistic product commercial look, delicate glass reflections, rich micro-contrast, shallow depth of field, slow graceful push-in, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01 | vdl2:prompt_hash=cf04cd979fa051b981722a5b41c56fe350517dc34e03771b6ebe30124b6221ef"
+}

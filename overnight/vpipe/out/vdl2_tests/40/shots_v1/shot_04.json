@@ -1,0 +1,31 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_04",
+ "axis": "G1",
+ "duration_s": 3.04,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 46,
+ "characters": [
+  {
+   "char_id": "cast_host",
+   "desc": "女主播，25-32 岁，邻家知性口吻",
+   "ref_image": "assets/marketing/cast_host_ref.png"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "床头暖光台灯旁固定机位"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "床头摆一瓶，像把雪松林搬进卧室。",
+  "music": ""
+ },
+ "prompt": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_04（api_h3max）；G1 手部禁区镜（hand_object_contact 挂 i-cam-mk04 外置意图）。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=4c57a9de97b04bcc5a315544422b5e1339ae2811e9c5a80bd38046b1149a602e | vdl2:intents=i-cam-mk04@1.0.0"
+}

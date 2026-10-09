@@ -1,0 +1,24 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "axis": "G7",
+ "duration_s": 2.83,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 47,
+ "camera": {
+  "movement": "static",
+  "description": "暮色卧室全景固定机位"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "玻璃瓶身配木底座，摆哪都好看。",
+  "music": ""
+ },
+ "prompt": "暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_05（api_h3max）；G7+画面零文字（G2）。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=0a92964534949f7080932843c3c03fdc55c3d750612c5f0fe0a248a8cfdac984 | vdl2:intents=i-cam-mk05@1.0.0"
+}

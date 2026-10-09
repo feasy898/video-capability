@@ -1,0 +1,312 @@
+{
+ "schema_version": "2.0",
+ "work_id": "comicanime_ep01",
+ "compiled_at": "2026-10-09T17:10:37",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "source_package": {
+  "path": "out/vdl2/skeleton/comicanime_ep01/pkg.yaml",
+  "sha256": "9402273e8de9fc98c8f4421a239bc8b124d6e051d41691975e10c9aa2d933ba4"
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ },
+ "default_prompt_mode": "handwritten",
+ "budget": {
+  "credit_cap_total": 3360
+ },
+ "deliverable": null,
+ "post_ops": [
+  {
+   "intent_ref": "i-pp-comicanime_ep01-sub",
+   "run_after": [
+    "shot_01",
+    "shot_02",
+    "shot_03",
+    "shot_04",
+    "shot_05",
+    "shot_06",
+    "shot_07",
+    "shot_08",
+    "shot_09"
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "shot_id": "shot_01",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "1d08a482d5c0aa916a67c148c76098c8fcb5acbccd360fe8086ec01895963657",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_01.json"
+  },
+  {
+   "shot_id": "shot_02",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "78985e1f97184782962bb342f121d96801223e452de1638ca807f50da798c9af",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_02.json"
+  },
+  {
+   "shot_id": "shot_03",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "7744d0bb6107728ebd9cf392bf268e7c13cd374d87c06c347b68a1105024f97b",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_03.json"
+  },
+  {
+   "shot_id": "shot_04",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "83eb728d87139397b5ea319e9b3049d1562fac2be39b1356065d71f8292093b0",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_04.json"
+  },
+  {
+   "shot_id": "shot_05",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "18a8c8da0ce6842f9d3ba10bc459c907c83beb3c64b8f0da8ebc4e84034c13a5",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_05.json"
+  },
+  {
+   "shot_id": "shot_06",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "8a02b52803e274a520425886510e36e9047f16d61f3063f8800376ee4caa57f5",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_06.json"
+  },
+  {
+   "shot_id": "shot_07",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "612b88f473ffe07d2bbdf18a4cc3aa94499d5f759b8d2caa4ea86f5f0c8e8088",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_07.json"
+  },
+  {
+   "shot_id": "shot_08",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "b13635d547b2c896fef2d7457ea853074aadc716611a2488aa61cff0b35cf376",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_08.json"
+  },
+  {
+   "shot_id": "shot_09",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "d5ca42cb72dd8a596f933e27035dc5ffb99b133fb3e0580641e860a98281997e",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_09.json"
+  }
+ ],
+ "projection_manifest": [
+  {
+   "shot_id": "shot_01",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "1d08a482d5c0aa916a67c148c76098c8fcb5acbccd360fe8086ec01895963657",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_01.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_02",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "78985e1f97184782962bb342f121d96801223e452de1638ca807f50da798c9af",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_02.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_03",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "7744d0bb6107728ebd9cf392bf268e7c13cd374d87c06c347b68a1105024f97b",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_03.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_04",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "83eb728d87139397b5ea319e9b3049d1562fac2be39b1356065d71f8292093b0",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_04.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_05",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "18a8c8da0ce6842f9d3ba10bc459c907c83beb3c64b8f0da8ebc4e84034c13a5",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_05.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_06",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "8a02b52803e274a520425886510e36e9047f16d61f3063f8800376ee4caa57f5",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_06.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_07",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "612b88f473ffe07d2bbdf18a4cc3aa94499d5f759b8d2caa4ea86f5f0c8e8088",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_07.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_08",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "b13635d547b2c896fef2d7457ea853074aadc716611a2488aa61cff0b35cf376",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_08.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_09",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "d5ca42cb72dd8a596f933e27035dc5ffb99b133fb3e0580641e860a98281997e",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_09.json",
+   "model_hint": "MiniMax-H3-Max"
+  }
+ ]
+}

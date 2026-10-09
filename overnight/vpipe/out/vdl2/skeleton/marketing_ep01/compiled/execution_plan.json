@@ -1,0 +1,227 @@
+{
+ "schema_version": "2.0",
+ "work_id": "marketing_ep01",
+ "compiled_at": "2026-10-09T17:10:36",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "source_package": {
+  "path": "out/vdl2/skeleton/marketing_ep01/pkg.yaml",
+  "sha256": "04f562bc9fe26a03c3501d3ac61274c0cd5b1567bd08f86ef1941b4c8d38e9ea"
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ },
+ "default_prompt_mode": "handwritten",
+ "budget": {
+  "credit_cap_total": 2016
+ },
+ "deliverable": null,
+ "post_ops": [
+  {
+   "intent_ref": "i-pp-marketing_ep01-sub",
+   "run_after": [
+    "shot_01",
+    "shot_02",
+    "shot_03",
+    "shot_04",
+    "shot_05",
+    "shot_06"
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "shot_id": "shot_01",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "65a67585c98777dfcdcc93f9504ab96412bc8d824300d8db0b1880d6c00b7128",
+   "engine": {
+    "channel": "api_vidu_avatar"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_01.json",
+   "avatar": {
+    "tts_input": "卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。",
+    "image_ref": null,
+    "duration_follows": "audio",
+    "billing_rule": "1积分/s×ceil(音频秒)，失败不扣（b2_run.log credits=0）",
+    "wallet_endpoint": "/ent/v2/credits",
+    "watermark": false
+   }
+  },
+  {
+   "shot_id": "shot_02",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "532ab252e5ea2ee09c6dc727260d311ea4d40adc80c6025a99f58e4aac5379ce",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_02.json"
+  },
+  {
+   "shot_id": "shot_03",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "03e82e761698b599add11f8daf02d876245158b6fb5276f99942871ceb7385d3",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_03.json"
+  },
+  {
+   "shot_id": "shot_04",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "8fba05dc04867b9d8c4f68e1171be36d7b7318dd9ecf3f6287cd537759ce6e7d",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_04.json"
+  },
+  {
+   "shot_id": "shot_05",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "ac5fc1873cd7b2686e48819933effd067d4f3110481b88e70865b8eccf57c08a",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_05.json"
+  },
+  {
+   "shot_id": "shot_06",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "cf04cd979fa051b981722a5b41c56fe350517dc34e03771b6ebe30124b6221ef",
+   "engine": {
+    "channel": "api_h3max"
+   },
+   "cache": {},
+   "budget": {
+    "credit_cap_per_shot": 280
+   },
+   "acceptance_refs": [],
+   "intent_refs": [],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "none",
+    "d3_split_declared": false
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_06.json"
+  }
+ ],
+ "projection_manifest": [
+  {
+   "shot_id": "shot_01",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "65a67585c98777dfcdcc93f9504ab96412bc8d824300d8db0b1880d6c00b7128",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_01.json",
+   "model_hint": "Vidu-avatar-offline"
+  },
+  {
+   "shot_id": "shot_02",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "532ab252e5ea2ee09c6dc727260d311ea4d40adc80c6025a99f58e4aac5379ce",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_02.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_03",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "03e82e761698b599add11f8daf02d876245158b6fb5276f99942871ceb7385d3",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_03.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_04",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "8fba05dc04867b9d8c4f68e1171be36d7b7318dd9ecf3f6287cd537759ce6e7d",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_04.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_05",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "ac5fc1873cd7b2686e48819933effd067d4f3110481b88e70865b8eccf57c08a",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_05.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_06",
+   "intent_versions": [],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "cf04cd979fa051b981722a5b41c56fe350517dc34e03771b6ebe30124b6221ef",
+   "acceptance_refs": [],
+   "v1_shot": "shots_v1/shot_06.json",
+   "model_hint": "MiniMax-H3-Max"
+  }
+ ]
+}

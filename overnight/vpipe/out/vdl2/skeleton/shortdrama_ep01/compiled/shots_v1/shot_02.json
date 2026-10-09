@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_02",
+ "duration_s": 6.3,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lin"
+  }
+ ],
+ "camera": {
+  "movement": "push_in",
+  "description": "林父举杯的手停在半空，杯中酒晃出涟漪；镜头缓推越过杯沿，他抬手示意门口保安，宾客回头"
+ },
+ "audio": {
+  "speech": "你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！"
+ },
+ "prompt": "Medium shot at a crowded banquet: an elderly man in a dark suit freezes with a raised wine glass, red wine rippling in the bowl, the camera slowly pushing in over the rim of the glass as he lifts his other hand to beckon a guard at the door, guests turning their heads. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The crystal goblet refracts warm golden chandelier light, the wine a deep garnet red catching a spark; white damask tablecloth, candle flames in soft bokeh, guests in black-tie dissolving into warm golden circles; his silver hair glossed by the chandelier, cut-glass reflections trembling across his brow. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium; props=prop_goblet_01; cp2_visual_description=林父举着酒杯的手停在半空，杯中酒晃出涟漪，抬手示意门口保安，宾客回头; word_anchor_segment=seg_02; word_anchor_text=@{也配踏进林家的门} | vdl2:prompt_hash=9a5293270ff5eb0c9cca466fa2cd0d7f5246c2b53a4c75cae5ce06f6d83d0f80"
+}

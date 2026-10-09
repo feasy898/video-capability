@@ -1,0 +1,581 @@
+{
+ "schema_version": "2.0",
+ "work_id": "comicanime_ep01",
+ "compiled_at": "2026-10-09T17:53:46",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "source_package": {
+  "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/50_comicanime_ep01.yaml",
+  "sha256": "4dcb086c3e54f829ef646640a3cfa27ef63678eb811f6837a4df1fac9b423920"
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ },
+ "default_prompt_mode": "hybrid",
+ "budget": {
+  "credit_cap_total": 3360,
+  "wallet_check_uri_note": "MiniMax /api/v1/credit/wallet（密钥只从 env 读，不入包）"
+ },
+ "deliverable": null,
+ "post_ops": [
+  {
+   "intent_ref": "i-pp-ca-sub",
+   "run_after": [
+    "shot_01",
+    "shot_02",
+    "shot_03",
+    "shot_04",
+    "shot_05",
+    "shot_06",
+    "shot_07",
+    "shot_08",
+    "shot_09"
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "shot_id": "shot_01",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "13b5afb07778a5dec46bcddde66efea84a35d2d62a3accfe5bdbd206a3437578",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G8_style_lock"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca01-style",
+    "acc-ca-sub"
+   ],
+   "intent_refs": [
+    "i-cam-ca01@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters",
+     "scene"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_01.json"
+  },
+  {
+   "shot_id": "shot_02",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "06f6a76c4fd189d1b373d5839b6bb50f8dd3bc006ca1a6bb01e60911f84715dd",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G5_multi_identity"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca02-id"
+   ],
+   "intent_refs": [
+    "i-cam-ca02@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_02.json"
+  },
+  {
+   "shot_id": "shot_03",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "a5e518313afb0d728ca56e07a114b0ffd5635705494f1537ef6a19320fc834f9",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G5_multi_identity"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca03-id"
+   ],
+   "intent_refs": [
+    "i-cam-ca03@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_03.json"
+  },
+  {
+   "shot_id": "shot_04",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "979c16949b917c7d618e71b0450cd5e5f1bb9e8b285ff3b752f323000578229a",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G7_object_permanence"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca04-obj"
+   ],
+   "intent_refs": [
+    "i-cam-ca04@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters",
+     "props"
+    ],
+    "d3_split_declared": true,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_04.json"
+  },
+  {
+   "shot_id": "shot_05",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "cba1e92d995caacb066e7734f704961af0d1d9b2872bbf1d29bcbc4e207f8de7",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G7_object_permanence"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca05-obj"
+   ],
+   "intent_refs": [
+    "i-cam-ca05@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "props"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_05.json"
+  },
+  {
+   "shot_id": "shot_06",
+   "prompt_mode": "compiled",
+   "prompt_hash": "24250c36aaf10506953669dcb78e3df52537f5b47499b640facb6cd6ea370be6",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G6_camera_semantic"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca06-move"
+   ],
+   "intent_refs": [
+    "i-cam-ca06@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_06.json"
+  },
+  {
+   "shot_id": "shot_07",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "9f6d099eaa7390bc036f222a1692defb46aa10d25f6f4a28822ff9d5c811743a",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G5_multi_identity"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca07-id"
+   ],
+   "intent_refs": [
+    "i-cam-ca07@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters",
+     "props"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_07.json"
+  },
+  {
+   "shot_id": "shot_08",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "07b8d1f2b12aed4d0c116a7619dafcabde69e38898ca47701eaf62f25b7b7fd6",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G5_multi_identity"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca08-id"
+   ],
+   "intent_refs": [
+    "i-cam-ca08@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_08.json"
+  },
+  {
+   "shot_id": "shot_09",
+   "prompt_mode": "handwritten",
+   "prompt_hash": "e4801773fbc3450b32ba8483098c56786d1b7e3c93e960649a81774fbd0e1047",
+   "engine": {
+    "channel": "api_h3max",
+    "fallback": [
+     "api_h3",
+     "local_ltx"
+    ],
+    "route_rule": "G5_multi_identity"
+   },
+   "cache": {
+    "strategy": "submit_params",
+    "fingerprint_includes": [
+     "prompt_hash",
+     "duration_s",
+     "aspect",
+     "resolution",
+     "ref_shas"
+    ]
+   },
+   "budget": {
+    "credit_cap_per_shot": 280,
+    "max_retries": 2
+   },
+   "acceptance_refs": [
+    "acc-ca09-id"
+   ],
+   "intent_refs": [
+    "i-cam-ca09@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "continuity": {
+    "link": "none",
+    "seed_policy": "vary",
+    "lock_restatement": [
+     "characters",
+     "props",
+     "scene"
+    ],
+    "d3_split_declared": false,
+    "tail_source": "real_rendered"
+   },
+   "edit_ops": [],
+   "v1_shot": "shots_v1/shot_09.json"
+  }
+ ],
+ "projection_manifest": [
+  {
+   "shot_id": "shot_01",
+   "intent_versions": [
+    "i-cam-ca01@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "13b5afb07778a5dec46bcddde66efea84a35d2d62a3accfe5bdbd206a3437578",
+   "acceptance_refs": [
+    "acc-ca01-style",
+    "acc-ca-sub"
+   ],
+   "v1_shot": "shots_v1/shot_01.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_02",
+   "intent_versions": [
+    "i-cam-ca02@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "06f6a76c4fd189d1b373d5839b6bb50f8dd3bc006ca1a6bb01e60911f84715dd",
+   "acceptance_refs": [
+    "acc-ca02-id"
+   ],
+   "v1_shot": "shots_v1/shot_02.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_03",
+   "intent_versions": [
+    "i-cam-ca03@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "a5e518313afb0d728ca56e07a114b0ffd5635705494f1537ef6a19320fc834f9",
+   "acceptance_refs": [
+    "acc-ca03-id"
+   ],
+   "v1_shot": "shots_v1/shot_03.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_04",
+   "intent_versions": [
+    "i-cam-ca04@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "979c16949b917c7d618e71b0450cd5e5f1bb9e8b285ff3b752f323000578229a",
+   "acceptance_refs": [
+    "acc-ca04-obj"
+   ],
+   "v1_shot": "shots_v1/shot_04.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_05",
+   "intent_versions": [
+    "i-cam-ca05@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "cba1e92d995caacb066e7734f704961af0d1d9b2872bbf1d29bcbc4e207f8de7",
+   "acceptance_refs": [
+    "acc-ca05-obj"
+   ],
+   "v1_shot": "shots_v1/shot_05.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_06",
+   "intent_versions": [
+    "i-cam-ca06@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "compiled",
+   "prompt_hash": "24250c36aaf10506953669dcb78e3df52537f5b47499b640facb6cd6ea370be6",
+   "acceptance_refs": [
+    "acc-ca06-move"
+   ],
+   "v1_shot": "shots_v1/shot_06.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_07",
+   "intent_versions": [
+    "i-cam-ca07@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "9f6d099eaa7390bc036f222a1692defb46aa10d25f6f4a28822ff9d5c811743a",
+   "acceptance_refs": [
+    "acc-ca07-id"
+   ],
+   "v1_shot": "shots_v1/shot_07.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_08",
+   "intent_versions": [
+    "i-cam-ca08@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "07b8d1f2b12aed4d0c116a7619dafcabde69e38898ca47701eaf62f25b7b7fd6",
+   "acceptance_refs": [
+    "acc-ca08-id"
+   ],
+   "v1_shot": "shots_v1/shot_08.json",
+   "model_hint": "MiniMax-H3-Max"
+  },
+  {
+   "shot_id": "shot_09",
+   "intent_versions": [
+    "i-cam-ca09@1.0.0",
+    "i-style-ca@1.0.0"
+   ],
+   "prompt_mode": "handwritten",
+   "prompt_hash": "e4801773fbc3450b32ba8483098c56786d1b7e3c93e960649a81774fbd0e1047",
+   "acceptance_refs": [
+    "acc-ca09-id"
+   ],
+   "v1_shot": "shots_v1/shot_09.json",
+   "model_hint": "MiniMax-H3-Max"
+  }
+ ]
+}

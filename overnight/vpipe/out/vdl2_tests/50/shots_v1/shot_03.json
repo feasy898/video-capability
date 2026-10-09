@@ -1,0 +1,31 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_03",
+ "axis": "G5",
+ "duration_s": 3.26,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 45,
+ "characters": [
+  {
+   "char_id": "cast_shenyu",
+   "desc": "沈聿·接手面馆的师兄",
+   "ref_image": "assets/comicanime/cast_shenyu_ref.png"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "灶后中近景固定机位，不抬头回话"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "头汤只卖一碗。这规矩，十年前就断了。",
+  "music": ""
+ },
+ "prompt": "沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话，画格流定格",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_03（api_h3max）。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=a5e518313afb0d728ca56e07a114b0ffd5635705494f1537ef6a19320fc834f9 | vdl2:intents=i-cam-ca03@1.0.0,i-style-ca@1.0.0"
+}

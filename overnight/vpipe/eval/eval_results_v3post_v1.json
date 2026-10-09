@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-09T16:29:27",
+ "generated_at": "2026-10-09T17:53:30",
  "qc_dir": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1",
  "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
  "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",

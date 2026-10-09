@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_03",
+ "duration_s": 6.74,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_xiaoman"
+  }
+ ],
+ "camera": {
+  "movement": "push_in",
+  "description": "小满把修车扳手放上白桌布，金属反光划过扳手轮廓特写，镜头缓推但不离开扳手，扳手金属体不形变"
+ },
+ "audio": {
+  "speech": "轰我可以。先认认这个——我在你们厂修了三年车，被扫地出门那天，就带走了它。"
+ },
+ "prompt": "Close-up: a young woman places a steel wrench on a white tablecloth, light glinting along the rigid metal body, the camera slowly pushing in while staying locked on the wrench, the banquet hall melted into soft bokeh behind. The wrench is brushed drop-forged steel with machined edges, its silhouette streaked by golden chandelier reflections; the cloth is crisp white damask with woven gloss; the steel body stays perfectly rigid and undeformed through the whole move; her hand entering frame is Xiaoman's, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. warm amber key light rakes across the metal, cool blue window fill keeps the shadows neutral. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=close; props=prop_wrench_01; cp2_visual_description=小满把修车扳手放上白桌布，金属反光划过特写，镜头不离开扳手轮廓; word_anchor_segment=seg_03; word_anchor_text=@{修了三年车}; cp5_blocking={\"shot_id\":\"shot_03\",\"joint_names\":[\"hips\",\"spine\",\"neck\",\"head\",\"leftShoulder\",\"leftElbow\",\"leftWrist\",\"rightShoulder\",\"rightElbow\",\"rightWrist\",\"leftHip\",\"leftKnee\",\"leftAnkle\",\"rightHip\",\"rightKnee\",\"rightAnkle\"],\"bone_length_constant\":true,\"speech_mode\":\"independent_lip_layer\",\"tracks\":[{\"joint\":null,\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":1.2,\"rotation\":{\"x\":0,\"y\":0.04,\"z\":0}},{\"time\":2.4,\"rotation\":{\"x\":0,\"y\":0.08,\"z\":0}},{\"time\":3.6,\"rotation\":{\"x\":0,\"y\":0.1,\"z\":0}},{\"time\":4.8,\"rotation\":{\"x\":0,\"y\":0.12,\"z\":0}},{\"time\":6.0,\"rotation\":{\"x\":0,\"y\":0.14,\"z\":0}},{\"time\":6.7,\"rotation\":{\"x\":0,\"y\":0.15,\"z\":0}}]},{\"joint\":\"spine\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0.02,\"y\":0,\"z\":0}},{\"time\":1.5,\"rotation\":{\"x\":0.1,\"y\":0,\"z\":0}},{\"time\":3.0,\"rotation\":{\"x\":0.15,\"y\":0,\"z\":0}},{\"time\":5.0,\"rotation\":{\"x\":0.16,\"y\":0,\"z\":0}},{\"time\":6.7,\"rotation\":{\"x\":0.15,\"y\":0,\"z\":0}}]},{\"joint\":\"rightShoulder\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0.3}},{\"time\":0.8,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.9}},{\"time\":2.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.3}},{\"time\":3.6,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.35}},{\"time\":5.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.3}},{\"time\":6.7,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.25}}]},{\"joint\":\"rightElbow\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.2,\"y\":0,\"z\":0}},{\"time\":0.8,\"rotation\":{\"x\":-1.2,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":-1.5,\"y\":0,\"z\":0}},{\"time\":3.6,\"rotation\":{\"x\":-1.55,\"y\":0,\"z\":0}},{\"time\":6.7,\"rotation\":{\"x\":-1.5,\"y\":0,\"z\":0}}]},{\"joint\":\"rightWrist\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0.1,\"z\":0}},{\"time\":1.0,\"rotation\":{\"x\":0,\"y\":-0.4,\"z\":0}},{\"time\":2.2,\"rotation\":{\"x\":0,\"y\":-0.6,\"z\":0}},{\"time\":3.6,\"rotation\":{\"x\":0,\"y\":-0.65,\"z\":0}},{\"time\":6.7,\"rotation\":{\"x\":0,\"y\":-0.6,\"z\":0}}]},{\"joint\":\"leftShoulder\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.2}},{\"time\":2.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.35}},{\"time\":6.7,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.3}}]},{\"joint\":\"leftElbow\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.3,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":-0.7,\"y\":0,\"z\":0}},{\"time\":6.7,\"rotation\":{\"x\":-0.65,\"y\":0,\"z\":0}}]}],\"frame_count\":135,\"known_cuts\":[3.6]} | vdl2:prompt_hash=1b0fab1d11a413b3c74f858b28717e229a8853690fce43d71bfd7cae9c39e2b4"
+}

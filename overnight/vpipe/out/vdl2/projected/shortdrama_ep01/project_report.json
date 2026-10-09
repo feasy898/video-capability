@@ -1,0 +1,69 @@
+{
+  "projector": "vdl2_project.py@vpipe2.0-dev",
+  "projected_at": "2026-10-09T09:51:09Z",
+  "package": "overnight/vpipe/out/vdl2/skeleton/shortdrama_ep01/pkg.yaml",
+  "out_dir": "overnight/vpipe/out/vdl2/projected/shortdrama_ep01",
+  "artifacts": {
+    "cp1": {
+      "file": "cp1.json",
+      "fingerprint": "9e3def20066145b5e3846d1eec6510bab78f4403a491de036c17768e72e515ea"
+    },
+    "cp2": {
+      "file": "cp2.json",
+      "fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca"
+    },
+    "cp3": {
+      "file": "cp3.json",
+      "fingerprint": "ca1f0a7e88bf86c6cbac103fea60ddf3dce6d22e610a250dec5e14aedcc5cf6c"
+    },
+    "cp6": {
+      "file": "cp6.json",
+      "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b"
+    },
+    "cp5": {
+      "file": "cp5.json",
+      "fingerprint": "a5af54917b8f13c92b0c29894e47306627387fe79b4d3d93531e4a6b503bfb19"
+    }
+  },
+  "fill_ledger": {
+    "cp1": [
+      "[派生] deliverable.pixel_map.aspect=9:16 ← shots[].aspect（首镜）",
+      "[恢复] must_keep 3 条 ← 首镜 notes「cp1_must_keep」登记位（骨架器自来源 cp1 保序反投影）",
+      "[恢复] forbidden_zones 3 条 ← 首镜 notes「cp1_forbidden_zones」登记位（骨架器自来源 cp1 反投影）",
+      "[恢复] theme ← 首镜 notes「cp1_theme」登记位（骨架器自来源 cp1 反投影）",
+      "[恢复] selling_point ← 首镜 notes「cp1_selling_point」登记位（骨架器自来源 cp1 反投影）",
+      "[惯例] deliverable width/height/encode_contract=1088×1920 / mp4·h264·aac（INTENT.md:89 竖版口径；包内无 deliverable 段，投影器惯例缺省）"
+    ],
+    "cp2": [
+      "[派生] narration_segments=11 段（逐镜一段，segment_id=seg_NN 镜序惯例；narration_text←audio.speech、estimated_duration_s←duration_s、cast/props←characters+notes 登记位）",
+      "[恢复] visual_description 11/11 段 ← 本镜 notes「cp2_visual_description」登记位（骨架器自来源 cp2 反投影原文；缺登记位段回退 camera.description 代用）",
+      "[派生] estimated_total_duration_s=60.64=Σ estimated_duration_s（round 2）",
+      "[恢复] target_duration_s=60.0 ← 首镜 notes「cp2_target_duration_s」登记位（骨架器自来源 cp2 反投影，JSON 数字 int/float 保真）",
+      "[恢复] props 注册表 3 条 ← 首镜 notes「cp2_props」登记位（骨架器自来源 cp2 原序反投影）",
+      "[派生] tts_safe=投影器字符集复核（保守白名单）"
+    ],
+    "cp3": [
+      "[派生] shots 骨架直投（shot_id/duration_s/action←camera.description/move←camera.movement/channel_hint←engine.channel/refs←characters+notes props）",
+      "[派生] shot_scale ←shots[].notes「cp3_shot_scale=…」登记位解析",
+      "[恢复] word_anchors 11 镜 ← notes「word_anchor_segment/word_anchor_text」登记位（骨架器自来源 cp3 反投影；缺登记位镜不产——字段可选，对账如实暴露）",
+      "[派生] source_script_fingerprint=本链 cp2 实算指纹"
+    ],
+    "cp6": [
+      "[派生] fps=24 ← intents.temporal_extent.time_base.rate_num",
+      "[派生] total_frames=1440=round(target_duration_s×fps)（目标集时长收敛口，target_duration_s=60.0 ← 包首镜 notes「cp2_target_duration_s」登记位）",
+      "[派生] duration_frames=Hamilton 最大余数法比例折算（Σ==total_frames 守恒，同余数按镜序破并列）；start_frame 累计排布",
+      "[派生] subtitle_align_max_dev_ms=22=ceil(半帧 ms + 0.5ms 进位)（参照链既有推导式）",
+      "[惯例] sound_lead_in_frames=2（D3-8 声音先入 83ms@24fps；包内 TransitionIntent 未生成，投影器惯例缺省）"
+    ],
+    "cp5": [
+      "[恢复] sequences=6 条 ← shots[].notes「cp5_blocking」登记位（骨架器自来源 cp5 逐镜反投影，JSON 原文回读类型保真）",
+      "[派生] sequences 按包镜序组装；upstream_refs=[cp3 实算指纹]"
+    ]
+  },
+  "skipped": {
+    "cp4": "包内无关键帧面（frames/identity 数据）：不投影；参照链三线亦均无 cp4（双方均缺=对账 OK 项）"
+  },
+  "warnings": [],
+  "errors": [],
+  "ok": true
+}

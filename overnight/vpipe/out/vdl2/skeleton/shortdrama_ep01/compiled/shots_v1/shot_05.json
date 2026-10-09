@@ -1,0 +1,28 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "duration_s": 5.43,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_xiaoman"
+  },
+  {
+   "char_id": "cast_lin"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景一镜不切"
+ },
+ "audio": {
+  "speech": "签字不急。您先翻到最后一页，看看这一回，该谁给谁低头签字。"
+ },
+ "prompt": "Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each other across a banquet table, she slides the last page of a contract across the table with one fingertip, both in frame, no cuts. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm candle centerpiece burns between them, carving her youthful jaw against his deep frown lines; the contract page is bright ivory against dark walnut; crystal and cutlery glint at the frame edges; the background falls into warm amber gloom with faint cold blue window light far behind. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_contract_01; cp2_visual_description=小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景不切; word_anchor_segment=seg_05; word_anchor_text=@{该谁给谁低头签字}; cp5_blocking={\"shot_id\":\"shot_05\",\"joint_names\":[\"hips\",\"spine\",\"neck\",\"head\",\"leftShoulder\",\"leftElbow\",\"leftWrist\",\"rightShoulder\",\"rightElbow\",\"rightWrist\",\"leftHip\",\"leftKnee\",\"leftAnkle\",\"rightHip\",\"rightKnee\",\"rightAnkle\"],\"bone_length_constant\":true,\"speech_mode\":\"independent_lip_layer\",\"tracks\":[{\"joint\":null,\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":1.5,\"rotation\":{\"x\":0,\"y\":0.03,\"z\":0}},{\"time\":3.0,\"rotation\":{\"x\":0,\"y\":0.06,\"z\":0}},{\"time\":5.4,\"rotation\":{\"x\":0,\"y\":0.05,\"z\":0}}]},{\"joint\":\"spine\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0.05,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":0.14,\"y\":0,\"z\":0}},{\"time\":3.5,\"rotation\":{\"x\":0.12,\"y\":0,\"z\":0}},{\"time\":5.4,\"rotation\":{\"x\":0.1,\"y\":0,\"z\":0}}]},{\"joint\":\"rightShoulder\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0.15}},{\"time\":1.8,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.9}},{\"time\":3.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.15}},{\"time\":3.6,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.2}},{\"time\":5.4,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.15}}]},{\"joint\":\"rightElbow\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.25,\"y\":0,\"z\":0}},{\"time\":1.8,\"rotation\":{\"x\":-1.0,\"y\":0,\"z\":0}},{\"time\":3.0,\"rotation\":{\"x\":-1.2,\"y\":0,\"z\":0}},{\"time\":5.4,\"rotation\":{\"x\":-1.15,\"y\":0,\"z\":0}}]},{\"joint\":\"rightWrist\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":0,\"y\":-0.3,\"z\":0}},{\"time\":3.5,\"rotation\":{\"x\":0,\"y\":-0.4,\"z\":0}},{\"time\":5.4,\"rotation\":{\"x\":0,\"y\":-0.35,\"z\":0}}]}],\"frame_count\":109,\"known_cuts\":[3.6]} | vdl2:prompt_hash=29b7380afbfb3129fd1209a71ebd939bd45bb7db2aa155b5b645ea9d5c9ae411"
+}

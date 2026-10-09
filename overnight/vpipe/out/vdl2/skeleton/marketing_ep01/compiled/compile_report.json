@@ -1,0 +1,35 @@
+{
+ "package": "out/vdl2/skeleton/marketing_ep01/pkg.yaml",
+ "compiled_at": "2026-10-09T17:10:34",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "ok": true,
+ "errors": [],
+ "warnings": [],
+ "conflicts": [],
+ "outputs": {
+  "execution_plan": "execution_plan.json",
+  "shots_v1": [
+   "shots_v1/shot_01.json",
+   "shots_v1/shot_02.json",
+   "shots_v1/shot_03.json",
+   "shots_v1/shot_04.json",
+   "shots_v1/shot_05.json",
+   "shots_v1/shot_06.json"
+  ],
+  "acceptance_records": [],
+  "slots": null,
+  "n_v1_shots": 6,
+  "n_acceptance_records": 0
+ },
+ "stats": {
+  "n_shots": 6,
+  "n_acceptance_records": 0
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ }
+}

@@ -1,0 +1,274 @@
+# VDL v2 反向骨架包 · 来源工件目录 out/m2/marketing_ep01 · 生成器 vdl2_skeleton.py@vpipe2.0-dev · 2026-10-09T09:10:28Z
+# CP 盘点 cp1: ← cp1.json
+# CP 盘点 cp2: ← cp2.json
+# CP 盘点 cp3: ← cp3.json
+# CP 盘点 cp4: 该线无此 CP（cp4.json 未见于工件目录及其 cpN/ 子目录）
+# CP 盘点 cp5: ← cp5.json
+# CP 盘点 cp6: ← cp6.json
+# CP 盘点 cp7: ← cp7.json
+# CP 盘点 cp8: ← cp8/cp8.json
+# CP 盘点 cp9: ← cp9/cp9.json
+# 映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与engine.channel=channel_hint；cp6→帧率/字幕；cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring
+# 纪律：包是规格不是执行记录——fingerprint/produced_at/status/gate/upstream_refs/credit_spent/seed_recorded/asset/ffprobe 等执行态字段一律不入包；工件缺失的信息不脑补，登记于本注释
+# 登记：包级 deliverable 段不生成——cp1 只有 pixel_map/encode_contract 骨架，VPO DeliverableSet 必备 display_target/readability/optical/encode(fps·bitrate·audio_policy) 无工件对应；aspect=9:16 已投影进每镜 aspect
+# 登记：intents[0]=PostProcessIntent(subtitle_burn, post_comp)；predicate/ops[0].note=cp1.must_keep 原文引用
+# 登记：acceptance[0]=acc-sub-marketing_ep01(block, J6_detectors)；detector_version=vpipe1.0 沿 examples/vdl2 惯例（工件未登记判官版本号）
+# 登记：authority=director ← cp1.produced_by 去「agent.」前缀
+# 登记：CameraIntent 不生成——subject_frame_ratio/camera_angle/movement_speed/framing_anchor 无工件对应（cp3 仅 shot_scale/move，且 medium_close 不在 VPO shot_scale 词表）；镜头语义落 shots[].camera 登记位（原值见各镜 notes 的 cp3_shot_scale）
+# 登记：TransitionIntent 不生成——cp3 notes 明记「逐行一拍一镜无需跨镜引用」，boundary_constraints.state_assertion 无工件来源
+# 登记：template 段不生成——工件无模板槽位定义
+vdl_version: '2.0'
+work_id: marketing_ep01
+created: '2026-10-09T09:10:28Z'
+default_prompt_mode: handwritten
+budget:
+  credit_cap_total: 2016
+shots:
+- schema_version: '2.0'
+  shot_id: shot_01
+  duration_s: 4.78
+  aspect: '9:16'
+  characters:
+  - char_id: cast_host
+  camera:
+    movement: static
+    description: 明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。
+  prompt: 'Medium close-up, static camera with a subtle breathing drift: an amber glass reed diffuser
+    bottle on its round walnut wooden base standing on a bright bedroom windowsill, natural rattan reeds
+    catching soft morning light, sheer curtains glowing with gentle window light, bright cozy bedroom.
+    The amber glass glows warm honey-gold, the rattan reeds dry and fibrous; deep cedar green-gold tones
+    in bright warm morning bedroom light. Premium photorealistic product commercial look, delicate glass
+    reflections and micro highlights, rich micro-contrast, shallow depth of field, slow subtle motion,
+    vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark,
+    no subtitles.. The product is a bedroom reed diffuser: thick amber glass with a warm honey-gold inner
+    glow, a lathe-turned walnut wooden base with fine visible grain, natural rattan reeds with dry fibrous
+    texture; graded in deep cedar green-gold tones under soft warm bedroom light. Premium photorealistic
+    product commercial look, delicate glass reflections and micro highlights, rich micro-contrast, shallow
+    depth of field, graceful slow motion, vertical 9:16 portrait framing, no on-screen text, no readable
+    label on the bottle, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_vidu_avatar
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close'
+- schema_version: '2.0'
+  shot_id: shot_02
+  duration_s: 2.83
+  aspect: '9:16'
+  characters: []
+  camera:
+    movement: push_in
+    description: 琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 植物精油，尾调雪松，越闻越安神。
+  prompt: 'Close-up with a slow push-in: an amber glass reed diffuser bottle standing on a round wooden
+    base, natural rattan reeds fanning out of the bottle neck, soft daylight from a bedroom window, background
+    melting into warm bokeh, the bottle geometry stays perfectly rigid. The product is a bedroom reed
+    diffuser: thick amber glass with a warm honey-gold inner glow, a lathe-turned walnut wooden base with
+    fine visible grain, natural rattan reeds with dry fibrous texture; graded in deep cedar green-gold
+    tones under soft warm bedroom light. Premium photorealistic product commercial look, delicate glass
+    reflections and micro highlights, rich micro-contrast, shallow depth of field, graceful slow motion,
+    vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark,
+    no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=close; props=prop_diffuser_01'
+- schema_version: '2.0'
+  shot_id: shot_03
+  duration_s: 4.13
+  aspect: '9:16'
+  characters: []
+  camera:
+    movement: static
+    description: 藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 一瓶扩香约六十天，睡前拨拨藤条，香感就回来。
+  prompt: 'Extreme close-up, static camera with a subtle breathing drift: natural rattan reeds standing
+    in the neck of a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden
+    neck ring, dark soft bedroom background, the reed diffuser reeds sway gently as if touched by a soft
+    breeze, light reflections drift slowly across the glass shoulder. The reeds are dry natural rattan
+    with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly
+    travels along the curve; the blank craft-paper label stays clean and empty, no text, no letters, no
+    typography; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic
+    product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical
+    9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_diffuser_01,prop_reeds_01'
+- schema_version: '2.0'
+  shot_id: shot_04
+  duration_s: 3.04
+  aspect: '9:16'
+  characters:
+  - char_id: cast_host
+  camera:
+    movement: static
+    description: 卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 床头摆一瓶，像把雪松林搬进卧室。
+  prompt: 'Medium close-up, static camera: a woman''s hand gently swaps and tilts the rattan reeds of
+    an amber glass diffuser bottle on a wooden bedside table beside a warm glowing lamp, cozy evening
+    bedroom, slow calm motion, five distinct fingers. The amber glass bottle glows honey-gold in the lamp
+    light on its walnut wooden base, the rattan reeds dry and fibrous, the hand moving slowly and calmly;
+    deep cedar green-gold tone grade wrapped in warm lamplight, cozy evening bedroom atmosphere. Premium
+    photorealistic product commercial look, natural detailed skin texture on the hand, anatomically correct
+    five fingers, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen
+    text, no readable label on the bottle, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01,prop_reeds_01'
+- schema_version: '2.0'
+  shot_id: shot_05
+  duration_s: 2.83
+  aspect: '9:16'
+  characters: []
+  camera:
+    movement: static
+    description: 暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，画面干净无任何文字元素，产品在画面中体量清晰
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 玻璃瓶身配木底座，摆哪都好看。
+  prompt: 'Wide shot, static camera with a subtle breathing drift: a serene minimalist bedroom at dusk,
+    an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft
+    linen bedding, gentle window light, calm premium lifestyle atmosphere, no people. The bottle wears
+    a clean blank craft-paper label, no text, no letters, no typography, no readable label on the bottle.
+    The diffuser is an amber glass bottle on a walnut wooden base with natural rattan reeds, catching
+    a warm highlight from the lamp; the room graded in deep cedar green-gold dusk tones with warm bedroom
+    lamplight, soft linen and wood textures. Premium photorealistic product commercial look, calm premium
+    lifestyle mood, rich micro-contrast, vertical 9:16 portrait framing, no on-screen text, no watermark,
+    no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=wide; props=prop_diffuser_01,prop_bedside_01'
+- schema_version: '2.0'
+  shot_id: shot_06
+  duration_s: 2.61
+  aspect: '9:16'
+  characters: []
+  camera:
+    movement: push_in
+    description: 产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌（产品名/价格/链接全部后期字牌，不在生成侧渲染），瓶体几何恒存
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 想要的点置顶链接，今晚下单。
+  prompt: 'Medium close-up with a slow push-in: an amber glass reed diffuser bottle with a round wooden
+    base on a bedside table, warm lamp rim light, soft dusk window glow behind, clean empty space in the
+    upper frame, premium calm product showcase, the bottle shape stays rigid. The amber glass glows honey-gold
+    with a crisp rim highlight, the walnut base grain visible, the rattan reeds in soft focus; deep cedar
+    green-gold tone grade in warm bedroom lamplight. Premium photorealistic product commercial look, delicate
+    glass reflections, rich micro-contrast, shallow depth of field, slow graceful push-in, vertical 9:16
+    portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01'
+intents:
+- identity:
+    intent_id: i-pp-marketing_ep01-sub
+    version: 1.0.0
+  intent_type: vpo:craft.intent_object.postprocess_intent
+  target:
+    kind: work
+    ref: marketing_ep01
+  scope:
+    level: vpo:delivery.scope.work
+    ref: marketing_ep01
+  temporal_extent:
+    time_base:
+      rate_num: 24
+      rate_den: 1
+  reference_context: {}
+  predicate: 产品名/价格/购买链接一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）
+  value: subtitle_burn
+  strength: vpo:delivery.strength.must
+  tolerance:
+    evidence_status: vpo:delivery.evidence_status.prior
+  exceptions: []
+  acceptance_ref: acc-sub-marketing_ep01:v1.0.0
+  authority: director
+  control_channel:
+  - vpo:delivery.control_channel.post_comp
+  ops:
+  - op: vpo:delivery.postprocess_op.subtitle_burn
+    note: cp1.must_keep 原文：产品名/价格/购买链接一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）；字幕段 cp6.subtitle_segments=6
+      段
+  input_refs:
+  - clip:marketing_ep01
+  output_kind: vpo:delivery.deliverable_kind.master
+acceptance:
+- schema: https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json
+  criterion_id: acc-sub-marketing_ep01
+  version: 1.0.0
+  intent_path: i-pp-marketing_ep01-sub.ops[0]
+  metric: subtitle_verbatim_match
+  tolerance:
+    evidence_status: vpo:delivery.evidence_status.prior
+  gate: vpo:delivery.gate.block
+  detector_id: J6_detectors
+  detector_version: vpipe1.0
+post_ops:
+- intent_ref: i-pp-marketing_ep01-sub
+  run_after:
+  - shot_01
+  - shot_02
+  - shot_03
+  - shot_04
+  - shot_05
+  - shot_06

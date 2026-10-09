@@ -31,7 +31,8 @@ from vdl2_compile import compile_package                                    # no
 
 EX = VPIPE / "examples" / "vdl2"
 TMP = VPIPE / "out" / "vdl2_tests"
-POS = ["10_shortdrama_ep01.yaml", "20_avatar_talk.yaml", "30_programmatic_loop.yaml"]
+POS = ["10_shortdrama_ep01.yaml", "20_avatar_talk.yaml", "30_programmatic_loop.yaml",
+       "40_marketing_ep01.yaml", "50_comicanime_ep01.yaml"]
 NEG = "99_negative_must_reject.yaml"
 V1_SHOT_SCHEMA = VPIPE / "contracts" / "shot.schema.json"
 VPO_ROOT = Path(DEFAULT_VPO_ROOT)
@@ -177,7 +178,7 @@ def test_v1_projection_passes_frozen_contract():
             assert not errs, f"{f}: {errs}"
             assert shot["schema_version"] == "1.0"
             n += 1
-    assert n == 5, f"三个示例应投影 5 个 v1 shot，实得 {n}"
+    assert n == 20, f"五个示例应投影 20 个 v1 shot（10=2 + 20=2 + 30=1 + 40=6 + 50=9），实得 {n}"
 
 
 def test_prompt_hash_recomputable_and_modes():
@@ -214,7 +215,7 @@ def test_acceptance_skeletons_unknown_not_pass():
             assert "treated_as" not in rec and "gate_result" not in rec   # unknown≠pass 陷阱字段不设
             assert rec["evaluator_id"] and rec["evaluator_version"]
             n += 1
-    assert n == 8, f"三个示例应产出 8 个验收骨架，实得 {n}"
+    assert n == 26, f"五个示例应产出 26 个验收骨架（10=3 + 20=3 + 30=2 + 40=8 + 50=10），实得 {n}"
     # 反向：approved_exception 无 reviewer → VPO 拒（证明骨架校验真能抓 L4 陷阱）
     rec = json.loads(next(_compiled("10_shortdrama_ep01.yaml")
                           .glob("acceptance_records/*.json")).read_text(encoding="utf-8"))

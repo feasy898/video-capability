@@ -1,0 +1,500 @@
+# VDL v2 反向骨架包 · 来源工件目录 overnight/vpipe/out/m2/shortdrama_ep01 · 生成器 vdl2_skeleton.py@vpipe2.0-dev · 2026-10-09T09:49:46Z
+# CP 盘点 cp1: ← cp1.json
+# CP 盘点 cp2: ← cp2.json
+# CP 盘点 cp3: ← cp3.json
+# CP 盘点 cp4: 该线无此 CP（cp4.json 未见于工件目录及其 cpN/ 子目录）
+# CP 盘点 cp5: ← cp5.json
+# CP 盘点 cp6: ← cp6.json
+# CP 盘点 cp7: ← cp7.json
+# CP 盘点 cp8: ← cp8.json
+# CP 盘点 cp9: ← cp9.json
+# 映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与engine.channel=channel_hint；cp5→逐镜 cp5_blocking 登记位；cp6→帧率/字幕；cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot；cp1/cp2 语义面与目标时长→notes 登记位），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring
+# 纪律：包是规格不是执行记录——fingerprint/produced_at/status/gate/upstream_refs/credit_spent/seed_recorded/asset/ffprobe 等执行态字段一律不入包；工件缺失的信息不脑补，登记于本注释
+# 登记：包级 deliverable 段不生成——cp1 只有 pixel_map/encode_contract 骨架，VPO DeliverableSet 必备 display_target/readability/optical/encode(fps·bitrate·audio_policy) 无工件对应；aspect=9:16 已投影进每镜 aspect
+# 登记：包级登记寄存首镜 notes（cp1_theme/cp1_selling_point/cp1_must_keep/cp1_forbidden_zones/cp2_target_duration_s/cp2_props）——v2 包顶层无登记位，投影器回读恢复来源 cp1/cp2 语义面与目标时长，往返不丢字段
+# 登记：intents[0]=PostProcessIntent(subtitle_burn, post_comp)；predicate/ops[0].note=cp1.must_keep 原文引用
+# 登记：acceptance[0]=acc-sub-shortdrama_ep01(block, J6_detectors)；detector_version=vpipe1.0 沿 examples/vdl2 惯例（工件未登记判官版本号）
+# 登记：authority=director ← cp1.produced_by 去「agent.」前缀
+# 登记：CameraIntent 不生成——subject_frame_ratio/camera_angle/movement_speed/framing_anchor 无工件对应（cp3 仅 shot_scale/move，且 medium_close 不在 VPO shot_scale 词表）；镜头语义落 shots[].camera 登记位（原值见各镜 notes 的 cp3_shot_scale）
+# 登记：TransitionIntent 不生成——cp3 notes 明记「逐行一拍一镜无需跨镜引用」，boundary_constraints.state_assertion 无工件来源
+# 登记：template 段不生成——工件无模板槽位定义
+vdl_version: '2.0'
+work_id: shortdrama_ep01
+created: '2026-10-09T09:49:46Z'
+default_prompt_mode: handwritten
+budget:
+  credit_cap_total: 8064
+shots:
+- schema_version: '2.0'
+  shot_id: shot_01
+  duration_s: 4.78
+  aspect: '9:16'
+  characters:
+  - char_id: cast_xiaoman
+  camera:
+    movement: static
+    description: 雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍小满面部大特写，水珠沿发梢滴落
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 林伯，好兴致啊。雨这么大，晚宴还照开——就不怕故人上门？
+  prompt: 'Extreme close-up at a low angle: a young woman pushes open a heavy carved wooden door of an
+    old mansion on a rainy night and steps into the foyer, her face filling the frame, backlit by the
+    glowing rain curtain behind her, water droplets dripping from her hair. She is Xiaoman, a Chinese
+    woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water
+    droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a
+    white shirt. Cool steel-blue moonlight from the storm outside rims her silhouette and the thousands
+    of backlit rain streaks; a warm dim amber foyer lamp wraps one side of her cheek; the old door''s
+    wet walnut wood grain glistens; thin mist drifts through the backlight beam. Cinematic photorealistic
+    live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber
+    banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic
+    lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait
+    framing, no on-screen text, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; cp2_visual_description=雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍面部大特写;
+    word_anchor_segment=seg_01; word_anchor_text=@{故人上门}; cp1_theme=竖屏都市逆袭短剧《雨夜合约》：五年前被林家逐出宅门的汽修工学徒小满，雨夜以新任集团董事身份重返旧宅签约——旧东家的合约晚宴当场变成对质。同结构不同内容：沿用
+    dy01v3 结构先验（31 镜快切对白戏、镜均 1.78s、特写主导 17/31、双人全身镜穿插、低机位固定机位），人物/台词/场景全部原创；参考样片仅为叙事节奏对位，不是内容来源; cp1_selling_point=60
+    秒三次身份反转踩点：修车工装→董事西装的同框换装特写 + 雨夜晚宴全员微表情反应链，全程竖屏面部大特写压迫感; cp1_must_keep=["prop_wrench_01 修车扳手特写（金属恒存不形变，镜级实物一致）","cast_xiaoman/cast_lin
+    同框镜头双主角身份不漂移","台词与片名小字一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"]; cp1_forbidden_zones=[{"description":"道具/食物形变（雨夜晚宴餐具与合约文件）","defect_code":"G7_物体恒存"},{"description":"画面内渲染小字与硬字幕（生成侧自由渲染必乱，绕行走后期字牌）","defect_code":"G2_画面内文字"},{"description":"同框双主角身份漂移（工装/西装换装特写易串脸）","defect_code":"G5_多角色一致性"}];
+    cp2_target_duration_s=60.0; cp2_props=prop_wrench_01,prop_contract_01,prop_goblet_01'
+- schema_version: '2.0'
+  shot_id: shot_02
+  duration_s: 6.3
+  aspect: '9:16'
+  characters:
+  - char_id: cast_lin
+  camera:
+    movement: push_in
+    description: 林父举杯的手停在半空，杯中酒晃出涟漪；镜头缓推越过杯沿，他抬手示意门口保安，宾客回头
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！
+  prompt: 'Medium shot at a crowded banquet: an elderly man in a dark suit freezes with a raised wine
+    glass, red wine rippling in the bowl, the camera slowly pushing in over the rim of the glass as he
+    lifts his other hand to beckon a guard at the door, guests turning their heads. He is Father Lin,
+    a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded
+    eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. The crystal goblet refracts
+    warm golden chandelier light, the wine a deep garnet red catching a spark; white damask tablecloth,
+    candle flames in soft bokeh, guests in black-tie dissolving into warm golden circles; his silver hair
+    glossed by the chandelier, cut-glass reflections trembling across his brow. Cinematic photorealistic
+    live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber
+    banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic
+    lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait
+    framing, no on-screen text, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium; props=prop_goblet_01; cp2_visual_description=林父举着酒杯的手停在半空，杯中酒晃出涟漪，抬手示意门口保安，宾客回头;
+    word_anchor_segment=seg_02; word_anchor_text=@{也配踏进林家的门}'
+- schema_version: '2.0'
+  shot_id: shot_03
+  duration_s: 6.74
+  aspect: '9:16'
+  characters:
+  - char_id: cast_xiaoman
+  camera:
+    movement: push_in
+    description: 小满把修车扳手放上白桌布，金属反光划过扳手轮廓特写，镜头缓推但不离开扳手，扳手金属体不形变
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 轰我可以。先认认这个——我在你们厂修了三年车，被扫地出门那天，就带走了它。
+  prompt: 'Close-up: a young woman places a steel wrench on a white tablecloth, light glinting along the
+    rigid metal body, the camera slowly pushing in while staying locked on the wrench, the banquet hall
+    melted into soft bokeh behind. The wrench is brushed drop-forged steel with machined edges, its silhouette
+    streaked by golden chandelier reflections; the cloth is crisp white damask with woven gloss; the steel
+    body stays perfectly rigid and undeformed through the whole move; her hand entering frame is Xiaoman''s,
+    a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with
+    fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer
+    over a white shirt. warm amber key light rakes across the metal, cool blue window fill keeps the shadows
+    neutral. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture,
+    filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric
+    practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful
+    natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=close; props=prop_wrench_01; cp2_visual_description=小满把修车扳手放上白桌布，金属反光划过特写，镜头不离开扳手轮廓;
+    word_anchor_segment=seg_03; word_anchor_text=@{修了三年车}; cp5_blocking={"shot_id":"shot_03","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":1.2,"rotation":{"x":0,"y":0.04,"z":0}},{"time":2.4,"rotation":{"x":0,"y":0.08,"z":0}},{"time":3.6,"rotation":{"x":0,"y":0.1,"z":0}},{"time":4.8,"rotation":{"x":0,"y":0.12,"z":0}},{"time":6.0,"rotation":{"x":0,"y":0.14,"z":0}},{"time":6.7,"rotation":{"x":0,"y":0.15,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.02,"y":0,"z":0}},{"time":1.5,"rotation":{"x":0.1,"y":0,"z":0}},{"time":3.0,"rotation":{"x":0.15,"y":0,"z":0}},{"time":5.0,"rotation":{"x":0.16,"y":0,"z":0}},{"time":6.7,"rotation":{"x":0.15,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.3}},{"time":0.8,"rotation":{"x":0,"y":0,"z":-0.9}},{"time":2.0,"rotation":{"x":0,"y":0,"z":-1.3}},{"time":3.6,"rotation":{"x":0,"y":0,"z":-1.35}},{"time":5.0,"rotation":{"x":0,"y":0,"z":-1.3}},{"time":6.7,"rotation":{"x":0,"y":0,"z":-1.25}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.2,"y":0,"z":0}},{"time":0.8,"rotation":{"x":-1.2,"y":0,"z":0}},{"time":2.0,"rotation":{"x":-1.5,"y":0,"z":0}},{"time":3.6,"rotation":{"x":-1.55,"y":0,"z":0}},{"time":6.7,"rotation":{"x":-1.5,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0.1,"z":0}},{"time":1.0,"rotation":{"x":0,"y":-0.4,"z":0}},{"time":2.2,"rotation":{"x":0,"y":-0.6,"z":0}},{"time":3.6,"rotation":{"x":0,"y":-0.65,"z":0}},{"time":6.7,"rotation":{"x":0,"y":-0.6,"z":0}}]},{"joint":"leftShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.2}},{"time":2.0,"rotation":{"x":0,"y":0,"z":-0.35}},{"time":6.7,"rotation":{"x":0,"y":0,"z":-0.3}}]},{"joint":"leftElbow","frames":[{"time":0.0,"rotation":{"x":-0.3,"y":0,"z":0}},{"time":2.0,"rotation":{"x":-0.7,"y":0,"z":0}},{"time":6.7,"rotation":{"x":-0.65,"y":0,"z":0}}]}],"frame_count":135,"known_cuts":[3.6]}'
+- schema_version: '2.0'
+  shot_id: shot_04
+  duration_s: 6.3
+  aspect: '9:16'
+  characters:
+  - char_id: cast_lin
+  camera:
+    movement: static
+    description: 林父把合约文件拍在桌面，手指重重点在签名栏，合约纸面特写压住半个画面，纸面文字不作为可读元素呈现
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 一把旧扳手，装什么排面。少废话，合约就在这儿——签字，老宅地皮明天过户。
+  prompt: 'Close-up: an elderly man slams a contract dossier onto the table and presses his finger hard
+    on the signature line, the paper sheet dominating half of the frame with soft illegible printed lines,
+    static camera, dramatic side light. He is Father Lin, a Chinese patriarch in his sixties, combed-back
+    silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece
+    suit with a burgundy tie. The contract paper is aged ivory with a visible tooth and soft unreadable
+    printed rules; his weathered hand, veins and a heavy gold signet ring, dents the page; the table is
+    dark polished walnut mirroring a knife-edge of warm amber lamplight; dust motes hang in the raking
+    side beam; deep shadow swallows the background. Cinematic photorealistic live-action Chinese short-drama
+    look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue
+    night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field,
+    rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no
+    watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=close; props=prop_contract_01; cp2_visual_description=林父把合约文件拍在桌面，手指重重点在签名栏，特写压住半个画面;
+    word_anchor_segment=seg_04; word_anchor_text=@{签字}; cp5_blocking={"shot_id":"shot_04","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":0.8,"rotation":{"x":0,"y":0,"z":0}},{"time":1.6,"rotation":{"x":0.06,"y":0,"z":0}},{"time":2.4,"rotation":{"x":0.02,"y":0,"z":0}},{"time":4.0,"rotation":{"x":0,"y":0.06,"z":0}},{"time":6.2,"rotation":{"x":0,"y":0.08,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.04,"y":0,"z":0}},{"time":1.6,"rotation":{"x":0.2,"y":0,"z":0}},{"time":2.2,"rotation":{"x":0.1,"y":0,"z":0}},{"time":6.2,"rotation":{"x":0.12,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.2}},{"time":0.7,"rotation":{"x":0,"y":0,"z":-1.6}},{"time":1.6,"rotation":{"x":0,"y":0,"z":-0.8}},{"time":3.0,"rotation":{"x":0,"y":0,"z":-0.9}},{"time":4.6,"rotation":{"x":0,"y":0,"z":-1.0}},{"time":6.2,"rotation":{"x":0,"y":0,"z":-1.0}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.3,"y":0,"z":0}},{"time":0.7,"rotation":{"x":-1.8,"y":0,"z":0}},{"time":1.6,"rotation":{"x":-0.5,"y":0,"z":0}},{"time":4.6,"rotation":{"x":-1.2,"y":0,"z":0}},{"time":6.2,"rotation":{"x":-1.25,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0.2,"z":0}},{"time":1.6,"rotation":{"x":0,"y":-0.3,"z":0}},{"time":2.2,"rotation":{"x":0,"y":0.1,"z":0}},{"time":4.6,"rotation":{"x":0,"y":-0.2,"z":0}},{"time":6.2,"rotation":{"x":0,"y":-0.2,"z":0}}]},{"joint":"leftShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.15}},{"time":1.6,"rotation":{"x":0,"y":0,"z":-0.5}},{"time":6.2,"rotation":{"x":0,"y":0,"z":-0.45}}]}],"frame_count":126,"known_cuts":[3.6]}'
+- schema_version: '2.0'
+  shot_id: shot_05
+  duration_s: 5.43
+  aspect: '9:16'
+  characters:
+  - char_id: cast_xiaoman
+  - char_id: cast_lin
+  camera:
+    movement: static
+    description: 小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景一镜不切
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 签字不急。您先翻到最后一页，看看这一回，该谁给谁低头签字。
+  prompt: 'Medium close-up two-shot, one static take: a young woman and an elderly man sit facing each
+    other across a banquet table, she slides the last page of a contract across the table with one fingertip,
+    both in frame, no cuts. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin,
+    sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing
+    a tailored charcoal-black wool blazer over a white shirt. He is Father Lin, a Chinese patriarch in
+    his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable
+    dark navy three-piece suit with a burgundy tie. A single warm candle centerpiece burns between them,
+    carving her youthful jaw against his deep frown lines; the contract page is bright ivory against dark
+    walnut; crystal and cutlery glint at the frame edges; the background falls into warm amber gloom with
+    faint cold blue window light far behind. Cinematic photorealistic live-action Chinese short-drama
+    look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue
+    night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field,
+    rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no
+    watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_contract_01;
+    cp2_visual_description=小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景不切; word_anchor_segment=seg_05; word_anchor_text=@{该谁给谁低头签字};
+    cp5_blocking={"shot_id":"shot_05","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":1.5,"rotation":{"x":0,"y":0.03,"z":0}},{"time":3.0,"rotation":{"x":0,"y":0.06,"z":0}},{"time":5.4,"rotation":{"x":0,"y":0.05,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.05,"y":0,"z":0}},{"time":2.0,"rotation":{"x":0.14,"y":0,"z":0}},{"time":3.5,"rotation":{"x":0.12,"y":0,"z":0}},{"time":5.4,"rotation":{"x":0.1,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.15}},{"time":1.8,"rotation":{"x":0,"y":0,"z":-0.9}},{"time":3.0,"rotation":{"x":0,"y":0,"z":-1.15}},{"time":3.6,"rotation":{"x":0,"y":0,"z":-1.2}},{"time":5.4,"rotation":{"x":0,"y":0,"z":-1.15}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.25,"y":0,"z":0}},{"time":1.8,"rotation":{"x":-1.0,"y":0,"z":0}},{"time":3.0,"rotation":{"x":-1.2,"y":0,"z":0}},{"time":5.4,"rotation":{"x":-1.15,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":2.0,"rotation":{"x":0,"y":-0.3,"z":0}},{"time":3.5,"rotation":{"x":0,"y":-0.4,"z":0}},{"time":5.4,"rotation":{"x":0,"y":-0.35,"z":0}}]}],"frame_count":109,"known_cuts":[3.6]}'
+- schema_version: '2.0'
+  shot_id: shot_06
+  duration_s: 5.87
+  aspect: '9:16'
+  characters:
+  - char_id: cast_lin
+  camera:
+    movement: push_in
+    description: 林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化，镜头缓推压向瞳孔
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 这……这是恒盛集团的法人章？新任董事接盘林氏产业……怎么可能是他？！
+  prompt: 'Extreme close-up: an elderly man''s eyes widen and his pupil contracts in shock, his fingers
+    trembling as they pinch the paper page, guests behind him blurred into round bokeh, the camera slowly
+    pushing in toward his eye. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white
+    hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a
+    burgundy tie. The contracting pupil catches a single spark of candlelight; weathered skin with deep
+    wrinkles and silver eyebrow hairs rendered in fine detail; the ivory page edge trembles in his grip;
+    the background bokeh burns warm gold with faint red lantern accents; a cold blue rim light separates
+    his temple from the gloom. Cinematic photorealistic live-action Chinese short-drama look, natural
+    detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night
+    tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich
+    micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark,
+    no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_contract_01;
+    cp2_visual_description=林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化; word_anchor_segment=seg_06; word_anchor_text=@{恒盛集团的法人章}'
+- schema_version: '2.0'
+  shot_id: shot_07
+  duration_s: 5.87
+  aspect: '9:16'
+  characters:
+  - char_id: cast_xiaoman
+  camera:
+    movement: static
+    description: 同机位前后对切：左半幅五年前汽修工装沾油渍，右半幅今日董事西装笔挺，眼神不变
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 五年前，一纸合约把我赶出这道门；五年后，我连门带楼，全买了回来。
+  prompt: 'Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained
+    mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit,
+    the same steady unwavering gaze in both halves. She is Xiaoman, a Chinese woman in her early twenties
+    with sleek black shoulder-length hair and calm defiant dark eyes. Left half: cold blue-green fluorescent
+    garage light, oil-stained orange canvas overalls with grease marks, concrete wall and tool board behind,
+    faint dust in the air. Right half: warm golden chandelier banquet light, a sharp charcoal-black tailored
+    suit with a subtle sheen, dark walnut and amber gloom behind. The two halves meet on a clean vertical
+    seam; her gaze never changes across the seam. Cinematic photorealistic live-action Chinese short-drama
+    look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue
+    night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field,
+    rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no
+    watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium; cp2_visual_description=同机位前后对切：左半身汽修工装沾油渍，右半身董事西装笔挺，眼神不变;
+    word_anchor_segment=seg_07; word_anchor_text=@{全买了回来}'
+- schema_version: '2.0'
+  shot_id: shot_08
+  duration_s: 3.48
+  aspect: '9:16'
+  characters:
+  - char_id: cast_lin
+  camera:
+    movement: handheld
+    description: 林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，手持微晃低机位拍他失神的脸
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 不可能……你哪来的钱？谁在背后给你撑腰？
+  prompt: 'Handheld medium close-up from a low angle with a slight shake: an elderly man staggers half
+    a step and grips the table edge, his wine glass topples and red wine soaks into the white tablecloth,
+    his face draining into blank shock. He is Father Lin, a Chinese patriarch in his sixties, combed-back
+    silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece
+    suit with a burgundy tie. The garnet-red wine blooms and bleeds through the white damask weave; the
+    crystal glass rolls on its side; chandelier light smears warm across the frame with the handheld sway;
+    his silver hair falls loose over the furrowed brow; a cold blue window edge glows far behind the guests''
+    bokeh. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture,
+    filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric
+    practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful
+    natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_goblet_01;
+    cp2_visual_description=林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，低机位拍他失神的脸; word_anchor_segment=seg_08; word_anchor_text=@{谁在背后给你撑腰};
+    cp5_blocking={"shot_id":"shot_08","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":-0.04,"y":0,"z":0}},{"time":0.6,"rotation":{"x":0.08,"y":-0.05,"z":0}},{"time":1.4,"rotation":{"x":0.12,"y":0.03,"z":0}},{"time":2.2,"rotation":{"x":0.1,"y":0.02,"z":0}},{"time":3.4,"rotation":{"x":0.1,"y":0.02,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":-0.06,"y":0,"z":0}},{"time":0.6,"rotation":{"x":0.1,"y":0,"z":0}},{"time":1.6,"rotation":{"x":0.18,"y":0,"z":0}},{"time":3.4,"rotation":{"x":0.16,"y":0,"z":0}}]},{"joint":"leftShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.25}},{"time":0.7,"rotation":{"x":0,"y":0,"z":-0.7}},{"time":1.5,"rotation":{"x":0,"y":0,"z":-0.95}},{"time":3.4,"rotation":{"x":0,"y":0,"z":-0.9}}]},{"joint":"leftElbow","frames":[{"time":0.0,"rotation":{"x":-0.25,"y":0,"z":0}},{"time":0.7,"rotation":{"x":-0.8,"y":0,"z":0}},{"time":1.5,"rotation":{"x":-1.15,"y":0,"z":0}},{"time":3.4,"rotation":{"x":-1.1,"y":0,"z":0}}]},{"joint":"leftWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":1.5,"rotation":{"x":0,"y":-0.4,"z":0}},{"time":2.5,"rotation":{"x":0,"y":-0.5,"z":0}},{"time":3.4,"rotation":{"x":0,"y":-0.5,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":1.0,"rotation":{"x":0,"y":-0.7,"z":0}},{"time":2.0,"rotation":{"x":0,"y":-0.8,"z":0}},{"time":3.4,"rotation":{"x":0,"y":-0.8,"z":0}}]}],"frame_count":70,"known_cuts":[]}'
+- schema_version: '2.0'
+  shot_id: shot_09
+  duration_s: 6.52
+  aspect: '9:16'
+  characters:
+  - char_id: cast_xiaoman
+  camera:
+    movement: push_in
+    description: 小满驻步正面直视镜头，竖屏面部大特写开场即占满画面，镜头极缓推近锁定双眼，身后满堂宾客虚成静止光斑
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 撑腰的人不重要。重要的是，从今晚起，林家每一份合约，都得先经过我的手。
+  prompt: 'Extreme close-up, centered: a young Chinese woman stands still facing the camera, her face
+    filling the frame from the very first moment, calm defiant eyes locked on the lens, breathing gently,
+    only her hair strands swaying faintly; the camera creeps forward very slowly, locked on her eyes,
+    while the banquet hall guests behind her melt into a still field of round bokeh, no walking, shallow
+    depth of field She is Xiaoman, a Chinese woman in her early twenties, pale flawless skin, sleek black
+    shoulder-length hair, calm defiant dark eyes with a faint triumphant glint, wearing a tailored charcoal-black
+    wool blazer over a white shirt. The banquet hall glows with warm amber chandelier light; golden bokeh
+    circles from candles and glassware drift in the background; a cool blue rim light from the doorway
+    grazes one side of her hair. Cinematic photorealistic live-action Chinese short-drama look, natural
+    detailed skin texture, filmic color grade of warm amber banquet glow against cool night tones, soft
+    volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast,
+    graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; cp2_visual_description=小满缓步逼近镜头，竖屏面部大特写占满画面，身后满堂宾客虚成光斑;
+    word_anchor_segment=seg_09; word_anchor_text=@{都得先经过我的手}'
+- schema_version: '2.0'
+  shot_id: shot_10
+  duration_s: 3.48
+  aspect: '9:16'
+  characters:
+  - char_id: cast_lin
+  camera:
+    movement: static
+    description: 林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉，固定机位不给他镜头遮羞
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 好……好啊。林家欠你的，今天连本带利，认了。
+  prompt: 'Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated,
+    white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing. He
+    is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines,
+    stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single
+    warm overhead lamp carves deep shadows into his wrinkles and silver hair while a cold blue night window
+    rims his shoulder; the burgundy tie hangs loose, the navy suit jacket creasing as his frame gives
+    way; crystal glassware glints dimly at the table edge; the banquet gloom swallows the background.
+    Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic
+    color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical
+    lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural
+    motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium; cp2_visual_description=林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉;
+    word_anchor_segment=seg_10; word_anchor_text=@{连本带利}; cp5_blocking={"shot_id":"shot_10","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":"hips","frames":[{"time":0.0,"rotation":{"x":-0.1,"y":0,"z":0}},{"time":0.8,"rotation":{"x":-0.3,"y":0,"z":0}},{"time":2.0,"rotation":{"x":-0.35,"y":0,"z":0}},{"time":3.4,"rotation":{"x":-0.35,"y":0,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.08,"y":0,"z":0}},{"time":1.2,"rotation":{"x":0.25,"y":0,"z":0}},{"time":3.4,"rotation":{"x":0.3,"y":0,"z":0}}]},{"joint":"head","frames":[{"time":0.0,"rotation":{"x":0.05,"y":0,"z":0}},{"time":1.4,"rotation":{"x":0.28,"y":0,"z":0}},{"time":3.4,"rotation":{"x":0.32,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.15}},{"time":2.2,"rotation":{"x":0,"y":0,"z":-1.25}},{"time":3.4,"rotation":{"x":0,"y":0,"z":-1.3}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.3,"y":0,"z":0}},{"time":2.2,"rotation":{"x":-1.8,"y":0,"z":0}},{"time":3.4,"rotation":{"x":-1.9,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":2.4,"rotation":{"x":0,"y":0.3,"z":0}},{"time":3.4,"rotation":{"x":0,"y":0.35,"z":0}}]},{"joint":"leftKnee","frames":[{"time":0.0,"rotation":{"x":-0.3,"y":0,"z":0}},{"time":1.2,"rotation":{"x":-1.1,"y":0,"z":0}},{"time":3.4,"rotation":{"x":-1.15,"y":0,"z":0}}]},{"joint":"rightKnee","frames":[{"time":0.0,"rotation":{"x":-0.3,"y":0,"z":0}},{"time":1.2,"rotation":{"x":-1.1,"y":0,"z":0}},{"time":3.4,"rotation":{"x":-1.15,"y":0,"z":0}}]}],"frame_count":70,"known_cuts":[]}'
+- schema_version: '2.0'
+  shot_id: shot_11
+  duration_s: 5.87
+  aspect: '9:16'
+  characters:
+  - char_id: cast_xiaoman
+  camera:
+    movement: pull_out
+    description: 小满举杯一饮而尽杯底朝天，转身走出大门背影定格，镜头拉出至门厅全景，雨幕重新合拢
+  intent_refs: []
+  prompt_mode: handwritten
+  continuity:
+    link: none
+    seed_policy: none
+    d3_split_declared: false
+  edit_ops: []
+  audio:
+    speech: 这杯我干了。新合约明早九点放你桌上——记住，从今往后，规矩我来定。
+  prompt: 'Wide shot: a young woman downs her drink in one gulp with the glass tilted fully vertical,
+    turns and walks out through the front door, the camera pulling back and rising to reveal the whole
+    mansion foyer as the rain curtain closes behind her silhouette. She is Xiaoman, a Chinese woman in
+    her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets
+    at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt.
+    The last swallow of garnet-red wine catches the chandelier flame; the double-height marble foyer glows
+    warm amber from wall sconces while the open door pours in cold silver-blue storm light and curtains
+    of rain; her charcoal blazer reads as a crisp dark silhouette against the downpour; wet marble floor
+    mirrors both light worlds. Cinematic photorealistic live-action Chinese short-drama look, natural
+    detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night
+    tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich
+    micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark,
+    no subtitles.'
+  resolution: 768P
+  engine:
+    channel: api_h3max
+  budget:
+    credit_cap_per_shot: 280
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=wide; props=prop_goblet_01; cp2_visual_description=小满举杯一饮而尽杯底朝天，转身走出大门背影定格，雨幕重新合拢;
+    word_anchor_segment=seg_11; word_anchor_text=@{规矩我来定}; cp5_blocking={"shot_id":"shot_11","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":1.0,"rotation":{"x":0,"y":0.05,"z":0}},{"time":2.8,"rotation":{"x":0,"y":0.05,"z":0}},{"time":4.0,"rotation":{"x":0.05,"y":2.4,"z":0}},{"time":5.8,"rotation":{"x":0.03,"y":2.6,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.03,"y":0,"z":0}},{"time":2.0,"rotation":{"x":0.06,"y":0,"z":0}},{"time":4.0,"rotation":{"x":0.02,"y":0.2,"z":0}},{"time":5.8,"rotation":{"x":0.02,"y":0.1,"z":0}}]},{"joint":"head","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":2.0,"rotation":{"x":0,"y":-0.15,"z":0}},{"time":4.2,"rotation":{"x":0,"y":0.35,"z":0}},{"time":5.8,"rotation":{"x":0,"y":0.15,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.3}},{"time":1.0,"rotation":{"x":0,"y":0,"z":-1.6}},{"time":2.6,"rotation":{"x":0,"y":0,"z":-1.7}},{"time":3.4,"rotation":{"x":0,"y":0,"z":-0.5}},{"time":5.8,"rotation":{"x":0,"y":0,"z":-0.4}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.4,"y":0,"z":0}},{"time":1.0,"rotation":{"x":-1.9,"y":0,"z":0}},{"time":2.6,"rotation":{"x":-2.0,"y":0,"z":0}},{"time":3.4,"rotation":{"x":-0.7,"y":0,"z":0}},{"time":5.8,"rotation":{"x":-0.6,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0.1,"z":0}},{"time":1.2,"rotation":{"x":0,"y":-1.3,"z":0}},{"time":2.8,"rotation":{"x":0,"y":-1.5,"z":0}},{"time":3.4,"rotation":{"x":0,"y":-0.2,"z":0}},{"time":5.8,"rotation":{"x":0,"y":-0.1,"z":0}}]},{"joint":"hips","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":2.8,"rotation":{"x":0,"y":0.05,"z":0}},{"time":4.2,"rotation":{"x":0,"y":2.2,"z":0}},{"time":5.8,"rotation":{"x":0,"y":2.4,"z":0}}]},{"joint":"leftKnee","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":4.6,"rotation":{"x":-0.5,"y":0,"z":0}},{"time":5.8,"rotation":{"x":-0.6,"y":0,"z":0}}]},{"joint":"rightKnee","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":4.8,"rotation":{"x":-0.5,"y":0,"z":0}},{"time":5.8,"rotation":{"x":-0.6,"y":0,"z":0}}]}],"frame_count":118,"known_cuts":[3.6]}'
+intents:
+- identity:
+    intent_id: i-pp-shortdrama_ep01-sub
+    version: 1.0.0
+  intent_type: vpo:craft.intent_object.postprocess_intent
+  target:
+    kind: work
+    ref: shortdrama_ep01
+  scope:
+    level: vpo:delivery.scope.work
+    ref: shortdrama_ep01
+  temporal_extent:
+    time_base:
+      rate_num: 24
+      rate_den: 1
+  reference_context: {}
+  predicate: 台词与片名小字一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）
+  value: subtitle_burn
+  strength: vpo:delivery.strength.must
+  tolerance:
+    evidence_status: vpo:delivery.evidence_status.prior
+  exceptions: []
+  acceptance_ref: acc-sub-shortdrama_ep01:v1.0.0
+  authority: director
+  control_channel:
+  - vpo:delivery.control_channel.post_comp
+  ops:
+  - op: vpo:delivery.postprocess_op.subtitle_burn
+    note: cp1.must_keep 原文：台词与片名小字一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）；字幕段 cp6.subtitle_segments=11
+      段
+  input_refs:
+  - clip:shortdrama_ep01
+  output_kind: vpo:delivery.deliverable_kind.master
+acceptance:
+- schema: https://vpo.example/schemas/v1/l4/acceptance-spec.schema.json
+  criterion_id: acc-sub-shortdrama_ep01
+  version: 1.0.0
+  intent_path: i-pp-shortdrama_ep01-sub.ops[0]
+  metric: subtitle_verbatim_match
+  tolerance:
+    evidence_status: vpo:delivery.evidence_status.prior
+  gate: vpo:delivery.gate.block
+  detector_id: J6_detectors
+  detector_version: vpipe1.0
+post_ops:
+- intent_ref: i-pp-shortdrama_ep01-sub
+  run_after:
+  - shot_01
+  - shot_02
+  - shot_03
+  - shot_04
+  - shot_05
+  - shot_06
+  - shot_07
+  - shot_08
+  - shot_09
+  - shot_10
+  - shot_11

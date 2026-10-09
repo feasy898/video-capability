@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_06",
+ "duration_s": 2.17,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_shenyu"
+  }
+ ],
+ "camera": {
+  "movement": "push_in",
+  "description": "沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近"
+ },
+ "audio": {
+  "speech": "这手法……你到底跟谁学的？"
+ },
+ "prompt": "Extreme close-up, the camera very slowly pushing in: the same young cook freezes with a tasting ladle stopped in mid-air, his eyes widening and pupils contracting in shock, a clean readable anime face in large scale, steam dissolving into soft flat cel-shaded blur behind him. He is Shen Yu, a young Chinese man in his mid-twenties, the noodle-stall cook: black hair bound by a plain grey cloth headband, sturdy shoulders, quiet steady dark eyes, wearing a beige hemp apron over a slate-blue robe with a white towel over his left shoulder. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_bowl_01 | vdl2:prompt_hash=8a02b52803e274a520425886510e36e9047f16d61f3063f8800376ee4caa57f5"
+}

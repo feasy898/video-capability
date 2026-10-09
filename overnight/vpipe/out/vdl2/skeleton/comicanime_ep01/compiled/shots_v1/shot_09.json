@@ -1,0 +1,28 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_09",
+ "duration_s": 2.61,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lu"
+  },
+  {
+   "char_id": "cast_shenyu"
+  }
+ ],
+ "camera": {
+  "movement": "pull_out",
+  "description": "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃，收尾呼应开场"
+ },
+ "audio": {
+  "speech": "面凉了，雨声里谁都没先动筷。"
+ },
+ "prompt": "Medium shot, static props, the camera slowly pulling back out past the stall curtain: exactly two noodle bowls sit side by side on the stall counter with their steam gone — only two bowls in the whole frame, no third bowl, no plates, no clutter; behind them the warm lantern sways gently in the rain, echoing the opening shot, the stall empty of people. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium; props=prop_bowl_01,prop_lantern_01 | vdl2:prompt_hash=d5ca42cb72dd8a596f933e27035dc5ffb99b133fb3e0580641e860a98281997e"
+}

@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_10",
+ "duration_s": 3.48,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lin"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉，固定机位不给他镜头遮羞"
+ },
+ "audio": {
+  "speech": "好……好啊。林家欠你的，今天连本带利，认了。"
+ },
+ "prompt": "Medium shot, fixed camera, no cutaway: an elderly man slumps back into his chair defeated, white hair falling across his forehead, he drags a hand down his face, his shoulders collapsing. He is Father Lin, a Chinese patriarch in his sixties, combed-back silver-white hair, deep frown lines, stern hooded eyes, wearing an impeccable dark navy three-piece suit with a burgundy tie. A single warm overhead lamp carves deep shadows into his wrinkles and silver hair while a cold blue night window rims his shoulder; the burgundy tie hangs loose, the navy suit jacket creasing as his frame gives way; crystal glassware glints dimly at the table edge; the banquet gloom swallows the background. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium; cp2_visual_description=林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉; word_anchor_segment=seg_10; word_anchor_text=@{连本带利}; cp5_blocking={\"shot_id\":\"shot_10\",\"joint_names\":[\"hips\",\"spine\",\"neck\",\"head\",\"leftShoulder\",\"leftElbow\",\"leftWrist\",\"rightShoulder\",\"rightElbow\",\"rightWrist\",\"leftHip\",\"leftKnee\",\"leftAnkle\",\"rightHip\",\"rightKnee\",\"rightAnkle\"],\"bone_length_constant\":true,\"speech_mode\":\"independent_lip_layer\",\"tracks\":[{\"joint\":\"hips\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.1,\"y\":0,\"z\":0}},{\"time\":0.8,\"rotation\":{\"x\":-0.3,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":-0.35,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":-0.35,\"y\":0,\"z\":0}}]},{\"joint\":\"spine\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0.08,\"y\":0,\"z\":0}},{\"time\":1.2,\"rotation\":{\"x\":0.25,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0.3,\"y\":0,\"z\":0}}]},{\"joint\":\"head\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0.05,\"y\":0,\"z\":0}},{\"time\":1.4,\"rotation\":{\"x\":0.28,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0.32,\"y\":0,\"z\":0}}]},{\"joint\":\"rightShoulder\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.15}},{\"time\":2.2,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.25}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.3}}]},{\"joint\":\"rightElbow\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.3,\"y\":0,\"z\":0}},{\"time\":2.2,\"rotation\":{\"x\":-1.8,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":-1.9,\"y\":0,\"z\":0}}]},{\"joint\":\"rightWrist\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":2.4,\"rotation\":{\"x\":0,\"y\":0.3,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":0.35,\"z\":0}}]},{\"joint\":\"leftKnee\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.3,\"y\":0,\"z\":0}},{\"time\":1.2,\"rotation\":{\"x\":-1.1,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":-1.15,\"y\":0,\"z\":0}}]},{\"joint\":\"rightKnee\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.3,\"y\":0,\"z\":0}},{\"time\":1.2,\"rotation\":{\"x\":-1.1,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":-1.15,\"y\":0,\"z\":0}}]}],\"frame_count\":70,\"known_cuts\":[]} | vdl2:prompt_hash=a5fa985de7f2bb8393f89d305dd0f0af67f3b76cdbec77fd15714d187f912292"
+}

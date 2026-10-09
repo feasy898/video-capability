@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_02",
+ "duration_s": 3.48,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lu"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边，画格流定格"
+ },
+ "audio": {
+  "speech": "老板，一碗头汤面。汤宽，面硬，葱花最后放。"
+ },
+ "prompt": "Close-up, static camera: the same young man sits down at the wooden stall counter and raps his knuckle on the counter twice to order, his face filling most of the frame in a clear anime close-up with sharp readable features, warm lantern light edging his profile, rain haze drifting behind him. He is Lu Xingci, a handsome young Chinese man in his early twenties, the fallen young master: sleek black hair in a high half-tied ponytail with loose strands, sharp elegant brows, calm confident narrow dark eyes, wearing a dark indigo travel robe-coat with a pale silver sash. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close | vdl2:prompt_hash=78985e1f97184782962bb342f121d96801223e452de1638ca807f50da798c9af"
+}

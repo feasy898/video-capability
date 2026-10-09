@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_07",
+ "duration_s": 5.87,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_xiaoman"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "同机位前后对切：左半幅五年前汽修工装沾油渍，右半幅今日董事西装笔挺，眼神不变"
+ },
+ "audio": {
+  "speech": "五年前，一纸合约把我赶出这道门；五年后，我连门带楼，全买了回来。"
+ },
+ "prompt": "Medium shot, fixed camera, split composition: on the left the same young woman in oil-stained mechanic overalls from years ago, on the right she stands today in a sharp tailored business suit, the same steady unwavering gaze in both halves. She is Xiaoman, a Chinese woman in her early twenties with sleek black shoulder-length hair and calm defiant dark eyes. Left half: cold blue-green fluorescent garage light, oil-stained orange canvas overalls with grease marks, concrete wall and tool board behind, faint dust in the air. Right half: warm golden chandelier banquet light, a sharp charcoal-black tailored suit with a subtle sheen, dark walnut and amber gloom behind. The two halves meet on a clean vertical seam; her gaze never changes across the seam. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium; cp2_visual_description=同机位前后对切：左半身汽修工装沾油渍，右半身董事西装笔挺，眼神不变; word_anchor_segment=seg_07; word_anchor_text=@{全买了回来} | vdl2:prompt_hash=8da48a661c61f20736232c8fe09a584ca2109558d46eef275691f2fb735ba617"
+}

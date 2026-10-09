@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_09",
+ "duration_s": 6.52,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_xiaoman"
+  }
+ ],
+ "camera": {
+  "movement": "push_in",
+  "description": "小满驻步正面直视镜头，竖屏面部大特写开场即占满画面，镜头极缓推近锁定双眼，身后满堂宾客虚成静止光斑"
+ },
+ "audio": {
+  "speech": "撑腰的人不重要。重要的是，从今晚起，林家每一份合约，都得先经过我的手。"
+ },
+ "prompt": "Extreme close-up, centered: a young Chinese woman stands still facing the camera, her face filling the frame from the very first moment, calm defiant eyes locked on the lens, breathing gently, only her hair strands swaying faintly; the camera creeps forward very slowly, locked on her eyes, while the banquet hall guests behind her melt into a still field of round bokeh, no walking, shallow depth of field She is Xiaoman, a Chinese woman in her early twenties, pale flawless skin, sleek black shoulder-length hair, calm defiant dark eyes with a faint triumphant glint, wearing a tailored charcoal-black wool blazer over a white shirt. The banquet hall glows with warm amber chandelier light; golden bokeh circles from candles and glassware drift in the background; a cool blue rim light from the doorway grazes one side of her hair. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; cp2_visual_description=小满缓步逼近镜头，竖屏面部大特写占满画面，身后满堂宾客虚成光斑; word_anchor_segment=seg_09; word_anchor_text=@{都得先经过我的手} | vdl2:prompt_hash=fa655aa71c96402ee745d141c9b03a0fb288cccb4ebb33b10c5c6eb6e770db11"
+}

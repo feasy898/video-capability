@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_01",
+ "duration_s": 5.22,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lu"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边，画格流定格开场"
+ },
+ "audio": {
+  "speech": "雨夜，沈记面馆的灯还亮着。推门进来的人，十年没回来过了。"
+ },
+ "prompt": "Medium wide shot, static camera: a rain-soaked street noodle stall at night under a warm glowing lantern, a young man pushes through the hanging plastic strip curtain into the awning, his backlit silhouette edged by slanting rain streaks, the lantern light wrapping his outline in one clean warm rim, balanced contrast, deep blue night around the warm stall. The young man is Lu Xingci, a handsome young Chinese man in his early twenties, the fallen young master: sleek black hair in a high half-tied ponytail with loose strands, sharp elegant brows, calm confident narrow dark eyes, wearing a dark indigo travel robe-coat with a pale silver sash. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium; props=prop_lantern_01 | vdl2:prompt_hash=1d08a482d5c0aa916a67c148c76098c8fcb5acbccd360fe8086ec01895963657"
+}

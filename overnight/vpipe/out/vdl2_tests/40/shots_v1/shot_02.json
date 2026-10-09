@@ -1,0 +1,24 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_02",
+ "axis": "G7",
+ "duration_s": 2.83,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 44,
+ "camera": {
+  "movement": "push_in",
+  "description": "缓推瓶身"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "植物精油，尾调雪松，越闻越安神。",
+  "music": ""
+ },
+ "prompt": "琥珀玻璃香薰瓶特写立于实木底座，藤条呈扇形展开，镜头缓推瓶身，瓶面无可读文字元素，产品几何恒存不形变",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_02（api_h3max）；G7 产品恒存禁区镜级投影。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=5bffcffd5ac7800e491deea6ff155c4d161d557d12dc012c93c5866f69c1055d | vdl2:intents=i-cam-mk02@1.0.0"
+}

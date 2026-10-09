@@ -1,0 +1,21 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_03",
+ "duration_s": 4.13,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [],
+ "camera": {
+  "movement": "static",
+  "description": "藤条扩香微距特写，天然藤条自瓶口呈扇面立起，光斑沿玻璃肩部缓慢流转，暗背景，瓶体与藤条几何恒定不形变"
+ },
+ "audio": {
+  "speech": "一瓶扩香约六十天，睡前拨拨藤条，香感就回来。"
+ },
+ "prompt": "Extreme close-up, static camera with a subtle breathing drift: natural rattan reeds standing in the neck of a wide-shoulder amber glass bottle with a clean blank craft-paper label and a wooden neck ring, dark soft bedroom background, the reed diffuser reeds sway gently as if touched by a soft breeze, light reflections drift slowly across the glass shoulder. The reeds are dry natural rattan with visible fibrous grain; the amber glass shoulder carries a warm honey-gold rim light that slowly travels along the curve; the blank craft-paper label stays clean and empty, no text, no letters, no typography; deep cedar green-gold tones in a dark warm bedroom night atmosphere. Premium photorealistic product commercial look, macro-level glass clarity, rich micro-contrast, shallow depth of field, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_diffuser_01,prop_reeds_01 | vdl2:prompt_hash=03e82e761698b599add11f8daf02d876245158b6fb5276f99942871ceb7385d3"
+}

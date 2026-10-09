@@ -1,0 +1,220 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp6",
+  "artifact_type": "timeline",
+  "fingerprint": "55c443094c29a796499295967ed3c691b0a4aab66392409ac3be01e16ea44c1b",
+  "produced_by": "agent.vdl2Projector",
+  "produced_at": "2026-10-09T09:51:09Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp3",
+      "fingerprint": "ca1f0a7e88bf86c6cbac103fea60ddf3dce6d22e610a250dec5e14aedcc5cf6c"
+    },
+    {
+      "cp_id": "cp5",
+      "fingerprint": "a5af54917b8f13c92b0c29894e47306627387fe79b4d3d93531e4a6b503bfb19"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp6.gate.duration_conservation_frames",
+    "result": "pending",
+    "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+  },
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "fps": 24,
+    "total_frames": 1440,
+    "episode_duration_s": 60.0,
+    "duration_conservation_dev_frames": 0,
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "start_frame": 0,
+        "duration_frames": 113
+      },
+      {
+        "shot_id": "shot_02",
+        "start_frame": 113,
+        "duration_frames": 150
+      },
+      {
+        "shot_id": "shot_03",
+        "start_frame": 263,
+        "duration_frames": 160
+      },
+      {
+        "shot_id": "shot_04",
+        "start_frame": 423,
+        "duration_frames": 150
+      },
+      {
+        "shot_id": "shot_05",
+        "start_frame": 573,
+        "duration_frames": 129
+      },
+      {
+        "shot_id": "shot_06",
+        "start_frame": 702,
+        "duration_frames": 139
+      },
+      {
+        "shot_id": "shot_07",
+        "start_frame": 841,
+        "duration_frames": 139
+      },
+      {
+        "shot_id": "shot_08",
+        "start_frame": 980,
+        "duration_frames": 83
+      },
+      {
+        "shot_id": "shot_09",
+        "start_frame": 1063,
+        "duration_frames": 155
+      },
+      {
+        "shot_id": "shot_10",
+        "start_frame": 1218,
+        "duration_frames": 83
+      },
+      {
+        "shot_id": "shot_11",
+        "start_frame": 1301,
+        "duration_frames": 139
+      }
+    ],
+    "subtitle_segments": [
+      {
+        "segment_id": "seg_01",
+        "start_s": 0.0,
+        "end_s": 4.708,
+        "text": "林伯，好兴致啊。雨这么大，晚宴还照开——就不怕故人上门？"
+      },
+      {
+        "segment_id": "seg_02",
+        "start_s": 4.708,
+        "end_s": 10.958,
+        "text": "你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！"
+      },
+      {
+        "segment_id": "seg_03",
+        "start_s": 10.958,
+        "end_s": 17.625,
+        "text": "轰我可以。先认认这个——我在你们厂修了三年车，被扫地出门那天，就带走了它。"
+      },
+      {
+        "segment_id": "seg_04",
+        "start_s": 17.625,
+        "end_s": 23.875,
+        "text": "一把旧扳手，装什么排面。少废话，合约就在这儿——签字，老宅地皮明天过户。"
+      },
+      {
+        "segment_id": "seg_05",
+        "start_s": 23.875,
+        "end_s": 29.25,
+        "text": "签字不急。您先翻到最后一页，看看这一回，该谁给谁低头签字。"
+      },
+      {
+        "segment_id": "seg_06",
+        "start_s": 29.25,
+        "end_s": 35.042,
+        "text": "这……这是恒盛集团的法人章？新任董事接盘林氏产业……怎么可能是他？！"
+      },
+      {
+        "segment_id": "seg_07",
+        "start_s": 35.042,
+        "end_s": 40.833,
+        "text": "五年前，一纸合约把我赶出这道门；五年后，我连门带楼，全买了回来。"
+      },
+      {
+        "segment_id": "seg_08",
+        "start_s": 40.833,
+        "end_s": 44.292,
+        "text": "不可能……你哪来的钱？谁在背后给你撑腰？"
+      },
+      {
+        "segment_id": "seg_09",
+        "start_s": 44.292,
+        "end_s": 50.75,
+        "text": "撑腰的人不重要。重要的是，从今晚起，林家每一份合约，都得先经过我的手。"
+      },
+      {
+        "segment_id": "seg_10",
+        "start_s": 50.75,
+        "end_s": 54.208,
+        "text": "好……好啊。林家欠你的，今天连本带利，认了。"
+      },
+      {
+        "segment_id": "seg_11",
+        "start_s": 54.208,
+        "end_s": 60.0,
+        "text": "这杯我干了。新合约明早九点放你桌上——记住，从今往后，规矩我来定。"
+      }
+    ],
+    "subtitle_align_max_dev_ms": 22,
+    "sound_lead_in_frames": 2,
+    "rhythm_segments": [
+      {
+        "segment_id": "rs_01",
+        "duration_s": 4.7083
+      },
+      {
+        "segment_id": "rs_02",
+        "duration_s": 6.25
+      },
+      {
+        "segment_id": "rs_03",
+        "duration_s": 6.6667
+      },
+      {
+        "segment_id": "rs_04",
+        "duration_s": 6.25
+      },
+      {
+        "segment_id": "rs_05",
+        "duration_s": 5.375
+      },
+      {
+        "segment_id": "rs_06",
+        "duration_s": 5.7917
+      },
+      {
+        "segment_id": "rs_07",
+        "duration_s": 5.7917
+      },
+      {
+        "segment_id": "rs_08",
+        "duration_s": 3.4583
+      },
+      {
+        "segment_id": "rs_09",
+        "duration_s": 6.4583
+      },
+      {
+        "segment_id": "rs_10",
+        "duration_s": 3.4583
+      },
+      {
+        "segment_id": "rs_11",
+        "duration_s": 5.7917
+      }
+    ]
+  },
+  "notes": "投影器填充台账：[派生] fps=24 ← intents.temporal_extent.time_base.rate_num；[派生] total_frames=1440=round(target_duration_s×fps)（目标集时长收敛口，target_duration_s=60.0 ← 包首镜 notes「cp2_target_duration_s」登记位）；[派生] duration_frames=Hamilton 最大余数法比例折算（Σ==total_frames 守恒，同余数按镜序破并列）；start_frame 累计排布；[派生] subtitle_align_max_dev_ms=22=ceil(半帧 ms + 0.5ms 进位)（参照链既有推导式）；[惯例] sound_lead_in_frames=2（D3-8 声音先入 83ms@24fps；包内 TransitionIntent 未生成，投影器惯例缺省）",
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.subtitle_align_ms_max",
+      "result": "pending",
+      "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp6.gate.rhythm_segment_s",
+      "result": "pending",
+      "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+    }
+  ]
+}

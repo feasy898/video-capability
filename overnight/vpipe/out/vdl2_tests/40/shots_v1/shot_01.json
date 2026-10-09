@@ -1,0 +1,30 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_01",
+ "axis": "G9",
+ "duration_s": 4.78,
+ "aspect": "9:16",
+ "resolution": "480P",
+ "characters": [
+  {
+   "char_id": "cast_host",
+   "desc": "女主播，25-32 岁，邻家知性口吻",
+   "ref_image": "assets/marketing/cast_host_ref.png"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "半身近景口播机位，固定带微呼吸感"
+ },
+ "audio": {
+  "generate": true,
+  "speech": "卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。",
+  "music": ""
+ },
+ "prompt": "镜头：中景，平视机位，机位静止（慢速），主体占画面约50%，居中构图\n主体：女主播，25-32 岁，邻家知性口吻\n语义：明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感\n运镜说明：半身近景口播机位，固定带微呼吸感",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "Vidu-avatar-offline"
+ },
+ "notes": "M2 映射：CP3 shot_01→api_vidu_avatar（CP10 TTS→CP9 avatar 直出，不经草稿层）；CP5 序列 96 帧>72 窗→known_cuts[3.6]。本线 CP 面=cp1/cp2/cp3/cp5/cp6/cp7——该线无 cp4（关键帧层未进 M2 执行面），包内不设关键帧类 intent。 | vdl2:axis_v2=G9a | vdl2:prompt_hash=d6dab89b6f416c5266bd77b461c3fc0e51986f86de98e5f1d1af56bf09f11770 | vdl2:intents=i-cam-mk01@1.0.0"
+}

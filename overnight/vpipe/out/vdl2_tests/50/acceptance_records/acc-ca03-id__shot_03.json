@@ -1,0 +1,13 @@
+{
+ "schema": "https://vpo.example/schemas/v1/l4/acceptance-record.schema.json",
+ "criterion_ref": {
+  "criterion_id": "acc-ca03-id",
+  "version": "1.0.0"
+ },
+ "artifact_ref": "clip:shot_03@api_h3max",
+ "artifact_revision": "a5e518313afb0d728ca56e07a114b0ffd5635705494f1537ef6a19320fc834f9",
+ "target_ref": "shot_03",
+ "status": "vpo:delivery.record_status.unknown",
+ "evaluator_id": "J1_glm8",
+ "evaluator_version": "vpipe1.0"
+}

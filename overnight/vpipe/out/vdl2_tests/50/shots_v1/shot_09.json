@@ -1,0 +1,36 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_09",
+ "axis": "G5",
+ "duration_s": 2.61,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 51,
+ "characters": [
+  {
+   "char_id": "cast_lu",
+   "desc": "陆星辞·被逐出师门的少东家",
+   "ref_image": "assets/comicanime/cast_lu_ref.png"
+  },
+  {
+   "char_id": "cast_shenyu",
+   "desc": "沈聿·接手面馆的师兄",
+   "ref_image": "assets/comicanime/cast_shenyu_ref.png"
+  }
+ ],
+ "camera": {
+  "movement": "pull_out",
+  "description": "缓缓拉出门棚收尾"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "面凉了，雨声里谁都没先动筷。",
+  "music": ""
+ },
+ "prompt": "两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃，收尾呼应开场",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_09（api_h3max，pull_out 收尾呼应开场）。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=e4801773fbc3450b32ba8483098c56786d1b7e3c93e960649a81774fbd0e1047 | vdl2:intents=i-cam-ca09@1.0.0,i-style-ca@1.0.0"
+}

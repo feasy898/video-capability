@@ -1,0 +1,237 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp3",
+  "artifact_type": "storyboard",
+  "fingerprint": "ca1f0a7e88bf86c6cbac103fea60ddf3dce6d22e610a250dec5e14aedcc5cf6c",
+  "produced_by": "agent.vdl2Projector",
+  "produced_at": "2026-10-09T09:51:09Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp2",
+      "fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp3.gate.max_shot_duration_s",
+    "result": "pending",
+    "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+  },
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "source_script_fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca",
+    "shots": [
+      {
+        "shot_id": "shot_01",
+        "shot_scale": "extreme_close",
+        "move": "static",
+        "duration_s": 4.78,
+        "action": "雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍小满面部大特写，水珠沿发梢滴落",
+        "refs": [
+          "cast_xiaoman"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{故人上门}",
+            "segment_id": "seg_01"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_02",
+        "shot_scale": "medium",
+        "move": "push_in",
+        "duration_s": 6.3,
+        "action": "林父举杯的手停在半空，杯中酒晃出涟漪；镜头缓推越过杯沿，他抬手示意门口保安，宾客回头",
+        "refs": [
+          "cast_lin",
+          "prop_goblet_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{也配踏进林家的门}",
+            "segment_id": "seg_02"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_03",
+        "shot_scale": "close",
+        "move": "push_in",
+        "duration_s": 6.74,
+        "action": "小满把修车扳手放上白桌布，金属反光划过扳手轮廓特写，镜头缓推但不离开扳手，扳手金属体不形变",
+        "refs": [
+          "cast_xiaoman",
+          "prop_wrench_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{修了三年车}",
+            "segment_id": "seg_03"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_04",
+        "shot_scale": "close",
+        "move": "static",
+        "duration_s": 6.3,
+        "action": "林父把合约文件拍在桌面，手指重重点在签名栏，合约纸面特写压住半个画面，纸面文字不作为可读元素呈现",
+        "refs": [
+          "cast_lin",
+          "prop_contract_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{签字}",
+            "segment_id": "seg_04"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_05",
+        "shot_scale": "medium_close",
+        "move": "static",
+        "duration_s": 5.43,
+        "action": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景一镜不切",
+        "refs": [
+          "cast_xiaoman",
+          "cast_lin",
+          "prop_contract_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{该谁给谁低头签字}",
+            "segment_id": "seg_05"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_06",
+        "shot_scale": "extreme_close",
+        "move": "push_in",
+        "duration_s": 5.87,
+        "action": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化，镜头缓推压向瞳孔",
+        "refs": [
+          "cast_lin",
+          "prop_contract_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{恒盛集团的法人章}",
+            "segment_id": "seg_06"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_07",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 5.87,
+        "action": "同机位前后对切：左半幅五年前汽修工装沾油渍，右半幅今日董事西装笔挺，眼神不变",
+        "refs": [
+          "cast_xiaoman"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{全买了回来}",
+            "segment_id": "seg_07"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_08",
+        "shot_scale": "medium_close",
+        "move": "handheld",
+        "duration_s": 3.48,
+        "action": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，手持微晃低机位拍他失神的脸",
+        "refs": [
+          "cast_lin",
+          "prop_goblet_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{谁在背后给你撑腰}",
+            "segment_id": "seg_08"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_09",
+        "shot_scale": "extreme_close",
+        "move": "push_in",
+        "duration_s": 6.52,
+        "action": "小满驻步正面直视镜头，竖屏面部大特写开场即占满画面，镜头极缓推近锁定双眼，身后满堂宾客虚成静止光斑",
+        "refs": [
+          "cast_xiaoman"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{都得先经过我的手}",
+            "segment_id": "seg_09"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_10",
+        "shot_scale": "medium",
+        "move": "static",
+        "duration_s": 3.48,
+        "action": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉，固定机位不给他镜头遮羞",
+        "refs": [
+          "cast_lin"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{连本带利}",
+            "segment_id": "seg_10"
+          }
+        ]
+      },
+      {
+        "shot_id": "shot_11",
+        "shot_scale": "wide",
+        "move": "pull_out",
+        "duration_s": 5.87,
+        "action": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，镜头拉出至门厅全景，雨幕重新合拢",
+        "refs": [
+          "cast_xiaoman",
+          "prop_goblet_01"
+        ],
+        "channel_hint": "api_h3max",
+        "word_anchors": [
+          {
+            "anchor": "@{规矩我来定}",
+            "segment_id": "seg_11"
+          }
+        ]
+      }
+    ]
+  },
+  "notes": "投影器填充台账：[派生] shots 骨架直投（shot_id/duration_s/action←camera.description/move←camera.movement/channel_hint←engine.channel/refs←characters+notes props）；[派生] shot_scale ←shots[].notes「cp3_shot_scale=…」登记位解析；[恢复] word_anchors 11 镜 ← notes「word_anchor_segment/word_anchor_text」登记位（骨架器自来源 cp3 反投影；缺登记位镜不产——字段可选，对账如实暴露）；[派生] source_script_fingerprint=本链 cp2 实算指纹",
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.word_anchor_valid",
+      "result": "pending",
+      "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+    },
+    {
+      "type": "rule",
+      "params_ref": "cp3.gate.shot_line_count_match",
+      "result": "pending",
+      "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+    }
+  ]
+}

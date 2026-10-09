@@ -1,0 +1,31 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_06",
+ "axis": "G6",
+ "duration_s": 2.17,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 48,
+ "characters": [
+  {
+   "char_id": "cast_shenyu",
+   "desc": "沈聿·接手面馆的师兄",
+   "ref_image": "assets/comicanime/cast_shenyu_ref.png"
+  }
+ ],
+ "camera": {
+  "movement": "push_in",
+  "description": "极缓推近面部大特写"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "这手法……你到底跟谁学的？",
+  "music": ""
+ },
+ "prompt": "镜头：大特写，平视机位，推近（慢速），主体占画面约80%，居中构图\n主体：沈聿·接手面馆的师兄\n语义：沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近；全片国漫厚涂赛璐璐风格锁定：2D 赛璐璐平涂+清晰线稿+高饱和暖色夜戏，禁止向写实/3D/水墨漂移（G8 禁区，风格词逐镜锁定防漂移）\n运镜说明：极缓推近面部大特写\n台词（配音提示）：这手法……你到底跟谁学的？",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_06（api_h3max，push_in 极缓推近）。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=24250c36aaf10506953669dcb78e3df52537f5b47499b640facb6cd6ea370be6 | vdl2:intents=i-cam-ca06@1.0.0,i-style-ca@1.0.0"
+}

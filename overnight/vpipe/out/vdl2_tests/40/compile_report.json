@@ -1,0 +1,46 @@
+{
+ "package": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/40_marketing_ep01.yaml",
+ "compiled_at": "2026-10-09T17:53:45",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "ok": true,
+ "errors": [],
+ "warnings": [
+  "shots[0](shot_01): axis=G9a 超出 v1 冻结枚举，投影降级为 G9（v2 原值留痕于 notes.axis_v2）"
+ ],
+ "conflicts": [],
+ "outputs": {
+  "execution_plan": "execution_plan.json",
+  "shots_v1": [
+   "shots_v1/shot_01.json",
+   "shots_v1/shot_02.json",
+   "shots_v1/shot_03.json",
+   "shots_v1/shot_04.json",
+   "shots_v1/shot_05.json",
+   "shots_v1/shot_06.json"
+  ],
+  "acceptance_records": [
+   "acceptance_records/acc-mk01-avatar__shot_01.json",
+   "acceptance_records/acc-mk-sub__shot_01.json",
+   "acceptance_records/acc-mk02-product__shot_02.json",
+   "acceptance_records/acc-mk03-reeds__shot_03.json",
+   "acceptance_records/acc-mk04-hand__shot_04.json",
+   "acceptance_records/acc-mk05-scene__shot_05.json",
+   "acceptance_records/acc-mk06-product__shot_06.json",
+   "acceptance_records/acc-mk-cta__shot_06.json"
+  ],
+  "slots": null,
+  "n_v1_shots": 6,
+  "n_acceptance_records": 8
+ },
+ "stats": {
+  "n_shots": 6,
+  "n_acceptance_records": 8
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ }
+}

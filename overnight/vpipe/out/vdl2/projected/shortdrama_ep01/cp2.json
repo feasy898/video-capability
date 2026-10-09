@@ -1,0 +1,192 @@
+{
+  "schema_version": "2.0",
+  "cp_id": "cp2",
+  "artifact_type": "script",
+  "fingerprint": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca",
+  "produced_by": "agent.vdl2Projector",
+  "produced_at": "2026-10-09T09:51:09Z",
+  "upstream_refs": [
+    {
+      "cp_id": "cp1",
+      "fingerprint": "9e3def20066145b5e3846d1eec6510bab78f4403a491de036c17768e72e515ea"
+    }
+  ],
+  "status": "pending",
+  "gate": {
+    "type": "rule",
+    "params_ref": "cp2.gate.duration_dev_max",
+    "result": "pending",
+    "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+  },
+  "payload": {
+    "work_id": "shortdrama_ep01",
+    "target_duration_s": 60.0,
+    "estimated_total_duration_s": 60.64,
+    "narration_segments": [
+      {
+        "segment_id": "seg_01",
+        "narration_text": "林伯，好兴致啊。雨这么大，晚宴还照开——就不怕故人上门？",
+        "visual_description": "雨夜旧宅门厅，小满推门而入，背后雨幕逆光勾出剪影，低机位仰拍面部大特写",
+        "estimated_duration_s": 4.78,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_02",
+        "narration_text": "你是……站住！五年前被赶出去的小满？一个修车的，也配踏进林家的门？保安！",
+        "visual_description": "林父举着酒杯的手停在半空，杯中酒晃出涟漪，抬手示意门口保安，宾客回头",
+        "estimated_duration_s": 6.3,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_goblet_01"
+        ]
+      },
+      {
+        "segment_id": "seg_03",
+        "narration_text": "轰我可以。先认认这个——我在你们厂修了三年车，被扫地出门那天，就带走了它。",
+        "visual_description": "小满把修车扳手放上白桌布，金属反光划过特写，镜头不离开扳手轮廓",
+        "estimated_duration_s": 6.74,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": [
+          "prop_wrench_01"
+        ]
+      },
+      {
+        "segment_id": "seg_04",
+        "narration_text": "一把旧扳手，装什么排面。少废话，合约就在这儿——签字，老宅地皮明天过户。",
+        "visual_description": "林父把合约文件拍在桌面，手指重重点在签名栏，特写压住半个画面",
+        "estimated_duration_s": 6.3,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_contract_01"
+        ]
+      },
+      {
+        "segment_id": "seg_05",
+        "narration_text": "签字不急。您先翻到最后一页，看看这一回，该谁给谁低头签字。",
+        "visual_description": "小满与林父隔桌对坐同框，小满指尖把合约最后一页推过去，双人近景不切",
+        "estimated_duration_s": 5.43,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman",
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_contract_01"
+        ]
+      },
+      {
+        "segment_id": "seg_06",
+        "narration_text": "这……这是恒盛集团的法人章？新任董事接盘林氏产业……怎么可能是他？！",
+        "visual_description": "林父瞳孔骤缩的面部大特写，捏着纸页的手指微微发颤，背景宾客全部虚化",
+        "estimated_duration_s": 5.87,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_contract_01"
+        ]
+      },
+      {
+        "segment_id": "seg_07",
+        "narration_text": "五年前，一纸合约把我赶出这道门；五年后，我连门带楼，全买了回来。",
+        "visual_description": "同机位前后对切：左半身汽修工装沾油渍，右半身董事西装笔挺，眼神不变",
+        "estimated_duration_s": 5.87,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_08",
+        "narration_text": "不可能……你哪来的钱？谁在背后给你撑腰？",
+        "visual_description": "林父踉跄半步扶住桌沿，酒杯倾倒酒渍洇开桌布，低机位拍他失神的脸",
+        "estimated_duration_s": 3.48,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": [
+          "prop_goblet_01"
+        ]
+      },
+      {
+        "segment_id": "seg_09",
+        "narration_text": "撑腰的人不重要。重要的是，从今晚起，林家每一份合约，都得先经过我的手。",
+        "visual_description": "小满缓步逼近镜头，竖屏面部大特写占满画面，身后满堂宾客虚成光斑",
+        "estimated_duration_s": 6.52,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_10",
+        "narration_text": "好……好啊。林家欠你的，今天连本带利，认了。",
+        "visual_description": "林父颓然坐回椅子，白发垂下来，抬手抹了一把脸，肩膀垮掉",
+        "estimated_duration_s": 3.48,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_lin"
+        ],
+        "props_refs": []
+      },
+      {
+        "segment_id": "seg_11",
+        "narration_text": "这杯我干了。新合约明早九点放你桌上——记住，从今往后，规矩我来定。",
+        "visual_description": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，雨幕重新合拢",
+        "estimated_duration_s": 5.87,
+        "tts_safe": true,
+        "cast_refs": [
+          "cast_xiaoman"
+        ],
+        "props_refs": [
+          "prop_goblet_01"
+        ]
+      }
+    ],
+    "cast": [
+      {
+        "char_id": "cast_xiaoman"
+      },
+      {
+        "char_id": "cast_lin"
+      }
+    ],
+    "props": [
+      {
+        "prop_id": "prop_wrench_01"
+      },
+      {
+        "prop_id": "prop_contract_01"
+      },
+      {
+        "prop_id": "prop_goblet_01"
+      }
+    ]
+  },
+  "notes": "投影器填充台账：[派生] narration_segments=11 段（逐镜一段，segment_id=seg_NN 镜序惯例；narration_text←audio.speech、estimated_duration_s←duration_s、cast/props←characters+notes 登记位）；[恢复] visual_description 11/11 段 ← 本镜 notes「cp2_visual_description」登记位（骨架器自来源 cp2 反投影原文；缺登记位段回退 camera.description 代用）；[派生] estimated_total_duration_s=60.64=Σ estimated_duration_s（round 2）；[恢复] target_duration_s=60.0 ← 首镜 notes「cp2_target_duration_s」登记位（骨架器自来源 cp2 反投影，JSON 数字 int/float 保真）；[恢复] props 注册表 3 条 ← 首镜 notes「cp2_props」登记位（骨架器自来源 cp2 原序反投影）；[派生] tts_safe=投影器字符集复核（保守白名单）",
+  "aux_gates": [
+    {
+      "type": "rule",
+      "params_ref": "cp2.gate.line_shot_ratio",
+      "result": "pending",
+      "note": "投影器 fresh 产物：门禁判定未运行，result=pending（未判定态），判定数值全部以 params_ref 引 thresholds.yaml 既有键。"
+    }
+  ]
+}

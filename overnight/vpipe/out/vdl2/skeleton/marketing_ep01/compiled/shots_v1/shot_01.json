@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_01",
+ "duration_s": 4.78,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_host"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意，固定机位带微呼吸感"
+ },
+ "audio": {
+  "speech": "卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。"
+ },
+ "prompt": "Medium close-up, static camera with a subtle breathing drift: an amber glass reed diffuser bottle on its round walnut wooden base standing on a bright bedroom windowsill, natural rattan reeds catching soft morning light, sheer curtains glowing with gentle window light, bright cozy bedroom. The amber glass glows warm honey-gold, the rattan reeds dry and fibrous; deep cedar green-gold tones in bright warm morning bedroom light. Premium photorealistic product commercial look, delicate glass reflections and micro highlights, rich micro-contrast, shallow depth of field, slow subtle motion, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.. The product is a bedroom reed diffuser: thick amber glass with a warm honey-gold inner glow, a lathe-turned walnut wooden base with fine visible grain, natural rattan reeds with dry fibrous texture; graded in deep cedar green-gold tones under soft warm bedroom light. Premium photorealistic product commercial look, delicate glass reflections and micro highlights, rich micro-contrast, shallow depth of field, graceful slow motion, vertical 9:16 portrait framing, no on-screen text, no readable label on the bottle, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "Vidu-avatar-offline"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close | vdl2:prompt_hash=65a67585c98777dfcdcc93f9504ab96412bc8d824300d8db0b1880d6c00b7128"
+}

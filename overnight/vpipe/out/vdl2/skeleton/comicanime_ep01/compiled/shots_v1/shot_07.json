@@ -1,0 +1,28 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_07",
+ "duration_s": 3.26,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_lu"
+  },
+  {
+   "char_id": "cast_shenyu"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切，双主角身份不漂移"
+ },
+ "audio": {
+  "speech": "跟一个老师傅。他说，味道在，人就还在。"
+ },
+ "prompt": "Medium close-up two-shot, one static take, no cuts: two young men sit facing each other across the narrow stall counter, on the left Lu Xingci, a handsome young Chinese man in his early twenties, the fallen young master: sleek black hair in a high half-tied ponytail with loose strands, sharp elegant brows, calm confident narrow dark eyes, wearing a dark indigo travel robe-coat with a pale silver sash, on the right Shen Yu, a young Chinese man in his mid-twenties, the noodle-stall cook: black hair bound by a plain grey cloth headband, sturdy shoulders, quiet steady dark eyes, wearing a beige hemp apron over a slate-blue robe with a white towel over his left shoulder, two clearly distinct faces that never merge or swap; the man on the left lays his chopsticks across the rim of an empty ceramic bowl and stares straight at the cook. Rain-night lighting: a warm glowing yellow-paper lantern hangs over the stall, high-saturation amber warmth against cool blue rain-night shadows, slanting rain streaks catching the lantern light, clean cel-shaded light and shadow shapes. Chinese donghua anime style, 2D hand-drawn cel animation, cel shading with flat color blocks, clean crisp line art with thick bold black outlines, anime manhua aesthetic, high-saturation warm night palette. Strictly 2D anime rendering: no photorealism, no live-action skin texture, no 3D CGI rendering, no ink-wash style, no watercolor softness. Vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles, no garbled letters.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_bowl_01,prop_chopsticks_01 | vdl2:prompt_hash=612b88f473ffe07d2bbdf18a4cc3aa94499d5f759b8d2caa4ea86f5f0c8e8088"
+}

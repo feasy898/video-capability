@@ -1,0 +1,49 @@
+{
+ "package": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/50_comicanime_ep01.yaml",
+ "compiled_at": "2026-10-09T17:53:46",
+ "compiler": "vdl2_compile.py@vpipe2.0-dev",
+ "ok": true,
+ "errors": [],
+ "warnings": [],
+ "conflicts": [],
+ "outputs": {
+  "execution_plan": "execution_plan.json",
+  "shots_v1": [
+   "shots_v1/shot_01.json",
+   "shots_v1/shot_02.json",
+   "shots_v1/shot_03.json",
+   "shots_v1/shot_04.json",
+   "shots_v1/shot_05.json",
+   "shots_v1/shot_06.json",
+   "shots_v1/shot_07.json",
+   "shots_v1/shot_08.json",
+   "shots_v1/shot_09.json"
+  ],
+  "acceptance_records": [
+   "acceptance_records/acc-ca01-style__shot_01.json",
+   "acceptance_records/acc-ca-sub__shot_01.json",
+   "acceptance_records/acc-ca02-id__shot_02.json",
+   "acceptance_records/acc-ca03-id__shot_03.json",
+   "acceptance_records/acc-ca04-obj__shot_04.json",
+   "acceptance_records/acc-ca05-obj__shot_05.json",
+   "acceptance_records/acc-ca06-move__shot_06.json",
+   "acceptance_records/acc-ca07-id__shot_07.json",
+   "acceptance_records/acc-ca08-id__shot_08.json",
+   "acceptance_records/acc-ca09-id__shot_09.json"
+  ],
+  "slots": null,
+  "n_v1_shots": 9,
+  "n_acceptance_records": 10
+ },
+ "stats": {
+  "n_shots": 9,
+  "n_acceptance_records": 10
+ },
+ "validation": {
+  "ok": true,
+  "gate_a_errors": 0,
+  "gate_b_errors": 0,
+  "total_errors": 0,
+  "warnings": 0
+ }
+}

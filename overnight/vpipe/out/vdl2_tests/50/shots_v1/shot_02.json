@@ -1,0 +1,31 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_02",
+ "axis": "G5",
+ "duration_s": 3.48,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "seed": 44,
+ "characters": [
+  {
+   "char_id": "cast_lu",
+   "desc": "陆星辞·被逐出师门的少东家",
+   "ref_image": "assets/comicanime/cast_lu_ref.png"
+  }
+ ],
+ "camera": {
+  "movement": "static",
+  "description": "案前点单近景固定机位"
+ },
+ "audio": {
+  "generate": false,
+  "speech": "老板，一碗头汤面。汤宽，面硬，葱花最后放。",
+  "music": ""
+ },
+ "prompt": "陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边，画格流定格",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "M2 映射：CP3 shot_02（api_h3max）；主角面部身份锚。本线无 cp4（关键帧层），包内不设关键帧类 intent。 | vdl2:prompt_hash=06f6a76c4fd189d1b373d5839b6bb50f8dd3bc006ca1a6bb01e60911f84715dd | vdl2:intents=i-cam-ca02@1.0.0,i-style-ca@1.0.0"
+}

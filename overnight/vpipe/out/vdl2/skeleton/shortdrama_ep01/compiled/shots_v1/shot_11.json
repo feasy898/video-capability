@@ -1,0 +1,25 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_11",
+ "duration_s": 5.87,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "characters": [
+  {
+   "char_id": "cast_xiaoman"
+  }
+ ],
+ "camera": {
+  "movement": "pull_out",
+  "description": "小满举杯一饮而尽杯底朝天，转身走出大门背影定格，镜头拉出至门厅全景，雨幕重新合拢"
+ },
+ "audio": {
+  "speech": "这杯我干了。新合约明早九点放你桌上——记住，从今往后，规矩我来定。"
+ },
+ "prompt": "Wide shot: a young woman downs her drink in one gulp with the glass tilted fully vertical, turns and walks out through the front door, the camera pulling back and rising to reveal the whole mansion foyer as the rain curtain closes behind her silhouette. She is Xiaoman, a Chinese woman in her early twenties, pale rain-damp skin, sleek black shoulder-length hair with fine water droplets at the tips, calm defiant dark eyes, wearing a tailored charcoal-black wool blazer over a white shirt. The last swallow of garnet-red wine catches the chandelier flame; the double-height marble foyer glows warm amber from wall sconces while the open door pours in cold silver-blue storm light and curtains of rain; her charcoal blazer reads as a crisp dark silhouette against the downpour; wet marble floor mirrors both light worlds. Cinematic photorealistic live-action Chinese short-drama look, natural detailed skin texture, filmic color grade of warm amber banquet glow against cool rain-blue night tones, soft volumetric practical lighting, 35mm anamorphic lens look, shallow depth of field, rich micro-contrast, graceful natural motion, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=wide; props=prop_goblet_01; cp2_visual_description=小满举杯一饮而尽杯底朝天，转身走出大门背影定格，雨幕重新合拢; word_anchor_segment=seg_11; word_anchor_text=@{规矩我来定}; cp5_blocking={\"shot_id\":\"shot_11\",\"joint_names\":[\"hips\",\"spine\",\"neck\",\"head\",\"leftShoulder\",\"leftElbow\",\"leftWrist\",\"rightShoulder\",\"rightElbow\",\"rightWrist\",\"leftHip\",\"leftKnee\",\"leftAnkle\",\"rightHip\",\"rightKnee\",\"rightAnkle\"],\"bone_length_constant\":true,\"speech_mode\":\"independent_lip_layer\",\"tracks\":[{\"joint\":null,\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":1.0,\"rotation\":{\"x\":0,\"y\":0.05,\"z\":0}},{\"time\":2.8,\"rotation\":{\"x\":0,\"y\":0.05,\"z\":0}},{\"time\":4.0,\"rotation\":{\"x\":0.05,\"y\":2.4,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":0.03,\"y\":2.6,\"z\":0}}]},{\"joint\":\"spine\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0.03,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":0.06,\"y\":0,\"z\":0}},{\"time\":4.0,\"rotation\":{\"x\":0.02,\"y\":0.2,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":0.02,\"y\":0.1,\"z\":0}}]},{\"joint\":\"head\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":2.0,\"rotation\":{\"x\":0,\"y\":-0.15,\"z\":0}},{\"time\":4.2,\"rotation\":{\"x\":0,\"y\":0.35,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":0,\"y\":0.15,\"z\":0}}]},{\"joint\":\"rightShoulder\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.3}},{\"time\":1.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.6}},{\"time\":2.6,\"rotation\":{\"x\":0,\"y\":0,\"z\":-1.7}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.5}},{\"time\":5.8,\"rotation\":{\"x\":0,\"y\":0,\"z\":-0.4}}]},{\"joint\":\"rightElbow\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":-0.4,\"y\":0,\"z\":0}},{\"time\":1.0,\"rotation\":{\"x\":-1.9,\"y\":0,\"z\":0}},{\"time\":2.6,\"rotation\":{\"x\":-2.0,\"y\":0,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":-0.7,\"y\":0,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":-0.6,\"y\":0,\"z\":0}}]},{\"joint\":\"rightWrist\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0.1,\"z\":0}},{\"time\":1.2,\"rotation\":{\"x\":0,\"y\":-1.3,\"z\":0}},{\"time\":2.8,\"rotation\":{\"x\":0,\"y\":-1.5,\"z\":0}},{\"time\":3.4,\"rotation\":{\"x\":0,\"y\":-0.2,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":0,\"y\":-0.1,\"z\":0}}]},{\"joint\":\"hips\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":2.8,\"rotation\":{\"x\":0,\"y\":0.05,\"z\":0}},{\"time\":4.2,\"rotation\":{\"x\":0,\"y\":2.2,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":0,\"y\":2.4,\"z\":0}}]},{\"joint\":\"leftKnee\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":4.6,\"rotation\":{\"x\":-0.5,\"y\":0,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":-0.6,\"y\":0,\"z\":0}}]},{\"joint\":\"rightKnee\",\"frames\":[{\"time\":0.0,\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},{\"time\":4.8,\"rotation\":{\"x\":-0.5,\"y\":0,\"z\":0}},{\"time\":5.8,\"rotation\":{\"x\":-0.6,\"y\":0,\"z\":0}}]}],\"frame_count\":118,\"known_cuts\":[3.6]} | vdl2:prompt_hash=418bbc3f2a0392951543c486835c471e1b8a3935d344a0bd5ae98e06dfcd1ca0"
+}
