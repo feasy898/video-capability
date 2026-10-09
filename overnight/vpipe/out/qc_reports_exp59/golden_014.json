@@ -1,0 +1,186 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_014",
+ "generated_at": "2026-10-09T13:23:53",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9463,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['face_blur'], conf=0.9)",
+   "J3@0.71 flag=True hits=['face_blur', 'pixelate'] max_channel_P=0.9463",
+   "J6 信号(仅信号不否决): identity_drift@1.00"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J1",
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.9463,
+   "evidence": {
+    "J1": {
+     "confidence": 0.9,
+     "notes": "f01-f02画面清晰正常；f03-f06中人物脸部及上胸区域出现明显矩形异常模糊，五官完全不可辨认，且模糊区域边界生硬（f03-f06连续4帧均受影响）；f07-f08恢复清晰。手臂交叉姿态在模糊前后基本连贯，手部解剖正常（f01、f08手指形态自然），未见闪烁、色偏、像素化或身份突变等其他缺陷。核心缺陷为人脸区域异常模糊face_blur。"
+    },
+    "J3": {
+     "channel_P": 0.9463
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  },
+  {
+   "type": "identity_drift",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 1.0,
+   "span": {
+    "start_s": 3.466,
+    "end_s": 4.096
+   },
+   "evidence": {
+    "J6": {
+     "pair": 5,
+     "cos": -0.0017
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.9393,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.9393
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.5407,
+   "flicker": 0.343,
+   "color_shift": 0.2487,
+   "face_blur": 0.9463,
+   "garble_text": 0.0349,
+   "temporal_swap": 0.455,
+   "pixelate": 0.9393,
+   "ghosting": 0.2237
+  },
+  "overall": 0.6715,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "identity_drift",
+   "start_s": 3.466,
+   "end_s": 4.096,
+   "evidence": {
+    "pair": 5,
+    "cos": -0.0017
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f03-f06（约1.6s-3.5s）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.9,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "f01-f02画面清晰正常；f03-f06中人物脸部及上胸区域出现明显矩形异常模糊，五官完全不可辨认，且模糊区域边界生硬（f03-f06连续4帧均受影响）；f07-f08恢复清晰。手臂交叉姿态在模糊前后基本连贯，手部解剖正常（f01、f08手指形态自然），未见闪烁、色偏、像素化或身份突变等其他缺陷。核心缺陷为人脸区域异常模糊face_blur。"
+  },
+  "J5": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"face_blur\"],\"other\":false,\"reason\":\"画面中人物脸部区域存在模糊\"}"
+  },
+  "J3": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "face_blur",
+    "pixelate"
+   ],
+   "confidence": 0.9463,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.541 flicker=0.343 color_shift=0.249 face_blur=0.946 garble_text=0.035 temporal_swap=0.455 pixelate=0.939 ghosting=0.224; overall=0.671; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "identity_drift"
+   ],
+   "confidence": 1.0,
+   "spans": [
+    {
+     "type": "identity_drift",
+     "start_s": 3.466,
+     "end_s": 4.096,
+     "evidence": {
+      "pair": 5,
+      "cos": -0.0017
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_014.mp4",
+  "frames_dir": "frames/golden_014/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_014.json",
+   "J5": "../数据/judges/videochat3/golden_014.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_014.qc.json"
+  }
+ },
+ "errors": {}
+}

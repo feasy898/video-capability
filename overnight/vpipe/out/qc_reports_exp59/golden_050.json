@@ -1,0 +1,117 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_050",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.65,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['flicker'], conf=0.65)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6734",
+   "降级: J6"
+  ]
+ },
+ "defects": [
+  {
+   "type": "flicker",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.65,
+   "evidence": {
+    "J1": {
+     "confidence": 0.65,
+     "notes": "主体与场景连续性良好：同一红裙女性全程面向镜头奔跑，面部各帧清晰一致（f01-f08），无身份漂移；双手捏裙摆姿态自然、手指形态正常（f05-f07 清晰可见）；腿部步态与水面倒影、溅水涟漪（f05-f06）物理上合理；背景街道、车辆、蓝色路牌连续无跳变，未见定格、拖影、像素化或乱码文字。唯一异常是画面整体明暗/饱和度不稳：f01-f04 整体偏暗、裙色暗红，f05 突然变亮且红色明显更鲜艳，f0"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3908,
+   "flicker": 0.3387,
+   "color_shift": 0.6734,
+   "face_blur": 0.1929,
+   "garble_text": 0.0791,
+   "temporal_swap": 0.3816,
+   "pixelate": 0.144,
+   "ghosting": 0.3438
+  },
+  "overall": 0.6239,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f04-f05（明显暗→亮跳变），f07-f08（亮度回落）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_050",
+   "defect_detected": true,
+   "defect_types": [
+    "flicker"
+   ],
+   "confidence": 0.65,
+   "spans": "f04-f05（明显暗→亮跳变），f07-f08（亮度回落）",
+   "notes": "主体与场景连续性良好：同一红裙女性全程面向镜头奔跑，面部各帧清晰一致（f01-f08），无身份漂移；双手捏裙摆姿态自然、手指形态正常（f05-f07 清晰可见）；腿部步态与水面倒影、溅水涟漪（f05-f06）物理上合理；背景街道、车辆、蓝色路牌连续无跳变，未见定格、拖影、像素化或乱码文字。唯一异常是画面整体明暗/饱和度不稳：f01-f04 整体偏暗、裙色暗红，f05 突然变亮且红色明显更鲜艳，f06-f07 保持高亮，f08 又略有回落变暗，呈现帧间曝光/色调跳变（f04→f05 最明显），判定为 flicker（明暗闪烁）。因仅依据 8 帧静态证据且变化为阶段性而非高频交替，置信度中等。"
+  },
+  "J5": {
+   "clip_id": "golden_050",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_050",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift"
+   ],
+   "confidence": 0.6734,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.391 flicker=0.339 color_shift=0.673 face_blur=0.193 garble_text=0.079 temporal_swap=0.382 pixelate=0.144 ghosting=0.344; overall=0.624; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_050.mp4",
+  "frames_dir": "frames/golden_050/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_050.json",
+   "J5": "../数据/judges/videochat3/golden_050.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_050.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_050.qc.json')"
+ }
+}

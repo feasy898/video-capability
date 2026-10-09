@@ -916,6 +916,20 @@
    "defect_types": [],
    "confidence": 1.0,
    "spans": []
+  },
+  "golden_058": {
+   "clip_id": "golden_058",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": []
+  },
+  "golden_059": {
+   "clip_id": "golden_059",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": []
   }
  }
 }

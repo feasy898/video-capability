@@ -1,0 +1,129 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_059",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8004,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['garble_text'], conf=0.92)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8004",
+   "降级: J6"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8004,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8004
+    }
+   }
+  },
+  {
+   "type": "garble_text",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.92,
+   "evidence": {
+    "J1": {
+     "confidence": 0.92,
+     "notes": "瓶身标签文字为典型AI乱码：8帧中标签内容看似英文排版，但逐词阅读均为无意义字符组合，如'Therwidarewoid in Parc Frey, Wite the enbe cirel'（f01）、'theoerteoepytilr'、'Cetatoemrte'、'pekeh Foresiloe'（f03-f05）等，不成句不成词，瓶底压印字符（f01'533:8 %. 0.3'）同样无意义，属"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8004,
+   "flicker": 0.3619,
+   "color_shift": 0.4911,
+   "face_blur": 0.0218,
+   "garble_text": 0.1742,
+   "temporal_swap": 0.3246,
+   "pixelate": 0.2398,
+   "ghosting": 0.334
+  },
+  "overall": 0.4631,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f01-f08（全片标签区域）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_059",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.92,
+   "spans": "f01-f08（全片标签区域）",
+   "notes": "瓶身标签文字为典型AI乱码：8帧中标签内容看似英文排版，但逐词阅读均为无意义字符组合，如'Therwidarewoid in Parc Frey, Wite the enbe cirel'（f01）、'theoerteoepytilr'、'Cetatoemrte'、'pekeh Foresiloe'（f03-f05）等，不成句不成词，瓶底压印字符（f01'533:8 %. 0.3'）同样无意义，属文字渲染失败。其余维度检查：f01-f08镜头匀速横移，瓶体与石台纹理连续过渡，无定格、无明暗闪烁、无色偏、无场景跳变；无人物出现故不涉及人脸/手部；瓶形与标签位置跨帧一致无身份漂移，未见像素块与运动拖影。"
+  },
+  "J5": {
+   "clip_id": "golden_059",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_059",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8004,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.800 flicker=0.362 color_shift=0.491 face_blur=0.022 garble_text=0.174 temporal_swap=0.325 pixelate=0.240 ghosting=0.334; overall=0.463; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_059.mp4",
+  "frames_dir": "frames/golden_059/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_059.json",
+   "J5": "../数据/judges/videochat3/golden_059.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_059.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_059.qc.json')"
+ }
+}

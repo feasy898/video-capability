@@ -1,0 +1,141 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_049",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9435,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['ghosting'], conf=0.7)",
+   "J3@0.71 flag=True hits=['face_blur', 'ghosting'] max_channel_P=0.9435",
+   "降级: J6"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.9435,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.9435
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J1",
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.9223,
+   "evidence": {
+    "J1": {
+     "confidence": 0.7,
+     "notes": "8帧全程存在严重运动拖影/重影：f01右侧人群与左侧奔跑者均有明显拖尾残影；f02中央蓝白衣人物轮廓多重叠影、严重涂抹；f04-f05奔跑者腿部及身体带长条状运动残影，形体被拖影拉糊；f06-f08通道内人群边缘普遍糊化重影。画面自始至终清晰度极低，主体（尤其人脸）均因拖影不可辨，属于持续性拖影缺陷。未发现定格、闪烁、色偏、乱码文字、像素块或明显时序跳变；因整体拖影导致人脸无法看清，但属全局模糊的"
+    },
+    "J3": {
+     "channel_P": 0.9223
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.0473,
+   "flicker": 0.409,
+   "color_shift": 0.5928,
+   "face_blur": 0.9435,
+   "garble_text": 0.0815,
+   "temporal_swap": 0.4251,
+   "pixelate": 0.232,
+   "ghosting": 0.9223
+  },
+  "overall": 0.8357,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f01-f08（全程）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_049",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.7,
+   "spans": "f01-f08（全程）",
+   "notes": "8帧全程存在严重运动拖影/重影：f01右侧人群与左侧奔跑者均有明显拖尾残影；f02中央蓝白衣人物轮廓多重叠影、严重涂抹；f04-f05奔跑者腿部及身体带长条状运动残影，形体被拖影拉糊；f06-f08通道内人群边缘普遍糊化重影。画面自始至终清晰度极低，主体（尤其人脸）均因拖影不可辨，属于持续性拖影缺陷。未发现定格、闪烁、色偏、乱码文字、像素块或明显时序跳变；因整体拖影导致人脸无法看清，但属全局模糊的伴随后果，不单列face_blur。"
+  },
+  "J5": {
+   "clip_id": "golden_049",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"画面中存在明显的运动拖影或重影\"}"
+  },
+  "J3": {
+   "clip_id": "golden_049",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "face_blur",
+    "ghosting"
+   ],
+   "confidence": 0.9435,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.047 flicker=0.409 color_shift=0.593 face_blur=0.944 garble_text=0.082 temporal_swap=0.425 pixelate=0.232 ghosting=0.922; overall=0.836; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_049.mp4",
+  "frames_dir": "frames/golden_049/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_049.json",
+   "J5": "../数据/judges/videochat3/golden_049.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_049.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_049.qc.json')"
+ }
+}

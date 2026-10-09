@@ -1,0 +1,107 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_009",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.9,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.9)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5308"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.2807,
+   "flicker": 0.2951,
+   "color_shift": 0.5055,
+   "face_blur": 0.1345,
+   "garble_text": 0.0424,
+   "temporal_swap": 0.3294,
+   "pixelate": 0.0697,
+   "ghosting": 0.4003
+  },
+  "overall": 0.5308,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_009",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.9,
+   "spans": "",
+   "notes": "逐帧核对8项标准缺陷与语义维度均未见异常：动作时序连贯——f01手扶杯柄、f02端起、f03-f05送至嘴边啜饮、f06-f08放下并微笑抬头，无段落错乱或定格；人物身份跨帧一致（红裙、黑中长发、金色耳钉、细项链在f01-f08均保持），无身份漂移；人脸各帧清晰锐利，无模糊；持杯手部（f02-f08）手指解剖合理，未见多指/融指；无闪烁、色偏、像素化、拖影，杯沿蒸汽（f03、f07）与背景行人移动均符合物理常识；背景招牌均为虚化焦外，无可判定的乱码文字。判定为干净视频。"
+  },
+  "J5": {
+   "clip_id": "golden_009",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_009",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift"
+   ],
+   "confidence": 0.5308,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.281 flicker=0.295 color_shift=0.505 face_blur=0.135 garble_text=0.042 temporal_swap=0.329 pixelate=0.070 ghosting=0.400; overall=0.531; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_009",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_009.mp4",
+  "frames_dir": "frames/golden_009/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_009.json",
+   "J5": "../数据/judges/videochat3/golden_009.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_009.qc.json"
+  }
+ },
+ "errors": {}
+}

@@ -1,0 +1,129 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_058",
+ "generated_at": "2026-10-09T13:39:53",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8685,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['garble_text'], conf=0.97)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8685",
+   "降级: J6"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8685,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8685
+    }
+   }
+  },
+  {
+   "type": "garble_text",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.97,
+   "evidence": {
+    "J1": {
+     "confidence": 0.97,
+     "notes": "瓶身标签文字在所有帧（f01-f08）均为乱码伪文字：如'Mid minge bordtiote, ttelettriery'、'120% Preonoastimies, Thinn and WIng Thong 71. G3'、'000% Inlarpersiny'等，字形态似英文但完全无意义，且底部批次号在f01显示'10005 15TLO)'、f04-f08显示'90005 15TKO)'存"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8685,
+   "flicker": 0.2593,
+   "color_shift": 0.4656,
+   "face_blur": 0.0275,
+   "garble_text": 0.0747,
+   "temporal_swap": 0.2461,
+   "pixelate": 0.2431,
+   "ghosting": 0.3042
+  },
+  "overall": 0.4032,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f01-f08（全片5.17s）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_058",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.97,
+   "spans": "f01-f08（全片5.17s）",
+   "notes": "瓶身标签文字在所有帧（f01-f08）均为乱码伪文字：如'Mid minge bordtiote, ttelettriery'、'120% Preonoastimies, Thinn and WIng Thong 71. G3'、'000% Inlarpersiny'等，字形态似英文但完全无意义，且底部批次号在f01显示'10005 15TLO)'、f04-f08显示'90005 15TKO)'存在字符不一致，属典型文字渲染失败。其余维度检查：f01-f08瓶体稳定置于桌面，无定格、无闪烁、无色偏、无像素化、无拖影、无时序跳变；画面无人物/手部，无计数或物理违例。唯一命中项为garble_text。"
+  },
+  "J5": {
+   "clip_id": "golden_058",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面稳定，无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_058",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8685,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.869 flicker=0.259 color_shift=0.466 face_blur=0.028 garble_text=0.075 temporal_swap=0.246 pixelate=0.243 ghosting=0.304; overall=0.403; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_058.mp4",
+  "frames_dir": "frames/golden_058/",
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_058.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_058.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_058.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_058.qc.json')"
+ }
+}

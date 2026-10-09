@@ -1,0 +1,218 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_030",
+ "generated_at": "2026-10-09T13:23:53",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9006,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['flicker'], conf=0.6)",
+   "J3@0.71 flag=True hits=['color_shift', 'ghosting'] max_channel_P=0.9006",
+   "J6 信号(仅信号不否决): garble_text@1.00"
+  ]
+ },
+ "defects": [
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.9006,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.9006
+    }
+   }
+  },
+  {
+   "type": "flicker",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.6,
+   "evidence": {
+    "J1": {
+     "confidence": 0.6,
+     "notes": "画面为花房内大片红白花田，镜头持续前移，背景白墙与树木在各帧位置连贯，无定格、无场景跳变、无人脸/文字/手部等对象，未见像素块或明显重影（花体模糊与镜头快速移动的运动模糊程度一致）。主要异常为整帧明暗不稳定：f01-f03亮度正常，f04-f05整体显著变暗且色调偏暗绿，f06-f07又恢复明亮，f08再次出现变暗趋势，5秒内多次明暗交替，符合曝光/亮度闪烁特征。置信度中等：变暗段也可解释为镜头经"
+    }
+   }
+  },
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 1.0,
+   "span": {
+    "start_s": 0.315,
+    "end_s": 0.945
+   },
+   "evidence": {
+    "J6": {
+     "kind": "conf_drop",
+     "drop": 0.605,
+     "frames": [
+      1,
+      0
+     ],
+     "mean_scores": [
+      0.138,
+      0.743
+     ]
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.8178,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8178
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4139,
+   "flicker": 0.297,
+   "color_shift": 0.9006,
+   "face_blur": 0.0685,
+   "garble_text": 0.0503,
+   "temporal_swap": 0.3473,
+   "pixelate": 0.542,
+   "ghosting": 0.8178
+  },
+  "overall": 0.744,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.315,
+   "end_s": 0.945,
+   "evidence": {
+    "kind": "conf_drop",
+    "drop": 0.605,
+    "frames": [
+     1,
+     0
+    ],
+    "mean_scores": [
+     0.138,
+     0.743
+    ]
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f04-f05（约2.2-2.8s）整帧明显变暗偏绿，f06-f07（约3.5-4.1s）恢复明亮，f08（约4.7s）再度转暗"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "flicker"
+   ],
+   "confidence": 0.6,
+   "spans": "f04-f05（约2.2-2.8s）整帧明显变暗偏绿，f06-f07（约3.5-4.1s）恢复明亮，f08（约4.7s）再度转暗",
+   "notes": "画面为花房内大片红白花田，镜头持续前移，背景白墙与树木在各帧位置连贯，无定格、无场景跳变、无人脸/文字/手部等对象，未见像素块或明显重影（花体模糊与镜头快速移动的运动模糊程度一致）。主要异常为整帧明暗不稳定：f01-f03亮度正常，f04-f05整体显著变暗且色调偏暗绿，f06-f07又恢复明亮，f08再次出现变暗趋势，5秒内多次明暗交替，符合曝光/亮度闪烁特征。置信度中等：变暗段也可解释为镜头经过棚内阴影/遮阳区，但波动幅度与往复频率更倾向flicker。"
+  },
+  "J5": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"画面中存在运动拖影或重影\"}"
+  },
+  "J3": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "pixelate",
+    "ghosting"
+   ],
+   "confidence": 0.9006,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.414 flicker=0.297 color_shift=0.901 face_blur=0.069 garble_text=0.050 temporal_swap=0.347 pixelate=0.542 ghosting=0.818; overall=0.744; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 1.0,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.315,
+     "end_s": 0.945,
+     "evidence": {
+      "kind": "conf_drop",
+      "drop": 0.605,
+      "frames": [
+       1,
+       0
+      ],
+      "mean_scores": [
+       0.138,
+       0.743
+      ]
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_030.mp4",
+  "frames_dir": "frames/golden_030/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_030.json",
+   "J5": "../数据/judges/videochat3/golden_030.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_030.qc.json"
+  }
+ },
+ "errors": {}
+}

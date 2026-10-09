@@ -1,0 +1,107 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_025",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.9,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.9)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.696"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3374,
+   "flicker": 0.3474,
+   "color_shift": 0.6887,
+   "face_blur": 0.0501,
+   "garble_text": 0.0652,
+   "temporal_swap": 0.4953,
+   "pixelate": 0.3133,
+   "ghosting": 0.4923
+  },
+  "overall": 0.696,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_025",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.9,
+   "spans": "无",
+   "notes": "8帧呈现一段平稳的从左向右横移镜头：f01面馆木门与柴炉烟雾，f02-f04移至药店（灯亮、货架可见），f05-f08移至关闭卷帘门的超市。逐项核对：无定格（各帧取景持续推进）；无明暗闪烁（整体光线一致偏暗的怀旧色调，f01-f08连续）；无色偏；无人脸；文字渲染正常且语义正确（面馆/药店/超市，无乱码）；无时序跳变（f01→f08取景连续衔接，店面相对位置渐进变化）；无像素化马赛克；烟雾上升形态自然无拖影重影；无手部、无计数异常、无悬浮穿模等物理违例、无主体身份漂移。判定为干净视频。"
+  },
+  "J5": {
+   "clip_id": "golden_025",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_025",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift"
+   ],
+   "confidence": 0.696,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.337 flicker=0.347 color_shift=0.689 face_blur=0.050 garble_text=0.065 temporal_swap=0.495 pixelate=0.313 ghosting=0.492; overall=0.696; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_025",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.4574,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_025.mp4",
+  "frames_dir": "frames/golden_025/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_025.json",
+   "J5": "../数据/judges/videochat3/golden_025.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_025.qc.json"
+  }
+ },
+ "errors": {}
+}

@@ -1,0 +1,172 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_007",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.78,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.78)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6922",
+   "J6 信号(仅信号不否决): garble_text@1.00"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 1.0,
+   "span": {
+    "start_s": 0.316,
+    "end_s": 4.113
+   },
+   "evidence": {
+    "J6": {
+     "kind": "conf_drop",
+     "drop": 0.712,
+     "frames": [
+      0,
+      6
+     ],
+     "mean_scores": [
+      0.085,
+      0.796
+     ]
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.6922,
+   "flicker": 0.2261,
+   "color_shift": 0.3729,
+   "face_blur": 0.3254,
+   "garble_text": 0.0524,
+   "temporal_swap": 0.3299,
+   "pixelate": 0.5675,
+   "ghosting": 0.4906
+  },
+  "overall": 0.4935,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.316,
+   "end_s": 4.113,
+   "evidence": {
+    "kind": "conf_drop",
+    "drop": 0.712,
+    "frames": [
+     0,
+     6
+    ],
+    "mean_scores": [
+     0.085,
+     0.796
+    ]
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_007",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.78,
+   "spans": "无",
+   "notes": "8帧内容连贯：暗背景下双手持续做收拢/屈伸动作，f01-f05手指由张开逐渐握拳，f06-f08保持姿态并轻微屈伸，f07指尖在黑色小卡片上方自然露出，属正常指节运动。黑色卡片全程贴合指尖随手指同步移动，数量恒为1，无悬浮或穿模迹象；可见手指解剖正常，未见多指/融指/粘连；画面无定格、明暗闪烁、色偏、人脸、文字、像素块或运动残影，亦无时序跳变或主体外观突变。各帧证据未命中任何缺陷类别，判为干净。"
+  },
+  "J5": {
+   "clip_id": "golden_007",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_007",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "pixelate"
+   ],
+   "confidence": 0.6922,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.692 flicker=0.226 color_shift=0.373 face_blur=0.325 garble_text=0.052 temporal_swap=0.330 pixelate=0.568 ghosting=0.491; overall=0.493; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_007",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 1.0,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.316,
+     "end_s": 4.113,
+     "evidence": {
+      "kind": "conf_drop",
+      "drop": 0.712,
+      "frames": [
+       0,
+       6
+      ],
+      "mean_scores": [
+       0.085,
+       0.796
+      ]
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_007.mp4",
+  "frames_dir": "frames/golden_007/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_007.json",
+   "J5": "../数据/judges/videochat3/golden_007.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_007.qc.json"
+  }
+ },
+ "errors": {}
+}

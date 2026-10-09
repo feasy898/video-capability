@@ -1,0 +1,107 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_027",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.88,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.88)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5802"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3249,
+   "flicker": 0.182,
+   "color_shift": 0.2312,
+   "face_blur": 0.0395,
+   "garble_text": 0.0392,
+   "temporal_swap": 0.2795,
+   "pixelate": 0.0904,
+   "ghosting": 0.5802
+  },
+  "overall": 0.5126,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_027",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "水墨风格锦鲤动画，整体干净。逐项核对：f01-f08 中鱼体外观完全一致（头顶白斑、双须、鳞片纹理、鳍形均无突变），无身份漂移；鱼以缓慢均匀速度向左下方游动，f01→f02、f07→f08 位置小幅连续推进，无定格与段落错乱；f03-f06 水墨山水背景在鱼身后渐进晕染成形，过渡连贯符合水墨扩散的表现逻辑，无时序跳变；全片保持统一的米色宣纸底+墨色调，无色偏、无明暗闪烁；鱼体边缘清晰，无重影拖影，无像素块；画面无人脸、无文字；对象计数正常（单条锦鲤），水墨晕开属风格化艺术表现而非物理/悬浮违例。未发现可报缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_027",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_027",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.5802,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.325 flicker=0.182 color_shift=0.231 face_blur=0.040 garble_text=0.039 temporal_swap=0.280 pixelate=0.090 ghosting=0.580; overall=0.513; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_027",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_027.mp4",
+  "frames_dir": "frames/golden_027/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_027.json",
+   "J5": "../数据/judges/videochat3/golden_027.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_027.qc.json"
+  }
+ },
+ "errors": {}
+}

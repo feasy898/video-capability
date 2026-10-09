@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "name": "asset_manifest_v3post_v1",
- "generated_at": "2026-10-09T11:55:13",
+ "generated_at": "2026-10-09T13:39:55",
  "generator": "qc_orch.py@vpipe1.0",
  "items": [
   {
@@ -10,7 +10,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_028.json",
    "sha256": "70df2d309eacbf492224da6f3b4e4d6e6288f6ca7b57ca58cc7b1a9beae709ed",
    "size_bytes": 924,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_028",
@@ -26,7 +26,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_028.json",
    "sha256": "99dc0dcf5d07c33b8f8d59204ccdd12f5293e180db20dfc13e9b23d3e81c4720",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_028",
@@ -40,17 +40,17 @@
    "asset_id": "judge:J3:golden_028",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_028",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_028.json",
-   "sha256": "bd711a12bd749ed5079aa6ad01781d5bac046927200f4b71f336427f4b8777a7",
+   "sha256": "79e533cb7aa1109cc5216d90371e6d5881556827605275a9031986940becbae7",
    "size_bytes": 3658,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_028"
@@ -66,7 +66,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_017.json",
    "sha256": "37c646520c730207b46ab4ee12b2b82dfa02ad290563767bceb2082f531dd33b",
    "size_bytes": 1043,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_017",
@@ -82,7 +82,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_017.json",
    "sha256": "ed41c7dfc88a05baa983e26e88efbb0fba891f60e5c8c90f9e58eb716e38f42c",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_017",
@@ -96,17 +96,17 @@
    "asset_id": "judge:J3:golden_017",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_017",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_017.json",
-   "sha256": "d9b24ed764668ccc318d3c7dffebfd0e390c13ae14cb36589e360a7ac8d67e53",
+   "sha256": "03167248b2392a0b06399ae75f79f7465db10323b29fcc8093c17951ef513acc",
    "size_bytes": 3876,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_017"
@@ -122,7 +122,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_030.json",
    "sha256": "9b25f4b55f62d448fc7812ea78da234a55fb8099c775b748e6128d17b1e0e2cb",
    "size_bytes": 885,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_030",
@@ -138,7 +138,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_030.json",
    "sha256": "4bc7712398848647816b24c5ab7c3874d7beaf68c8fac3462a02325695e58572",
    "size_bytes": 291,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_030",
@@ -152,17 +152,17 @@
    "asset_id": "judge:J3:golden_030",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_030",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_030.json",
-   "sha256": "1f18b95b6bfa84e993edf408356687dc73eecbd68a51fa90b190fbdf9c1a82fc",
+   "sha256": "544e593970de2c4e81cd99863b9040b46ffa87104e9040fd7c3965f893949cc7",
    "size_bytes": 4987,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_030"
@@ -178,7 +178,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_004.json",
    "sha256": "1f0bdbab4fcfb0289daf34420c70572d5181ee70734e08fa090ef2390f905e9e",
    "size_bytes": 979,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_004",
@@ -194,7 +194,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_004.json",
    "sha256": "92afce30c603fc1f150c47abb9f38521bea6578870e3af128002f922141b9c6f",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_004",
@@ -208,17 +208,17 @@
    "asset_id": "judge:J3:golden_004",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_004",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_004.json",
-   "sha256": "0714bdb7a160aedd905038c6719941ab81b21f56b6cf4b4d7a3a623333c5befa",
+   "sha256": "b5c8c725dc6749697a28ff40baac1565a60592dc974d124e28b797b27b4785eb",
    "size_bytes": 4366,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_004"
@@ -234,7 +234,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_018.json",
    "sha256": "68794b2bcd73fb2aa260aa7c5822ad0a001d1a4e2ec1b48a4e2ce1701a23cd76",
    "size_bytes": 1009,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_018",
@@ -250,7 +250,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_018.json",
    "sha256": "ee46c6a123981f9395e77bbc87b30d0968b4aebe7dd7cb04f9e6b3d7dd57fb7b",
    "size_bytes": 352,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_018",
@@ -264,17 +264,17 @@
    "asset_id": "judge:J3:golden_018",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_018",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_018.json",
-   "sha256": "4b8ae6d76ad7bfc304b22b572e2099719004426e29568cc06fe849576b9c6773",
+   "sha256": "c2b39021689a1590dc28a37637ede729f5ba8834be631f39bdb4a195a9e7c172",
    "size_bytes": 6275,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_018"
@@ -290,7 +290,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_016.json",
    "sha256": "0b06135867b5405feb67e6bf861c7f7896e8c83c19a0e068792fb1a0b0174c0e",
    "size_bytes": 795,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_016",
@@ -306,7 +306,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_016.json",
    "sha256": "6f08de708acca5e60bfbd993874d5172aa31a7ea8f20a9d016a28e6327429f4b",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_016",
@@ -320,17 +320,17 @@
    "asset_id": "judge:J3:golden_016",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_016",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_016.json",
-   "sha256": "d545014bde0f8d0b921506ebc9e6c4f7fd598d527f24bef3bb14f8b263da8c7c",
+   "sha256": "de07e4b8eb0f0f61dccc8ca3744030b21e1f4bf6b1e5d3097d39ea7a9358aa15",
    "size_bytes": 4929,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_016"
@@ -346,7 +346,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_014.json",
    "sha256": "af51e475034a10272e571ecc1d1c2eb26773edd61e78a7d4d2470bee828dd6fc",
    "size_bytes": 604,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_014",
@@ -362,7 +362,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_014.json",
    "sha256": "63fb205daaf41373cbaa3e0418b50b888dcbfa1a56ffc1de8745fbe55682c634",
    "size_bytes": 296,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_014",
@@ -376,17 +376,17 @@
    "asset_id": "judge:J3:golden_014",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_014",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_014.json",
-   "sha256": "2eaadca92ba0f241aa6430bf7e706764220661295788d34b522131e7e6e62f3b",
+   "sha256": "a1f5a60c3e81db7fca2d2a3081c71b3db6653ec8e99c7abde40e6adb6df1fdda",
    "size_bytes": 4508,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_014"
@@ -402,7 +402,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_015.json",
    "sha256": "e2c9bb43b160b6c9dd812dcd3b42d47df66124acd82d39ffbc59a98992b5d47a",
    "size_bytes": 735,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_015",
@@ -418,7 +418,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_015.json",
    "sha256": "725747f4294cd6c747dc2abdebbafb013d990c2a8cc2ba31e4d631d4e180ed7c",
    "size_bytes": 296,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_015",
@@ -432,17 +432,17 @@
    "asset_id": "judge:J3:golden_015",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_015",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_015.json",
-   "sha256": "d0f821b3e743d09fdb68a6b4b0bcac0691252d66e26f32033832f21b37f64ad4",
+   "sha256": "2b5fa2550726b90101f68ac1daebf1d5754f9d11adf8682ab7e483bdd2d91fad",
    "size_bytes": 4655,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_015"
@@ -458,7 +458,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_002.json",
    "sha256": "f9a4d69347b692bdabcf5d35fae16251a9fe154931642a4068cb230e3d67a50d",
    "size_bytes": 843,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_002",
@@ -474,7 +474,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_002.json",
    "sha256": "575fa3865b184ddec98eae79f6efcc78fc754a63d6c34643affe15f0c22552b2",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_002",
@@ -488,17 +488,17 @@
    "asset_id": "judge:J3:golden_002",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_002",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_002.json",
-   "sha256": "08b77a1c2f9b9de85af7c6270be28f984f7d7073a6d9c4bde58282a07dcb1a7a",
+   "sha256": "5a7e8c56cdcf51ae90ceee8985efae4627eb391d70ff25ae33fb889000066ef5",
    "size_bytes": 4024,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_002"
@@ -514,7 +514,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_036.json",
    "sha256": "b62d48fe7aba23f5b4d0dbff6bb6ab009ead27bf136825afead98dab619a156c",
    "size_bytes": 958,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_036",
@@ -530,7 +530,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_036.json",
    "sha256": "4a85e440f74bf42bcdfa621cd37cd15da225d61688e28365e7c6ff20edef6cea",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_036",
@@ -544,17 +544,17 @@
    "asset_id": "judge:J3:golden_036",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_036",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_036.json",
-   "sha256": "cdd6d944d0336c8f5af3de7dccf1d39792a1941ec337bdbd1630b898caa656d5",
+   "sha256": "5d7595d77e5f0740d41305ea7a60a18c56b30f560fd665d3bd05ef66ed34f7fc",
    "size_bytes": 5342,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_036"
@@ -570,7 +570,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_003.json",
    "sha256": "4e305b750c6e99dac6880c5fe88c1d950d9d50dcd14773d2cb1710ca64b4af6a",
    "size_bytes": 857,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_003",
@@ -586,7 +586,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_003.json",
    "sha256": "9fcdb2f5bc5381e25836fb58b74adec43e8f5c91ff1005fbb142c0db462d77b7",
    "size_bytes": 358,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_003",
@@ -600,17 +600,17 @@
    "asset_id": "judge:J3:golden_003",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_003",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_003.json",
-   "sha256": "78976678255956aa0ecf9eb5ad014e6a568d1a91da7bfa0ea5a8eec7aafc3979",
+   "sha256": "57538e0f39be7ec1c24351f7d6a6b4ef5d24354d38b3e1236bb3075a142ef73c",
    "size_bytes": 4207,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_003"
@@ -626,7 +626,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_008.json",
    "sha256": "4e747e1ac6197c4957563c9ae2f2a229b86a2b6732b5136fdb83032c71675818",
    "size_bytes": 929,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_008",
@@ -642,7 +642,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_008.json",
    "sha256": "1b4f644044a75995a62622cd709ddd5568e94d87e5a6a84d3b79923553a45585",
    "size_bytes": 349,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_008",
@@ -656,17 +656,17 @@
    "asset_id": "judge:J3:golden_008",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_008",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_008.json",
-   "sha256": "7ea3fef893271d0af1b1c39ca186896a1e8ca72cea40ac0ab8f3aa7b156250d8",
+   "sha256": "677e9f4fc30a0176279c9d191d997d16be61bf0c7f1d4335362cccac007f075f",
    "size_bytes": 3841,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_008"
@@ -682,7 +682,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_012.json",
    "sha256": "c4c2a22f9377652ef05b899974360ed0f6dfe8b9170e877aafea6ad739fee765",
    "size_bytes": 841,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_012",
@@ -698,7 +698,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_012.json",
    "sha256": "afd0aae652981609404ed90437b1bd82debaadb662b1d423ea8428e027cc66d5",
    "size_bytes": 282,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_012",
@@ -712,17 +712,17 @@
    "asset_id": "judge:J3:golden_012",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_012",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_012.json",
-   "sha256": "5d6e0146cd0a141c39fd2f2706f8ea7a45145394d1cd014588271e63c84c6a31",
+   "sha256": "b95e94dd935fa9c1007c21da27af8c3b41970223da094d64dffc2bd8e1f428f1",
    "size_bytes": 4319,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_012"
@@ -738,7 +738,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_023.json",
    "sha256": "05a2da6f67b00fd1d7cf6bff954315adbef39d523bc1ccda3d4f60dc08d3945a",
    "size_bytes": 782,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_023",
@@ -754,7 +754,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_023.json",
    "sha256": "21390160d6315ec21d65b5b9b769d7936956cc418dd6b37c78fe76061db8e15a",
    "size_bytes": 294,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_023",
@@ -768,17 +768,17 @@
    "asset_id": "judge:J3:golden_023",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_023",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_023.json",
-   "sha256": "e92f08c14712960074c569c0bcc94a44b13e2d168fbc1ce5818f7d243d6e1663",
+   "sha256": "38f64c428b175f19e1534f86ec3db741493114612693e5a57b6f8a370d40b83f",
    "size_bytes": 4678,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_023"
@@ -794,7 +794,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_022.json",
    "sha256": "270075eb7c9e689b94cda9dda8bf0e58b1fbead0a3f1db09f4dbb2b04d6e92c9",
    "size_bytes": 980,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_022",
@@ -810,7 +810,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_022.json",
    "sha256": "805eb51d764b8bb9fca6cfb0c7fa3083f367e4f8ab54d7fa8d63bbe88328257e",
    "size_bytes": 346,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_022",
@@ -824,17 +824,17 @@
    "asset_id": "judge:J3:golden_022",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_022",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_022.json",
-   "sha256": "6d6f884bd417afcc0ff6ab5b3775cc0a489ef2eb1029f017750fc830bb99db39",
+   "sha256": "6286bced9809dfc71b3445d49c3be2941957b089a6fcdb4e75d62bd80f13a9b2",
    "size_bytes": 4776,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_022"
@@ -850,7 +850,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_034.json",
    "sha256": "55799c6b21961ed1710b6f7a2d9053a5a88594bf1e5bcfca18811d3fda20ca85",
    "size_bytes": 869,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_034",
@@ -866,7 +866,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_034.json",
    "sha256": "e62e63525368e1af71698a46230152c7ef4c517429026332586cf8cfdb7ca076",
    "size_bytes": 346,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_034",
@@ -880,17 +880,17 @@
    "asset_id": "judge:J3:golden_034",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_034",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_034.json",
-   "sha256": "1b371b3dc4e8c3a56d5f890350030c9c739529fa7f86ff37f26da9da216ab530",
+   "sha256": "7bb0578a305e866266b5d4b19416ebc7470a9e08a649db437b97d1ba31326948",
    "size_bytes": 3753,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_034"
@@ -906,7 +906,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_029.json",
    "sha256": "37632da9e77f5375b55c47da0a3716bfe239e472ffa5ffaadd7a272fb4262ab7",
    "size_bytes": 1017,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_029",
@@ -922,7 +922,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_029.json",
    "sha256": "b17274cf93b8ac4083e69683ab7a3562869ad3e523d0744dd06a54188c8aa858",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_029",
@@ -936,17 +936,17 @@
    "asset_id": "judge:J3:golden_029",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_029",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_029.json",
-   "sha256": "a0495f406ec7c61508d6aafa73ea3d01f72959efe36a064e5def5c05305a319c",
+   "sha256": "8f07819ed098de5fba213eb22e56577ffaa26a1c4e6512e71c57846d88b3939b",
    "size_bytes": 3256,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_029"
@@ -962,7 +962,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_011.json",
    "sha256": "aab3a6ad1dcc6b6fde59922236a2b3031a52a3b89dbb802ef8903801882290fc",
    "size_bytes": 879,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_011",
@@ -978,7 +978,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_011.json",
    "sha256": "de1b16177db81ae8ab3fcf4fdc23b0961a5997ae529f2e095827891d7109788d",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_011",
@@ -992,17 +992,17 @@
    "asset_id": "judge:J3:golden_011",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_011",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_011.json",
-   "sha256": "746125369e813062fa0317bf8a5d5ef4efe01906c6c0619886ddf5922b46c408",
+   "sha256": "3a131568bd7056e787df7e7bc7c33ec864da6697babc894af1442c9dd8d34cf7",
    "size_bytes": 3225,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_011"
@@ -1018,7 +1018,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_038.json",
    "sha256": "aff0f3034342c01d4826245c5af232c055a191cf1e78ccc03d42b83c7a669ae0",
    "size_bytes": 762,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_038",
@@ -1034,7 +1034,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_038.json",
    "sha256": "7c728d975fe7fd1d70ad18aad093ef51da0276557c7a9545d39a0154946b97fc",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_038",
@@ -1048,17 +1048,17 @@
    "asset_id": "judge:J3:golden_038",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_038",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_038.json",
-   "sha256": "89c254d81450dfd9d2da6a9798ae3c10e232add97576baf5ed69514b62e9237e",
+   "sha256": "2b6a66ba2c2ba24dd1480437d938b70621005a9e36c2f76cf2769ca88927d2c8",
    "size_bytes": 3701,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_038"
@@ -1074,7 +1074,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_005.json",
    "sha256": "2cbaf3ebb8625eb738f1d374782807a953b306db0731c3331877670f9e7a95d5",
    "size_bytes": 1002,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_005",
@@ -1090,7 +1090,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_005.json",
    "sha256": "02e9d22f8814116a5e59bb6b31d07647971b393d64c911488f7b46f9c8309789",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_005",
@@ -1104,17 +1104,17 @@
    "asset_id": "judge:J3:golden_005",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_005",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_005.json",
-   "sha256": "f3d804e833286feabbfa259a1f821ebc6be507ea019223567ba1930adf8000c2",
+   "sha256": "17e82a5b492004813dc14fd70c0f232fccee7f4cd6504c442446f72b7ffd8cb8",
    "size_bytes": 4564,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_005"
@@ -1130,7 +1130,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_019.json",
    "sha256": "69e9c8a223a0c78e65ca1d7678c9f41a724f954ad61d54a7495a53ef72e9667f",
    "size_bytes": 1115,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_019",
@@ -1146,7 +1146,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_019.json",
    "sha256": "6bfd4dbe59ca0186ff913c5039374a10bf785c3ac10f1858d5b78528471f81d0",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_019",
@@ -1160,17 +1160,17 @@
    "asset_id": "judge:J3:golden_019",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_019",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_019.json",
-   "sha256": "4e39a2ca45eb2215a1065011e1b0955efb5c765f9faacd00a3bb774fecddc163",
+   "sha256": "4926eedb7e1b6a79cfbaba2c36f5a8feaffc2f89d6a64eca6a67282010ccd86c",
    "size_bytes": 3353,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_019"
@@ -1186,7 +1186,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_021.json",
    "sha256": "14151577543b61725616d4c2c0227bcb6dc6498a6a8b2b54d84fde3bf4d9694d",
    "size_bytes": 988,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_021",
@@ -1202,7 +1202,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_021.json",
    "sha256": "dd309ce4064e53ac3cf0595a1fbfb03233188835e302d9685efb086006abd488",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_021",
@@ -1216,17 +1216,17 @@
    "asset_id": "judge:J3:golden_021",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_021",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_021.json",
-   "sha256": "71911ea0546d62ac5a79417726f4796aa36fba1821a4dc9f40077d601ef35abb",
+   "sha256": "6217062fd806a4a91d02c381da16d2bfb1f8feaec529d4fa64509d0bea4cba25",
    "size_bytes": 4921,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_021"
@@ -1242,7 +1242,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_007.json",
    "sha256": "276e42c59714e123629b4b5286afc698509b8619eb903f06927428079bc3c8bc",
    "size_bytes": 687,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_007",
@@ -1258,7 +1258,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_007.json",
    "sha256": "cec9778722c826ab9281ea4ebb28a64e18582eca1c09904ee4e0a7f986577d37",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_007",
@@ -1272,17 +1272,17 @@
    "asset_id": "judge:J3:golden_007",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_007",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_007.json",
-   "sha256": "ab11f5e572c5a888a9cd8164f62c4882f1ced827ca4cff5756e442ff4af50e4f",
+   "sha256": "f38caaacca3f167f61687ff6de16adcd49eb4f8f34a0b5800d014492aca06583",
    "size_bytes": 3006,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_007"
@@ -1298,7 +1298,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_033.json",
    "sha256": "d1fae6c0d295eee6424bcabbc63fa558388b4fdb5301a4ee8c76665b5141244f",
    "size_bytes": 816,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_033",
@@ -1314,7 +1314,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_033.json",
    "sha256": "b1821c0a6d0952851215ba4677ba3831315958bac4915a7490c1672bd50c775b",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_033",
@@ -1328,17 +1328,17 @@
    "asset_id": "judge:J3:golden_033",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_033",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_033.json",
-   "sha256": "88933e60ee8ceccf91e11af212b9563e86359bcf32f363961b49f8a8faa29cc8",
+   "sha256": "0fbd54c4e7f47ba1de2dfd91dba59ef8000690397626c0805c1d007016bd73f9",
    "size_bytes": 3155,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_033"
@@ -1354,7 +1354,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_040.json",
    "sha256": "cb828de0412c4be2b7af73e945af259d67b1d772f93b9aed04c0a0cff544fbb9",
    "size_bytes": 724,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_040",
@@ -1370,7 +1370,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_040.json",
    "sha256": "6abb51bece2378d1fb14f4a9f2c9ad40632518771f7c0b66375440d724b6ef21",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_040",
@@ -1384,17 +1384,17 @@
    "asset_id": "judge:J3:golden_040",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_040",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_040.json",
-   "sha256": "719ee0e7f57f482c29b571b50bbb23b9a6884cb375ba2a6888c9b4f3060ba511",
+   "sha256": "02309431acdc26799eaa7ad461370f9cfda23b346d17643802a889e8532b92d8",
    "size_bytes": 3939,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_040"
@@ -1410,7 +1410,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_020.json",
    "sha256": "bc208ed56545b0b2d11ca3079ec0fff90bcdc72b6b4991b21dd71679c79dbe7e",
    "size_bytes": 746,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_020",
@@ -1426,7 +1426,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_020.json",
    "sha256": "b795059c254558e84efbf5535a40f609d1853426c90ff249be2dc8b267ba1de7",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_020",
@@ -1440,17 +1440,17 @@
    "asset_id": "judge:J3:golden_020",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_020",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_020.json",
-   "sha256": "a1f711618ebe3f5f739c720aa413c2b0dde0f86f48f976e18691e9f98ac80807",
+   "sha256": "cb05f690c7c9692b94f06f8421edf9d6593e0f277cabc0b5e4e536e15486527f",
    "size_bytes": 3561,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_020"
@@ -1466,7 +1466,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_031.json",
    "sha256": "24fec1719f94ff4524cd8b7b4a415b953cf0fec4dfbdddc5ebe72804f85cf856",
    "size_bytes": 956,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_031",
@@ -1482,7 +1482,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_031.json",
    "sha256": "e194358f7a32bf591db9d59632857219ec2d9cda785ffcb1209f740923f20e12",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_031",
@@ -1496,17 +1496,17 @@
    "asset_id": "judge:J3:golden_031",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_031",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_031.json",
-   "sha256": "38626c3e9d5fb4df56bb79ff33f4355a5b62cf0fc164087a5455df4f48fe11d6",
+   "sha256": "ab65579ea106cc1f91e64c72657760f81561c0a51d43aa2e433f52f798e9bf43",
    "size_bytes": 3762,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_031"
@@ -1522,7 +1522,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_035.json",
    "sha256": "df02aabd211fbc2a1f8932958cab6f8bffc356710148b8acc82f06a1ecf6d608",
    "size_bytes": 809,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_035",
@@ -1538,7 +1538,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_035.json",
    "sha256": "07c24d5d7558309eafdd3105e184bf3849b2152458f191605e8853e17226f3df",
    "size_bytes": 294,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_035",
@@ -1552,17 +1552,17 @@
    "asset_id": "judge:J3:golden_035",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_035",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_035.json",
-   "sha256": "aa448e44189b0499a7afdaed5ddcab4526c5df41b53a3cb26197937f58c6c376",
+   "sha256": "ed29cb604e731e06d4f237b92a215cfd6dc98d5c57758d5091d1d6db557db8d2",
    "size_bytes": 3809,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_035"
@@ -1578,7 +1578,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_026.json",
    "sha256": "5ef1338227dae7bb894d2e640321b2a6ee68ede923536e97952ae3528f400ab2",
    "size_bytes": 891,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_026",
@@ -1594,7 +1594,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_026.json",
    "sha256": "bfbc7c7cdfa41ea9dc95b08972d4aa714abb63d3b7bb6e1f3c4b3d204c4672cf",
    "size_bytes": 355,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_026",
@@ -1608,17 +1608,17 @@
    "asset_id": "judge:J3:golden_026",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_026",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_026.json",
-   "sha256": "28648c28b48093c495038dc83794eb3d9f4026f5cf21285d041ff463b21ad847",
+   "sha256": "066a55266308c19d129776925d0ff28516f7e75c4a3f303d491efd875e80b9f3",
    "size_bytes": 3227,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_026"
@@ -1634,7 +1634,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_037.json",
    "sha256": "d79fd8ec091a1816650bd959171cd38fd8a22ecdf9175c5c7d33883e3750e7cf",
    "size_bytes": 867,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_037",
@@ -1650,7 +1650,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_037.json",
    "sha256": "27e138cdcb855194a0d7c23908f53d420e186a871217bdef779f2ac464ef9e9f",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_037",
@@ -1664,17 +1664,17 @@
    "asset_id": "judge:J3:golden_037",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_037",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_037.json",
-   "sha256": "40877be36d2082615177acd7f11868c9852825b214c8dcf8d03221fdfc1a0bdd",
+   "sha256": "f3cd62f662c4db6ce53f7081d2f933dc7c19cef3133bebb84948b50ba029cb75",
    "size_bytes": 3096,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_037"
@@ -1690,7 +1690,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_032.json",
    "sha256": "f5a3e390a98c8b2f62fdff85b47ab576521c54845bf96197b0a9f347e46a7c29",
    "size_bytes": 959,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_032",
@@ -1706,7 +1706,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_032.json",
    "sha256": "77d567f60bb46cdf443ccb89c0e9414324576b40671b6612022ab1e888339b92",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_032",
@@ -1720,17 +1720,17 @@
    "asset_id": "judge:J3:golden_032",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_032",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_032.json",
-   "sha256": "21b0c93898aebd3065065bcdc32495de7ea1b137340c686f503a61e7eb42767a",
+   "sha256": "eae231ce6567bb9dd717fbe8c03248558209ec0dd11490acd9663c6f01370429",
    "size_bytes": 4076,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_032"
@@ -1746,7 +1746,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_001.json",
    "sha256": "284092fd075b690c32729d40a24be7601e67079a6b97fe1e87e2f29408a57b8f",
    "size_bytes": 897,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_001",
@@ -1762,7 +1762,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_001.json",
    "sha256": "f2a65009842d60dfa98d33d5402e46489546505ece31fddd1fe8f185d015bffe",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_001",
@@ -1776,17 +1776,17 @@
    "asset_id": "judge:J3:golden_001",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_001",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_001.json",
-   "sha256": "707fb416f367f55b25a66e1cbf2b88d94d9a6fe6973b974289151957634d30b3",
+   "sha256": "1ba08b92dcec16537ed59645e6a15c76b99f5fd83d529ed035378925232ede12",
    "size_bytes": 3239,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_001"
@@ -1802,7 +1802,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_009.json",
    "sha256": "add8f811380eca23a37766f1ff76b772b0cc04cb6ed8b722f49aa3a426302843",
    "size_bytes": 757,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_009",
@@ -1818,7 +1818,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_009.json",
    "sha256": "d99b5a02b3806440e70082613271f2e48ce3f908a5d6fd139e08c277960837d3",
    "size_bytes": 256,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_009",
@@ -1832,17 +1832,17 @@
    "asset_id": "judge:J3:golden_009",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_009",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_009.json",
-   "sha256": "096462053b45146ba27351f089a91c54ef136d9fc596c2e5f876e2e69061919b",
+   "sha256": "d53ac6b68840b023806882d28ae3e02b12981882b933cd143683b8877c1cbc72",
    "size_bytes": 2994,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_009"
@@ -1858,7 +1858,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_039.json",
    "sha256": "e815c335c8c2cb49262985a5ad1f439eeef0864d88e478f72c0794e2499c8e72",
    "size_bytes": 712,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_039",
@@ -1874,7 +1874,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_039.json",
    "sha256": "77207ca02f4ce79d69e550fa9d1b600cc4aa4d76dfa88bc67bf9b6d99f77915e",
    "size_bytes": 358,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_039",
@@ -1888,17 +1888,17 @@
    "asset_id": "judge:J3:golden_039",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_039",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_039.json",
-   "sha256": "0a07c2e663de287f27bde3b55c21aca3c275c9cb1b961017271dda68a416dc2a",
+   "sha256": "27535f87901b6877850c0093f984791ee2a5ef92562d1601242983bdb3717034",
    "size_bytes": 3138,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_039"
@@ -1914,7 +1914,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_006.json",
    "sha256": "111af184991953dbc980bd58249faf45aa964d72dd60f90c91e9fc5c78959a32",
    "size_bytes": 916,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_006",
@@ -1930,7 +1930,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_006.json",
    "sha256": "0d7a57666bbe6565ecb95adc6eac992f020d118fcebc29d6e6f4e362de726c09",
    "size_bytes": 376,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_006",
@@ -1944,17 +1944,17 @@
    "asset_id": "judge:J3:golden_006",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_006",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_006.json",
-   "sha256": "b9fe1b9cc60e8a884c8a242d41d37f0e454fac2df15a9532def9fe6cef4e5081",
+   "sha256": "5a3c27973b5041e87e09e3e49392226a9601d7d39267513670eb024e400e33c6",
    "size_bytes": 3359,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_006"
@@ -1970,7 +1970,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_027.json",
    "sha256": "6839850a686ea913f90d739749b1a020e4274f8f642f5f39cc025c8e2471557d",
    "size_bytes": 846,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_027",
@@ -1986,7 +1986,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_027.json",
    "sha256": "2c29c823fbb6b19358b5cf2e83d101cd39c0a19d5053aca4b6813abc2e1adb18",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_027",
@@ -2000,17 +2000,17 @@
    "asset_id": "judge:J3:golden_027",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_027",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_027.json",
-   "sha256": "7792baa678dc730cac4c3bda50ff868d7c614c42378a6051c7bf82e1ce927a65",
+   "sha256": "cab7a77b333c420dfc3be31ccf1ae4036a689525399a1367c301c09e94f0fcd8",
    "size_bytes": 3164,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_027"
@@ -2026,7 +2026,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_013.json",
    "sha256": "220c156f0c336abb32f9c2a077e7cc3af2a9ffee16ab28966e899a2fbed523ff",
    "size_bytes": 988,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_013",
@@ -2042,7 +2042,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_013.json",
    "sha256": "345842fc41c314732e8222e6296a3a5e7f22c9aefce097408a7dfb8f2a9e6f35",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_013",
@@ -2056,17 +2056,17 @@
    "asset_id": "judge:J3:golden_013",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_013",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_013.json",
-   "sha256": "8465d4c2842335a49095f8b5a41df6d06b18986e724be8b5960dc6e4bbc40bb9",
+   "sha256": "5f52c65d72389704158221849b9d0b928c64e0fab348aecf7be27b3301b5cc9a",
    "size_bytes": 3922,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_013"
@@ -2082,7 +2082,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_025.json",
    "sha256": "31c125811b18b409fc6a5c3b0090ef4fffb5b5322988b246ec474b69571cb74c",
    "size_bytes": 802,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_025",
@@ -2098,7 +2098,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_025.json",
    "sha256": "e08f19f78b2dc3470ab7f9b0999e4ae2f5b773901131447e41ad7c87215e53eb",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_025",
@@ -2112,17 +2112,17 @@
    "asset_id": "judge:J3:golden_025",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_025",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_025.json",
-   "sha256": "9fa80190020a80c0b10a8a6052b58602e0e34f639d5ec6202992f087369d379c",
+   "sha256": "ed6ad7c1b7b967810d24c8f025ba3041c8f8e2ea6278b5e424946ab53439ad26",
    "size_bytes": 3119,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_025"
@@ -2138,7 +2138,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_010.json",
    "sha256": "0beacd8c172f3349f0f7f785757fc9af9385fc603887ae0c407ce34dab711556",
    "size_bytes": 758,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_010",
@@ -2154,7 +2154,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_010.json",
    "sha256": "faa6efb3009b4f041c69883d3df15ca96e8ea82ecc9ff01d925d98739e893a89",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_010",
@@ -2168,17 +2168,17 @@
    "asset_id": "judge:J3:golden_010",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_010",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_010.json",
-   "sha256": "55d03f86a76ea436d1395bfc632ff516367b2f37dc70fc732a1259a1243dc582",
+   "sha256": "d0bb8a24aa56e908d1a9fa00783404641fc207d41a38b8310884ce8020f94ee7",
    "size_bytes": 3483,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_010"
@@ -2194,7 +2194,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_024.json",
    "sha256": "52a5d125d35a49380f519e625481a068ac1b822545dd5f5d79963d01e25946b0",
    "size_bytes": 698,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J2:golden_024",
@@ -2210,7 +2210,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_024.json",
    "sha256": "76f4d6a0dc5006c75b91ba5d09673fbe51138d0cf9219b14ec176c7ea807d4da",
    "size_bytes": 256,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J6:golden_024",
@@ -2224,17 +2224,17 @@
    "asset_id": "judge:J3:golden_024",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_024",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_024.json",
-   "sha256": "5fa2e7156104ca9325ee1a90c9762215d83cb983030229a41ae062fbb500e6d2",
+   "sha256": "d379cd0b6aa07bf8547d7dcae2ee8b6e9f45c107299628b65b324c4cbee2cceb",
    "size_bytes": 3022,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_024"
@@ -2250,7 +2250,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_041.json",
    "sha256": "8ad6938e237b6819f391020878b8f2be3bdfa3990d07cd6660c29ebd56505559",
    "size_bytes": 938,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_041",
@@ -2258,23 +2258,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_041.json",
    "sha256": "cf8935a31afab2727125c0db75f8ce4549e30445c95c221d3a40a5c4de104a13",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_041",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_041",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_041.json",
-   "sha256": "a8f087f8a0265fd813241dd0ba8e5e6e72fec6db86ddfc84d60da62631605e4d",
+   "sha256": "fe8cf9ab9e48c10dc3e69cf0628fb5050d72fdf9583343d035d6d2b0bc93fa0b",
    "size_bytes": 4186,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_041"
@@ -2290,7 +2290,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_042.json",
    "sha256": "7c6d9f138cf012c935104053d52d21900167e9cee6c635f7be0a150270b85de1",
    "size_bytes": 867,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_042",
@@ -2298,23 +2298,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_042.json",
    "sha256": "35a507c9f76bae6a4d691d3d459943200f4974156e04134b847b7ff70197dd29",
    "size_bytes": 259,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_042",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_042",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_042.json",
-   "sha256": "4b09efaa96a37d59c5e1f3fc531e68236fe618cdc683b3e597d3f06c1b96aea9",
+   "sha256": "c2b44960bec6b5e19ca1efef53222b2358276f127cbfc48c005f1d2195fb3a40",
    "size_bytes": 4619,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_042"
@@ -2330,7 +2330,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_043.json",
    "sha256": "c1bb076afdf2f2733f3515886873acc1c00d6367079fb39661cad2fa92e1645c",
    "size_bytes": 864,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_043",
@@ -2338,23 +2338,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_043.json",
    "sha256": "545f49775e6dbceba1ff117f1a64368461d665bacb7a10467af7ba87fb9c7a24",
    "size_bytes": 356,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_043",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_043",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_043.json",
-   "sha256": "72555a96570a324cc9152ed4d61c30675cc5b23e381ece2d9d91de23ba79fb96",
+   "sha256": "bba5bb9c997b2a276fc35bba6f638882762d7a6aadc171cd9e23fe69dbe7532f",
    "size_bytes": 5148,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_043"
@@ -2370,7 +2370,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_044.json",
    "sha256": "17b06ff3b9e6b85b9c289660b6328b3fae250d7f4ceb7634c63d907309e82876",
    "size_bytes": 942,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_044",
@@ -2378,23 +2378,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_044.json",
    "sha256": "eb3e4c1260f1ac6e841721746e78e6d88e69eea360cdece0c8d7a7f56d3e6b97",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_044",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_044",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_044.json",
-   "sha256": "40ac964e6e4fb69a888f70982e8c1bc79ae4f641114483b574c362d407cb7824",
+   "sha256": "bf91b50b182eecf0dc65c8fc6c17ec17bf14a10cb848621c6202f243b20debf5",
    "size_bytes": 3763,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_044"
@@ -2410,7 +2410,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_045.json",
    "sha256": "923a862fdc8f12a722d17cd53454f93d3b2794968ccc2ca4ad417c9d162a1296",
    "size_bytes": 881,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_045",
@@ -2418,23 +2418,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_045.json",
    "sha256": "78eba3a3e682543ababd98aadc313d40af6e2ac3e06bc1589bc5660a99911399",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_045",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_045",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_045.json",
-   "sha256": "471c7bd7bb0d19b38277461264d8627c1f72c7cc9b9ab69467b84ce542a23946",
+   "sha256": "4d46a7a9fbe494838fb45bb36381783a9f7b5198fa2ce8137d3f73495231aab7",
    "size_bytes": 3221,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_045"
@@ -2450,7 +2450,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_046.json",
    "sha256": "18388ed4f23d24ce4ae4d732f3876ba034224f55b4d2b00bf36f51cf37eb95ec",
    "size_bytes": 1017,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_046",
@@ -2458,23 +2458,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_046.json",
    "sha256": "64b7d775e6b2fb02a6d5fd8f9e4bd9f5a76752c8685dd42a2e7de4c937a8a359",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_046",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_046",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_046.json",
-   "sha256": "a93b585d8727f7cf8a1e2ae3ecc17fff73cc0334326368292183b2f01977c5b5",
+   "sha256": "97977b00912cac162a6ff7e223fef83e665e4044d10fe85411ecd7bdf0a4c26b",
    "size_bytes": 3335,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_046"
@@ -2490,7 +2490,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_047.json",
    "sha256": "83112f464f38223f6451bc2b92c33c56fa857b8b5058f9497e47b2c69bb071de",
    "size_bytes": 938,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_047",
@@ -2498,23 +2498,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_047.json",
    "sha256": "916873f753e8ef21f6ef7ebdfe56456dc0b3401d2d0ac8c3a9810f736e17e038",
    "size_bytes": 300,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_047",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_047",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_047.json",
-   "sha256": "4a619265c6e3d88de182ad3f6f1827f3e78462b4a3fdf9433f1a1cb0a84a572b",
+   "sha256": "1428fabc72d32347ee63f8c4d555fd6c90fa8e4a58566546b83e06652d70e6c0",
    "size_bytes": 4844,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_047"
@@ -2530,7 +2530,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_048.json",
    "sha256": "d79a1abaa593124a61ec17929e8a5ea744a4d79f32f04ccac2559ba44a68f6d6",
    "size_bytes": 945,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_048",
@@ -2538,23 +2538,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_048.json",
    "sha256": "86d6d5a783a26b703de6ed1b214f5de9448a327580a321bc33e04a629d944da7",
    "size_bytes": 306,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_048",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_048",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_048.json",
-   "sha256": "c487270c5e13596a8c57f2e8f6cbb391dad782fae02b53d81c9189b8b89398e9",
+   "sha256": "e95013c1ad35154e21b52d317524abab7ac3e863daee102a0c025e414360975a",
    "size_bytes": 4844,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_048"
@@ -2570,7 +2570,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_049.json",
    "sha256": "c333b0c533ad4c48a4a3761c515072c3a4fa116c991bffac77d386cbb5f80498",
    "size_bytes": 758,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_049",
@@ -2578,23 +2578,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_049.json",
    "sha256": "c4834fed77f33f3cab76bf0a334fd23c9967d64be595a53c4691db9b40a767b5",
    "size_bytes": 300,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_049",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_049",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_049.json",
-   "sha256": "8d6a3b9e94eb51610bace54df821c11db26de7d2434cf176db53ea1b42cd0445",
+   "sha256": "2f83a190be948ca1d72eb5c440f3c5fd50001fbad3d2ef08102e8ef198981749",
    "size_bytes": 4691,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_049"
@@ -2610,7 +2610,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_050.json",
    "sha256": "b4b2889cbc3b45cde8a344ce397d8fc0685df405ea3bd429481c687a493176ef",
    "size_bytes": 971,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_050",
@@ -2618,23 +2618,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_050.json",
    "sha256": "080ebe037eff98d8750b4fc8bdd56829bad65f8b6e04275ea8792edb07bcebf2",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_050",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_050",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_050.json",
-   "sha256": "8fea9f38bc78eba3be08df82d428f38b731d4bbe28acf197dbb35153373c8b53",
+   "sha256": "8071b560fe368dac9e3afb65e94c1e7f68ff5f817545854f2685f7e08ac6e456",
    "size_bytes": 3983,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_050"
@@ -2650,7 +2650,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_051.json",
    "sha256": "a78a0845979ffd91fc47b766a4ad430c6a6fc15ac48f0a8452f42c9689103149",
    "size_bytes": 1021,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_051",
@@ -2658,23 +2658,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_051.json",
    "sha256": "30842484d026c0449c77f9ec341d17e73b50f934d6ddbbdedbdd40d3d682e2f7",
    "size_bytes": 376,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_051",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_051",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_051.json",
-   "sha256": "b830d2a05941ce162df293f71c1ee6e9b476d9d9e847de2ec9d8d4156c3eb2a5",
+   "sha256": "4da429f35818cdc6e15932b2277c7a21520ae68f4794d1352cb374504f94b0ed",
    "size_bytes": 4569,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_051"
@@ -2690,7 +2690,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_052.json",
    "sha256": "464f0d8bb89a4d170d0a3706ec59319f15eea6681e48a4409867a77580f1aecf",
    "size_bytes": 832,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_052",
@@ -2698,23 +2698,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_052.json",
    "sha256": "42aa0a7fe18d43cfdc830e9678f7b5666b97fcf45ac97cb1d5d40ac65175a0e3",
    "size_bytes": 256,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_052",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_052",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_052.json",
-   "sha256": "afd234ec55f879aa5db4cf58cb74d6bad7d4e323963acf11a4929ffbfa14b041",
+   "sha256": "7c03a74440301f1f21595562f7592c4784ea40350c341b3364c5eba4e2aa2710",
    "size_bytes": 3157,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_052"
@@ -2730,7 +2730,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_053.json",
    "sha256": "21b10f4605a32c31d4048aa21970e8a45377c33cbed45acdf865f2e8f4ed2d48",
    "size_bytes": 793,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_053",
@@ -2738,23 +2738,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_053.json",
    "sha256": "da6dd855b5b87d12cd31d45a1f63dde98bbfc27d0d5c6f59d665cededcede46f",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_053",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_053",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_053.json",
-   "sha256": "474df532ac489d29a886e6347f8197cc04a60de1841afc5aa93433f592c475dc",
+   "sha256": "a42df7560835d7b8ed59c6ee9f400799a4f114d82080477e49c16cacf4f5ea0e",
    "size_bytes": 4227,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_053"
@@ -2770,7 +2770,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_054.json",
    "sha256": "b52dfe56ded040c4019b8ee5e93af3f95339726dcb8a86641949adccb1b5b62d",
    "size_bytes": 809,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_054",
@@ -2778,23 +2778,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_054.json",
    "sha256": "af683fd431a247bf72d6d3d930d3a7c57d36ffc4a9324019fe4d3cda6568b4b6",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_054",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_054",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_054.json",
-   "sha256": "5756ce79d6ef169f80019a65dadbdef62bdd8bbb948ef357c89c5e163c030145",
+   "sha256": "b9db94dd185b1c2e7e945757a052c079cf849cdcbfba6805c4f4cf8602bc254b",
    "size_bytes": 3528,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_054"
@@ -2810,7 +2810,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_055.json",
    "sha256": "ec6f6fe96775e6d74d7591e081198778f7ce7e2e4798fca5fc2d3623483e24d2",
    "size_bytes": 981,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_055",
@@ -2818,23 +2818,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_055.json",
    "sha256": "c73d863f4b829898b2c8201dbec6eaf647968c7e599403419c33b5f568673f4b",
    "size_bytes": 361,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_055",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_055",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_055.json",
-   "sha256": "29b4477355e9475f421259a8d0f94881a4344fc4edcab3b191d309a7e08e7489",
+   "sha256": "29d4472c09a65963c58e06df8678f458cb1dde96e85238d7bfa9d7070251c0a3",
    "size_bytes": 3907,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_055"
@@ -2850,7 +2850,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_056.json",
    "sha256": "a69a65d08b598dd7a90b9a61a5a80d2ad773d39e1750d835ce633e47b1861541",
    "size_bytes": 1101,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_056",
@@ -2858,23 +2858,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_056.json",
    "sha256": "682829afcf44d55e330040ec50fcb624fd91cb02a3f9db9bf73fca88c3d76536",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_056",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_056",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_056.json",
-   "sha256": "20f09a0de0c3195d66af8cd35f8ac787b269d717f543881f8d403eefe70bea70",
+   "sha256": "dc81c38cfc7a42dbcf08cc83a1290d5737a05232078cfa42c124686febb4efdf",
    "size_bytes": 3826,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_056"
@@ -2890,7 +2890,7 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_057.json",
    "sha256": "57c2c50505005ed0a2c3705d1e6974788f53c8f0113cc74d16d2af4960947bd3",
    "size_bytes": 691,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J5:golden_057",
@@ -2898,23 +2898,23 @@
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_057.json",
    "sha256": "a87874ab7f8546a3ce00e295f9f9e2745b458b9f2bc418e1874dd3846e71809e",
    "size_bytes": 250,
-   "registered_at": "2026-10-09T11:55:13"
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "judge:J3:golden_057",
    "kind": "judge_output",
    "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
-   "sha256": "4ddfcfd06335521e854bbd8173207d43e8b5584c9ac8205ff17b55841c9cf488",
-   "size_bytes": 25339,
-   "registered_at": "2026-10-09T11:55:13"
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   },
   {
    "asset_id": "qc:golden_057",
    "kind": "qc_report",
    "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_057.json",
-   "sha256": "462acb3fe194e3e86d2bf9401f50ab49e8ffdb64e14f2b58930ad4967e14fd5e",
+   "sha256": "59adf9a27bcb81dd2aa73a16279c9f48723a0103ae624decd8523fec2248f711",
    "size_bytes": 3528,
-   "registered_at": "2026-10-09T11:55:13",
+   "registered_at": "2026-10-09T13:39:55",
    "provenance": {
     "module": "qc_orch",
     "source": "golden:golden_057"
@@ -2923,6 +2923,86 @@
     "qc_mode": "tonight_replay",
     "ensemble": "E10"
    }
+  },
+  {
+   "asset_id": "qc:golden_058",
+   "kind": "qc_report",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_058.json",
+   "sha256": "1f77f527545aad2dc52b868af26f648f1bbe7a750b82cbcc6deac700d9f2e7e9",
+   "size_bytes": 3987,
+   "registered_at": "2026-10-09T13:39:55",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "golden:golden_058"
+   },
+   "evidence": {
+    "qc_mode": "tonight_replay",
+    "ensemble": "E10"
+   }
+  },
+  {
+   "asset_id": "qc:golden_059",
+   "kind": "qc_report",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1/golden_059.json",
+   "sha256": "61b308daeefc6c54835501838ff2abf6aa097ac3b4307e463967eb092955f53d",
+   "size_bytes": 4063,
+   "registered_at": "2026-10-09T13:39:55",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "golden:golden_059"
+   },
+   "evidence": {
+    "qc_mode": "tonight_replay",
+    "ensemble": "E10"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_058",
+   "kind": "judge_output",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_058.json",
+   "sha256": "e8017d89f9fb8e17e132a2541c96502730b075239aae0607ba1aff28824c97a6",
+   "size_bytes": 748,
+   "registered_at": "2026-10-09T13:39:55"
+  },
+  {
+   "asset_id": "judge:J5:golden_058",
+   "kind": "judge_output",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_058.json",
+   "sha256": "124cf6bc9a591e7c3c729729ca7d85a35905c123a7d8a88177d9d87e746153b0",
+   "size_bytes": 256,
+   "registered_at": "2026-10-09T13:39:55"
+  },
+  {
+   "asset_id": "judge:J3:golden_058",
+   "kind": "judge_output",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
+  },
+  {
+   "asset_id": "judge:J1:golden_059",
+   "kind": "judge_output",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_059.json",
+   "sha256": "54ea6276c86a396d4bb90f025b2df9cd962d73c8bb0e61bbc62a7d42b61c4305",
+   "size_bytes": 819,
+   "registered_at": "2026-10-09T13:39:55"
+  },
+  {
+   "asset_id": "judge:J5:golden_059",
+   "kind": "judge_output",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_059.json",
+   "sha256": "2d59360efd4e9041a68ad2213114e2ec89c8f90772bcde9c481069aca5f86d5d",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:39:55"
+  },
+  {
+   "asset_id": "judge:J3:golden_059",
+   "kind": "judge_output",
+   "path": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:39:55"
   }
  ]
 }

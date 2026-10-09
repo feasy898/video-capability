@@ -1,0 +1,147 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_033",
+ "generated_at": "2026-10-09T13:23:54",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.62,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.62)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5712",
+   "J6 信号(仅信号不否决): garble_text@0.85"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.85,
+   "span": {
+    "start_s": 0.0,
+    "end_s": 5.042
+   },
+   "evidence": {
+    "J6": {
+     "kind": "uniform_low_conf",
+     "max_mean": 0.368
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4238,
+   "flicker": 0.2703,
+   "color_shift": 0.4889,
+   "face_blur": 0.0462,
+   "garble_text": 0.0286,
+   "temporal_swap": 0.3618,
+   "pixelate": 0.1914,
+   "ghosting": 0.5712
+  },
+  "overall": 0.4543,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.0,
+   "end_s": 5.042,
+   "evidence": {
+    "kind": "uniform_low_conf",
+    "max_mean": 0.368
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "全片 f01-f08"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_033",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.62,
+   "spans": "全片 f01-f08",
+   "notes": "全片为浅景深失焦的双手交扣特写。逐项核对：f01-f06 手指仅有缓慢微动，f06-f08 手指收拢动作连续自然，无定格、无明暗/内容闪烁、无整体色偏、无文字、无像素块；f07-f08 的糊化表现为快速运动的自然动态模糊，非双影拖影。语义维度：可辨认拇指（f01-f05 左下）与交扣的手指堆叠，f08 右上亮条为指甲随手指转动产生的反光，属合理解剖表现；因景深极浅整体模糊，细微指型难以精确计数，但现有 8 帧中无确凿的多指/融指或穿模、悬浮证据，故不强行报缺陷，判为干净，置信度受模糊度限制取中等。"
+  },
+  "J5": {
+   "clip_id": "golden_033",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_033",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.5712,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.424 flicker=0.270 color_shift=0.489 face_blur=0.046 garble_text=0.029 temporal_swap=0.362 pixelate=0.191 ghosting=0.571; overall=0.454; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_033",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.85,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.0,
+     "end_s": 5.042,
+     "evidence": {
+      "kind": "uniform_low_conf",
+      "max_mean": 0.368
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_033.mp4",
+  "frames_dir": "frames/golden_033/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_033.json",
+   "J5": "../数据/judges/videochat3/golden_033.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_033.qc.json"
+  }
+ },
+ "errors": {}
+}

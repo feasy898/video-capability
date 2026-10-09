@@ -1,0 +1,4601 @@
+{
+ "schema_version": "1.0",
+ "name": "vpipe-qc-golden-replay",
+ "generated_at": "2026-10-09T13:23:54",
+ "generator": "qc_orch_v2.py@vpipe1.0",
+ "items": [
+  {
+   "asset_id": "judge:J1:golden_028",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_028.json",
+   "sha256": "70df2d309eacbf492224da6f3b4e4d6e6288f6ca7b57ca58cc7b1a9beae709ed",
+   "size_bytes": 924,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_028",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_028",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_028.json",
+   "sha256": "99dc0dcf5d07c33b8f8d59204ccdd12f5293e180db20dfc13e9b23d3e81c4720",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_028",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_028.qc.json",
+   "sha256": "48654d66b38f27282f0bc539ef9fac8c9073c5f039d51ab7f3b62c6e7366fec9",
+   "size_bytes": 3847,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_028",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_028.json",
+   "sha256": "ae0774b44c6e30388593f2dee9beafa86f3d3e3dd1177f1def627445448c2fd9",
+   "size_bytes": 4170,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_017",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_017.json",
+   "sha256": "37c646520c730207b46ab4ee12b2b82dfa02ad290563767bceb2082f531dd33b",
+   "size_bytes": 1043,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_017",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_017",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_017.json",
+   "sha256": "ed41c7dfc88a05baa983e26e88efbb0fba891f60e5c8c90f9e58eb716e38f42c",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_017",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_017.qc.json",
+   "sha256": "5bf8faedf2ea51e5ec1585dd4dd56e413cf1f75e85a5b66fe0c2f8bcc62bb628",
+   "size_bytes": 3938,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_017",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_017.json",
+   "sha256": "109754b6e5d98458af1d28ba8adcb4f946645e69e9ee7d191a1342a493d20f55",
+   "size_bytes": 4385,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_030",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_030.json",
+   "sha256": "9b25f4b55f62d448fc7812ea78da234a55fb8099c775b748e6128d17b1e0e2cb",
+   "size_bytes": 885,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_030",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_030",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_030.json",
+   "sha256": "4bc7712398848647816b24c5ab7c3874d7beaf68c8fac3462a02325695e58572",
+   "size_bytes": 291,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_030",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_030.qc.json",
+   "sha256": "45006b20ddc21eddf6b6b0c8b08de546095889c7eaaf94f143f6ec5ad02063bc",
+   "size_bytes": 3992,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_030",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_030.json",
+   "sha256": "ae163846e446c6052ccd023d9cc03884b0daf2e2109f4d3fb0510904f9bc7168",
+   "size_bytes": 5569,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_004",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_004.json",
+   "sha256": "1f0bdbab4fcfb0289daf34420c70572d5181ee70734e08fa090ef2390f905e9e",
+   "size_bytes": 979,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_004",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_004",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_004.json",
+   "sha256": "92afce30c603fc1f150c47abb9f38521bea6578870e3af128002f922141b9c6f",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_004",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_004.qc.json",
+   "sha256": "3da8731c3d9ad864c099ae632f024ee29bfb20b65c548416cfa720be2f4d248c",
+   "size_bytes": 4270,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_004",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_004.json",
+   "sha256": "73282d244c21f7f7237997269ba637b65e57bbf71cac8a5e75a27023abfc90a8",
+   "size_bytes": 6158,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_018",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_018.json",
+   "sha256": "68794b2bcd73fb2aa260aa7c5822ad0a001d1a4e2ec1b48a4e2ce1701a23cd76",
+   "size_bytes": 1009,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_018",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_018",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_018.json",
+   "sha256": "ee46c6a123981f9395e77bbc87b30d0968b4aebe7dd7cb04f9e6b3d7dd57fb7b",
+   "size_bytes": 352,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_018",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_018.qc.json",
+   "sha256": "5327991db36d3aed91a10e5c027d478f6d83d34a8a67e7dba6a00d4d151880d2",
+   "size_bytes": 4005,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_018",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_018.json",
+   "sha256": "d3988c2a6c7bc5752e42ddadeb7db7e974a96281990aa736fc52e6399911b862",
+   "size_bytes": 6601,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_016",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_016.json",
+   "sha256": "0b06135867b5405feb67e6bf861c7f7896e8c83c19a0e068792fb1a0b0174c0e",
+   "size_bytes": 795,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_016",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_016",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_016.json",
+   "sha256": "6f08de708acca5e60bfbd993874d5172aa31a7ea8f20a9d016a28e6327429f4b",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_016",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_016.qc.json",
+   "sha256": "6dc8c824ef6fae7149f60a843658628590686ee73969dbb8fa23f213d8186c00",
+   "size_bytes": 4419,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_016",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_016.json",
+   "sha256": "8bebe3f3f773ffc59c1bce0077e2cfebcbc2278924ce1e749251e0e71046a8f9",
+   "size_bytes": 6868,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_014",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_014.json",
+   "sha256": "af51e475034a10272e571ecc1d1c2eb26773edd61e78a7d4d2470bee828dd6fc",
+   "size_bytes": 604,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_014",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_014",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_014.json",
+   "sha256": "63fb205daaf41373cbaa3e0418b50b888dcbfa1a56ffc1de8745fbe55682c634",
+   "size_bytes": 296,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_014",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_014.qc.json",
+   "sha256": "6bb68179d29c5453839f1fbf6a06baee08b689c7868c20f165c418c5dcd9f508",
+   "size_bytes": 3935,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_014",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_014.json",
+   "sha256": "4d446a8c80b39fcd720aeecbe40ce498e4b0e0c2f17e089850905adf70ed0dd6",
+   "size_bytes": 4690,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_015",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_015.json",
+   "sha256": "e2c9bb43b160b6c9dd812dcd3b42d47df66124acd82d39ffbc59a98992b5d47a",
+   "size_bytes": 735,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_015",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_015",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_015.json",
+   "sha256": "725747f4294cd6c747dc2abdebbafb013d990c2a8cc2ba31e4d631d4e180ed7c",
+   "size_bytes": 296,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_015",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_015.qc.json",
+   "sha256": "c7c47738f464ae2c064394169716b0c7270fa5eb9dce3fda45fbee70ec081aec",
+   "size_bytes": 4056,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_015",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_015.json",
+   "sha256": "c96fc220284c1b8aa092e982dceff14cfe7138c7d18dd1b81ea2970958e6ee47",
+   "size_bytes": 5493,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_002",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_002.json",
+   "sha256": "f9a4d69347b692bdabcf5d35fae16251a9fe154931642a4068cb230e3d67a50d",
+   "size_bytes": 843,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_002",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_002",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_002.json",
+   "sha256": "575fa3865b184ddec98eae79f6efcc78fc754a63d6c34643affe15f0c22552b2",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_002",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_002.qc.json",
+   "sha256": "e72b3a49498ad547783849219fb391c1cd2506013dadd167bc8daf04136ec47b",
+   "size_bytes": 4795,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_002",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_002.json",
+   "sha256": "59adb72600f82510fa33b148da45f9f77650cc3ff151fe88dbeb2ffbdc019469",
+   "size_bytes": 4037,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_036",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_036.json",
+   "sha256": "b62d48fe7aba23f5b4d0dbff6bb6ab009ead27bf136825afead98dab619a156c",
+   "size_bytes": 958,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_036",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_036",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_036.json",
+   "sha256": "4a85e440f74bf42bcdfa621cd37cd15da225d61688e28365e7c6ff20edef6cea",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_036",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_036.qc.json",
+   "sha256": "e534da5ceb4f8bcfdefd0c32e653f4abee1c7a0e9a9e22cdc161bdf88bd9c69f",
+   "size_bytes": 4760,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_036",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_036.json",
+   "sha256": "797d722d0acb1a01951914adcaf54e13a3e159ee0ab5f7d602ea8a9aaabd9a98",
+   "size_bytes": 5831,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_003",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_003.json",
+   "sha256": "4e305b750c6e99dac6880c5fe88c1d950d9d50dcd14773d2cb1710ca64b4af6a",
+   "size_bytes": 857,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_003",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_003",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_003.json",
+   "sha256": "9fcdb2f5bc5381e25836fb58b74adec43e8f5c91ff1005fbb142c0db462d77b7",
+   "size_bytes": 358,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_003",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_003.qc.json",
+   "sha256": "7cd47a250562113f0edaf84e9acc94dc7cfc9fcac553c05a3451a058cc622f4a",
+   "size_bytes": 3868,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_003",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_003.json",
+   "sha256": "64e9c8682267279928483df960248a79aaa8c31f0a467ff0e3dae4abdabef531",
+   "size_bytes": 4366,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_008",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_008.json",
+   "sha256": "4e747e1ac6197c4957563c9ae2f2a229b86a2b6732b5136fdb83032c71675818",
+   "size_bytes": 929,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_008",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_008",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_008.json",
+   "sha256": "1b4f644044a75995a62622cd709ddd5568e94d87e5a6a84d3b79923553a45585",
+   "size_bytes": 349,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_008",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_008.qc.json",
+   "sha256": "5d459f96bb919bdb06de432bfa2735709df45be1c2299ffd12044db04e09908a",
+   "size_bytes": 3854,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_008",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_008.json",
+   "sha256": "2ba0c300663271fe26f35a8573cec96820b03274715219ec3ceeef27d74385ff",
+   "size_bytes": 3715,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_012",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_012.json",
+   "sha256": "c4c2a22f9377652ef05b899974360ed0f6dfe8b9170e877aafea6ad739fee765",
+   "size_bytes": 841,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_012",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_012",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_012.json",
+   "sha256": "afd0aae652981609404ed90437b1bd82debaadb662b1d423ea8428e027cc66d5",
+   "size_bytes": 282,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_012",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_012.qc.json",
+   "sha256": "3fff58be4100b1600af2f1868bae46ef9c76857a6c5f8031cbd73987396b83b7",
+   "size_bytes": 3911,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_012",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_012.json",
+   "sha256": "1af5d3b39b6c544362d4f70c6736afd77fa786791a21c7b7854862556966e508",
+   "size_bytes": 4905,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_023",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_023.json",
+   "sha256": "05a2da6f67b00fd1d7cf6bff954315adbef39d523bc1ccda3d4f60dc08d3945a",
+   "size_bytes": 782,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_023",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_023",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_023.json",
+   "sha256": "21390160d6315ec21d65b5b9b769d7936956cc418dd6b37c78fe76061db8e15a",
+   "size_bytes": 294,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_023",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_023.qc.json",
+   "sha256": "44c2537878066fd4f0d8f90e1b98ac072ef438a807676040ba9591ee28f7dd57",
+   "size_bytes": 3915,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_023",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_023.json",
+   "sha256": "9fba64487b610007bc9de5ce5eaa417e7fb4ddc40506ac50be4818361424f814",
+   "size_bytes": 4968,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_022",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_022.json",
+   "sha256": "270075eb7c9e689b94cda9dda8bf0e58b1fbead0a3f1db09f4dbb2b04d6e92c9",
+   "size_bytes": 980,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_022",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_022",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_022.json",
+   "sha256": "805eb51d764b8bb9fca6cfb0c7fa3083f367e4f8ab54d7fa8d63bbe88328257e",
+   "size_bytes": 346,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_022",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_022.qc.json",
+   "sha256": "2b080242d0d7c3ec09ba412ceba9f8eae524e133c7759f62f6811df814be27c5",
+   "size_bytes": 4183,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_022",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_022.json",
+   "sha256": "df2de9cf0c249fa074ceacc376d09589aa85b03bb1104a776084015d7f09e877",
+   "size_bytes": 5427,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_034",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_034.json",
+   "sha256": "55799c6b21961ed1710b6f7a2d9053a5a88594bf1e5bcfca18811d3fda20ca85",
+   "size_bytes": 869,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_034",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_034",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_034.json",
+   "sha256": "e62e63525368e1af71698a46230152c7ef4c517429026332586cf8cfdb7ca076",
+   "size_bytes": 346,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_034",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_034.qc.json",
+   "sha256": "6b28631b7f1492fcbfa3d083b6df4a222079ad5747db038fcd2eb89bce7c3342",
+   "size_bytes": 3837,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_034",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_034.json",
+   "sha256": "93811cc40fdda6b49058051af448282d6d343d8ff759ae744e563ce94ceb1546",
+   "size_bytes": 3638,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_029",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_029.json",
+   "sha256": "37632da9e77f5375b55c47da0a3716bfe239e472ffa5ffaadd7a272fb4262ab7",
+   "size_bytes": 1017,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_029",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_029",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_029.json",
+   "sha256": "b17274cf93b8ac4083e69683ab7a3562869ad3e523d0744dd06a54188c8aa858",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_029",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_029.qc.json",
+   "sha256": "89c504fe7ba1837280ec6481099e1f13fe77c47424027c35b9b0a0b6002f67e6",
+   "size_bytes": 4265,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_029",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_029.json",
+   "sha256": "92cdd3c99a9da3767d16f2825794f65b52459fbcbef11624591dfe9b1f847630",
+   "size_bytes": 4466,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_011",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_011.json",
+   "sha256": "aab3a6ad1dcc6b6fde59922236a2b3031a52a3b89dbb802ef8903801882290fc",
+   "size_bytes": 879,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_011",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_011",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_011.json",
+   "sha256": "de1b16177db81ae8ab3fcf4fdc23b0961a5997ae529f2e095827891d7109788d",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_011",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_011.qc.json",
+   "sha256": "558471bb2301c46632a29a870fda9f4ce31f420f9a06a82bb3bb458304bd2887",
+   "size_bytes": 3989,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_011",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_011.json",
+   "sha256": "9d011cc28545c29107228e7c69c3d747ee4740ec390ebd51c4e489cff5927d1e",
+   "size_bytes": 4318,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_038",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_038.json",
+   "sha256": "aff0f3034342c01d4826245c5af232c055a191cf1e78ccc03d42b83c7a669ae0",
+   "size_bytes": 762,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_038",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_038",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_038.json",
+   "sha256": "7c728d975fe7fd1d70ad18aad093ef51da0276557c7a9545d39a0154946b97fc",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_038",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_038.qc.json",
+   "sha256": "5436714cc37f88e7b10108230f384cf42ef5284450aa565e09ef5af0246765f3",
+   "size_bytes": 64954,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_038",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_038.json",
+   "sha256": "711d506bc262684d3929e777dcb93fe32ac1bea99d75bbfad3fdb465c1aa2512",
+   "size_bytes": 4513,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_005",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_005.json",
+   "sha256": "2cbaf3ebb8625eb738f1d374782807a953b306db0731c3331877670f9e7a95d5",
+   "size_bytes": 1002,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_005",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_005",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_005.json",
+   "sha256": "02e9d22f8814116a5e59bb6b31d07647971b393d64c911488f7b46f9c8309789",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_005",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_005.qc.json",
+   "sha256": "d719896d70717b9afa53e80eddc60d4e68eb3f0fbb746b218dfb61800f64fa81",
+   "size_bytes": 7036,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_005",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_005.json",
+   "sha256": "a89ffd6d8c3872c5f83cee113e61f8f0badfb5c047c8d08bfc3235e68119db63",
+   "size_bytes": 4980,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_019",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_019.json",
+   "sha256": "69e9c8a223a0c78e65ca1d7678c9f41a724f954ad61d54a7495a53ef72e9667f",
+   "size_bytes": 1115,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_019",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_019",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_019.json",
+   "sha256": "6bfd4dbe59ca0186ff913c5039374a10bf785c3ac10f1858d5b78528471f81d0",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_019",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_019.qc.json",
+   "sha256": "5eee6a1a185af37914ee5cc90ef7b5bda2354ceba42e4da722926f971076bae2",
+   "size_bytes": 4356,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_019",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_019.json",
+   "sha256": "4a271fa2451abca71d7fa5e0b27982edb9e1f6361fc356d44540e3253ddcdc9e",
+   "size_bytes": 3608,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_021",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_021.json",
+   "sha256": "14151577543b61725616d4c2c0227bcb6dc6498a6a8b2b54d84fde3bf4d9694d",
+   "size_bytes": 988,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_021",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_021",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_021.json",
+   "sha256": "dd309ce4064e53ac3cf0595a1fbfb03233188835e302d9685efb086006abd488",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_021",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_021.qc.json",
+   "sha256": "32c2f02d955c623c1f8eae17be23bc552aabd5b7c67fee15a032bc51bb356440",
+   "size_bytes": 4033,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_021",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_021.json",
+   "sha256": "365fbe387c16ed3ac01ae82647b396b90ddbd1deca68c46bc37833977b86f70a",
+   "size_bytes": 5730,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_007",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_007.json",
+   "sha256": "276e42c59714e123629b4b5286afc698509b8619eb903f06927428079bc3c8bc",
+   "size_bytes": 687,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_007",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_007",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_007.json",
+   "sha256": "cec9778722c826ab9281ea4ebb28a64e18582eca1c09904ee4e0a7f986577d37",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_007",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_007.qc.json",
+   "sha256": "0f19f2cd7fbfcfa6518f82fd59863e2601215e2f5220937c911bb0b3e53972f7",
+   "size_bytes": 4401,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_007",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_007.json",
+   "sha256": "4a6421812a85a59342f6a8442a4fbedf5a6a044ac2ce7275911ff33deea3e025",
+   "size_bytes": 4092,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_033",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_033.json",
+   "sha256": "d1fae6c0d295eee6424bcabbc63fa558388b4fdb5301a4ee8c76665b5141244f",
+   "size_bytes": 816,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_033",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_033",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_033.json",
+   "sha256": "b1821c0a6d0952851215ba4677ba3831315958bac4915a7490c1672bd50c775b",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_033",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_033.qc.json",
+   "sha256": "4e1af7e92d7cbd38680cc530fae89118bb160950cf236a71a53aadb9b61fe767",
+   "size_bytes": 4066,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_033",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_033.json",
+   "sha256": "0fd91a1b7ae56a0d239fa0499ca4dfc4c74e0e70339cef4c99dffdde77b590a9",
+   "size_bytes": 3959,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_040",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_040.json",
+   "sha256": "cb828de0412c4be2b7af73e945af259d67b1d772f93b9aed04c0a0cff544fbb9",
+   "size_bytes": 724,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_040",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_040",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_040.json",
+   "sha256": "6abb51bece2378d1fb14f4a9f2c9ad40632518771f7c0b66375440d724b6ef21",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_040",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_040.qc.json",
+   "sha256": "8a951db5a26f40729f40c4b4959d4940eae9ca6bdd400659e5ecce42a489a576",
+   "size_bytes": 5739,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_040",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_040.json",
+   "sha256": "03262e5bb8555926ef3aa64d71f7e8fb981afe0b376c26d7bd31877f6c4ebd8d",
+   "size_bytes": 4513,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_020",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_020.json",
+   "sha256": "bc208ed56545b0b2d11ca3079ec0fff90bcdc72b6b4991b21dd71679c79dbe7e",
+   "size_bytes": 746,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_020",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_020",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_020.json",
+   "sha256": "b795059c254558e84efbf5535a40f609d1853426c90ff249be2dc8b267ba1de7",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_020",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_020.qc.json",
+   "sha256": "3637c1d6bba6c66d4aa6ad89c2e06b3cc091f629f12a9991285807ad2cf6b3fe",
+   "size_bytes": 3844,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_020",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_020.json",
+   "sha256": "23626da4050205fa426ba61ff2914cdf7d22a9c0b50656684b0248b09fd4e437",
+   "size_bytes": 3415,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_031",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_031.json",
+   "sha256": "24fec1719f94ff4524cd8b7b4a415b953cf0fec4dfbdddc5ebe72804f85cf856",
+   "size_bytes": 956,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_031",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_031",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_031.json",
+   "sha256": "e194358f7a32bf591db9d59632857219ec2d9cda785ffcb1209f740923f20e12",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_031",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_031.qc.json",
+   "sha256": "08cc5953a2e70779299f04c812a2dae2fca2047eab6a282412673a1eccc49a0a",
+   "size_bytes": 3849,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_031",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_031.json",
+   "sha256": "f52f46aa731f17e6b19ef94e2933cb24a9f2a0a06c506feead27b89fd985aae5",
+   "size_bytes": 3633,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_035",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_035.json",
+   "sha256": "df02aabd211fbc2a1f8932958cab6f8bffc356710148b8acc82f06a1ecf6d608",
+   "size_bytes": 809,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_035",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_035",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_035.json",
+   "sha256": "07c24d5d7558309eafdd3105e184bf3849b2152458f191605e8853e17226f3df",
+   "size_bytes": 294,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_035",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_035.qc.json",
+   "sha256": "d47b288127245ff041bd02b2205cd41c2556b6fb952ae4dc8920662b8aa736b2",
+   "size_bytes": 4186,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_035",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_035.json",
+   "sha256": "35d89483c8309383e3a3e6721e7503536b3eb5019e3ad50c8244c90242396693",
+   "size_bytes": 4458,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_026",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_026.json",
+   "sha256": "5ef1338227dae7bb894d2e640321b2a6ee68ede923536e97952ae3528f400ab2",
+   "size_bytes": 891,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_026",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_026",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_026.json",
+   "sha256": "bfbc7c7cdfa41ea9dc95b08972d4aa714abb63d3b7bb6e1f3c4b3d204c4672cf",
+   "size_bytes": 355,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_026",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_026.qc.json",
+   "sha256": "f4c162ee2850e34008d5fd56aba9182d1c8122df6eef8e6106209edf836c8d65",
+   "size_bytes": 3961,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_026",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_026.json",
+   "sha256": "d1c3e1df5f6c1948d8a860ea71db4b6ab3a0ce77576de00ca3143911e608ecd3",
+   "size_bytes": 4564,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_037",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_037.json",
+   "sha256": "d79fd8ec091a1816650bd959171cd38fd8a22ecdf9175c5c7d33883e3750e7cf",
+   "size_bytes": 867,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_037",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_037",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_037.json",
+   "sha256": "27e138cdcb855194a0d7c23908f53d420e186a871217bdef779f2ac464ef9e9f",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_037",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_037.qc.json",
+   "sha256": "2ed567604b154d6da2a6776e2758e4b5040c1fa82122f8a279de385ac3a6e9e5",
+   "size_bytes": 4019,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_037",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_037.json",
+   "sha256": "acd5b0edd89a31bd8d850d9b65698a015e79cfac1f36ad05a652e28daeb20bdf",
+   "size_bytes": 3970,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_032",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_032.json",
+   "sha256": "f5a3e390a98c8b2f62fdff85b47ab576521c54845bf96197b0a9f347e46a7c29",
+   "size_bytes": 959,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_032",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_032",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_032.json",
+   "sha256": "77d567f60bb46cdf443ccb89c0e9414324576b40671b6612022ab1e888339b92",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_032",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_032.qc.json",
+   "sha256": "83dd577b7fe204a000d776bb3976682ad87db4264a95dc10dfa6477ade8d6f0d",
+   "size_bytes": 4608,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_032",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_032.json",
+   "sha256": "22cb212539848703085594ce6617e9ed781dae7bdb3f0e0015bef298549fe105",
+   "size_bytes": 6232,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_001",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_001.json",
+   "sha256": "284092fd075b690c32729d40a24be7601e67079a6b97fe1e87e2f29408a57b8f",
+   "size_bytes": 897,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_001",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_001",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_001.json",
+   "sha256": "f2a65009842d60dfa98d33d5402e46489546505ece31fddd1fe8f185d015bffe",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_001",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_001.qc.json",
+   "sha256": "17109c86ddd0039b8aedae9be681cb55f72c4cf546fba322b81bb6b66f675e11",
+   "size_bytes": 3947,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_001",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_001.json",
+   "sha256": "1f8d1f5bbc694718dd298eff3f5f3461abec8ad6c2cc91a589bca57d3f859907",
+   "size_bytes": 3407,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_009",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_009.json",
+   "sha256": "add8f811380eca23a37766f1ff76b772b0cc04cb6ed8b722f49aa3a426302843",
+   "size_bytes": 757,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_009",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_009",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_009.json",
+   "sha256": "d99b5a02b3806440e70082613271f2e48ce3f908a5d6fd139e08c277960837d3",
+   "size_bytes": 256,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_009",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_009.qc.json",
+   "sha256": "13f59296bb3b01ebebbda8a17153aae33937ef55a6b40d2c13706ddf8f062b2a",
+   "size_bytes": 3941,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_009",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_009.json",
+   "sha256": "24509e4faea6f5d0a1c4454c0c2115a1262bf67b06eb1e935410577dc35f45d9",
+   "size_bytes": 3245,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_039",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_039.json",
+   "sha256": "e815c335c8c2cb49262985a5ad1f439eeef0864d88e478f72c0794e2499c8e72",
+   "size_bytes": 712,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_039",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_039",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_039.json",
+   "sha256": "77207ca02f4ce79d69e550fa9d1b600cc4aa4d76dfa88bc67bf9b6d99f77915e",
+   "size_bytes": 358,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_039",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_039.qc.json",
+   "sha256": "71e69b6d9d0ac81c8b984cba716a29f68692a81c1097a76c6248c7295aff29f6",
+   "size_bytes": 3943,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_039",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_039.json",
+   "sha256": "eba7d62a803f2cf44d87a333dfdc06a75f17eb979144d376e54ae45911c116a7",
+   "size_bytes": 3285,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_006",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_006.json",
+   "sha256": "111af184991953dbc980bd58249faf45aa964d72dd60f90c91e9fc5c78959a32",
+   "size_bytes": 916,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_006",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_006",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_006.json",
+   "sha256": "0d7a57666bbe6565ecb95adc6eac992f020d118fcebc29d6e6f4e362de726c09",
+   "size_bytes": 376,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_006",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_006.qc.json",
+   "sha256": "be3a6209cf9e9b68d77b237d5a1e57ab4b859eb567ba4312ad2b292a6236e322",
+   "size_bytes": 4585,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_006",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_006.json",
+   "sha256": "36216aa8f16519ba25986ff0b9a07604ad357c2a037196d25c60753efff03f07",
+   "size_bytes": 4470,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_027",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_027.json",
+   "sha256": "6839850a686ea913f90d739749b1a020e4274f8f642f5f39cc025c8e2471557d",
+   "size_bytes": 846,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_027",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_027",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_027.json",
+   "sha256": "2c29c823fbb6b19358b5cf2e83d101cd39c0a19d5053aca4b6813abc2e1adb18",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_027",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_027.qc.json",
+   "sha256": "a2d630463d8e95eb67ad425eba4aaac010221de9c465ed756d06830a064ee947",
+   "size_bytes": 3851,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_027",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_027.json",
+   "sha256": "7a0b1f8059e80c3278b64e923674c9ebaa51dc7d228998b27b6dae6abb2f60cd",
+   "size_bytes": 3329,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_013",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_013.json",
+   "sha256": "220c156f0c336abb32f9c2a077e7cc3af2a9ffee16ab28966e899a2fbed523ff",
+   "size_bytes": 988,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_013",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_013",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_013.json",
+   "sha256": "345842fc41c314732e8222e6296a3a5e7f22c9aefce097408a7dfb8f2a9e6f35",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_013",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_013.qc.json",
+   "sha256": "a3d8bab5ba5785fc9c94eaa651d91275613c4ca004f924d2ecad3a33e9607ef3",
+   "size_bytes": 4029,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_013",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_013.json",
+   "sha256": "ed3cffcddc720146f60e151c84c39f8115ca7e96f458d864de1062c540bcfc6e",
+   "size_bytes": 4752,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_025",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_025.json",
+   "sha256": "31c125811b18b409fc6a5c3b0090ef4fffb5b5322988b246ec474b69571cb74c",
+   "size_bytes": 802,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_025",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_025",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_025.json",
+   "sha256": "e08f19f78b2dc3470ab7f9b0999e4ae2f5b773901131447e41ad7c87215e53eb",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_025",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_025.qc.json",
+   "sha256": "53947c604646ac81aa7809acbcb4e6a57a769476b1988e4d79fd1b290f27afe7",
+   "size_bytes": 4845,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_025",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_025.json",
+   "sha256": "0b19f05466de33db6771be88f6645d0178dbebe1968d8b84cdcd236069f62582",
+   "size_bytes": 3287,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_010",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_010.json",
+   "sha256": "0beacd8c172f3349f0f7f785757fc9af9385fc603887ae0c407ce34dab711556",
+   "size_bytes": 758,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_010",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_010",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_010.json",
+   "sha256": "faa6efb3009b4f041c69883d3df15ca96e8ea82ecc9ff01d925d98739e893a89",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_010",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_010.qc.json",
+   "sha256": "102769ef29984c07d4d39cf0204c8bc9d5ba4a8147533f17a4de440af2be636d",
+   "size_bytes": 4447,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_010",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_010.json",
+   "sha256": "791cadd1f372fcad5cef8e3e9967bc52326efb62d027596c5c2b1c1cab2e23a4",
+   "size_bytes": 4060,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_024",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_024.json",
+   "sha256": "52a5d125d35a49380f519e625481a068ac1b822545dd5f5d79963d01e25946b0",
+   "size_bytes": 698,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_024",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_024",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_024.json",
+   "sha256": "76f4d6a0dc5006c75b91ba5d09673fbe51138d0cf9219b14ec176c7ea807d4da",
+   "size_bytes": 256,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "judge:J6:golden_024",
+   "kind": "judge_output",
+   "path": "../../数据/judges/detectors/raw/golden_024.qc.json",
+   "sha256": "4e111603ec61429c137d652158e004a7f07f1d13ed497fbe1e347262e3f4a880",
+   "size_bytes": 3865,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J6",
+    "role": "signal_only"
+   }
+  },
+  {
+   "asset_id": "qc:golden_024",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_024.json",
+   "sha256": "432271463b16b603ae7fdacc04c4f9024d217aa11813b72b4ba19ef10db90e33",
+   "size_bytes": 3187,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_041",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_041.json",
+   "sha256": "8ad6938e237b6819f391020878b8f2be3bdfa3990d07cd6660c29ebd56505559",
+   "size_bytes": 938,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_041",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_041",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_041.json",
+   "sha256": "cf8935a31afab2727125c0db75f8ce4549e30445c95c221d3a40a5c4de104a13",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_041",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_041.json",
+   "sha256": "54c00cb47729de5b83237c7648db91ee9ccd562064ecff9245093a90f3173304",
+   "size_bytes": 3745,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_042",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_042.json",
+   "sha256": "7c6d9f138cf012c935104053d52d21900167e9cee6c635f7be0a150270b85de1",
+   "size_bytes": 867,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_042",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_042",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_042.json",
+   "sha256": "35a507c9f76bae6a4d691d3d459943200f4974156e04134b847b7ff70197dd29",
+   "size_bytes": 259,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_042",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_042.json",
+   "sha256": "3814b12b9c5d9676c9284d0c0cfa15b7195a9400d64f41f95e87a39164834b11",
+   "size_bytes": 4325,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_043",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_043.json",
+   "sha256": "c1bb076afdf2f2733f3515886873acc1c00d6367079fb39661cad2fa92e1645c",
+   "size_bytes": 864,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_043",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_043",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_043.json",
+   "sha256": "545f49775e6dbceba1ff117f1a64368461d665bacb7a10467af7ba87fb9c7a24",
+   "size_bytes": 356,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_043",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_043.json",
+   "sha256": "0667038dcbed2901984e86239d76ffd7c42bc93a364a2aea8a1114a786da8add",
+   "size_bytes": 4652,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_044",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_044.json",
+   "sha256": "17b06ff3b9e6b85b9c289660b6328b3fae250d7f4ceb7634c63d907309e82876",
+   "size_bytes": 942,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_044",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_044",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_044.json",
+   "sha256": "eb3e4c1260f1ac6e841721746e78e6d88e69eea360cdece0c8d7a7f56d3e6b97",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_044",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_044.json",
+   "sha256": "57d195c34f1772c1d9d54831fdce94d25a60f35721d7d9e34a57f486773bba6b",
+   "size_bytes": 3572,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_045",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_045.json",
+   "sha256": "923a862fdc8f12a722d17cd53454f93d3b2794968ccc2ca4ad417c9d162a1296",
+   "size_bytes": 881,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_045",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_045",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_045.json",
+   "sha256": "78eba3a3e682543ababd98aadc313d40af6e2ac3e06bc1589bc5660a99911399",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_045",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_045.json",
+   "sha256": "1736afe0b585e59f13a0ab4b9e3cde5179b0636c46fdb341261ac49a86ae6de3",
+   "size_bytes": 3298,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_046",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_046.json",
+   "sha256": "18388ed4f23d24ce4ae4d732f3876ba034224f55b4d2b00bf36f51cf37eb95ec",
+   "size_bytes": 1017,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_046",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_046",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_046.json",
+   "sha256": "64b7d775e6b2fb02a6d5fd8f9e4bd9f5a76752c8685dd42a2e7de4c937a8a359",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_046",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_046.json",
+   "sha256": "c24b3d60eb9c664eca6793ac49885bae1fd6aabf946844d8c96a678ed10fee6e",
+   "size_bytes": 3472,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_047",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_047.json",
+   "sha256": "83112f464f38223f6451bc2b92c33c56fa857b8b5058f9497e47b2c69bb071de",
+   "size_bytes": 938,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_047",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_047",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_047.json",
+   "sha256": "916873f753e8ef21f6ef7ebdfe56456dc0b3401d2d0ac8c3a9810f736e17e038",
+   "size_bytes": 300,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_047",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_047.json",
+   "sha256": "78c9476a851db65db43bb63ef9ed41561c6f0b21fea90c165edc02653fdacc86",
+   "size_bytes": 4432,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_048",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_048.json",
+   "sha256": "d79a1abaa593124a61ec17929e8a5ea744a4d79f32f04ccac2559ba44a68f6d6",
+   "size_bytes": 945,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_048",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_048",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_048.json",
+   "sha256": "86d6d5a783a26b703de6ed1b214f5de9448a327580a321bc33e04a629d944da7",
+   "size_bytes": 306,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_048",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_048.json",
+   "sha256": "696c19ecf1910a4a1ca27f487c60fe4b24c798b9443c5c927248441a7b6a0d75",
+   "size_bytes": 4035,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_049",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_049.json",
+   "sha256": "c333b0c533ad4c48a4a3761c515072c3a4fa116c991bffac77d386cbb5f80498",
+   "size_bytes": 758,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_049",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_049",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_049.json",
+   "sha256": "c4834fed77f33f3cab76bf0a334fd23c9967d64be595a53c4691db9b40a767b5",
+   "size_bytes": 300,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_049",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_049.json",
+   "sha256": "2498afb08ef14dd11656ea16ee4130c1aff0647010bce68e462ebf969d682cf5",
+   "size_bytes": 4301,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "auto_reject"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_050",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_050.json",
+   "sha256": "b4b2889cbc3b45cde8a344ce397d8fc0685df405ea3bd429481c687a493176ef",
+   "size_bytes": 971,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_050",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_050",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_050.json",
+   "sha256": "080ebe037eff98d8750b4fc8bdd56829bad65f8b6e04275ea8792edb07bcebf2",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_050",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_050.json",
+   "sha256": "a356d1f45cfff17fe0ffed4fb45f89882fdfe54a4ce99f282033cd8d1566c17e",
+   "size_bytes": 4160,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_051",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_051.json",
+   "sha256": "a78a0845979ffd91fc47b766a4ad430c6a6fc15ac48f0a8452f42c9689103149",
+   "size_bytes": 1021,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_051",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_051",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_051.json",
+   "sha256": "30842484d026c0449c77f9ec341d17e73b50f934d6ddbbdedbdd40d3d682e2f7",
+   "size_bytes": 376,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_051",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_051.json",
+   "sha256": "b6efa51b931ef5abc40f578403734fdd2b437076c95df8c7d90674e683705626",
+   "size_bytes": 4530,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_052",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_052.json",
+   "sha256": "464f0d8bb89a4d170d0a3706ec59319f15eea6681e48a4409867a77580f1aecf",
+   "size_bytes": 832,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_052",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_052",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_052.json",
+   "sha256": "42aa0a7fe18d43cfdc830e9678f7b5666b97fcf45ac97cb1d5d40ac65175a0e3",
+   "size_bytes": 256,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_052",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_052.json",
+   "sha256": "1b4f6f0cf7c558834105e71f873902cebc85d66ded3b60359dc074afa04cb242",
+   "size_bytes": 3258,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": false,
+    "decision": "pass"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_053",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_053.json",
+   "sha256": "21b10f4605a32c31d4048aa21970e8a45377c33cbed45acdf865f2e8f4ed2d48",
+   "size_bytes": 793,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_053",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_053",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_053.json",
+   "sha256": "da6dd855b5b87d12cd31d45a1f63dde98bbfc27d0d5c6f59d665cededcede46f",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_053",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_053.json",
+   "sha256": "3c53af0419d0271f312ab6ef9988949c8a781c437306aa463e75c0819497d485",
+   "size_bytes": 4154,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_054",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_054.json",
+   "sha256": "b52dfe56ded040c4019b8ee5e93af3f95339726dcb8a86641949adccb1b5b62d",
+   "size_bytes": 809,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_054",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_054",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_054.json",
+   "sha256": "af683fd431a247bf72d6d3d930d3a7c57d36ffc4a9324019fe4d3cda6568b4b6",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_054",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_054.json",
+   "sha256": "3606358e952425362849c8e32253402d56b67a4d1fb60c0a1274d55f489e696b",
+   "size_bytes": 3404,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_055",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_055.json",
+   "sha256": "ec6f6fe96775e6d74d7591e081198778f7ce7e2e4798fca5fc2d3623483e24d2",
+   "size_bytes": 981,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_055",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_055",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_055.json",
+   "sha256": "c73d863f4b829898b2c8201dbec6eaf647968c7e599403419c33b5f568673f4b",
+   "size_bytes": 361,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_055",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_055.json",
+   "sha256": "9263773d03df87eb340d1ceb5e82593fc0279f4a8f7fe3221909ae6b0cc4c60c",
+   "size_bytes": 3694,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_056",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_056.json",
+   "sha256": "a69a65d08b598dd7a90b9a61a5a80d2ad773d39e1750d835ce633e47b1861541",
+   "size_bytes": 1101,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_056",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_056",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_056.json",
+   "sha256": "682829afcf44d55e330040ec50fcb624fd91cb02a3f9db9bf73fca88c3d76536",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_056",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_056.json",
+   "sha256": "86b254d6377641e9a1091f7fdc05657377ea36fd553490da8d63b8e979538992",
+   "size_bytes": 3699,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_057",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_057.json",
+   "sha256": "57c2c50505005ed0a2c3705d1e6974788f53c8f0113cc74d16d2af4960947bd3",
+   "size_bytes": 691,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_057",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_057",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_057.json",
+   "sha256": "a87874ab7f8546a3ce00e295f9f9e2745b458b9f2bc418e1874dd3846e71809e",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_057",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_057.json",
+   "sha256": "9e318dbfd66001138199366cd2942758797244e2ac166e776ba57a8844121a08",
+   "size_bytes": 3315,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_058",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_058.json",
+   "sha256": "e8017d89f9fb8e17e132a2541c96502730b075239aae0607ba1aff28824c97a6",
+   "size_bytes": 748,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_058",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_058",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_058.json",
+   "sha256": "124cf6bc9a591e7c3c729729ca7d85a35905c123a7d8a88177d9d87e746153b0",
+   "size_bytes": 256,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_058",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_058.json",
+   "sha256": "8619574c0e2cd2d7c687a4fdcbb136e2a0f6d24376d414a41b365f6ceeade9b2",
+   "size_bytes": 3863,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  },
+  {
+   "asset_id": "judge:J1:golden_059",
+   "kind": "judge_output",
+   "path": "../../数据/judges/glm8/golden_059.json",
+   "sha256": "54ea6276c86a396d4bb90f025b2df9cd962d73c8bb0e61bbc62a7d42b61c4305",
+   "size_bytes": 819,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J1",
+    "role": "review_parallel"
+   }
+  },
+  {
+   "asset_id": "judge:J3:golden_059",
+   "kind": "judge_output",
+   "path": "../../数据/judges/omnijev/run_metadata.json",
+   "sha256": "f19c6773253875dde3a5b01173680bf2c5e5b4e68b8f568415b3ae51bf246b64",
+   "size_bytes": 26487,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J3",
+    "role": "primary"
+   }
+  },
+  {
+   "asset_id": "judge:J5:golden_059",
+   "kind": "judge_output",
+   "path": "../../数据/judges/videochat3/golden_059.json",
+   "sha256": "2d59360efd4e9041a68ad2213114e2ec89c8f90772bcde9c481069aca5f86d5d",
+   "size_bytes": 250,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "judge": "J5",
+    "role": "cheap_signal"
+   }
+  },
+  {
+   "asset_id": "qc:golden_059",
+   "kind": "qc_report",
+   "path": "qc_reports_exp59/golden_059.json",
+   "sha256": "6a40785147c01200dd2d1ec5cec4245d365e08d88f7038b10928f8f167bbf220",
+   "size_bytes": 3976,
+   "registered_at": "2026-10-09T13:23:54",
+   "provenance": {
+    "module": "qc_orch",
+    "source": "tonight judges-root"
+   },
+   "evidence": {
+    "thresholds": "eval/thresholds.yaml",
+    "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+    "ensemble": "E10:J1.detected OR J3@0.70 flag",
+    "detected": true,
+    "decision": "manual_review"
+   }
+  }
+ ]
+}

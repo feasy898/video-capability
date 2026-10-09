@@ -1,0 +1,175 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_012",
+ "generated_at": "2026-10-09T13:23:53",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9436,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['pixelate'], conf=0.92)",
+   "J3@0.71 flag=True hits=['pixelate'] max_channel_P=0.9436",
+   "J6 信号(仅信号不否决): garble_text@0.78"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.778,
+   "span": {
+    "start_s": 0.0,
+    "end_s": 5.062
+   },
+   "evidence": {
+    "J6": {
+     "kind": "uniform_low_conf",
+     "max_mean": 0.448
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J1",
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.9436,
+   "evidence": {
+    "J1": {
+     "confidence": 0.92,
+     "notes": "f01-f02画面清晰：圆形玻璃杯盛水置于木桌，f02手握筷子从上方进入。自f03起，杯体上半部（筷子与杯口/水面接触区域）出现明显马赛克像素块，画面局部被粗大像素颗粒覆盖，f04-f06该像素化区域持续存在（f05筷子已抽出上方，杯口处马赛克仍未消除），至f07-f06之后f07、f08像素块消失、画面恢复清晰。该缺陷为局部像素化而非闪烁或整体色偏，f01/f02与f07/f08同区域均清晰可证"
+    },
+    "J3": {
+     "channel_P": 0.9436
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.6362,
+   "flicker": 0.3087,
+   "color_shift": 0.1672,
+   "face_blur": 0.2951,
+   "garble_text": 0.606,
+   "temporal_swap": 0.5072,
+   "pixelate": 0.9436,
+   "ghosting": 0.3153
+  },
+  "overall": 0.7709,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.0,
+   "end_s": 5.062,
+   "evidence": {
+    "kind": "uniform_low_conf",
+    "max_mean": 0.448
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f03-f06（约1.6s-3.5s），杯体上半部区域"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.92,
+   "spans": "f03-f06（约1.6s-3.5s），杯体上半部区域",
+   "notes": "f01-f02画面清晰：圆形玻璃杯盛水置于木桌，f02手握筷子从上方进入。自f03起，杯体上半部（筷子与杯口/水面接触区域）出现明显马赛克像素块，画面局部被粗大像素颗粒覆盖，f04-f06该像素化区域持续存在（f05筷子已抽出上方，杯口处马赛克仍未消除），至f07-f06之后f07、f08像素块消失、画面恢复清晰。该缺陷为局部像素化而非闪烁或整体色偏，f01/f02与f07/f08同区域均清晰可证。手部形态（f03-f04持筷手指）未见明显多指/融指异常，画面无文字、无定格、无场景跳变，其余维度未命中。"
+  },
+  "J5": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"pixelate\"],\"other\":false,\"reason\":\"画面中出现马赛克块\"}"
+  },
+  "J3": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "garble_text",
+    "temporal_swap",
+    "pixelate"
+   ],
+   "confidence": 0.9436,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.636 flicker=0.309 color_shift=0.167 face_blur=0.295 garble_text=0.606 temporal_swap=0.507 pixelate=0.944 ghosting=0.315; overall=0.771; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.778,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.0,
+     "end_s": 5.062,
+     "evidence": {
+      "kind": "uniform_low_conf",
+      "max_mean": 0.448
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_012.mp4",
+  "frames_dir": "frames/golden_012/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_012.json",
+   "J5": "../数据/judges/videochat3/golden_012.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_012.qc.json"
+  }
+ },
+ "errors": {}
+}
