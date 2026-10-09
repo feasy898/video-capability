@@ -1,0 +1,17 @@
+{
+ "schema_version": "1.0",
+ "shot_id": "shot_05",
+ "axis": "OTHER",
+ "duration_s": 5,
+ "aspect": "9:16",
+ "resolution": "768P",
+ "prompt": "Wide shot, static camera with a subtle breathing drift: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people. The bottle wears a clean blank craft-paper label, no text, no letters, no typography, no readable label on the bottle. The diffuser is an amber glass bottle on a walnut wooden base with natural rattan reeds, catching a warm highlight from the lamp; the room graded in deep cedar green-gold dusk tones with warm bedroom lamplight, soft linen and wood textures. Premium photorealistic product commercial look, calm premium lifestyle mood, rich micro-contrast, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+ "audio": {
+  "generate": true
+ },
+ "engine_hint": {
+  "preferred": "api",
+  "model": "MiniMax-H3-Max"
+ },
+ "notes": "CP9 回炉重渲（CP12 队列 3 条指向本镜后的定向修订，回炉员 2026-10-09）。基线=cp9/shots/shot_05.json 原 prompt（cp9_prompts.json shot_05 原文），仅两处差异：① 标签条款——原 prompt 无 no readable label/no blank label 字样（6 镜中唯一缺失），生成侧凭空出现带小字的白色标签（J1 identity_drift conf=0.62，主控亲帧证实乱码纹理）→ 改「clean blank craft-paper label, no text, no letters, no typography」+ 补「no readable label on the bottle」与他镜 G2 条款对齐（产品名只走后期字牌，G2 纪律）；② 微运动——原 prompt「static camera」无任何运动描述，2.75s 近零帧差触发 J3 frame_freeze P=0.711 灰区 + J6v2 zero_diff_run conf=0.758 → 改「static camera with a subtle breathing drift」（本线 shot_01 同款已验证配方：该镜三门禁均无 freeze 信号；幅度小不影响产品展示）。场景/景别（wide）/产品造型（琥珀玻璃瓶+胡桃木底座+藤条）/色彩（雪松绿金暮色）与原 prompt 一致。duration 口径不变：CP3 声明 2.83s → ceil=5s。"
+}

@@ -1,9 +1,9 @@
 {
  "tool": "assemble_cp11.py",
  "verdict": "ok",
- "generated_at": "2026-10-08T21:16:59Z",
- "master_sha256": "43fc1c087b80f795e97704fe2b9d996627f1a2117c8d710e53c32e8412ed0e1d",
- "master_bytes": 5849156,
+ "generated_at": "2026-10-09T00:38:05Z",
+ "master_sha256": "8c4b37306a8b241ba894aae17565a5445265781bee3c25d85ae1357878674634",
+ "master_bytes": 6088604,
  "frame_domain": {
   "cp6_frames": 480,
   "declared_duration_s": 20.0,
@@ -34,11 +34,11 @@
   },
   {
    "t": 14.625,
-   "score": 0.5399
+   "score": 0.4269
   },
   {
    "t": 17.417,
-   "score": 0.6138
+   "score": 0.6097
   }
  ],
  "unregistered_cuts": [],

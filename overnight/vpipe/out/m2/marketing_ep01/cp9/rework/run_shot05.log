@@ -1,0 +1,6 @@
+[gen_api 08:30:30] [gateway] 云网关探活 ok（GET /minimax/v1/models/config）
+[gen_api 08:30:30] [wallet] 云通道无钱包端点（手册§7 未探明）→ 守卫降级为估算累计: 已耗(估)=1680 上限=2016（56积分/s 口径）
+[gen_api 08:30:30] [seed] 云通道不发送 seed（DTO 无此字段）；probe_seed 为 windev 专属，跳过
+[gen_api 08:30:30] [run] shot_05@MiniMax-H3-Max channel=cloud model=MiniMax-H3-Max duration=5 resolution=768P ratio=9:16 audio=True refs=0
+[gen_api 08:31:02] [ok ] shot_05@MiniMax-H3-Max -> out/m2/marketing_ep01/cp9/rework/gen/shot_05@MiniMax-H3-Max.mp4 (31.5s, 3570242B, probe={'width': 768, 'height': 1344, 'duration': 5.184, 'fps': 24.0, 'video_codec': 'h264', 'audio_codec': 'aac'})
+[gen_api 08:31:02] [done] 本次处理 1（成功 1/失败 0）；结果: out/m2/marketing_ep01/cp9/rework/gen/api_results.jsonl

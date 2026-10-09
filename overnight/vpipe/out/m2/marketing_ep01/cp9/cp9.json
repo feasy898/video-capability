@@ -2,9 +2,9 @@
   "schema_version": "2.0",
   "cp_id": "cp9",
   "artifact_type": "final_render",
-  "fingerprint": "8188f46f7a07b1a9e35f44d3d64161e035f667197c2fc32551b870b5617eee6e",
+  "fingerprint": "85f6580916b672030e67e0ecc5c371cf8f4aa2c30f09fe67d5dcad79c7f01027",
   "produced_by": "gen_api",
-  "produced_at": "2026-10-08T21:14:19Z",
+  "produced_at": "2026-10-09T00:37:41Z",
   "upstream_refs": [
     {
       "cp_id": "cp6",
@@ -20,7 +20,7 @@
     "type": "rule",
     "params_ref": "cp9.gate.credit_cap_per_shot",
     "result": "pass",
-    "note": "6 镜精修（5 产品镜 + shot_01 口播镜降级变体 no-talking-head）：est 合计 1680（56积分/s × 30s 提交秒数，cp9_prompts.json total_submitted_seconds=30 同源）＜ 线集级上限 2016（cp1.budget.credit_cap_total；--credit-cap 实跑守卫，超限 exit 3）；单镜 280 为 5s 标准档锚点，>5s 镜 warn 标注（CP3 分镜守恒 ceil 所致，单镜口径详见各单镜件；本批全部 5s 标准档）。H3-Max 真实调用合计 6 次（线红线 ≤6 次正好用满）；avatar 真实调用 0 次（参考图缺位降级，理由见 cp9_shot_01.json gate.note）。"
+    "note": "6 镜精修（5 产品镜 + shot_01 口播镜降级变体 no-talking-head）：现役 est 合计 1680（56积分/s × 30s 提交秒数，cp9_prompts.json total_submitted_seconds=30 同源）＜ 线集级上限 2016（cp1.budget.credit_cap_total；--credit-cap 实跑守卫，超限 exit 3）；单镜 280 为 5s 标准档锚点，>5s 镜 warn 标注（CP3 分镜守恒 ceil 所致，单镜口径详见各单镜件；全部 5s 标准档）。H3-Max 真实调用累计 7 次（v1 线红线 6 次用满 + CP12 回炉任务书授权 1 次，2026-10-09）；avatar 真实调用 0 次（参考图缺位降级，理由见 cp9_shot_01.json gate.note）。【回炉】shot_05 于 2026-10-09 定向修订重渲（CP12 队列 3 条清偿动作：J1 identity_drift 0.62 + J3 frame_freeze 0.711 灰区 + J6v2 zero_diff_run 0.758，均指 14.625-17.375s），缘由与 prompt 差异见 cp9_shot_05.json gate.note；v1 终稿与工件存档 rework/archive_rework_r1/；线累计消耗 1680+280=1960 ≤ 2016（rework 280 记账 ledger 行#80）。"
   },
   "aux_gates": [
     {
@@ -111,12 +111,12 @@
         "channel": "api_h3max",
         "asset": {
           "kind": "clip",
-          "fingerprint": "3ed08636c1fca2c87d06c319d398d500debf494d7d9eebc86511e40890f3c28f",
+          "fingerprint": "360f0d5eefcfcc31085edf8ba1ab29ef2101a63a28eeb2339a40abe507e06a9f",
           "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_05.final.mp4"
         },
         "resolution": "768P",
         "repro_level": "submit_params",
-        "submit_params_fingerprint": "79aaa438a9e86f5fddfcfefa8b0101e48454a28683f0b4d5e9d5b2398459360d",
+        "submit_params_fingerprint": "17fc566a73b269daf219a079ed21f949badc9d5d8702f014e6b36b639b4e6567",
         "seed_recorded": null,
         "credit_spent": 280,
         "credit_cap_per_shot": 280,
@@ -143,12 +143,15 @@
       }
     ],
     "est_credit_total": 1680,
-    "h3max_real_calls": 6,
+    "h3max_real_calls": 7,
     "budget": {
       "episode_cap": 2016,
       "est_total": 1680,
-      "headroom": 336
+      "rework_sunk_credit": 280,
+      "cumulative_spent": 1960,
+      "headroom": 56,
+      "note": "现役 6 镜 est 合计 1680（30s 提交秒数）+ CP12 回炉 shot_05 重渲沉没 280 = 线累计 1960 ≤ 2016（cp1.budget.credit_cap_total）；ledger 行#80 记账"
     }
   },
-  "notes": "营销线 EP01 CP9 聚合件（后半程）：单镜权威件=cp9_shot_XX.json。"
+  "notes": "营销线 EP01 CP9 聚合件（后半程）：单镜权威件=cp9_shot_XX.json。2026-10-09 CP12 回炉更新：shot_05 条目已替换为重渲版（新 sha256/参数指纹）；现役 est 合计 1680、回炉沉没 280、线累计 1960 ≤ 2016。"
 }

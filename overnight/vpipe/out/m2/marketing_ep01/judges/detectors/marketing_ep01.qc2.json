@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/m2/marketing_ep01/cp11/master.mp4",
- "generated_at": "2026-10-09T05:18:40",
+ "generated_at": "2026-10-09T08:39:27",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 20.0,
@@ -20,17 +20,17 @@
  },
  "temporal_candidates": {
   "frame_freeze": {
-   "conf": 0.758,
+   "conf": 0.617,
    "kind": "zero_diff_run",
-   "run_pairs": 66,
-   "dur_s": 2.75,
-   "start_s": 14.625,
-   "end_s": 17.375,
-   "run_diff_med": 0.1911,
-   "lap_guard": 0.821,
+   "run_pairs": 52,
+   "dur_s": 2.167,
+   "start_s": 9.083,
+   "end_s": 11.25,
+   "run_diff_med": 0.5534,
+   "lap_guard": 1.007,
    "span": [
-    14.625,
-    17.375
+    9.083,
+    11.25
    ]
   }
  },
@@ -72,19 +72,19 @@
     },
     {
      "cut_t": 14.625,
-     "diff": 63.98,
-     "back_score": 0.2264,
-     "match_t": 0.333,
-     "pre_score": 0.2388,
-     "margin": -0.0123
+     "diff": 50.82,
+     "back_score": 0.208,
+     "match_t": 12.042,
+     "pre_score": 0.6384,
+     "margin": -0.4305
     },
     {
      "cut_t": 17.417,
-     "diff": 71.35,
-     "back_score": 0.4117,
+     "diff": 72.73,
+     "back_score": 0.4116,
      "match_t": 2.292,
-     "pre_score": 0.178,
-     "margin": 0.2337
+     "pre_score": 0.1621,
+     "margin": 0.2495
     }
    ]
   }
@@ -95,20 +95,20 @@
   "defect_types": [
    "frame_freeze"
   ],
-  "confidence": 0.758,
+  "confidence": 0.617,
   "spans": [
    {
     "type": "frame_freeze",
-    "start_s": 14.625,
-    "end_s": 17.375,
+    "start_s": 9.083,
+    "end_s": 11.25,
     "evidence": {
      "kind": "zero_diff_run",
-     "run_pairs": 66,
-     "dur_s": 2.75,
-     "start_s": 14.625,
-     "end_s": 17.375,
-     "run_diff_med": 0.1911,
-     "lap_guard": 0.821
+     "run_pairs": 52,
+     "dur_s": 2.167,
+     "start_s": 9.083,
+     "end_s": 11.25,
+     "run_diff_med": 0.5534,
+     "lap_guard": 1.007
     }
    }
   ]
@@ -192,6 +192,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 13.35
+  "analyze_sec": 7.2
  }
 }

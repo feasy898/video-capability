@@ -1,8 +1,8 @@
 {
   "model": "OmniJev-4B(v1.1)",
   "clip_id": "marketing_ep01",
-  "clip": "/data/night/mk01-cp12/clips/marketing_ep01.mp4",
-  "mosaic": "/data/night/mk01-cp12/clips/marketing_ep01.mosaic.jpg",
+  "clip": "/data/night/mk01-cp12-r2/clips/marketing_ep01.mp4",
+  "mosaic": "/data/night/mk01-cp12-r2/clips/marketing_ep01.mosaic.jpg",
   "questions": {
     "q_frame_freeze": {
       "type": "noul",
@@ -43,60 +43,60 @@
   },
   "answers": {
     "q_frame_freeze": {
-      "noul": 0.711,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.75,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_flicker": {
-      "noul": 0.4519,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.4387,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_color_shift": {
-      "noul": 0.6517,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.6581,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_face_blur": {
-      "noul": 0.2243,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.2357,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_garble_text": {
-      "noul": 0.0603,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.0587,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_temporal_swap": {
-      "noul": 0.6574,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.6812,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_pixelate": {
-      "noul": 0.2516,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.2256,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_ghosting": {
-      "noul": 0.4752,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.4554,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     },
     "q_overall": {
-      "noul": 0.6358,
-      "latency_s": 7.8888,
-      "latency_total_s": 70.9992
+      "noul": 0.6324,
+      "latency_s": 8.3127,
+      "latency_total_s": 74.8146
     }
   },
   "probs": {
-    "frame_freeze": 0.711,
-    "flicker": 0.4519,
-    "color_shift": 0.6517,
-    "face_blur": 0.2243,
-    "garble_text": 0.0603,
-    "temporal_swap": 0.6574,
-    "pixelate": 0.2516,
-    "ghosting": 0.4752,
-    "overall": 0.6358
+    "frame_freeze": 0.75,
+    "flicker": 0.4387,
+    "color_shift": 0.6581,
+    "face_blur": 0.2357,
+    "garble_text": 0.0587,
+    "temporal_swap": 0.6812,
+    "pixelate": 0.2256,
+    "ghosting": 0.4554,
+    "overall": 0.6324
   }
 }

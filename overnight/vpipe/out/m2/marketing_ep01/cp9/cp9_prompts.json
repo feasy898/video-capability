@@ -14,7 +14,8 @@
   "est_credit_total": 1680,
   "budget_note": "est 1680 ≤ cp1.budget.credit_cap_total=2016；H3-Max 真实调用合计 6 次（5 产品镜 + shot_01 降级变体，线红线 ≤6 次正好用满）",
   "shot_01_fallback": "口播镜降级变体（no-talking-head）：触发证据=5 支 CP9 终稿亲检无人物（shot_04 仅一只手）+ 本线无 CP4 定妆照 → gen_avatar --image 必填的单人参考图两源皆缺，「营销线口播主体参考图缺位」；按任务书 owner 预留降级路径处理（产品旁白+字幕卡变体），不伪造人物图。avatar 真实调用 0 次（≤2 次红线内，未触发原因=参考图缺位）。",
-  "negative_note": "negative 语义并入 prompt 尾段（云通道 payload 白名单无 negative 字段，沿 shortdrama cp9 先例：no on-screen text / no watermark / no subtitles 显式入 prompt）"
+  "negative_note": "negative 语义并入 prompt 尾段（云通道 payload 白名单无 negative 字段，沿 shortdrama cp9 先例：no on-screen text / no watermark / no subtitles 显式入 prompt）",
+  "rework_shot05": "CP12 回炉（2026-10-09）：shot_05 定向修订重渲 1 次（H3-Max，task_id=1y1KngRVLRVj，est 280，ledger 行#80；线 est 合计 1680+280=1960 ≤ 2016，真实调用累计 7 次=线红线 6 次+回炉授权 1 次）。两处差异：标签 clean blank craft-paper label（no text/letters/typography，补 no readable label 对齐他镜 G2 条款）+ subtle breathing drift 微运动（shot_01 已验证配方）；其余与 v1 一致。"
  },
  "shots": [
   {
@@ -76,9 +77,9 @@
    "aspect": "9:16",
    "resolution": "768P",
    "model": "MiniMax-H3-Max",
-   "prompt_en": "Wide shot, static camera: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people. The diffuser is an amber glass bottle on a walnut wooden base with natural rattan reeds, catching a warm highlight from the lamp; the room graded in deep cedar green-gold dusk tones with warm bedroom lamplight, soft linen and wood textures. Premium photorealistic product commercial look, calm premium lifestyle mood, rich micro-contrast, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
-   "prompt_chars": 660,
-   "base_ref": "cp7/cp7_prompts.json shots[].prompt_en（构图/运动/节奏基底）",
+   "prompt_en": "Wide shot, static camera with a subtle breathing drift: a serene minimalist bedroom at dusk, an amber glass reed diffuser bottle on the wooden bedside table next to a warm glowing lamp, soft linen bedding, gentle window light, calm premium lifestyle atmosphere, no people. The bottle wears a clean blank craft-paper label, no text, no letters, no typography, no readable label on the bottle. The diffuser is an amber glass bottle on a walnut wooden base with natural rattan reeds, catching a warm highlight from the lamp; the room graded in deep cedar green-gold dusk tones with warm bedroom lamplight, soft linen and wood textures. Premium photorealistic product commercial look, calm premium lifestyle mood, rich micro-contrast, vertical 9:16 portrait framing, no on-screen text, no watermark, no subtitles.",
+   "prompt_chars": 809,
+   "base_ref": "cp7/cp7_prompts.json shots[].prompt_en（构图/运动/节奏基底）；2026-10-09 CP12 回炉修订（标签空白化+微运动，差异见 cp9_shot_05.json gate.note；v1 prompt 存 archive_rework_r1/cp9_prompts 段）",
    "color_texture_lighting": "CP9 新补全段（本表 prompt 第 2 段起）",
    "reference_images": "none（T2V 纯文生；image_mode 显式 text-to-video）"
   },

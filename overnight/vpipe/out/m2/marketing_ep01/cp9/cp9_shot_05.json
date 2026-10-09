@@ -2,9 +2,9 @@
   "schema_version": "2.0",
   "cp_id": "cp9",
   "artifact_type": "final_render",
-  "fingerprint": "036e802379144933c1826805305062eb796518d1094bf201b54b666df94ed586",
+  "fingerprint": "0b3cb7f068c917a071bcfb44ff85e0c09c90c62cc8b1bfa33647135d37cf19e4",
   "produced_by": "gen_api",
-  "produced_at": "2026-10-08T21:14:19Z",
+  "produced_at": "2026-10-09T00:36:37Z",
   "upstream_refs": [
     {
       "cp_id": "cp6",
@@ -20,14 +20,14 @@
     "type": "rule",
     "params_ref": "cp9.gate.credit_cap_per_shot",
     "result": "pass",
-    "note": "实耗(估) 280 = 56积分/s × 5s（单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）（5s 标准档，等于上限）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=AP94la8EnPqb。"
+    "note": "实耗(估) 280 = 56积分/s × 5s（单镜上限 280 为 5s 标准档锚点，thresholds cp9.gate.credit_cap_per_shot）（5s 标准档，等于上限）；估算口径：云通道无钱包端点 credit_before/after/cost=null（SPEC §2.2 如实降级）。云 task_id=1y1KngRVLRVj。【CP12 回炉重渲 2026-10-09】缘由=cp12.json human_review.queue 3 条全指向本镜（14.625-17.375s）：J1 glm8 identity_drift conf=0.62（瓶身标签乱码纹理与他镜不一致）+ J3 omnijev frame_freeze P=0.711 灰区 + J6v2 qc_detectors_v2 frame_freeze conf=0.758（zero_diff_run 2.75s，同 span 互证）。根因=v1 prompt 两缺陷：① 6 镜中唯一缺 no readable label 条款且无空白标签描述 → 生成侧凭空白色标签带小字；② 「static camera」零运动描述 → 全镜近零帧差。修订：① 「clean blank craft-paper label, no text, no letters, no typography」+ 补「no readable label on the bottle」（G2 纪律：产品名只走后期字牌）；② 「static camera with a subtle breathing drift」（shot_01 同款已验证微运动配方，幅度小不影响产品展示）。场景/景别/产品造型/色彩与 v1 一致。H3-Max 真实调用 1 次（回炉任务书授权 ≤1 次），task_id=1y1KngRVLRVj，est 280 积分（ledger 行#80）；v1 终稿+工件存档 archive_rework_r1/。"
   },
   "aux_gates": [
     {
       "type": "rule",
       "params_ref": "cp9.gate.repro_log_complete",
       "result": "pass",
-      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 79aaa438a9e86f5f… + task_id 落盘 shot_05.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
+      "note": "submit_params 全量（model/prompt/duration/resolution/ratio/generate_audio/image_mode）+ 指纹 17fc566a73b269da… + task_id 落盘 shot_05.gen_meta.json；repro_level=submit_params（API 同参重提交必为新样本，像素级承诺已废止，SPEC §2.2）。"
     }
   ],
   "payload": {
@@ -36,17 +36,17 @@
     "channel": "api_h3max",
     "asset": {
       "kind": "clip",
-      "fingerprint": "3ed08636c1fca2c87d06c319d398d500debf494d7d9eebc86511e40890f3c28f",
+      "fingerprint": "360f0d5eefcfcc31085edf8ba1ab29ef2101a63a28eeb2339a40abe507e06a9f",
       "path": "overnight/vpipe/out/m2/marketing_ep01/cp9/shot_05.final.mp4"
     },
     "resolution": "768P",
     "repro_level": "submit_params",
-    "submit_params_fingerprint": "79aaa438a9e86f5fddfcfefa8b0101e48454a28683f0b4d5e9d5b2398459360d",
+    "submit_params_fingerprint": "17fc566a73b269daf219a079ed21f949badc9d5d8702f014e6b36b639b4e6567",
     "seed_recorded": null,
     "credit_spent": 280,
     "credit_cap_per_shot": 280,
     "draft_task_id": null,
     "rework_route": null
   },
-  "notes": "营销线单镜终稿件（CP9 权威形态，schema cp9_final_render 分支 jsonschema EXIT 见 build log）。credit_spent 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=AP94la8EnPqb；分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_mode=text-to-video 显式）。资产 sha256=3ed08636c1fca2c8…（ffprobe+sha256 本地亲核）。"
+  "notes": "营销线单镜终稿件（CP9 权威形态，schema cp9_final_render 分支 jsonschema EXIT 见 build log）。credit_spent 为 56积分/s 估算值（云通道无钱包端点，非实扣）；云任务 task_id=1y1KngRVLRVj；分辨率实测 768x1344（768P 9:16 档）、h264+aac、5.184000s（提交 5s，云侧封装偏差如实留痕）。参考图未用（纯 T2V，image_mode=text-to-video 显式）。资产 sha256=360f0d5eefcfcc31…（ffprobe+sha256 本地亲核）。rework_route=null：本次为 CP9 层 prompt 定向修订重渲，未走 cp3/cp4/cp5 回退路由（checkpoint.schema rework_route enum 无 cp9 值，如实留 null，回炉缘由与修订内容见 gate.note）。回炉亲检（代理看帧 2026-10-09）：微运动实测可见（YDIF 中位 0.2195→1.3746，v1→v2 同口径 160x90 灰度帧差）；标签远观为空白奶油色纸标，像素级放大仍有模糊仿文字痕迹（弱于 v1 可读衬线字，「no text」未被执行 100%，如实登记交判官复判）；瓶型变为宽肩琥珀瓶+木色瓶颈环（与他镜玻璃罗纹颈仍有可见差异，v1 为实验室细颈瓶+清晰白标签，偏差方向收敛）。最终判定以 CP12 三判官对新 master 重跑为准，不以亲检代判。"
 }
