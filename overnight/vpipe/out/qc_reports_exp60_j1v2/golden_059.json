@@ -1,0 +1,130 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_059",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.92,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.800）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.92,
+   "evidence": {
+    "J1": {
+     "notes": "画面主体为琥珀色玻璃瓶及白色标签，构图、光影在 f01-f08 间连续平滑变化（镜头缓慢拉远/平移），逐对核对 f04→f05、f03→f06 及其余相邻帧对均未见内容回跳、明暗闪烁或画面凝固，无时序异常；无人脸、无像素块、无拖影，瓶体支撑合理。但全程标签上的文字为乱码：f01-f08 中可辨认为 'Thewhithe"
+    }
+   }
+  },
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8004,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8004,
+      "flicker": 0.3619,
+      "color_shift": 0.4911,
+      "face_blur": 0.0218,
+      "garble_text": 0.1742,
+      "temporal_swap": 0.3246,
+      "pixelate": 0.2398,
+      "ghosting": 0.334
+     },
+     "overall": 0.4631
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8004,
+   "flicker": 0.3619,
+   "color_shift": 0.4911,
+   "face_blur": 0.0218,
+   "garble_text": 0.1742,
+   "temporal_swap": 0.3246,
+   "pixelate": 0.2398,
+   "ghosting": 0.334
+  },
+  "overall": 0.4631,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f01-f08（0-5.17s 全程，瓶身标签文字区域）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_059",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.92,
+   "spans": "f01-f08（0-5.17s 全程，瓶身标签文字区域）",
+   "notes": "画面主体为琥珀色玻璃瓶及白色标签，构图、光影在 f01-f08 间连续平滑变化（镜头缓慢拉远/平移），逐对核对 f04→f05、f03→f06 及其余相邻帧对均未见内容回跳、明暗闪烁或画面凝固，无时序异常；无人脸、无像素块、无拖影，瓶体支撑合理。但全程标签上的文字为乱码：f01-f08 中可辨认为 'Thewhitherveld in Farr Freej'、'Peoh or Isterler'、'theercozeepittler'、'Deteepharchaer'、'Lettine, Ppecefine, Id Proeneon' 等伪词，无任何可读的真实语言内容，属于典型 AI 生成文字渲染失败，判定 garble_text。"
+  },
+  "J5": {
+   "clip_id": "golden_059",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_059",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8004,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.800; flicker=0.362; color_shift=0.491; face_blur=0.022; garble_text=0.174; temporal_swap=0.325; pixelate=0.240; ghosting=0.334; overall=0.463"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_059.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_059.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_059.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_059.json"
+ }
+}

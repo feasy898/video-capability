@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_015",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.9437,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['face_blur'], conf=0.95)",
+   "J1(detected=True, types=['face_blur'], conf=0.9)",
    "J3@0.71 flag=True hits=['face_blur', 'pixelate'] max_channel_P=0.9437",
    "J6 信号(仅信号不否决): garble_text@0.61, identity_drift@0.93"
   ]
@@ -22,11 +22,11 @@
     "J3",
     "J5"
    ],
-   "confidence": 0.95,
+   "confidence": 0.9437,
    "evidence": {
     "J1": {
-     "confidence": 0.95,
-     "notes": "f03-f05 画面中人物面部及上半身区域出现大面积异常高斯模糊，模糊区呈生硬的矩形边界并覆盖部分背景，属于典型的人脸区域异常模糊（生成/修复缺陷），而 f01-f02、f06-f08 同一人物面部清晰正常，可确认非拍摄景深导致。其余项核对：无定格、无闪烁、无色偏、无乱码文字、无像素块与拖影；人物衣着发型跨帧一致，无身份漂移；手部（f02、f06-f08）形态正常；f08 桌面新增深色小物件疑为手"
+     "confidence": 0.9,
+     "notes": "人脸模糊：f01-f02人物面部清晰锐利；自f03起至f06，人物面部及上躯干区域出现一块边缘规整、近似矩形的异常模糊斑块，而同帧内背景置物架、前景茶壶与笔记本均保持清晰，明显为局部人脸/人像区域异常模糊而非景深效果；f07起模糊消失恢复清晰。时序帧对专项：f04-f05均在饮用动作中，姿态有细微变化，无画面凝固；f03-f06无段落回跳，运动趋势（举杯→饮用→放下→伸手取物）连贯；f01-f02"
     },
     "J3": {
      "channel_P": 0.9437
@@ -98,9 +98,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -126,7 +137,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03-f05（约1.6s-2.8s）"
+    "text": "f03-f06（约1.6s-3.5s）"
    }
   },
   {
@@ -151,9 +162,9 @@
    "defect_types": [
     "face_blur"
    ],
-   "confidence": 0.95,
-   "spans": "f03-f05（约1.6s-2.8s）",
-   "notes": "f03-f05 画面中人物面部及上半身区域出现大面积异常高斯模糊，模糊区呈生硬的矩形边界并覆盖部分背景，属于典型的人脸区域异常模糊（生成/修复缺陷），而 f01-f02、f06-f08 同一人物面部清晰正常，可确认非拍摄景深导致。其余项核对：无定格、无闪烁、无色偏、无乱码文字、无像素块与拖影；人物衣着发型跨帧一致，无身份漂移；手部（f02、f06-f08）形态正常；f08 桌面新增深色小物件疑为手机放置，证据不足不计异常。"
+   "confidence": 0.9,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "人脸模糊：f01-f02人物面部清晰锐利；自f03起至f06，人物面部及上躯干区域出现一块边缘规整、近似矩形的异常模糊斑块，而同帧内背景置物架、前景茶壶与笔记本均保持清晰，明显为局部人脸/人像区域异常模糊而非景深效果；f07起模糊消失恢复清晰。时序帧对专项：f04-f05均在饮用动作中，姿态有细微变化，无画面凝固；f03-f06无段落回跳，运动趋势（举杯→饮用→放下→伸手取物）连贯；f01-f02、f02-f03、f05-f06、f06-f07、f07-f08相邻帧对无明暗/饱和交替闪烁，整体光线一致。f06-f08白色茶杯不在桌面可视区域，但f06-f07人物手臂向笔记本右侧伸展，推测杯子被放置于被笔记本遮挡区域，证据不足不报count_error/physics_error。f08手中出现深色小物件，来源不在画面内，无明显解剖或物理异常。综上仅命中face_blur。"
   },
   "J5": {
    "clip_id": "golden_015",

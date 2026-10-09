@@ -1,0 +1,184 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_006",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.87,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.87)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.7069",
+   "J6 信号(仅信号不否决): garble_text@0.69"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.6932,
+   "span": {
+    "start_s": 0.969,
+    "end_s": 2.906
+   },
+   "evidence": {
+    "J6": {
+     "kind": "conf_drop",
+     "drop": 0.347,
+     "frames": [
+      4,
+      1
+     ],
+     "mean_scores": [
+      0.441,
+      0.788
+     ]
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.7069,
+   "flicker": 0.2886,
+   "color_shift": 0.6044,
+   "face_blur": 0.199,
+   "garble_text": 0.0404,
+   "temporal_swap": 0.3026,
+   "pixelate": 0.1321,
+   "ghosting": 0.505
+  },
+  "overall": 0.5822,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.969,
+   "end_s": 2.906,
+   "evidence": {
+    "kind": "conf_drop",
+    "drop": 0.347,
+    "frames": [
+     4,
+     1
+    ],
+    "mean_scores": [
+     0.441,
+     0.788
+    ]
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_006",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.87,
+   "spans": "无",
+   "notes": "逐项核对8帧：f01人物侧身站立，f02-f08头部自然转向镜头，转头动作连续无跳变（f01→f03），无temporal_swap；全程光线均匀、色调一致（红色连衣裙、绿野花海颜色稳定），无flicker/color_shift；人脸在各帧均清晰锐利（f02、f05、f08五官细节完整），无face_blur；画面无文字，无garble_text；无马赛克/像素块；f02-f04头发被风吹动的发丝边缘干净、无双影，无ghosting；手部自然垂放于体侧（f01-f08），指形正常无多指/融指；连衣裙下摆随微风自然摆动，人物站姿稳定，无悬浮穿模等physics_error；人物耳饰、发型、妆容、裙装款式跨帧一致，无identity_drift；花海为自然散布，无count_error。全片判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_006",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物和背景均无明显异常，帧间过渡自然，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_006",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.7069,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.707 flicker=0.289 color_shift=0.604 face_blur=0.199 garble_text=0.040 temporal_swap=0.303 pixelate=0.132 ghosting=0.505; overall=0.582; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_006",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.6932,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.969,
+     "end_s": 2.906,
+     "evidence": {
+      "kind": "conf_drop",
+      "drop": 0.347,
+      "frames": [
+       4,
+       1
+      ],
+      "mean_scores": [
+       0.441,
+       0.788
+      ]
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_006.mp4",
+  "frames_dir": "frames/golden_006/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_006.json",
+   "J5": "../数据/judges/videochat3/golden_006.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_006.qc.json"
+  }
+ },
+ "errors": {}
+}

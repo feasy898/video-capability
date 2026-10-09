@@ -1,0 +1,151 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_014",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.95,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.946 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J1",
+    "J5",
+    "J3"
+   ],
+   "confidence": 0.95,
+   "evidence": {
+    "J1": {
+     "notes": "f01-f02 与 f07-f08 中人物面部清晰、五官完整、笑容自然；但 f03-f06 中人脸及口鼻区域被异常模糊完全遮盖，且模糊为生硬的矩形块、边界明显，范围还向下延伸覆盖胸口和上衣区域（超出人脸范围），属人脸区域异常模糊。模糊在 f02→f03 之间无过渡突然出现，又在 f06→f07 之间突然消失，时序不连贯"
+    },
+    "J5": {
+     "notes": "解析=json; 回答={\"defect_types\":[\"face_blur\"],\"other\":false,\"reason\":\"画面中人物脸部区域存在模糊\"}"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.5407,
+      "flicker": 0.343,
+      "color_shift": 0.2487,
+      "face_blur": 0.9463,
+      "garble_text": 0.0349,
+      "temporal_swap": 0.455,
+      "pixelate": 0.9393,
+      "ghosting": 0.2237
+     },
+     "overall": 0.6715
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.9393,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.5407,
+      "flicker": 0.343,
+      "color_shift": 0.2487,
+      "face_blur": 0.9463,
+      "garble_text": 0.0349,
+      "temporal_swap": 0.455,
+      "pixelate": 0.9393,
+      "ghosting": 0.2237
+     },
+     "overall": 0.6715
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.5407,
+   "flicker": 0.343,
+   "color_shift": 0.2487,
+   "face_blur": 0.9463,
+   "garble_text": 0.0349,
+   "temporal_swap": 0.455,
+   "pixelate": 0.9393,
+   "ghosting": 0.2237
+  },
+  "overall": 0.6715,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f06（约1.6s-3.8s），f02→f03 突然出现、f06→f07 突然消失",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.95,
+   "spans": "f03-f06（约1.6s-3.8s），f02→f03 突然出现、f06→f07 突然消失",
+   "notes": "f01-f02 与 f07-f08 中人物面部清晰、五官完整、笑容自然；但 f03-f06 中人脸及口鼻区域被异常模糊完全遮盖，且模糊为生硬的矩形块、边界明显，范围还向下延伸覆盖胸口和上衣区域（超出人脸范围），属人脸区域异常模糊。模糊在 f02→f03 之间无过渡突然出现，又在 f06→f07 之间突然消失，时序不连贯。手部解剖正常（交叉手势各帧手指形态合理），未见多指/融指；无乱码文字、无像素马赛克块、无整体色偏、无拖影/重影。时序专项：f04-f05 与 f03-f06 两对模糊帧之间画面几乎无变化（模糊遮挡下无法辨识底层内容），其余相邻对 f01-f02、f05-f06、f07-f08 姿态构图一致，f06→f07 的变化为模糊开关切换而非段落回跳，未见景别倒退、明暗饱和交替闪烁或明显「动-停-动」凝固断裂。综合判定主要缺陷为人脸模糊（face_blur）。"
+  },
+  "J5": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"face_blur\"],\"other\":false,\"reason\":\"画面中人物脸部区域存在模糊\"}"
+  },
+  "J3": {
+   "clip_id": "golden_014",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur",
+    "pixelate"
+   ],
+   "confidence": 0.9463,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.541; flicker=0.343; color_shift=0.249; face_blur=0.946; garble_text=0.035; temporal_swap=0.455; pixelate=0.939; ghosting=0.224; overall=0.671"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_014.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_014.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_014.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_014.json"
+ }
+}

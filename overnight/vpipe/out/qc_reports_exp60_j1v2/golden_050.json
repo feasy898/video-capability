@@ -1,0 +1,106 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_050",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
+  ]
+ },
+ "defects": [
+  {
+   "type": "flicker",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.8,
+   "evidence": {
+    "J1": {
+     "notes": "逐帧比对可见全片整体亮度呈明暗交替振荡而非单向渐变：f01-f02 画面明亮（天空浅灰、楼宇与街面细节清晰），f03-f04 整体明显变暗（天空发灰、街景整体变暗），f04→f05 亮度又突然回升到明亮水平，f05-f06 保持明亮，f06→f08 再次逐步转暗，呈「亮-暗-亮-暗」往复，符合明暗交替闪烁特征。其余项目"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3908,
+   "flicker": 0.3387,
+   "color_shift": 0.6734,
+   "face_blur": 0.1929,
+   "garble_text": 0.0791,
+   "temporal_swap": 0.3816,
+   "pixelate": 0.144,
+   "ghosting": 0.3438
+  },
+  "overall": 0.6239,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f02-f05 及 f06-f08（全片亮度振荡段）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_050",
+   "defect_detected": true,
+   "defect_types": [
+    "flicker"
+   ],
+   "confidence": 0.8,
+   "spans": "f02-f05 及 f06-f08（全片亮度振荡段）",
+   "notes": "逐帧比对可见全片整体亮度呈明暗交替振荡而非单向渐变：f01-f02 画面明亮（天空浅灰、楼宇与街面细节清晰），f03-f04 整体明显变暗（天空发灰、街景整体变暗），f04→f05 亮度又突然回升到明亮水平，f05-f06 保持明亮，f06→f08 再次逐步转暗，呈「亮-暗-亮-暗」往复，符合明暗交替闪烁特征。其余项目核查：人物由远及近推进连贯，f04→f05 与 f03→f06 构图与跑步姿态均连续，无内容回跳（未见 temporal_swap）；无任何两帧完全一致（无 frame_freeze）；人脸各帧清晰（无 face_blur）；红裙颜色稳定（无 color_shift）；双手握裙姿态自然，未见多指/融指（无 hand_anomaly）；水面倒影与跑动水花物理合理（无 physics_error）；无像素化、无拖影；背景招牌文字小且景深虚化，无法辨识为乱码。最终仅命中 flicker。"
+  },
+  "J5": {
+   "clip_id": "golden_050",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_050",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.6734,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.391; flicker=0.339; color_shift=0.673; face_blur=0.193; garble_text=0.079; temporal_swap=0.382; pixelate=0.144; ghosting=0.344; overall=0.624"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_050.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_050.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_050.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_050.json"
+ }
+}

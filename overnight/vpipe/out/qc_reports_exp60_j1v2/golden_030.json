@@ -1,0 +1,159 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_030",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9006,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.901 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.9006,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.4139,
+      "flicker": 0.297,
+      "color_shift": 0.9006,
+      "face_blur": 0.0685,
+      "garble_text": 0.0503,
+      "temporal_swap": 0.3473,
+      "pixelate": 0.542,
+      "ghosting": 0.8178
+     },
+     "overall": 0.744
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J5",
+    "J3"
+   ],
+   "confidence": 0.8178,
+   "evidence": {
+    "J5": {
+     "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"画面中存在运动拖影或重影\"}"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.4139,
+      "flicker": 0.297,
+      "color_shift": 0.9006,
+      "face_blur": 0.0685,
+      "garble_text": 0.0503,
+      "temporal_swap": 0.3473,
+      "pixelate": 0.542,
+      "ghosting": 0.8178
+     },
+     "overall": 0.744
+    }
+   }
+  },
+  {
+   "type": "flicker",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.65,
+   "evidence": {
+    "J1": {
+     "notes": "逐帧比对：f01-f03 花田与背景白墙色彩明亮、饱和度正常，镜头平稳向前推移；f04 与 f05 整体画面明显变暗、饱和度骤降（背景白墙发灰、花色发闷），f06-f08 又恢复到 f01-f03 的明亮浓艳状态。f03→f04 骤暗、f05→f06 骤亮构成明显的亮度/饱和度正负交替，属曝光式闪烁。时序专项：f04→"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4139,
+   "flicker": 0.297,
+   "color_shift": 0.9006,
+   "face_blur": 0.0685,
+   "garble_text": 0.0503,
+   "temporal_swap": 0.3473,
+   "pixelate": 0.542,
+   "ghosting": 0.8178
+  },
+  "overall": 0.744,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f04-f05（约2.2s-2.8s），f03→f04 转暗、f05→f06 恢复",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "flicker"
+   ],
+   "confidence": 0.65,
+   "spans": "f04-f05（约2.2s-2.8s），f03→f04 转暗、f05→f06 恢复",
+   "notes": "逐帧比对：f01-f03 花田与背景白墙色彩明亮、饱和度正常，镜头平稳向前推移；f04 与 f05 整体画面明显变暗、饱和度骤降（背景白墙发灰、花色发闷），f06-f08 又恢复到 f01-f03 的明亮浓艳状态。f03→f04 骤暗、f05→f06 骤亮构成明显的亮度/饱和度正负交替，属曝光式闪烁。时序专项：f04→f05、f03→f06 及其余相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）构图连续、镜头持续前移，未见内容回跳（temporal_swap 未命中）；各帧之间均有可辨变化，无画面凝固（frame_freeze 未命中）；花枝模糊为镜头运动带来的运动模糊，未见清晰重影双轮廓（ghosting 未命中）。语义维度：画面无人物/手部/文字，无计数与物理违例。判定主要缺陷为 flicker，因暗段仅约1.3秒且疑似可能为场景光线过渡，置信度中等。"
+  },
+  "J5": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"画面中存在运动拖影或重影\"}"
+  },
+  "J3": {
+   "clip_id": "golden_030",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.9006,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.414; flicker=0.297; color_shift=0.901; face_blur=0.069; garble_text=0.050; temporal_swap=0.347; pixelate=0.542; ghosting=0.818; overall=0.744"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_030.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_030.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_030.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_030.json"
+ }
+}

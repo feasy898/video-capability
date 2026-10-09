@@ -1,0 +1,91 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_029",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.6617,
+   "flicker": 0.5279,
+   "color_shift": 0.5923,
+   "face_blur": 0.6868,
+   "garble_text": 0.0457,
+   "temporal_swap": 0.2902,
+   "pixelate": 0.1968,
+   "ghosting": 0.3649
+  },
+  "overall": 0.535,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "全片 f01-f08（0.3s-4.8s）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_029",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "全片 f01-f08（0.3s-4.8s）",
+   "notes": "8帧均为十指交叉相扣的双手特写，镜头做连续缓慢推近（f01远景含桌面与背景，f08推至最紧特写），运镜平滑连贯。时序专项比对：f04→f05为推近过程的自然延续，f03→f06为跨段推进、构图单调递近无回跳，其余相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）均呈渐进放大，未见段落互换；整体暖色光影稳定，无明暗/饱和正负交替闪烁；各帧间均可辨识构图与皮肤纹理的细微变化，无动-停-动断裂，非画面凝固。手部解剖核对：交叉指节呈左右交替编织排布，可见指甲与拇指数量与两只手交叉相扣的常态相符（约10个指头），指节皱纹、皮肤纹理细节真实且跨帧外观一致，无多指/融指/身份漂移；无文字、无人脸、无像素化与拖影。帧对比对未见时序异常，判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_029",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_029",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.6868,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.662; flicker=0.528; color_shift=0.592; face_blur=0.687; garble_text=0.046; temporal_swap=0.290; pixelate=0.197; ghosting=0.365; overall=0.535"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_029.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_029.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_029.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_029.json"
+ }
+}

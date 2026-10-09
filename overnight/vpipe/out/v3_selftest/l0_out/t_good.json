@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "t_good",
- "generated_at": "2026-10-09T13:44:50",
+ "generated_at": "2026-10-09T16:27:25",
  "qc_mode": "online",
  "verdict": {
   "defect_detected": false,
@@ -30,9 +30,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [],

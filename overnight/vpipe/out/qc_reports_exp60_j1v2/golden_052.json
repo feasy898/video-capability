@@ -1,0 +1,91 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_052",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3345,
+   "flicker": 0.3213,
+   "color_shift": 0.5794,
+   "face_blur": 0.1645,
+   "garble_text": 0.0471,
+   "temporal_swap": 0.3454,
+   "pixelate": 0.1362,
+   "ghosting": 0.4032
+  },
+  "overall": 0.5661,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无（全段 f01-f08 干净）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_052",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.88,
+   "spans": "无（全段 f01-f08 干净）",
+   "notes": "8 帧均为同一位红裙女性在咖啡店窗边的连续动作，未发现缺陷。动作时序连贯：f01 手握杯柄→f02 抬杯离碟（碟子仍在桌面，物理合理）→f03-f05 杯渐近唇边并饮用→f06-f08 放下杯并微笑，无段落互换或姿态回跳。专项比对：f04→f05 杯子持续贴唇、机位平缓推近，背景由行人变为白车属窗外街景自然流动，非时序异常；f03→f06 为饮用后放杯的顺向推进，无内容回跳。相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）亮度与饱和度稳定，无明暗交替闪烁，无任何两帧完全一致故不构成 frame_freeze，整段渐推镜头属正常运镜。手部解剖正常（握柄指节自然，无多指/融指），人物耳钉、项链、发型、红裙跨帧一致无身份漂移，人脸清晰无模糊、无像素化、无拖影，画面无乱码文字。帧对比对未见时序异常。"
+  },
+  "J5": {
+   "clip_id": "golden_052",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_052",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.5794,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.335; flicker=0.321; color_shift=0.579; face_blur=0.165; garble_text=0.047; temporal_swap=0.345; pixelate=0.136; ghosting=0.403; overall=0.566"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_052.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_052.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_052.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_052.json"
+ }
+}

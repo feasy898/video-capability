@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_030",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.9006,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['flicker'], conf=0.6)",
+   "J1(detected=True, types=['flicker'], conf=0.65)",
    "J3@0.71 flag=True hits=['color_shift', 'ghosting'] max_channel_P=0.9006",
    "J6 信号(仅信号不否决): garble_text@1.00"
   ]
@@ -32,11 +32,11 @@
    "sources": [
     "J1"
    ],
-   "confidence": 0.6,
+   "confidence": 0.65,
    "evidence": {
     "J1": {
-     "confidence": 0.6,
-     "notes": "画面为花房内大片红白花田，镜头持续前移，背景白墙与树木在各帧位置连贯，无定格、无场景跳变、无人脸/文字/手部等对象，未见像素块或明显重影（花体模糊与镜头快速移动的运动模糊程度一致）。主要异常为整帧明暗不稳定：f01-f03亮度正常，f04-f05整体显著变暗且色调偏暗绿，f06-f07又恢复明亮，f08再次出现变暗趋势，5秒内多次明暗交替，符合曝光/亮度闪烁特征。置信度中等：变暗段也可解释为镜头经"
+     "confidence": 0.65,
+     "notes": "逐帧比对：f01-f03 花田与背景白墙色彩明亮、饱和度正常，镜头平稳向前推移；f04 与 f05 整体画面明显变暗、饱和度骤降（背景白墙发灰、花色发闷），f06-f08 又恢复到 f01-f03 的明亮浓艳状态。f03→f04 骤暗、f05→f06 骤亮构成明显的亮度/饱和度正负交替，属曝光式闪烁。时序专项：f04→f05、f03→f06 及其余相邻帧对（f01-f02、f02-f03、f05-"
     }
    }
   },
@@ -97,9 +97,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -124,7 +135,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f04-f05（约2.2-2.8s）整帧明显变暗偏绿，f06-f07（约3.5-4.1s）恢复明亮，f08（约4.7s）再度转暗"
+    "text": "f04-f05（约2.2s-2.8s），f03→f04 转暗、f05→f06 恢复"
    }
   },
   {
@@ -149,9 +160,9 @@
    "defect_types": [
     "flicker"
    ],
-   "confidence": 0.6,
-   "spans": "f04-f05（约2.2-2.8s）整帧明显变暗偏绿，f06-f07（约3.5-4.1s）恢复明亮，f08（约4.7s）再度转暗",
-   "notes": "画面为花房内大片红白花田，镜头持续前移，背景白墙与树木在各帧位置连贯，无定格、无场景跳变、无人脸/文字/手部等对象，未见像素块或明显重影（花体模糊与镜头快速移动的运动模糊程度一致）。主要异常为整帧明暗不稳定：f01-f03亮度正常，f04-f05整体显著变暗且色调偏暗绿，f06-f07又恢复明亮，f08再次出现变暗趋势，5秒内多次明暗交替，符合曝光/亮度闪烁特征。置信度中等：变暗段也可解释为镜头经过棚内阴影/遮阳区，但波动幅度与往复频率更倾向flicker。"
+   "confidence": 0.65,
+   "spans": "f04-f05（约2.2s-2.8s），f03→f04 转暗、f05→f06 恢复",
+   "notes": "逐帧比对：f01-f03 花田与背景白墙色彩明亮、饱和度正常，镜头平稳向前推移；f04 与 f05 整体画面明显变暗、饱和度骤降（背景白墙发灰、花色发闷），f06-f08 又恢复到 f01-f03 的明亮浓艳状态。f03→f04 骤暗、f05→f06 骤亮构成明显的亮度/饱和度正负交替，属曝光式闪烁。时序专项：f04→f05、f03→f06 及其余相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）构图连续、镜头持续前移，未见内容回跳（temporal_swap 未命中）；各帧之间均有可辨变化，无画面凝固（frame_freeze 未命中）；花枝模糊为镜头运动带来的运动模糊，未见清晰重影双轮廓（ghosting 未命中）。语义维度：画面无人物/手部/文字，无计数与物理违例。判定主要缺陷为 flicker，因暗段仅约1.3秒且疑似可能为场景光线过渡，置信度中等。"
   },
   "J5": {
    "clip_id": "golden_030",

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_057",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -53,14 +53,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08（5.00s）",
+    "text": "全片 0-5s",
     "source": "J1"
    }
   },
@@ -77,9 +77,9 @@
    "clip_id": "golden_057",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.88,
-   "spans": "全片 f01-f08（5.00s）",
-   "notes": "8 帧背景（水晶灯虚化、蓝色屏幕、宴会桌）保持一致，无场景跳变或时序错乱；人物身份稳定，发缝、耳饰、服装条纹跨帧一致，未见身份漂移；f01-f08 口型呈自然说话的连续变化（f01-f02 闭唇，f03-f06 渐次张合，f07-f08 闭合），排除画面定格；人脸各帧均清晰锐利，无模糊、像素块或拖影；画面无整体色偏、无明暗闪烁、无乱码文字；全片未出现手部及可计数对象，无物理违例。综合判定为干净片段。"
+   "confidence": 0.86,
+   "spans": "全片 0-5s",
+   "notes": "逐帧核查：8 帧均为同一人物同一场景，人物发型、耳饰、条纹西装、白色内搭及背景水晶灯虚化光斑完全连贯，无 identity_drift、temporal_swap 或 flicker。时序专项比对：f04→f05 口型微张呈自然说话过渡，f03→f06 由闭口到微张再回落的趋势连续，符合正常说话动作，无内容回跳或景别倒退；f01-f02、f02-f03、f05-f06、f06-f07、f07-f08 相邻帧均有可辨的细微面部/光影变化，非完全凝固，不构成 frame_freeze。背景灯串位置与亮度稳定，无明暗交替闪烁。人脸全程清晰锐利，无 face_blur、pixelate、ghosting、color_shift；画面无文字故无 garble_text；未见手部、无计数对象、无物理违例。帧对比对未见时序异常，判定干净。"
   },
   "J5": {
    "clip_id": "golden_057",

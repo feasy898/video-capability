@@ -1,0 +1,122 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_002",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9627,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.963 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.9627,
+   "evidence": {
+    "J1": {
+     "notes": "f03起画面下方出现两行字幕式文字「yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP」，为随机字母数字与符号拼接的无意义乱码，持续至f06，f07消失，命中garble_text。时序专项比对：f04→f05构图、人物姿态与光影基本连续，f03→f06仅见缓慢运镜导致的取景"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.3193,
+      "flicker": 0.279,
+      "color_shift": 0.4135,
+      "face_blur": 0.2087,
+      "garble_text": 0.9627,
+      "temporal_swap": 0.3151,
+      "pixelate": 0.2659,
+      "ghosting": 0.4483
+     },
+     "overall": 0.477
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3193,
+   "flicker": 0.279,
+   "color_shift": 0.4135,
+   "face_blur": 0.2087,
+   "garble_text": 0.9627,
+   "temporal_swap": 0.3151,
+   "pixelate": 0.2659,
+   "ghosting": 0.4483
+  },
+  "overall": 0.477,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f06（约1.6s-3.5s）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_002",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.9,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "f03起画面下方出现两行字幕式文字「yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP」，为随机字母数字与符号拼接的无意义乱码，持续至f06，f07消失，命中garble_text。时序专项比对：f04→f05构图、人物姿态与光影基本连续，f03→f06仅见缓慢运镜导致的取景轻微平移，人物坐姿连贯，无段落回跳；各相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）未见亮度/饱和度交替闪烁，也无多帧完全一致的凝固现象（f06→f07字幕消失同时人物抬手，属正常字幕进出与动作）。人物跨帧外观（白发白须、蓝毛衣、眼镜）一致，手部解剖与物体物理支撑（花瓶置于桌上）正常，未发现其他缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_002",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_002",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.9627,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.319; flicker=0.279; color_shift=0.413; face_blur=0.209; garble_text=0.963; temporal_swap=0.315; pixelate=0.266; ghosting=0.448; overall=0.477"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_002.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_002.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_002.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_002.json"
+ }
+}

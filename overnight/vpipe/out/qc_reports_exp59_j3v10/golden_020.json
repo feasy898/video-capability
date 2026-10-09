@@ -1,0 +1,131 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_020",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.7472,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.86)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.7472"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7472,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.7472
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.7472,
+   "flicker": 0.3075,
+   "color_shift": 0.4027,
+   "face_blur": 0.0463,
+   "garble_text": 0.0361,
+   "temporal_swap": 0.2994,
+   "pixelate": 0.1545,
+   "ghosting": 0.4721
+  },
+  "overall": 0.5195,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_020",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.86,
+   "spans": "无",
+   "notes": "8帧内容连贯，仅存在缓慢的推镜/横移（f01左上角苹果片逐渐移出画面，f01-f08取景渐变），无定格、闪烁、色偏、乱码、像素块或时序跳变；画面无人脸、无手部；主体为桌面上的红皮土豆/黄皮土豆，数量与外观在f01-f08间保持一致，无身份漂移；暗色斑点为土豆芽眼，属正常外观；右下角f04-f08出现的浅色物体为贴近镜头的失焦土豆，符合浅景深拍摄特征，前后景虚化为自然景深效果而非拖影；物体均静置于桌面，无悬浮、穿模等物理违例。判定为干净视频。"
+  },
+  "J5": {
+   "clip_id": "golden_020",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_020",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.7472,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.747 flicker=0.307 color_shift=0.403 face_blur=0.046 garble_text=0.036 temporal_swap=0.299 pixelate=0.154 ghosting=0.472; overall=0.519; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_020",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_020.mp4",
+  "frames_dir": "frames/golden_020/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_020.json",
+   "J5": "../数据/judges/videochat3/golden_020.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_020.qc.json"
+  }
+ },
+ "errors": {}
+}

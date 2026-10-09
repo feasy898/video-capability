@@ -1,0 +1,232 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_015",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9437,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['face_blur'], conf=0.95)",
+   "J3@0.71 flag=True hits=['face_blur', 'pixelate'] max_channel_P=0.9437",
+   "J6 信号(仅信号不否决): garble_text@0.61, identity_drift@0.93"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J1",
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.95,
+   "evidence": {
+    "J1": {
+     "confidence": 0.95,
+     "notes": "f03-f05 画面中人物面部及上半身区域出现大面积异常高斯模糊，模糊区呈生硬的矩形边界并覆盖部分背景，属于典型的人脸区域异常模糊（生成/修复缺陷），而 f01-f02、f06-f08 同一人物面部清晰正常，可确认非拍摄景深导致。其余项核对：无定格、无闪烁、无色偏、无乱码文字、无像素块与拖影；人物衣着发型跨帧一致，无身份漂移；手部（f02、f06-f08）形态正常；f08 桌面新增深色小物件疑为手"
+    },
+    "J3": {
+     "channel_P": 0.9437
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  },
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.6126,
+   "span": {
+    "start_s": 0.0,
+    "end_s": 5.062
+   },
+   "evidence": {
+    "J6": {
+     "kind": "uniform_low_conf",
+     "max_mean": 0.558
+    }
+   }
+  },
+  {
+   "type": "identity_drift",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.9284,
+   "span": {
+    "start_s": 0.949,
+    "end_s": 1.582
+   },
+   "evidence": {
+    "J6": {
+     "pair": 1,
+     "cos": 0.0215
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8865,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8865
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.1379,
+   "flicker": 0.2227,
+   "color_shift": 0.199,
+   "face_blur": 0.9437,
+   "garble_text": 0.0397,
+   "temporal_swap": 0.347,
+   "pixelate": 0.8865,
+   "ghosting": 0.3801
+  },
+  "overall": 0.6505,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.0,
+   "end_s": 5.062,
+   "evidence": {
+    "kind": "uniform_low_conf",
+    "max_mean": 0.558
+   }
+  },
+  {
+   "type": "identity_drift",
+   "start_s": 0.949,
+   "end_s": 1.582,
+   "evidence": {
+    "pair": 1,
+    "cos": 0.0215
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f03-f05（约1.6s-2.8s）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.95,
+   "spans": "f03-f05（约1.6s-2.8s）",
+   "notes": "f03-f05 画面中人物面部及上半身区域出现大面积异常高斯模糊，模糊区呈生硬的矩形边界并覆盖部分背景，属于典型的人脸区域异常模糊（生成/修复缺陷），而 f01-f02、f06-f08 同一人物面部清晰正常，可确认非拍摄景深导致。其余项核对：无定格、无闪烁、无色偏、无乱码文字、无像素块与拖影；人物衣着发型跨帧一致，无身份漂移；手部（f02、f06-f08）形态正常；f08 桌面新增深色小物件疑为手机放置，证据不足不计异常。"
+  },
+  "J5": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"face_blur\"],\"other\":false,\"reason\":\"画面中人物脸部区域存在模糊\"}"
+  },
+  "J3": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur",
+    "pixelate"
+   ],
+   "confidence": 0.9437,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.138 flicker=0.223 color_shift=0.199 face_blur=0.944 garble_text=0.040 temporal_swap=0.347 pixelate=0.886 ghosting=0.380; overall=0.650; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text",
+    "identity_drift"
+   ],
+   "confidence": 0.9284,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.0,
+     "end_s": 5.062,
+     "evidence": {
+      "kind": "uniform_low_conf",
+      "max_mean": 0.558
+     }
+    },
+    {
+     "type": "identity_drift",
+     "start_s": 0.949,
+     "end_s": 1.582,
+     "evidence": {
+      "pair": 1,
+      "cos": 0.0215
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_015.mp4",
+  "frames_dir": "frames/golden_015/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_015.json",
+   "J5": "../数据/judges/videochat3/golden_015.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_015.qc.json"
+  }
+ },
+ "errors": {}
+}

@@ -1,0 +1,168 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_043",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8442,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze,pixelate,ghosting] 最大P=0.844）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.8442,
+   "evidence": {
+    "J1": {
+     "notes": "逐对比对：f01→f02 人物从俯身桌前到站直，姿态连续；f02→f03→f04 三帧构图、人物姿态、桌面物品、光影几乎完全一致（f03 与 f04 可视为同一画面，时间戳却推进约0.9s），随后 f05 人物已走到桌边拿鞋，呈现明显的「动-停-动」断裂，判定 f03→f04（f02 亦高度疑似）为画面凝固/frame"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8442,
+      "flicker": 0.3787,
+      "color_shift": 0.5038,
+      "face_blur": 0.5665,
+      "garble_text": 0.0495,
+      "temporal_swap": 0.5691,
+      "pixelate": 0.7235,
+      "ghosting": 0.7839
+     },
+     "overall": 0.5286
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7839,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8442,
+      "flicker": 0.3787,
+      "color_shift": 0.5038,
+      "face_blur": 0.5665,
+      "garble_text": 0.0495,
+      "temporal_swap": 0.5691,
+      "pixelate": 0.7235,
+      "ghosting": 0.7839
+     },
+     "overall": 0.5286
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7235,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8442,
+      "flicker": 0.3787,
+      "color_shift": 0.5038,
+      "face_blur": 0.5665,
+      "garble_text": 0.0495,
+      "temporal_swap": 0.5691,
+      "pixelate": 0.7235,
+      "ghosting": 0.7839
+     },
+     "overall": 0.5286
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8442,
+   "flicker": 0.3787,
+   "color_shift": 0.5038,
+   "face_blur": 0.5665,
+   "garble_text": 0.0495,
+   "temporal_swap": 0.5691,
+   "pixelate": 0.7235,
+   "ghosting": 0.7839
+  },
+  "overall": 0.5286,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f02-f04（约1.3s-3.1s）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_043",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.72,
+   "spans": "f02-f04（约1.3s-3.1s）",
+   "notes": "逐对比对：f01→f02 人物从俯身桌前到站直，姿态连续；f02→f03→f04 三帧构图、人物姿态、桌面物品、光影几乎完全一致（f03 与 f04 可视为同一画面，时间戳却推进约0.9s），随后 f05 人物已走到桌边拿鞋，呈现明显的「动-停-动」断裂，判定 f03→f04（f02 亦高度疑似）为画面凝固/frame_freeze。其余帧对：f04→f05 为正常走位与运镜推进，f03→f06 跨段对人物动作（站立→桌边取鞋→举鞋→弯腰）时序连贯，无内容回跳；f05→f06→f07→f08 举鞋、放低、弯腰动作连续，明暗与色调无交替闪烁；全片仅见 f08 因运动产生的自然拖影模糊，无乱码、像素块、色偏、人脸异常模糊、手部解剖异常或身份漂移等其余缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_043",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[], \"other\": false, \"reason\": \"画面中人物动作连贯，无明显定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影现象。\"}"
+  },
+  "J3": {
+   "clip_id": "golden_043",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "pixelate",
+    "ghosting"
+   ],
+   "confidence": 0.8442,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.844; flicker=0.379; color_shift=0.504; face_blur=0.567; garble_text=0.050; temporal_swap=0.569; pixelate=0.724; ghosting=0.784; overall=0.529"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_043.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_043.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_043.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_043.json"
+ }
+}

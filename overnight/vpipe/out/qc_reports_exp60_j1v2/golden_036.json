@@ -1,0 +1,181 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_036",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.94,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.940 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.94,
+   "evidence": {
+    "J1": {
+     "notes": "1) garble_text：f03起画面下方突然叠出无意义乱码文字 '+M9pNx_ttDAvrj86vYt@Df / 6B@br<pYaf9b/r6@7HH<nv'，字符随机组合不构成任何可读语句，持续至f06，f07又凭空消失，属文字渲染失败/乱码。2) temporal_swap：f06→f07发生场景硬切断裂"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.1208,
+      "flicker": 0.2251,
+      "color_shift": 0.9279,
+      "face_blur": 0.1817,
+      "garble_text": 0.94,
+      "temporal_swap": 0.4295,
+      "pixelate": 0.3892,
+      "ghosting": 0.7345
+     },
+     "overall": 0.6618
+    }
+   }
+  },
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.9279,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.1208,
+      "flicker": 0.2251,
+      "color_shift": 0.9279,
+      "face_blur": 0.1817,
+      "garble_text": 0.94,
+      "temporal_swap": 0.4295,
+      "pixelate": 0.3892,
+      "ghosting": 0.7345
+     },
+     "overall": 0.6618
+    }
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.88,
+   "evidence": {
+    "J1": {
+     "notes": "1) garble_text：f03起画面下方突然叠出无意义乱码文字 '+M9pNx_ttDAvrj86vYt@Df / 6B@br<pYaf9b/r6@7HH<nv'，字符随机组合不构成任何可读语句，持续至f06，f07又凭空消失，属文字渲染失败/乱码。2) temporal_swap：f06→f07发生场景硬切断裂"
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7345,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.1208,
+      "flicker": 0.2251,
+      "color_shift": 0.9279,
+      "face_blur": 0.1817,
+      "garble_text": 0.94,
+      "temporal_swap": 0.4295,
+      "pixelate": 0.3892,
+      "ghosting": 0.7345
+     },
+     "overall": 0.6618
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.1208,
+   "flicker": 0.2251,
+   "color_shift": 0.9279,
+   "face_blur": 0.1817,
+   "garble_text": 0.94,
+   "temporal_swap": 0.4295,
+   "pixelate": 0.3892,
+   "ghosting": 0.7345
+  },
+  "overall": 0.6618,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "garble_text: f03-f06 (约1.6s-3.5s)；temporal_swap: f06→f07 (约3.5s-4.1s)",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_036",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text",
+    "temporal_swap"
+   ],
+   "confidence": 0.88,
+   "spans": "garble_text: f03-f06 (约1.6s-3.5s)；temporal_swap: f06→f07 (约3.5s-4.1s)",
+   "notes": "1) garble_text：f03起画面下方突然叠出无意义乱码文字 '+M9pNx_ttDAvrj86vYt@Df / 6B@br<pYaf9b/r6@7HH<nv'，字符随机组合不构成任何可读语句，持续至f06，f07又凭空消失，属文字渲染失败/乱码。2) temporal_swap：f06→f07发生场景硬切断裂——背景由纯橙色天空+裂缝地面的荒漠（f01-f06中左侧红色坡状物体、远景小船）整体替换为带云朵、山石和粉色物体的新场景，地面变为深色木板平台，且f06左下角仅露头的小角色在f07突然完整出现于左侧，前景人物位置与景别也发生跳变，前后运动趋势断裂，属段落错乱/场景切换不连贯。3) 帧对专项核对：f01-f02、f03-f05、f05-f06、f07-f08人物运动连续（迈步、转身、跳跃），无明暗饱和交替闪烁、无画面凝固、无明显拖影或像素化；f04→f05姿态过渡平滑未回跳。综上判定命中乱码文字与时序段落错乱两项。"
+  },
+  "J5": {
+   "clip_id": "golden_036",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_036",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "garble_text",
+    "ghosting"
+   ],
+   "confidence": 0.94,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.121; flicker=0.225; color_shift=0.928; face_blur=0.182; garble_text=0.940; temporal_swap=0.429; pixelate=0.389; ghosting=0.735; overall=0.662"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_036.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_036.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_036.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_036.json"
+ }
+}

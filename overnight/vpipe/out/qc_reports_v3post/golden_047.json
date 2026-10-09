@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_047",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.9221,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['ghosting'], conf=0.65)",
+   "J1(detected=False, types=[], conf=0.8)",
    "J3@0.71 flag=True hits=['color_shift', 'ghosting'] max_channel_P=0.9221",
    "降级: J6"
   ]
@@ -30,16 +30,11 @@
   {
    "type": "ghosting",
    "sources": [
-    "J1",
     "J3",
     "J5"
    ],
    "confidence": 0.9221,
    "evidence": {
-    "J1": {
-     "confidence": 0.65,
-     "notes": "拖影/重影：镜头快速横移跟拍跑者期间，f04-f05 主体出现明显的半透明多层残影——黄色外套后侧拖出大块重影、头部呈双影叠印、后摆腿与鞋可见2-3个重叠虚像，f03 与 f06 也有较轻的运动拖影，该程度超出正常快门运动模糊的连续 smear，呈典型的帧混合式 ghosting；人脸模糊（f04-f05）与上述运动残影同源，不单独立项。其余维度未见缺陷：无定格/闪烁/整体色偏；f02 'NOOD"
-    },
     "J3": {
      "channel_P": 0.9221
     },
@@ -64,9 +59,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -74,7 +80,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03-f06（f04-f05 最重）"
+    "text": "无"
    }
   },
   {
@@ -95,13 +101,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_047",
-   "defect_detected": true,
-   "defect_types": [
-    "ghosting"
-   ],
-   "confidence": 0.65,
-   "spans": "f03-f06（f04-f05 最重）",
-   "notes": "拖影/重影：镜头快速横移跟拍跑者期间，f04-f05 主体出现明显的半透明多层残影——黄色外套后侧拖出大块重影、头部呈双影叠印、后摆腿与鞋可见2-3个重叠虚像，f03 与 f06 也有较轻的运动拖影，该程度超出正常快门运动模糊的连续 smear，呈典型的帧混合式 ghosting；人脸模糊（f04-f05）与上述运动残影同源，不单独立项。其余维度未见缺陷：无定格/闪烁/整体色偏；f02 'NOODLES' 霓虹及中式招牌文字清晰无乱码；无像素块；f01-f08 场景连续无时序跳变；跑者跨帧身份一致（荧光黄外套、黑色短裤、同发型），跑动步态与街道透视连续，未见手部解剖异常、计数异常或物理违例。"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "无",
+   "notes": "逐项核对8帧：f01-f02为镜头自左向右平移（f02左缘仍可见f01中蒸笼摊位的手推车），f03起黄衣跑步者入画并持续向右跑动，f03→f06→f08人物发色、黄色外套、黑色短裤与跑姿连贯一致，无身份漂移；背景沿街店铺、灯笼随跟拍自然推移，未见内容回跳或段落错乱（temporal_swap未命中）。f04-f05及f07-f08存在明显运动模糊与肢体拖痕，但方向一致、与快速横向跟拍的运动逻辑相符，属自然运动模糊而非帧混叠重影（ghosting不判）；各帧亮度、色调稳定，无明暗交替闪烁或整体色偏；f03/f06跑步者面部清晰，未见面部异常模糊；'NOODLES'霓虹字与中文招牌均可辨认为真实文字，无乱码；跑步步态、支撑与背景相对速度合理，未见手部解剖异常、计数错误或物理违例。f07与f08构图相近但跑者手臂、腿部位置及背景灯笼均有可辨变化，排除画面凝固。帧对比对（含f04-f05、f03-f06及各相邻对）未见时序异常。"
   },
   "J5": {
    "clip_id": "golden_047",

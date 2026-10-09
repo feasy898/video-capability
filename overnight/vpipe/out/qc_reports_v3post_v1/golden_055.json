@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_055",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -53,14 +53,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "无",
+    "text": "全片 0.0-6.0s（f01-f08）",
     "source": "J1"
    }
   },
@@ -77,9 +77,9 @@
    "clip_id": "golden_055",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.82,
-   "spans": "无",
-   "notes": "逐帧核对：f01-f03 人物静立直视镜头，属自然姿态而非定格，且后续 f04-f08 有明显动作与表情变化，排除 frame_freeze；全片背景灯串 bokeh 稳定，无明暗交替，排除 flicker/color_shift；人脸各帧均清晰锐利，排除 face_blur；画面无文字，排除 garble_text；场景连续为同一宴会厅，f03→f04 抬手、f05→f06 放手、f07 微笑→f08 恢复平静均为自然过渡，排除 temporal_swap；无马赛克与像素块，排除 pixelate；f04-f05 手部边缘清晰无重影，额侧阴影为抬手投影，符合光照逻辑，排除 ghosting；f04-f05 抬起的手五指自然张开、掌心朝向合理，无多指/融指，排除 hand_anomaly；人物发色、五官、着装跨帧一致，排除 identity_drift；未见计数异常或物理违例。整体判定干净。"
+   "confidence": 0.8,
+   "spans": "全片 0.0-6.0s（f01-f08）",
+   "notes": "逐帧与帧对比对未见明显缺陷：1) f01-f03 人物站立凝视镜头，仅唇部/微表情有细微变化，非画面凝固；2) f04-f05 出现抬手打招呼动作，手部五指张开形态成立、未见多指或融指，手腕/肩部仅有柔和运动模糊，属自然快速运动的摄影表现，非重影拖影；3) f05→f06 手放下、f06→f07 由平静转微笑、f07→f08 恢复平静，表情与姿态变化连续，无段落回跳或场景错乱（temporal_swap 未命中）；4) 各帧整体亮度与色调稳定，无明暗交替闪烁（flicker 未命中），无整体色偏、人脸清晰、无乱码文字、无像素化马赛克；5) 人物发型、妆容、耳钉、黑西装白内搭跨帧一致，无身份漂移。帧对比对未见时序异常。"
   },
   "J5": {
    "clip_id": "golden_055",

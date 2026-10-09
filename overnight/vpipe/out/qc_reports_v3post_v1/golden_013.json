@@ -1,31 +1,18 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_013",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.7,
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
   "decided_by": "E10",
   "reasons": [
-   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
   ]
  },
- "defects": [
-  {
-   "type": "frame_freeze",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.7,
-   "evidence": {
-    "J1": {
-     "notes": "f01-f06 呈现连贯的落座与播报动作：f01 女主播站立持稿，f02 落座整理稿件，f03-f06 口型持续变化、左手有抬起/放下手势，说明画面处于正常播报运动状态，人脸清晰、背景演播室灯光稳定，无色偏、闪烁、像素化、拖影或身份漂移；手部形态（f02 持稿、f03/f04 执笔、f06-f08 左手张开）均未见多指"
-    }
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
    "frame_freeze": 0.303,
@@ -43,14 +30,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f07-f08（约4.2s-4.8s）",
+    "text": "无",
     "source": "J1"
    }
   },
@@ -65,13 +52,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_013",
-   "defect_detected": true,
-   "defect_types": [
-    "frame_freeze"
-   ],
-   "confidence": 0.7,
-   "spans": "f07-f08（约4.2s-4.8s）",
-   "notes": "f01-f06 呈现连贯的落座与播报动作：f01 女主播站立持稿，f02 落座整理稿件，f03-f06 口型持续变化、左手有抬起/放下手势，说明画面处于正常播报运动状态，人脸清晰、背景演播室灯光稳定，无色偏、闪烁、像素化、拖影或身份漂移；手部形态（f02 持稿、f03/f04 执笔、f06-f08 左手张开）均未见多指、融指等解剖异常。但 f07 与 f08 画面几乎完全一致：左手摊开的角度、右手笔的指向、稿件位置、口型与表情均无任何变化。前序帧（f03-f06）显示主播口型在持续变化（说话中），而相邻 0.6s 内画面完全静止、口型毫无变动，不符合自然播报节奏，判定结尾处存在画面定格（frame_freeze），其余 7 项标准缺陷均未发现。"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.85,
+   "spans": "无",
+   "notes": "8帧逐项核对：画面亮度、色调（蓝紫演播室、白西装、蓝衬衫）全程一致，无闪烁与色偏；人脸各帧清晰锐利，无模糊或像素化；桌面文稿仅为远景小字线条，未见明显乱码文字。时序专项：f04→f05 为连续的手部落笔动作（右手执笔抬起→落回纸面），无景别回跳或内容错乱；f03→f06 为闭口微笑→开口播报并抬左手手势，运动趋势连贯；其余相邻帧对（f01-f02 站姿→f02 落座、f02-f03、f05-f06、f06-f07、f07-f08）均为同向连续演进，姿态、手势逐帧自然过渡，无凝固帧（无任意两帧完全一致）、无拖影。手部解剖正常（f07/f08 左手摊掌指节清晰，右手执笔各帧指型成立），无多指/融指；人物身份、发型、项链、耳饰跨帧一致，无身份漂移；坐姿与桌面支撑合理。帧对比对未见时序异常，整体判定为干净视频。"
   },
   "J5": {
    "clip_id": "golden_013",

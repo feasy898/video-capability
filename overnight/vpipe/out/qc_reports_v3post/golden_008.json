@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_008",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.8977,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.85)",
+   "J1(detected=False, types=[], conf=0.9)",
    "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8977"
   ]
  },
@@ -42,9 +42,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -75,9 +86,9 @@
    "clip_id": "golden_008",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.85,
+   "confidence": 0.9,
    "spans": "无",
-   "notes": "逐项核对8类标准缺陷：全片场景一致（青绿背景+木桌+机器人），色彩稳定无偏移，无明显明暗闪烁、像素化、拖影或乱码文字（f01-f08背景与桌面纹理连续）。时序连贯，未见场景切换或段落错乱。机器人并非完全定格：头部倾角与视线在f01-f06间有细微变化，f07-f08持工具的手臂位置明显下移，说明存在连续微小动画，不构成frame_freeze。语义维度：机器人外观（配色、造型、笑脸）跨帧一致，无identity_drift；双手握持黄色工具形态正常，未见多指/融指等hand_anomaly；桌面两颗螺丝数量合理，桌腿四条对称，无count_error；机器人双脚落地、螺丝立于桌面，无悬浮穿模等physics_error。综合判定画面干净。"
+   "notes": "逐帧核对8帧：画面为同一3D机器人场景，青绿色背景、木桌、两颗螺丝及桌面黑色物件在f01-f08中位置、数量、颜色均保持一致，无color_shift、garble_text、pixelate、ghosting或face_blur表现。时序专项比对：f04→f05与f03→f06中机器人头部倾斜角度、手臂持黄色工具姿态连续渐变，无内容回跳或段落错乱；相邻帧对f01-f02（手臂抬起）、f02-f03、f05-f06、f06-f07、f07-f08均为平滑姿态过渡，亮度饱和度稳定，未见明暗交替闪烁；各帧间均有可辨识的姿态差异（头部摆动、眼部变化），不存在动-停-动断裂，frame_freeze不成立。机器人手部握持工具形态自然，未见多指/融指；两颗螺丝立置桌面为动画剧情合理设定，无物理违例；主体外观跨帧一致，无identity_drift。帧对比对未见时序异常，整体判定干净。"
   },
   "J5": {
    "clip_id": "golden_008",

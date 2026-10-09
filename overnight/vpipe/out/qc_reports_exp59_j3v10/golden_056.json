@@ -1,0 +1,128 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_056",
+ "generated_at": "2026-10-09T14:33:26",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.72,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.72)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.8089",
+   "J3 frame_freeze 低运动平台豁免弃权（声明制）: profile=avatar_talk in_med=0.4067<2.0, 通道P=0.8089>=0.71 未计入 hits（证据见 errors.J3_frame_freeze_exempt）",
+   "降级: J3_frame_freeze_exempt; J6"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8089,
+   "flicker": 0.2323,
+   "color_shift": 0.4079,
+   "face_blur": 0.2188,
+   "garble_text": 0.0365,
+   "temporal_swap": 0.2806,
+   "pixelate": 0.106,
+   "ghosting": 0.3886
+  },
+  "overall": 0.4998,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": true
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_056",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.72,
+   "spans": "",
+   "notes": "逐项核对：画面为固定机位的正面人物特写，8 帧中人物姿态、发型、耳饰、西装纹理及背景吊灯光斑位置均保持一致，未见明暗/内容快速交替（无 flicker）、无整体色偏（无 color_shift）；f01-f04 与 f06-f08 人脸均清晰锐利，无模糊、像素块或马赛克（无 face_blur/pixelate）；画面无文字，不涉及 garble_text；帧间内容连续，无场景切换或时序错乱（无 temporal_swap），运动区域无重影拖尾（无 ghosting）。f05 出现闭眼、f06 恢复睁眼，是一次自然的眨眼过程，闭眼形态完整、无残影，说明画面仍在正常播放，未构成数秒完全定格的 frame_freeze；人物身份、五官、服装跨帧完全一致，无 identity_drift；无手部出现、无对象计数与物理违例可查。整段视频仅以静态持姿配合单次眨眼，虽动态极少但属合理的正式场合人物静态镜头，未见可报缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_056",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_056",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8089,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.809 flicker=0.232 color_shift=0.408 face_blur=0.219 garble_text=0.036 temporal_swap=0.281 pixelate=0.106 ghosting=0.389; overall=0.500; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_056.mp4",
+  "frames_dir": "frames/golden_056/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_056.json",
+   "J5": "../数据/judges/videochat3/golden_056.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_056.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_056.qc.json')",
+  "J3_frame_freeze_exempt": {
+   "abstained": true,
+   "channel": "frame_freeze",
+   "channel_P": 0.8089,
+   "eff_thr": 0.71,
+   "in_med": 0.4067,
+   "in_med_max": 2.0,
+   "profile": "avatar_talk",
+   "would_flag_without_exempt": true,
+   "verdict_changed": true,
+   "note": "frame_freeze 通道候选弃权（低运动平台豁免，声明制）；其余通道与 overall 不受影响"
+  }
+ },
+ "qc_context": {
+  "profile": "avatar_talk"
+ }
+}

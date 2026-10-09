@@ -1,0 +1,185 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_029",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.7,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.7)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.6868",
+   "J6 信号(仅信号不否决): garble_text@0.72"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.7177,
+   "span": {
+    "start_s": 0.323,
+    "end_s": 2.906
+   },
+   "evidence": {
+    "J6": {
+     "kind": "conf_drop",
+     "drop": 0.359,
+     "frames": [
+      0,
+      4
+     ],
+     "mean_scores": [
+      0.296,
+      0.655
+     ]
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.6617,
+   "flicker": 0.5279,
+   "color_shift": 0.5923,
+   "face_blur": 0.6868,
+   "garble_text": 0.0457,
+   "temporal_swap": 0.2902,
+   "pixelate": 0.1968,
+   "ghosting": 0.3649
+  },
+  "overall": 0.535,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.323,
+   "end_s": 2.906,
+   "evidence": {
+    "kind": "conf_drop",
+    "drop": 0.359,
+    "frames": [
+     0,
+     4
+    ],
+    "mean_scores": [
+     0.296,
+     0.655
+    ]
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_029",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.7,
+   "spans": "",
+   "notes": "全片为双手十指交扣的暗调特写。f01-f08 姿态连续：手指缓慢收拢、镜头缓推，帧间均有位移，无定格（f01 与 f02、f07 与 f08 对比可见明显指节移动）。可见指头含顶部 2 根拇指共约 8-9 根，未超过两只手 10 指的常识总数；横向指列的指尖朝向左右交替（如 f01 上排指甲在右、下排指甲在左），符合交扣/互握姿势的侧视结构，无法确证多指或融指。指甲与指节皱纹位置跨帧连续（f01 右端指甲在 f02-f08 中位置一致），无身份漂移、无时序跳变。画面亮度与暖色调稳定，无闪烁、无色偏、无文字、无像素块、无拖影；双手支撑于桌面，运动合理无穿模。皮肤质感偏超写实、手指略显修长，但属风格化表现，依据现有 8 帧证据不构成可确证的解剖或物理违例，判为干净。"
+  },
+  "J5": {
+   "clip_id": "golden_029",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_029",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "flicker",
+    "color_shift",
+    "face_blur"
+   ],
+   "confidence": 0.6868,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.662 flicker=0.528 color_shift=0.592 face_blur=0.687 garble_text=0.046 temporal_swap=0.290 pixelate=0.197 ghosting=0.365; overall=0.535; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_029",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.7177,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.323,
+     "end_s": 2.906,
+     "evidence": {
+      "kind": "conf_drop",
+      "drop": 0.359,
+      "frames": [
+       0,
+       4
+      ],
+      "mean_scores": [
+       0.296,
+       0.655
+      ]
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_029.mp4",
+  "frames_dir": "frames/golden_029/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_029.json",
+   "J5": "../数据/judges/videochat3/golden_029.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_029.qc.json"
+  }
+ },
+ "errors": {}
+}

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_032",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.93,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.8)",
+   "J1(detected=False, types=[], conf=0.75)",
    "J3@0.71 flag=True hits=['color_shift', 'ghosting'] max_channel_P=0.93",
    "J6 信号(仅信号不否决): color_shift@1.00, face_blur@0.58, garble_text@1.00, identity_drift@1.00"
   ]
@@ -123,9 +123,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -177,7 +188,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": ""
+    "text": "全片段 f01-f08"
    }
   },
   {
@@ -200,9 +211,9 @@
    "clip_id": "golden_032",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.8,
-   "spans": "",
-   "notes": "8帧整体连贯：f01-f02为街景过场，f03-f08为荧光黄外套男子沿夜市跑动，镜头横向跟随，背景（NOODLES霓虹灯、红灯笼、小吃摊、蒸笼推车）随跑动连续滚动，无时序跳变或场景切换。主体跨帧外观一致（同款黄夹克、黑短裤、发型面部不变，f03-f07），无身份漂移。人脸区域清晰（f03、f05面部细节可辨），仅背景行人有运动模糊，属横向跟拍产生的单方向模糊，非重影/残影式ghosting。文字均正常：NOODLES拼写正确（f02-f03），f05招牌为'寿庆东炭火…'等真实汉字，无乱码。跑动步态、支撑、肢体比例合理（f04-f06腿部姿态连贯），未见手部解剖异常、悬浮或穿模。光照色调一致，无定格、闪烁、色偏、像素化。判定为干净样本。"
+   "confidence": 0.75,
+   "spans": "全片段 f01-f08",
+   "notes": "帧对比对未见时序异常：f04→f05 跑者姿态、步幅连续，背景店铺招牌随镜头右移依次左移（f03 NOODLES→f04 灯笼排→f05 中文横匾），无内容回跳；f03→f06 跟拍连续，主体（荧光黄外套、黑短裤、发型）外观一致，无身份漂移。相邻帧对 f01-f02（平移扫过摊位）、f02-f03（跑者入画）、f05-f06、f06-f07、f07-f08（前景行人穿过遮挡）均连贯。无亮度/饱和度正负交替闪烁（f02-f03、f04-f05 整体影调一致），无画面凝固，各帧均有可辨运动。霓虹字 'NOODLES'（f02-f03）拼写正确；中文招牌因景深/动态模糊仅部分可辨，未见明确乱码证据。前景行人（f01、f02、f07、f08）与跑者腿部（f03、f06）存在方向性运动模糊，属慢门跟拍的整段一致风格化处理，非残影重影；人脸区域（f03-f06 跑者面部）清晰，无异常模糊、像素块或手部解剖异常。综合判定为干净片段。"
   },
   "J5": {
    "clip_id": "golden_032",

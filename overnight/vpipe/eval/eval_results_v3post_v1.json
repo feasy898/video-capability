@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_dir": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post_v1",
  "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
  "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",
- "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981",
+ "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb",
  "ensemble_recommended": "E10",
  "measured_baseline_报告E10": {
   "tp": 16,
@@ -33,14 +33,14 @@
   "n_reports": 59
  },
  "main": {
-  "tp": 25,
-  "fn": 3,
-  "fp": 8,
-  "tn": 9,
-  "recall": 0.8929,
-  "fpr": 0.4706,
-  "precision": 0.7576,
-  "f1": 0.8197
+  "tp": 26,
+  "fn": 2,
+  "fp": 7,
+  "tn": 10,
+  "recall": 0.9286,
+  "fpr": 0.4118,
+  "precision": 0.7879,
+  "f1": 0.8525
  },
  "per_type": {
   "frame_freeze": {
@@ -52,7 +52,7 @@
   "flicker": {
    "n": 5,
    "recall_clip": 0.8,
-   "recall_type": 0.6,
+   "recall_type": 0.4,
    "missed": [
     "golden_052"
    ]
@@ -77,10 +77,9 @@
   },
   "temporal_swap": {
    "n": 5,
-   "recall_clip": 0.6,
-   "recall_type": 0.0,
+   "recall_clip": 0.8,
+   "recall_type": 0.4,
    "missed": [
-    "golden_045",
     "golden_046"
    ]
   },
@@ -100,19 +99,16 @@
  "B": {
   "n": 14,
   "flag_rate": 0.6429,
-  "intent_strict": 0.2143,
-  "intent_lenient": 0.2143,
+  "intent_strict": 0.1429,
+  "intent_lenient": 0.1429,
   "rows": [
    {
     "clip_id": "golden_005",
     "expected": "text_render_garble",
-    "detected": true,
-    "types": [
-     "flicker",
-     "garble_text"
-    ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "detected": false,
+    "types": [],
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_007",
@@ -153,11 +149,10 @@
     "expected": "hand_anatomy_distortion",
     "detected": true,
     "types": [
-     "ghosting",
-     "hand_anomaly"
+     "ghosting"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    },
    {
     "clip_id": "golden_029",
@@ -180,10 +175,12 @@
    {
     "clip_id": "golden_033",
     "expected": "hand_anatomy_distortion",
-    "detected": false,
-    "types": [],
-    "strict_hit": false,
-    "lenient_hit": false
+    "detected": true,
+    "types": [
+     "hand_anomaly"
+    ],
+    "strict_hit": true,
+    "lenient_hit": true
    },
    {
     "clip_id": "golden_035",
@@ -221,8 +218,7 @@
     "expected": "lip_sync_desync",
     "detected": true,
     "types": [
-     "frame_freeze",
-     "ghosting"
+     "frame_freeze"
     ],
     "strict_hit": false,
     "lenient_hit": false
@@ -241,7 +237,6 @@
  },
  "fp_clips": [
   "golden_010",
-  "golden_013",
   "golden_032",
   "golden_055",
   "golden_056",
@@ -250,7 +245,6 @@
   "golden_059"
  ],
  "fn_clips": [
-  "golden_045",
   "golden_046",
   "golden_052"
  ],
@@ -275,7 +269,7 @@
   "golden_042": "manual_review",
   "golden_043": "manual_review",
   "golden_044": "manual_review",
-  "golden_045": "pass",
+  "golden_045": "manual_review",
   "golden_046": "pass",
   "golden_047": "auto_reject",
   "golden_048": "auto_reject",
@@ -287,7 +281,7 @@
   "golden_006": "pass",
   "golden_009": "pass",
   "golden_010": "manual_review",
-  "golden_013": "manual_review",
+  "golden_013": "pass",
   "golden_024": "pass",
   "golden_025": "pass",
   "golden_026": "pass",
@@ -304,18 +298,18 @@
  "checks": [
   {
    "name": "recall_min",
-   "passed": false,
-   "detail": "recall 0.8929 vs ≥0.9"
+   "passed": true,
+   "detail": "recall 0.9286 vs ≥0.9"
   },
   {
    "name": "fpr_max",
    "passed": false,
-   "detail": "FPR 0.4706 vs ≤0.3"
+   "detail": "FPR 0.4118 vs ≤0.3"
   },
   {
    "name": "f1_min",
-   "passed": false,
-   "detail": "F1 0.8197 vs ≥0.85"
+   "passed": true,
+   "detail": "F1 0.8525 vs ≥0.85"
   },
   {
    "name": "b_flag_min",

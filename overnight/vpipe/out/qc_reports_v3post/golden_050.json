@@ -1,15 +1,15 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_050",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.65,
+  "confidence": 0.8,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['flicker'], conf=0.65)",
+   "J1(detected=True, types=['flicker'], conf=0.8)",
    "J3@0.71 flag=False hits=[] max_channel_P=0.6734",
    "降级: J6"
   ]
@@ -20,11 +20,11 @@
    "sources": [
     "J1"
    ],
-   "confidence": 0.65,
+   "confidence": 0.8,
    "evidence": {
     "J1": {
-     "confidence": 0.65,
-     "notes": "主体与场景连续性良好：同一红裙女性全程面向镜头奔跑，面部各帧清晰一致（f01-f08），无身份漂移；双手捏裙摆姿态自然、手指形态正常（f05-f07 清晰可见）；腿部步态与水面倒影、溅水涟漪（f05-f06）物理上合理；背景街道、车辆、蓝色路牌连续无跳变，未见定格、拖影、像素化或乱码文字。唯一异常是画面整体明暗/饱和度不稳：f01-f04 整体偏暗、裙色暗红，f05 突然变亮且红色明显更鲜艳，f0"
+     "confidence": 0.8,
+     "notes": "逐帧比对可见全片整体亮度呈明暗交替振荡而非单向渐变：f01-f02 画面明亮（天空浅灰、楼宇与街面细节清晰），f03-f04 整体明显变暗（天空发灰、街景整体变暗），f04→f05 亮度又突然回升到明亮水平，f05-f06 保持明亮，f06→f08 再次逐步转暗，呈「亮-暗-亮-暗」往复，符合明暗交替闪烁特征。其余项目核查：人物由远及近推进连贯，f04→f05 与 f03→f06 构图与跑步姿态均"
     }
    }
   }
@@ -44,9 +44,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -54,7 +65,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f04-f05（明显暗→亮跳变），f07-f08（亮度回落）"
+    "text": "f02-f05 及 f06-f08（全片亮度振荡段）"
    }
   },
   {
@@ -79,9 +90,9 @@
    "defect_types": [
     "flicker"
    ],
-   "confidence": 0.65,
-   "spans": "f04-f05（明显暗→亮跳变），f07-f08（亮度回落）",
-   "notes": "主体与场景连续性良好：同一红裙女性全程面向镜头奔跑，面部各帧清晰一致（f01-f08），无身份漂移；双手捏裙摆姿态自然、手指形态正常（f05-f07 清晰可见）；腿部步态与水面倒影、溅水涟漪（f05-f06）物理上合理；背景街道、车辆、蓝色路牌连续无跳变，未见定格、拖影、像素化或乱码文字。唯一异常是画面整体明暗/饱和度不稳：f01-f04 整体偏暗、裙色暗红，f05 突然变亮且红色明显更鲜艳，f06-f07 保持高亮，f08 又略有回落变暗，呈现帧间曝光/色调跳变（f04→f05 最明显），判定为 flicker（明暗闪烁）。因仅依据 8 帧静态证据且变化为阶段性而非高频交替，置信度中等。"
+   "confidence": 0.8,
+   "spans": "f02-f05 及 f06-f08（全片亮度振荡段）",
+   "notes": "逐帧比对可见全片整体亮度呈明暗交替振荡而非单向渐变：f01-f02 画面明亮（天空浅灰、楼宇与街面细节清晰），f03-f04 整体明显变暗（天空发灰、街景整体变暗），f04→f05 亮度又突然回升到明亮水平，f05-f06 保持明亮，f06→f08 再次逐步转暗，呈「亮-暗-亮-暗」往复，符合明暗交替闪烁特征。其余项目核查：人物由远及近推进连贯，f04→f05 与 f03→f06 构图与跑步姿态均连续，无内容回跳（未见 temporal_swap）；无任何两帧完全一致（无 frame_freeze）；人脸各帧清晰（无 face_blur）；红裙颜色稳定（无 color_shift）；双手握裙姿态自然，未见多指/融指（无 hand_anomaly）；水面倒影与跑动水花物理合理（无 physics_error）；无像素化、无拖影；背景招牌文字小且景深虚化，无法辨识为乱码。最终仅命中 flicker。"
   },
   "J5": {
    "clip_id": "golden_050",

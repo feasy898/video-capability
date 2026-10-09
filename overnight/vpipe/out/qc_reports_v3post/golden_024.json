@@ -1,15 +1,15 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_024",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
   "decision": "pass",
-  "confidence": 0.88,
+  "confidence": 0.93,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.88)",
+   "J1(detected=False, types=[], conf=0.93)",
    "J3@0.71 flag=False hits=[] max_channel_P=0.5445"
   ]
  },
@@ -29,9 +29,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -62,9 +73,9 @@
    "clip_id": "golden_024",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.88,
+   "confidence": 0.93,
    "spans": "无",
-   "notes": "8帧均为水壶向玻璃杯倒水的连续画面：水位自f01至f08单调平稳上升，水流轨迹、气泡与泡沫形态逐帧自然演变（f02-f06泡沫增多、f07-f08水位渐高），无明显定格或时序跳变；整体灰白影调和光照各帧一致，无闪烁或色偏；画面无文字、无人脸；水流与杯壁边缘清晰锐利，未见像素块或运动残影（f01杯内流水的多重线条可由玻璃折射解释）；场景仅一杯一壶，计数正常，倒水物理过程合理，未见悬浮或穿模。判定为干净片段。"
+   "notes": "8 帧呈现连续自然的倒水过程：水位自 f01 起单调上升至 f08，水柱随壶身逐渐倾斜而角度平滑增大（f01 居中偏左→f08 明显右倾），符合物理规律；水面泡沫与气泡逐帧累积、形态各异，无静止嫌疑。专项帧对检查：f04→f05 水位微升、泡沫形态连续演变，无回跳；f03→f06 水位与泡沫沿同一趋势推进，无段落互换；其余相邻对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）运动均连贯平滑。全程灰白背景与光照一致，无明暗/饱和交替闪烁，无色偏、像素化、拖影、乱码文字或人脸；画面无手部出现，倒水与气泡行为符合物理常识，未发现 8 类标准缺陷及语义类缺陷。帧对比对未见时序异常。"
   },
   "J5": {
    "clip_id": "golden_024",

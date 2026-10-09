@@ -1,12 +1,12 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_017",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.7315,
+  "confidence": 0.75,
   "decided_by": "E10",
   "reasons": [
    "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.732）"
@@ -16,10 +16,14 @@
   {
    "type": "frame_freeze",
    "sources": [
+    "J1",
     "J3"
    ],
-   "confidence": 0.7315,
+   "confidence": 0.75,
    "evidence": {
+    "J1": {
+     "notes": "1) frame_freeze：f03 与 f04 画面几乎完全一致——云朵位置与形态、海面白色浪花纹理、岛屿与车辆位置、天空中弧形穹顶边缘均无可辨变化，而时间戳推进约0.9s，且前后帧均在变化（f02→f03 云层有移动，f04→f05 天空剧变），构成『动-停-动』断裂。2) other：f02-f04 岛屿上方天"
+    },
     "J3": {
      "channel_probs": {
       "frame_freeze": 0.7315,
@@ -32,6 +36,18 @@
       "ghosting": 0.5066
      },
      "overall": 0.5818
+    }
+   }
+  },
+  {
+   "type": "other",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.75,
+   "evidence": {
+    "J1": {
+     "notes": "1) frame_freeze：f03 与 f04 画面几乎完全一致——云朵位置与形态、海面白色浪花纹理、岛屿与车辆位置、天空中弧形穹顶边缘均无可辨变化，而时间戳推进约0.9s，且前后帧均在变化（f02→f03 云层有移动，f04→f05 天空剧变），构成『动-停-动』断裂。2) other：f02-f04 岛屿上方天"
     }
    }
   }
@@ -53,14 +69,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08",
+    "text": "f03-f04（约2.2s-3.1s）画面凝固；f01-f04 出现穹顶状合成边缘，f05 起突然消失",
     "source": "J1"
    }
   },
@@ -75,11 +91,14 @@
  "judges": {
   "J1": {
    "clip_id": "golden_017",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.8,
-   "spans": "全片 f01-f08",
-   "notes": "逐项核对8帧：主体一致性良好，岛屿、白色房车及车辆从f01到f08外观与相对位置保持连续，无身份漂移、无段落错乱（f01→f02背景由平直海平线过渡为圆形环礁/鱼眼式'小行星'背景，属镜头后拉的风格化呈现，岛屿与车辆位置连续，非场景切换）；f02-f04三帧内容高度相近，判为镜头静止hold而非定格缺陷，f05起镜头继续推进/环绕，运动恢复自然，不构成'数秒不动'的frame_freeze实锤；f05右上角亮条纹为云层/镜头光晕的运动模糊痕迹，非拖影或鬼影；画面无乱码文字、无人脸区域、无马赛克像素块、无整体色偏（全片保持一致的蓝色调）；语义层面车辆停靠在岛屿顶部、支撑合理，无悬浮穿模，数量（1房车+2车）无异常。综合判定该片段干净，未命中8类标准缺陷及语义缺陷。"
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "other"
+   ],
+   "confidence": 0.75,
+   "spans": "f03-f04（约2.2s-3.1s）画面凝固；f01-f04 出现穹顶状合成边缘，f05 起突然消失",
+   "notes": "1) frame_freeze：f03 与 f04 画面几乎完全一致——云朵位置与形态、海面白色浪花纹理、岛屿与车辆位置、天空中弧形穹顶边缘均无可辨变化，而时间戳推进约0.9s，且前后帧均在变化（f02→f03 云层有移动，f04→f05 天空剧变），构成『动-停-动』断裂。2) other：f02-f04 岛屿上方天空出现一道明显的弧形半透明边界，形似巨大玻璃穹顶/合成气泡接缝（f01 较淡），属明显合成伪影；该穹顶在 f04→f05 之间突然完全消失，天空云量与亮度同步剧变，时序上存在不连贯跳变。语义层面（孤岛顶上停泊卡车/房车、岛周规则圆形波纹）更像刻意创意设定，不计为物理违例。帧对比对其余相邻帧对（f01-f02、f05-f06、f06-f07、f07-f08）云层与浪花呈连续演化，未见回跳、交替闪烁或拖影。"
   },
   "J5": {
    "clip_id": "golden_017",

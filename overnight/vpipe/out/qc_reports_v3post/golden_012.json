@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_012",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.9436,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['pixelate'], conf=0.92)",
+   "J1(detected=True, types=['pixelate'], conf=0.95)",
    "J3@0.71 flag=True hits=['pixelate'] max_channel_P=0.9436",
    "J6 信号(仅信号不否决): garble_text@0.78"
   ]
@@ -39,11 +39,11 @@
     "J3",
     "J5"
    ],
-   "confidence": 0.9436,
+   "confidence": 0.95,
    "evidence": {
     "J1": {
-     "confidence": 0.92,
-     "notes": "f01-f02画面清晰：圆形玻璃杯盛水置于木桌，f02手握筷子从上方进入。自f03起，杯体上半部（筷子与杯口/水面接触区域）出现明显马赛克像素块，画面局部被粗大像素颗粒覆盖，f04-f06该像素化区域持续存在（f05筷子已抽出上方，杯口处马赛克仍未消除），至f07-f06之后f07、f08像素块消失、画面恢复清晰。该缺陷为局部像素化而非闪烁或整体色偏，f01/f02与f07/f08同区域均清晰可证"
+     "confidence": 0.95,
+     "notes": "f01-f02画面干净：圆玻璃杯盛水置于木桌上，筷子从上方进入画面，属正常动作。自f03起杯子水面以上区域突然被明显马赛克像素块覆盖，f03-f04（筷子插入水中）、f05（筷子上提）、f06（筷子移出）该像素化区域持续存在且位置固定，f07恢复清晰。f04→f05筷子向上提出、f03→f06由插入到移出，运动趋势连贯，未见段落回跳（无temporal_swap）；各帧对间无明暗/饱和度正负交替（"
     },
     "J3": {
      "channel_P": 0.9436
@@ -69,9 +69,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -88,7 +99,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03-f06（约1.6s-3.5s），杯体上半部区域"
+    "text": "f03-f06（约1.6s-3.5s），杯体上半部水面以上区域"
    }
   },
   {
@@ -113,9 +124,9 @@
    "defect_types": [
     "pixelate"
    ],
-   "confidence": 0.92,
-   "spans": "f03-f06（约1.6s-3.5s），杯体上半部区域",
-   "notes": "f01-f02画面清晰：圆形玻璃杯盛水置于木桌，f02手握筷子从上方进入。自f03起，杯体上半部（筷子与杯口/水面接触区域）出现明显马赛克像素块，画面局部被粗大像素颗粒覆盖，f04-f06该像素化区域持续存在（f05筷子已抽出上方，杯口处马赛克仍未消除），至f07-f06之后f07、f08像素块消失、画面恢复清晰。该缺陷为局部像素化而非闪烁或整体色偏，f01/f02与f07/f08同区域均清晰可证。手部形态（f03-f04持筷手指）未见明显多指/融指异常，画面无文字、无定格、无场景跳变，其余维度未命中。"
+   "confidence": 0.95,
+   "spans": "f03-f06（约1.6s-3.5s），杯体上半部水面以上区域",
+   "notes": "f01-f02画面干净：圆玻璃杯盛水置于木桌上，筷子从上方进入画面，属正常动作。自f03起杯子水面以上区域突然被明显马赛克像素块覆盖，f03-f04（筷子插入水中）、f05（筷子上提）、f06（筷子移出）该像素化区域持续存在且位置固定，f07恢复清晰。f04→f05筷子向上提出、f03→f06由插入到移出，运动趋势连贯，未见段落回跳（无temporal_swap）；各帧对间无明暗/饱和度正负交替（无flicker）；f03-f06期间筷子持续运动，f07-f08杯内气泡与高光有细微差异，未见画面凝固（无frame_freeze）。手部握筷姿态f03-f04基本正常，无解剖异常；筷子入水出水符合物理常识。核心缺陷为f03-f06杯体上半部的局部像素化（pixelate）。"
   },
   "J5": {
    "clip_id": "golden_012",

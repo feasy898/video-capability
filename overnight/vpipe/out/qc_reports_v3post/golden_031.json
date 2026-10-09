@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_031",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.714,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.75)",
+   "J1(detected=False, types=[], conf=0.88)",
    "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.714"
   ]
  },
@@ -42,9 +42,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -75,9 +86,9 @@
    "clip_id": "golden_031",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.75,
+   "confidence": 0.88,
    "spans": "无",
-   "notes": "8帧均为同一场景：金属托盘内整齐码放的蓝色方块（f01-f08）。逐项核对：各帧整体亮度、蓝色调一致，无明暗交替闪烁（f01-f08对比）；无色偏；无人脸；无乱码文字，底排方块上缘的小深色印记（f01底部约x300-510处）在各帧位置形态稳定，为方块本身印刷标记而非乱码；无像素化与拖影。f01-f08画面高度相似但非完全定格：中部横向细线（切割线/缝隙）的可见度在f04-f08间有渐变（f05起中线变淡、f07-f08中部线状痕迹减弱），右侧竖向堆叠块的接缝可见度亦有小幅变化，说明场景存在细微连续运动而非数秒定格。方块排列有序、支撑合理，无悬浮穿模，数量排布符合托盘码放常识，无计数异常。综合判定为干净视频。"
+   "notes": "8帧均为同一场景：托盘内整齐码放的蓝色方块，镜头呈连续平滑的推近运动。帧对比对：f04→f05（相邻中点对）取景略紧、构图一致推进，无内容回跳；f03→f06（跨段对）取景持续收紧，运动趋势连贯，无段落互换；其余相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）均呈现渐进式推近，画面内容、光照与蓝色饱和度保持一致，未见明暗交替闪烁；每相邻帧间均有可辨的取景变化，无画面凝固。语义层面：方块堆叠方式符合真实装箱/海绵池场景，支撑关系合理；底部方块上的小徽标在各帧中形态一致，非乱码文字；画面无手部、人脸、像素化或拖影。综合判定视频干净，未发现8类标准缺陷及语义维度异常。"
   },
   "J5": {
    "clip_id": "golden_031",

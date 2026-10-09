@@ -1,0 +1,116 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_004",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.837,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[color_shift] 最大P=0.837）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.837,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.4746,
+      "flicker": 0.601,
+      "color_shift": 0.837,
+      "face_blur": 0.0403,
+      "garble_text": 0.0357,
+      "temporal_swap": 0.3366,
+      "pixelate": 0.505,
+      "ghosting": 0.4416
+     },
+     "overall": 0.533
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4746,
+   "flicker": 0.601,
+   "color_shift": 0.837,
+   "face_blur": 0.0403,
+   "garble_text": 0.0357,
+   "temporal_swap": 0.3366,
+   "pixelate": 0.505,
+   "ghosting": 0.4416
+  },
+  "overall": 0.533,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_004",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.75,
+   "spans": "无",
+   "notes": "逐对核对相邻帧（f01-f02、f02-f03、f04-f05、f05-f06、f06-f07、f07-f08）及跨段对（f03-f06）：1) f02 白鸽头部、f06 深色鸽周围出现模糊，为真实快速运动（甩头、扇翅）导致的运动模糊，非拖影重影；f05→f06→f07 有一只白鸽经扇翅模糊（f06）自然落至深色鸽身后并收翅静止（f07-f08），事件过渡连贯，非对象无中生有式计数异常，亦非段落回跳。2) 全程曝光与色调稳定，未见亮度/饱和度正负交替闪烁。3) f07 与 f08 构图相近，但属鸟只站立静止的自然停顿，且 f06 存在明显运动、结尾静态与前段变化连续，不构成「动-停-动」断裂的定格。4) 未见整体色偏、乱码文字、像素化马赛克、人脸异常；两只主鸟羽色与姿态跨帧一致，无身份漂移。帧对比对未见时序异常，判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_004",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_004",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift"
+   ],
+   "confidence": 0.837,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.475; flicker=0.601; color_shift=0.837; face_blur=0.040; garble_text=0.036; temporal_swap=0.337; pixelate=0.505; ghosting=0.442; overall=0.533"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_004.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_004.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_004.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_004.json"
+ }
+}

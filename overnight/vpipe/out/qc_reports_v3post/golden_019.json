@@ -1,15 +1,15 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_019",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
   "decision": "pass",
-  "confidence": 0.72,
+  "confidence": 0.82,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.72)",
+   "J1(detected=False, types=[], conf=0.82)",
    "J3@0.71 flag=False hits=[] max_channel_P=0.674"
   ]
  },
@@ -29,9 +29,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -39,7 +50,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": ""
+    "text": "全片段 f01-f08"
    }
   },
   {
@@ -62,9 +73,9 @@
    "clip_id": "golden_019",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.72,
-   "spans": "",
-   "notes": "逐项核查未见明显缺陷。手部：f01-f02 仅单根手指按压红色骨牌，指甲与指形自然，无多指/融指。物理与时序：f02 红牌被推动起倒，f03 呈阶梯式依次倚靠的连锁倒塌（红→蓝→绿→黄，底边原地旋转、无悬浮穿模），f04-f06 倒塌前沿沿队列向右单调推进，f06 末端绿牌前倾、f07 已倒平，传播方向与速度连续合理。f07 与 f08 画面相近为骨牌倒完后自然静止收尾（间隔仅0.6s，非数秒定格）。对象一致性：f01/f02 可见队列红-蓝-绿-黄-绿(-蓝)与 f03 中红-蓝-绿-黄已倒、绿-蓝-红站立相衔接，颜色序列跨帧基本连续，未见同一骨牌颜色/数量突变（f04-f06 阴影中深色块存在绿/蓝判读歧义，但不构成明确突变证据）。画面左侧白色顶面为顶部强光下骨牌顶面过曝所致，非新增异物。无闪烁、色偏、像素化、拖影、乱码文字或人脸异常。综合判定干净。"
+   "confidence": 0.82,
+   "spans": "全片段 f01-f08",
+   "notes": "逐项核对未见明显缺陷。f01-f02 中拇指推到第一块红色骨牌，手部形态正常（单拇指、指甲自然），无多指/融指；f02-f08 骨牌链式倒下过程连续，镜头沿队列跟随波浪推进，f03→f04→f05 中倒下/站立的骨牌依次更替、右侧不断有新牌进入画面，属正常跟拍运镜而非内容回跳；f05→f06 末尾绿色骨牌被撞后小幅弹起、f06→f07 落平，符合多米诺物理行为。f04 与 f05、f03 与 f06 专项比对：构图与运动趋势均单向连续，无段落互换；各帧亮度饱和度稳定，无明暗交替闪烁；任意相邻帧均有可辨变化，无画面凝固；无色偏、无人脸、无文字、无像素化、无明显拖影。计数与支撑关系合理。帧对比对未见时序异常。"
   },
   "J5": {
    "clip_id": "golden_019",

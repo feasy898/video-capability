@@ -1,0 +1,247 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_018",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9654,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['color_shift', 'identity_drift'], conf=0.92)",
+   "J3@0.71 flag=True hits=['frame_freeze', 'flicker', 'color_shift', 'temporal_swap'] max_channel_P=0.9654",
+   "J6 信号(仅信号不否决): color_shift@1.00, temporal_swap@0.75"
+  ]
+ },
+ "defects": [
+  {
+   "type": "color_shift",
+   "sources": [
+    "J1",
+    "J3",
+    "J6"
+   ],
+   "confidence": 1.0,
+   "span": {
+    "start_s": 0.949,
+    "end_s": 1.582
+   },
+   "evidence": {
+    "J1": {
+     "confidence": 0.92,
+     "notes": "f01-f02 为米色蛋与米色长毛地毯的暖色调画面；f03 起整个场景（背景、地毯、蛋）突变为青绿色调，持续至 f06，f07 又瞬间恢复暖米色，属整体颜色异常偏移（color_shift）。同时主体形态发生漂移：f01-f04 为明显卵形蛋，f05 起轮廓逐渐变圆，f06 已接近正球体，f07-f08 回到暖色后仍是球形而非蛋形，主体跨帧外观突变（identity_drift）。两次颜色切换均为"
+    },
+    "J3": {
+     "channel_P": 0.9654
+    },
+    "J6": {
+     "pair": 1,
+     "hue_delta_deg": 128.5
+    }
+   }
+  },
+  {
+   "type": "flicker",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8519,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8519
+    }
+   }
+  },
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7394,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.7394
+    }
+   }
+  },
+  {
+   "type": "identity_drift",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.92,
+   "evidence": {
+    "J1": {
+     "confidence": 0.92,
+     "notes": "f01-f02 为米色蛋与米色长毛地毯的暖色调画面；f03 起整个场景（背景、地毯、蛋）突变为青绿色调，持续至 f06，f07 又瞬间恢复暖米色，属整体颜色异常偏移（color_shift）。同时主体形态发生漂移：f01-f04 为明显卵形蛋，f05 起轮廓逐渐变圆，f06 已接近正球体，f07-f08 回到暖色后仍是球形而非蛋形，主体跨帧外观突变（identity_drift）。两次颜色切换均为"
+    }
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J3",
+    "J6"
+   ],
+   "confidence": 0.8147,
+   "span": {
+    "start_s": 1.062,
+    "end_s": 2.062
+   },
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8147
+    },
+    "J6": {
+     "cut_s": 1.562
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.7394,
+   "flicker": 0.8519,
+   "color_shift": 0.9654,
+   "face_blur": 0.0171,
+   "garble_text": 0.0229,
+   "temporal_swap": 0.8147,
+   "pixelate": 0.1161,
+   "ghosting": 0.3004
+  },
+  "overall": 0.6822,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "color_shift",
+   "start_s": 0.949,
+   "end_s": 1.582,
+   "evidence": {
+    "pair": 1,
+    "hue_delta_deg": 128.5
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "start_s": 1.062,
+   "end_s": 2.062,
+   "evidence": {
+    "cut_s": 1.562
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "color_shift: f03-f06（f02→f03 突变进入青绿色调，f06→f07 突变回米色）；identity_drift: f04-f08（蛋形由卵形逐渐变形为球形）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_018",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "identity_drift"
+   ],
+   "confidence": 0.92,
+   "spans": "color_shift: f03-f06（f02→f03 突变进入青绿色调，f06→f07 突变回米色）；identity_drift: f04-f08（蛋形由卵形逐渐变形为球形）",
+   "notes": "f01-f02 为米色蛋与米色长毛地毯的暖色调画面；f03 起整个场景（背景、地毯、蛋）突变为青绿色调，持续至 f06，f07 又瞬间恢复暖米色，属整体颜色异常偏移（color_shift）。同时主体形态发生漂移：f01-f04 为明显卵形蛋，f05 起轮廓逐渐变圆，f06 已接近正球体，f07-f08 回到暖色后仍是球形而非蛋形，主体跨帧外观突变（identity_drift）。两次颜色切换均为帧间突变、无过渡，虽有时序不连贯观感但场景构图与内容一致，归入 color_shift 而非 temporal_swap；未发现定格、闪烁、乱码、像素化、拖影或手部/计数/物理类缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_018",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中鸡蛋移动过程流畅，无定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影等缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_018",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "flicker",
+    "color_shift",
+    "temporal_swap"
+   ],
+   "confidence": 0.9654,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.739 flicker=0.852 color_shift=0.965 face_blur=0.017 garble_text=0.023 temporal_swap=0.815 pixelate=0.116 ghosting=0.300; overall=0.682; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_018",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "temporal_swap"
+   ],
+   "confidence": 1.0,
+   "spans": [
+    {
+     "type": "color_shift",
+     "start_s": 0.949,
+     "end_s": 1.582,
+     "evidence": {
+      "pair": 1,
+      "hue_delta_deg": 128.5
+     }
+    },
+    {
+     "type": "temporal_swap",
+     "start_s": 1.062,
+     "end_s": 2.062,
+     "evidence": {
+      "cut_s": 1.562
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_018.mp4",
+  "frames_dir": "frames/golden_018/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_018.json",
+   "J5": "../数据/judges/videochat3/golden_018.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_018.qc.json"
+  }
+ },
+ "errors": {}
+}

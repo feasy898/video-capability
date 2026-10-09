@@ -1,0 +1,128 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_012",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.95,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.944 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "pixelate",
+   "sources": [
+    "J1",
+    "J5",
+    "J3"
+   ],
+   "confidence": 0.95,
+   "evidence": {
+    "J1": {
+     "notes": "f01-f02画面干净：圆玻璃杯盛水置于木桌上，筷子从上方进入画面，属正常动作。自f03起杯子水面以上区域突然被明显马赛克像素块覆盖，f03-f04（筷子插入水中）、f05（筷子上提）、f06（筷子移出）该像素化区域持续存在且位置固定，f07恢复清晰。f04→f05筷子向上提出、f03→f06由插入到移出，运动趋势连贯"
+    },
+    "J5": {
+     "notes": "解析=json; 回答={\"defect_types\":[\"pixelate\"],\"other\":false,\"reason\":\"画面中出现马赛克块\"}"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.6362,
+      "flicker": 0.3087,
+      "color_shift": 0.1672,
+      "face_blur": 0.2951,
+      "garble_text": 0.606,
+      "temporal_swap": 0.5072,
+      "pixelate": 0.9436,
+      "ghosting": 0.3153
+     },
+     "overall": 0.7709
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.6362,
+   "flicker": 0.3087,
+   "color_shift": 0.1672,
+   "face_blur": 0.2951,
+   "garble_text": 0.606,
+   "temporal_swap": 0.5072,
+   "pixelate": 0.9436,
+   "ghosting": 0.3153
+  },
+  "overall": 0.7709,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f06（约1.6s-3.5s），杯体上半部水面以上区域",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.95,
+   "spans": "f03-f06（约1.6s-3.5s），杯体上半部水面以上区域",
+   "notes": "f01-f02画面干净：圆玻璃杯盛水置于木桌上，筷子从上方进入画面，属正常动作。自f03起杯子水面以上区域突然被明显马赛克像素块覆盖，f03-f04（筷子插入水中）、f05（筷子上提）、f06（筷子移出）该像素化区域持续存在且位置固定，f07恢复清晰。f04→f05筷子向上提出、f03→f06由插入到移出，运动趋势连贯，未见段落回跳（无temporal_swap）；各帧对间无明暗/饱和度正负交替（无flicker）；f03-f06期间筷子持续运动，f07-f08杯内气泡与高光有细微差异，未见画面凝固（无frame_freeze）。手部握筷姿态f03-f04基本正常，无解剖异常；筷子入水出水符合物理常识。核心缺陷为f03-f06杯体上半部的局部像素化（pixelate）。"
+  },
+  "J5": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"pixelate\"],\"other\":false,\"reason\":\"画面中出现马赛克块\"}"
+  },
+  "J3": {
+   "clip_id": "golden_012",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.9436,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.636; flicker=0.309; color_shift=0.167; face_blur=0.295; garble_text=0.606; temporal_swap=0.507; pixelate=0.944; ghosting=0.315; overall=0.771"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_012.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_012.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_012.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_012.json"
+ }
+}

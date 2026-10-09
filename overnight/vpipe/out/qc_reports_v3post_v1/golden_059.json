@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_059",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -21,7 +21,7 @@
    "confidence": 0.92,
    "evidence": {
     "J1": {
-     "notes": "瓶身标签文字为典型AI乱码：8帧中标签内容看似英文排版，但逐词阅读均为无意义字符组合，如'Therwidarewoid in Parc Frey, Wite the enbe cirel'（f01）、'theoerteoepytilr'、'Cetatoemrte'、'pekeh Foresiloe'（f03-f05）等"
+     "notes": "画面主体为琥珀色玻璃瓶及白色标签，构图、光影在 f01-f08 间连续平滑变化（镜头缓慢拉远/平移），逐对核对 f04→f05、f03→f06 及其余相邻帧对均未见内容回跳、明暗闪烁或画面凝固，无时序异常；无人脸、无像素块、无拖影，瓶体支撑合理。但全程标签上的文字为乱码：f01-f08 中可辨认为 'Thewhithe"
     }
    }
   },
@@ -65,14 +65,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f01-f08（全片标签区域）",
+    "text": "f01-f08（0-5.17s 全程，瓶身标签文字区域）",
     "source": "J1"
    }
   },
@@ -92,8 +92,8 @@
     "garble_text"
    ],
    "confidence": 0.92,
-   "spans": "f01-f08（全片标签区域）",
-   "notes": "瓶身标签文字为典型AI乱码：8帧中标签内容看似英文排版，但逐词阅读均为无意义字符组合，如'Therwidarewoid in Parc Frey, Wite the enbe cirel'（f01）、'theoerteoepytilr'、'Cetatoemrte'、'pekeh Foresiloe'（f03-f05）等，不成句不成词，瓶底压印字符（f01'533:8 %. 0.3'）同样无意义，属文字渲染失败。其余维度检查：f01-f08镜头匀速横移，瓶体与石台纹理连续过渡，无定格、无明暗闪烁、无色偏、无场景跳变；无人物出现故不涉及人脸/手部；瓶形与标签位置跨帧一致无身份漂移，未见像素块与运动拖影。"
+   "spans": "f01-f08（0-5.17s 全程，瓶身标签文字区域）",
+   "notes": "画面主体为琥珀色玻璃瓶及白色标签，构图、光影在 f01-f08 间连续平滑变化（镜头缓慢拉远/平移），逐对核对 f04→f05、f03→f06 及其余相邻帧对均未见内容回跳、明暗闪烁或画面凝固，无时序异常；无人脸、无像素块、无拖影，瓶体支撑合理。但全程标签上的文字为乱码：f01-f08 中可辨认为 'Thewhitherveld in Farr Freej'、'Peoh or Isterler'、'theercozeepittler'、'Deteepharchaer'、'Lettine, Ppecefine, Id Proeneon' 等伪词，无任何可读的真实语言内容，属于典型 AI 生成文字渲染失败，判定 garble_text。"
   },
   "J5": {
    "clip_id": "golden_059",

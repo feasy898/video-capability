@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_048",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.9592,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.6)",
+   "J1(detected=False, types=[], conf=0.8)",
    "J3@0.71 flag=True hits=['color_shift', 'face_blur', 'ghosting'] max_channel_P=0.9592",
    "降级: J6"
   ]
@@ -71,9 +71,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -81,7 +92,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "无（全片 f01-f08）"
+    "text": "全片 f01-f08"
    }
   },
   {
@@ -104,9 +115,9 @@
    "clip_id": "golden_048",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.6,
-   "spans": "无（全片 f01-f08）",
-   "notes": "8 帧为连续的夜景跟拍/摇镜头长曝光风格：背景灯光呈一致性水平拖线（f01-f08），主体人物全程为同一穿浅色上衣、深色长裤的滑行者，身份、服装、比例跨帧一致，无突变。f01-f05 人物滑行/弓步姿态连贯，f06-f08 滑行收步动作自然，支撑与运动合理，未见悬浮或穿模。人物呈半透明重影状（f05-f06 手臂/躯干叠影）与背景灯光拖线为统一的运动模糊美学（慢门跟拍效果），并非生成缺陷；人物脸部因整体风格性模糊无法辨认，但非局部人脸异常模糊。未检出画面定格、闪烁、色偏、乱码文字、像素化或时序跳变；计数正常（单人）。判定为干净，但整体重度运动模糊会掩盖细节，确信度中等。"
+   "confidence": 0.8,
+   "spans": "全片 f01-f08",
+   "notes": "8 帧均为同一连续追踪镜头：夜晚街道上一名滑行/奔跑的人物，全片呈统一的方向性动态模糊（慢门跟拍风格），背景灯光拉丝方向一致，属于风格化长曝光/追焦效果，不判为生成缺陷。逐对核验：f01-f02、f02-f03、f03→f06、f04→f05、f05-f06、f06-f07、f07-f08 中人物姿态（跨步-滑行-收腿）连续演化，人物在画面中的相对位置与背景滚动方向连贯，未见内容回跳或段落互换（无 temporal_swap）；亮度随镜头扫过的霓虹/店面内容自然变化，未见同一画面上明暗正负交替的闪烁（无 flicker）；任意两帧构图、光影均可辨差异，无凝固（无 frame_freeze）；画面无马赛克像素块（无 pixelate）、无整体色偏（无 color_shift）、无乱码文字（f06/f07 蓝色招牌上的网址字样为运动模糊所致，非乱码，无 garble_text）；人脸模糊与全画面动态模糊程度一致，属风格性模糊而非局部异常（无 face_blur）；f05/f06 中人物的重叠残影与背景拉丝同源，为慢门长曝光的正常表现，非帧混叠型拖影缺陷。帧对比对未见时序异常，判定干净。"
   },
   "J5": {
    "clip_id": "golden_048",

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_002",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -22,7 +22,7 @@
    "confidence": 0.9627,
    "evidence": {
     "J1": {
-     "notes": "f03-f05 画面下方出现黑底白字的文字块，内容为 'yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP'，为随机无意义字符组合（乱码文字），且该文字在 f02 之前不存在、f06 又突然消失，属典型的生成乱码文字缺陷（garble_text）。其余维度核对：人物姿态在 f"
+     "notes": "f03起画面下方出现两行字幕式文字「yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP」，为随机字母数字与符号拼接的无意义乱码，持续至f06，f07消失，命中garble_text。时序专项比对：f04→f05构图、人物姿态与光影基本连续，f03→f06仅见缓慢运镜导致的取景"
     },
     "J3": {
      "channel_probs": {
@@ -57,14 +57,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "f03-f05（约1.6s-2.8s）",
+    "text": "f03-f06（约1.6s-3.5s）",
     "source": "J1"
    }
   },
@@ -83,9 +83,9 @@
    "defect_types": [
     "garble_text"
    ],
-   "confidence": 0.95,
-   "spans": "f03-f05（约1.6s-2.8s）",
-   "notes": "f03-f05 画面下方出现黑底白字的文字块，内容为 'yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP'，为随机无意义字符组合（乱码文字），且该文字在 f02 之前不存在、f06 又突然消失，属典型的生成乱码文字缺陷（garble_text）。其余维度核对：人物姿态在 f06-f08 有连续抬手动作，无定格；场景、光照、色彩各帧一致，无闪烁与色偏；人脸区域清晰无模糊；画面无像素化与拖影；手部在 f01-f02（双手交握）、f07-f08（抬手/摊掌）形态正常，未见多指或融指；桌上器物与场景主体跨帧外观稳定，无身份漂移或物理违例。"
+   "confidence": 0.9,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "f03起画面下方出现两行字幕式文字「yMBeabypd5bkVqZ_T+e@Nf / sF33uVA_<k2=PZ95B&q8iP」，为随机字母数字与符号拼接的无意义乱码，持续至f06，f07消失，命中garble_text。时序专项比对：f04→f05构图、人物姿态与光影基本连续，f03→f06仅见缓慢运镜导致的取景轻微平移，人物坐姿连贯，无段落回跳；各相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）未见亮度/饱和度交替闪烁，也无多帧完全一致的凝固现象（f06→f07字幕消失同时人物抬手，属正常字幕进出与动作）。人物跨帧外观（白发白须、蓝毛衣、眼镜）一致，手部解剖与物体物理支撑（花瓶置于桌上）正常，未发现其他缺陷。"
   },
   "J5": {
    "clip_id": "golden_002",

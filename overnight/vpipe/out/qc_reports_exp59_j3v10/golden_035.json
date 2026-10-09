@@ -1,0 +1,200 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_035",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.938,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.85)",
+   "J3@0.71 flag=True hits=['ghosting'] max_channel_P=0.938",
+   "J6 信号(仅信号不否决): garble_text@0.84"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.8395,
+   "span": {
+    "start_s": 0.315,
+    "end_s": 1.576
+   },
+   "evidence": {
+    "J6": {
+     "kind": "conf_drop",
+     "drop": 0.42,
+     "frames": [
+      0,
+      2
+     ],
+     "mean_scores": [
+      0.311,
+      0.731
+     ]
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.938,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.938
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.0871,
+   "flicker": 0.4115,
+   "color_shift": 0.2892,
+   "face_blur": 0.0318,
+   "garble_text": 0.0272,
+   "temporal_swap": 0.4342,
+   "pixelate": 0.1941,
+   "ghosting": 0.938
+  },
+  "overall": 0.6168,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.315,
+   "end_s": 1.576,
+   "evidence": {
+    "kind": "conf_drop",
+    "drop": 0.42,
+    "frames": [
+     0,
+     2
+    ],
+    "mean_scores": [
+     0.311,
+     0.731
+    ]
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_035",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.85,
+   "spans": "无",
+   "notes": "8帧画面为单一橙色小球在木桌面上弹跳：f01-f03小球上升段带方向性运动模糊，f04-f05接近最高点时轮廓清晰，f06-f07下落并在桌面出现接触/压缩痕迹，f08落于桌面并带自然倒影，运动轨迹连续、时序连贯，弹跳减速-加速过程符合物理常识，无悬浮或穿模。f01-f03及f06-f07的模糊为快速运动的自然运动模糊（单一体 smear），非重影/残影式拖影，且与速度变化对应。全程仅一个球体，外观颜色一致，无身份漂移；背景亮度稳定无闪烁，无色偏、无像素块、无人脸与文字元素，未见画面定格。综合判定为干净样本。"
+  },
+  "J5": {
+   "clip_id": "golden_035",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"橙色球体运动时存在运动拖影\"}"
+  },
+  "J3": {
+   "clip_id": "golden_035",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.938,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.087 flicker=0.411 color_shift=0.289 face_blur=0.032 garble_text=0.027 temporal_swap=0.434 pixelate=0.194 ghosting=0.938; overall=0.617; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_035",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.8395,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.315,
+     "end_s": 1.576,
+     "evidence": {
+      "kind": "conf_drop",
+      "drop": 0.42,
+      "frames": [
+       0,
+       2
+      ],
+      "mean_scores": [
+       0.311,
+       0.731
+      ]
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_035.mp4",
+  "frames_dir": "frames/golden_035/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_035.json",
+   "J5": "../数据/judges/videochat3/golden_035.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_035.qc.json"
+  }
+ },
+ "errors": {}
+}

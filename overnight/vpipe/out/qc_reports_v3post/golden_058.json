@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_058",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:25",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.8685,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['garble_text'], conf=0.97)",
+   "J1(detected=True, types=['garble_text'], conf=0.95)",
    "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8685",
    "降级: J6"
   ]
@@ -32,11 +32,11 @@
    "sources": [
     "J1"
    ],
-   "confidence": 0.97,
+   "confidence": 0.95,
    "evidence": {
     "J1": {
-     "confidence": 0.97,
-     "notes": "瓶身标签文字在所有帧（f01-f08）均为乱码伪文字：如'Mid minge bordtiote, ttelettriery'、'120% Preonoastimies, Thinn and WIng Thong 71. G3'、'000% Inlarpersiny'等，字形态似英文但完全无意义，且底部批次号在f01显示'10005 15TLO)'、f04-f08显示'90005 15TKO)'存"
+     "confidence": 0.95,
+     "notes": "瓶身标签上的文字自 f01 起即为无意义乱码，非任何真实语言：如 'Wid atinga bordtiote, Helettiry'、'pevalingoler leatrad unting the sucerestiot'、'120% Peonorastniles'、'000% lreliapetiny'、'9005 15TRO)' 等，字符组合无语义且含不成立的百分比/数字写法，属典型生成式文"
     }
    }
   }
@@ -56,9 +56,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -66,7 +77,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f01-f08（全片5.17s）"
+    "text": "f01-f08（整段）"
    }
   },
   {
@@ -91,9 +102,9 @@
    "defect_types": [
     "garble_text"
    ],
-   "confidence": 0.97,
-   "spans": "f01-f08（全片5.17s）",
-   "notes": "瓶身标签文字在所有帧（f01-f08）均为乱码伪文字：如'Mid minge bordtiote, ttelettriery'、'120% Preonoastimies, Thinn and WIng Thong 71. G3'、'000% Inlarpersiny'等，字形态似英文但完全无意义，且底部批次号在f01显示'10005 15TLO)'、f04-f08显示'90005 15TKO)'存在字符不一致，属典型文字渲染失败。其余维度检查：f01-f08瓶体稳定置于桌面，无定格、无闪烁、无色偏、无像素化、无拖影、无时序跳变；画面无人物/手部，无计数或物理违例。唯一命中项为garble_text。"
+   "confidence": 0.95,
+   "spans": "f01-f08（整段）",
+   "notes": "瓶身标签上的文字自 f01 起即为无意义乱码，非任何真实语言：如 'Wid atinga bordtiote, Helettiry'、'pevalingoler leatrad unting the sucerestiot'、'120% Peonorastniles'、'000% lreliapetiny'、'9005 15TRO)' 等，字符组合无语义且含不成立的百分比/数字写法，属典型生成式文字渲染失败。时序帧对比对：f04→f05 相邻对为平滑的镜头缓慢推近（瓶体略放大、标签位置微移），f03 与 f06 跨段对运动趋势连续，其余相邻对 f01-f02、f02-f03、f05-f06、f06-f07、f07-f08 均为同向渐进变化；未见内容回跳、明暗/饱和交替闪烁或画面凝固，未命中 temporal_swap、flicker、frame_freeze。瓶体为琥珀色玻璃瓶静置于桌面，无物理违例、无人脸、无像素化或拖影。唯一缺陷为标签乱码文字。"
   },
   "J5": {
    "clip_id": "golden_058",

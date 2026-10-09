@@ -1,0 +1,91 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_013",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.303,
+   "flicker": 0.2403,
+   "color_shift": 0.5831,
+   "face_blur": 0.1441,
+   "garble_text": 0.0382,
+   "temporal_swap": 0.2777,
+   "pixelate": 0.1608,
+   "ghosting": 0.3068
+  },
+  "overall": 0.4709,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_013",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.85,
+   "spans": "无",
+   "notes": "8帧逐项核对：画面亮度、色调（蓝紫演播室、白西装、蓝衬衫）全程一致，无闪烁与色偏；人脸各帧清晰锐利，无模糊或像素化；桌面文稿仅为远景小字线条，未见明显乱码文字。时序专项：f04→f05 为连续的手部落笔动作（右手执笔抬起→落回纸面），无景别回跳或内容错乱；f03→f06 为闭口微笑→开口播报并抬左手手势，运动趋势连贯；其余相邻帧对（f01-f02 站姿→f02 落座、f02-f03、f05-f06、f06-f07、f07-f08）均为同向连续演进，姿态、手势逐帧自然过渡，无凝固帧（无任意两帧完全一致）、无拖影。手部解剖正常（f07/f08 左手摊掌指节清晰，右手执笔各帧指型成立），无多指/融指；人物身份、发型、项链、耳饰跨帧一致，无身份漂移；坐姿与桌面支撑合理。帧对比对未见时序异常，整体判定为干净视频。"
+  },
+  "J5": {
+   "clip_id": "golden_013",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_013",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.5831,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.303; flicker=0.240; color_shift=0.583; face_blur=0.144; garble_text=0.038; temporal_swap=0.278; pixelate=0.161; ghosting=0.307; overall=0.471"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_013.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_013.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_013.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_013.json"
+ }
+}

@@ -1,18 +1,30 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_044",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
   "decision": "manual_review",
-  "confidence": 0.7311,
+  "confidence": 0.8,
   "decided_by": "E10",
   "reasons": [
    "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[color_shift] 最大P=0.731）"
   ]
  },
  "defects": [
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.8,
+   "evidence": {
+    "J1": {
+     "notes": "镜头整体为从左向右横移：f01 面馆→f02 药店入画→f03 药店居中→f04 右移露出超市招牌与锈蚀卷帘门；但 f05（2.9s）画面突然回跳到药店居中的构图（与 f03 几乎相同景别），f04 中已进入画面的超市招牌/卷帘门完全消失，运动趋势断裂，属于典型内容回跳；随后 f06 仍停在药店，f07-f08 再次向"
+    }
+   }
+  },
   {
    "type": "color_shift",
    "sources": [
@@ -53,14 +65,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08",
+    "text": "f04→f05（内容回跳），f05-f08 重复先前镜头段落",
     "source": "J1"
    }
   },
@@ -75,11 +87,13 @@
  "judges": {
   "J1": {
    "clip_id": "golden_044",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.86,
-   "spans": "全片 f01-f08",
-   "notes": "逐项核对无缺陷：f01-f02 为面馆木门与冒烟炉灶，f03-f05 为药店（红色招牌'药店'文字清晰无乱码，店内暖光货架陈列正常），f06-f08 为相邻超市（红色'超市'字样、卷帘门关闭），整体为一条沿老街店铺连续向右摇摄的镜头，店铺相对空间关系一致（药店在超市左侧、面馆在药店左侧），无场景跳变或时序错乱。f04 与 f05 间视角略回摆属手持摇镜的自然晃动，非内容突变。f07-f08 画面相近但左侧'店'字与门框位置仍有细微位移，排除定格。全程无明暗闪烁、无色偏、无人脸、无像素块与拖影；炉灶烟雾上升形态自然，无物理违例；招牌'面馆''药店''超市'均为有意义汉字，无文字渲染失败，判定干净。"
+   "defect_detected": true,
+   "defect_types": [
+    "temporal_swap"
+   ],
+   "confidence": 0.8,
+   "spans": "f04→f05（内容回跳），f05-f08 重复先前镜头段落",
+   "notes": "镜头整体为从左向右横移：f01 面馆→f02 药店入画→f03 药店居中→f04 右移露出超市招牌与锈蚀卷帘门；但 f05（2.9s）画面突然回跳到药店居中的构图（与 f03 几乎相同景别），f04 中已进入画面的超市招牌/卷帘门完全消失，运动趋势断裂，属于典型内容回跳；随后 f06 仍停在药店，f07-f08 再次向右重复 f04 的运镜（超市招牌重新入画），形成同一段横移内容重复播放。其余相邻帧对 f01-f02、f02-f03、f03-f04、f06-f07、f07-f08 运镜连续平滑，未见明暗交替闪烁或画面凝固；招牌文字（面馆/药店/超市）渲染正常，无乱码、无人脸/手部、无明显像素化或拖影。综合判定命中 temporal_swap。"
   },
   "J5": {
    "clip_id": "golden_044",

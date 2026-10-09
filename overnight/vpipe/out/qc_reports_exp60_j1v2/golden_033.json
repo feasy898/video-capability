@@ -1,0 +1,106 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_033",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.78,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
+  ]
+ },
+ "defects": [
+  {
+   "type": "hand_anomaly",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.78,
+   "evidence": {
+    "J1": {
+     "notes": "全片为交扣双手的极端特写，手部解剖明显不成立：f01-f03顶部可见约6个圆钝指端自同一连续肉块中长出，指根相互融合、无正常手掌分界；f01-f05右侧有4-5根香肠状指体沿弧形边缘无关节堆叠；全片手指均无指甲、无指节褶皱、无掌纹，指体粗细异常（如f01顶部中央一根明显过粗过长）。可见指端总数超出两只手在该姿态下应有的"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4238,
+   "flicker": 0.2703,
+   "color_shift": 0.4889,
+   "face_blur": 0.0462,
+   "garble_text": 0.0286,
+   "temporal_swap": 0.3618,
+   "pixelate": 0.1914,
+   "ghosting": 0.5712
+  },
+  "overall": 0.4543,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f01-f08",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_033",
+   "defect_detected": true,
+   "defect_types": [
+    "hand_anomaly"
+   ],
+   "confidence": 0.78,
+   "spans": "f01-f08",
+   "notes": "全片为交扣双手的极端特写，手部解剖明显不成立：f01-f03顶部可见约6个圆钝指端自同一连续肉块中长出，指根相互融合、无正常手掌分界；f01-f05右侧有4-5根香肠状指体沿弧形边缘无关节堆叠；全片手指均无指甲、无指节褶皱、无掌纹，指体粗细异常（如f01顶部中央一根明显过粗过长）。可见指端总数超出两只手在该姿态下应有的正常显露数量，整体结构无法解析为两只解剖正确的手，判hand_anomaly。时序专项：f04→f05、f03→f06及f01-f02、f02-f03、f05-f06、f06-f07、f07-f08各帧对均为手指连续匀速内收弯曲的连贯动作，无内容回跳（temporal_swap未见）、无明暗/饱和交替闪烁（flicker未见）、无画面凝固（frame_freeze未见）；整体色调统一无色偏，时序维度未检出异常。"
+  },
+  "J5": {
+   "clip_id": "golden_033",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_033",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.5712,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.424; flicker=0.270; color_shift=0.489; face_blur=0.046; garble_text=0.029; temporal_swap=0.362; pixelate=0.191; ghosting=0.571; overall=0.454"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_033.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_033.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_033.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_033.json"
+ }
+}

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_010",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,7 +9,7 @@
   "confidence": 0.7384,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.9)",
+   "J1(detected=False, types=[], conf=0.85)",
    "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.7384",
    "J6 信号(仅信号不否决): garble_text@0.85"
   ]
@@ -60,9 +60,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -79,7 +90,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": ""
+    "text": "全片 f01-f08 未检出缺陷"
    }
   },
   {
@@ -102,9 +113,9 @@
    "clip_id": "golden_010",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.9,
-   "spans": "",
-   "notes": "逐帧检查未发现缺陷。画面主体为橘猫、柯基犬与纸箱，f01-f08 内容连续：f01-f02 猫睁眼注视前方，f03-f05 猫眼渐次眯起，f06 犬头转向猫侧，f07-f08 犬头转回朝向镜头，均为自然平滑的微小动作，无定格（各帧姿态/眼神有连续变化）、无闪烁或色偏（暖光与青绿沙发色调全程一致）、无人脸及文字出现、无场景跳变、无像素块或拖影。语义层面：无手部、对象计数正常（1猫1狗1箱）、动物坐姿与纸箱支撑合理无穿模悬浮、双主体外观跨帧一致无身份漂移。判定为干净片段。"
+   "confidence": 0.85,
+   "spans": "全片 f01-f08 未检出缺陷",
+   "notes": "8 帧为同一连续场景（客厅沙发、龟背竹、橘猫、柯基、纸箱），构图与机位稳定。重点帧对检查：f04→f05 猫咪眯眼程度连续加深、柯基姿态仅有细微自然变动，无回跳或跳变；f03→f06 猫眼由微眯到闭合呈渐进过程，运动趋势连贯，非段落错乱。其余相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）中可见猫咪眨眼、柯基头部微转及嘴部开合等连续微小动作，画面未完全凝固，不构成 frame_freeze。各帧亮度、饱和度一致，未见正负交替闪烁；色彩无异常偏移；猫脸狗脸清晰无模糊；画面无文字、无像素块、无运动残影；主体数量正常（一猫一狗一箱），纸箱支撑合理，主体外观跨帧一致，无身份漂移、无手部异常。帧对比对未见时序异常。"
   },
   "J5": {
    "clip_id": "golden_010",

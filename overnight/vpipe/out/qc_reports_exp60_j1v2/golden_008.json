@@ -1,0 +1,116 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_008",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8977,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.898）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8977,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8977,
+      "flicker": 0.2118,
+      "color_shift": 0.5277,
+      "face_blur": 0.2356,
+      "garble_text": 0.0465,
+      "temporal_swap": 0.3017,
+      "pixelate": 0.1888,
+      "ghosting": 0.3768
+     },
+     "overall": 0.624
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8977,
+   "flicker": 0.2118,
+   "color_shift": 0.5277,
+   "face_blur": 0.2356,
+   "garble_text": 0.0465,
+   "temporal_swap": 0.3017,
+   "pixelate": 0.1888,
+   "ghosting": 0.3768
+  },
+  "overall": 0.624,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_008",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.9,
+   "spans": "无",
+   "notes": "逐帧核对8帧：画面为同一3D机器人场景，青绿色背景、木桌、两颗螺丝及桌面黑色物件在f01-f08中位置、数量、颜色均保持一致，无color_shift、garble_text、pixelate、ghosting或face_blur表现。时序专项比对：f04→f05与f03→f06中机器人头部倾斜角度、手臂持黄色工具姿态连续渐变，无内容回跳或段落错乱；相邻帧对f01-f02（手臂抬起）、f02-f03、f05-f06、f06-f07、f07-f08均为平滑姿态过渡，亮度饱和度稳定，未见明暗交替闪烁；各帧间均有可辨识的姿态差异（头部摆动、眼部变化），不存在动-停-动断裂，frame_freeze不成立。机器人手部握持工具形态自然，未见多指/融指；两颗螺丝立置桌面为动画剧情合理设定，无物理违例；主体外观跨帧一致，无identity_drift。帧对比对未见时序异常，整体判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_008",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中机器人动作流畅，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_008",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8977,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.898; flicker=0.212; color_shift=0.528; face_blur=0.236; garble_text=0.046; temporal_swap=0.302; pixelate=0.189; ghosting=0.377; overall=0.624"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_008.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_008.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_008.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_008.json"
+ }
+}

@@ -1,15 +1,15 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_006",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
   "decision": "pass",
-  "confidence": 0.87,
+  "confidence": 0.88,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.87)",
+   "J1(detected=False, types=[], conf=0.88)",
    "J3@0.71 flag=False hits=[] max_channel_P=0.7069",
    "J6 信号(仅信号不否决): garble_text@0.69"
   ]
@@ -56,9 +56,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -106,9 +117,9 @@
    "clip_id": "golden_006",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.87,
+   "confidence": 0.88,
    "spans": "无",
-   "notes": "逐项核对8帧：f01人物侧身站立，f02-f08头部自然转向镜头，转头动作连续无跳变（f01→f03），无temporal_swap；全程光线均匀、色调一致（红色连衣裙、绿野花海颜色稳定），无flicker/color_shift；人脸在各帧均清晰锐利（f02、f05、f08五官细节完整），无face_blur；画面无文字，无garble_text；无马赛克/像素块；f02-f04头发被风吹动的发丝边缘干净、无双影，无ghosting；手部自然垂放于体侧（f01-f08），指形正常无多指/融指；连衣裙下摆随微风自然摆动，人物站姿稳定，无悬浮穿模等physics_error；人物耳饰、发型、妆容、裙装款式跨帧一致，无identity_drift；花海为自然散布，无count_error。全片判定干净。"
+   "notes": "帧对比对未见时序异常。f01-f08 呈现连续自然的动作：人物由侧脸（f01）逐渐转头面向镜头（f02-f04），随后 f04-f08 保持面向镜头、发丝随风轻微飘动，头部角度与发丝形态逐帧有细微可辨变化，无画面凝固（f04 与 f05 构图/发丝均有差异，非定格）；f03 与 f06 跨段比对姿态连续、无内容回跳或段落错乱；全段亮度与饱和度稳定，红色裙装与花田色彩一致，无明暗交替闪烁。人脸各帧清晰锐利，无模糊、像素块或拖影；画面无文字，不存在乱码。语义维度：手部形态自然无多指/融指，人物身份跨帧一致（五官、耳饰、发型稳定），站姿与裙摆垂坠符合物理常识，花田场景合理。整体判定为干净片段。"
   },
   "J5": {
    "clip_id": "golden_006",

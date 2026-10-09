@@ -1,46 +1,19 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_005",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": true,
-  "decision": "manual_review",
-  "confidence": 0.78,
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.8,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['flicker', 'garble_text'], conf=0.78)",
+   "J1(detected=False, types=[], conf=0.8)",
    "J3@0.71 flag=False hits=[] max_channel_P=0.6226"
   ]
  },
- "defects": [
-  {
-   "type": "flicker",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.78,
-   "evidence": {
-    "J1": {
-     "confidence": 0.78,
-     "notes": "f01-f05 内容连贯：手持手机，输入框先出现光标（f02）后键入'好'（f03-f05），无定格、无色偏、无像素化，手型正常。异常一：f06 聊天区右上方突现蓝色已发送气泡（f07 完整显示），其位置位于接收消息'明天见'的上方，时序/层级颠倒，且发送后输入框仍残留'好'；到 f08 该蓝色气泡在无任何操作的情况下完全消失，同区域恢复空白，前后内容不连续，属帧间内容交替闪烁/时序不一致（f06"
-    }
-   }
-  },
-  {
-   "type": "garble_text",
-   "sources": [
-    "J1"
-   ],
-   "confidence": 0.78,
-   "evidence": {
-    "J1": {
-     "confidence": 0.78,
-     "notes": "f01-f05 内容连贯：手持手机，输入框先出现光标（f02）后键入'好'（f03-f05），无定格、无色偏、无像素化，手型正常。异常一：f06 聊天区右上方突现蓝色已发送气泡（f07 完整显示），其位置位于接收消息'明天见'的上方，时序/层级颠倒，且发送后输入框仍残留'好'；到 f08 该蓝色气泡在无任何操作的情况下完全消失，同区域恢复空白，前后内容不连续，属帧间内容交替闪烁/时序不一致（f06"
-    }
-   }
-  }
- ],
+ "defects": [],
  "scores": {
   "per_type": {
    "frame_freeze": 0.4443,
@@ -56,9 +29,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -66,7 +50,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f06-f08（蓝色消息气泡凭空出现后又消失）；f01-f08（状态栏时间乱码）"
+    "text": "无（全片未见明显缺陷）"
    }
   },
   {
@@ -87,14 +71,11 @@
  "judges": {
   "J1": {
    "clip_id": "golden_005",
-   "defect_detected": true,
-   "defect_types": [
-    "flicker",
-    "garble_text"
-   ],
-   "confidence": 0.78,
-   "spans": "f06-f08（蓝色消息气泡凭空出现后又消失）；f01-f08（状态栏时间乱码）",
-   "notes": "f01-f05 内容连贯：手持手机，输入框先出现光标（f02）后键入'好'（f03-f05），无定格、无色偏、无像素化，手型正常。异常一：f06 聊天区右上方突现蓝色已发送气泡（f07 完整显示），其位置位于接收消息'明天见'的上方，时序/层级颠倒，且发送后输入框仍残留'好'；到 f08 该蓝色气泡在无任何操作的情况下完全消失，同区域恢复空白，前后内容不连续，属帧间内容交替闪烁/时序不一致（f06-f08）。异常二：状态栏时间全程显示为'8:134'（f01-f04 清晰可辨），为无意义文字，属文字渲染错误（garble_text）。未发现人脸、手部解剖、对象计数或物理违例等其他缺陷。"
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "无（全片未见明显缺陷）",
+   "notes": "逐帧核对：f01-f08 为连续的单镜头手机近景，内容为回复聊天消息。时序比对：f04→f05 拇指敲击位置连续变化、f03→f06 输入框均保持'好'且手机角度渐进偏移，未见面面回跳/内容倒退（temporal_swap 未命中）；相邻帧对 f01-f02、f02-f03、f05-f06、f06-f07、f07-f08 亮度与色调稳定，背景暖光一致，无明暗交替闪烁（flicker 未命中）；各帧手部位置、键盘形态均有可辨变化，无动-停-动断裂（frame_freeze 未命中）。语义维度：双手解剖结构正常、拇指敲击与持机姿态合理，无多指/融指；屏幕文字'明天见'、输入'好'及键盘候选词渲染清晰，无乱码；无像素化、拖影、色偏。动作逻辑连贯：输入框由空（f01-f02）→键入'好'（f03-f06）→f07 出现蓝色已发送气泡→f08 延续，属正常的发送流程；f06→f07 气泡弹出瞬间输入框文字尚未清空，采样间隔较大且属界面动画细节，不足以构成列明缺陷。综合判定该片段干净。"
   },
   "J5": {
    "clip_id": "golden_005",

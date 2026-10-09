@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_051",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -9,22 +9,22 @@
   "confidence": 0.8109,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=True, types=['flicker'], conf=0.6)",
+   "J1(detected=True, types=['color_shift'], conf=0.8)",
    "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8109",
    "降级: J6"
   ]
  },
  "defects": [
   {
-   "type": "flicker",
+   "type": "color_shift",
    "sources": [
     "J1"
    ],
-   "confidence": 0.6,
+   "confidence": 0.8,
    "evidence": {
     "J1": {
-     "confidence": 0.6,
-     "notes": "f01-f02 画面明亮偏暖，f03-f04 整体明显变暗（人物面部与背景同时变暗），f05-f06 又恢复明亮，f07-f08 略再转暗，全片亮度呈非单调的快速波动，符合帧间明暗交替闪烁。其余项核对：人脸在 f01-f08 均清晰无异常模糊；无乱码文字、无像素化马赛克、无明显运动拖影（f02 发丝飘动形态自然）；头部由侧脸转向镜头（f01→f02）过渡连续，无时序跳变；耳饰、发型、红裙等外观跨帧"
+     "confidence": 0.8,
+     "notes": "整体色调/曝光在 f04→f05 处出现一次明显跳变：f01-f04 画面整体偏暗、色调发灰，人物头发呈纯黑；自 f05 起画面亮度与饱和度突然显著提升，肤色、红裙与花田色彩明显变亮变暖，f05-f08 中发丝呈现高光棕色，前后两段像两种调色。该变化为一次性单方向的整体色偏跳变（之后 f05-f08 保持一致明亮），并非相邻帧对正负交替，故计为 color_shift 而非 flicker。其余核"
     }
    }
   },
@@ -56,9 +56,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -66,7 +77,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "f03-f04 与相邻亮帧 f02/f05-f06 之间（约0.9s-2.9s）明暗快速交替"
+    "text": "f04→f05 突变点；f05-f08 整段偏亮偏暖，与 f01-f04 偏暗段形成割裂"
    }
   },
   {
@@ -89,11 +100,11 @@
    "clip_id": "golden_051",
    "defect_detected": true,
    "defect_types": [
-    "flicker"
+    "color_shift"
    ],
-   "confidence": 0.6,
-   "spans": "f03-f04 与相邻亮帧 f02/f05-f06 之间（约0.9s-2.9s）明暗快速交替",
-   "notes": "f01-f02 画面明亮偏暖，f03-f04 整体明显变暗（人物面部与背景同时变暗），f05-f06 又恢复明亮，f07-f08 略再转暗，全片亮度呈非单调的快速波动，符合帧间明暗交替闪烁。其余项核对：人脸在 f01-f08 均清晰无异常模糊；无乱码文字、无像素化马赛克、无明显运动拖影（f02 发丝飘动形态自然）；头部由侧脸转向镜头（f01→f02）过渡连续，无时序跳变；耳饰、发型、红裙等外观跨帧一致，无身份漂移；垂手姿态与手指形态（f04-f08）解剖自然，未见多指/融指；裙摆与发丝的飘动方向合理，无物理违例；花田密集属正常场景，无对象计数异常。故仅报 flicker，因抽帧间隔有限、亮度差异中等，置信度取 0.6。"
+   "confidence": 0.8,
+   "spans": "f04→f05 突变点；f05-f08 整段偏亮偏暖，与 f01-f04 偏暗段形成割裂",
+   "notes": "整体色调/曝光在 f04→f05 处出现一次明显跳变：f01-f04 画面整体偏暗、色调发灰，人物头发呈纯黑；自 f05 起画面亮度与饱和度突然显著提升，肤色、红裙与花田色彩明显变亮变暖，f05-f08 中发丝呈现高光棕色，前后两段像两种调色。该变化为一次性单方向的整体色偏跳变（之后 f05-f08 保持一致明亮），并非相邻帧对正负交替，故计为 color_shift 而非 flicker。其余核查：人物面部清晰、跨帧五官与发型一致（发色变化可归因于曝光跳变），未见 identity_drift；f04/f05/f06 手部五指自然，无 hand_anomaly；头部由右侧脸平滑转向镜头，f04→f05、f03→f06 及其余相邻帧对无段落回跳、无画面凝固（每帧发丝/姿态均有可辨变化）、无拖影、像素化、乱码、计数或物理违例，帧间比对除上述色调跳变外未见其他时序异常。"
   },
   "J5": {
    "clip_id": "golden_051",

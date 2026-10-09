@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_056",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -53,10 +53,17 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
   {
    "type": "note",
    "evidence": {
@@ -70,9 +77,9 @@
    "clip_id": "golden_056",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.72,
-   "spans": "",
-   "notes": "逐项核对：画面为固定机位的正面人物特写，8 帧中人物姿态、发型、耳饰、西装纹理及背景吊灯光斑位置均保持一致，未见明暗/内容快速交替（无 flicker）、无整体色偏（无 color_shift）；f01-f04 与 f06-f08 人脸均清晰锐利，无模糊、像素块或马赛克（无 face_blur/pixelate）；画面无文字，不涉及 garble_text；帧间内容连续，无场景切换或时序错乱（无 temporal_swap），运动区域无重影拖尾（无 ghosting）。f05 出现闭眼、f06 恢复睁眼，是一次自然的眨眼过程，闭眼形态完整、无残影，说明画面仍在正常播放，未构成数秒完全定格的 frame_freeze；人物身份、五官、服装跨帧完全一致，无 identity_drift；无手部出现、无对象计数与物理违例可查。整段视频仅以静态持姿配合单次眨眼，虽动态极少但属合理的正式场合人物静态镜头，未见可报缺陷。"
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "8帧均为同一人物正面特写，黑西装白内搭、发型妆容跨帧完全一致，无身份漂移。f04→f05 眼睛睁开变为闭合，f05→f06 重新睁开，为一次自然眨眼，时序连贯无断裂；f03→f06 跨段对比构图、景别、背景散景位置一致，无内容回跳或段落互换。各相邻帧对（f01-f02、f02-f03、f06-f07、f07-f08）背景光斑与发丝存在细微连续变化，未见画面凝固（且 f05 闭眼帧证明画面在推进，非定格）。明暗与饱和度未见正负交替闪烁，整体色调稳定无色偏；人脸区域全程清晰无模糊、无像素块、无拖影重影；画面无乱码文字；无手部出现、无计数或物理违例。帧对比对未见时序异常，判定干净。"
   },
   "J5": {
    "clip_id": "golden_056",

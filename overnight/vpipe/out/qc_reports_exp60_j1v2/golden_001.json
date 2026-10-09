@@ -1,0 +1,91 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_001",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.0,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4161,
+   "flicker": 0.3149,
+   "color_shift": 0.6695,
+   "face_blur": 0.1769,
+   "garble_text": 0.0686,
+   "temporal_swap": 0.3712,
+   "pixelate": 0.131,
+   "ghosting": 0.3346
+  },
+  "overall": 0.6138,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无（全片 f01-f08 干净）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_001",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "无（全片 f01-f08 干净）",
+   "notes": "8 帧均为同一位穿红色连衣裙的女性在雨后湿滑街道上朝镜头方向跑动，人物外观、服装、发型跨帧一致，未见 identity_drift。逐项核查：各帧人物姿态、背景构图均有可辨变化，无 frame_freeze；整体色调为阴雨冷调且稳定，无交替性明暗/饱和跳变，无 flicker/color_shift；人脸各帧清晰锐利，无 face_blur；无 pixelate、ghosting（跑动肢体边缘干净，水面飞溅形态自然）。背景蓝色路牌与店铺招牌因景深虚化而模糊，属正常光学效果，非乱码文字。时序专项：f04→f05 右脚落地激起水花并扩散、左腿顺势抬起，f03→f06 呈完整跑步换步循环（右腿前→左腿前），其余相邻对 f01-f02、f02-f03、f05-f06、f06-f07、f07-f08 均为连贯向前跑动，人物逐渐靠近镜头符合追拍运镜，无内容回跳或段落互换，帧对比对未见时序异常。手部为提裙摆姿态，可见手指形态在本分辨率下无明显多指/融指；人物计数正常（1 人），倒影与动作匹配，无 physics_error。综合判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_001",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_001",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.6695,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.416; flicker=0.315; color_shift=0.669; face_blur=0.177; garble_text=0.069; temporal_swap=0.371; pixelate=0.131; ghosting=0.335; overall=0.614"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_001.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_001.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_001.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_001.json"
+ }
+}

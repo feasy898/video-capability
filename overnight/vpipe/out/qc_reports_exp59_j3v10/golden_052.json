@@ -1,0 +1,112 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_052",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.88,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.88)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5794",
+   "降级: J6"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3345,
+   "flicker": 0.3213,
+   "color_shift": 0.5794,
+   "face_blur": 0.1645,
+   "garble_text": 0.0471,
+   "temporal_swap": 0.3454,
+   "pixelate": 0.1362,
+   "ghosting": 0.4032
+  },
+  "overall": 0.5661,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_052",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "逐帧核对：动作时序连贯，f01 手扶杯柄→f02-f04 端杯上举→f04-f05 饮用→f06-f08 放低微笑，无时序跳变或定格；人脸各帧（f01-f08）均清晰锐利，无模糊、像素块或拖影；色调与曝光稳定（红裙、暖光一致），无明显闪烁或整体偏色；手部解剖正常，f02/f06/f08 中握杯手指数量与形态合理，无多指融指；场景元素一致（单杯单碟单勺、同款金耳钉与项链），无计数异常或身份漂移；f03/f07 杯口蒸汽方向自然，窗外行人与车辆（f04/f05）运动合理，背景虚化为景深效果而非拖影；画面无可读文字，不涉及乱码。综合判定为干净片段。"
+  },
+  "J5": {
+   "clip_id": "golden_052",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面流畅，无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_052",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift"
+   ],
+   "confidence": 0.5794,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.335 flicker=0.321 color_shift=0.579 face_blur=0.165 garble_text=0.047 temporal_swap=0.345 pixelate=0.136 ghosting=0.403; overall=0.566; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_052.mp4",
+  "frames_dir": "frames/golden_052/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_052.json",
+   "J5": "../数据/judges/videochat3/golden_052.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_052.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_052.qc.json')"
+ }
+}

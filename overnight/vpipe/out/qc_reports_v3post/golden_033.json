@@ -1,15 +1,15 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_033",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": false,
-  "decision": "pass",
-  "confidence": 0.62,
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.78,
   "decided_by": "E10:J1.detected OR J3@0.70 flag",
   "reasons": [
-   "J1(detected=False, types=[], conf=0.62)",
+   "J1(detected=True, types=['hand_anomaly'], conf=0.78)",
    "J3@0.71 flag=False hits=[] max_channel_P=0.5712",
    "J6 信号(仅信号不否决): garble_text@0.85"
   ]
@@ -31,6 +31,19 @@
      "max_mean": 0.368
     }
    }
+  },
+  {
+   "type": "hand_anomaly",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.78,
+   "evidence": {
+    "J1": {
+     "confidence": 0.78,
+     "notes": "全片为交扣双手的极端特写，手部解剖明显不成立：f01-f03顶部可见约6个圆钝指端自同一连续肉块中长出，指根相互融合、无正常手掌分界；f01-f05右侧有4-5根香肠状指体沿弧形边缘无关节堆叠；全片手指均无指甲、无指节褶皱、无掌纹，指体粗细异常（如f01顶部中央一根明显过粗过长）。可见指端总数超出两只手在该姿态下应有的正常显露数量，整体结构无法解析为两只解剖正确的手，判hand_anomaly。时"
+    }
+   }
   }
  ],
  "scores": {
@@ -48,9 +61,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -67,7 +91,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "全片 f01-f08"
+    "text": "f01-f08"
    }
   },
   {
@@ -88,11 +112,13 @@
  "judges": {
   "J1": {
    "clip_id": "golden_033",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.62,
-   "spans": "全片 f01-f08",
-   "notes": "全片为浅景深失焦的双手交扣特写。逐项核对：f01-f06 手指仅有缓慢微动，f06-f08 手指收拢动作连续自然，无定格、无明暗/内容闪烁、无整体色偏、无文字、无像素块；f07-f08 的糊化表现为快速运动的自然动态模糊，非双影拖影。语义维度：可辨认拇指（f01-f05 左下）与交扣的手指堆叠，f08 右上亮条为指甲随手指转动产生的反光，属合理解剖表现；因景深极浅整体模糊，细微指型难以精确计数，但现有 8 帧中无确凿的多指/融指或穿模、悬浮证据，故不强行报缺陷，判为干净，置信度受模糊度限制取中等。"
+   "defect_detected": true,
+   "defect_types": [
+    "hand_anomaly"
+   ],
+   "confidence": 0.78,
+   "spans": "f01-f08",
+   "notes": "全片为交扣双手的极端特写，手部解剖明显不成立：f01-f03顶部可见约6个圆钝指端自同一连续肉块中长出，指根相互融合、无正常手掌分界；f01-f05右侧有4-5根香肠状指体沿弧形边缘无关节堆叠；全片手指均无指甲、无指节褶皱、无掌纹，指体粗细异常（如f01顶部中央一根明显过粗过长）。可见指端总数超出两只手在该姿态下应有的正常显露数量，整体结构无法解析为两只解剖正确的手，判hand_anomaly。时序专项：f04→f05、f03→f06及f01-f02、f02-f03、f05-f06、f06-f07、f07-f08各帧对均为手指连续匀速内收弯曲的连贯动作，无内容回跳（temporal_swap未见）、无明暗/饱和交替闪烁（flicker未见）、无画面凝固（frame_freeze未见）；整体色调统一无色偏，时序维度未检出异常。"
   },
   "J5": {
    "clip_id": "golden_033",

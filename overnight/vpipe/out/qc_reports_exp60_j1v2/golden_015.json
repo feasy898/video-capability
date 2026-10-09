@@ -1,0 +1,151 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_015",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9437,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.944 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J1",
+    "J5",
+    "J3"
+   ],
+   "confidence": 0.9437,
+   "evidence": {
+    "J1": {
+     "notes": "人脸模糊：f01-f02人物面部清晰锐利；自f03起至f06，人物面部及上躯干区域出现一块边缘规整、近似矩形的异常模糊斑块，而同帧内背景置物架、前景茶壶与笔记本均保持清晰，明显为局部人脸/人像区域异常模糊而非景深效果；f07起模糊消失恢复清晰。时序帧对专项：f04-f05均在饮用动作中，姿态有细微变化，无画面凝固；f0"
+    },
+    "J5": {
+     "notes": "解析=json; 回答={\"defect_types\":[\"face_blur\"],\"other\":false,\"reason\":\"画面中人物脸部区域存在模糊\"}"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.1379,
+      "flicker": 0.2227,
+      "color_shift": 0.199,
+      "face_blur": 0.9437,
+      "garble_text": 0.0397,
+      "temporal_swap": 0.347,
+      "pixelate": 0.8865,
+      "ghosting": 0.3801
+     },
+     "overall": 0.6505
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8865,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.1379,
+      "flicker": 0.2227,
+      "color_shift": 0.199,
+      "face_blur": 0.9437,
+      "garble_text": 0.0397,
+      "temporal_swap": 0.347,
+      "pixelate": 0.8865,
+      "ghosting": 0.3801
+     },
+     "overall": 0.6505
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.1379,
+   "flicker": 0.2227,
+   "color_shift": 0.199,
+   "face_blur": 0.9437,
+   "garble_text": 0.0397,
+   "temporal_swap": 0.347,
+   "pixelate": 0.8865,
+   "ghosting": 0.3801
+  },
+  "overall": 0.6505,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f06（约1.6s-3.5s）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.9,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "人脸模糊：f01-f02人物面部清晰锐利；自f03起至f06，人物面部及上躯干区域出现一块边缘规整、近似矩形的异常模糊斑块，而同帧内背景置物架、前景茶壶与笔记本均保持清晰，明显为局部人脸/人像区域异常模糊而非景深效果；f07起模糊消失恢复清晰。时序帧对专项：f04-f05均在饮用动作中，姿态有细微变化，无画面凝固；f03-f06无段落回跳，运动趋势（举杯→饮用→放下→伸手取物）连贯；f01-f02、f02-f03、f05-f06、f06-f07、f07-f08相邻帧对无明暗/饱和交替闪烁，整体光线一致。f06-f08白色茶杯不在桌面可视区域，但f06-f07人物手臂向笔记本右侧伸展，推测杯子被放置于被笔记本遮挡区域，证据不足不报count_error/physics_error。f08手中出现深色小物件，来源不在画面内，无明显解剖或物理异常。综上仅命中face_blur。"
+  },
+  "J5": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"face_blur\"],\"other\":false,\"reason\":\"画面中人物脸部区域存在模糊\"}"
+  },
+  "J3": {
+   "clip_id": "golden_015",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur",
+    "pixelate"
+   ],
+   "confidence": 0.9437,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.138; flicker=0.223; color_shift=0.199; face_blur=0.944; garble_text=0.040; temporal_swap=0.347; pixelate=0.886; ghosting=0.380; overall=0.650"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_015.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_015.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_015.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_015.json"
+ }
+}

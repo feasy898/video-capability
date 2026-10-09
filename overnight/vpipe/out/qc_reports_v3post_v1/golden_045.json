@@ -1,18 +1,31 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_045",
- "generated_at": "2026-10-09T13:46:42",
+ "generated_at": "2026-10-09T16:29:27",
  "qc_mode": "tonight_replay",
  "verdict": {
-  "defect_detected": false,
-  "decision": "pass",
-  "confidence": 0.0,
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.65,
   "decided_by": "E10",
   "reasons": [
-   "E10 未触发：J1 未检出且 J3 无通道 P>0.71"
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J1 检出（无概率通道≥0.90））"
   ]
  },
- "defects": [],
+ "defects": [
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.65,
+   "evidence": {
+    "J1": {
+     "notes": "f01→f04 镜头呈连续单调推近：全景（f01，长椅与双脚全入画）逐级收紧到大腿中景（f04，下缘截止大腿、人物头部占比最大）。但 f05 相对 f04 景别明显倒退：人物头部占比变小、画面下缘从大腿退回到小腿及地面落叶，构图回到接近 f03（约1.6s）已出现过的取景状态；随后 f05→f06→f07→f08 又转"
+    }
+   }
+  }
+ ],
  "scores": {
   "per_type": {
    "frame_freeze": 0.2427,
@@ -30,14 +43,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "全片 f01-f08 无异常",
+    "text": "f04-f05（约2.3s-2.9s）",
     "source": "J1"
    }
   },
@@ -52,11 +65,13 @@
  "judges": {
   "J1": {
    "clip_id": "golden_045",
-   "defect_detected": false,
-   "defect_types": [],
-   "confidence": 0.9,
-   "spans": "全片 f01-f08 无异常",
-   "notes": "逐项核对8帧：画面无定格，镜头呈连续推拉运动（f01广角→f04中近景→f05稍拉远→f07-f08面部特写），各帧内容连续推进；f01-f08整体秋景色调一致，无明暗闪烁或色偏；f07-f08面部特写细节清晰，皱纹、白发、灰呢帽均无模糊，与f01-f06中远景外观一致，无身份漂移；人物双手始终交叠扶杖（f02、f05可见戒指），手指数量与形态自然，无多指/融指；手杖、长椅、鹅卵石路面、落叶等元素跨帧形态与位置连贯，坐姿与杖尖触地支撑合理，无物理违例；画面无乱码文字、无像素块、无拖影残影。综合判定该片段干净，未发现8类标准缺陷及语义类缺陷。"
+   "defect_detected": true,
+   "defect_types": [
+    "temporal_swap"
+   ],
+   "confidence": 0.65,
+   "spans": "f04-f05（约2.3s-2.9s）",
+   "notes": "f01→f04 镜头呈连续单调推近：全景（f01，长椅与双脚全入画）逐级收紧到大腿中景（f04，下缘截止大腿、人物头部占比最大）。但 f05 相对 f04 景别明显倒退：人物头部占比变小、画面下缘从大腿退回到小腿及地面落叶，构图回到接近 f03（约1.6s）已出现过的取景状态；随后 f05→f06→f07→f08 又转为持续快速推近直至面部特写。f04→f05 形成「推—退—推」的运动趋势断裂与内容回跳，不符合连续平滑推拉运镜特征，判定为时序构图回跳。其余检查：f03 与 f06 跨段对及其他相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）景别变化方向一致、无明暗/饱和度交替闪烁，各帧光影内容均有变化未见画面凝固；人物帽/毛衣/拐杖/长椅及面部特征跨帧一致，无身份漂移；手部交叠扶杖形态自然、无多指融指，无像素化、拖影或乱码文字。"
   },
   "J5": {
    "clip_id": "golden_045",

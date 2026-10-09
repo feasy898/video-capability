@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_018",
- "generated_at": "2026-10-09T13:46:55",
+ "generated_at": "2026-10-09T16:29:42",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -22,7 +22,7 @@
    "confidence": 0.9654,
    "evidence": {
     "J1": {
-     "notes": "f01-f02 为米色蛋与米色长毛地毯的暖色调画面；f03 起整个场景（背景、地毯、蛋）突变为青绿色调，持续至 f06，f07 又瞬间恢复暖米色，属整体颜色异常偏移（color_shift）。同时主体形态发生漂移：f01-f04 为明显卵形蛋，f05 起轮廓逐渐变圆，f06 已接近正球体，f07-f08 回到暖色后仍是"
+     "notes": "1) color_shift：f01-f02为暖米色场景（棕壳蛋+米色地毯），f03-f05整帧色调突变为薄荷绿（蛋与地毯/背景同步变绿，属全局色偏而非物体本身变色），f06又突变回暖米色，构成一次无动机的全场色偏往返。2) physics_error：主体蛋形跨帧连续形变——f01-f02为直立椭圆蛋，f03-f04"
     },
     "J3": {
      "channel_probs": {
@@ -40,14 +40,14 @@
    }
   },
   {
-   "type": "identity_drift",
+   "type": "physics_error",
    "sources": [
     "J1"
    ],
-   "confidence": 0.92,
+   "confidence": 0.9,
    "evidence": {
     "J1": {
-     "notes": "f01-f02 为米色蛋与米色长毛地毯的暖色调画面；f03 起整个场景（背景、地毯、蛋）突变为青绿色调，持续至 f06，f07 又瞬间恢复暖米色，属整体颜色异常偏移（color_shift）。同时主体形态发生漂移：f01-f04 为明显卵形蛋，f05 起轮廓逐渐变圆，f06 已接近正球体，f07-f08 回到暖色后仍是"
+     "notes": "1) color_shift：f01-f02为暖米色场景（棕壳蛋+米色地毯），f03-f05整帧色调突变为薄荷绿（蛋与地毯/背景同步变绿，属全局色偏而非物体本身变色），f06又突变回暖米色，构成一次无动机的全场色偏往返。2) physics_error：主体蛋形跨帧连续形变——f01-f02为直立椭圆蛋，f03-f04"
     }
    }
   },
@@ -135,14 +135,14 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
   {
    "type": "note",
    "evidence": {
-    "text": "color_shift: f03-f06（f02→f03 突变进入青绿色调，f06→f07 突变回米色）；identity_drift: f04-f08（蛋形由卵形逐渐变形为球形）",
+    "text": "color_shift: f03-f05（约1.6s-2.8s，色偏在f02→f03间切入、f05→f06间退出）；physics_error: f03-f06（蛋体形变过程，f06后稳定为球体）",
     "source": "J1"
    }
   },
@@ -160,11 +160,11 @@
    "defect_detected": true,
    "defect_types": [
     "color_shift",
-    "identity_drift"
+    "physics_error"
    ],
-   "confidence": 0.92,
-   "spans": "color_shift: f03-f06（f02→f03 突变进入青绿色调，f06→f07 突变回米色）；identity_drift: f04-f08（蛋形由卵形逐渐变形为球形）",
-   "notes": "f01-f02 为米色蛋与米色长毛地毯的暖色调画面；f03 起整个场景（背景、地毯、蛋）突变为青绿色调，持续至 f06，f07 又瞬间恢复暖米色，属整体颜色异常偏移（color_shift）。同时主体形态发生漂移：f01-f04 为明显卵形蛋，f05 起轮廓逐渐变圆，f06 已接近正球体，f07-f08 回到暖色后仍是球形而非蛋形，主体跨帧外观突变（identity_drift）。两次颜色切换均为帧间突变、无过渡，虽有时序不连贯观感但场景构图与内容一致，归入 color_shift 而非 temporal_swap；未发现定格、闪烁、乱码、像素化、拖影或手部/计数/物理类缺陷。"
+   "confidence": 0.9,
+   "spans": "color_shift: f03-f05（约1.6s-2.8s，色偏在f02→f03间切入、f05→f06间退出）；physics_error: f03-f06（蛋体形变过程，f06后稳定为球体）",
+   "notes": "1) color_shift：f01-f02为暖米色场景（棕壳蛋+米色地毯），f03-f05整帧色调突变为薄荷绿（蛋与地毯/背景同步变绿，属全局色偏而非物体本身变色），f06又突变回暖米色，构成一次无动机的全场色偏往返。2) physics_error：主体蛋形跨帧连续形变——f01-f02为直立椭圆蛋，f03-f04逐渐倾斜变圆，f05近乎球体，f06-f08完全成为正球体；刚体蛋在无外力下不可能自行收缩变形为球，属物理违例。时序帧对专项：f04→f05形变方向连续（继续变圆），无内容回跳；f03→f06形状演进连贯（延续变圆趋势）、无段落互换，仅色彩往返已计入color_shift；f01-f02与f07-f08画面近乎一致，但主体本为静止物体、中间段存在明显形变运动，不构成「动-停-动」的播放凝固，故不报frame_freeze；明暗饱和未见正负交替闪烁，不报flicker。其余缺陷（face_blur/garble_text/pixelate/ghosting等）8帧中均未见。"
   },
   "J5": {
    "clip_id": "golden_018",

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_028",
- "generated_at": "2026-10-09T13:46:55",
+ "generated_at": "2026-10-09T16:29:42",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -53,10 +53,17 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
   {
    "type": "note",
    "evidence": {
@@ -70,9 +77,9 @@
    "clip_id": "golden_028",
    "defect_detected": false,
    "defect_types": [],
-   "confidence": 0.82,
-   "spans": "",
-   "notes": "逐项核对8帧：主体为同一丛粉/奶白色月季与背景白窗框，f01-f08场景连续无跳变，不构成temporal_swap；f01→f02、f04→f05、f07→f08可见平缓的手持机位移动，花朵与叶片有轻微自然摆动，未见定格数秒的frame_freeze（f02-f04画面近似静止，但帧间仍有细微差异，符合手持拍摄的短暂停顿，且场景本身近乎静态，不构成缺陷证据）；整体色调（粉、奶白、绿色）跨帧稳定，无flicker/color_shift；画面无文字（garble_text不适用）、无人脸（face_blur不适用）；花叶边缘清晰，未见pixelate与运动ghosting；花朵数量、形态符合常识，枝叶摆动符合风力物理规律，无physics_error/identity_drift/count_error。综合判定该片段干净。"
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "逐项核对8类标准缺陷：全片无定格、无明暗/饱和交替闪烁、无整体色偏、无人脸、无乱码文字、无像素块、无拖影（花朵为静态主体，帧间边缘清晰）。时序帧对专项：f04→f05 可见镜头平稳向右横移（左侧窗框逐渐移出画面），f03→f06 延续同一方向移动，f05→f08 镜头轻微回摆使窗框重新入画，均为连续平滑的手持运镜，无景别/内容回跳，不构成 temporal_swap；各相邻帧对亮度色彩一致，无正负交替的闪烁；f02-f04 之间变化幅度很小（相对静止瞬间），但花叶仍有细微位移且与前后段变化连续，未见'动-停-动'断裂，不判 frame_freeze。语义维度：花与叶始终固着枝条、形态稳定，主体（粉/白/奶油色月季）跨帧外观一致，无计数异常、物理违例或身份漂移。帧对比对未见时序异常，判定干净。"
   },
   "J5": {
    "clip_id": "golden_028",

@@ -1,0 +1,122 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_035",
+ "generated_at": "2026-10-09T15:49:05",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.938,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.938 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "ghosting",
+   "sources": [
+    "J5",
+    "J3"
+   ],
+   "confidence": 0.938,
+   "evidence": {
+    "J5": {
+     "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"橙色球体运动时存在运动拖影\"}"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.0871,
+      "flicker": 0.4115,
+      "color_shift": 0.2892,
+      "face_blur": 0.0318,
+      "garble_text": 0.0272,
+      "temporal_swap": 0.4342,
+      "pixelate": 0.1941,
+      "ghosting": 0.938
+     },
+     "overall": 0.6168
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.0871,
+   "flicker": 0.4115,
+   "color_shift": 0.2892,
+   "face_blur": 0.0318,
+   "garble_text": 0.0272,
+   "temporal_swap": 0.4342,
+   "pixelate": 0.1941,
+   "ghosting": 0.938
+  },
+  "overall": 0.6168,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_035",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.78,
+   "spans": "无",
+   "notes": "逐帧核对：视频内容为橙色小球在木桌面上方弹跳/下落并最终停稳。f01-f04 小球高速运动呈竖向拉长的运动模糊（模糊方向与竖直运动一致，属自然运动模糊而非重影缺陷），f05-f06 小球接近桌面逐渐清晰，f07 球底部有下落/反弹模糊，f08 小球稳稳落在桌面并出现倒影，支撑关系合理。时序帧对专项：f04→f05 球体由高处运动模糊态过渡到近桌清晰态，运动趋势连续无内容回跳；f03→f06 呈持续下落轨迹，无段落互换；f01-f02、f02-f03、f05-f06、f06-f07、f07-f08 各相邻帧对位置/形态均为平滑渐变，无明暗或饱和度交替闪烁，无任何两帧完全一致导致的画面凝固。全程无脸、无文字、无像素化，色彩（橙球/白墙/木桌）跨帧一致，物体计数正常，弹跳物理合理。帧对比对未见时序异常，判定为干净片段。"
+  },
+  "J5": {
+   "clip_id": "golden_035",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"橙色球体运动时存在运动拖影\"}"
+  },
+  "J3": {
+   "clip_id": "golden_035",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.938,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.087; flicker=0.411; color_shift=0.289; face_blur=0.032; garble_text=0.027; temporal_swap=0.434; pixelate=0.194; ghosting=0.938; overall=0.617"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_035.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_035.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_035.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_035.json"
+ }
+}

@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_052",
- "generated_at": "2026-10-09T13:46:40",
+ "generated_at": "2026-10-09T16:29:23",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -30,9 +30,20 @@
   "thresholds_applied": {
    "ensemble_id": "E10",
    "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -40,7 +51,7 @@
    "type": "note",
    "evidence": {
     "judge": "J1",
-    "text": "无"
+    "text": "无（全段 f01-f08 干净）"
    }
   },
   {
@@ -64,8 +75,8 @@
    "defect_detected": false,
    "defect_types": [],
    "confidence": 0.88,
-   "spans": "无",
-   "notes": "逐帧核对：动作时序连贯，f01 手扶杯柄→f02-f04 端杯上举→f04-f05 饮用→f06-f08 放低微笑，无时序跳变或定格；人脸各帧（f01-f08）均清晰锐利，无模糊、像素块或拖影；色调与曝光稳定（红裙、暖光一致），无明显闪烁或整体偏色；手部解剖正常，f02/f06/f08 中握杯手指数量与形态合理，无多指融指；场景元素一致（单杯单碟单勺、同款金耳钉与项链），无计数异常或身份漂移；f03/f07 杯口蒸汽方向自然，窗外行人与车辆（f04/f05）运动合理，背景虚化为景深效果而非拖影；画面无可读文字，不涉及乱码。综合判定为干净片段。"
+   "spans": "无（全段 f01-f08 干净）",
+   "notes": "8 帧均为同一位红裙女性在咖啡店窗边的连续动作，未发现缺陷。动作时序连贯：f01 手握杯柄→f02 抬杯离碟（碟子仍在桌面，物理合理）→f03-f05 杯渐近唇边并饮用→f06-f08 放下杯并微笑，无段落互换或姿态回跳。专项比对：f04→f05 杯子持续贴唇、机位平缓推近，背景由行人变为白车属窗外街景自然流动，非时序异常；f03→f06 为饮用后放杯的顺向推进，无内容回跳。相邻帧对（f01-f02、f02-f03、f05-f06、f06-f07、f07-f08）亮度与饱和度稳定，无明暗交替闪烁，无任何两帧完全一致故不构成 frame_freeze，整段渐推镜头属正常运镜。手部解剖正常（握柄指节自然，无多指/融指），人物耳钉、项链、发型、红裙跨帧一致无身份漂移，人脸清晰无模糊、无像素化、无拖影，画面无乱码文字。帧对比对未见时序异常。"
   },
   "J5": {
    "clip_id": "golden_052",

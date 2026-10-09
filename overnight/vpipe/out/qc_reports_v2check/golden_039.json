@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "clip_id": "golden_039",
- "generated_at": "2026-10-09T13:46:55",
+ "generated_at": "2026-10-09T16:29:42",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": false,
@@ -30,7 +30,7 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "661d82a2a926a95cd67b2aad184b3e2200d5c71214e9d0e55792bcfb0e58e981"
+   "thresholds_sha256": "fe20cd82b4a200e17b730463196961fa3cca38567c7a8ef33b37f8eba0618feb"
   }
  },
  "spans": [
@@ -56,7 +56,7 @@
    "defect_types": [],
    "confidence": 0.88,
    "spans": "无",
-   "notes": "f01-f08 呈现连续自然的动作序列：人物由左侧脸（f01）自然转头至正面（f03-f04），随后低头浅笑（f05），再抬头展露微笑（f06-f08），时序连贯无跳变。人物身份特征（发型、红裙、耳钉、细金项链）跨帧一致，无 identity_drift；面部各帧清晰锐利，无 face_blur；背景灰调、红色裙装颜色稳定，无 flicker/color_shift；动作缓慢平滑，无 ghosting/pixelate/frame_freeze；画面无文字、无手部出镜、单主体计数正常，未见物理违例。综合判定为干净片段。"
+   "notes": "8帧均清晰锐利，无模糊、像素化、乱码文字或拖影。色彩全程一致（红裙、灰底无色偏）。时序运动连贯自然：f01→f04为侧脸到正脸的平滑转头，f05为低头浅笑（画面构图随低头动作略收紧，属合理运动），f06→f08回归正脸微笑，无内容回跳或段落错乱（f04→f05、f03→f06比对未见异常）。f06/f07/f08虽姿态相近但发丝与头部位置有细微差异，不构成画面凝固。帧间亮度饱和度稳定，无闪烁交替。人物身份跨帧一致：发型、红裙、耳钉、项链连续，五官特征无突变，无手部出现故无手部异常，无物理违例。帧对比对未见时序异常，判定干净。"
   },
   "J5": {
    "clip_id": "golden_039",

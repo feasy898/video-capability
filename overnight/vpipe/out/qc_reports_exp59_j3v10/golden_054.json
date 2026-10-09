@@ -1,0 +1,128 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_054",
+ "generated_at": "2026-10-09T14:33:25",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.85,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.85)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.8944",
+   "J3 frame_freeze 低运动平台豁免弃权（声明制）: profile=avatar_talk in_med=0.4858<2.0, 通道P=0.8944>=0.71 未计入 hits（证据见 errors.J3_frame_freeze_exempt）",
+   "降级: J3_frame_freeze_exempt; J6"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8944,
+   "flicker": 0.1724,
+   "color_shift": 0.4431,
+   "face_blur": 0.1888,
+   "garble_text": 0.0416,
+   "temporal_swap": 0.229,
+   "pixelate": 0.12,
+   "ghosting": 0.4155
+  },
+  "overall": 0.554,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": true
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_054",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.85,
+   "spans": "",
+   "notes": "8 帧均为同一场景连续画面：人物站在宴会厅背景前，吊灯光斑与背景虚化保持稳定，无明暗交替（f01-f08 无 flicker）；整体色调一致无偏移；人脸在各帧均清晰锐利，无异常模糊或马赛克；无乱码文字与时序跳变。唇部有细微开合变化（f05、f08 嘴唇微张，f06 闭合），发型发丝与耳钉位置有自然微小位移，说明画面在持续动态而非定格，排除 frame_freeze；人物五官、发型、耳钉、服装跨帧完全一致，无 identity_drift；未见手部、无可计数异常对象、无物理违例。综合判定该片段干净，未检出标准缺陷或语义缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_054",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_054",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8944,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.894 flicker=0.172 color_shift=0.443 face_blur=0.189 garble_text=0.042 temporal_swap=0.229 pixelate=0.120 ghosting=0.415; overall=0.554; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_054.mp4",
+  "frames_dir": "frames/golden_054/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_054.json",
+   "J5": "../数据/judges/videochat3/golden_054.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_054.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_054.qc.json')",
+  "J3_frame_freeze_exempt": {
+   "abstained": true,
+   "channel": "frame_freeze",
+   "channel_P": 0.8944,
+   "eff_thr": 0.71,
+   "in_med": 0.4858,
+   "in_med_max": 2.0,
+   "profile": "avatar_talk",
+   "would_flag_without_exempt": true,
+   "verdict_changed": true,
+   "note": "frame_freeze 通道候选弃权（低运动平台豁免，声明制）；其余通道与 overall 不受影响"
+  }
+ },
+ "qc_context": {
+  "profile": "avatar_talk"
+ }
+}

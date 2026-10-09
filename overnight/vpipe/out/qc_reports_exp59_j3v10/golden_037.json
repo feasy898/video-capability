@@ -1,0 +1,156 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_037",
+ "generated_at": "2026-10-09T14:33:24",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.88,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.88)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5473",
+   "J6 信号(仅信号不否决): garble_text@0.74"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.7414,
+   "span": {
+    "start_s": 0.0,
+    "end_s": 5.167
+   },
+   "evidence": {
+    "J6": {
+     "kind": "uniform_low_conf",
+     "max_mean": 0.472
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.24,
+   "flicker": 0.2706,
+   "color_shift": 0.3594,
+   "face_blur": 0.1633,
+   "garble_text": 0.0406,
+   "temporal_swap": 0.2877,
+   "pixelate": 0.1502,
+   "ghosting": 0.2837
+  },
+  "overall": 0.5473,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "j3_per_channel_thr": {
+    "frame_freeze": 0.71
+   },
+   "ff_exempt": {
+    "enabled": true,
+    "profiles": [
+     "avatar_talk"
+    ],
+    "in_med_max": 2.0,
+    "applied": false
+   },
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "521886a9d6654e80ce72a84972656dea1bf437468ef17eab429441442b85a2bc"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.0,
+   "end_s": 5.167,
+   "evidence": {
+    "kind": "uniform_low_conf",
+    "max_mean": 0.472
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_037",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.88,
+   "spans": "",
+   "notes": "8帧呈现连续平滑的推近镜头：f01-f05由全景渐推至中近景，f06-f08推至面部特写，过渡自然无时序跳变（无temporal_swap）。人物身份一致：灰色鸭舌帽、墨绿色麻花毛衣、棕色木拐杖、屈指握杖的坐姿在全部帧保持稳定（无identity_drift），f06-f08面部细节清晰锐利、皱纹与五官连贯（无face_blur）。手部结构正常，f05-f06可见自然交叠的十指与戒指，无多指/融指（无hand_anomaly）。坐姿支撑合理、拐杖触地（无physics_error），单主体单长椅计数正常。全片无文字（无garble_text），画面无定格、闪烁、色偏、像素块或拖影（f01-f08逐项核对均干净）。判定为干净片段。"
+  },
+  "J5": {
+   "clip_id": "golden_037",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_037",
+   "defect_detected": true,
+   "defect_types": [],
+   "confidence": 0.5473,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.240 flicker=0.271 color_shift=0.359 face_blur=0.163 garble_text=0.041 temporal_swap=0.288 pixelate=0.150 ghosting=0.284; overall=0.547; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_037",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.7414,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.0,
+     "end_s": 5.167,
+     "evidence": {
+      "kind": "uniform_low_conf",
+      "max_mean": 0.472
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_037.mp4",
+  "frames_dir": "frames/golden_037/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_037.json",
+   "J5": "../数据/judges/videochat3/golden_037.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_037.qc.json"
+  }
+ },
+ "errors": {}
+}
