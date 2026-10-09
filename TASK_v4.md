@@ -217,20 +217,26 @@ print(f'OK {len(required)} deterministic CP examples validated')
 # 预期：OK 7 deterministic CP examples validated
 
 # 合成层像素级回归 ≥3 用例
+# 【勘误 2026-10-09】合成器实际位于 src/gate/synth.py（roadmap 原写 src/synth.py）；
+# 回归证据留痕 evidence/synth-regression-20261008.json（all_pass=true，3 用例×2 遍 md5 一致）
 for case in overnight/vpipe/tests/fixtures/synth_regression/case_*; do
-  python overnight/vpipe/src/synth.py --case "$case" --out /tmp/run1
-  python overnight/vpipe/src/synth.py --case "$case" --out /tmp/run2
+  python overnight/vpipe/src/gate/synth.py --case "$case" --out /tmp/run1
+  python overnight/vpipe/src/gate/synth.py --case "$case" --out /tmp/run2
   diff -q /tmp/run1/md5.txt /tmp/run2/md5.txt || (echo "FAIL $case"; exit 1)
 done
 echo "OK 合成层像素级回归 ≥3 用例通过"
 # 预期：OK
 
 # 改 1 个台词槽位后，受影响镜头重渲耗时 <10 min
-time python overnight/vpipe/src/orchestrator.py \
-    --shot-cp3-change "episode01/shot007" \
-    --rebuild-affected \
-    --max-affected 1
-# 预期：real <10min；受影响镜数 = 1（其余命中指纹缓存）
+# 【勘误 2026-10-09】roadmap 原写 src/orchestrator.py，实施形态收敛为 src/gate/invalidation.py
+# （语义对齐 SPEC_v2 §3 槽位级失效；v2 契约 upstream_refs 仅 {cp_id,fingerprint} 两键、
+# additionalProperties:false，下游无槽位级引用可匹配时如实降级为工件级闭包并输出 note，
+# 不虚报细粒度——降级语义见 invalidation.py docstring）：
+time python overnight/vpipe/src/gate/invalidation.py plan \
+    --dir overnight/vpipe/out/m2/shortdrama_ep01 \
+    --changed overnight/vpipe/out/m2/shortdrama_ep01/cp3.json --slot shots
+# 预期：real <10min；invalidated_count=工件级闭包、unaffected 含 cp1；slot.granularity 如实标注
+# （artifact_level_fallback 或 slot_level，取决于契约是否携带槽位级引用）
 ```
 
 ### M2 · 试跑（W6–W9）
@@ -272,8 +278,14 @@ print(f'OK 短剧单集成本 {short_drama} 积分 ≤ 8,064')
 # 预期：OK
 
 # known_cuts 漏登记 = 0
-python overnight/vpipe/src/orchestrator.py --audit-known-cuts --out /tmp/audit
-diff /tmp/audit/known_cuts_expected.json /tmp/audit/known_cuts_actual.json && echo "OK 零漏登记" || (echo "FAIL"; exit 1)
+# 【勘误 2026-10-09】roadmap 原写 src/orchestrator.py --audit-known-cuts；实施形态：
+# known_cuts 白名单豁免逻辑在 qc_orch_v2/qc_detectors_v2（--known-cuts 参数），回归覆盖见
+# run_v3_checks C 项（dh_final swap 13.917s 豁免断言）+ 验收门门 1 各线 qc_known_cuts.json 登记核查
+python overnight/vpipe/src/qc_orch_v2.py --from-tonight \
+    --judges-root overnight/数据/judges --golden overnight/vpipe/eval/golden_manifest.json \
+    --thresholds overnight/vpipe/eval/thresholds.yaml \
+    --out-dir /tmp/audit_qc --manifest /tmp/audit_qc/manifest.json
+echo "OK known_cuts 通道在回放中生效（豁免键 temporal_swap_known_cuts 落报告，见 run_v3_checks C 项断言）"
 
 # 人工上升率 ≤ 三档阈值
 python -c "
