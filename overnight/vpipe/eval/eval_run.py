@@ -46,12 +46,20 @@ B_MAP_STRICT = {
     "text_render_garble": {"garble_text", "text_error"},
     "physics_temporal_violation": {"physics_error"},
     "count_error": {"count_error"},
+    # D-3 扩样新增意图标签（2026-10-09，golden_053/054）：三判官 rubric 均无唇形同步通道
+    # （J1 只读 8 帧静态帧，J3/J5 视频通道无音轨-口型对齐判据，judge_common.py 词表无 lip 项）
+    # → strict 无可命中词表，如实登记空集；lenient 放宽至 other（唯一通用异常通道）。
+    # 评不出 ≠ 放水：defect_detected 与类型证据仍照实计分，B_flag 含这 2 条。
+    "lip_sync_desync": set(),
+    "lip_script_mismatch": set(),
 }
 B_MAP_LENIENT = {
     "hand_anatomy_distortion": {"hand_anomaly", "other"},
     "text_render_garble": {"garble_text", "text_error"},
     "physics_temporal_violation": {"physics_error", "temporal_swap", "other"},
     "count_error": {"count_error", "other"},
+    "lip_sync_desync": {"other"},
+    "lip_script_mismatch": {"other"},
 }
 
 

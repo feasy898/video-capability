@@ -8,7 +8,16 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 6                   # 2026-10-09（v6）：头部新增 versioning 段（spec_version/
+version: 7                   # 2026-10-09（v7）：D-3 金标扩样数据形态键随数据集登记——
+                             #   eval_admission.class_counts {A16,B12,C12}→{A28,B14,C15}、
+                             #   min_clips_required 40→57（overnight/数据/golden/manifest.json
+                             #   expanded_at=2026-10-09，+17：A 组时序注入 12 + B 组口播意图 2 +
+                             #   C 组口播干净 3；与方案 §2.1 差异如实记录于 manifest expansion_note：
+                             #   C 组 API 乱码 2 条未构造）。两键是金标身份校验（计数对不上即判
+                             #   eval 无效）非判定阈；准入线 recall_min/fpr_max/f1_min/b_flag_min
+                             #   四值一字未动（不许为扩样放线）。G0-2 双处登记：本注记 + 扩样后
+                             #   eval 留痕 JSON（eval_results 扩样轮，counts=57）。v6 段零修改。
+                             # 2026-10-09（v6）：头部新增 versioning 段（spec_version/
                              #   registry_version/prompt_version 三版本字段当前值登记；
                              #   白皮书 §5.2「阈值版本三字段」行，抄 DramaClaw
                              #   verification/version_hash.py:3-11 规范——三个值一律按口径
@@ -214,8 +223,8 @@ eval_admission:
   fpr_max: 0.30
   f1_min: 0.85
   b_flag_min: 0.50
-  min_clips_required: 40        # 金标全量（A16/B12/C12），少于即判 eval 无效
-  class_counts: { A: 16, B: 12, C: 12 }
+  min_clips_required: 57        # 金标全量（2026-10-09 扩样后 A28/B14/C15=57；v6 前 40），少于即判 eval 无效
+  class_counts: { A: 28, B: 14, C: 15 }
 
 # ---------------------------------------------------------------
 # L0 确定性预检（§11.1：拒收层。2026-10-01 挂进 qc_orch_v2 在线模式：

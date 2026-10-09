@@ -1,0 +1,2813 @@
+{
+ "generated_at": "2026-10-09T11:15:00",
+ "purpose": "D-3 扩样后 E10 复核 supplement：工作点重扫证据 + 机制明细 + 数据一致性注记（G0-2 双处登记之 eval 留痕侧）",
+ "pair_file": "eval/eval_results_exp57.json（= canonical eval_results.json，57 条 REJECT）",
+ "thresholds_note": "thresholds.yaml v7 注记（eval_admission.class_counts 28/14/15 + min_clips_required 57；准入线四值未动）",
+ "e10_exp57_verdict": "REJECT",
+ "e10_exp57_metrics": {
+  "recall": 0.8929,
+  "fpr": 0.4,
+  "f1": 0.8475,
+  "b_flag": 0.6429,
+  "tp": 25,
+  "fn": 3,
+  "fp": 6,
+  "tn": 9
+ },
+ "admission": {
+  "recall_min": 0.9,
+  "fpr_max": 0.3,
+  "f1_min": 0.85,
+  "b_flag_min": 0.5
+ },
+ "fails": [
+  "recall_min 0.8929<0.90",
+  "fpr_max 0.40>0.30",
+  "f1_min 0.8475<0.85"
+ ],
+ "working_point_rescan": {
+  "method": "E10=J1.detected OR J3@thr（qc_orch_v2 同口径，probs 源 judges/omnijev/run_metadata.json 57 条合并表）；thr 0.400-0.950 步长 0.005",
+  "feasible_points": 0,
+  "why_infeasible": [
+   "recall 上界 25/28=0.8929：golden_045/046（swap 注入）与 golden_052（flicker 注入）为 J1∧J3 双漏（J3 最强通道分别 0.387/0.590/0.579，任何阈救不回）",
+   "golden_041（freeze 注入）仅靠 J3 frame_freeze=0.847 检出（J1 漏）→ 阈须 <0.847",
+   "C 类 golden_032 被 J3 ghosting=0.930 误报 → 消误报须 thr >0.930 → 与上一条矛盾，且 041 转 FN 后 recall 跌至 24/28",
+   "C 类口播干净 055/056/057 被 J3 frame_freeze=0.727-0.809 误报（口播低运动素材机理，与 J6v2 低运动平台同源；J3 无豁免通道）→ 消之须 thr >0.809"
+  ],
+  "scan_table": [
+   {
+    "thr": 0.4,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.405,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.41,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.415,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.42,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.425,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.43,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.435,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.44,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.445,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.45,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.455,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.46,
+    "recall": 1.0,
+    "fpr": 1.0,
+    "f1": 0.7887,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 15,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_039",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.465,
+    "recall": 1.0,
+    "fpr": 0.9333,
+    "f1": 0.8,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 14,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.47,
+    "recall": 1.0,
+    "fpr": 0.9333,
+    "f1": 0.8,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 14,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.475,
+    "recall": 1.0,
+    "fpr": 0.9333,
+    "f1": 0.8,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 14,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.48,
+    "recall": 1.0,
+    "fpr": 0.9333,
+    "f1": 0.8,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 14,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.485,
+    "recall": 1.0,
+    "fpr": 0.9333,
+    "f1": 0.8,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 14,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_026",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.49,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.495,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.5,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.505,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.51,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.515,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.52,
+    "recall": 1.0,
+    "fpr": 0.8667,
+    "f1": 0.8116,
+    "b_flag": 1.0,
+    "tp": 28,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": []
+   },
+   {
+    "thr": 0.525,
+    "recall": 0.9643,
+    "fpr": 0.8667,
+    "f1": 0.7941,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.53,
+    "recall": 0.9643,
+    "fpr": 0.8667,
+    "f1": 0.7941,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 13,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_009",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.535,
+    "recall": 0.9643,
+    "fpr": 0.8,
+    "f1": 0.806,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 12,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.54,
+    "recall": 0.9643,
+    "fpr": 0.8,
+    "f1": 0.806,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 12,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_024",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.545,
+    "recall": 0.9643,
+    "fpr": 0.7333,
+    "f1": 0.8182,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 11,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_037",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.55,
+    "recall": 0.9643,
+    "fpr": 0.6667,
+    "f1": 0.8308,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.555,
+    "recall": 0.9643,
+    "fpr": 0.6667,
+    "f1": 0.8308,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.56,
+    "recall": 0.9643,
+    "fpr": 0.6667,
+    "f1": 0.8308,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.565,
+    "recall": 0.9643,
+    "fpr": 0.6667,
+    "f1": 0.8308,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.57,
+    "recall": 0.9643,
+    "fpr": 0.6667,
+    "f1": 0.8308,
+    "b_flag": 1.0,
+    "tp": 27,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.575,
+    "recall": 0.9643,
+    "fpr": 0.6667,
+    "f1": 0.8308,
+    "b_flag": 0.9286,
+    "tp": 27,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045"
+    ]
+   },
+   {
+    "thr": 0.58,
+    "recall": 0.9286,
+    "fpr": 0.6667,
+    "f1": 0.8125,
+    "b_flag": 0.9286,
+    "tp": 26,
+    "fp": 10,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_027",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.585,
+    "recall": 0.9286,
+    "fpr": 0.6,
+    "f1": 0.8254,
+    "b_flag": 0.9286,
+    "tp": 26,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.59,
+    "recall": 0.9286,
+    "fpr": 0.6,
+    "f1": 0.8254,
+    "b_flag": 0.9286,
+    "tp": 26,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.595,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.6,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.605,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.61,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.615,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.62,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.625,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.63,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.635,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.64,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.645,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.65,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.655,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.66,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.665,
+    "recall": 0.8929,
+    "fpr": 0.6,
+    "f1": 0.8065,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 9,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_001",
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.67,
+    "recall": 0.8929,
+    "fpr": 0.5333,
+    "f1": 0.8197,
+    "b_flag": 0.9286,
+    "tp": 25,
+    "fp": 8,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.675,
+    "recall": 0.8929,
+    "fpr": 0.5333,
+    "f1": 0.8197,
+    "b_flag": 0.8571,
+    "tp": 25,
+    "fp": 8,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.68,
+    "recall": 0.8929,
+    "fpr": 0.5333,
+    "f1": 0.8197,
+    "b_flag": 0.8571,
+    "tp": 25,
+    "fp": 8,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.685,
+    "recall": 0.8929,
+    "fpr": 0.5333,
+    "f1": 0.8197,
+    "b_flag": 0.8571,
+    "tp": 25,
+    "fp": 8,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.69,
+    "recall": 0.8929,
+    "fpr": 0.5333,
+    "f1": 0.8197,
+    "b_flag": 0.7857,
+    "tp": 25,
+    "fp": 8,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.695,
+    "recall": 0.8929,
+    "fpr": 0.5333,
+    "f1": 0.8197,
+    "b_flag": 0.7143,
+    "tp": 25,
+    "fp": 8,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_025",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.7,
+    "recall": 0.8929,
+    "fpr": 0.4667,
+    "f1": 0.8333,
+    "b_flag": 0.7143,
+    "tp": 25,
+    "fp": 7,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.705,
+    "recall": 0.8929,
+    "fpr": 0.4667,
+    "f1": 0.8333,
+    "b_flag": 0.6429,
+    "tp": 25,
+    "fp": 7,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_006",
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.71,
+    "recall": 0.8929,
+    "fpr": 0.4,
+    "f1": 0.8475,
+    "b_flag": 0.6429,
+    "tp": 25,
+    "fp": 6,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.715,
+    "recall": 0.8929,
+    "fpr": 0.4,
+    "f1": 0.8475,
+    "b_flag": 0.5714,
+    "tp": 25,
+    "fp": 6,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.72,
+    "recall": 0.8929,
+    "fpr": 0.4,
+    "f1": 0.8475,
+    "b_flag": 0.5714,
+    "tp": 25,
+    "fp": 6,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.725,
+    "recall": 0.8929,
+    "fpr": 0.4,
+    "f1": 0.8475,
+    "b_flag": 0.5714,
+    "tp": 25,
+    "fp": 6,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056",
+     "golden_057"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.73,
+    "recall": 0.8929,
+    "fpr": 0.3333,
+    "f1": 0.8621,
+    "b_flag": 0.5714,
+    "tp": 25,
+    "fp": 5,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.735,
+    "recall": 0.8214,
+    "fpr": 0.3333,
+    "f1": 0.8214,
+    "b_flag": 0.5714,
+    "tp": 23,
+    "fp": 5,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.74,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5714,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.745,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5714,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.75,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.755,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.76,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.765,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.77,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.775,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.78,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.785,
+    "recall": 0.8214,
+    "fpr": 0.2667,
+    "f1": 0.8364,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 4,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_055",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.79,
+    "recall": 0.8214,
+    "fpr": 0.2,
+    "f1": 0.8519,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 3,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.795,
+    "recall": 0.8214,
+    "fpr": 0.2,
+    "f1": 0.8519,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 3,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.8,
+    "recall": 0.8214,
+    "fpr": 0.2,
+    "f1": 0.8519,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 3,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.805,
+    "recall": 0.8214,
+    "fpr": 0.2,
+    "f1": 0.8519,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 3,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032",
+     "golden_056"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.81,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.815,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.82,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.825,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.83,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.5,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.835,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.4286,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.84,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.4286,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.845,
+    "recall": 0.8214,
+    "fpr": 0.1333,
+    "f1": 0.8679,
+    "b_flag": 0.4286,
+    "tp": 23,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.85,
+    "recall": 0.7857,
+    "fpr": 0.1333,
+    "f1": 0.8462,
+    "b_flag": 0.4286,
+    "tp": 22,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.855,
+    "recall": 0.7857,
+    "fpr": 0.1333,
+    "f1": 0.8462,
+    "b_flag": 0.4286,
+    "tp": 22,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.86,
+    "recall": 0.7857,
+    "fpr": 0.1333,
+    "f1": 0.8462,
+    "b_flag": 0.4286,
+    "tp": 22,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.865,
+    "recall": 0.7857,
+    "fpr": 0.1333,
+    "f1": 0.8462,
+    "b_flag": 0.4286,
+    "tp": 22,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.87,
+    "recall": 0.75,
+    "fpr": 0.1333,
+    "f1": 0.8235,
+    "b_flag": 0.4286,
+    "tp": 21,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.875,
+    "recall": 0.75,
+    "fpr": 0.1333,
+    "f1": 0.8235,
+    "b_flag": 0.4286,
+    "tp": 21,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.88,
+    "recall": 0.7143,
+    "fpr": 0.1333,
+    "f1": 0.8,
+    "b_flag": 0.4286,
+    "tp": 20,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.885,
+    "recall": 0.7143,
+    "fpr": 0.1333,
+    "f1": 0.8,
+    "b_flag": 0.4286,
+    "tp": 20,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.89,
+    "recall": 0.7143,
+    "fpr": 0.1333,
+    "f1": 0.8,
+    "b_flag": 0.4286,
+    "tp": 20,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.895,
+    "recall": 0.7143,
+    "fpr": 0.1333,
+    "f1": 0.8,
+    "b_flag": 0.3571,
+    "tp": 20,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.9,
+    "recall": 0.6786,
+    "fpr": 0.1333,
+    "f1": 0.7755,
+    "b_flag": 0.3571,
+    "tp": 19,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.905,
+    "recall": 0.6786,
+    "fpr": 0.1333,
+    "f1": 0.7755,
+    "b_flag": 0.3571,
+    "tp": 19,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.91,
+    "recall": 0.6786,
+    "fpr": 0.1333,
+    "f1": 0.7755,
+    "b_flag": 0.3571,
+    "tp": 19,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.915,
+    "recall": 0.6786,
+    "fpr": 0.1333,
+    "f1": 0.7755,
+    "b_flag": 0.3571,
+    "tp": 19,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.92,
+    "recall": 0.6429,
+    "fpr": 0.1333,
+    "f1": 0.75,
+    "b_flag": 0.3571,
+    "tp": 18,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.925,
+    "recall": 0.6429,
+    "fpr": 0.1333,
+    "f1": 0.75,
+    "b_flag": 0.3571,
+    "tp": 18,
+    "fp": 2,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013",
+     "golden_032"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.93,
+    "recall": 0.6429,
+    "fpr": 0.0667,
+    "f1": 0.766,
+    "b_flag": 0.3571,
+    "tp": 18,
+    "fp": 1,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.935,
+    "recall": 0.6429,
+    "fpr": 0.0667,
+    "f1": 0.766,
+    "b_flag": 0.3571,
+    "tp": 18,
+    "fp": 1,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.94,
+    "recall": 0.6429,
+    "fpr": 0.0667,
+    "f1": 0.766,
+    "b_flag": 0.2857,
+    "tp": 18,
+    "fp": 1,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.945,
+    "recall": 0.6429,
+    "fpr": 0.0667,
+    "f1": 0.766,
+    "b_flag": 0.2857,
+    "tp": 18,
+    "fp": 1,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   },
+   {
+    "thr": 0.95,
+    "recall": 0.6429,
+    "fpr": 0.0667,
+    "f1": 0.766,
+    "b_flag": 0.2857,
+    "tp": 18,
+    "fp": 1,
+    "all_pass": false,
+    "fp_clips": [
+     "golden_013"
+    ],
+    "fn_clips": [
+     "golden_003",
+     "golden_008",
+     "golden_017",
+     "golden_028",
+     "golden_034",
+     "golden_041",
+     "golden_044",
+     "golden_045",
+     "golden_046",
+     "golden_052"
+    ]
+   }
+  ]
+ },
+ "new_fp_mechanism": {
+  "golden_055/056/057": "J3 frame_freeze 通道 0.727/0.809/0.787；J1 判净；J5 判净——E10 阈内无法既保 041（0.847）又消这三条（0.727-0.809 与 041 同通道连续区）"
+ },
+ "new_miss_mechanism": {
+  "golden_045": "swap 注入（宿主 golden_037）：J1 判净、J3 最强 color_shift 0.387",
+  "golden_046": "swap 注入（宿主 G2-07 ltx）：J1 重跑后仍判净（conf 0.65）、J3 最强 ghosting 0.590",
+  "golden_052": "flicker 注入（宿主 golden_009）：J1 判净、J3 最强 color_shift 0.579"
+ },
+ "data_consistency_note": "本轮 40 条旧样本重放 FPR 集={010,013,032}，与 g01-full-relock 扫描注记（thresholds.yaml J3 thr 行）一致；与 2026-10-09 09:03 canonical eval_results.json 的 fp_clips=[010,025,032] 不一致（该集恰等于 yaml measured_baseline.fp_clips，疑似当轮留痕与重放状态错位）。本轮 QCReport 级证据：013 两状态均 detected=True、025 均 False——按现数据如实计 [010,013,032]。已留存 40 条基线副本 eval/eval_results_pre_expansion_40.json 供 owner 对账。",
+ "next_steps_owner": "按 JUDGES-RERUN.md §5 同款规程：E10 掉线属判官配方迭代范畴（J1 rubric 迭代或 J3 分通道阈/豁免通道），不在本收尾权限内放线或改配方；三判官输出与金标数据本身冻结可用。",
+ "judge_recipe": "三判官 17 条盲测配方同 JUDGES-RERUN.md §2（J1 glm8 API key env 注入零落盘零回显；J3/J5 卡 0，开跑前 310MiB，顺序执行未抢卡，无 kill；J1 golden_046 按 §2 重试口径 max_tokens 12000 复跑 1 次成功）"
+}

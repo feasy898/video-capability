@@ -11,10 +11,10 @@
   "frames": "每条均匀抽 8 帧 fps=8/duration, jpg q=2, f01..f08"
  },
  "counts": {
-  "A": 16,
-  "B": 12,
-  "C": 12,
-  "total": 40
+  "A": 28,
+  "B": 14,
+  "C": 15,
+  "total": 57
  },
  "failures": [],
  "items": [
@@ -28,7 +28,9 @@
     "mode": "freeze_last_frame",
     "start_s": 1.531,
     "end_s": 3.531,
-    "duration_s": 2.0
+    "duration_s": 2.0,
+    "builder": "v2_twopass_framepng_loop",
+    "freeze_png": "golden_028.mp4.freeze.png"
    },
    "source_clip": "clips_local/G6-27__wan.mp4",
    "source_prompt_id": "G6-26",
@@ -40,13 +42,28 @@
     "frames": "frames/golden_028/"
    },
    "verify": {
-    "dur_s": 6.56,
+    "dur_s": 7.0,
     "wh": [
      832,
      480
     ],
-    "fps": 25.0,
+    "fps": 16.0,
     "n_frames": 8
+   },
+   "rebuilt": {
+    "date": "2026-09-30",
+    "reason": "v1 注入未生效（勘误）",
+    "builder": "v2_twopass_framepng_loop",
+    "signature": {
+     "ok": true,
+     "longest_flat_s_in_win": 2.0,
+     "required_s": 1.6,
+     "out_dur": 7.0,
+     "expect_dur": 7.062,
+     "frozen_frame_match_t": 1.562,
+     "n_frames": 112,
+     "fps": 16.0
+    }
    }
   },
   {
@@ -59,7 +76,9 @@
     "mode": "freeze_last_frame",
     "start_s": 1.531,
     "end_s": 3.531,
-    "duration_s": 2.0
+    "duration_s": 2.0,
+    "builder": "v2_twopass_framepng_loop",
+    "freeze_png": "golden_017.mp4.freeze.png"
    },
    "source_clip": "clips_local/G6-29__wan.mp4",
    "source_prompt_id": "G6-29",
@@ -71,13 +90,28 @@
     "frames": "frames/golden_017/"
    },
    "verify": {
-    "dur_s": 6.56,
+    "dur_s": 7.0,
     "wh": [
      832,
      480
     ],
-    "fps": 25.0,
+    "fps": 16.0,
     "n_frames": 8
+   },
+   "rebuilt": {
+    "date": "2026-09-30",
+    "reason": "v1 注入未生效（勘误）",
+    "builder": "v2_twopass_framepng_loop",
+    "signature": {
+     "ok": true,
+     "longest_flat_s_in_win": 2.0,
+     "required_s": 1.6,
+     "out_dur": 7.0,
+     "expect_dur": 7.062,
+     "frozen_frame_match_t": 1.562,
+     "n_frames": 112,
+     "fps": 16.0
+    }
    }
   },
   {
@@ -94,7 +128,8 @@
     "sat_alt": [
      1.35,
      0.7
-    ]
+    ],
+    "builder": "v2_eq_eval_frame"
    },
    "source_clip": "clips_local/G6-27__ltx.mp4",
    "source_prompt_id": "G6-27",
@@ -113,6 +148,19 @@
     ],
     "fps": 24.0,
     "n_frames": 8
+   },
+   "rebuilt": {
+    "date": "2026-09-30",
+    "reason": "v1 注入未生效（勘误）",
+    "builder": "v2_eq_eval_frame",
+    "signature": {
+     "ok": true,
+     "amp_median": 57.03,
+     "alt_frac": 1.0,
+     "events_per_s": 23.4,
+     "n_inwin": 38,
+     "fps": 24.0
+    }
    }
   },
   {
@@ -129,7 +177,8 @@
     "sat_alt": [
      1.35,
      0.7
-    ]
+    ],
+    "builder": "v2_eq_eval_frame"
    },
    "source_clip": "clips_local/G3-15__ltx.mp4",
    "source_prompt_id": "G3-15",
@@ -148,6 +197,19 @@
     ],
     "fps": 24.0,
     "n_frames": 8
+   },
+   "rebuilt": {
+    "date": "2026-09-30",
+    "reason": "v1 注入未生效（勘误）",
+    "builder": "v2_eq_eval_frame",
+    "signature": {
+     "ok": true,
+     "amp_median": 56.7,
+     "alt_frac": 1.0,
+     "events_per_s": 23.4,
+     "n_inwin": 38,
+     "fps": 24.0
+    }
    }
   },
   {
@@ -536,13 +598,14 @@
    "probable": false,
    "inject_pos": {
     "mode": "frame_blend_trail",
-    "blend": "tblend average(相邻帧各50%)",
+    "blend": "tmix 连续6帧平均(拖影5帧)",
     "start_s": 1.521,
-    "end_s": 3.521
+    "end_s": 3.521,
+    "builder": "v2_segconcat_tmix6"
    },
-   "source_clip": "clips_local/G6-29__ltx.mp4",
-   "source_prompt_id": "G6-29",
-   "axis": "G6",
+   "source_clip": "clips_local/G9-41__ltx.mp4",
+   "source_prompt_id": "G9-41",
+   "axis": "G9",
    "model": "LTX-Video-2B",
    "observed_evidence": null,
    "paths": {
@@ -550,13 +613,33 @@
     "frames": "frames/golden_022/"
    },
    "verify": {
-    "dur_s": 5.042,
+    "dur_s": 5.0,
     "wh": [
      704,
      480
     ],
     "fps": 24.0,
     "n_frames": 8
+   },
+   "rebuilt": {
+    "date": "2026-09-30",
+    "reason": "v1 注入未生效（勘误）",
+    "builder": "v2_segconcat_tmix6",
+    "signature": {
+     "ok": true,
+     "med_in": 4.07,
+     "med_out": 7.399,
+     "dip_ratio": 0.55,
+     "max_in": 5.27,
+     "src_in_rel": 0.684,
+     "require_ratio<=": 0.72,
+     "fps": 24.0
+    }
+   },
+   "source_replaced": {
+    "from": "clips_local/G6-29__ltx.mp4",
+    "to": "clips_local/G9-41__ltx.mp4",
+    "reason": "原源片近静止（全片帧差 MAD 0.3-0.4，orbit prompt 生成结果几乎无运动），任何帧混叠注入都低于编码噪声底不可检出（tmix2/3/4 实测 dip_ratio 0.97-1.04）；G9-41__ltx 为行走数字人（MAD 6-7），可承载并检出 ghosting 签名"
    }
   },
   {
@@ -1213,6 +1296,933 @@
     "fps": 24.0,
     "n_frames": 8
    }
+  },
+  {
+   "clip_id": "golden_041",
+   "class": "A",
+   "defect_type": "frame_freeze",
+   "expected_defect": "frame_freeze",
+   "probable": false,
+   "inject_pos": {
+    "mode": "freeze_last_frame",
+    "start_s": 1.531,
+    "end_s": 3.531,
+    "duration_s": 2.0,
+    "builder": "v2_twopass_framepng_loop",
+    "freeze_png": "golden_041.mp4.freeze.png"
+   },
+   "source_clip": "_hosts_expansion/G6-28__wan.mp4",
+   "source_prompt_id": "G6-28",
+   "axis": "G6",
+   "model": "Wan2.1-T2V-1.3B",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_041.mp4",
+    "frames": "frames/golden_041/"
+   },
+   "verify": {
+    "dur_s": 7.062,
+    "wh": [
+     832,
+     480
+    ],
+    "fps": 16.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:13:37",
+    "method": "inject_a_timing.py（v2_twopass_framepng_loop）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "ee16d7adb7bdac4e2a01a8ed9d08af5d8684893af7bd7d0c69c1cef49f8b3c14",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "longest_flat_s_in_win": 1.938,
+      "required_s": 1.6,
+      "frozen_frame_match_mad": 1.0,
+      "frozen_match_max": 2.0,
+      "host_nat_flat_s_in_win": 0.0,
+      "fps": 16.0,
+      "out_dur": 7.062,
+      "expect_dur": 7.062
+     },
+     "evidence_file": "_sign/golden_041.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_042",
+   "class": "A",
+   "defect_type": "frame_freeze",
+   "expected_defect": "frame_freeze",
+   "probable": false,
+   "inject_pos": {
+    "mode": "freeze_last_frame",
+    "start_s": 1.521,
+    "end_s": 3.521,
+    "duration_s": 2.0,
+    "builder": "v2_twopass_framepng_loop",
+    "freeze_png": "golden_042.mp4.freeze.png"
+   },
+   "source_clip": "_hosts_expansion/G4-19__ltx.mp4",
+   "source_prompt_id": "G4-19",
+   "axis": "G4",
+   "model": "LTX-Video-2B",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_042.mp4",
+    "frames": "frames/golden_042/"
+   },
+   "verify": {
+    "dur_s": 7.042,
+    "wh": [
+     704,
+     480
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:13:38",
+    "method": "inject_a_timing.py（v2_twopass_framepng_loop）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "2910d12a095b9e3d9ce751439a7fdf0b275d5ff8959581b868364747bc47da4b",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "longest_flat_s_in_win": 1.958,
+      "required_s": 1.6,
+      "frozen_frame_match_mad": 1.0,
+      "frozen_match_max": 2.0,
+      "host_nat_flat_s_in_win": 0.0,
+      "fps": 24.0,
+      "out_dur": 7.042,
+      "expect_dur": 7.042
+     },
+     "evidence_file": "_sign/golden_042.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_043",
+   "class": "A",
+   "defect_type": "frame_freeze",
+   "expected_defect": "frame_freeze",
+   "probable": false,
+   "inject_pos": {
+    "mode": "freeze_last_frame",
+    "start_s": 1.521,
+    "end_s": 3.521,
+    "duration_s": 2.0,
+    "builder": "v2_twopass_framepng_loop",
+    "freeze_png": "golden_043.mp4.freeze.png"
+   },
+   "source_clip": "_hosts_expansion/G9-38__ltx.mp4",
+   "source_prompt_id": "G9-38",
+   "axis": "G9",
+   "model": "LTX-Video-2B",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_043.mp4",
+    "frames": "frames/golden_043/"
+   },
+   "verify": {
+    "dur_s": 7.042,
+    "wh": [
+     704,
+     480
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:13:40",
+    "method": "inject_a_timing.py（v2_twopass_framepng_loop）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "10c81c0c87014fc74f6a1f44389833b8f7510481eba48c7fea72f4bac09f818f",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "longest_flat_s_in_win": 1.958,
+      "required_s": 1.6,
+      "frozen_frame_match_mad": 1.0,
+      "frozen_match_max": 2.0,
+      "host_nat_flat_s_in_win": 0.0,
+      "fps": 24.0,
+      "out_dur": 7.042,
+      "expect_dur": 7.042
+     },
+     "evidence_file": "_sign/golden_043.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_044",
+   "class": "A",
+   "defect_type": "temporal_swap",
+   "expected_defect": "temporal_swap",
+   "probable": false,
+   "inject_pos": {
+    "mode": "swap_two_1s_segments",
+    "segment_A_s": [
+     1.583,
+     2.583
+    ],
+    "segment_B_s": [
+     2.583,
+     3.583
+    ],
+    "note": "A 放到 B 后：播放顺序变为 pre,B,A,post",
+    "builder": "swap_two_1s_segments"
+   },
+   "source_clip": "clips/golden_025.mp4",
+   "source_prompt_id": "G2-08",
+   "axis": "G2",
+   "model": "MiniMax-H3",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_044.mp4",
+    "frames": "frames/golden_044/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:13:51",
+    "method": "inject_a_timing.py（swap_two_1s_segments）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "6f0415eb77c697d16b25be54da535aa1446f5b6abd3a7829d033ad59b89d2565",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "match_residual_mad": 1.0,
+      "match_residual_max": 6.0,
+      "lag_median_dev_s": 0.125,
+      "seam_spike": 27.0,
+      "host_med_diff": 4.0,
+      "n_matched": 48,
+      "fps": 24.0,
+      "out_dur": 5.167
+     },
+     "evidence_file": "_sign/golden_044.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_045",
+   "class": "A",
+   "defect_type": "temporal_swap",
+   "expected_defect": "temporal_swap",
+   "probable": false,
+   "inject_pos": {
+    "mode": "swap_two_1s_segments",
+    "segment_A_s": [
+     1.583,
+     2.583
+    ],
+    "segment_B_s": [
+     2.583,
+     3.583
+    ],
+    "note": "A 放到 B 后：播放顺序变为 pre,B,A,post",
+    "builder": "swap_two_1s_segments"
+   },
+   "source_clip": "clips/golden_037.mp4",
+   "source_prompt_id": "G6-25",
+   "axis": "G6",
+   "model": "MiniMax-H3",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_045.mp4",
+    "frames": "frames/golden_045/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:13:55",
+    "method": "inject_a_timing.py（swap_two_1s_segments）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "7440514a3a59ca78db75c7d1fe51d76451033c10a9e359fbe228876f5c2096ea",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "match_residual_mad": 1.0,
+      "match_residual_max": 6.0,
+      "lag_median_dev_s": 0.125,
+      "seam_spike": 27.0,
+      "host_med_diff": 3.0,
+      "n_matched": 48,
+      "fps": 24.0,
+      "out_dur": 5.167
+     },
+     "evidence_file": "_sign/golden_045.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_046",
+   "class": "A",
+   "defect_type": "temporal_swap",
+   "expected_defect": "temporal_swap",
+   "probable": false,
+   "inject_pos": {
+    "mode": "swap_two_1s_segments",
+    "segment_A_s": [
+     1.521,
+     2.521
+    ],
+    "segment_B_s": [
+     2.521,
+     3.521
+    ],
+    "note": "A 放到 B 后：播放顺序变为 pre,B,A,post",
+    "builder": "swap_two_1s_segments"
+   },
+   "source_clip": "_hosts_expansion/G2-07__ltx.mp4",
+   "source_prompt_id": "G2-07",
+   "axis": "G2",
+   "model": "LTX-Video-2B",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_046.mp4",
+    "frames": "frames/golden_046/"
+   },
+   "verify": {
+    "dur_s": 5.042,
+    "wh": [
+     704,
+     480
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:13:57",
+    "method": "inject_a_timing.py（swap_two_1s_segments）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "99a73aceb4a1c7781defee9fbfa1e6ba89ce969f186519997fbc0d8abcb1d251",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "match_residual_mad": 1.0,
+      "match_residual_max": 6.0,
+      "lag_median_dev_s": 0.125,
+      "seam_spike": 17.0,
+      "host_med_diff": 4.0,
+      "n_matched": 48,
+      "fps": 24.0,
+      "out_dur": 5.042
+     },
+     "evidence_file": "_sign/golden_046.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_047",
+   "class": "A",
+   "defect_type": "ghosting",
+   "expected_defect": "ghosting",
+   "probable": false,
+   "inject_pos": {
+    "mode": "frame_blend_trail",
+    "blend": "tmix 连续6帧平均(拖影5帧)",
+    "start_s": 1.583,
+    "end_s": 3.583,
+    "builder": "v2_segconcat_tmix6"
+   },
+   "source_clip": "clips/golden_032.mp4",
+   "source_prompt_id": "G6-26",
+   "axis": "G6",
+   "model": "MiniMax-H3",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_047.mp4",
+    "frames": "frames/golden_047/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:14:07",
+    "method": "inject_a_timing.py（v2_segconcat_tmix6）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "1182a19786c90251a6b00b6912e02a66bd439f754eda3a3c6ba733777e92e719",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "med_in": 5.0,
+      "med_out": 13.0,
+      "dip_ratio": 0.385,
+      "require_ratio<=": 0.72,
+      "host_med_out_min": 2.0,
+      "lap_in": 492.1,
+      "lap_out_host": 1651.6,
+      "lap_ratio": 0.298,
+      "fps": 24.0,
+      "out_dur": 5.167
+     },
+     "evidence_file": "_sign/golden_047.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_048",
+   "class": "A",
+   "defect_type": "ghosting",
+   "expected_defect": "ghosting",
+   "probable": false,
+   "inject_pos": {
+    "mode": "frame_blend_trail",
+    "blend": "tmix 连续6帧平均(拖影5帧)",
+    "start_s": 1.531,
+    "end_s": 3.531,
+    "builder": "v2_segconcat_tmix6"
+   },
+   "source_clip": "_hosts_expansion/G6-26__wan.mp4",
+   "source_prompt_id": "G6-26",
+   "axis": "G6",
+   "model": "Wan2.1-T2V-1.3B",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_048.mp4",
+    "frames": "frames/golden_048/"
+   },
+   "verify": {
+    "dur_s": 5.062,
+    "wh": [
+     832,
+     480
+    ],
+    "fps": 16.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:14:09",
+    "method": "inject_a_timing.py（v2_segconcat_tmix6）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "43a7598022102b77e8c669bb0403b9ef3c7a9e17d0ddaed62d3ca1e0305feb9a",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "med_in": 8.0,
+      "med_out": 15.5,
+      "dip_ratio": 0.516,
+      "require_ratio<=": 0.72,
+      "host_med_out_min": 2.0,
+      "lap_in": 1398.0,
+      "lap_out_host": 7101.1,
+      "lap_ratio": 0.197,
+      "fps": 16.0,
+      "out_dur": 5.062
+     },
+     "evidence_file": "_sign/golden_048.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_049",
+   "class": "A",
+   "defect_type": "ghosting",
+   "expected_defect": "ghosting",
+   "probable": false,
+   "inject_pos": {
+    "mode": "frame_blend_trail",
+    "blend": "tmix 连续6帧平均(拖影5帧)",
+    "start_s": 1.521,
+    "end_s": 3.521,
+    "builder": "v2_segconcat_tmix6"
+   },
+   "source_clip": "_hosts_expansion/G6-26__ltx.mp4",
+   "source_prompt_id": "G6-26",
+   "axis": "G6",
+   "model": "LTX-Video-2B",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_049.mp4",
+    "frames": "frames/golden_049/"
+   },
+   "verify": {
+    "dur_s": 5.042,
+    "wh": [
+     704,
+     480
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:14:11",
+    "method": "inject_a_timing.py（v2_segconcat_tmix6）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "ef20b252ba37823abfabd3bcaced7d07389a1d31588024f9e0c31161eb81e878",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "med_in": 3.0,
+      "med_out": 8.5,
+      "dip_ratio": 0.353,
+      "require_ratio<=": 0.72,
+      "host_med_out_min": 2.0,
+      "lap_in": 129.9,
+      "lap_out_host": 844.0,
+      "lap_ratio": 0.154,
+      "fps": 24.0,
+      "out_dur": 5.042
+     },
+     "evidence_file": "_sign/golden_049.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_050",
+   "class": "A",
+   "defect_type": "flicker",
+   "expected_defect": "flicker",
+   "probable": false,
+   "inject_pos": {
+    "mode": "per_frame_exposure_alternation",
+    "start_s": 1.583,
+    "end_s": 3.583,
+    "delta_brightness": 0.09,
+    "sat_alt": [
+     1.35,
+     0.7
+    ],
+    "builder": "v2_eq_eval_frame"
+   },
+   "source_clip": "clips/golden_001.mp4",
+   "source_prompt_id": "G7-30",
+   "axis": "G7",
+   "model": "MiniMax-H3",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_050.mp4",
+    "frames": "frames/golden_050/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:14:19",
+    "method": "inject_a_timing.py（v2_eq_eval_frame）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "c6be5a7c7c2805ad05717c599e3f899b72507bd91f53c039ec3a616996c109fc",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "alt_frac": 1.0,
+      "amp_median": 51.83,
+      "events_per_s": 24.0,
+      "n_inwin": 48,
+      "host_alt_frac": 0.234,
+      "host_amp_median": 0.45,
+      "fps": 24.0,
+      "out_dur": 5.167
+     },
+     "evidence_file": "_sign/golden_050.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_051",
+   "class": "A",
+   "defect_type": "flicker",
+   "expected_defect": "flicker",
+   "probable": false,
+   "inject_pos": {
+    "mode": "per_frame_exposure_alternation",
+    "start_s": 1.583,
+    "end_s": 3.583,
+    "delta_brightness": 0.09,
+    "sat_alt": [
+     1.35,
+     0.7
+    ],
+    "builder": "v2_eq_eval_frame"
+   },
+   "source_clip": "clips/golden_006.mp4",
+   "source_prompt_id": "G7-33",
+   "axis": "G7",
+   "model": "MiniMax-H3",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_051.mp4",
+    "frames": "frames/golden_051/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:14:22",
+    "method": "inject_a_timing.py（v2_eq_eval_frame）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "0eebb9ef32c3dfc3a46c89b6928c10fade1ecbdd346681c7fda1e3fc1f851c67",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "alt_frac": 1.0,
+      "amp_median": 53.95,
+      "events_per_s": 24.0,
+      "n_inwin": 48,
+      "host_alt_frac": 0.851,
+      "host_amp_median": 0.22,
+      "fps": 24.0,
+      "out_dur": 5.167
+     },
+     "evidence_file": "_sign/golden_051.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_052",
+   "class": "A",
+   "defect_type": "flicker",
+   "expected_defect": "flicker",
+   "probable": false,
+   "inject_pos": {
+    "mode": "per_frame_exposure_alternation",
+    "start_s": 1.583,
+    "end_s": 3.583,
+    "delta_brightness": 0.09,
+    "sat_alt": [
+     1.35,
+     0.7
+    ],
+    "builder": "v2_eq_eval_frame"
+   },
+   "source_clip": "clips/golden_009.mp4",
+   "source_prompt_id": "G7-31",
+   "axis": "G7",
+   "model": "MiniMax-H3",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_052.mp4",
+    "frames": "frames/golden_052/"
+   },
+   "verify": {
+    "dur_s": 5.167,
+    "wh": [
+     768,
+     1344
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:14:25",
+    "method": "inject_a_timing.py（v2_eq_eval_frame）金标扩样 A 组时序注入，配方复刻 2026-09-29/30 同类条目，seed 换新",
+    "tool": "overnight/vpipe/tools/golden_expansion/inject_a_timing.py",
+    "seed": 20261009,
+    "sha256": "16199b943b9bb1b38a1f8d85a811981c839b5fa740103cc9662412e96e8033bc",
+    "signature_selfcheck": {
+     "ok": true,
+     "evidence": {
+      "alt_frac": 1.0,
+      "amp_median": 51.04,
+      "events_per_s": 24.0,
+      "n_inwin": 48,
+      "host_alt_frac": 0.298,
+      "host_amp_median": 0.28,
+      "fps": 24.0,
+      "out_dur": 5.167
+     },
+     "evidence_file": "_sign/golden_052.sign.json",
+     "independent_recheck_20261009": true
+    }
+   }
+  },
+  {
+   "clip_id": "golden_053",
+   "class": "B",
+   "defect_type": "lip_sync_desync",
+   "expected_defect": "lip_sync_desync",
+   "probable": false,
+   "inject_pos": {
+    "mode": "audio_delay",
+    "delay_s": 0.5,
+    "builder": "ffmpeg 音频整体右移 0.5s（视频流原样）"
+   },
+   "source_clip": "_avatar_expansion/vidu/avatar_1005950171411910656.mp4",
+   "source_prompt_id": "vidu_task_1005950171411910656",
+   "axis": "AVATAR_EXPANSION",
+   "model": "Vidu S2 offline_avatar (720p)",
+   "observed_evidence": "音轨相对口型实测延迟 +0.500s（16kHz 互相关：MAD 78 @+500ms vs 4681 @0ms）",
+   "paths": {
+    "clip": "clips/golden_053.mp4",
+    "frames": "frames/golden_053/"
+   },
+   "verify": {
+    "dur_s": 5.513,
+    "wh": [
+     730,
+     1258
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:24:49",
+    "method": "Vidu avatar 真实生成（L1 台词）后 ffmpeg 音频延迟 0.5s 制造唇形不同步；保留音轨（唇形同步评估必需，偏离金标 -an 协议，必要偏差如实记录）；帧图 2026-10-09 收尾补抽 8 帧（前序只抽到 7 帧）",
+    "tool": "gen_avatar.py@vpipe-v4-1.0 + ffmpeg 本地后处理",
+    "seed": null,
+    "sha256": "dc30e378f6f63211739076a5faeef6d73891c214c0330a93f87d928c33b4f02d",
+    "upstream_generation": {
+     "vidu_task_id": "1005950171411910656",
+     "generated_at": "2026-10-09T09:19:30",
+     "resolution": "720p",
+     "credits_reported": 5,
+     "ref_image": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+     "tts_audio": "overnight/数据/golden/_avatar_expansion/tts/L1.wav",
+     "meta_file": "_avatar_expansion/vidu/avatar_1005950171411910656.meta.json"
+    }
+   }
+  },
+  {
+   "clip_id": "golden_054",
+   "class": "B",
+   "defect_type": "lip_script_mismatch",
+   "expected_defect": "lip_script_mismatch",
+   "probable": false,
+   "inject_pos": {
+    "mode": "av_cross_pair",
+    "video_from": "avatar_1005950411405815808（L2 台词口型）",
+    "audio_from": "avatar_1005950171411910656（L1 台语音轨）",
+    "builder": "ffmpeg 视频流 avatar2 × 音轨 avatar1 交叉合成"
+   },
+   "source_clip": "_avatar_expansion/vidu/avatar_1005950411405815808.mp4",
+   "source_prompt_id": "vidu_task_1005950411405815808",
+   "axis": "AVATAR_EXPANSION",
+   "model": "Vidu S2 offline_avatar (540p)",
+   "observed_evidence": "音轨实测=avatar1/L1 台词（互相关 MAD 58@0ms），口型=avatar2/L2 生成——口型与台词错位",
+   "paths": {
+    "clip": "clips/golden_054.mp4",
+    "frames": "frames/golden_054/"
+   },
+   "verify": {
+    "dur_s": 5.0,
+    "wh": [
+     548,
+     944
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:24:50",
+    "method": "Vidu avatar 真实生成 2 条后音画交叉配对（视频 L2 口型 × 音频 L1 台词）制造口型与台词错位；保留音轨（必要偏差如实记录）。构造方式与方案 §2.1「1 条音频故意错位」的记载不同，同属意图类构造，如实登记",
+    "tool": "gen_avatar.py@vpipe-v4-1.0 + ffmpeg 本地后处理",
+    "seed": null,
+    "sha256": "d5c87456d0d4300a49cdf95ba769bbd00abf03821d9e1e8b38e1dc3cba20fc69",
+    "upstream_generation": {
+     "vidu_task_id": "1005950411405815808",
+     "generated_at": "2026-10-09T09:20:27",
+     "resolution": "540p",
+     "credits_reported": 5,
+     "ref_image": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+     "tts_audio": "overnight/数据/golden/_avatar_expansion/tts/L2.wav",
+     "meta_file": "_avatar_expansion/vidu/avatar_1005950411405815808.meta.json"
+    }
+   }
+  },
+  {
+   "clip_id": "golden_055",
+   "class": "C",
+   "defect_type": null,
+   "expected_defect": null,
+   "probable": false,
+   "inject_pos": null,
+   "source_clip": "_avatar_expansion/vidu/avatar_1005950605375610880.mp4",
+   "source_prompt_id": "vidu_task_1005950605375610880",
+   "axis": "AVATAR_EXPANSION",
+   "model": "Vidu S2 offline_avatar (540p)",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_055.mp4",
+    "frames": "frames/golden_055/"
+   },
+   "verify": {
+    "dur_s": 6.0,
+    "wh": [
+     548,
+     944
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:24:51",
+    "method": "Vidu avatar 真实生成口播干净正例（L3 台词，540p），转码统一 crf18 + 去音轨（-an，同金标协议）",
+    "tool": "gen_avatar.py@vpipe-v4-1.0 + ffmpeg 本地后处理",
+    "seed": null,
+    "sha256": "6a14edd11e49b4dfc6bcdad47870899fe26e8e5562e05b45f80cee5378c75722",
+    "upstream_generation": {
+     "vidu_task_id": "1005950605375610880",
+     "generated_at": "2026-10-09T09:22:19",
+     "resolution": "540p",
+     "credits_reported": 6,
+     "ref_image": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+     "tts_audio": "overnight/数据/golden/_avatar_expansion/tts/L3.wav",
+     "meta_file": "_avatar_expansion/vidu/avatar_1005950605375610880.meta.json"
+    }
+   }
+  },
+  {
+   "clip_id": "golden_056",
+   "class": "C",
+   "defect_type": null,
+   "expected_defect": null,
+   "probable": false,
+   "inject_pos": null,
+   "source_clip": "_avatar_expansion/vidu/avatar_1005951074575609856.mp4",
+   "source_prompt_id": "vidu_task_1005951074575609856",
+   "axis": "AVATAR_EXPANSION",
+   "model": "Vidu S2 offline_avatar (720p)",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_056.mp4",
+    "frames": "frames/golden_056/"
+   },
+   "verify": {
+    "dur_s": 4.0,
+    "wh": [
+     730,
+     1258
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:24:53",
+    "method": "Vidu avatar 真实生成口播干净正例（L4 台词，720p），转码统一 crf18 + 去音轨（-an，同金标协议）",
+    "tool": "gen_avatar.py@vpipe-v4-1.0 + ffmpeg 本地后处理",
+    "seed": null,
+    "sha256": "820ccd89c645b530bf23e7e0f9edf009995dc8ff9fc217d45e0398b5e4f23a4c",
+    "upstream_generation": {
+     "vidu_task_id": "1005951074575609856",
+     "generated_at": "2026-10-09T09:23:06",
+     "resolution": "720p",
+     "credits_reported": 4,
+     "ref_image": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+     "tts_audio": "overnight/数据/golden/_avatar_expansion/tts/L4.wav",
+     "meta_file": "_avatar_expansion/vidu/avatar_1005951074575609856.meta.json"
+    }
+   }
+  },
+  {
+   "clip_id": "golden_057",
+   "class": "C",
+   "defect_type": null,
+   "expected_defect": null,
+   "probable": false,
+   "inject_pos": null,
+   "source_clip": "_avatar_expansion/vidu/avatar_1005951268516036608.mp4",
+   "source_prompt_id": "vidu_task_1005951268516036608",
+   "axis": "AVATAR_EXPANSION",
+   "model": "Vidu S2 offline_avatar (540p)",
+   "observed_evidence": null,
+   "paths": {
+    "clip": "clips/golden_057.mp4",
+    "frames": "frames/golden_057/"
+   },
+   "verify": {
+    "dur_s": 5.0,
+    "wh": [
+     548,
+     944
+    ],
+    "fps": 24.0,
+    "n_frames": 8
+   },
+   "construction": {
+    "date": "2026-10-09",
+    "generated_at": "2026-10-09T09:24:54",
+    "method": "Vidu avatar 真实生成口播干净正例（L5 台词，540p），转码统一 crf18 + 去音轨（-an，同金标协议）",
+    "tool": "gen_avatar.py@vpipe-v4-1.0 + ffmpeg 本地后处理",
+    "seed": null,
+    "sha256": "e77dac5ac98d344271b3f1f2b97ae221b3a35131d9355c0ad0cc81f97440e79b",
+    "upstream_generation": {
+     "vidu_task_id": "1005951268516036608",
+     "generated_at": "2026-10-09T09:23:52",
+     "resolution": "540p",
+     "credits_reported": 5,
+     "ref_image": "overnight/vpipe/out/m2/shortdrama_ep01/avatar/ref_shot09_mid.png",
+     "tts_audio": "overnight/数据/golden/_avatar_expansion/tts/L5.wav",
+     "meta_file": "_avatar_expansion/vidu/avatar_1005951268516036608.meta.json"
+    }
+   }
   }
- ]
+ ],
+ "repaired_at": "2026-09-30T18:09:38",
+ "repair_note": "2026-09-30 勘误修复：A 类时序 5 条（017/028/004/030/022）注入未生效，经 inject_defects.py v2 重建并通过帧级签名自检；022 宿主源替换为 clips_local/G9-41__ltx.mp4（原因见 item.source_replaced）。旧损坏 clip 备份于 golden/_broken_20260930/。",
+ "expanded_at": "2026-10-09T10:27:34",
+ "expansion_note": "2026-10-09 D-3 扩样 +17（041-052 A 组时序注入 freeze/swap/ghosting/flicker 各+3，inject_a_timing.py v2 builder + 帧级签名自检全数生效并独立复核；053/054 B 组口播意图（053 音频+0.5s 延迟、054 音画交叉配对）；055-057 C 组口播干净 540p/720p 两档，-an 同协议）。与 evidence/golden-expansion-plan.md §2.1 的差异如实记录：①C 组 API 乱码正例 2 条（H3-Max）未构造——17 条新增中无 H3-Max 产物，该缺口仍在，J1 G2 召回在金标上仍无新正例可量；②B 组第 2 条构造方式为音画交叉配对（方案只写了音频错位）；③053/054 保留音轨（唇形评估必需，偏离 -an 协议）；④扩样后 A28/B14/C15=57。新增条目含 sha256/seed/generated_at/construction 字段（旧 40 条无此字段，保持原样）"
 }
