@@ -103,3 +103,26 @@
   机器」与实际不符，已核验无第二台）。
 - **终局：M2/M3 验收门 25 PASS / 0 FAIL 全部达标；G0-1 ALL PASS；
   提交 74 笔全部经主控独立验收。**
+
+# worklog append — 判官配方 A+B 收官（2026-10-09 晚）
+
+- 路径 A（qc_orch_v2：J3 per_channel_thr frame_freeze=0.71 走表实录 + frame_freeze
+  低运动平台声明制豁免）：FPR 0.4706→0.2941（050/055/056/057 豁免），F1→0.8621，
+  recall 0.8929 不变仍差路径 B；in_med_v2 与 qc_detectors_v2 read_features 逐行
+  同式（主控比对源码实证），豁免三支弃权证据分支全落 QCReport errors 不静默。
+- 路径 B（glm8_batch RUBRIC 时序帧对专项：f04-f05/f03-f06+相邻对定性比对）：
+  59 条 J1 重跑，golden_045 转 TP（temporal_swap conf 0.65），recall 0.8929→
+  0.9286，prompt_version 23b918011af0→04faaf977765，旧版输出存档 judges_v1_round3。
+- A+B 联合：R=0.9286/FPR=0.2353/F1=0.8966/B_flag=0.5 四条准入线全过=ACCEPT；
+  G0-2 双处登记（exp61_ab_accept_supplement + thresholds v11），准入线四值/
+  ensemble/E10 定义/J3 thr 一字未动。FN 046/052=判官感知局限；FP 058/059=C 组
+  语义分裂记账待 owner 裁决；B_flag=0.5 零余量列监控。
+- 登记基线切换三处（run_v3_checks v2→exp61、v1→exp60 v1_view 两处已声明漂移：
+  共享 J1 存储+全局阈 0.71；check_baseline_drift 键名兼容；test_vdl2 v1 回放改写
+  独立 out 不污染 canonical）。
+- 验证：run_v3_checks ALL PASS/EXIT=0；run_m2m3_acceptance 25 PASS/0 FAIL；
+  三版本指纹实算 MATCH（registry 379ff86216a2/prompt 04faaf977765/spec +1d77）；
+  thresholds sha256 与 eval 留痕一致。README/INTENT/TASK_v4 §8 决策 h 同步。
+- M0 逐卡复核：12 CP 契约+model_tiers+SPEC_v2、thresholds v11+G0-3、Seedance
+  核价 confirmed=false（官方四通道失败，第三方价未进预算基线）、凭证 OpenBao 重建、
+  LTX/Wan2.2 spike 决策 f/g、GPU 窗观测——全部在位。
