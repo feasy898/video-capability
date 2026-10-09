@@ -29,9 +29,14 @@ shots[]（逐镜 ← cp3.payload.shots[]，段/词锚/注册表 ← cp2，帧率
                                             缺该文件时回退 cp7.payload.shots[].prompt_en 草稿文本并在 notes 登记）
   prompt_mode                               = handwritten（同上）
   budget.credit_cap_per_shot                ← cp9.payload.shots[].credit_cap_per_shot
-  continuity                                = {link: none, seed_policy: none, d3_split_declared: false}
-                                            （CP 链为独立成段 + cp6 start_frame 时间线装配，无
-                                             prev_tail_frame 链接声明；seed 策略工件未声明）
+  continuity                                = {link: none, seed_policy: none,
+                                               d3_split_declared ← 本镜 cp5 序列 known_cuts 实读}
+                                            （link/seed_policy：CP 链为独立成段 + cp6 start_frame
+                                             时间线装配，无 prev_tail_frame 链接声明、seed 策略工件
+                                             未声明；d3_split_declared：known_cuts 非空=true——声明了
+                                             切点（写法对照手写样板 examples/vdl2/
+                                             50_comicanime_ep01.yaml:397），known_cuts 空表/缺键或
+                                             本镜无 cp5 序列=false；不硬编码两端）
   intent_refs / acceptance_refs / edit_ops  = []（无常驻意图可引用，见下）
   seed / negative_prompt / cache / axis / engine.route_rule 等不投影：工件无对应声明
                                             （cp9.seed_recorded=null——API seed 零控制力；
@@ -40,11 +45,19 @@ notes 登记位（「skeleton: k=v; k=v」记法，往返不丢字段面——20
   cp2_visual_description                    ← cp2.payload.narration_segments[word_anchors[0]
                                               .segment_id].visual_description 原文（v2 Shot 无该结构位，
                                               寄存本镜 notes；投影器回读恢复 cp2 画面描述，不落 camera.description 代用）
+  cp2_cast_refs / cp2_props_refs            ← 同段 cast_refs/props_refs 原文（仅在与本镜 characters/
+                                              props 登记位推导值不同时寄存——参照链 cp2 逐段 cast/props
+                                              为逐段手写事实，不必等于 cp3.refs 拆分：营销 seg_01
+                                              cast_refs=[] 而 cp3.refs=[cast_host]、漫剧 seg_05 反向；
+                                              空表寄存为「k=」空值；投影器回读优先，无登记位=旧回退）
   word_anchor_segment / word_anchor_text    ← cp3.payload.shots[].word_anchors[0]（锚文本+段 ID 原文寄存，
                                               投影器回读重建 cp3 word_anchors）
   cp5_blocking                              ← cp5.payload.sequences[] 中本镜序列原文（compact JSON 寄存——
                                               姿态轨道是内容本体不是执行态，json int/float 类型保真回读）；
                                               值含 ASCII ';' 会破坏记法 → 结构性拒收（REG.semicolon）
+  d3_split_declared（true 时）               ← 同一 cp5 序列 known_cuts 实值（「true(known_cuts=[…]
+                                              ←cp5 blocking 工件实值)」记法，与 continuity 位同源）；
+                                              工件引用登记，供 R3 校验与人审对照；未声明切点不登记
 首镜 notes 追加包级登记（v2 包顶层无登记位，寄存 shots[0]）：
   cp1_theme / cp1_selling_point             ← cp1.payload 原文
   cp1_must_keep / cp1_forbidden_zones       ← cp1.payload 列表原文（compact JSON，保序）
@@ -166,13 +179,21 @@ def _reg(key: str, value) -> str:
 
 def project_shot(cp3_shot: dict, cast_ids: set, props_ids: set, seg_text: dict,
                  prompt_map: dict, prompt_src: str, aspect: str, cap_map: dict,
-                 cp2_vis: str | None = None, cp5_seq: dict | None = None):
+                 cp2_vis: str | None = None, cp5_seq: dict | None = None,
+                 cp2_seg: dict | None = None):
     """单镜：cp3 一条 + cp2 词锚/注册表 + cp9 系 prompts/cp9 终稿档 → VDL Shot v2。
     返回 (shot_v2 dict, gaps[list[str]])。只投工件里有的事实，缺的进 gaps 由调用方登记。
     cp2_vis：来源 cp2 本镜段 visual_description 原文（寄存 notes，往返恢复）；
-    cp5_seq：来源 cp5 本镜姿态序列 dict（compact JSON 寄存 notes，往返恢复）。"""
+    cp5_seq：来源 cp5 本镜姿态序列 dict（compact JSON 寄存 notes，往返恢复）；
+    cp2_seg：来源 cp2 本镜段 dict 逐字段原值（cast_refs/props_refs 与 characters/props
+    登记位推导值不同时寄存 notes，往返恢复；同段一词锚机械链接）。"""
     sid = cp3_shot.get("shot_id") or ""
     gaps = []
+    # continuity.d3_split_declared ← 本镜 cp5 序列 known_cuts 实读（与 cp5_blocking 登记位
+    # 同源），不硬编码：known_cuts 非空=声明了切点 → true 并在 notes 登记工件引用
+    # （写法对照手写正确样板 examples/vdl2/50_comicanime_ep01.yaml:397）；未声明/无序列=false。
+    cuts = (cp5_seq or {}).get("known_cuts")
+    d3_declared = bool(cuts)
     shot = {
         "schema_version": "2.0",
         "shot_id": sid,
@@ -185,7 +206,7 @@ def project_shot(cp3_shot: dict, cast_ids: set, props_ids: set, seg_text: dict,
         },
         "intent_refs": [],                             # 无常驻意图可引用（见模块 docstring）
         "prompt_mode": "handwritten",
-        "continuity": {"link": "none", "seed_policy": "none", "d3_split_declared": False},
+        "continuity": {"link": "none", "seed_policy": "none", "d3_split_declared": d3_declared},
         "edit_ops": [],
     }
     # 台词：cp3 word_anchors[0].segment_id → cp2 narration_text（镜↔段机械链接）
@@ -230,11 +251,27 @@ def project_shot(cp3_shot: dict, cast_ids: set, props_ids: set, seg_text: dict,
     cast_in_ref = [r for r in cp3_shot.get("refs") or [] if r in cast_ids]
     if cast_in_ref and not shot["characters"]:
         reg.append("cast_refs_unresolved=" + ",".join(cast_in_ref))
+    # cp2 逐段 cast/props 原值登记位：参照链 cp2.narration_segments[].cast_refs/props_refs 是
+    # 逐段手写事实（营销线 build_cp1_cp6.py SEG_REFS 实证），不必等于本镜 characters/props
+    # 登记位的 cp3.refs 拆分推导（营销 seg_01 cast_refs=[] 而 cp3.refs=[cast_host]，
+    # 漫剧 seg_05 反向）→ 与推导值不同才寄存；投影器回读优先，无登记位=旧回退路径。
+    # 空表也是事实，寄存为「cp2_cast_refs=」空值（与缺失相区分）。
+    if cp2_seg is not None:
+        cp2_cast = list(cp2_seg.get("cast_refs") or [])
+        if cp2_cast != cast_in_ref:
+            reg.append(_reg("cp2_cast_refs", ",".join(cp2_cast)))
+        cp2_props = list(cp2_seg.get("props_refs") or [])
+        if cp2_props != props:
+            reg.append(_reg("cp2_props_refs", ",".join(cp2_props)))
     if cp2_vis:
         reg.append(_reg("cp2_visual_description", cp2_vis))
     reg.extend(anchor_regs)
     if cp5_seq is not None:
         reg.append(_reg("cp5_blocking", cp5_seq))
+    if d3_declared:
+        reg.append(_reg("d3_split_declared",
+                        f"true(known_cuts={json.dumps(cuts, ensure_ascii=False, separators=(',', ':'))}"
+                        "←cp5 blocking 工件实值)"))
     shot["notes"] = "skeleton: " + "; ".join(reg)
     return shot, gaps
 
@@ -347,7 +384,8 @@ def build_skeleton(cdir: Path):
     header.append("映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与"
                   "engine.channel=channel_hint；cp5→逐镜 cp5_blocking 登记位；cp6→帧率/字幕；"
                   "cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot；"
-                  "cp1/cp2 语义面与目标时长→notes 登记位），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring")
+                  "cp1/cp2 语义面与目标时长/逐段 cast·props→notes 登记位），"
+                  "逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring")
     header.append("纪律：包是规格不是执行记录——fingerprint/produced_at/status/gate/upstream_refs/"
                   "credit_spent/seed_recorded/asset/ffprobe 等执行态字段一律不入包；工件缺失的信息不脑补，登记于本注释")
 
@@ -394,6 +432,8 @@ def build_skeleton(cdir: Path):
                 for s in (cp2 or {}).get("narration_segments") or []}
     seg_vis = {s.get("segment_id"): s.get("visual_description")
                for s in (cp2 or {}).get("narration_segments") or []}
+    seg_map = {s.get("segment_id"): s
+               for s in (cp2 or {}).get("narration_segments") or []}
     seq_map = {}
     for seq in (cp5 or {}).get("sequences") or []:
         sid = seq.get("shot_id")
@@ -406,11 +446,13 @@ def build_skeleton(cdir: Path):
     pkg["shots"] = []
     for cp3_shot in cp3["shots"]:
         anchors = cp3_shot.get("word_anchors") or []
+        cp2_seg = seg_map.get(anchors[0].get("segment_id")) if len(anchors) == 1 else None
         cp2_vis = seg_vis.get(anchors[0].get("segment_id")) if len(anchors) == 1 else None
         try:
             shot, gaps = project_shot(cp3_shot, cast_ids, props_ids, seg_text,
                                       prompt_map, prompt_src, aspect, cap_map,
-                                      cp2_vis=cp2_vis, cp5_seq=seq_map.get(cp3_shot.get("shot_id")))
+                                      cp2_vis=cp2_vis, cp5_seq=seq_map.get(cp3_shot.get("shot_id")),
+                                      cp2_seg=cp2_seg)
         except ValueError as e:   # _reg 的 ';' 冲突结构性拒收
             errors.append(_err("REG.semicolon", f"{cp3_shot.get('shot_id')}: {e}"))
             continue

@@ -1,4 +1,4 @@
-# VDL v2 反向骨架包 · 来源工件目录 out/m2/marketing_ep01 · 生成器 vdl2_skeleton.py@vpipe2.0-dev · 2026-10-09T09:10:28Z
+# VDL v2 反向骨架包 · 来源工件目录 out/m2/marketing_ep01 · 生成器 vdl2_skeleton.py@vpipe2.0-dev · 2026-10-09T10:57:20Z
 # CP 盘点 cp1: ← cp1.json
 # CP 盘点 cp2: ← cp2.json
 # CP 盘点 cp3: ← cp3.json
@@ -8,9 +8,10 @@
 # CP 盘点 cp7: ← cp7.json
 # CP 盘点 cp8: ← cp8/cp8.json
 # CP 盘点 cp9: ← cp9/cp9.json
-# 映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与engine.channel=channel_hint；cp6→帧率/字幕；cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring
+# 映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与engine.channel=channel_hint；cp5→逐镜 cp5_blocking 登记位；cp6→帧率/字幕；cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot；cp1/cp2 语义面与目标时长/逐段 cast·props→notes 登记位），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring
 # 纪律：包是规格不是执行记录——fingerprint/produced_at/status/gate/upstream_refs/credit_spent/seed_recorded/asset/ffprobe 等执行态字段一律不入包；工件缺失的信息不脑补，登记于本注释
 # 登记：包级 deliverable 段不生成——cp1 只有 pixel_map/encode_contract 骨架，VPO DeliverableSet 必备 display_target/readability/optical/encode(fps·bitrate·audio_policy) 无工件对应；aspect=9:16 已投影进每镜 aspect
+# 登记：包级登记寄存首镜 notes（cp1_theme/cp1_selling_point/cp1_must_keep/cp1_forbidden_zones/cp2_target_duration_s/cp2_props）——v2 包顶层无登记位，投影器回读恢复来源 cp1/cp2 语义面与目标时长，往返不丢字段
 # 登记：intents[0]=PostProcessIntent(subtitle_burn, post_comp)；predicate/ops[0].note=cp1.must_keep 原文引用
 # 登记：acceptance[0]=acc-sub-marketing_ep01(block, J6_detectors)；detector_version=vpipe1.0 沿 examples/vdl2 惯例（工件未登记判官版本号）
 # 登记：authority=director ← cp1.produced_by 去「agent.」前缀
@@ -19,7 +20,7 @@
 # 登记：template 段不生成——工件无模板槽位定义
 vdl_version: '2.0'
 work_id: marketing_ep01
-created: '2026-10-09T09:10:28Z'
+created: '2026-10-09T10:57:20Z'
 default_prompt_mode: handwritten
 budget:
   credit_cap_total: 2016
@@ -38,7 +39,7 @@ shots:
   continuity:
     link: none
     seed_policy: none
-    d3_split_declared: false
+    d3_split_declared: true
   edit_ops: []
   audio:
     speech: 卧室睡不好？试试这瓶雪松香薰，无火无烟，开着就能睡。
@@ -60,7 +61,15 @@ shots:
     channel: api_vidu_avatar
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close'
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; cp2_cast_refs=; cp2_visual_description=明亮卧室窗边，女主播半身近景对镜口播开场，微笑直视镜头，双手开掌自然示意;
+    word_anchor_segment=seg_01; word_anchor_text=@{雪松香薰}; cp5_blocking={"shot_id":"shot_01","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":0.6,"rotation":{"x":0,"y":0.02,"z":0}},{"time":1.6,"rotation":{"x":0,"y":0.05,"z":0}},{"time":2.8,"rotation":{"x":0.03,"y":0.03,"z":0}},{"time":3.6,"rotation":{"x":0.02,"y":0.06,"z":0}},{"time":4.7,"rotation":{"x":0.05,"y":0.02,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.02,"y":0,"z":0}},{"time":1.2,"rotation":{"x":0.12,"y":0,"z":0}},{"time":2.5,"rotation":{"x":0.08,"y":0,"z":0}},{"time":4.7,"rotation":{"x":0.06,"y":0,"z":0}}]},{"joint":"head","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":0.8,"rotation":{"x":0.08,"y":-0.05,"z":0}},{"time":2.0,"rotation":{"x":0.02,"y":0.06,"z":0}},{"time":3.2,"rotation":{"x":0.1,"y":0,"z":0}},{"time":4.7,"rotation":{"x":0.05,"y":-0.03,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.15}},{"time":1.0,"rotation":{"x":0,"y":0,"z":-0.8}},{"time":2.4,"rotation":{"x":0,"y":0,"z":-1.0}},{"time":3.6,"rotation":{"x":0,"y":0,"z":-0.75}},{"time":4.7,"rotation":{"x":0,"y":0,"z":-0.6}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.25,"y":0,"z":0}},{"time":1.0,"rotation":{"x":-1.1,"y":0,"z":0}},{"time":2.4,"rotation":{"x":-1.35,"y":0,"z":0}},{"time":4.7,"rotation":{"x":-1.1,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0.05,"z":0}},{"time":1.2,"rotation":{"x":0,"y":-0.35,"z":0}},{"time":2.6,"rotation":{"x":0,"y":-0.55,"z":0}},{"time":4.7,"rotation":{"x":0,"y":-0.45,"z":0}}]},{"joint":"leftShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.15}},{"time":2.0,"rotation":{"x":0,"y":0,"z":0.35}},{"time":4.7,"rotation":{"x":0,"y":0,"z":0.3}}]},{"joint":"leftElbow","frames":[{"time":0.0,"rotation":{"x":-0.2,"y":0,"z":0}},{"time":2.0,"rotation":{"x":-0.6,"y":0,"z":0}},{"time":4.7,"rotation":{"x":-0.5,"y":0,"z":0}}]}],"frame_count":96,"known_cuts":[3.6]};
+    d3_split_declared=true(known_cuts=[3.6]←cp5 blocking 工件实值); cp1_theme=20s 竖屏带货口播营销短视频《雪松晚安香》：主播对镜口播推荐「栖野」卧室无火香薰（藤条扩香瓶·雪松晚安香型，家用香薰品类）。产品定义：琥珀玻璃瓶身+实木底座+天然藤条，植物精油无火扩香；卖点三连=①无火无烟植物精油（可开着睡）②一瓶扩香约六十天
+    ③玻璃瓶实木底座百搭摆设；CTA=置顶链接下单。同结构不同内容：沿用 mk01 结构先验（大口播镜开场+产品特写插入镜+使用镜+收尾镜的口播带货镜序、全片无硬字幕无水印、口播信息走音频层），产品/台词/场景全部原创；参考样片仅为结构对位，不是内容来源。;
+    cp1_selling_point=20 秒一条龙口播转化：hook（卧室睡不好）→卖点三连（无火无烟植物精油→约 60 天长效扩香→卧室场景感）→CTA（置顶链接今晚下单），全程竖屏近景口播+产品特写插入，含数字人口播段（G9a
+    专线：TTS→avatar，短剧线已验证该链路，本线第二次实战）。; cp1_must_keep=["prop_diffuser_01 香薰瓶实物一致（琥珀玻璃瓶身+实木底座+藤条，几何恒存不形变，镜级实物一致）","cast_host
+    主播同一形象（单一口播主体，跨镜身份不漂移，数字人段与产品镜同一人物设定）","产品名/价格/购买链接一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"];
+    cp1_forbidden_zones=[{"description":"画面内渲染产品名/价格/促销文字与硬字幕（营销线核心信息全部后期字牌，生成侧自由渲染必乱）","defect_code":"G2_画面内文字"},{"description":"产品形变（玻璃瓶身/实木底座/藤条几何恒存，产品特写镜逐镜登记）","defect_code":"G7_物体恒存"},{"description":"手部特写解剖失真（使用镜指尖拨藤条近景，融指/断指风险）","defect_code":"G1_手部"}];
+    cp2_target_duration_s=20.0; cp2_props=prop_diffuser_01,prop_reeds_01,prop_bedside_01'
 - schema_version: '2.0'
   shot_id: shot_02
   duration_s: 2.83
@@ -92,7 +101,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=close; props=prop_diffuser_01'
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=close; props=prop_diffuser_01; cp2_visual_description=香薰瓶特写缓推，琥珀玻璃瓶身立于实木底座，藤条呈扇形展开，背景卧室虚化;
+    word_anchor_segment=seg_02; word_anchor_text=@{越闻越安神}'
 - schema_version: '2.0'
   shot_id: shot_03
   duration_s: 4.13
@@ -124,7 +134,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_diffuser_01,prop_reeds_01'
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_diffuser_01,prop_reeds_01;
+    cp2_visual_description=藤条扩香微距特写，光斑沿玻璃肩部缓慢流转，瓶体几何恒定，卧室暗背景; word_anchor_segment=seg_03; word_anchor_text=@{拨拨藤条}'
 - schema_version: '2.0'
   shot_id: shot_04
   duration_s: 3.04
@@ -156,7 +167,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01,prop_reeds_01'
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01,prop_reeds_01;
+    cp2_visual_description=卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔; word_anchor_segment=seg_04; word_anchor_text=@{搬进卧室}'
 - schema_version: '2.0'
   shot_id: shot_05
   duration_s: 2.83
@@ -188,7 +200,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=wide; props=prop_diffuser_01,prop_bedside_01'
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=wide; props=prop_diffuser_01,prop_bedside_01;
+    cp2_visual_description=暮色卧室全景固定机位，床头柜上香薰瓶与暖灯同框，窗光柔和，高级生活方式感; word_anchor_segment=seg_05; word_anchor_text=@{摆哪都好看}'
 - schema_version: '2.0'
   shot_id: shot_06
   duration_s: 2.61
@@ -218,7 +231,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01'
+  notes: 'skeleton: prompt_src=cp9/cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_diffuser_01;
+    cp2_visual_description=产品近景缓推收尾，暖灯轮廓光勾边，画面上缘留白供后期 CTA 字牌; word_anchor_segment=seg_06; word_anchor_text=@{今晚下单}'
 intents:
 - identity:
     intent_id: i-pp-marketing_ep01-sub

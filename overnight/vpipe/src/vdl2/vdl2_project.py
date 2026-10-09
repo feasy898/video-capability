@@ -38,8 +38,12 @@ cp2 剧本（script）：逐镜一段（逐行一拍一镜形态；无 audio.spe
   visual_description ←本镜 notes「cp2_visual_description」登记位回读（骨架器自来源
     cp2 反投影原文；无登记位回退 camera.description 代用并如实损失标记）；
   estimated_duration_s ←shots[].duration_s；
-  tts_safe ←投影器字符集复核（声明+复核双口径中的复核侧）；cast_refs ←shots[].characters；
-  props_refs ←shots[].notes 的「props=…」登记位解析；
+  tts_safe ←投影器字符集复核（声明+复核双口径中的复核侧）；
+  cast_refs ←本镜 notes「cp2_cast_refs」登记位回读（骨架器自来源 cp2 逐段反投影原文；
+    空表=「k=」空值；无登记位回退 shots[].characters——参照链 cp2 逐段 cast 为逐段手写
+    事实不必等于 cp3.refs 拆分：营销 seg_01 cast_refs=[] 而 cp3.refs=[cast_host]）；
+  props_refs ←本镜 notes「cp2_props_refs」登记位回读（同上；无登记位回退「props=…」
+    登记位解析——漫剧 seg_01 props_refs=[] 而登记位有 prop_lantern_01 实证）；
   cast=全片首次出现序去重；props ←首镜 notes「cp2_props」登记位原序回读
     （无登记位回退全片首次出现序）；
   target_duration_s ←首镜 notes「cp2_target_duration_s」登记位回读（JSON 数字原文，
@@ -94,6 +98,12 @@ cp6 时间线（timeline）：fps ←intents[].temporal_extent.time_base.rate_nu
   · 执行态/元数据类（打印但不改 exit）：顶层 produced_by / produced_at / status /
     gate / aux_gates / notes——投影 fresh 产物与执行链在这六处必然不同，此即
     「包是规格不是执行记录」的分类学边界；
+    —— 元数据类边界声明（2026-10-09 复审补记）：notes 整体归元数据类，而参照链
+    producer 因 schema additionalProperties=false 把部分语义内容寄存在 notes——
+    cp2 cast/props 的一句话人设与道具名称（cp2_script 分支条目只收 ID）、cp1
+    溯源三元组 source/clip/sha256/role（intent_card 分支不收编 reference 对象）。
+    notes 内承载的语义内容不在等价性 claims 覆盖范围内：投影往返丢失它们仍判
+    exit 0；payload 层等价是已证判据。
   · 内容类（任一存在 → exit 1 并逐字段打印）：payload 递归字段级 diff（键缺失/
     多出/数组逐位/标量不等）、fingerprint、upstream_refs（携带上游内容身份，
     随 payload 差异传播，不属元数据）、schema_version/cp_id/artifact_type 身份
@@ -127,7 +137,14 @@ import yaml
 HERE = Path(__file__).resolve().parent
 VPIPE_ROOT = HERE.parent.parent
 sys.path.insert(0, str(VPIPE_ROOT / "src"))
-from gate.fingerprint import canonical, compute_fingerprint  # noqa: E402  唯一指纹口径，不得自造第二套
+try:
+    from gate.fingerprint import compute_fingerprint  # noqa: E402  唯一指纹口径，不得自造第二套
+except ImportError as e:   # docstring：缺该模块即 exit 2 拒跑（ImportError 裸崩=1，须显式拦截归 2）
+    print(f"[vdl2_project] FATAL 指纹模块缺失：src/gate/fingerprint.py 导入失败 {type(e).__name__}: {e}",
+          file=sys.stderr)
+    print("[vdl2_project] 指纹唯一口径要求复用该模块（sha256(canonical_json(payload))），"
+          "本件不自造第二套算法 → 拒跑（exit 2）", file=sys.stderr)
+    sys.exit(2)
 
 CP_SCHEMA = VPIPE_ROOT / "contracts" / "v2" / "checkpoint.schema.json"
 
@@ -322,6 +339,7 @@ def build_cp2(pkg: dict, ledger: list) -> dict:
     shots = pkg.get("shots") or []
     preg = package_reg(pkg)
     segments, cast_seen = [], []
+    n_cast_reg = n_props_reg = 0
     for i, s in enumerate(shots, 1):
         speech = ((s.get("audio") or {}).get("speech")) or ""
         if not speech:
@@ -329,7 +347,21 @@ def build_cp2(pkg: dict, ledger: list) -> dict:
         chars = [c.get("char_id") for c in s.get("characters") or [] if c.get("char_id")]
         np_ = parse_shot_notes(s.get("notes"))
         props = derive_props(s, np_)
-        for c in chars:
+        # cp2 逐段 cast/props 回读（骨架器登记位 cp2_cast_refs/cp2_props_refs，空值=空表）：
+        # 参照链 cp2 逐段 cast/props 是逐段手写事实（marketing build_cp1_cp6.py SEG_REFS 实证），
+        # 不必等于包 characters/props 的 cp3.refs 拆分推导；登记位存在才回读，
+        # 无登记位=旧回退路径（characters / props 登记位），既有包不受影响。
+        if "cp2_cast_refs" in np_:
+            cast_refs = [t.strip() for t in np_["cp2_cast_refs"].split(",") if t.strip()]
+            n_cast_reg += 1
+        else:
+            cast_refs = chars
+        if "cp2_props_refs" in np_:
+            props_refs = [t.strip() for t in np_["cp2_props_refs"].split(",") if t.strip()]
+            n_props_reg += 1
+        else:
+            props_refs = props
+        for c in cast_refs:
             if c not in cast_seen:
                 cast_seen.append(c)
         vis = np_.get("cp2_visual_description")
@@ -340,15 +372,22 @@ def build_cp2(pkg: dict, ledger: list) -> dict:
                                   or f"{LOSS_PREFIX} 包内无画面描述",
             "estimated_duration_s": s.get("duration_s"),
             "tts_safe": tts_safe_check(speech),
-            "cast_refs": chars,
-            "props_refs": props,
+            "cast_refs": cast_refs,
+            "props_refs": props_refs,
         })
     est_total = round(sum(s.get("estimated_duration_s") or 0 for s in segments), 2)
     n_vis = sum(1 for s in segments)
     vis_reg = sum(1 for s in shots if parse_shot_notes(s.get("notes")).get("cp2_visual_description"))
     ledger.append(f"[派生] narration_segments={len(segments)} 段（逐镜一段，segment_id=seg_NN 镜序惯例；"
                   "narration_text←audio.speech、estimated_duration_s←duration_s、"
-                  "cast/props←characters+notes 登记位）")
+                  "cast/props←cp2_cast_refs/cp2_props_refs 登记位回读，缺登记位段回退 "
+                  "characters/props 登记位推导）")
+    if n_cast_reg:
+        ledger.append(f"[恢复] cast_refs {n_cast_reg}/{n_vis} 段 ← 本镜 notes「cp2_cast_refs」登记位"
+                      "（骨架器自来源 cp2 逐段反投影原文，与 characters 推导值不同者才寄存）")
+    if n_props_reg:
+        ledger.append(f"[恢复] props_refs {n_props_reg}/{n_vis} 段 ← 本镜 notes「cp2_props_refs」登记位"
+                      "（骨架器自来源 cp2 逐段反投影原文，与 props 登记位推导值不同者才寄存）")
     if vis_reg:
         ledger.append(f"[恢复] visual_description {vis_reg}/{n_vis} 段 ← 本镜 notes「cp2_visual_description」"
                       "登记位（骨架器自来源 cp2 反投影原文；缺登记位段回退 camera.description 代用）")
@@ -768,6 +807,10 @@ def reconcile_dirs(proj_dir: Path, ref_dir: Path) -> int:
     print("=" * 72)
     print(f"[vdl2_project][reconcile] RESULT 内容类差异 {n_content} 处 / 元数据类差异 {n_meta} 处"
           + (f"（分布 CP: {','.join(sorted(set(bad_cp)))}）" if bad_cp else ""))
+    print("[vdl2_project][reconcile] 边界声明：notes 整体归元数据类——参照链 producer 因 schema "
+          "additionalProperties=false 寄存在 notes 的语义内容（cp2 cast/props 一句话人设与道具名称、"
+          "cp1 溯源三元组 source/clip/sha256/role）不在等价性 claims 覆盖范围内，投影往返丢失它们仍判 "
+          "exit 0；payload 层等价是已证判据")
     if n_content:
         print("[vdl2_project][reconcile] 判定：存在内容类差异 → 语义等价不成立（诚实口径，不放宽）")
         return 1

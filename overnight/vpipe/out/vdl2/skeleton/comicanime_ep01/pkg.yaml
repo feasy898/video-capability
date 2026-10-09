@@ -1,4 +1,4 @@
-# VDL v2 反向骨架包 · 来源工件目录 out/m2/comicanime_ep01 · 生成器 vdl2_skeleton.py@vpipe2.0-dev · 2026-10-09T09:10:28Z
+# VDL v2 反向骨架包 · 来源工件目录 out/m2/comicanime_ep01 · 生成器 vdl2_skeleton.py@vpipe2.0-dev · 2026-10-09T11:14:38Z
 # CP 盘点 cp1: ← cp1.json
 # CP 盘点 cp2: ← cp2.json
 # CP 盘点 cp3: ← cp3.json
@@ -8,9 +8,10 @@
 # CP 盘点 cp7: ← cp7.json
 # CP 盘点 cp8: ← cp8.json
 # CP 盘点 cp9: ← cp9.json
-# 映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与engine.channel=channel_hint；cp6→帧率/字幕；cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring
+# 映射口径：机械投影（cp1→work_id/budget/aspect；cp2→台词/注册表；cp3→shots 骨架与engine.channel=channel_hint；cp5→逐镜 cp5_blocking 登记位；cp6→帧率/字幕；cp9 系 prompts→终稿 prompt/resolution；cp9→credit_cap_per_shot；cp1/cp2 语义面与目标时长/逐段 cast·props→notes 登记位），逐字段出处见 src/vdl2/vdl2_skeleton.py 模块 docstring
 # 纪律：包是规格不是执行记录——fingerprint/produced_at/status/gate/upstream_refs/credit_spent/seed_recorded/asset/ffprobe 等执行态字段一律不入包；工件缺失的信息不脑补，登记于本注释
 # 登记：包级 deliverable 段不生成——cp1 只有 pixel_map/encode_contract 骨架，VPO DeliverableSet 必备 display_target/readability/optical/encode(fps·bitrate·audio_policy) 无工件对应；aspect=9:16 已投影进每镜 aspect
+# 登记：包级登记寄存首镜 notes（cp1_theme/cp1_selling_point/cp1_must_keep/cp1_forbidden_zones/cp2_target_duration_s/cp2_props）——v2 包顶层无登记位，投影器回读恢复来源 cp1/cp2 语义面与目标时长，往返不丢字段
 # 登记：intents[0]=PostProcessIntent(subtitle_burn, post_comp)；predicate/ops[0].note=cp1.must_keep 原文引用
 # 登记：acceptance[0]=acc-sub-comicanime_ep01(block, J6_detectors)；detector_version=vpipe1.0 沿 examples/vdl2 惯例（工件未登记判官版本号）
 # 登记：authority=director ← cp1.produced_by 去「agent.」前缀
@@ -19,7 +20,7 @@
 # 登记：template 段不生成——工件无模板槽位定义
 vdl_version: '2.0'
 work_id: comicanime_ep01
-created: '2026-10-09T09:10:28Z'
+created: '2026-10-09T11:14:38Z'
 default_prompt_mode: handwritten
 budget:
   credit_cap_total: 3360
@@ -61,7 +62,15 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium; props=prop_lantern_01'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium; props=prop_lantern_01; cp2_props_refs=;
+    cp2_visual_description=雨夜面摊棚全景：暖黄灯笼挂摊前，雨线斜织，陆星辞掀帘钻进棚里，背影逆光勾边; word_anchor_segment=seg_01; word_anchor_text=@{推门进来的人};
+    cp1_theme=竖屏漫剧《头汤面》：十年前沈记面馆易主，少东家陆星辞被扫地出门；十年后雨夜，他以食客身份回到面摊点一碗头汤面，接手面馆的师兄沈聿一口汤尝出师门手法，当场掀开十年前的家门旧事。同结构不同内容：沿用
+    cd01 结构先验（19 镜画格流、镜均 3.02s、近景/特写主导 13/19、硬字幕 14/19、单场景双人对质、道具主导特写），人物/台词/场景全部原创；参考样片仅为画格节奏与景别配比对位，不是内容来源。风格定位：G8
+    风格化（H3-Max 四风格全成实测口径，TASK_v4 §2），国漫厚涂赛璐璐、粗黑描线、高饱和暖色夜戏，风格词在 CP3/CP7 逐镜锁定防漂移; cp1_selling_point=30 秒一碗头汤面三次反转：点单立规矩→尝汤认手法→「师弟」脱口而出；全程画格流定格+近景特写压迫感，一碗面从热气到凉透就是十年恩怨的计时器;
+    cp1_must_keep=["prop_bowl_01 头汤面碗（粗陶碗恒存不形变，热气→凉透为镜级状态线）","prop_pot_01 老汤锅（锅沿磨痕全程一致，镜级实物一致）","cast_lu/cast_shenyu
+    同框镜头双主角身份不漂移（G5 禁区）","台词与拟声词一律后期字牌烧录（small_text_policy=post_render_plate，不进生成模型）"]; cp1_forbidden_zones=[{"description":"食物/道具形变（面碗、汤锅、面条热气形态）","defect_code":"G7_物体恒存"},{"description":"画面内渲染硬字幕与漫画拟声词（漫剧样片
+    14/19 带硬字幕，生成侧自由渲染必乱，绕行走后期字牌）","defect_code":"G2_画面内文字"},{"description":"同框双主角身份漂移（双男主题材近景对质易串脸）","defect_code":"G5_多角色一致性"},{"description":"风格化漂移（厚涂赛璐璐漂成写实/3D/水墨——G8-35
+    同类；本线核心风格轴）","defect_code":"G8_风格化"}]; cp2_target_duration_s=30.0; cp2_props=prop_bowl_01,prop_ladle_01,prop_pot_01,prop_chopsticks_01,prop_lantern_01'
 - schema_version: '2.0'
   shot_id: shot_02
   duration_s: 3.48
@@ -98,7 +107,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close; cp2_visual_description=陆星辞在案前坐下，指节在木案上敲了两下点单，近景面部大半占幅，灯笼暖光勾边;
+    word_anchor_segment=seg_02; word_anchor_text=@{一碗头汤面}'
 - schema_version: '2.0'
   shot_id: shot_03
   duration_s: 3.26
@@ -134,7 +144,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium_close'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium_close; cp2_visual_description=沈聿在灶后抬眼，手上擦手的动作不停，毛巾搭回肩上，中近景不抬头回话;
+    word_anchor_segment=seg_03; word_anchor_text=@{头汤只卖一碗}; cp5_blocking={"shot_id":"shot_03","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":1.2,"rotation":{"x":0,"y":0.05,"z":0}},{"time":2.4,"rotation":{"x":0,"y":0.08,"z":0}},{"time":3.2,"rotation":{"x":0,"y":0.08,"z":0}}]},{"joint":"head","frames":[{"time":0.0,"rotation":{"x":0.06,"y":0,"z":0}},{"time":0.8,"rotation":{"x":-0.12,"y":0.05,"z":0}},{"time":1.8,"rotation":{"x":-0.16,"y":0.05,"z":0}},{"time":3.2,"rotation":{"x":-0.14,"y":0.03,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.25}},{"time":0.9,"rotation":{"x":0,"y":0,"z":-0.55}},{"time":1.7,"rotation":{"x":0,"y":0,"z":-0.5}},{"time":2.6,"rotation":{"x":0,"y":0,"z":-0.2}},{"time":3.2,"rotation":{"x":0,"y":0,"z":-0.15}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.35,"y":0,"z":0}},{"time":0.9,"rotation":{"x":-1.45,"y":0,"z":0}},{"time":1.7,"rotation":{"x":-1.5,"y":0,"z":0}},{"time":2.6,"rotation":{"x":-1.1,"y":0,"z":0}},{"time":3.2,"rotation":{"x":-1.05,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.1}},{"time":0.9,"rotation":{"x":0,"y":0.3,"z":0.2}},{"time":1.5,"rotation":{"x":0,"y":-0.25,"z":-0.2}},{"time":2.2,"rotation":{"x":0,"y":0.3,"z":0.2}},{"time":3.2,"rotation":{"x":0,"y":0,"z":0.1}}]}],"frame_count":66}'
 - schema_version: '2.0'
   shot_id: shot_04
   duration_s: 4.13
@@ -149,7 +160,7 @@ shots:
   continuity:
     link: none
     seed_policy: none
-    d3_split_declared: false
+    d3_split_declared: true
   edit_ops: []
   audio:
     speech: 沈聿下面收汤，动作和十年前教他的一分不差。
@@ -169,7 +180,10 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close; props=prop_bowl_01,prop_ladle_01'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close; props=prop_bowl_01,prop_ladle_01;
+    cp2_visual_description=俯拍案台：下面、收汤、热油淋面的手部特写，蒸汽漫过画幅上沿，一气呵成; word_anchor_segment=seg_04; word_anchor_text=@{一分不差};
+    cp5_blocking={"shot_id":"shot_04","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"none","tracks":[{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0.08,"y":0,"z":0}},{"time":1.5,"rotation":{"x":0.14,"y":0,"z":0}},{"time":3.0,"rotation":{"x":0.16,"y":0,"z":0}},{"time":4.1,"rotation":{"x":0.14,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":-0.3}},{"time":0.8,"rotation":{"x":0,"y":0,"z":-0.9}},{"time":1.8,"rotation":{"x":0,"y":0,"z":-1.25}},{"time":2.8,"rotation":{"x":0,"y":0,"z":-1.1}},{"time":3.8,"rotation":{"x":0,"y":0,"z":-0.6}},{"time":4.1,"rotation":{"x":0,"y":0,"z":-0.5}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.5,"y":0,"z":0}},{"time":0.8,"rotation":{"x":-1.3,"y":0,"z":0}},{"time":1.8,"rotation":{"x":-1.55,"y":0,"z":0}},{"time":2.8,"rotation":{"x":-1.35,"y":0,"z":0}},{"time":3.8,"rotation":{"x":-0.95,"y":0,"z":0}},{"time":4.1,"rotation":{"x":-0.9,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.15}},{"time":0.8,"rotation":{"x":0,"y":0,"z":-0.4}},{"time":1.8,"rotation":{"x":0,"y":0,"z":-0.75}},{"time":2.6,"rotation":{"x":0,"y":0,"z":-1.0}},{"time":3.4,"rotation":{"x":0,"y":0,"z":-0.5}},{"time":4.1,"rotation":{"x":0,"y":0,"z":-0.3}}]},{"joint":"leftShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.3}},{"time":1.2,"rotation":{"x":0,"y":0,"z":0.35}},{"time":4.1,"rotation":{"x":0,"y":0,"z":0.32}}]},{"joint":"leftElbow","frames":[{"time":0.0,"rotation":{"x":-0.9,"y":0,"z":0}},{"time":1.2,"rotation":{"x":-0.95,"y":0,"z":0}},{"time":4.1,"rotation":{"x":-0.92,"y":0,"z":0}}]}],"frame_count":83,"known_cuts":[3.6]};
+    d3_split_declared=true(known_cuts=[3.6]←cp5 blocking 工件实值)'
 - schema_version: '2.0'
   shot_id: shot_05
   duration_s: 2.39
@@ -202,7 +216,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_pot_01'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_pot_01; cp2_cast_refs=cast_lu;
+    cp2_visual_description=汤锅特写：锅沿磨痕与老垢清晰可见，火苗舔着锅底，画面里没有人的脸; word_anchor_segment=seg_05; word_anchor_text=@{锅还是那口锅}'
 - schema_version: '2.0'
   shot_id: shot_06
   duration_s: 2.17
@@ -239,7 +254,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_bowl_01'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=extreme_close; props=prop_bowl_01; cp2_visual_description=沈聿舀汤尝味的手停在半空，瞳孔骤缩的面部大特写，蒸汽在背景虚开，镜头极缓推近;
+    word_anchor_segment=seg_06; word_anchor_text=@{跟谁学的}'
 - schema_version: '2.0'
   shot_id: shot_07
   duration_s: 3.26
@@ -280,7 +296,9 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_bowl_01,prop_chopsticks_01'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium_close; props=prop_bowl_01,prop_chopsticks_01;
+    cp2_visual_description=双人同框隔案对坐，陆星辞把筷子横搁碗沿，直视沈聿，近景一镜不切; word_anchor_segment=seg_07; word_anchor_text=@{味道在};
+    cp5_blocking={"shot_id":"shot_07","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":"head","frames":[{"time":0.0,"rotation":{"x":0.02,"y":0,"z":0}},{"time":1.0,"rotation":{"x":-0.05,"y":0.04,"z":0}},{"time":2.2,"rotation":{"x":-0.05,"y":0.04,"z":0}},{"time":3.2,"rotation":{"x":-0.03,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.35}},{"time":0.7,"rotation":{"x":0,"y":0,"z":0.1}},{"time":1.5,"rotation":{"x":0,"y":0,"z":0.05}},{"time":3.2,"rotation":{"x":0,"y":0,"z":0.08}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-1.2,"y":0,"z":0}},{"time":0.7,"rotation":{"x":-0.85,"y":0,"z":0}},{"time":1.5,"rotation":{"x":-0.8,"y":0,"z":0}},{"time":3.2,"rotation":{"x":-0.82,"y":0,"z":0}}]},{"joint":"rightWrist","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.6}},{"time":0.7,"rotation":{"x":0,"y":0,"z":0.15}},{"time":1.3,"rotation":{"x":0,"y":0,"z":-0.1}},{"time":1.9,"rotation":{"x":0,"y":0,"z":-0.18}},{"time":3.2,"rotation":{"x":0,"y":0,"z":-0.15}}]}],"frame_count":66}'
 - schema_version: '2.0'
   shot_id: shot_08
   duration_s: 3.04
@@ -317,7 +335,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=close; cp2_visual_description=沈聿后退半步扶住案沿，毛巾从手里滑落，近景拍他失神的脸;
+    word_anchor_segment=seg_08; word_anchor_text=@{不关我的事}; cp5_blocking={"shot_id":"shot_08","joint_names":["hips","spine","neck","head","leftShoulder","leftElbow","leftWrist","rightShoulder","rightElbow","rightWrist","leftHip","leftKnee","leftAnkle","rightHip","rightKnee","rightAnkle"],"bone_length_constant":true,"speech_mode":"independent_lip_layer","tracks":[{"joint":null,"frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":0.6,"rotation":{"x":0,"y":-0.06,"z":0}},{"time":1.6,"rotation":{"x":0,"y":-0.1,"z":0}},{"time":3.0,"rotation":{"x":0,"y":-0.1,"z":0}}]},{"joint":"spine","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0}},{"time":0.6,"rotation":{"x":-0.12,"y":0,"z":0}},{"time":1.6,"rotation":{"x":-0.16,"y":0,"z":0}},{"time":3.0,"rotation":{"x":-0.15,"y":0,"z":0}}]},{"joint":"head","frames":[{"time":0.0,"rotation":{"x":0.05,"y":0,"z":0}},{"time":0.7,"rotation":{"x":-0.08,"y":0.12,"z":0}},{"time":1.3,"rotation":{"x":-0.05,"y":-0.12,"z":0}},{"time":1.9,"rotation":{"x":-0.08,"y":0.1,"z":0}},{"time":3.0,"rotation":{"x":-0.1,"y":0,"z":0}}]},{"joint":"rightShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.3}},{"time":0.6,"rotation":{"x":0,"y":0,"z":0.75}},{"time":1.6,"rotation":{"x":0,"y":0,"z":0.85}},{"time":3.0,"rotation":{"x":0,"y":0,"z":0.8}}]},{"joint":"rightElbow","frames":[{"time":0.0,"rotation":{"x":-0.6,"y":0,"z":0}},{"time":0.6,"rotation":{"x":-0.25,"y":0,"z":0}},{"time":1.6,"rotation":{"x":-0.15,"y":0,"z":0}},{"time":3.0,"rotation":{"x":-0.18,"y":0,"z":0}}]},{"joint":"leftShoulder","frames":[{"time":0.0,"rotation":{"x":0,"y":0,"z":0.15}},{"time":0.8,"rotation":{"x":0,"y":0,"z":0.3}},{"time":3.0,"rotation":{"x":0,"y":0,"z":0.28}}]},{"joint":"leftElbow","frames":[{"time":0.0,"rotation":{"x":-0.4,"y":0,"z":0}},{"time":0.8,"rotation":{"x":-0.7,"y":0,"z":0}},{"time":3.0,"rotation":{"x":-0.68,"y":0,"z":0}}]}],"frame_count":61}'
 - schema_version: '2.0'
   shot_id: shot_09
   duration_s: 2.61
@@ -353,7 +372,8 @@ shots:
     channel: api_h3max
   budget:
     credit_cap_per_shot: 280
-  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium; props=prop_bowl_01,prop_lantern_01'
+  notes: 'skeleton: prompt_src=cp9_prompts.json; cp3_shot_scale=medium; props=prop_bowl_01,prop_lantern_01;
+    cp2_visual_description=两碗面并排凉在案上热气散尽，镜头缓缓拉出门棚，灯笼在雨里晃; word_anchor_segment=seg_09; word_anchor_text=@{谁都没先动筷}'
 intents:
 - identity:
     intent_id: i-pp-comicanime_ep01-sub

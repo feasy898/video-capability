@@ -1,0 +1,31 @@
+{
+  "identity": { "intent_id": "i-cam-mk04", "version": "1.0.0" },
+  "intent_type": "vpo:craft.intent_object.camera_intent",
+  "target": { "kind": "shot", "ref": "shot_04" },
+  "scope": { "level": "vpo:delivery.scope.shot", "ref": "shot_04" },
+  "temporal_extent": { "time_base": { "rate_num": 24, "rate_den": 1 } },
+  "reference_context": { "prompt_mode": "vpo:delivery.prompt_mode.new" },
+  "predicate": "卧室床头暖光台灯旁，一只手轻拨藤条调香，指尖动作缓慢轻柔（G1 手部禁区镜级投影：指部解剖不崩、不融指），香薰瓶几何恒存",
+  "value": "使用镜手部特写",
+  "strength": "vpo:delivery.strength.must",
+  "tolerance": { "evidence_status": "vpo:delivery.evidence_status.prior" },
+  "exceptions": [],
+  "acceptance_ref": "acc-mk04-hand:v1.0.0",
+  "authority": "director",
+  "control_channel": ["vpo:delivery.control_channel.text"],
+  "field_channels": {
+    "characters[0].ref_image": ["vpo:delivery.control_channel.image"],
+    "duration_s": ["vpo:delivery.control_channel.api_param"]
+  },
+  "shot_scale": "vpo:cine.shot_scale_coarse.medium",
+  "subject_frame_ratio": "vpo:cine.subject_frame_ratio.50pct",
+  "camera_angle": "vpo:cine.angle_coarse.eye_level",
+  "movement": "vpo:cine.movement_primary.static",
+  "movement_speed": "vpo:cine.movement_speed.slow",
+  "framing_anchor": "vpo:cine.framing_anchor.center",
+  "hand_object_contact": {
+    "constraint": "指尖拨藤条：五指可见，指部解剖不崩、不融指、不断指",
+    "held_object_ref": "prop_reeds_01",
+    "tolerance": { "evidence_status": "vpo:delivery.evidence_status.prior" }
+  }
+}
