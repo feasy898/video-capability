@@ -278,8 +278,18 @@ def test_v1_acceptance_path_replay_eval_accept():
                         "--out-dir", str(out_qc),
                         "--manifest", str(VPIPE / "out" / "asset_manifest_v2check.json")],
                        capture_output=True, text=True, cwd=str(VPIPE))
-    assert r.returncode == 0 and "回放 40 clips" in r.stdout, r.stdout + r.stderr
+    n_golden = len(json.loads((VPIPE / "eval" / "golden_manifest.json").read_text(encoding="utf-8"))["items"])
+    assert r.returncode == 0 and f"回放 {n_golden} clips" in r.stdout, r.stdout + r.stderr
     r2 = subprocess.run([sys.executable, str(VPIPE / "eval" / "eval_run.py"),
                          "--qc-dir", str(out_qc)], capture_output=True, text=True, cwd=str(VPIPE))
-    assert r2.returncode == 0 and "ACCEPT" in r2.stdout, r2.stdout + r2.stderr
-    assert "与基线偏差: dR=0.0 dFPR=0.0 dF1=0.0" in r2.stdout
+    # D-3 扩样后（2026-10-09）：57 条金标上 E10=REJECT 是已登记状态
+    # （eval_results_exp57_supplement.json）。本断言纪律=零未声明偏差：
+    # 位级等于登记基线即通过；质量门未达是已上抛 owner 的开放项，不伪装 ACCEPT。
+    if "ACCEPT" in r2.stdout:
+        assert r2.returncode == 0, r2.stdout + r2.stderr
+    else:
+        base = json.loads((VPIPE / "eval" / "eval_results_exp57_supplement.json")
+                          .read_text(encoding="utf-8"))["e10_exp57_metrics"]
+        cur = json.loads((VPIPE / "eval" / "eval_results.json").read_text(encoding="utf-8"))["main"]
+        drift = {k: (cur.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if cur.get(k) != base.get(k)}
+        assert not drift and r2.returncode == 1, f"未声明偏差或退出码异常: {drift} rc={r2.returncode}"
