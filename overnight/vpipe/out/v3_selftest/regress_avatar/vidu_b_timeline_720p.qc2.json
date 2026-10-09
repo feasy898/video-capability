@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/vidu_b_timeline_720p.mp4",
- "generated_at": "2026-10-08T23:46:22",
+ "generated_at": "2026-10-09T08:23:14",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 26.0,
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 4.05
+  "analyze_sec": 3.33
  }
 }

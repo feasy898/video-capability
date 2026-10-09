@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "golden_020",
- "generated_at": "2026-10-08T23:46:27",
+ "generated_at": "2026-10-09T08:23:17",
  "qc_mode": "tonight_replay",
  "verdict": {
   "defect_detected": true,
@@ -44,7 +44,7 @@
    "j3_thr": 0.71,
    "auto_reject_p": 0.9,
    "j6_emit_conf": 0.55,
-   "thresholds_sha256": "a7f8808de916ad3edd59be99bef353f0c60ad74186b6b7f1a0d1af53ff303cfa"
+   "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49"
   }
  },
  "spans": [

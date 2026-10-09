@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-08T23:46:27",
+ "generated_at": "2026-10-09T08:23:17",
  "qc_dir": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post",
  "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
  "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",
- "thresholds_sha256": "a7f8808de916ad3edd59be99bef353f0c60ad74186b6b7f1a0d1af53ff303cfa",
+ "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
  "ensemble_recommended": "E10",
  "measured_baseline_报告E10": {
   "tp": 16,
