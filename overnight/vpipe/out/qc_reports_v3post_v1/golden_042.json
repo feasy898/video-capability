@@ -1,0 +1,145 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_042",
+ "generated_at": "2026-10-09T11:55:13",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8856,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze,color_shift] 最大P=0.886）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.8856,
+   "evidence": {
+    "J1": {
+     "notes": "全片为镜头连续移动的一体化场景：f01-f05 中番茄在盘中位置随镜头推移连续变化，f05-f08 镜头右移露出背景纹理面并出现白色小球，各相邻采样帧间均有明显画面推进。唯独 f03 与 f04 两帧（间隔约0.9s）画面几乎完全一致——番茄位置、投影、背景与虚化样式均无任何变化，而其余相邻帧对均存在运动，提示该时段存"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8856,
+      "flicker": 0.1358,
+      "color_shift": 0.7408,
+      "face_blur": 0.0237,
+      "garble_text": 0.0334,
+      "temporal_swap": 0.4485,
+      "pixelate": 0.3536,
+      "ghosting": 0.6029
+     },
+     "overall": 0.4876
+    }
+   }
+  },
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7408,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8856,
+      "flicker": 0.1358,
+      "color_shift": 0.7408,
+      "face_blur": 0.0237,
+      "garble_text": 0.0334,
+      "temporal_swap": 0.4485,
+      "pixelate": 0.3536,
+      "ghosting": 0.6029
+     },
+     "overall": 0.4876
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8856,
+   "flicker": 0.1358,
+   "color_shift": 0.7408,
+   "face_blur": 0.0237,
+   "garble_text": 0.0334,
+   "temporal_swap": 0.4485,
+   "pixelate": 0.3536,
+   "ghosting": 0.6029
+  },
+  "overall": 0.4876,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f04（约2.2s-3.1s）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_042",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.7,
+   "spans": "f03-f04（约2.2s-3.1s）",
+   "notes": "全片为镜头连续移动的一体化场景：f01-f05 中番茄在盘中位置随镜头推移连续变化，f05-f08 镜头右移露出背景纹理面并出现白色小球，各相邻采样帧间均有明显画面推进。唯独 f03 与 f04 两帧（间隔约0.9s）画面几乎完全一致——番茄位置、投影、背景与虚化样式均无任何变化，而其余相邻帧对均存在运动，提示该时段存在定格/静帧。其余维度未见异常：无整体色偏或明暗闪烁，无人脸与文字，无像素块；f06-f07 白色小球的运动模糊符合下落弹跳的自然表现，非拖影缺陷；番茄跨帧外观一致，无身份漂移或计数/物理违例。"
+  },
+  "J5": {
+   "clip_id": "golden_042",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_042",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift"
+   ],
+   "confidence": 0.8856,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.886; flicker=0.136; color_shift=0.741; face_blur=0.024; garble_text=0.033; temporal_swap=0.449; pixelate=0.354; ghosting=0.603; overall=0.488"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_042.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_042.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_042.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_042.json"
+ }
+}

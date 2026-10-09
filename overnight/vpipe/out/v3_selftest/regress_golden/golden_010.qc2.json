@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/_archive-20261005/golden/clips/golden_010.mp4",
- "generated_at": "2026-10-09T09:01:55",
+ "generated_at": "2026-10-09T11:52:27",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 5.167,
@@ -100,6 +100,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 0.99
+  "analyze_sec": 1.34
  }
 }

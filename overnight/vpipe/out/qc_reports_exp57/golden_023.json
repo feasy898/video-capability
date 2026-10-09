@@ -1,0 +1,186 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_023",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9517,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['pixelate'], conf=0.95)",
+   "J3@0.71 flag=True hits=['pixelate', 'ghosting'] max_channel_P=0.9517",
+   "J6 信号(仅信号不否决): garble_text@0.85"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.85,
+   "span": {
+    "start_s": 0.0,
+    "end_s": 5.042
+   },
+   "evidence": {
+    "J6": {
+     "kind": "uniform_low_conf",
+     "max_mean": 0.186
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8353,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8353
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J1",
+    "J3",
+    "J5"
+   ],
+   "confidence": 0.9517,
+   "evidence": {
+    "J1": {
+     "confidence": 0.95,
+     "notes": "f01-f02画面清晰正常，高速公路与车辆无异常。从f03开始，画面中央出现大面积马赛克像素块，覆盖中间车道及多辆红色车辆区域，像素化区域在f03-f05持续存在且位置随镜头略有移动，f06仍有明显残留像素块，f07-f08恢复正常。该缺陷为典型局部像素化（pixelate）。另注：f05起底部中央突然出现一辆近距离红色轿车，f01-f02及f03-f04（被像素块遮挡）中均不可见，但因像素化遮挡"
+    },
+    "J3": {
+     "channel_P": 0.9517
+    },
+    "J5": {
+     "confidence": 0.8
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.2106,
+   "flicker": 0.1914,
+   "color_shift": 0.3962,
+   "face_blur": 0.5076,
+   "garble_text": 0.1961,
+   "temporal_swap": 0.4329,
+   "pixelate": 0.9517,
+   "ghosting": 0.8353
+  },
+  "overall": 0.728,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.0,
+   "end_s": 5.042,
+   "evidence": {
+    "kind": "uniform_low_conf",
+    "max_mean": 0.186
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f03-f06（约1.6s-3.5s）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_023",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.95,
+   "spans": "f03-f06（约1.6s-3.5s）",
+   "notes": "f01-f02画面清晰正常，高速公路与车辆无异常。从f03开始，画面中央出现大面积马赛克像素块，覆盖中间车道及多辆红色车辆区域，像素化区域在f03-f05持续存在且位置随镜头略有移动，f06仍有明显残留像素块，f07-f08恢复正常。该缺陷为典型局部像素化（pixelate）。另注：f05起底部中央突然出现一辆近距离红色轿车，f01-f02及f03-f04（被像素块遮挡）中均不可见，但因像素化遮挡无法确认是否为时序异常，故不另报physics_error/temporal_swap。整体判定主要命中pixelate。"
+  },
+  "J5": {
+   "clip_id": "golden_023",
+   "defect_detected": true,
+   "defect_types": [
+    "pixelate"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"pixelate\"],\"other\":false,\"reason\":\"画面中存在马赛克块状像素化\"}"
+  },
+  "J3": {
+   "clip_id": "golden_023",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur",
+    "pixelate",
+    "ghosting"
+   ],
+   "confidence": 0.9517,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.211 flicker=0.191 color_shift=0.396 face_blur=0.508 garble_text=0.196 temporal_swap=0.433 pixelate=0.952 ghosting=0.835; overall=0.728; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_023",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.85,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.0,
+     "end_s": 5.042,
+     "evidence": {
+      "kind": "uniform_low_conf",
+      "max_mean": 0.186
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_023.mp4",
+  "frames_dir": "frames/golden_023/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_023.json",
+   "J5": "../数据/judges/videochat3/golden_023.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_023.qc.json"
+  }
+ },
+ "errors": {}
+}

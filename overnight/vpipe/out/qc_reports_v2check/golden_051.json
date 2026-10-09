@@ -1,0 +1,130 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_051",
+ "generated_at": "2026-10-09T11:55:39",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8109,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.811）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8109,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8109,
+      "flicker": 0.3667,
+      "color_shift": 0.6472,
+      "face_blur": 0.2187,
+      "garble_text": 0.0455,
+      "temporal_swap": 0.3043,
+      "pixelate": 0.1571,
+      "ghosting": 0.5082
+     },
+     "overall": 0.5757
+    }
+   }
+  },
+  {
+   "type": "flicker",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.6,
+   "evidence": {
+    "J1": {
+     "notes": "f01-f02 画面明亮偏暖，f03-f04 整体明显变暗（人物面部与背景同时变暗），f05-f06 又恢复明亮，f07-f08 略再转暗，全片亮度呈非单调的快速波动，符合帧间明暗交替闪烁。其余项核对：人脸在 f01-f08 均清晰无异常模糊；无乱码文字、无像素化马赛克、无明显运动拖影（f02 发丝飘动形态自然）；头部"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8109,
+   "flicker": 0.3667,
+   "color_shift": 0.6472,
+   "face_blur": 0.2187,
+   "garble_text": 0.0455,
+   "temporal_swap": 0.3043,
+   "pixelate": 0.1571,
+   "ghosting": 0.5082
+  },
+  "overall": 0.5757,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f04 与相邻亮帧 f02/f05-f06 之间（约0.9s-2.9s）明暗快速交替",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_051",
+   "defect_detected": true,
+   "defect_types": [
+    "flicker"
+   ],
+   "confidence": 0.6,
+   "spans": "f03-f04 与相邻亮帧 f02/f05-f06 之间（约0.9s-2.9s）明暗快速交替",
+   "notes": "f01-f02 画面明亮偏暖，f03-f04 整体明显变暗（人物面部与背景同时变暗），f05-f06 又恢复明亮，f07-f08 略再转暗，全片亮度呈非单调的快速波动，符合帧间明暗交替闪烁。其余项核对：人脸在 f01-f08 均清晰无异常模糊；无乱码文字、无像素化马赛克、无明显运动拖影（f02 发丝飘动形态自然）；头部由侧脸转向镜头（f01→f02）过渡连续，无时序跳变；耳饰、发型、红裙等外观跨帧一致，无身份漂移；垂手姿态与手指形态（f04-f08）解剖自然，未见多指/融指；裙摆与发丝的飘动方向合理，无物理违例；花田密集属正常场景，无对象计数异常。故仅报 flicker，因抽帧间隔有限、亮度差异中等，置信度取 0.6。"
+  },
+  "J5": {
+   "clip_id": "golden_051",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物和背景均无明显异常，帧间过渡自然，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_051",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.8109,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.811; flicker=0.367; color_shift=0.647; face_blur=0.219; garble_text=0.045; temporal_swap=0.304; pixelate=0.157; ghosting=0.508; overall=0.576"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_051.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_051.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_051.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_051.json"
+ }
+}

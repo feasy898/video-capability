@@ -1,0 +1,151 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_047",
+ "generated_at": "2026-10-09T11:55:39",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9221,
+  "decided_by": "E10",
+  "reasons": [
+   "J3 最大通道 P=0.922 ≥ 0.90（高置信区间实测 8/8 全对，基准报告 §5）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "ghosting",
+   "sources": [
+    "J1",
+    "J5",
+    "J3"
+   ],
+   "confidence": 0.9221,
+   "evidence": {
+    "J1": {
+     "notes": "拖影/重影：镜头快速横移跟拍跑者期间，f04-f05 主体出现明显的半透明多层残影——黄色外套后侧拖出大块重影、头部呈双影叠印、后摆腿与鞋可见2-3个重叠虚像，f03 与 f06 也有较轻的运动拖影，该程度超出正常快门运动模糊的连续 smear，呈典型的帧混合式 ghosting；人脸模糊（f04-f05）与上述运动残"
+    },
+    "J5": {
+     "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"画面中跑步者存在明显的运动拖影\"}"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.0429,
+      "flicker": 0.3065,
+      "color_shift": 0.7271,
+      "face_blur": 0.6818,
+      "garble_text": 0.1758,
+      "temporal_swap": 0.4108,
+      "pixelate": 0.2054,
+      "ghosting": 0.9221
+     },
+     "overall": 0.596
+    }
+   }
+  },
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7271,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.0429,
+      "flicker": 0.3065,
+      "color_shift": 0.7271,
+      "face_blur": 0.6818,
+      "garble_text": 0.1758,
+      "temporal_swap": 0.4108,
+      "pixelate": 0.2054,
+      "ghosting": 0.9221
+     },
+     "overall": 0.596
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.0429,
+   "flicker": 0.3065,
+   "color_shift": 0.7271,
+   "face_blur": 0.6818,
+   "garble_text": 0.1758,
+   "temporal_swap": 0.4108,
+   "pixelate": 0.2054,
+   "ghosting": 0.9221
+  },
+  "overall": 0.596,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f06（f04-f05 最重）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_047",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.65,
+   "spans": "f03-f06（f04-f05 最重）",
+   "notes": "拖影/重影：镜头快速横移跟拍跑者期间，f04-f05 主体出现明显的半透明多层残影——黄色外套后侧拖出大块重影、头部呈双影叠印、后摆腿与鞋可见2-3个重叠虚像，f03 与 f06 也有较轻的运动拖影，该程度超出正常快门运动模糊的连续 smear，呈典型的帧混合式 ghosting；人脸模糊（f04-f05）与上述运动残影同源，不单独立项。其余维度未见缺陷：无定格/闪烁/整体色偏；f02 'NOODLES' 霓虹及中式招牌文字清晰无乱码；无像素块；f01-f08 场景连续无时序跳变；跑者跨帧身份一致（荧光黄外套、黑色短裤、同发型），跑动步态与街道透视连续，未见手部解剖异常、计数异常或物理违例。"
+  },
+  "J5": {
+   "clip_id": "golden_047",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[\"ghosting\"],\"other\":false,\"reason\":\"画面中跑步者存在明显的运动拖影\"}"
+  },
+  "J3": {
+   "clip_id": "golden_047",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.9221,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.043; flicker=0.306; color_shift=0.727; face_blur=0.682; garble_text=0.176; temporal_swap=0.411; pixelate=0.205; ghosting=0.922; overall=0.596"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_047.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_047.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_047.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_047.json"
+ }
+}

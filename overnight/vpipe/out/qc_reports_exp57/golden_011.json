@@ -1,0 +1,172 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_011",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.82,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.82)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.7031",
+   "J6 信号(仅信号不否决): garble_text@0.82"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.817,
+   "span": {
+    "start_s": 0.323,
+    "end_s": 0.969
+   },
+   "evidence": {
+    "J6": {
+     "kind": "conf_drop",
+     "drop": 0.409,
+     "frames": [
+      1,
+      0
+     ],
+     "mean_scores": [
+      0.188,
+      0.596
+     ]
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.7031,
+   "flicker": 0.2905,
+   "color_shift": 0.6037,
+   "face_blur": 0.0979,
+   "garble_text": 0.0393,
+   "temporal_swap": 0.3192,
+   "pixelate": 0.1917,
+   "ghosting": 0.4689
+  },
+  "overall": 0.4998,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.323,
+   "end_s": 0.969,
+   "evidence": {
+    "kind": "conf_drop",
+    "drop": 0.409,
+    "frames": [
+     1,
+     0
+    ],
+    "mean_scores": [
+     0.188,
+     0.596
+    ]
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "全片 f01-f08 无明显缺陷"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_011",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "全片 f01-f08 无明显缺陷",
+   "notes": "逐帧核对：f01-f08 手部持续呈现扫弦的往复运动（f01 张开、f02-f03 收拢/下压、f04/f07/f08 可见红色拨片），无定格嫌疑；背景蓝色聚光灯光斑位置与强度、吉他琥珀色渐变漆面、黑色皮腕带等元素跨帧完全一致，无闪烁与色偏；无文字与人脸出现；f05 手指与琴弦存在运动模糊，但方向与扫弦动作一致，属自然动态模糊而非拖影重影；手部解剖在 f01/f03/f06/f08 各姿态下指节、拇指数量与形态均合理，拨片随角度时隐时现符合真实扫弦；琴弦数量约 6 根、拾音器/琴桥结构前后一致，无计数与物理违例；主体身份与外观无漂移。判定为干净片段。"
+  },
+  "J5": {
+   "clip_id": "golden_011",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_011",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift"
+   ],
+   "confidence": 0.7031,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.703 flicker=0.290 color_shift=0.604 face_blur=0.098 garble_text=0.039 temporal_swap=0.319 pixelate=0.192 ghosting=0.469; overall=0.500; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_011",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.817,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.323,
+     "end_s": 0.969,
+     "evidence": {
+      "kind": "conf_drop",
+      "drop": 0.409,
+      "frames": [
+       1,
+       0
+      ],
+      "mean_scores": [
+       0.188,
+       0.596
+      ]
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_011.mp4",
+  "frames_dir": "frames/golden_011/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_011.json",
+   "J5": "../数据/judges/videochat3/golden_011.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_011.qc.json"
+  }
+ },
+ "errors": {}
+}

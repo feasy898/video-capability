@@ -1,0 +1,181 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_021",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "auto_reject",
+  "confidence": 0.9114,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['hand_anomaly', 'ghosting'], conf=0.85)",
+   "J3@0.71 flag=True hits=['ghosting'] max_channel_P=0.9114",
+   "J6 信号(仅信号不否决): garble_text@0.85"
+  ]
+ },
+ "defects": [
+  {
+   "type": "garble_text",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.8471,
+   "span": {
+    "start_s": 0.0,
+    "end_s": 5.042
+   },
+   "evidence": {
+    "J6": {
+     "kind": "uniform_low_conf",
+     "max_mean": 0.402
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.9114,
+   "evidence": {
+    "J1": {
+     "confidence": 0.85,
+     "notes": "全片主体为掌心向上的一只手掌叠加另一只手的结构，但手部解剖不成立：f05/f08 顶部可数出4根细长手指，加上左侧拇指状突起与右侧又一根指尖状突起，同一手部结构上呈现6根以上指状物；指节异常细长、顶部指间出现不自然的镂空/蹼状缺口，向下压在掌心的指尖（f01-f03 掌心中部）与手掌主体衔接处无有效手背/掌体支撑，整体手型无法对应任何合理的双手姿态。另：f01-f04 顶部指尖及掌心下压指尖边缘出"
+    },
+    "J3": {
+     "channel_P": 0.9114
+    }
+   }
+  },
+  {
+   "type": "hand_anomaly",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.85,
+   "evidence": {
+    "J1": {
+     "confidence": 0.85,
+     "notes": "全片主体为掌心向上的一只手掌叠加另一只手的结构，但手部解剖不成立：f05/f08 顶部可数出4根细长手指，加上左侧拇指状突起与右侧又一根指尖状突起，同一手部结构上呈现6根以上指状物；指节异常细长、顶部指间出现不自然的镂空/蹼状缺口，向下压在掌心的指尖（f01-f03 掌心中部）与手掌主体衔接处无有效手背/掌体支撑，整体手型无法对应任何合理的双手姿态。另：f01-f04 顶部指尖及掌心下压指尖边缘出"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3851,
+   "flicker": 0.2814,
+   "color_shift": 0.5944,
+   "face_blur": 0.1458,
+   "garble_text": 0.0332,
+   "temporal_swap": 0.3195,
+   "pixelate": 0.2502,
+   "ghosting": 0.9114
+  },
+  "overall": 0.8133,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "garble_text",
+   "start_s": 0.0,
+   "end_s": 5.042,
+   "evidence": {
+    "kind": "uniform_low_conf",
+    "max_mean": 0.402
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f01-f08（手部解剖异常贯穿全片）；拖影最明显于 f01-f04"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_021",
+   "defect_detected": true,
+   "defect_types": [
+    "hand_anomaly",
+    "ghosting"
+   ],
+   "confidence": 0.85,
+   "spans": "f01-f08（手部解剖异常贯穿全片）；拖影最明显于 f01-f04",
+   "notes": "全片主体为掌心向上的一只手掌叠加另一只手的结构，但手部解剖不成立：f05/f08 顶部可数出4根细长手指，加上左侧拇指状突起与右侧又一根指尖状突起，同一手部结构上呈现6根以上指状物；指节异常细长、顶部指间出现不自然的镂空/蹼状缺口，向下压在掌心的指尖（f01-f03 掌心中部）与手掌主体衔接处无有效手背/掌体支撑，整体手型无法对应任何合理的双手姿态。另：f01-f04 顶部指尖及掌心下压指尖边缘出现明显的半透明双重轮廓与运动残影，而下方掌纹相对清晰，符合拖影/重影特征。未发现定格、色偏、乱码文字、像素化或时序跳变（f01-f08 运动连续）。"
+  },
+  "J5": {
+   "clip_id": "golden_021",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_021",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.9114,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.385 flicker=0.281 color_shift=0.594 face_blur=0.146 garble_text=0.033 temporal_swap=0.320 pixelate=0.250 ghosting=0.911; overall=0.813; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_021",
+   "defect_detected": true,
+   "defect_types": [
+    "garble_text"
+   ],
+   "confidence": 0.8471,
+   "spans": [
+    {
+     "type": "garble_text",
+     "start_s": 0.0,
+     "end_s": 5.042,
+     "evidence": {
+      "kind": "uniform_low_conf",
+      "max_mean": 0.402
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_021.mp4",
+  "frames_dir": "frames/golden_021/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_021.json",
+   "J5": "../数据/judges/videochat3/golden_021.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_021.qc.json"
+  }
+ },
+ "errors": {}
+}

@@ -1,0 +1,158 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_028",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8665,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.82)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8665",
+   "J6 信号(仅信号不否决): temporal_swap@0.75"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8665,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8665
+    }
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.75,
+   "span": {
+    "start_s": 4.54,
+    "end_s": 5.54
+   },
+   "evidence": {
+    "J6": {
+     "cut_s": 5.04
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8665,
+   "flicker": 0.3109,
+   "color_shift": 0.6089,
+   "face_blur": 0.0275,
+   "garble_text": 0.0419,
+   "temporal_swap": 0.3869,
+   "pixelate": 0.497,
+   "ghosting": 0.6145
+  },
+  "overall": 0.5943,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "temporal_swap",
+   "start_s": 4.54,
+   "end_s": 5.54,
+   "evidence": {
+    "cut_s": 5.04
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_028",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "",
+   "notes": "逐项核对8帧：主体为同一丛粉/奶白色月季与背景白窗框，f01-f08场景连续无跳变，不构成temporal_swap；f01→f02、f04→f05、f07→f08可见平缓的手持机位移动，花朵与叶片有轻微自然摆动，未见定格数秒的frame_freeze（f02-f04画面近似静止，但帧间仍有细微差异，符合手持拍摄的短暂停顿，且场景本身近乎静态，不构成缺陷证据）；整体色调（粉、奶白、绿色）跨帧稳定，无flicker/color_shift；画面无文字（garble_text不适用）、无人脸（face_blur不适用）；花叶边缘清晰，未见pixelate与运动ghosting；花朵数量、形态符合常识，枝叶摆动符合风力物理规律，无physics_error/identity_drift/count_error。综合判定该片段干净。"
+  },
+  "J5": {
+   "clip_id": "golden_028",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_028",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.8665,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.867 flicker=0.311 color_shift=0.609 face_blur=0.028 garble_text=0.042 temporal_swap=0.387 pixelate=0.497 ghosting=0.615; overall=0.594; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_028",
+   "defect_detected": true,
+   "defect_types": [
+    "temporal_swap"
+   ],
+   "confidence": 0.75,
+   "spans": [
+    {
+     "type": "temporal_swap",
+     "start_s": 4.54,
+     "end_s": 5.54,
+     "evidence": {
+      "cut_s": 5.04
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_028.mp4",
+  "frames_dir": "frames/golden_028/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_028.json",
+   "J5": "../数据/judges/videochat3/golden_028.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_028.qc.json"
+  }
+ },
+ "errors": {}
+}

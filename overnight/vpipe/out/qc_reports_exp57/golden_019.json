@@ -1,0 +1,107 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_019",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.72,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.72)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.674"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.674,
+   "flicker": 0.3387,
+   "color_shift": 0.2486,
+   "face_blur": 0.1353,
+   "garble_text": 0.0424,
+   "temporal_swap": 0.2902,
+   "pixelate": 0.1234,
+   "ghosting": 0.3348
+  },
+  "overall": 0.4261,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_019",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.72,
+   "spans": "",
+   "notes": "逐项核查未见明显缺陷。手部：f01-f02 仅单根手指按压红色骨牌，指甲与指形自然，无多指/融指。物理与时序：f02 红牌被推动起倒，f03 呈阶梯式依次倚靠的连锁倒塌（红→蓝→绿→黄，底边原地旋转、无悬浮穿模），f04-f06 倒塌前沿沿队列向右单调推进，f06 末端绿牌前倾、f07 已倒平，传播方向与速度连续合理。f07 与 f08 画面相近为骨牌倒完后自然静止收尾（间隔仅0.6s，非数秒定格）。对象一致性：f01/f02 可见队列红-蓝-绿-黄-绿(-蓝)与 f03 中红-蓝-绿-黄已倒、绿-蓝-红站立相衔接，颜色序列跨帧基本连续，未见同一骨牌颜色/数量突变（f04-f06 阴影中深色块存在绿/蓝判读歧义，但不构成明确突变证据）。画面左侧白色顶面为顶部强光下骨牌顶面过曝所致，非新增异物。无闪烁、色偏、像素化、拖影、乱码文字或人脸异常。综合判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_019",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_019",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.674,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.674 flicker=0.339 color_shift=0.249 face_blur=0.135 garble_text=0.042 temporal_swap=0.290 pixelate=0.123 ghosting=0.335; overall=0.426; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_019",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.452,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_019.mp4",
+  "frames_dir": "frames/golden_019/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_019.json",
+   "J5": "../数据/judges/videochat3/golden_019.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_019.qc.json"
+  }
+ },
+ "errors": {}
+}

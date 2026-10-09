@@ -1,0 +1,168 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_043",
+ "generated_at": "2026-10-09T11:55:13",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8442,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze,pixelate,ghosting] 最大P=0.844）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.8442,
+   "evidence": {
+    "J1": {
+     "notes": "f03与f04画面几乎完全相同：人物弯腰姿态、双手在腰间的位置、手部运动模糊形态、头发及背景（台灯、桌面纸张、白椅）均一致，间隔约0.9秒无任何动作推进，判定存在画面定格。f04到f05视角/景别变化属镜头切换，同一房间、光线与道具连续，人物衬衫由掖出变为塞入裤中且可见腰带，与f02-f04整理衣着的动作衔接合理，不另"
+    },
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8442,
+      "flicker": 0.3787,
+      "color_shift": 0.5038,
+      "face_blur": 0.5665,
+      "garble_text": 0.0495,
+      "temporal_swap": 0.5691,
+      "pixelate": 0.7235,
+      "ghosting": 0.7839
+     },
+     "overall": 0.5286
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7839,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8442,
+      "flicker": 0.3787,
+      "color_shift": 0.5038,
+      "face_blur": 0.5665,
+      "garble_text": 0.0495,
+      "temporal_swap": 0.5691,
+      "pixelate": 0.7235,
+      "ghosting": 0.7839
+     },
+     "overall": 0.5286
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7235,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.8442,
+      "flicker": 0.3787,
+      "color_shift": 0.5038,
+      "face_blur": 0.5665,
+      "garble_text": 0.0495,
+      "temporal_swap": 0.5691,
+      "pixelate": 0.7235,
+      "ghosting": 0.7839
+     },
+     "overall": 0.5286
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8442,
+   "flicker": 0.3787,
+   "color_shift": 0.5038,
+   "face_blur": 0.5665,
+   "garble_text": 0.0495,
+   "temporal_swap": 0.5691,
+   "pixelate": 0.7235,
+   "ghosting": 0.7839
+  },
+  "overall": 0.5286,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f03-f04（约2.2s-3.1s）",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_043",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.75,
+   "spans": "f03-f04（约2.2s-3.1s）",
+   "notes": "f03与f04画面几乎完全相同：人物弯腰姿态、双手在腰间的位置、手部运动模糊形态、头发及背景（台灯、桌面纸张、白椅）均一致，间隔约0.9秒无任何动作推进，判定存在画面定格。f04到f05视角/景别变化属镜头切换，同一房间、光线与道具连续，人物衬衫由掖出变为塞入裤中且可见腰带，与f02-f04整理衣着的动作衔接合理，不另报时序错乱。手部运动模糊方向与动作一致，属正常动态模糊而非拖影；各帧人脸清晰度正常，无色偏、像素化或乱码文字；f05-f07人物手持鞋子的动作轨迹连贯，未见悬浮或穿模等物理违例。"
+  },
+  "J5": {
+   "clip_id": "golden_043",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[], \"other\": false, \"reason\": \"画面中人物动作连贯，无明显定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影现象。\"}"
+  },
+  "J3": {
+   "clip_id": "golden_043",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "pixelate",
+    "ghosting"
+   ],
+   "confidence": 0.8442,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.844; flicker=0.379; color_shift=0.504; face_blur=0.567; garble_text=0.050; temporal_swap=0.569; pixelate=0.724; ghosting=0.784; overall=0.529"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_043.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_043.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_043.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_043.json"
+ }
+}

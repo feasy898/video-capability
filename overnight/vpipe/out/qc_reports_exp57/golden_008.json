@@ -1,0 +1,121 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_008",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8977,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.85)",
+   "J3@0.71 flag=True hits=['frame_freeze'] max_channel_P=0.8977"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8977,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8977
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8977,
+   "flicker": 0.2118,
+   "color_shift": 0.5277,
+   "face_blur": 0.2356,
+   "garble_text": 0.0465,
+   "temporal_swap": 0.3017,
+   "pixelate": 0.1888,
+   "ghosting": 0.3768
+  },
+  "overall": 0.624,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_008",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.85,
+   "spans": "无",
+   "notes": "逐项核对8类标准缺陷：全片场景一致（青绿背景+木桌+机器人），色彩稳定无偏移，无明显明暗闪烁、像素化、拖影或乱码文字（f01-f08背景与桌面纹理连续）。时序连贯，未见场景切换或段落错乱。机器人并非完全定格：头部倾角与视线在f01-f06间有细微变化，f07-f08持工具的手臂位置明显下移，说明存在连续微小动画，不构成frame_freeze。语义维度：机器人外观（配色、造型、笑脸）跨帧一致，无identity_drift；双手握持黄色工具形态正常，未见多指/融指等hand_anomaly；桌面两颗螺丝数量合理，桌腿四条对称，无count_error；机器人双脚落地、螺丝立于桌面，无悬浮穿模等physics_error。综合判定画面干净。"
+  },
+  "J5": {
+   "clip_id": "golden_008",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中机器人动作流畅，无定格、闪烁、偏色、模糊、乱码、错乱、像素化或拖影等明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_008",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift"
+   ],
+   "confidence": 0.8977,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.898 flicker=0.212 color_shift=0.528 face_blur=0.236 garble_text=0.046 temporal_swap=0.302 pixelate=0.189 ghosting=0.377; overall=0.624; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_008",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_008.mp4",
+  "frames_dir": "frames/golden_008/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_008.json",
+   "J5": "../数据/judges/videochat3/golden_008.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_008.qc.json"
+  }
+ },
+ "errors": {}
+}

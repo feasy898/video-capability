@@ -1,0 +1,103 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_046",
+ "generated_at": "2026-10-09T11:55:10",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.65,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.65)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5901",
+   "降级: J6"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.5673,
+   "flicker": 0.3504,
+   "color_shift": 0.5381,
+   "face_blur": 0.1441,
+   "garble_text": 0.2018,
+   "temporal_swap": 0.2626,
+   "pixelate": 0.305,
+   "ghosting": 0.5901
+  },
+  "overall": 0.5836,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_046",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.65,
+   "spans": "无",
+   "notes": "f01-f08 为同一版面（报纸/版画式艺术品）的连续慢速平移拍摄：8 帧中版式、红色大字、中部插图块的位置与形态完全一致，主体无跨帧突变（无 identity_drift）；视角在帧间持续小幅移动（f01 顶部大标题完整，f04 移出画外，f05 随镜头轻微回移重新入画），属平滑运镜加轻微手持抖动，不构成 frame_freeze、temporal_swap 或 flicker；整体色调（米白纸面、黑字、红色块）全程一致，无 color_shift、pixelate、ghosting 证据。画面无人物面部与手部，无对象计数或物理支撑类异常。版面正文因分辨率过小呈灰色密排细纹，无法确认可读性；顶部大字为风格化字形（疑似艺术品设计字/造字），笔画结构完整且跨帧稳定，不能确认为乱码，故不判 garble_text。综合判定本段画面干净。"
+  },
+  "J5": {
+   "clip_id": "golden_046",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_046",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "ghosting"
+   ],
+   "confidence": 0.5901,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.567 flicker=0.350 color_shift=0.538 face_blur=0.144 garble_text=0.202 temporal_swap=0.263 pixelate=0.305 ghosting=0.590; overall=0.584; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_046.mp4",
+  "frames_dir": "frames/golden_046/",
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_046.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_046.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_046.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_046.qc.json')"
+ }
+}

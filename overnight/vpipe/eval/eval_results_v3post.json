@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-09T09:03:35",
+ "generated_at": "2026-10-09T11:55:10",
  "qc_dir": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v3post",
  "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
  "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",
- "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
+ "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2",
  "ensemble_recommended": "E10",
  "measured_baseline_报告E10": {
   "tp": 16,
@@ -27,33 +27,35 @@
  "valid": true,
  "problems": [],
  "counts": {
-  "A": 16,
-  "B": 12,
-  "C": 12,
-  "n_reports": 40
+  "A": 28,
+  "B": 14,
+  "C": 15,
+  "n_reports": 57
  },
  "main": {
-  "tp": 16,
-  "fn": 0,
-  "fp": 3,
+  "tp": 25,
+  "fn": 3,
+  "fp": 6,
   "tn": 9,
-  "recall": 1.0,
-  "fpr": 0.25,
-  "precision": 0.8421,
-  "f1": 0.9143
+  "recall": 0.8929,
+  "fpr": 0.4,
+  "precision": 0.8065,
+  "f1": 0.8475
  },
  "per_type": {
   "frame_freeze": {
-   "n": 2,
+   "n": 5,
    "recall_clip": 1.0,
    "recall_type": 1.0,
    "missed": []
   },
   "flicker": {
-   "n": 2,
-   "recall_clip": 1.0,
-   "recall_type": 0.5,
-   "missed": []
+   "n": 5,
+   "recall_clip": 0.8,
+   "recall_type": 0.6,
+   "missed": [
+    "golden_052"
+   ]
   },
   "color_shift": {
    "n": 2,
@@ -74,10 +76,13 @@
    "missed": []
   },
   "temporal_swap": {
-   "n": 2,
-   "recall_clip": 1.0,
-   "recall_type": 0.5,
-   "missed": []
+   "n": 5,
+   "recall_clip": 0.6,
+   "recall_type": 0.2,
+   "missed": [
+    "golden_045",
+    "golden_046"
+   ]
   },
   "pixelate": {
    "n": 2,
@@ -86,17 +91,17 @@
    "missed": []
   },
   "ghosting": {
-   "n": 2,
+   "n": 5,
    "recall_clip": 1.0,
    "recall_type": 1.0,
    "missed": []
   }
  },
  "B": {
-  "n": 12,
-  "flag_rate": 0.5833,
-  "intent_strict": 0.3333,
-  "intent_lenient": 0.3333,
+  "n": 14,
+  "flag_rate": 0.6429,
+  "intent_strict": 0.2857,
+  "intent_lenient": 0.2857,
   "rows": [
    {
     "clip_id": "golden_005",
@@ -221,15 +226,43 @@
     ],
     "strict_hit": true,
     "lenient_hit": true
+   },
+   {
+    "clip_id": "golden_053",
+    "expected": "lip_sync_desync",
+    "detected": true,
+    "types": [
+     "frame_freeze",
+     "ghosting"
+    ],
+    "strict_hit": false,
+    "lenient_hit": false
+   },
+   {
+    "clip_id": "golden_054",
+    "expected": "lip_script_mismatch",
+    "detected": true,
+    "types": [
+     "frame_freeze"
+    ],
+    "strict_hit": false,
+    "lenient_hit": false
    }
   ]
  },
  "fp_clips": [
   "golden_010",
   "golden_013",
-  "golden_032"
+  "golden_032",
+  "golden_055",
+  "golden_056",
+  "golden_057"
  ],
- "fn_clips": [],
+ "fn_clips": [
+  "golden_045",
+  "golden_046",
+  "golden_052"
+ ],
  "decisions": {
   "golden_002": "auto_reject",
   "golden_003": "manual_review",
@@ -247,6 +280,18 @@
   "golden_030": "auto_reject",
   "golden_034": "auto_reject",
   "golden_036": "auto_reject",
+  "golden_041": "manual_review",
+  "golden_042": "manual_review",
+  "golden_043": "manual_review",
+  "golden_044": "manual_review",
+  "golden_045": "pass",
+  "golden_046": "pass",
+  "golden_047": "auto_reject",
+  "golden_048": "auto_reject",
+  "golden_049": "auto_reject",
+  "golden_050": "manual_review",
+  "golden_051": "manual_review",
+  "golden_052": "pass",
   "golden_001": "pass",
   "golden_006": "pass",
   "golden_009": "pass",
@@ -258,29 +303,32 @@
   "golden_027": "pass",
   "golden_032": "auto_reject",
   "golden_037": "pass",
-  "golden_039": "pass"
+  "golden_039": "pass",
+  "golden_055": "manual_review",
+  "golden_056": "manual_review",
+  "golden_057": "manual_review"
  },
  "checks": [
   {
    "name": "recall_min",
-   "passed": true,
-   "detail": "recall 1.0 vs ≥0.9"
+   "passed": false,
+   "detail": "recall 0.8929 vs ≥0.9"
   },
   {
    "name": "fpr_max",
-   "passed": true,
-   "detail": "FPR 0.25 vs ≤0.3"
+   "passed": false,
+   "detail": "FPR 0.4 vs ≤0.3"
   },
   {
    "name": "f1_min",
-   "passed": true,
-   "detail": "F1 0.9143 vs ≥0.85"
+   "passed": false,
+   "detail": "F1 0.8475 vs ≥0.85"
   },
   {
    "name": "b_flag_min",
    "passed": true,
-   "detail": "B_flag 0.5833 vs ≥0.5"
+   "detail": "B_flag 0.6429 vs ≥0.5"
   }
  ],
- "all_passed": true
+ "all_passed": false
 }

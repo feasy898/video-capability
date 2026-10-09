@@ -1,0 +1,116 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_055",
+ "generated_at": "2026-10-09T11:55:13",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.7877,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.788）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7877,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.7877,
+      "flicker": 0.2569,
+      "color_shift": 0.3517,
+      "face_blur": 0.1866,
+      "garble_text": 0.0385,
+      "temporal_swap": 0.4776,
+      "pixelate": 0.1299,
+      "ghosting": 0.3734
+     },
+     "overall": 0.5516
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.7877,
+   "flicker": 0.2569,
+   "color_shift": 0.3517,
+   "face_blur": 0.1866,
+   "garble_text": 0.0385,
+   "temporal_swap": 0.4776,
+   "pixelate": 0.1299,
+   "ghosting": 0.3734
+  },
+  "overall": 0.5516,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "无",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_055",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "无",
+   "notes": "逐帧核对：f01-f03 人物静立直视镜头，属自然姿态而非定格，且后续 f04-f08 有明显动作与表情变化，排除 frame_freeze；全片背景灯串 bokeh 稳定，无明暗交替，排除 flicker/color_shift；人脸各帧均清晰锐利，排除 face_blur；画面无文字，排除 garble_text；场景连续为同一宴会厅，f03→f04 抬手、f05→f06 放手、f07 微笑→f08 恢复平静均为自然过渡，排除 temporal_swap；无马赛克与像素块，排除 pixelate；f04-f05 手部边缘清晰无重影，额侧阴影为抬手投影，符合光照逻辑，排除 ghosting；f04-f05 抬起的手五指自然张开、掌心朝向合理，无多指/融指，排除 hand_anomaly；人物发色、五官、着装跨帧一致，排除 identity_drift；未见计数异常或物理违例。整体判定干净。"
+  },
+  "J5": {
+   "clip_id": "golden_055",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物动作连贯，无明显画面定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影等缺陷。\"}"
+  },
+  "J3": {
+   "clip_id": "golden_055",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.7877,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.788; flicker=0.257; color_shift=0.352; face_blur=0.187; garble_text=0.038; temporal_swap=0.478; pixelate=0.130; ghosting=0.373; overall=0.552"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_055.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_055.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_055.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_055.json"
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_003",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8794,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.8)",
+   "J3@0.71 flag=True hits=['color_shift', 'face_blur'] max_channel_P=0.8794",
+   "J6 信号(仅信号不否决): temporal_swap@0.75"
+  ]
+ },
+ "defects": [
+  {
+   "type": "color_shift",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8794,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8794
+    }
+   }
+  },
+  {
+   "type": "face_blur",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.8052,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.8052
+    }
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.75,
+   "span": {
+    "start_s": 1.02,
+    "end_s": 2.02
+   },
+   "evidence": {
+    "J6": {
+     "cut_s": 1.52
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3542,
+   "flicker": 0.4751,
+   "color_shift": 0.8794,
+   "face_blur": 0.8052,
+   "garble_text": 0.0393,
+   "temporal_swap": 0.3464,
+   "pixelate": 0.4222,
+   "ghosting": 0.656
+  },
+  "overall": 0.5255,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "temporal_swap",
+   "start_s": 1.02,
+   "end_s": 2.02,
+   "evidence": {
+    "cut_s": 1.52
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_003",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "无",
+   "notes": "8帧均显示一名男子背对镜头沿林间小路行走，画面连续自然。f01-f08 人物步态与背景树木位置渐变推进，无定格；整体为明亮的绿色林间日光，帧间明暗稳定，无闪烁与色偏；人物全程背对镜头，无人脸区域可评，头部剪影轮廓清晰；画面中无文字；场景为同一林间小路连续行进，无时序跳变或段落错乱；未见马赛克像素块，也无重影/拖影（整体轻微柔化符合运动跟拍造成的动态模糊）。语义层面：单一人物、衣着发型跨帧一致（f01与f08相同深色上衣），无手部出现、无计数异常、无悬浮穿模等物理违例，无身份漂移。综合判定该片段干净。"
+  },
+  "J5": {
+   "clip_id": "golden_003",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物和环境均无明显异常，无定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影现象\"}"
+  },
+  "J3": {
+   "clip_id": "golden_003",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "face_blur",
+    "ghosting"
+   ],
+   "confidence": 0.8794,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.354 flicker=0.475 color_shift=0.879 face_blur=0.805 garble_text=0.039 temporal_swap=0.346 pixelate=0.422 ghosting=0.656; overall=0.525; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_003",
+   "defect_detected": true,
+   "defect_types": [
+    "temporal_swap"
+   ],
+   "confidence": 0.75,
+   "spans": [
+    {
+     "type": "temporal_swap",
+     "start_s": 1.02,
+     "end_s": 2.02,
+     "evidence": {
+      "cut_s": 1.52
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_003.mp4",
+  "frames_dir": "frames/golden_003/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_003.json",
+   "J5": "../数据/judges/videochat3/golden_003.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_003.qc.json"
+  }
+ },
+ "errors": {}
+}

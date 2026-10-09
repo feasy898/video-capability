@@ -1,0 +1,162 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_013",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.7,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['frame_freeze'], conf=0.7)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5831",
+   "J6 信号(仅信号不否决): face_blur@0.79"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.7867,
+   "span": {
+    "start_s": 0.323,
+    "end_s": 0.969
+   },
+   "evidence": {
+    "J6": {
+     "pair": 0,
+     "cos": 0.3427
+    }
+   }
+  },
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.7,
+   "evidence": {
+    "J1": {
+     "confidence": 0.7,
+     "notes": "f01-f06 呈现连贯的落座与播报动作：f01 女主播站立持稿，f02 落座整理稿件，f03-f06 口型持续变化、左手有抬起/放下手势，说明画面处于正常播报运动状态，人脸清晰、背景演播室灯光稳定，无色偏、闪烁、像素化、拖影或身份漂移；手部形态（f02 持稿、f03/f04 执笔、f06-f08 左手张开）均未见多指、融指等解剖异常。但 f07 与 f08 画面几乎完全一致：左手摊开的角度、右手"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.303,
+   "flicker": 0.2403,
+   "color_shift": 0.5831,
+   "face_blur": 0.1441,
+   "garble_text": 0.0382,
+   "temporal_swap": 0.2777,
+   "pixelate": 0.1608,
+   "ghosting": 0.3068
+  },
+  "overall": 0.4709,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "face_blur",
+   "start_s": 0.323,
+   "end_s": 0.969,
+   "evidence": {
+    "pair": 0,
+    "cos": 0.3427
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f07-f08（约4.2s-4.8s）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_013",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.7,
+   "spans": "f07-f08（约4.2s-4.8s）",
+   "notes": "f01-f06 呈现连贯的落座与播报动作：f01 女主播站立持稿，f02 落座整理稿件，f03-f06 口型持续变化、左手有抬起/放下手势，说明画面处于正常播报运动状态，人脸清晰、背景演播室灯光稳定，无色偏、闪烁、像素化、拖影或身份漂移；手部形态（f02 持稿、f03/f04 执笔、f06-f08 左手张开）均未见多指、融指等解剖异常。但 f07 与 f08 画面几乎完全一致：左手摊开的角度、右手笔的指向、稿件位置、口型与表情均无任何变化。前序帧（f03-f06）显示主播口型在持续变化（说话中），而相邻 0.6s 内画面完全静止、口型毫无变动，不符合自然播报节奏，判定结尾处存在画面定格（frame_freeze），其余 7 项标准缺陷均未发现。"
+  },
+  "J5": {
+   "clip_id": "golden_013",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_013",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift"
+   ],
+   "confidence": 0.5831,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.303 flicker=0.240 color_shift=0.583 face_blur=0.144 garble_text=0.038 temporal_swap=0.278 pixelate=0.161 ghosting=0.307; overall=0.471; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_013",
+   "defect_detected": true,
+   "defect_types": [
+    "face_blur"
+   ],
+   "confidence": 0.7867,
+   "spans": [
+    {
+     "type": "face_blur",
+     "start_s": 0.323,
+     "end_s": 0.969,
+     "evidence": {
+      "pair": 0,
+      "cos": 0.3427
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_013.mp4",
+  "frames_dir": "frames/golden_013/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_013.json",
+   "J5": "../数据/judges/videochat3/golden_013.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_013.qc.json"
+  }
+ },
+ "errors": {}
+}

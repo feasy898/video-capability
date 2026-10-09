@@ -1,0 +1,128 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_041",
+ "generated_at": "2026-10-09T11:55:10",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.847,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.82)",
+   "J3@0.71 flag=True hits=['frame_freeze', 'face_blur'] max_channel_P=0.847",
+   "降级: J6"
+  ]
+ },
+ "defects": [
+  {
+   "type": "face_blur",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7831,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.7831
+    }
+   }
+  },
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.847,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.847
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.847,
+   "flicker": 0.4664,
+   "color_shift": 0.6263,
+   "face_blur": 0.7831,
+   "garble_text": 0.0317,
+   "temporal_swap": 0.308,
+   "pixelate": 0.2585,
+   "ghosting": 0.4132
+  },
+  "overall": 0.4654,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_041",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.82,
+   "spans": "无",
+   "notes": "8帧均为同一连续镜头：林间土路上骑行者背向镜头前进，两侧树干与树冠随镜头推进持续位移（f01右侧粗树干在f05-f06逐渐移出画面，新树进入），骑行者位置与路面光影逐帧连贯变化，无定格嫌疑（f03与f04构图相近但树冠光影仍有细微推进）。全片绿色调与逆光曝光一致，无闪烁、无色偏；画面无文字、无人脸、无像素块；骑行者蓝白上衣、黑色短裤等外观跨帧一致，无身份漂移；人车贴地骑行且影子方向与前方透光一致，物理合理；骑行者手部细节过小无法辨指，不构成手部异常证据。f08右上角短暂出现的深色团块符合镜头前进时近处树枝/树叶掠过的前景虚影，非稳定异常。综合判定为干净片段。"
+  },
+  "J5": {
+   "clip_id": "golden_041",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中没有出现任何缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_041",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "face_blur"
+   ],
+   "confidence": 0.847,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.847 flicker=0.466 color_shift=0.626 face_blur=0.783 garble_text=0.032 temporal_swap=0.308 pixelate=0.259 ghosting=0.413; overall=0.465; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_041.mp4",
+  "frames_dir": "frames/golden_041/",
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_041.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_041.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_041.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_041.qc.json')"
+ }
+}

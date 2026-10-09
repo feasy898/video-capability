@@ -1,0 +1,99 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_045",
+ "generated_at": "2026-10-09T11:55:10",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.9,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.9)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.5229",
+   "降级: J6"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.2427,
+   "flicker": 0.3034,
+   "color_shift": 0.3866,
+   "face_blur": 0.1985,
+   "garble_text": 0.0389,
+   "temporal_swap": 0.3387,
+   "pixelate": 0.1579,
+   "ghosting": 0.2913
+  },
+  "overall": 0.5229,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "全片 f01-f08 无异常"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_045",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.9,
+   "spans": "全片 f01-f08 无异常",
+   "notes": "逐项核对8帧：画面无定格，镜头呈连续推拉运动（f01广角→f04中近景→f05稍拉远→f07-f08面部特写），各帧内容连续推进；f01-f08整体秋景色调一致，无明暗闪烁或色偏；f07-f08面部特写细节清晰，皱纹、白发、灰呢帽均无模糊，与f01-f06中远景外观一致，无身份漂移；人物双手始终交叠扶杖（f02、f05可见戒指），手指数量与形态自然，无多指/融指；手杖、长椅、鹅卵石路面、落叶等元素跨帧形态与位置连贯，坐姿与杖尖触地支撑合理，无物理违例；画面无乱码文字、无像素块、无拖影残影。综合判定该片段干净，未发现8类标准缺陷及语义类缺陷。"
+  },
+  "J5": {
+   "clip_id": "golden_045",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_045",
+   "defect_detected": true,
+   "defect_types": [],
+   "confidence": 0.5229,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.243 flicker=0.303 color_shift=0.387 face_blur=0.199 garble_text=0.039 temporal_swap=0.339 pixelate=0.158 ghosting=0.291; overall=0.523; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_045.mp4",
+  "frames_dir": "frames/golden_045/",
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_045.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_045.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_045.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '/home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/raw/golden_045.qc.json')"
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_039",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.88,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.88)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.4629"
+  ]
+ },
+ "defects": [],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.3024,
+   "flicker": 0.3179,
+   "color_shift": 0.3853,
+   "face_blur": 0.1913,
+   "garble_text": 0.036,
+   "temporal_swap": 0.3419,
+   "pixelate": 0.0967,
+   "ghosting": 0.3499
+  },
+  "overall": 0.4629,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "无"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_039",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.88,
+   "spans": "无",
+   "notes": "f01-f08 呈现连续自然的动作序列：人物由左侧脸（f01）自然转头至正面（f03-f04），随后低头浅笑（f05），再抬头展露微笑（f06-f08），时序连贯无跳变。人物身份特征（发型、红裙、耳钉、细金项链）跨帧一致，无 identity_drift；面部各帧清晰锐利，无 face_blur；背景灰调、红色裙装颜色稳定，无 flicker/color_shift；动作缓慢平滑，无 ghosting/pixelate/frame_freeze；画面无文字、无手部出镜、单主体计数正常，未见物理违例。综合判定为干净片段。"
+  },
+  "J5": {
+   "clip_id": "golden_039",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物动作自然流畅，无明显定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影等缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_039",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.4629,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.302 flicker=0.318 color_shift=0.385 face_blur=0.191 garble_text=0.036 temporal_swap=0.342 pixelate=0.097 ghosting=0.350; overall=0.463; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_039",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 1.0,
+   "spans": [],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_039.mp4",
+  "frames_dir": "frames/golden_039/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_039.json",
+   "J5": "../数据/judges/videochat3/golden_039.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_039.qc.json"
+  }
+ },
+ "errors": {}
+}

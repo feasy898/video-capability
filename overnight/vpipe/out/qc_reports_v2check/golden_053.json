@@ -1,0 +1,130 @@
+{
+ "schema_version": "1.0",
+ "clip_id": "golden_053",
+ "generated_at": "2026-10-09T11:55:39",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.7292,
+  "decided_by": "E10",
+  "reasons": [
+   "E10 检出、未达 auto_reject 线：灰区人工复核（J3@0.71 触发[frame_freeze] 最大P=0.729）"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7292,
+   "evidence": {
+    "J3": {
+     "channel_probs": {
+      "frame_freeze": 0.7292,
+      "flicker": 0.1824,
+      "color_shift": 0.4045,
+      "face_blur": 0.15,
+      "garble_text": 0.0364,
+      "temporal_swap": 0.3285,
+      "pixelate": 0.0899,
+      "ghosting": 0.3524
+     },
+     "overall": 0.4134
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J1"
+   ],
+   "confidence": 0.65,
+   "evidence": {
+    "J1": {
+     "notes": "整体叙事连贯：f01睁眼→f02闭眼眨眼→f03微笑→f05-f06抬右手挥手（手部五指形态正常，无多指/融指）→f07-f08放下手，无冻结、闪烁、色偏、乱码、像素化或身份漂移。主要异常在f04：头顶/发顶区域出现横向条纹状涂抹拖影（发丝被水平方向拉糊），与f03、f05同区域干净的发丝纹理明显不符，属于头部转动过程"
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.7292,
+   "flicker": 0.1824,
+   "color_shift": 0.4045,
+   "face_blur": 0.15,
+   "garble_text": 0.0364,
+   "temporal_swap": 0.3285,
+   "pixelate": 0.0899,
+   "ghosting": 0.3524
+  },
+  "overall": 0.4134,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "text": "f04（约2.2-2.6s）局部；f07-f08 顶部发区偶见小白点伪影",
+    "source": "J1"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "text": "full_clip:fps=1.0解码",
+    "source": "J5"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_053",
+   "defect_detected": true,
+   "defect_types": [
+    "ghosting"
+   ],
+   "confidence": 0.65,
+   "spans": "f04（约2.2-2.6s）局部；f07-f08 顶部发区偶见小白点伪影",
+   "notes": "整体叙事连贯：f01睁眼→f02闭眼眨眼→f03微笑→f05-f06抬右手挥手（手部五指形态正常，无多指/融指）→f07-f08放下手，无冻结、闪烁、色偏、乱码、像素化或身份漂移。主要异常在f04：头顶/发顶区域出现横向条纹状涂抹拖影（发丝被水平方向拉糊），与f03、f05同区域干净的发丝纹理明显不符，属于头部转动过程中的运动残影/生成涂抹；另f07-f08头顶发区有零星小白点伪影，程度轻微。据此判定存在轻微ghosting缺陷，总体确信度中等。"
+  },
+  "J5": {
+   "clip_id": "golden_053",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中无明显缺陷\"}"
+  },
+  "J3": {
+   "clip_id": "golden_053",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.7292,
+   "spans": "16帧4x4拼图 9通道概率（run_metadata.json），阈值 0.71",
+   "notes": "frame_freeze=0.729; flicker=0.182; color_shift=0.405; face_blur=0.150; garble_text=0.036; temporal_swap=0.329; pixelate=0.090; ghosting=0.352; overall=0.413"
+  }
+ },
+ "inputs": {
+  "clip": null,
+  "frames_dir": null,
+  "judge_files": {
+   "J1": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/glm8/golden_053.json",
+   "J5": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/videochat3/golden_053.json",
+   "J3": "/home/pan-ding/workspace/视频能力/overnight/数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "judge_J2": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/glm3/golden_053.json",
+  "judge_J6": "协议文件缺失: /home/pan-ding/workspace/视频能力/overnight/数据/judges/detectors/golden_053.json"
+ }
+}

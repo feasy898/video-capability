@@ -1,0 +1,150 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_043",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": true,
+  "decision": "manual_review",
+  "confidence": 0.8442,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=True, types=['frame_freeze'], conf=0.75)",
+   "J3@0.71 flag=True hits=['frame_freeze', 'pixelate', 'ghosting'] max_channel_P=0.8442",
+   "降级: J6"
+  ]
+ },
+ "defects": [
+  {
+   "type": "frame_freeze",
+   "sources": [
+    "J1",
+    "J3"
+   ],
+   "confidence": 0.8442,
+   "evidence": {
+    "J1": {
+     "confidence": 0.75,
+     "notes": "f03与f04画面几乎完全相同：人物弯腰姿态、双手在腰间的位置、手部运动模糊形态、头发及背景（台灯、桌面纸张、白椅）均一致，间隔约0.9秒无任何动作推进，判定存在画面定格。f04到f05视角/景别变化属镜头切换，同一房间、光线与道具连续，人物衬衫由掖出变为塞入裤中且可见腰带，与f02-f04整理衣着的动作衔接合理，不另报时序错乱。手部运动模糊方向与动作一致，属正常动态模糊而非拖影；各帧人脸清晰度正"
+    },
+    "J3": {
+     "channel_P": 0.8442
+    }
+   }
+  },
+  {
+   "type": "ghosting",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7839,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.7839
+    }
+   }
+  },
+  {
+   "type": "pixelate",
+   "sources": [
+    "J3"
+   ],
+   "confidence": 0.7235,
+   "evidence": {
+    "J3": {
+     "channel_P": 0.7235
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.8442,
+   "flicker": 0.3787,
+   "color_shift": 0.5038,
+   "face_blur": 0.5665,
+   "garble_text": 0.0495,
+   "temporal_swap": 0.5691,
+   "pixelate": 0.7235,
+   "ghosting": 0.7839
+  },
+  "overall": 0.5286,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": "f03-f04（约2.2s-3.1s）"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_043",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze"
+   ],
+   "confidence": 0.75,
+   "spans": "f03-f04（约2.2s-3.1s）",
+   "notes": "f03与f04画面几乎完全相同：人物弯腰姿态、双手在腰间的位置、手部运动模糊形态、头发及背景（台灯、桌面纸张、白椅）均一致，间隔约0.9秒无任何动作推进，判定存在画面定格。f04到f05视角/景别变化属镜头切换，同一房间、光线与道具连续，人物衬衫由掖出变为塞入裤中且可见腰带，与f02-f04整理衣着的动作衔接合理，不另报时序错乱。手部运动模糊方向与动作一致，属正常动态模糊而非拖影；各帧人脸清晰度正常，无色偏、像素化或乱码文字；f05-f07人物手持鞋子的动作轨迹连贯，未见悬浮或穿模等物理违例。"
+  },
+  "J5": {
+   "clip_id": "golden_043",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[], \"other\": false, \"reason\": \"画面中人物动作连贯，无明显定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影现象。\"}"
+  },
+  "J3": {
+   "clip_id": "golden_043",
+   "defect_detected": true,
+   "defect_types": [
+    "frame_freeze",
+    "color_shift",
+    "face_blur",
+    "temporal_swap",
+    "pixelate",
+    "ghosting"
+   ],
+   "confidence": 0.8442,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.844 flicker=0.379 color_shift=0.504 face_blur=0.567 garble_text=0.050 temporal_swap=0.569 pixelate=0.724 ghosting=0.784; overall=0.529; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_043.mp4",
+  "frames_dir": "frames/golden_043/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_043.json",
+   "J5": "../数据/judges/videochat3/golden_043.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json"
+  }
+ },
+ "errors": {
+  "J6": "检测 JSON 缺失/失败 ../数据/judges/detectors/raw/golden_043.qc.json (FileNotFoundError: [Errno 2] No such file or directory: '../数据/judges/detectors/raw/golden_043.qc.json')"
+ }
+}

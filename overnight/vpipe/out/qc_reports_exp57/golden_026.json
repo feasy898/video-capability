@@ -1,0 +1,178 @@
+{
+ "schema_version": "1.1",
+ "clip_id": "golden_026",
+ "generated_at": "2026-10-09T11:05:09",
+ "qc_mode": "tonight_replay",
+ "verdict": {
+  "defect_detected": false,
+  "decision": "pass",
+  "confidence": 0.85,
+  "decided_by": "E10:J1.detected OR J3@0.70 flag",
+  "reasons": [
+   "J1(detected=False, types=[], conf=0.85)",
+   "J3@0.71 flag=False hits=[] max_channel_P=0.4887",
+   "J6 信号(仅信号不否决): color_shift@1.00, temporal_swap@0.75"
+  ]
+ },
+ "defects": [
+  {
+   "type": "color_shift",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 1.0,
+   "span": {
+    "start_s": 1.615,
+    "end_s": 2.26
+   },
+   "evidence": {
+    "J6": {
+     "pair": 2,
+     "hue_delta_deg": 96.0
+    }
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "sources": [
+    "J6"
+   ],
+   "confidence": 0.75,
+   "span": {
+    "start_s": 1.208,
+    "end_s": 2.208
+   },
+   "evidence": {
+    "J6": {
+     "cut_s": 1.708
+    }
+   }
+  }
+ ],
+ "scores": {
+  "per_type": {
+   "frame_freeze": 0.4044,
+   "flicker": 0.3801,
+   "color_shift": 0.4887,
+   "face_blur": 0.1103,
+   "garble_text": 0.0431,
+   "temporal_swap": 0.4211,
+   "pixelate": 0.0756,
+   "ghosting": 0.3869
+  },
+  "overall": 0.4811,
+  "thresholds_applied": {
+   "ensemble_id": "E10",
+   "j3_thr": 0.71,
+   "auto_reject_p": 0.9,
+   "j6_emit_conf": 0.55,
+   "thresholds_sha256": "ebb88b6ed581954bfcb779bdf8059b4c2b503c97c413526a8185bf8420ba27f2"
+  }
+ },
+ "spans": [
+  {
+   "type": "color_shift",
+   "start_s": 1.615,
+   "end_s": 2.26,
+   "evidence": {
+    "pair": 2,
+    "hue_delta_deg": 96.0
+   }
+  },
+  {
+   "type": "temporal_swap",
+   "start_s": 1.208,
+   "end_s": 2.208,
+   "evidence": {
+    "cut_s": 1.708
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J1",
+    "text": ""
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J3",
+    "text": "full_clip:16帧均匀采样4x4拼图"
+   }
+  },
+  {
+   "type": "note",
+   "evidence": {
+    "judge": "J5",
+    "text": "full_clip:fps=1.0解码"
+   }
+  }
+ ],
+ "judges": {
+  "J1": {
+   "clip_id": "golden_026",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.85,
+   "spans": "",
+   "notes": "逐项核对8帧未发现缺陷。f01-f03与f06-f08为红裙女士镜头，f04-f05为对面深蓝西装男士镜头，属于正常的正反打对话切换，场景（咖啡馆圆桌、窗景、杯子）连续一致，不构成temporal_swap。人物身份稳定：女士的红裙、项链、耳钉、发型在f01与f06-f08间一致，男士在f04-f05外观一致，无identity_drift。手部检查：f02-f03握杯柄手指形态正常，f07-f08女士抬手理发的手指数量与形态正常，男士手部在f04-f05置于桌面无异常，未见hand_anomaly。背景街景车辆在f01-f03间有位移，说明画面非定格；人脸全程清晰、无模糊、无像素化、无拖影、无明暗闪烁与色偏，画面中无文字。整体判定为干净。"
+  },
+  "J5": {
+   "clip_id": "golden_026",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.8,
+   "spans": "full_clip:fps=1.0解码",
+   "notes": "解析=json; 回答={\"defect_types\":[],\"other\":false,\"reason\":\"画面中人物动作自然流畅，无明显定格、闪烁、偏色、模糊、乱码、时序错乱、像素化或拖影现象\"}"
+  },
+  "J3": {
+   "clip_id": "golden_026",
+   "defect_detected": false,
+   "defect_types": [],
+   "confidence": 0.4887,
+   "spans": "full_clip:16帧均匀采样4x4拼图",
+   "notes": "noul概率 frame_freeze=0.404 flicker=0.380 color_shift=0.489 face_blur=0.110 garble_text=0.043 temporal_swap=0.421 pixelate=0.076 ghosting=0.387; overall=0.481; 阈值0.5; 16帧4x4时间戳拼图整体判定"
+  },
+  "J6": {
+   "clip_id": "golden_026",
+   "defect_detected": true,
+   "defect_types": [
+    "color_shift",
+    "temporal_swap"
+   ],
+   "confidence": 1.0,
+   "spans": [
+    {
+     "type": "color_shift",
+     "start_s": 1.615,
+     "end_s": 2.26,
+     "evidence": {
+      "pair": 2,
+      "hue_delta_deg": 96.0
+     }
+    },
+    {
+     "type": "temporal_swap",
+     "start_s": 1.208,
+     "end_s": 2.208,
+     "evidence": {
+      "cut_s": 1.708
+     }
+    }
+   ],
+   "notes": "qc_orch_v2 规则引擎重建（阈值=eval/thresholds.yaml emit@0.55）"
+  }
+ },
+ "inputs": {
+  "clip": "clips/golden_026.mp4",
+  "frames_dir": "frames/golden_026/",
+  "judge_files": {
+   "J1": "../数据/judges/glm8/golden_026.json",
+   "J5": "../数据/judges/videochat3/golden_026.json",
+   "J3": "../数据/judges/omnijev/run_metadata.json",
+   "J6": "../数据/judges/detectors/raw/golden_026.qc.json"
+  }
+ },
+ "errors": {}
+}
