@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/dh_stepfun_720p.mp4",
- "generated_at": "2026-10-09T13:39:34",
+ "generated_at": "2026-10-09T13:46:21",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 15.0,
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 2.4
+  "analyze_sec": 2.33
  }
 }

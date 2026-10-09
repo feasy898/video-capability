@@ -1,7 +1,7 @@
 {
  "schema_version": "2.0",
  "work_id": "shortdrama_ep01",
- "compiled_at": "2026-10-09T13:40:07",
+ "compiled_at": "2026-10-09T13:46:54",
  "compiler": "vdl2_compile.py@vpipe2.0-dev",
  "source_package": {
   "path": "/home/pan-ding/workspace/视频能力/overnight/vpipe/examples/vdl2/10_shortdrama_ep01.yaml",
