@@ -158,19 +158,24 @@ def plan(root: Path, changed_path: Path, slot: str | None) -> tuple[dict, list[s
 
     # ---- 建边：ref.fingerprint 精确匹配图内声明指纹（主路径） ----
     # dependents[upstream_path] = [(downstream_path, ref), …]
+    # dangling_warnings（主控修订 2026-10-09）：指向图外指纹的 ref（如 CP11/CP12 引
+    # 用的 cp10 交付物清单 sha256——非 CP 工件、按设计不在指纹图内）是**已知合法
+    # 模式**，报 warnings 不阻断闭包计算；只有环（循环依赖）必须阻断（BFS 无法进行）。
+    dangling_warnings: list[str] = []
     dependents: dict[str, list[tuple[str, dict]]] = {}
     for a in artifacts.values():
         for r in a.refs:
             hits = declared_index.get(r.get("fingerprint", ""), set())
             if not hits:
                 # 悬空指纹：若指向被改工件的 cp_id，说明上游已改/relink——这是
-                # 失效信号本体，归因于 changed；否则是断链（图错误）。
+                # 失效信号本体，归因于 changed；否则是断链（图外引用）。
                 if r.get("cp_id") == changed.cp_id:
                     dependents.setdefault(changed_rel, []).append((a.path, r))
                 else:
-                    errors.append(
-                        f"断链：{a.path} 的 upstream_refs 指向图内不存在的指纹 "
-                        f"{short(r.get('fingerprint', ''))} (cp_id={r.get('cp_id')})")
+                    dangling_warnings.append(
+                        f"图外引用：{a.path} 的 upstream_refs 指向图内不存在的指纹 "
+                        f"{short(r.get('fingerprint', ''))} (cp_id={r.get('cp_id')})"
+                        "——非 CP 工件（交付物清单等）的已知合法模式，不阻断闭包")
                 continue
             for up in hits:
                 if up == a.path:
@@ -294,6 +299,7 @@ def plan(root: Path, changed_path: Path, slot: str | None) -> tuple[dict, list[s
             "edges": sum(len(v) for v in dependents.values()),
             "skipped_non_artifact": skipped,
         },
+        "warnings": sorted(set(dangling_warnings)),
     }
     return out, [], 0
 

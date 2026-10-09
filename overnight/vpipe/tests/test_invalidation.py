@@ -9,7 +9,8 @@
    来源：W11 验收条件 + upstream_refs 图，非抄实测）；
 2. BFS 闭包：菱形图（cp6←{cp3,cp5}）闭包正确、同一工件只失效一次（去重）、
    via=直接失效者（cp5.via=cp3 而非 cp2）；
-3. 断链：悬空指纹指向非被改工件 → exit 2 且 errors 含「断链」；
+3. 图外引用：悬空指纹指向非被改工件（cp10 交付物清单等非 CP 工件，按设计不在
+   指纹图内）→ warnings 报「图外引用」不阻断、exit 0；只有环必须阻断 exit 2；
 4. 断链归因：悬空指向被改工件（上游已 relink 场景）→ exit 0 且下游判失效
    （这是失效信号本体，真失效，非图错误）；
 5. 环：双节点环与自引用 → exit 2 且 errors 含「环」；
@@ -206,13 +207,24 @@ def unit_graph_semantics() -> None:
           (out or {}).get("unaffected") == ["cp1.json"])
     shutil.rmtree(root, ignore_errors=True)
 
-    # 3. 断链：悬空指向非被改工件 → exit 2
+    # 3. 图外引用（主控修订 2026-10-09）：悬空指向非被改工件 → warnings 不阻断、exit 0
+    #    （如 CP11/CP12 引用的 cp10 交付物清单 sha256——非 CP 工件按设计不在指纹图内）
     root = synth_tree("badlink", [
         art("cp1", A, []), art("cp2", B, [{"cp_id": "cp1", "fingerprint": A}]),
         art("cp3", C, [{"cp_id": "cp2", "fingerprint": E}])])
     code, out, raw = run_plan(root, "cp1.json")
+    warns = json.dumps((out or {}).get("warnings", []), ensure_ascii=False)
+    check("图外引用: warnings 报且不阻断（exit 0）+ 闭包正常",
+          code == 0 and "图外引用" in warns and out.get("invalidated_count", 0) >= 1, raw)
+    shutil.rmtree(root, ignore_errors=True)
+
+    # 3b. 环仍必须阻断（BFS 无法进行）
+    root = synth_tree("cycle2", [
+        art("cp1", A, [{"cp_id": "cp2", "fingerprint": B}]),
+        art("cp2", B, [{"cp_id": "cp1", "fingerprint": A}])])
+    code, out, raw = run_plan(root, "cp1.json")
     errs = json.dumps((out or {}).get("errors", []), ensure_ascii=False)
-    check("断链: exit==2 且 errors 如实报", code == 2 and "断链" in errs, raw)
+    check("环: 仍 exit==2 且 errors 含「环」", code == 2 and "环" in errs, raw)
     shutil.rmtree(root, ignore_errors=True)
 
     # 4. 断链归因：悬空指向被改工件（上游已 relink）→ exit 0，真失效

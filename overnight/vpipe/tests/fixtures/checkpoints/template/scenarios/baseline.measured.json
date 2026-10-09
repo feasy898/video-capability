@@ -1,1 +1,99 @@
-{"changed":"cp2.json","changed_fingerprint":{"declared":"a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca","computed_from_payload":"a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca","payload_drifted":false,"note":"payload 与声明指纹一致：plan 视为模拟变更（该工件重跑后指纹必变）"},"invalidated":[{"path":"cp3.json","reason":"upstream_ref 指纹失配：引用 cp2(cp2.json) 的 a7b72d34981d…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp2.json"},{"path":"cp5.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp6.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_01.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_02.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_03.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_04.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_05.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_06.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_07.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_08.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_09.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_10.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"},{"path":"cp7/cp7_shot_11.json","reason":"upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑","via":"cp3.json"}],"invalidated_count":15,"unaffected":["cp1.json"],"unaffected_count":1,"slot":null,"closure_mode":"artifact_level","graph":{"artifacts":17,"edges":41,"skipped_non_artifact":[]}}
+{
+  "changed": "cp2.json",
+  "changed_fingerprint": {
+    "declared": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca",
+    "computed_from_payload": "a7b72d34981de5546352ab3de334e3615632ca89094c1edfa76931dbac2f57ca",
+    "payload_drifted": false,
+    "note": "payload 与声明指纹一致：plan 视为模拟变更（该工件重跑后指纹必变）"
+  },
+  "invalidated": [
+    {
+      "path": "cp3.json",
+      "reason": "upstream_ref 指纹失配：引用 cp2(cp2.json) 的 a7b72d34981d…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp2.json"
+    },
+    {
+      "path": "cp5.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp6.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_01.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_02.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_03.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_04.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_05.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_06.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_07.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_08.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_09.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_10.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    },
+    {
+      "path": "cp7/cp7_shot_11.json",
+      "reason": "upstream_ref 指纹失配：引用 cp3(cp3.json) 的 3ea3bf92d6af…，但该工件 payload 变更（重排/改写）指纹已变 → 必须重跑",
+      "via": "cp3.json"
+    }
+  ],
+  "invalidated_count": 15,
+  "unaffected": [
+    "cp1.json"
+  ],
+  "unaffected_count": 1,
+  "slot": null,
+  "closure_mode": "artifact_level",
+  "graph": {
+    "artifacts": 17,
+    "edges": 41,
+    "skipped_non_artifact": []
+  },
+  "warnings": []
+}
