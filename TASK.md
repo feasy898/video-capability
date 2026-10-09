@@ -62,6 +62,7 @@
 - v1 六门禁收官（良率 17/17）→ v2 G7 门禁收官（夹具拦截 15/15、零形变）→ overnight 基准建成（E10，ROC 离线重放 10,920 组合校准）→ v3 首批完成（L0 预检接线：注入样本拒 3/3 放 2/2；J6v2 误报 9→1；E10 基准改动前后零偏差）。
 - `run_v3_checks.py` ALL PASS / EXIT=0（1m33s，2026-10-01 实测两次）。
 - 待解：~~A-1~~（已结案）、A-2（kimi 终裁）、A-3（凭据重建）、B-1（MediaPipe）、P1 六项、D-1~D-4。
+- **2026-10-09 状态追记**（v4 线推进后，详见 worklog.md 与 TASK_v4.md §8）：D-1 全链试点达成（三线样片+QCReport 1.1）；D-2 结论=继续（evidence/vdl2-pilot-verdict.md）；**D-3 达成**——扩样方案成文+新样本过盲测+扩样后 E10 复核 ACCEPT（59 条金标 R=0.9286/FPR=0.2353/F1=0.8966，判官配方 A+B 收官）；D-4 已成文待 owner 确认冻结（artifacts/north-star-metric.md）。A-3 凭据已重建（OpenBao，docs/credentials-rebuild.md）。
 
 ## 4. 下一步任务清单（按优先级）
 
