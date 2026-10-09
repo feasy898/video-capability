@@ -1,6 +1,6 @@
 {
  "clip": "/home/pan-ding/workspace/视频能力/overnight/数据/avatar_out/g9a_intro_60s_vidu.mp4",
- "generated_at": "2026-10-09T08:23:09",
+ "generated_at": "2026-10-09T09:03:23",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 61.0,
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 11.44
+  "analyze_sec": 15.86
  }
 }

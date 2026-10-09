@@ -1,7 +1,7 @@
 {
  "schema_version": "1.1",
  "clip_id": "t_good",
- "generated_at": "2026-10-09T08:21:34",
+ "generated_at": "2026-10-09T09:01:33",
  "qc_mode": "online",
  "verdict": {
   "defect_detected": false,

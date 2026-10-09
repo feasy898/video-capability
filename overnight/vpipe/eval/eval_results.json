@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-09T08:23:20",
- "qc_dir": "overnight/vpipe/out/qc_reports_v3post",
+ "generated_at": "2026-10-09T09:03:51",
+ "qc_dir": "/home/pan-ding/workspace/视频能力/overnight/vpipe/out/qc_reports_v2check",
  "golden": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/golden_manifest.json",
  "thresholds": "/home/pan-ding/workspace/视频能力/overnight/vpipe/eval/thresholds.yaml",
  "thresholds_sha256": "ffc57c8868e02ded1f4930423796cedfaf4259cc9aa41aa7347fb1dd35587b49",
@@ -76,7 +76,7 @@
   "temporal_swap": {
    "n": 2,
    "recall_clip": 1.0,
-   "recall_type": 0.5,
+   "recall_type": 0.0,
    "missed": []
   },
   "pixelate": {
@@ -95,8 +95,8 @@
  "B": {
   "n": 12,
   "flag_rate": 0.5833,
-  "intent_strict": 0.3333,
-  "intent_lenient": 0.3333,
+  "intent_strict": 0.25,
+  "intent_lenient": 0.25,
   "rows": [
    {
     "clip_id": "golden_005",
@@ -113,9 +113,7 @@
     "clip_id": "golden_007",
     "expected": "hand_anatomy_distortion",
     "detected": false,
-    "types": [
-     "garble_text"
-    ],
+    "types": [],
     "strict_hit": false,
     "lenient_hit": false
    },
@@ -123,9 +121,7 @@
     "clip_id": "golden_011",
     "expected": "hand_anatomy_distortion",
     "detected": false,
-    "types": [
-     "garble_text"
-    ],
+    "types": [],
     "strict_hit": false,
     "lenient_hit": false
    },
@@ -152,7 +148,6 @@
     "expected": "hand_anatomy_distortion",
     "detected": true,
     "types": [
-     "garble_text",
      "ghosting",
      "hand_anomaly"
     ],
@@ -163,9 +158,7 @@
     "clip_id": "golden_029",
     "expected": "hand_anatomy_distortion",
     "detected": false,
-    "types": [
-     "garble_text"
-    ],
+    "types": [],
     "strict_hit": false,
     "lenient_hit": false
    },
@@ -183,9 +176,7 @@
     "clip_id": "golden_033",
     "expected": "hand_anatomy_distortion",
     "detected": false,
-    "types": [
-     "garble_text"
-    ],
+    "types": [],
     "strict_hit": false,
     "lenient_hit": false
    },
@@ -194,7 +185,6 @@
     "expected": "physics_temporal_violation",
     "detected": true,
     "types": [
-     "garble_text",
      "ghosting"
     ],
     "strict_hit": false,
@@ -215,12 +205,11 @@
     "expected": "text_render_garble",
     "detected": true,
     "types": [
-     "flicker",
-     "garble_text",
-     "ghosting"
+     "ghosting",
+     "flicker"
     ],
-    "strict_hit": true,
-    "lenient_hit": true
+    "strict_hit": false,
+    "lenient_hit": false
    }
   ]
  },
