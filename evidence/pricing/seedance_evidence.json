@@ -5,6 +5,8 @@
   "currency": "USD",
   "source_url": "https://www.atlascloud.ai/models/seedance-2.5",
   "fetched_on": "2026-10-08",
+  "confirmed": false,
+  "confirmed_note": "TASK_v4 M0-W1 门禁字段：官方渠道（火山方舟/即梦/OpenRouter）核价全部失败，本记录 price_value 为第三方 Atlas Cloud 公示价（confidence=unverified）；按『confirmed: false 不得进预算基线』纪律，本价格未进入任何预算基线（仓内成本基线只走 MiniMax 积分口径，ledger.py 无 seedance 计价项），仅作成本效益参考量级",
   "confidence": "unverified",
   "notes": "单价来源为第三方 API 中转平台 Atlas Cloud 的公示价（页面已实际抓取、有逐字原文，见同目录 seedance-source.md），非火山引擎/即梦官方价，故整体 confidence=unverified。官方渠道核价全部失败：(1) https://www.volcengine.com/docs/82379/1544106 经 301 跳转到 docs.volcengine.com 后正文为客户端 JS 渲染，WebFetch 与 web_reader 两次抓取均只有页面骨架（『模型价格--火山方舟』，更新时间 2026.06.10），无任何价目表内容；(2) https://www.volcengine.com/docs/82379/1330310（模型列表）抓取成功，但其视频生成能力清单（快照更新 2026.05.29）只有 doubao-seedance-2-0/1-5/1-0 系列，无 Seedance 2.5 模型 ID；(3) 即梦 https://jimeng.jianying.com/ 套餐区显示『正在加载套餐』，需登录，无价格；(4) OpenRouter https://openrouter.ai/bytedance/seedance-2.5 页面存在但静态内容无单价。搜索摘要中出现的其他数字（火山方舟 480p 30s 约 20.16 元/条、720p 30s 约 45.36 元/条；输入 42 元/M token、输出 70 元/M token；kie.ai $0.085/秒；RunningHub 720P 约 0.49 元/秒；OpenRouter 约 $0.1028/秒）均为搜索 AI 摘要转述、无可抓取原文链接，一律不采信、不写入本记录正文。另：白皮书既有的 Seedance 2.0 编辑档 28 元/M token 在搜索摘要中再次出现（含视频输入 28 元/百万 tokens、不含 46 元/百万 tokens），仍属转述。结论：Seedance 2.5 官方单价仓内仍未确证；如需确证须 owner 登录火山方舟控制台价目页人工抄录。",
   "third_party_secondary": [
