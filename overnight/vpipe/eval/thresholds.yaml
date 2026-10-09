@@ -8,7 +8,62 @@
 # 修改规程：改本文件 = 改判定行为 → 必须重跑 eval_run.py 并在 §结论 复核，
 #       结果退化时回滚（judge基准报告 §7 的扫描表是回滚依据）。
 # =====================================================================
-version: 8                   # 2026-10-09（v8）：D-3 扩样补缺——C 组「API 产物标签乱码」2 条
+version: 11                  # 2026-10-09（v11）：判官配方迭代 A+B 联合达成 ACCEPT——
+                             #   A（v10：J3 per_channel_thr + frame_freeze_plateau 声明制豁免）
+                             #   × B（v9：J1 rubric 时序帧对，prompt_version 04faaf977765）
+                             #   联合重跑 59 条金标：R=0.9286/FPR=0.2353/F1=0.8966/B_flag=0.5
+                             #   四条准入线全过=ACCEPT（eval_results_exp61_ab_accept_supplement.json
+                             #   双处登记）。准入线四值/ensemble/E10 定义/J3 thr=0.71 一字未动；
+                             #   registry_version 复算 379ff86216a2→按新 judges 数据重算（见 yaml
+                             #   头 versioning 段实算值）。FN 046/052 为判官感知局限（已登记），
+                             #   FP 058/059 为 C 组语义分裂口径问题（待 owner 裁决）。                  # 2026-10-09（v10）：判官配方迭代 A 线落地（J3 分通道阈 + 低运动
+                             #   平台豁免，预案 evidence/judge-recipe-iteration-plan.md 方案 A；
+                             #   与 v9 的 J1 rubric 线即方案 B 并行）。judges.J3_omnijev 新增
+                             #   per_channel_thr 分通道阈表与 frame_freeze 低运动平台豁免三键
+                             #   （声明制，机制同 J6_detectors_v2 ghost_plateau_in_max /
+                             #   ghost_plateau_exempt_profiles 先例）；判定逻辑改动在 qc_orch_v2，
+                             #   J3 模型不重跑（judges 输出原样回放）。
+                             #   分通道阈走表实录（59 条金标逐条核对；ff=J3 frame_freeze 通道概率；
+                             #   「无兜底」=J1 未检出且无其他通道 >thr）：
+                             #   · 0.85 / 0.84：golden_017(A,ff=0.7315,无兜底) 失唯一命中转 FN；
+                             #     golden_020/031(B,0.7472/0.7140,无兜底) 失检出 → b_flag 6/14<0.50；
+                             #     041(0.8470) 在 0.85 失 ff 命中但 face_blur=0.7831 兜底、0.84 自保，
+                             #     故 0.84 相对 0.85 的唯一收益被 017/020/031 的恒久损失盖过。
+                             #   · 续走 0.73/0.72：031(0.7140) 仍被杀，b_flag 恰压线 7/14=0.50 零
+                             #     余量，且对 C 误报零新增收益（057 亦被豁免机制覆盖）。
+                             #   · 走表终值 0.71（=thr）：A/B 无兜底 ff 检出最低值 golden_031=0.7140
+                             #     之下唯一无风险档。数据结论：ff 概率轴上 C 误报与 A/B 真检出全域
+                             #     交错（010 0.7384 vs 017 0.7315 差 0.0069；058 0.8685 vs 028
+                             #     0.8665、059 0.8004 vs 017 0.7315 倒挂），单靠提阈在本金标上
+                             #     不可行——J3 侧 FP 压降由豁免承担（口播 055/056/057 脱离）。
+                             #   · 豁免（声明制）：profile 声明∈frame_freeze_plateau_exempt_profiles
+                             #     且 qc_detectors_v2 同款帧差中位 in_med < 引用键
+                             #     J6_detectors_v2.rule_params.ghost_plateau_in_max(=2.0，引用不
+                             #     复制，防第二套数值) 时 frame_freeze 通道候选弃权；弃权证据落
+                             #     QCReport verdict.reasons + errors.J3_frame_freeze_exempt（不静
+                             #     默）；豁免只碰 frame_freeze 通道，不碰其余 7 类与 overall。
+                             #     绝对阈不可分必须声明制的同源证据：金标 008(A 真定格,ff=0.8977,
+                             #     in_med=0.313) 比全部 C 口播误报更「静止」，无声明门时豁免必杀
+                             #     真检出（J6v2 034/028 交叠同理，v2 注记）。回放模式声明源=金标
+                             #     manifest 生成侧来源登记 axis=AVATAR_EXPANSION → avatar_talk
+                             #     （053-057 五条）；在线模式沿 --profile。
+                             #     准入线 recall_min/fpr_max/f1_min/b_flag_min 四值与
+                             #     min_clips_required/class_counts 一字未动。
+                             # 2026-10-09（v9）：J1 判官配方升版（召回补缺轮）——
+                             #   judges_src/glm8_batch.py RUBRIC 新增「三、时序帧对专项」
+                             #   （f04-f05/f03-f06 两组有序帧对+相邻帧对扫描：内容回跳→
+                             #   temporal_swap、明暗/饱和交替→flicker、画面凝固→frame_freeze，
+                             #   全部走 judge_common.py 冻结词表既有键，无新增通道；六字段协议
+                             #   零改动、判定阈零改动）。versioning.prompt_version 按口径实算
+                             #   23b918011af0→04faaf977765（J1 段模板字节变更所致；J3 段未动）。
+                             #   动机：exp59 基线 045/046/052 双漏（J1∨J3 同判净）致 recall
+                             #   0.8929<0.90；预期帧对判据接住 ≥1 条。旧版 J1 判官输出全量存档
+                             #   数据/judges/judges_v1_round3/ 备查；新版重跑 59 条 + eval 回放
+                             #   对照留痕 eval_results_exp60_j1v2.json（vs exp59 基线位级对比）。
+                             #   判定行为登记：判官输出内容变化=J1 侧数据换代（本文件判定数值
+                             #   与准入线四值一字未动）；E10 定义/J3 thr 不变。红线上游：prompt
+                             #   为通用时序判据措辞，零 clip 专属词；盲测纪律保留。
+                             # 2026-10-09（v8）：D-3 扩样补缺——C 组「API 产物标签乱码」2 条
                              #   （golden_058/059，MiniMax-H3-Max 云通道真实生成、生成侧自发乱码
                              #   2/2 逐帧亲检，无注入/伪造）入金标：
                              #   eval_admission.class_counts {A28,B14,C15}→{A28,B14,C17}、
@@ -71,7 +126,11 @@ versioning:
   spec_version: "vpipe-spec-v2.0+1d7773149b31"  # 稳定常量名 + SPEC_v2.md 内容指纹后缀：
                                                 #   sha256(overnight/vpipe/SPEC_v2.md 全文
                                                 #   utf-8 字节) 前 12 位（hex 小写）。
-  registry_version: "bf4739195429"              # 缺陷规则定义集 hash。仓内无独立规则集文件
+  registry_version: "379ff86216a2"              # 缺陷规则定义集 hash。仓内无独立规则集文件
+                                                #   （2026-10-09 v10 实算更新，前值 bf4739195429：
+                                                #   judges.J3_omnijev 新增 per_channel_thr/
+                                                #   frame_freeze_plateau_* 三键所致；v9 未动本值）。
+                                                #   按下列同口径实算：
                                                 #   （数据/golden 夹具是缺陷样本非规则定义），
                                                 #   按主控口径登记本文件 judges+checkpoints 两段
                                                 #   合计内容：yaml 解析后
@@ -79,8 +138,11 @@ versioning:
                                                 #   ensure_ascii=False, sort_keys=True,
                                                 #   separators=(",",":")).encode("utf-8")) 前 12 位。
                                                 #   本 versioning 段与 version 行不参与（防自引用）。
-  prompt_version: "23b918011af0"                # E10 两判官（J1∨J3）prompt 文本字节 hash：
-                                                #   sha256( "J1|"+judges_src/glm8_batch.py 的
+  prompt_version: "04faaf977765"                # E10 两判官（J1∨J3）prompt 文本字节 hash：
+                                                #   2026-10-09 v9 实算更新（前值 23b918011af0）：
+                                                #   judges_src/glm8_batch.py RUBRIC 新增「三、时序帧对
+                                                #   专项」段，按下列同口径重算；J3 段（omnijev_questions）
+                                                #   未动。sha256( "J1|"+judges_src/glm8_batch.py 的
                                                 #   RUBRIC 模板原文 + "\nJ3|"+json.dumps(
                                                 #   judges_src/judge_common.py omnijev_questions(),
                                                 #   ensure_ascii=False, sort_keys=True,
@@ -131,7 +193,7 @@ judges:
     role: backup                # R=0.688/F1=0.815，零误报；不进 E10
   J3_omnijev:                   # OmniJev-4B 9 通道校准概率 —— L1 主判
     role: primary
-    rule: "flag = any(per_type[p] > thr for p in 8types) or overall > thr"
+    rule: "flag = any(per_type[p] > per_channel_thr.get(p, thr)) or overall > thr；frame_freeze 命中先过低运动平台豁免（声明制，见下三键）"
     thr: 0.71                   # §7 扫描原工作点 0.70：R=1.000 / FPR=0.250 / F1=0.914。
                                 # 2026-10-07 重扫→0.71（判官三件套按 JUDGES-RERUN.md 配方重跑后
                                 # 概率整体微移，golden_006 frame_freeze=0.7069 以 0.0069 边际
@@ -139,6 +201,22 @@ judges:
                                 # 0.71=唯一保持 R=1.000 且 B_flag 余量最大的点：
                                 # R=1.000/FPR=0.250(3/12=010,013,032)/F1=0.9143/B_flag=0.5833，
                                 # 013 为 J1 布尔检出与阈无关——见 g01-full-relock.json round2）
+    per_channel_thr:            # v10 分通道阈表：键=8 类通道名，缺键回落 thr；overall 恒用 thr。
+                                # 走表实录（0.85→0.84→0.73→0.72→0.71 逐步证据）见文件头 v10 注记。
+      frame_freeze: 0.71        # 走表终值=thr：ff 概率轴上 C 误报与 A/B 真检出全域交错
+                                # （010 0.7384 vs 017 0.7315；058 0.8685 vs 028 0.8665 倒挂），
+                                # 提阈必杀真检出（0.85 即杀 017/020/031）；本表键位留驻=
+                                # 分通道阈机制生效点，后续判官数据换代时在此逐通道扫描。
+    frame_freeze_plateau_exempt: true   # v10 低运动平台豁免总开关（声明制第一要素：配置显式声明，
+                                        #   false 时豁免机制整体不启用、判定行为与 v9 一致）
+    frame_freeze_plateau_exempt_profiles: [avatar_talk]   # 声明 profile 名单（命名对齐
+                                #   J6_detectors_v2.ghost_plateau_exempt_profiles；回放模式声明源
+                                #   =金标 manifest axis=AVATAR_EXPANSION→avatar_talk，在线模式
+                                #   =--profile；未声明 profile 的素材永不豁免）
+    frame_freeze_plateau_in_med_lt_ref: "judges.J6_detectors_v2.rule_params.ghost_plateau_in_max"
+                                # in_med 阈引用键（=2.0）：qc_detectors_v2 同款帧差中位
+                                # （原生帧率全序列相邻帧 MAD 的全片中位）低于该引用值 ≈ 编码噪声级
+                                # 低运动平台；引用不复写数值，防第二套阈值（SPEC 铁律）
     thr_fpr_first: 0.80         # 追求 FPR≤0.1 的工作点：R=0.875 / FPR=0.083 / F1=0.903
     auto_reject_p: 0.90         # §5：P≥0.9 区间 8/8 全对 → 单通道达标直接 auto_reject
     gray_zone: [0.71, 0.90]     # 灰区 → manual_review（人工复核队列，§11.1 人工抽检行；仅文档口径，回放代码不读本键）

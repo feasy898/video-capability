@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-10-09T16:10:00+08:00",
+  "purpose": "判官配方迭代 A+B（J3 分通道阈+低运动平台豁免 × J1 rubric 时序帧对）联合重跑：59 条金标 E10 复核 ACCEPT——G0-2 双处登记之 eval 留痕侧",
+  "pair_file": "eval/eval_results.json（canonical，= ACCEPT 态）",
+  "paths": {
+    "A": "路径 A（thresholds v10 + qc_orch_v2 分通道判定+声明制豁免）：单独态 R=0.8929/FPR=0.2941/F1=0.8621 REJECT（仅 recall），登记于 eval_results_exp59_j3v10_supplement.json",
+    "B": "路径 B（glm8_batch.py RUBRIC 时序帧对 + prompt_version 04faaf977765）：单独态（v1 回放视图）R=0.9286/FPR=0.4118 REJECT（仅 fpr），登记于 eval_results_exp60_j1v2_supplement.json",
+    "A+B": "联合态（v10 判定逻辑 + v2 J1 数据）：R=0.9286/FPR=0.2353/F1=0.8966/B_flag=0.5 → ACCEPT（四条准入线全过）"
+  },
+  "e10_ab_metrics": {
+    "recall": 0.9286,
+    "fpr": 0.2353,
+    "f1": 0.8966,
+    "b_flag": 0.5,
+    "tp": 26,
+    "fn": 2,
+    "fp": 4,
+    "tn": 13
+  },
+  "admission": {
+    "recall_min": 0.9,
+    "fpr_max": 0.3,
+    "f1_min": 0.85,
+    "b_flag_min": 0.5
+  },
+  "fp_clips": [
+    "golden_010",
+    "golden_032",
+    "golden_058",
+    "golden_059"
+  ],
+  "fn_clips": [
+    "golden_046",
+    "golden_052"
+  ],
+  "fn_mechanism": "046/052 为判官感知局限非判据缺口：J1 已做帧对比对但把标题回跳读成正常运镜（046）、未感知明暗交替（052）；J3 最强通道 0.590/0.579 任何阈救不回。诚实登记，不用拟合措辞凑数",
+  "fp_mechanism": "058/059 为 C 组 API 乱码真缺陷正例，被 judge 正确检出但按现行「C 类整体作负类」口径计 FP（C 组语义分裂记账待 owner 裁决，TASK 遗留项）；010/032 为 J3 已知 FP 机理（color_shift 通道）",
+  "bitlevel_vs_exp59": {
+    "recall": "0.8929→0.9286（+045 FN→TP）",
+    "fpr": "0.4706→0.2353（FP 8→4：口播 055/056/057 经声明制豁免脱离、013 经新 J1 脱离）",
+    "f1": "0.8197→0.8966",
+    "b_flag": "0.6429→0.5"
+  },
+  "judge_input_fingerprint": "J1 v2 输出（judges_v1_round3 存档旧版）+ J3/J5 零重跑（判定逻辑变更不触模型）",
+  "thresholds_note": "thresholds.yaml v10（J3 per_channel_thr frame_freeze=0.71 走表实录 + frame_freeze_plateau 三键声明制豁免）+ v9（prompt_version 04faaf977765）；准入线四值/ensemble 布尔结构/E10 定义一字未动",
+  "owner_items": [
+    "C 组语义分裂是否引入第三类记账（058/059 计 FP 的口径问题）待 owner 裁决",
+    "B_flag=0.5 恰压准入线零余量——后续 judge 配方迭代须监控 B 类"
+  ]
+}

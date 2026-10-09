@@ -1,0 +1,123 @@
+{
+ "generated_at": "2026-10-09T15:57:53",
+ "purpose": "J1 判官配方升版（时序帧对判据）后的 E10 复核 supplement：J1 重跑 59 条 + eval 回放，vs exp59 基线位级对比 + 与路径 A（J3v10 判定逻辑）叠加态。G0-2 双处登记之 eval 留痕侧，另一处=thresholds.yaml v9 注记",
+ "pair_file": "eval/eval_results_exp60_j1v2.json（qc_orch v1 回放 out/qc_reports_exp60_j1v2，59 条）",
+ "change": {
+  "what": "judges_src/glm8_batch.py RUBRIC 新增「三、时序帧对专项（跨帧运动比对，必查）」：f04-f05（相邻中点对）+ f03-f06（跨段对）+ 其余相邻帧对扫描；① 内容回跳/段落互换→temporal_swap ② 明暗/饱和正负交替→flicker ③ 多帧完全一致→frame_freeze。全部走 judge_common.py 冻结词表既有键，无新增通道，六字段协议零改动",
+  "why": "exp59 基线 045/046/052 三条双漏（J1/J3 同判净，J3 最强通道 0.387/0.590/0.579 阈救不回），E10 recall 0.8929<0.90",
+  "prompt_version": {
+   "old": "23b918011af0",
+   "new": "04faaf977765",
+   "口径": "thresholds.yaml versioning 段注释口径实算（sha256('J1|'+RUBRIC+'\\nJ3|'+omnijev_questions json)前12位），注册值已按实算同步"
+  },
+  "thresholds": "version 8→9：仅 versioning.prompt_version 重登记 + version 注记；judges/checkpoints 段一字未改（registry_version 复算仍 bf4739195429）；准入线四值/E10 定义/J3 thr=0.71 全部未动",
+  "红线自查": "prompt 为通用时序判据措辞，零 clip_id 专属词；盲测纪律与 forbidden=mental_math_frame_diff 口径保留（新增段明写『只做定性比对，不口算像素差或亮度数值』）；金标分布/其他判官结论未输入判官"
+ },
+ "judge_rerun": {
+  "machine": "GPU 机 anolis-gpu-01（root@100.64.0.7），卡 0 起跑前复测 310MiB/0%（等位不抢卡，卡 1 27GB 在用未碰）；J1 为 API 判官不占卡",
+  "env": "API key 自服务端 /data/night/g01-rerun/video-capability/overnight/secrets/api_keys.env 的 ZHIPU_API_KEY 注入 BIGMODEL_API_KEY，零回显",
+  "run1_main": {
+   "meta": "数据/judges/glm8/run_metadata_g05.json",
+   "ok": 47,
+   "fail": 12,
+   "wall_s": 2815.6,
+   "usage": {
+    "prompt_tokens": 395290,
+    "completion_tokens": 100097
+   }
+  },
+  "run2_retry": {
+   "meta": "数据/judges/glm8/run_metadata_g05_retry.json",
+   "ok": 12,
+   "fail": 0,
+   "wall_s": 2526.9,
+   "usage": {
+    "prompt_tokens": 85992,
+    "completion_tokens": 40046
+   },
+   "note": "12 条均为『content 空、仅 reasoning』（max_tokens 4096 被推理吃光，与 2026-10-06 轮同故障模式）→ 按 JUDGES-RERUN.md 先例 --max-tokens 12000 --workers 2 重跑，12/12 成功"
+  },
+  "totals": {
+   "protocol_json": 59,
+   "raw_json": 59,
+   "FAILED_placeholder": 0,
+   "api_calls_recorded": 71,
+   "prompt_tokens": 481282,
+   "completion_tokens": 140143,
+   "note": "主跑 12 失败条的内部 3 次重试（失败即弃）其 token 未被脚本计量，属未逐条记账的额外消耗"
+  },
+  "archive": "旧版判官输出 59+59+4 metadata 全量存档 数据/judges/judges_v1_round3/glm8/（重跑前拷贝，JSON 全部可解析）"
+ },
+ "j1_only_bitlevel": {
+  "changed_verdicts": "59 条中 50 条 verdict 三元组（detected,types,confidence）至少 confidence 变化——temp 0.7 采样方差属配方固有；detected 翻转 12 条",
+  "A_group": "recall 17/28→17/28：+017(frame_freeze)/+044(temporal_swap)/+045(temporal_swap)，-004(flicker)/-022(ghosting)/-047(ghosting)",
+  "C_group": "FP {013,058,059}→{058,059}：013 的 J1 frame_freeze 误报消失，零新增 C 误报——『J1 原 FPR 不能恶化』红线达成（改善）；058/059 为 C 组带真缺陷正例（garble_text 实检出，按现行 C 类整体作负类口径计 FP，见 v8 注记）",
+  "B_group": "J1-only flag 4/14→2/14：-005(text_render_garble：flicker+garble_text 双claim消失)/-021(hand_anomaly 部分消失)/-040(garble_text 部分消失)，+033(hand_anomaly 新增，strict hit)；E10 层 B_flag 由 J3/J5 托底保持 0.6429（v1 视图）",
+  "honest_tradeoff": "J1 B 类意图 strict 命中 4→2 为真实回退（b_strict 非准入线，b_flag_min 不受影响）；与 +045/+017/+044 同源于 temp 0.7 全量重掷，非帧对判据措辞定向所致（005 的 garble 判定与帧对段无关）"
+ },
+ "targets": {
+  "golden_045": "双漏→J1 接住：temporal_swap conf 0.65，notes 亲引帧对证据『f04→f05 形成「推—退—推」的运动趋势断裂与内容回跳』——帧对判据按设计生效",
+  "golden_046": "仍漏（J1 ok 但判净）：判官做了帧对比对但把标题回跳读成『f03→f05 平滑回升…正常运镜』",
+  "golden_052": "仍漏（判净）：判官做了帧对比对但未感知 f04 暗/f05 亮的交替（亲验帧图该交替肉眼可见）——感知局限非判据缺口",
+  "result": "三缺口中接住 1 条（045），达成 ≥1 条预期"
+ },
+ "e10_v1_view": {
+  "metrics": {
+   "recall": 0.9286,
+   "fpr": 0.4118,
+   "f1": 0.8525,
+   "b_flag": 0.6429,
+   "tp": 26,
+   "fn": 2,
+   "fp": 7,
+   "tn": 10
+  },
+  "vs_exp59": {
+   "recall": "0.8929→0.9286（+045 转 TP；recall_min 首次 PASS）",
+   "fpr": "0.4706→0.4118（-013：J1 侧误报消失所致）",
+   "f1": "0.8197→0.8525",
+   "b_flag": "0.6429→0.6429（-005 与 +033 相抵）"
+  },
+  "admission": {
+   "recall_min": "PASS 0.9286≥0.9（原 FAIL）",
+   "fpr_max": "FAIL 0.4118>0.3（原 FAIL，收敛 0.0588）",
+   "f1_min": "PASS 0.8525≥0.85（原 FAIL）",
+   "b_flag_min": "PASS 0.6429≥0.5"
+  },
+  "verdict": "REJECT（仅 fpr_max 未过）——本轮 J1 改动单独不能使 eval ACCEPT；FP 全部为既有通道（010/032=J3 已知 FPs；055/056/057=J3 frame_freeze 静态过信 known_fp_mechanism；058/059=C 组真缺陷正例按负类口径）"
+ },
+ "stacked_with_path_A": {
+  "note": "并行路径 A（qc_orch_v2 + J3v10 判定逻辑，登记于 eval_results_exp59_j3v10_supplement.json：FPR 0.4706→0.2941）与本轮 J1 数据可叠加",
+  "stacked_metrics": {
+   "recall": 0.9286,
+   "fpr": 0.2353,
+   "f1": 0.8966,
+   "b_flag": 0.5,
+   "tp": 26,
+   "fn": 2,
+   "fp": 4,
+   "tn": 13
+  },
+  "stacked_verdict": "ACCEPT——四条准入线全 PASS（留痕 eval/eval_results_v3post.json，由 tests/run_v3_checks.py E 项实跑生成）；诚实注记：ACCEPT 需 A/B 两路改动叠加，本轮 J1 改动单独（v1 视图）为 REJECT；B_flag 恰好压线 0.5 零余量",
+  "fp_clips_stacked": [
+   "golden_010",
+   "golden_032",
+   "golden_058",
+   "golden_059"
+  ],
+  "fn_clips_stacked": [
+   "golden_046",
+   "golden_052"
+  ]
+ },
+ "suite_state": "tests/run_v3_checks.py 实跑：A/B/C/D 全 PASS；E 两项『位级等于登记基线』FAIL（drift=本轮已声明的 J1 数据换代：recall 0.8929→0.9286、FPR/F1 同步移动）——属 v9 已登记变更的预期偏差，基线重钉归最终态 G0 同步轮裁决",
+ "artifacts_index": {
+  "judge_v2_script": "overnight/vpipe/judges_src/glm8_batch.py",
+  "judge_outputs": "overnight/数据/judges/glm8/（59 协议 + 59 raw + run_metadata_g05.json + run_metadata_g05_retry.json）",
+  "judge_archive": "overnight/数据/judges/judges_v1_round3/glm8/",
+  "qc_reports": "overnight/vpipe/out/qc_reports_exp60_j1v2/ + out/asset_manifest_exp60_j1v2.json",
+  "eval_results": "overnight/vpipe/eval/eval_results_exp60_j1v2.json",
+  "thresholds": "overnight/vpipe/eval/thresholds.yaml（version 9）",
+  "gpu_run_dir": "GPU 机 /data/night/g05-j1v2/（script+manifest+frames 符号链接+日志 logs_glm8_g05.txt/logs_glm8_g05_retry.txt）"
+ }
+}

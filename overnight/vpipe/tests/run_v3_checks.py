@@ -205,14 +205,17 @@ def main():
     check("E qc_orch_v2 回放 exit=0", r.returncode == 0, "exit=%s" % r.returncode)
     r = run([PY, HERE / "eval" / "eval_run.py", "--qc-dir", HERE / "out" / "qc_reports_v3post",
              "--out", HERE / "eval" / "eval_results_v3post.json"])
-    # D-3 补缺后（2026-10-09 v8）：金标 59 条上 E10=REJECT 是已登记状态
-    # （eval_results_exp59_supplement.json；准入线未放水；+2 FP 为 C 组真缺陷
-    # 条目检出的机械记账，可比口径=剔除 058/059 后 57 条与 exp57 基线一致）。
-    # 本检查的纪律是「零未声明偏差」：位级等于登记基线即通过；
-    # 质量门未达的事实是已上抛 owner 的开放项，不在此处伪装 ACCEPT。
-    reg = HERE / "eval" / "eval_results_exp59_supplement.json"
+    # 2026-10-09 判官配方迭代路径 A+B 收官后（exp61）：59 条金标 E10=ACCEPT，
+    # 登记基线 = eval_results_exp61_ab_accept_supplement.json
+    # （R=0.9286 / FPR=0.2353 / F1=0.8966 / B_flag=0.5，四条准入线全过）。
+    # A 路（thresholds v10/v11：J3 分通道阈 frame_freeze=0.71 + 低运动平台声明制豁免）
+    # 单跑为 R=0.8929/FPR=0.2941 REJECT（仅 recall）；B 路（J1 rubric 时序帧对，
+    # prompt_version 04faaf977765）单跑为 v1 视图 R=0.9286/FPR=0.4118 REJECT（仅 fpr）；
+    # 两路叠加才 ACCEPT——诚实注记在 exp61 supplement 的 paths 段。
+    # 本检查纪律=「零未声明偏差」：位级等于登记基线即通过。
+    reg = HERE / "eval" / "eval_results_exp61_ab_accept_supplement.json"
     if reg.is_file():
-        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_exp59_metrics", {})
+        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_ab_metrics", {})
         cur = json.loads((HERE / "eval" / "eval_results_v3post.json").read_text(encoding="utf-8"))
         m = cur.get("main", {})
         drift = {k: (m.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if m.get(k) != base.get(k)}
@@ -229,9 +232,17 @@ def main():
     check("E qc_orch v1 回放 exit=0", r.returncode == 0, "exit=%s" % r.returncode)
     r = run([PY, HERE / "eval" / "eval_run.py", "--qc-dir", HERE / "out" / "qc_reports_v3post_v1",
              "--out", HERE / "eval" / "eval_results_v3post_v1.json"])
-    reg = HERE / "eval" / "eval_results_exp59_supplement.json"
+    # v1（qc_orch.py，契约 1.0）为冻结兼容路径：不实施 v10/v11 J3 配方（分通道阈/豁免仅在
+    # qc_orch_v2）。其登记基线 = eval_results_exp60_j1v2_supplement.json 的 e10_v1_view
+    # （R=0.9286/FPR=0.4118/F1=0.8525/B_flag=0.6429，REJECT 仅 fpr_max）。
+    # 相对旧 exp59 登记的两处漂移均为已声明：① Path B 的 J1 rubric 升版更新共享判官存储
+    # （judges/glm8，两路回放共用），golden_045 转 TP；② thresholds v11 全局阈 0.71 被
+    # v1 的 j3_flag(probs, thr) 读取，消去 FP 013。豁免逻辑不在 v1，故 FPR 0.4118 不过线
+    # 是该路径的已声明分代差异，不是未声明偏差。
+    reg = HERE / "eval" / "eval_results_exp60_j1v2_supplement.json"
     if reg.is_file():
-        base = json.loads(reg.read_text(encoding="utf-8")).get("e10_exp59_metrics", {})
+        base = (json.loads(reg.read_text(encoding="utf-8"))
+                .get("e10_v1_view", {}).get("metrics", {}))
         cur = json.loads((HERE / "eval" / "eval_results_v3post_v1.json").read_text(encoding="utf-8"))
         m = cur.get("main", {})
         drift = {k: (m.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if m.get(k) != base.get(k)}

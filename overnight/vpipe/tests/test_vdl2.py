@@ -281,15 +281,22 @@ def test_v1_acceptance_path_replay_eval_accept():
     n_golden = len(json.loads((VPIPE / "eval" / "golden_manifest.json").read_text(encoding="utf-8"))["items"])
     assert r.returncode == 0 and f"回放 {n_golden} clips" in r.stdout, r.stdout + r.stderr
     r2 = subprocess.run([sys.executable, str(VPIPE / "eval" / "eval_run.py"),
-                         "--qc-dir", str(out_qc)], capture_output=True, text=True, cwd=str(VPIPE))
-    # D-3 补缺后（2026-10-09 v8）：59 条金标上 E10=REJECT 是已登记状态
-    # （eval_results_exp59_supplement.json）。本断言纪律=零未声明偏差：
-    # 位级等于登记基线即通过；质量门未达是已上抛 owner 的开放项，不伪装 ACCEPT。
+                         "--qc-dir", str(out_qc),
+                         "--out", str(VPIPE / "eval" / "eval_results_v1check.json")],
+                        capture_output=True, text=True, cwd=str(VPIPE))
+    # 2026-10-09 判官配方 A+B 收官后（exp61）：v1 兼容路径（契约 1.0，不实施
+    # v10/v11 J3 分通道阈+豁免）登记基线 = eval_results_exp60_j1v2_supplement.json
+    # 的 e10_v1_view（R=0.9286/FPR=0.4118/F1=0.8525，REJECT 仅 fpr_max）。
+    # 相对旧 exp59 登记的漂移均为已声明：① Path B 的 J1 rubric 升版更新共享判官存储
+    # （judges/glm8，045 转 TP）；② thresholds v11 全局阈 0.71 被 v1 的
+    # j3_flag(probs, thr) 读取（013 脱离 FP 集）。豁免逻辑不在 v1，FPR 不过线是
+    # 已声明的分代差异，不是未声明偏差。本断言纪律=零未声明偏差：位级等于登记基线。
     if "ACCEPT" in r2.stdout:
         assert r2.returncode == 0, r2.stdout + r2.stderr
     else:
-        base = json.loads((VPIPE / "eval" / "eval_results_exp59_supplement.json")
-                          .read_text(encoding="utf-8"))["e10_exp59_metrics"]
-        cur = json.loads((VPIPE / "eval" / "eval_results.json").read_text(encoding="utf-8"))["main"]
+        base = (json.loads((VPIPE / "eval" / "eval_results_exp60_j1v2_supplement.json")
+                           .read_text(encoding="utf-8"))["e10_v1_view"]["metrics"])
+        cur = json.loads((VPIPE / "eval" / "eval_results_v1check.json")
+                         .read_text(encoding="utf-8"))["main"]
         drift = {k: (cur.get(k), base.get(k)) for k in ("recall", "fpr", "f1") if cur.get(k) != base.get(k)}
         assert not drift and r2.returncode == 1, f"未声明偏差或退出码异常: {drift} rc={r2.returncode}"

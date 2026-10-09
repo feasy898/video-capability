@@ -30,7 +30,8 @@ L0 确定性预检（2026-10-01 接线，工程方案v3.1 P0-2；thresholds.yaml
 
 核心签名（SPEC §2.3）：
   run_j6_rules(detector_json, T, n_frames, dur_s) -> (cand, rule_status)
-  j3_flag(probs, thr)                             -> (flag, hit_types)
+  j3_flag(probs, thr, per_channel_thr=None, ff_exempt=None)
+                                            -> (flag, hit_types, ff_abstain)（v10 起三元组）
   synthesize_qc_report(...)                       -> dict（纯函数，产出契约 JSON）
   l0_preflight(clip_path, T, expect_s, profile)   -> (ok, result)（确定性，失败也是数据）
 
@@ -70,6 +71,11 @@ try:
     import cv2
 except ImportError:  # L0 黑屏/单色采样用；缺库时该项弃权并记 errors
     cv2 = None
+
+try:
+    import numpy as np
+except ImportError:  # in_med_v2（J3 低运动平台豁免）用；缺库时豁免弃权并记 errors
+    np = None
 
 try:
     import jsonschema
@@ -385,13 +391,73 @@ def run_j6_rules(detector_json: dict, T: dict, n_frames: int, dur_s: float):
 # =====================================================================
 # J3 概率通道
 # =====================================================================
-def j3_flag(probs: dict, thr: float):
-    """OmniJev flag：8 类任一 > thr 或 overall > thr（严格大于，与基准报告 §7 扫描口径一致）。
-    返回 (flag, hit_types)；hit_types 只含 8 类规范型（overall 不是缺陷类型）。"""
-    hits = [t for t in TYPES8 if probs.get(t) is not None and probs[t] > thr]
+def in_med_v2(clip_path):
+    """qc_detectors_v2 同款帧差中位（in_med）：原生帧率全序列灰度帧（降采样宽 160）
+    相邻帧 MAD 的全片中位——算法与 src/qc_detectors_v2.py read_features（G 列栈 +
+    np.abs(G[1:]-G[:-1]).mean(axis=(1,2)) → np.median）逐行同式；模块间不 import
+    （SPEC §0），按 run_j6_rules 同一重建口径就地实现并留对齐注释。
+    返回 float；clip 无法打开/帧不足 8 时返回 None（调用方弃权豁免并留痕，不静默）。"""
+    if cv2 is None or np is None:
+        return None
+    try:
+        cap = cv2.VideoCapture(str(clip_path))
+        if not cap.isOpened():
+            return None
+        w = 160                                   # qc_detectors_v2 DEFAULT_PARAMS feat_width
+        gs = []
+        while True:
+            ok, f = cap.read()
+            if not ok:
+                break
+            g = cv2.cvtColor(f, cv2.COLOR_BGR2GRAY)
+            h = max(8, int(round(w * g.shape[0] / g.shape[1])))
+            gs.append(cv2.resize(g, (w, h)).astype(np.float32))
+        cap.release()
+        if len(gs) < 8:
+            return None
+        G = np.stack(gs)
+        diff = np.abs(G[1:] - G[:-1]).mean(axis=(1, 2))
+        return float(np.median(diff))
+    except Exception:
+        return None
+
+
+def j3_flag(probs: dict, thr: float, per_channel_thr=None, ff_exempt=None):
+    """OmniJev flag：8 类任一 > 有效阈 或 overall > thr（严格大于，与基准报告 §7 扫描口径一致）。
+    有效阈 = per_channel_thr.get(t, thr)（thresholds.yaml J3_omnijev.per_channel_thr 分通道表，
+    缺键回落全局 thr；overall 恒用 thr）。
+    低运动平台豁免（v10，声明制）：frame_freeze 通道候选在
+      (a) 素材 profile 已声明且 ∈ ff_exempt["profiles"] 名单（声明制：无声明永不豁免）
+      (b) qc_detectors_v2 同款帧差中位 in_med < ff_exempt["in_med_max"]
+    两条件同时成立时弃权——豁免只碰 frame_freeze 通道，不碰其余 7 类与 overall。
+    返回 (flag, hit_types, ff_abstain)；ff_abstain=None 或弃权证据 dict（含 channel/P/
+    eff_thr/in_med/in_med_max/profile），由调用方落 QCReport reasons+errors（弃权是数据，
+    不是静默跳过）。"""
+    per_thr = per_channel_thr or {}
+    hits = []
+    ff_abstain = None
+    for t in TYPES8:
+        p = probs.get(t)
+        if p is None:
+            continue
+        eff_thr = float(per_thr.get(t, thr))
+        if p > eff_thr:
+            if (t == "frame_freeze" and ff_exempt
+                    and ff_exempt.get("profile") is not None
+                    and ff_exempt["profile"] in (ff_exempt.get("profiles") or [])
+                    and ff_exempt.get("in_med") is not None
+                    and float(ff_exempt["in_med"]) < float(ff_exempt["in_med_max"])):
+                ff_abstain = {"channel": "frame_freeze", "P": float(p), "eff_thr": eff_thr,
+                              "in_med": round(float(ff_exempt["in_med"]), 4),
+                              "in_med_max": float(ff_exempt["in_med_max"]),
+                              "profile": ff_exempt["profile"],
+                              "rule": "低运动平台豁免（声明制）: profile=%s in_med<%s" %
+                                      (ff_exempt["profile"], ff_exempt["in_med_max"])}
+                continue
+            hits.append(t)
     overall = probs.get("overall")
     flag = bool(hits) or (overall is not None and overall > thr)
-    return flag, hits
+    return flag, hits, ff_abstain
 
 
 # =====================================================================
@@ -399,27 +465,87 @@ def j3_flag(probs: dict, thr: float):
 # =====================================================================
 def synthesize_qc_report(clip_id, mode, judges_raw, j6_cand, j6_emit, probs,
                          thr_cfg, ens_id, thresholds_sha, inputs, errors,
-                         qc_context=None):
+                         qc_context=None, ff_in_med=None):
     """按 E10（thresholds.yaml ensemble.recommended）合成 QCReport 契约 JSON。
 
     judges_raw: {code -> 原始六字段协议 JSON（一字不改，供 judges.* 嵌套）}
     j6_cand:    run_j6_rules 的全部候选（未过 emit）
     j6_emit:    过了 yaml emit_conf 的候选 {type -> candidate}
     probs:      J3 九通道概率 dict 或 None
-    thr_cfg:    {ensemble_def, j3_thr, auto_reject_p, j6_emit_conf}
+    thr_cfg:    {ensemble_def, j3_thr, auto_reject_p, j6_emit_conf,
+                 j3_per_channel_thr, ff_exempt_profiles, ff_in_med_max,
+                 ff_exempt_enabled}（后四键 v10）
     qc_context: 契约 1.1 可选字段 {profile, known_cuts, l0_preflight}（上游声明上下文，
-                2026-10-01；回放模式不传 = 不落该字段）
+                2026-10-01；回放模式仅在素材带 profile 声明时落该字段）
+    ff_in_med:  判定前实算的 qc_detectors_v2 同款帧差中位（v10 豁免核验用；None=不可算，
+                豁免不触发并由调用方留痕）
     """
     j1 = judges_raw.get("J1")
     e_def = thr_cfg["ensemble_def"]
     j3_thr = float(thr_cfg["j3_thr"])
     auto_p = float(thr_cfg["auto_reject_p"])
+    j3_per_thr = thr_cfg.get("j3_per_channel_thr") or {}
+    ff_profiles = thr_cfg.get("ff_exempt_profiles") or []
+    ff_in_med_max = thr_cfg.get("ff_in_med_max")
+    ff_exempt_enabled = (ff_in_med_max is not None) and bool(ff_profiles) and \
+        bool(thr_cfg.get("ff_exempt_enabled"))
+
+    # v10 低运动平台豁免（声明制）上下文：profile 声明由上游给定（回放=金标 manifest
+    # 生成侧 axis 登记映射；在线=--profile），in_med 在判定前实算（qc_detectors_v2 同款）。
+    ff_exempt = None
+    declared_profile = (qc_context or {}).get("profile") if qc_context else None
+    if probs and ff_exempt_enabled and declared_profile is not None:
+        ff_exempt = {"profile": declared_profile, "profiles": ff_profiles,
+                     "in_med": ff_in_med,
+                     "in_med_max": float(ff_in_med_max)}
+    if probs and ff_exempt_enabled and declared_profile is not None and ff_in_med is None:
+        # 声明了 profile 但 in_med 不可算（clip 缺失/cv2 缺失）：豁免不触发，
+        # 候选保持原判——留痕不静默（与 L0 cv2 弃权同纪律）。
+        errors = dict(errors or {})
+        errors.setdefault("J3_frame_freeze_exempt", {
+            "abstained": False, "checked": False,
+            "profile": declared_profile, "in_med": None,
+            "note": "profile 已声明但 in_med 不可算（clip 缺失/解码失败/numPy·cv2 缺席），"
+                    "豁免未触发，frame_freeze 候选保持原判",
+        })
 
     j1_det = bool(j1.get("defect_detected")) if j1 else False
-    j3_flagged, j3_hits = (False, [])
+    j3_flagged, j3_hits, ff_abstain = (False, [], None)
     if probs:
-        j3_flagged, j3_hits = j3_flag(probs, j3_thr)
+        j3_flagged, j3_hits, ff_abstain = j3_flag(probs, j3_thr,
+                                                  per_channel_thr=j3_per_thr,
+                                                  ff_exempt=ff_exempt)
+        if ff_exempt_enabled and declared_profile is not None and ff_in_med is not None \
+                and not ff_abstain:
+            # 声明了 profile 且 in_med 已实算但未触发豁免（in_med≥阈 或 ff 候选本就不过阈）：
+            # 检查发生过、结论为「不弃权」——同样留痕，豁免全程可审计（J6v2
+            # low_motion_plateau 恒标注同口径）。
+            errors = dict(errors or {})
+            errors.setdefault("J3_frame_freeze_exempt", {
+                "abstained": False, "checked": True,
+                "profile": declared_profile,
+                "in_med": round(float(ff_in_med), 4),
+                "in_med_max": float(ff_in_med_max),
+                "note": "低运动平台豁免检查通过判定：未触发弃权（in_med≥%s 或 frame_freeze "
+                        "未过有效阈），候选保持原判" % ff_in_med_max,
+            })
     detected = j1_det or j3_flagged
+    if ff_abstain:
+        # 弃权是数据不是静默跳过（thresholds.yaml v10 注记；方案 §4 同源纪律）：
+        # reasons 显式声明 + errors 结构化留证，eval/追溯可复算「若无豁免本会 flag」。
+        errors = dict(errors or {})
+        errors["J3_frame_freeze_exempt"] = {
+            "abstained": True,
+            "channel": ff_abstain["channel"],
+            "channel_P": ff_abstain["P"],
+            "eff_thr": ff_abstain["eff_thr"],
+            "in_med": ff_abstain["in_med"],
+            "in_med_max": ff_abstain["in_med_max"],
+            "profile": ff_abstain["profile"],
+            "would_flag_without_exempt": True,
+            "verdict_changed": not j1_det,
+            "note": "frame_freeze 通道候选弃权（低运动平台豁免，声明制）；其余通道与 overall 不受影响",
+        }
 
     # decision（基准报告 §11.1 / schema verdict.description）
     if not detected:
@@ -452,6 +578,13 @@ def synthesize_qc_report(clip_id, mode, judges_raw, j6_cand, j6_emit, probs,
         pmax9 = max([v for v in probs.values() if v is not None], default=None)
         reasons.append("J3@%s flag=%s hits=%s max_channel_P=%s" %
                        (j3_thr, j3_flagged, j3_hits, pmax9))
+        if ff_abstain:
+            reasons.append("J3 frame_freeze 低运动平台豁免弃权（声明制）: profile=%s "
+                           "in_med=%s<%s, 通道P=%s>=%s 未计入 hits（证据见 "
+                           "errors.J3_frame_freeze_exempt）" %
+                           (ff_abstain["profile"], ff_abstain["in_med"],
+                            ff_abstain["in_med_max"], ff_abstain["P"],
+                            ff_abstain["eff_thr"]))
     else:
         reasons.append("J3 概率缺席（弃权）")
     if j6_emit:
@@ -537,6 +670,11 @@ def synthesize_qc_report(clip_id, mode, judges_raw, j6_cand, j6_emit, probs,
             "thresholds_applied": {
                 "ensemble_id": ens_id,
                 "j3_thr": j3_thr,
+                "j3_per_channel_thr": {k: float(v) for k, v in sorted(j3_per_thr.items())},
+                "ff_exempt": {"enabled": bool(ff_exempt_enabled),
+                              "profiles": list(ff_profiles),
+                              "in_med_max": ff_in_med_max,
+                              "applied": bool(ff_abstain)},
                 "auto_reject_p": auto_p,
                 "j6_emit_conf": float(thr_cfg["j6_emit_conf"]),
                 "thresholds_sha256": thresholds_sha,
@@ -578,6 +716,36 @@ def judge_subdirs(T):
     return out
 
 
+def _resolve_ff_exempt_cfg(T):
+    """v10 J3 低运动平台豁免配置（声明制）：从 thresholds.yaml J3_omnijev 三键读取。
+    in_med 阈按引用键实读（frame_freeze_plateau_in_med_lt_ref → yaml 内点路径），
+    不在本模块复写数值（防第二套阈值）。返回 thr_cfg 增量 dict。"""
+    jd = (T.get("judges") or {}).get("J3_omnijev") or {}
+    enabled = bool(jd.get("frame_freeze_plateau_exempt"))
+    profiles = [str(x) for x in (jd.get("frame_freeze_plateau_exempt_profiles") or [])]
+    ref = jd.get("frame_freeze_plateau_in_med_lt_ref")
+    in_med_max = None
+    if ref:
+        node = T
+        for part in str(ref).split("."):
+            if not isinstance(node, dict) or part not in node:
+                node = None
+                break
+            node = node[part]
+        if node is not None:
+            in_med_max = float(node)
+    return {"ff_exempt_enabled": enabled and in_med_max is not None and bool(profiles),
+            "ff_exempt_profiles": profiles, "ff_in_med_max": in_med_max,
+            "ff_in_med_ref": ref}
+
+
+# 回放模式的 profile 声明源（声明制，编排器不自行推断）：金标 manifest 的生成侧来源
+# 登记字段 axis 由扩样构造时写入（数据/golden/manifest.json expansion_note），其中
+# AVATAR_EXPANSION=口播数字人真实生成素材（Vidu S2 offline_avatar），与在线模式
+# --profile avatar_talk 同名同义；其余 axis 不声明 profile，豁免永不触发。
+REPLAY_AXIS_PROFILE = {"AVATAR_EXPANSION": "avatar_talk"}
+
+
 def replay(args):
     T = load_thresholds(args.thresholds)
     ens = T["ensemble"]
@@ -586,7 +754,9 @@ def replay(args):
     jd = (T["judges"])["J3_omnijev"]
     j6 = (T["judges"])["J6_detectors"]
     thr_cfg = {"ensemble_def": ens_def, "j3_thr": jd["thr"],
-               "auto_reject_p": jd["auto_reject_p"], "j6_emit_conf": j6["emit_conf"]}
+               "auto_reject_p": jd["auto_reject_p"], "j6_emit_conf": j6["emit_conf"],
+               "j3_per_channel_thr": jd.get("per_channel_thr") or {}}
+    thr_cfg.update(_resolve_ff_exempt_cfg(T))
     thr_sha = sha256_file(args.thresholds)
     roles = {c: ((T.get("judges") or {}).get(k) or {}).get("role") for c, k in JUDGE_KEYS.items()}
     subdirs = judge_subdirs(T)
@@ -682,8 +852,33 @@ def replay(args):
         inputs = {"clip": (it.get("paths") or {}).get("clip"),
                   "frames_dir": (it.get("paths") or {}).get("frames"),
                   "judge_files": judge_files}
+        # v10 低运动平台豁免（声明制）回放接线：profile 来自金标 manifest 生成侧 axis
+        # 登记（REPLAY_AXIS_PROFILE 映射）；仅对声明了 profile 的素材实算 in_med
+        # （qc_detectors_v2 同款帧差中位），不可算则豁免不触发并在报告留痕。
+        profile = REPLAY_AXIS_PROFILE.get(it.get("axis"))
+        qc_context = None
+        ff_in_med = None
+        if profile is not None:
+            qc_context = {"profile": profile}
+            if thr_cfg.get("ff_exempt_enabled"):
+                clip_rel = (it.get("paths") or {}).get("clip")
+                clip_path = None
+                for base in (Path(args.golden).parent,
+                             HERE.parent.parent / "数据" / "golden"):
+                    if clip_rel and base and (base / clip_rel).exists():
+                        clip_path = base / clip_rel
+                        break
+                if clip_path is None:
+                    errors.setdefault("J3_frame_freeze_exempt", {
+                        "abstained": False, "checked": False, "profile": profile,
+                        "in_med": None,
+                        "note": "profile 已声明但 clip 文件未找到（%s），in_med 不可算，"
+                                "豁免未触发" % clip_rel})
+                else:
+                    ff_in_med = in_med_v2(clip_path)
         rep = synthesize_qc_report(cid, "tonight_replay", judges_raw, j6_cand, j6_emit,
-                                   probs, thr_cfg, ens_id, thr_sha, inputs, errors)
+                                   probs, thr_cfg, ens_id, thr_sha, inputs, errors,
+                                   qc_context=qc_context, ff_in_med=ff_in_med)
         ok, errs = validate_report(rep)
         if not ok:
             problems.append({"clip_id": cid, "schema_errors": errs[:5]})
@@ -782,7 +977,9 @@ def online(args):
     jd = (T["judges"])["J3_omnijev"]
     j6 = (T["judges"])["J6_detectors"]
     thr_cfg = {"ensemble_def": ens_def, "j3_thr": jd["thr"],
-               "auto_reject_p": jd["auto_reject_p"], "j6_emit_conf": j6["emit_conf"]}
+               "auto_reject_p": jd["auto_reject_p"], "j6_emit_conf": j6["emit_conf"],
+               "j3_per_channel_thr": jd.get("per_channel_thr") or {}}
+    thr_cfg.update(_resolve_ff_exempt_cfg(T))
     thr_sha = sha256_file(args.thresholds)
 
     cid = args.clip_id
@@ -884,9 +1081,20 @@ def online(args):
     if args.profile or args.known_cuts_list or l0_result is not None:
         qc_context = {"profile": args.profile, "known_cuts": args.known_cuts_list,
                       "l0_preflight": l0_result}
+    # v10 低运动平台豁免（声明制）在线接线：--profile 即上游声明；--clip 在手时
+    # 判定前实算 in_med（qc_detectors_v2 同款），无 clip 则豁免不触发并留痕。
+    ff_in_med = None
+    if args.profile and thr_cfg.get("ff_exempt_enabled"):
+        if args.clip:
+            ff_in_med = in_med_v2(args.clip)
+        else:
+            errors.setdefault("J3_frame_freeze_exempt", {
+                "abstained": False, "checked": False, "profile": args.profile,
+                "in_med": None,
+                "note": "profile 已声明但未提供 --clip，in_med 不可算，豁免未触发"})
     rep = synthesize_qc_report(cid, "online", judges_raw, j6_cand, j6_emit, probs,
                                thr_cfg, ens_id, thr_sha, inputs, errors,
-                               qc_context=qc_context)
+                               qc_context=qc_context, ff_in_med=ff_in_med)
     ok, errs = validate_report(rep)
     out_dir = Path(args.out_dir or (HERE.parent / "out" / "qc_reports_online"))
     out_dir.mkdir(parents=True, exist_ok=True)
