@@ -73,6 +73,15 @@ assert all(v.get(k) for k in ('spec_version','registry_version','prompt_version'
 print('  ·', {k: str(v[k])[:20] for k in v})
 " && ok "三版本字段在位（spec/registry/prompt）" || bad "三版本字段缺失"
 
+# ── 门 5：VDL v2 试点裁决（D-2）──────────────────────────
+echo "── 门 5：VDL v2 试点"
+(cd overnight/vpipe && env -u VDL2_VPO_ROOT timeout 180 /usr/bin/python3 -m pytest tests/test_vdl2.py -q >/tmp/vdl2.log 2>&1)
+grep -qE "[0-9]+ passed" /tmp/vdl2.log && ! grep -q "failed" /tmp/vdl2.log \
+  && ok "VDL v2 双闸门测试全过（$(grep -oE '[0-9]+ passed' /tmp/vdl2.log)）" || bad "VDL v2 测试未过（见 /tmp/vdl2.log）"
+env -u VDL2_VPO_ROOT timeout 120 /usr/bin/python3 overnight/vpipe/src/vdl2/vdl2_validate.py \
+  --pkg overnight/vpipe/examples/vdl2/10_shortdrama_ep01.yaml >/tmp/vdl2v.log 2>&1 \
+  && ok "短剧线 VDL v2 包 validate PASS（裁决=继续，evidence/vdl2-pilot-verdict.md）" || bad "VDL v2 短剧线包校验失败"
+
 # ── 汇总 ─────────────────────────────────────────────────
 echo "=============================="
 echo "M2/M3 验收门：PASS $PASS / FAIL $FAIL"
