@@ -1,0 +1,15 @@
+seg_04 rc=1
+seg_05 rc=1
+seg_11 rc=1
+seg_10 rc=0
+seg_08 rc=0
+seg_01 rc=0
+seg_03 rc=0
+seg_06 rc=0
+seg_09 rc=0
+seg_02 rc=0
+seg_07 rc=1
+retry seg_05 rc=0
+retry seg_04 rc=0
+retry seg_11 rc=0
+retry seg_07 rc=0

@@ -1,0 +1,5 @@
+[tts 01:50:15] [cfg] base=https://api.stepfun.com/step_plan/v1 model=stepaudio-2.5-tts voice=cixingnansheng format=wav speed=1.0 key=3ixelB****(len=65)
+[tts 01:50:15] [tts] POST https://api.stepfun.com/step_plan/v1/audio/speech input_len=33 → /data/night/g01-rerun/video-capability/overnight/vpipe/out/m2/shortdrama_ep01/cp10/tts_seg_11.wav
+[tts 01:52:34] [tts] 落盘 /data/night/g01-rerun/video-capability/overnight/vpipe/out/m2/shortdrama_ep01/cp10/tts_seg_11.wav（320206B sniff=riff_wave）
+[tts 01:52:34] [meta] → /data/night/g01-rerun/video-capability/overnight/vpipe/out/m2/shortdrama_ep01/cp10/tts_seg_11.meta.json
+[tts 01:52:34] [done] duration=6.64s cost_est=¥0.01566 latency=138.511s request_id=None
