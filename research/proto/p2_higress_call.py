@@ -44,8 +44,9 @@ CLIPS = ["golden_002", "golden_001"]  # 注入缺陷（期望检出）在前，�
 
 def bao_key() -> str:
     """OpenBao 读 Higress consumer key（只进内存）。"""
+    # [5d 2026-10-10] gov 旧根令牌目录已清空，RT 改 age 解 escrow（ssh 至 gov root 持 owner.key 0600）
     cmd = ['ssh', 'newbox',
-           'RT=$(cat /etc/bao/root-token); '
+           'RT=$(age -d -i /opt/opch/secrets/owner.key /opt/opch/secrets/root-token.age); '
            'docker exec -e BAO_ADDR=http://127.0.0.1:8200 -e BAO_TOKEN="$RT" '
            'company-bao-1 bao kv get -format=json kv/company/gpu/models/higress-consumer']
     res = subprocess.run(cmd, capture_output=True, timeout=60)
