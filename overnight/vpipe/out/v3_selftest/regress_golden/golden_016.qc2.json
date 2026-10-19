@@ -1,6 +1,6 @@
 {
  "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/golden/clips/golden_016.mp4",
- "generated_at": "2026-10-01T18:07:00",
+ "generated_at": "2026-10-05T12:53:01",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 5.042,
@@ -132,6 +132,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 0.28
+  "analyze_sec": 0.23
  }
 }

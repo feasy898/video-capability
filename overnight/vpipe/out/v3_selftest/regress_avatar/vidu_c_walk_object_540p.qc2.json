@@ -1,6 +1,6 @@
 {
  "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/vidu_c_walk_object_540p.mp4",
- "generated_at": "2026-10-01T18:08:08",
+ "generated_at": "2026-10-05T12:54:04",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 22.0,
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 1.88
+  "analyze_sec": 1.72
  }
 }

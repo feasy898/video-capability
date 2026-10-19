@@ -1,6 +1,6 @@
 {
  "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/vidu_a_talk_540p.mp4",
- "generated_at": "2026-10-01T18:08:02",
+ "generated_at": "2026-10-05T12:53:59",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 21.0,
@@ -100,6 +100,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 1.81
+  "analyze_sec": 1.69
  }
 }

@@ -1,6 +1,6 @@
 {
  "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/j6_v2/synthetic/syn_swap.mp4",
- "generated_at": "2026-10-01T18:07:15",
+ "generated_at": "2026-10-05T12:53:15",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 5.167,
@@ -156,6 +156,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 0.74
+  "analyze_sec": 0.72
  }
 }

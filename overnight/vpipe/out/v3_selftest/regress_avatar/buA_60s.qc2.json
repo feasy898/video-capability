@@ -1,6 +1,6 @@
 {
  "clip": "/opt/gpumachine/projects/video-capability/overnight/数据/avatar_out/buA_60s.mp4",
- "generated_at": "2026-10-01T18:07:42",
+ "generated_at": "2026-10-05T12:53:40",
  "detector": "qc_detectors_v2.py temporal rules (frame-sequence, CPU-only, no VLM)",
  "clip_meta": {
   "duration_sec": 60.0,
@@ -138,6 +138,6 @@
  },
  "errors": {},
  "meta": {
-  "analyze_sec": 7.56
+  "analyze_sec": 6.85
  }
 }
