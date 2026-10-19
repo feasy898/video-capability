@@ -1,0 +1,194 @@
+{
+ "task": "视频能力 G0-1 终局复锁（夹具线 + 判官线两前置汇合：夹具对位 GPU + run_v3_checks 全量复跑）",
+ "generated_at": "2026-10-07T10:40:35",
+ "verdict": "ALL PASS / EXIT=0 —— GPU 机 /data/night/g01-rerun/video-capability @ 073a6ed 终态复跑 tests/run_v3_checks.py 20/20 PASS、0 FAIL；本轮迭代 2 轮（round1 阈 0.70 诚实红→round2 J3 工作点重扫 0.71 全绿）+ 终确认 1 轮（073a6ed 代码与 71f719d 仅差 docs 文件）",
+ "check_command": "cd /data/night/g01-rerun/video-capability/overnight/vpipe && rm -rf out/v3_selftest && /data/night/venv-vc3/bin/python tests/run_v3_checks.py",
+ "provenance": {
+  "repo_local": "/home/pan-ding/workspace/视频能力（main @ 073a6ed，三 commit：12ca6f6 夹具工具链 / 71f719d J3 阈重扫 / 073a6ed REPRODUCE.md，未 push）",
+  "gpu_clone": "/data/night/g01-rerun/video-capability（HEAD 073a6edf8478462d49401ed95824b69c86f1a404，与本地 main 一致；源码零未提交改动，git status 改动全部为 tracked 运行产物 eval_results*/qc_reports_v3post*/asset_manifest*/v3_selftest 快照刷新——按惯例不入库）",
+  "bundles": [
+   {
+    "file": "/data/night/g01-rerun/vcap-relock-12ca6f6.bundle",
+    "range": "0d1d9d6..main(12ca6f6)",
+    "sha256": "78653dd4635cc453fa2d23f511215ae604ff4d0d83faf705a229fa8a8de9f997（两端一致）"
+   },
+   {
+    "file": "/data/night/g01-rerun/vcap-relock-71f719d.bundle",
+    "range": "12ca6f6..main(71f719d)",
+    "sha256": "d7de0448762f6d7262928650ad3b8baaeb250e677908d1116f5e7372f855c72d（两端一致）"
+   },
+   {
+    "file": "/data/night/g01-rerun/vcap-relock-073a6ed.bundle",
+    "range": "71f719d..main(073a6ed)",
+    "sha256": "71fa8dc805acda575e1b25500903fbc0177cf6eb55932e913ac5590cdb305659"
+   }
+  ],
+  "fixtures_tar": {
+   "file": "/data/night/g01-rerun/vcap-fixtures-21.tgz",
+   "sha256": "c07fcbd34c6590b5afae4584afc96250fefc35eb2f6c168fb6ad64f7cc7ca78b（两端一致；21 片解包后逐片 sha256 双端 diff 为空）"
+  },
+  "run_logs_gpu": [
+   "/data/night/g01-relock-round1.log",
+   "/data/night/g01-relock-round2.log",
+   "/data/night/g01-relock-round3-final.log"
+  ]
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "commit": "12ca6f6",
+   "exit": 1,
+   "summary": "rm -rf out/v3_selftest 后全量：A 7/7、B 3/3、C 1/1、D 3/3（golden 40+syn 4+avatar 16 判定级零差异——夹具对位一次到位，19 片校准跨机成立）、E 回放 exit=0 ×2 与 schema ×2 过；仅 E eval_run(v2/1.1) 与 eval_run(v1/1.0) REJECT，FPR 4/12=0.3333 > 准入线 0.30",
+   "failures": [
+    "E eval_run(v2/1.1) ACCEPT exit=0 :: FPR 0.3333 vs ≤0.3，误报 [golden_006, golden_010, golden_013, golden_032]",
+    "E eval_run(v1/1.0 兼容) ACCEPT exit=0 :: 同因同误报清单"
+   ],
+   "attribution": "逐 clip 拆解（GPU 实测 qc_reports + judges 原文）：golden_006=J3 frame_freeze 概率 0.7069 以 0.0069 边际越过阈 0.70（判官三件套按 JUDGES-RERUN.md 配方重跑后概率整体微移，J3 通道可修）；golden_013=J1 glm8 布尔检出 frame_freeze conf 0.7（重建 rubric 真实再判，J1 进 E10 无阈可调，如实保留）；golden_010/032=E10 基线既有误报（thresholds.yaml ensemble.measured_baseline.fp_clips=[010,025,032]，本轮 025 反而恢复干净）。归因结论：非夹具问题（B/C/D 全绿），非判官格式问题（六字段/raw/run_metadata 全齐、回放 exit=0），属判官数据重跑后的 J3 工作点漂移——处置走 thresholds.yaml 头部修改规程 + JUDGES-RERUN.md §5 预案「重扫 yaml 阈值」"
+  },
+  {
+   "round": 2,
+   "commit": "71f719d",
+   "exit": 0,
+   "summary": "thresholds.yaml judges.J3_omnijev.thr 0.70→0.71（本机先改先 commit，增量 bundle 上 GPU fetch/checkout，GPU 侧零手改）后同命令全量：ALL PASS / EXIT=0",
+   "rescan_evidence": "GPU 实判官数据全阈扫描（模拟先在 thr=0.70 与 live 报告误报清单逐条一致后采信）：0.70 R=1.000/FPR=0.3333✗；0.71 R=1.000/FPR=0.2500(3/12)/F1=0.9143/B_flag=0.5833 ✓四准入线全过且余量最大；0.72/0.73 B_flag=0.5000 贴线无余量；≥0.74 golden_017(A) 漏检 R=0.9375；≥0.75 b_flag<0.50✗。选 0.71：唯一保持 R=1.000 的工作点，FPR/F1 回到 E10 基线值",
+   "measured_v2": {
+    "tp": 16,
+    "fn": 0,
+    "fp": 3,
+    "tn": 9,
+    "recall": 1.0,
+    "fpr": 0.25,
+    "precision": 0.8421,
+    "f1": 0.9143,
+    "fp_clips": [
+     "golden_010",
+     "golden_013",
+     "golden_032"
+    ]
+   },
+   "measured_v1": "与 v2 完全一致（同一合议定义 E10，qc_orch.py:326 同读 judges.J3_omnijev.thr）"
+  },
+  {
+   "round": 3,
+   "commit": "073a6ed",
+   "exit": 0,
+   "summary": "终确认轮（073a6ed=71f719d+REPRODUCE.md docs-only）：rm -rf out/v3_selftest 后全量重跑，20 [PASS] / 0 [FAIL]，ALL PASS / EXIT=0——最终 HEAD 即被测状态"
+  }
+ ],
+ "final_state": {
+  "exit_code": 0,
+  "summary": "ALL PASS",
+  "groups": {
+   "A_L0预检": "7/7 PASS",
+   "B_ghosting豁免": "3/3 PASS（证据落 temporal_rejected 含 low_motion_plateau，非静默）",
+   "C_known_cuts": "1/1 PASS（dh_final swap 切点 13.917s 白名单豁免）",
+   "D_无声明回归": "3/3 PASS（40+4+16 条判定级五元组与 v3base 零差异）",
+   "E_eval回归": "6/6 PASS（双契约回放 exit=0、eval_run 双 ACCEPT R=1.000/FPR=0.250/F1=0.9143、schema 1.1/1.0 抽验过）"
+  }
+ },
+ "thresholds_change": {
+  "what": "eval/thresholds.yaml judges.J3_omnijev.thr 0.70→0.71；gray_zone [0.70,0.90]→[0.71,0.90]（仅文档口径，回放代码不读本键，grep 核实）；version 2→3",
+  "authority": "thresholds.yaml 头部修改规程「改判定行为→必须重跑 eval_run 复核」+ JUDGES-RERUN.md §5 预案；commit 71f719d（含全阈扫描证据），不 push",
+  "honest_residual": "golden_013 为 J1 glm8 重跑后的真实布尔检出（clean 金标、frame_freeze conf 0.7），与阈无关——保留为误报，FPR 0.25 与 E10 基线持平、低于准入线 0.30。若需进一步压 FPR，属 J1 rubric 迭代（判官配方），不在本轮射程"
+ },
+ "data_alignment_final": {
+  "数据/golden": "symlink → /data/night/golden（40 条金标，既有未动）",
+  "数据/judges/{glm8,omnijev,videochat3}": "各 40 条六字段 JSON + raw/40 + run_metadata.json（*.json 计 41/目录；判官线产物，未动）",
+  "数据/judges/detectors/raw": "40 条 golden_*.qc.json J6 原始特征（既有未动）",
+  "数据/j6_v2/synthetic": "4 片夹具 mp4（本轮 scp 对位）",
+  "数据/avatar_out": "16 片夹具 mp4（本轮 scp 对位，覆盖旧 g9a 截段替代片 dh_stepfun/dh_design）",
+  "数据/digital_human": "dh_final_30s.mp4 夹具（与 avatar_out 同字节，本轮 scp 对位）",
+  "gpu_side_fixture_tweaks": "无——19 片校准跨机精确成立（round1 D 组即零差异），无需对位微调，无 GPU 侧夹具改动需回传；本机侧两 commit（71f719d/073a6ed）即迭代产物"
+ },
+ "fixture_manifest_sha256": [
+  {
+   "path": "overnight/数据/avatar_out/buA_120s.mp4",
+   "sha256": "111cfef3076a4c1c954eb7bec37b6de8467fe04e1c311c0d1267383c3bbe6b9a"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buA_30s.mp4",
+   "sha256": "afb72a800400d4862bad5aace3128442b796f1724040bb3f2d95ad2865ce8c7c"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buA_60s.mp4",
+   "sha256": "c7360204088d0d76b157b35c56fddc4681826381d4d8e70982c0390b97e0e7b1"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buB_turn.mp4",
+   "sha256": "33f03b4bd3a962bc2a2b8bf3ae11ccaf41880de810596c7f1b28c00979be22f0"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buB_walk.mp4",
+   "sha256": "cc177e9da622d6f521bd8784b62e76776754d46b4ee6273625e2dbfe2e3674dd"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buC_id1.mp4",
+   "sha256": "d781bd67bb778c63c8b36087a96787660a79c9cbcbf58104da40a4b3325e814c"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buC_id2.mp4",
+   "sha256": "43331aabd091275a1326dc6fe30cdb50341e1ad5a4238537f18c26577c321916"
+  },
+  {
+   "path": "overnight/数据/avatar_out/buD_clone.mp4",
+   "sha256": "65419d885a7495101fa2f1468726182091340956f2372522ed4c8e37841d3790"
+  },
+  {
+   "path": "overnight/数据/avatar_out/dh_design_720p.mp4",
+   "sha256": "049795666448a1617d1d10ddb2279dc3e5e9fc8952c1df49f42f4e559ae7ac58"
+  },
+  {
+   "path": "overnight/数据/avatar_out/dh_final_30s.mp4",
+   "sha256": "49dfbe459a0c03d17335e50f90bc2e68c227a215cc1fed6950006b1c88b4f205"
+  },
+  {
+   "path": "overnight/数据/avatar_out/dh_stepfun_720p.mp4",
+   "sha256": "f90a87a2e940b9a5027aea978cb7fe45946b0997b853981a7627ae55a2a15368"
+  },
+  {
+   "path": "overnight/数据/avatar_out/g9a_intro_60s_vidu.mp4",
+   "sha256": "edf440436ca7637927d0db5b746a2af49f377a44e65ce3413f266cfb0cdb7676"
+  },
+  {
+   "path": "overnight/数据/avatar_out/vidu_a_talk_540p.mp4",
+   "sha256": "3a17e1d646e356fd7c6656b5d7add0c307e901e3eeba260bd4e3e68aac6b978f"
+  },
+  {
+   "path": "overnight/数据/avatar_out/vidu_b2_text_novoice.mp4",
+   "sha256": "280ff821af5819c97b33c9af35a808b9a12fdbedfacd60899fee958d9a590db0"
+  },
+  {
+   "path": "overnight/数据/avatar_out/vidu_b_timeline_720p.mp4",
+   "sha256": "04b93b644191f94e7851c311c3e40717e7fb8f234e6fa94b54fbd7a177691df2"
+  },
+  {
+   "path": "overnight/数据/avatar_out/vidu_c_walk_object_540p.mp4",
+   "sha256": "6b4353c4686f9ea50b9a08991e203d597f69c1cfbde589528fadfbfa242f8723"
+  },
+  {
+   "path": "overnight/数据/digital_human/dh_final_30s.mp4",
+   "sha256": "49dfbe459a0c03d17335e50f90bc2e68c227a215cc1fed6950006b1c88b4f205",
+   "note": "与 avatar_out/dh_final_30s.mp4 同字节（md5 c400057591ae1fd7992a5ceb2a912a2e），B/C 组断言路径用 digital_human、D 组批量用 avatar_out"
+  },
+  {
+   "path": "overnight/数据/j6_v2/synthetic/syn_flicker.mp4",
+   "sha256": "718940ff08d73294ab5e2f3eecdfa471594cac40444081e48dd967b2f54fbaea"
+  },
+  {
+   "path": "overnight/数据/j6_v2/synthetic/syn_freeze.mp4",
+   "sha256": "6937020d2486c2d7b6d35699f2152174f40edbd0181c187b132a43c868ab2af8"
+  },
+  {
+   "path": "overnight/数据/j6_v2/synthetic/syn_ghost.mp4",
+   "sha256": "04ab23bc13f4114437e82447ddcf0ce4be2ba1026be3ddcefff441c60980e26a"
+  },
+  {
+   "path": "overnight/数据/j6_v2/synthetic/syn_swap.mp4",
+   "sha256": "a355e9b4e9dc8735e41242aa541a4d159e584585377f732029ae44caa9c3e369"
+  }
+ ],
+ "judges_reference": {
+  "recipe": "/data/night/g01-rerun/JUDGES-RERUN.md（本机：/home/pan-ding/workspace/视频能力-archive/JUDGES-RERUN.md）",
+  "note": "三判官输出重建配方不在本轮射程，本轮只消费"
+ }
+}

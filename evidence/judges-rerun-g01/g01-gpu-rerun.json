@@ -1,0 +1,92 @@
+{
+ "task": "视频能力 G0-1（v3 自检）GPU 机复锁",
+ "generated_at": "2026-10-06T18:20+08:00",
+ "host": "root@100.64.0.7（GPU 机，tailnet）",
+ "verdict": "诚实红：EXIT=1 / FAILED 9 项（非代码回归——全部失败可归因到素材缺口：dh 数字人原片灭失、j6_v2/synthetic 合成片灭失、judges 判官输出灭失）。代码侧真·复锁成功项：A 组 7/7 全过；D golden 40/40 判定级与 v3base 零偏差（两次独立运行一致）。",
+ "check_command": "cd /data/night/g01-rerun/video-capability/overnight/vpipe && /data/night/venv-vc3/bin/python tests/run_v3_checks.py",
+ "provenance": {
+  "repo_local": "/home/pan-ding/workspace/视频能力（git，main @ 0d1d9d6，源码零改动，未 commit 任何新提交）",
+  "bundle": "/data/night/tmp/vcap-g01.bundle（225,459,127 B）",
+  "bundle_sha256": "140497f5c51f75b3d60b238aeee76a906ebf3da9a639b3696d885422be51f089（两端一致）",
+  "head": "0d1d9d6 test(vdl2): judges 回放测试改自愈式条件跳过——数据灭失全域确认后不停红门",
+  "archive": "/data/night-archive/night-data-assets-20261005.tar.gz",
+  "archive_sha256": "7935d096a4e996fe74b2b76f68c4e038a3991f23e2398e84478b5d3438799d7c（与任务给定 7935d096a4e9… 一致，实测 sha256sum）",
+  "clone_checkout": "/data/night/g01-rerun/video-capability（git clone 自 bundle，clean tree，0d1d9d6）"
+ },
+ "env": {
+  "ffmpeg": "8.0.1（/usr/bin/ffmpeg）",
+  "python": "3.11.6（/data/night/venv-vc3/bin/python）",
+  "numpy": "2.2.6",
+  "opencv": "opencv-python-headless 5.0.0.93",
+  "pyyaml": "6.0.3（venv 已含，无需 pip 补——任务背景所述『缺 yaml』与实测不符）",
+  "jsonschema": "4.26.0（本次 pip install 补装；缺省时 qc_orch_v2.py:74-77 有降级路径）",
+  "preflight_smoke": "src/qc_detectors_v2.py --clip golden_001.mp4 → EXIT=0，detected=False types=[] conf=1.0（cv2 h264 解码链路通）"
+ },
+ "data_alignment": {
+  "数据/golden": "symlink → /data/night/golden（clips 40 条 golden_001..040.mp4，tar 包原物）",
+  "数据/judges/detectors/raw": "symlink → /data/night/results/j6（40 条 golden_*.qc.json J6 原始特征，generated_at=2026-09-29，含 color_stats/clip_meta/frame_diff/clip_sim——即原夜 J6 输入同源）；judges/{omnijev,glm8,videochat3} 灭失（全域 find 无 run_metadata.json / glm8 输出，judge_rerun/omnijev/raw 与 vc3/ 为空目录）",
+  "数据/avatar_out": "替代素材：dh_stepfun_720p.mp4（15.08s）/dh_design_720p.mp4（17.08s）= 仓内 overnight/vpipe/out/avatar_demo/g9a_intro_60s@vidu-s1.mp4（826×1114 h264+aac 61s，恰为工程方案v3.1.md:33 所记 720p 档 826×1114 竖屏）ffmpeg -c copy 截段，未重编码、未伪造内容",
+  "数据/digital_human/dh_final_30s.mp4": "替代素材：同源 -c copy 截 30.13s（原物 30.04s，md5 289f96f3… 见 工程方案v3.1.md:323——内容指纹不同，如实标注）",
+  "数据/j6_v2/synthetic": "缺失（4 条合成片 syn_freeze/flicker/swap/ghost 无生成器入仓、归档无、GPU 本地无——全域核实）"
+ },
+ "canonical_run": {
+  "label": "run2 清洁态（rm -rf out/v3_selftest 后重跑；以此为准）",
+  "exit_code": 1,
+  "summary": "FAILED 9 项",
+  "passes": [
+   "A1 黑屏片拒收 exit=4（拒因=L0 黑屏/单色帧占比超差: 1.000 > 0.500）",
+   "A1 拒收证据 l0.json 落盘",
+   "A1 拒因=黑屏占比",
+   "A2 时长超差拒收(default dev=10%) exit=4",
+   "A3 avatar 垫尾豁免放行(11s≤ceil(10)+1) exit=0",
+   "A4 avatar 超垫尾拒收(12.5s>11 上限) exit=4",
+   "A5 合规片 L0 通过 exit=0",
+   "D golden 无声明判定一致（40 条比对） diffs=[]",
+   "E qc_orch v1 回放 exit=0",
+   "E v2 报告 schema_version=1.1",
+   "E v1 报告 schema_version=1.0 仍合法"
+  ],
+  "failures": [
+   "B dh_stepfun_720p ghosting 误报归零 :: types=[] rej_keys=[]（替代素材无 ghosting 候选可豁免）",
+   "B dh_design_720p ghosting 误报归零 :: types=[] rej_keys=[]（同上）",
+   "B dh_final_30s ghosting 误报归零 :: types=[] rej_keys=[]（同上）",
+   "C dh_final_30s swap 13.917s 被白名单豁免 :: types=[]（替代素材无 13.917s 拼接切点，检测器无从检出，白名单无从豁免）",
+   "D syn 无声明判定一致（0 条比对） diffs=[]（数据/j6_v2/synthetic 缺失）",
+   "D avatar 无声明判定一致（2 条比对） diffs=[dh_design_720p.qc2.json, dh_stepfun_720p.qc2.json]（15 条原 avatar 片仅 2 条名下有替代物；判定级对比：原片 base=detect ghosting conf 0.766，替代片=clean conf 1.0——内容指纹实质被校验，替代物如实红）",
+   "E qc_orch_v2 回放 exit=0 :: exit=1（逐 clip errors：J3 run_metadata.json FileNotFoundError / J1 glm8/*.json FileNotFoundError / J5 同——判官数据灭失）",
+   "E eval_run(v2/1.1) ACCEPT :: REJECT（recall 0.0 vs ≥0.9 / F1 None / B_flag 0.0；fpr_max、schema 项过）",
+   "E eval_run(v1/1.0 兼容) ACCEPT :: REJECT（同因）"
+  ]
+ },
+ "run1_note": {
+  "label": "run1（未清 out/v3_selftest 旧产物，作废不采信，仅存证 /tmp/g01_run.log）",
+  "exit_code": 1,
+  "summary": "FAILED 8 项",
+  "caveat": "D syn 曾显示『PASS 4 条比对』、D avatar 显示『15 条比对』——经查系仓内 tracked 的原夜 v3_selftest/regress_* 残留产物与自身比对（stale 自比），非真复锁；清洁态重跑后 D syn 如实 0 条 FAIL。教训：该脚本不清理 OUT，复跑前须 rm -rf out/v3_selftest。"
+ },
+ "genuine_relocks": [
+  "A 组（P0-2 L0 预检接线）7/7：拒 3/3、放 2/2，与 worklog.md 2026-10-01 原夜记录一致",
+  "D golden 40/40 判定级（检出/类型/置信度/弃权键）与 out/j6v2_golden_v3base 零偏差——GPU 机 cv2 5.0/numpy 2.2 环境下 qc_detectors_v2 时序判定逐条复现，两次独立运行一致",
+  "J6 原始特征回放链路通（E 报告 errors 仅 J1/J3/J5，无 J6——results/j6 原始 qc.json 被 run_j6_rules 正常消费）",
+  "QCReport 契约双版本 schema_version 1.1/1.0 均正确落盘"
+ ],
+ "gaps_and_regeneration": [
+  {
+   "gap": "dh 数字人原片（avatar_out 15 条 + digital_human/dh_final_30s.mp4）灭失",
+   "blocks": "B×3、C、D-avatar",
+   "regen": "Vidu avatar 通道 + StepFun/MiniMax-Design TTS 重生成（工程方案v3.1.md:323-325：dh_stepfun_720p 15s 826×1114、dh_design_720p 17s、dh_final_30s 30.04s=a/b 拼接切点 13.917s、bu 系列 8 条、vidu 系列能力片 4 条；需 API credits，超本轮 worker 权限）"
+  },
+  {
+   "gap": "j6_v2/synthetic 4 条合成验证片（syn_freeze/flicker/swap/ghost）无生成器入仓",
+   "blocks": "D-syn",
+   "regen": "按 工程方案v3.1.md:161 口径重建注入签名（帧级核验后）入 数据/j6_v2/synthetic；建议本轮顺带把生成脚本补入仓"
+  },
+  {
+   "gap": "judges 判官输出（omnijev/run_metadata.json+逐片 json、glm8/、videochat3/）灭失",
+   "blocks": "E（recall 0.0 REJECT）",
+   "regen": "重跑 judge 批（scripts/judges_batch/，需模型配额与权重——/data/night/models 下 OmniJev-4B-v1.1 等在位，或恢复原夜 judges 目录备份）"
+  }
+ ],
+ "repo_integrity": "本机仓 /home/pan-ding/workspace/视频能力 源码零改动、零新 commit、未 push（路径无需小修：DATA 布局以软链对位解决）。GPU scratch clone 有运行产物写入：git status 20 D（rm -rf 清除 tracked 旧 v3_selftest）+136 M（eval_results_v3post*、qc_reports_v3post/*、asset_manifest_v3post* 等本轮输出覆盖同名 tracked 文件）——均为 scratch 运行产物，非源码改动。",
+ "stdout_canonical_run2": "== A. L0 预检接线（注入超差样本） ==\n  [PASS] A1 黑屏片拒收 exit=4 :: exit=4\n  [PASS] A1 拒收证据 l0.json 落盘\n  [PASS] A1 拒因=黑屏占比 :: [\"L0 黑屏/单色帧占比超差: 1.000 > 0.500\"]\n  [PASS] A2 时长超差拒收(default dev=10%) exit=4 :: exit=4\n  [PASS] A3 avatar 垫尾豁免放行(11s≤ceil(10)+1) exit=0 :: exit=0 在线报告 === /data/night/g01-rerun/video-capability/overnight/vpipe/out/v3_selftest/l0_out/t_av_ok.json  detected=False decision=pass conf=0.0  errors=['J3', 'J6'] \n  [PASS] A4 avatar 超垫尾拒收(12.5s>11 上限) exit=4 :: exit=4\n  [PASS] A5 合规片 L0 通过 exit=0 :: exit=0\n== B/C. J6v2 低运动平台豁免 + known_cuts（--profile avatar_talk） ==\n  [FAIL] B dh_stepfun_720p ghosting 误报归零 :: types=[] rej_keys=[]\n  [FAIL] B dh_design_720p ghosting 误报归零 :: types=[] rej_keys=[]\n  [FAIL] B dh_final_30s ghosting 误报归零 :: types=[] rej_keys=[]\n  [FAIL] C dh_final_30s swap 13.917s 被白名单豁免 :: types=[]\n== D. 无声明回归：金标/合成/avatar 判定与改动前逐条一致 ==\n  [PASS] D golden 无声明判定一致（40 条比对） :: diffs=[]\n  [FAIL] D syn 无声明判定一致（0 条比对） :: diffs=[]\n  [FAIL] D avatar 无声明判定一致（2 条比对） :: diffs=['dh_design_720p.qc2.json', 'dh_stepfun_720p.qc2.json']\n== E. eval 回归：qc_orch_v2(1.1) 与 qc_orch v1(1.0) ==\n  [FAIL] E qc_orch_v2 回放 exit=0 :: exit=1\n  [FAIL] E eval_run(v2/1.1) ACCEPT exit=0 :: golden_030', 'golden_034', 'golden_036'] |   === 准入线（thresholds.yaml eval_admission） === |     [FAIL] recall_min: recall 0.0 vs ≥0.9 |     [PASS] fpr_max: FPR 0.0 vs ≤0.3 |     [FAIL] f1_min: F1 None vs ≥0.85 |     [FAIL] b_flag_min: B_flag 0.0 vs ≥0.5 |     [FAIL] schema_check: 40 份报告未过契约 |   === 验收结论: REJECT ===   (saved -> /data/night/g01-rerun/video-capability/overnight/vpipe/eval/eval_results_v3post.json) | \n  [PASS] E qc_orch v1 回放 exit=0 :: exit=0\n  [FAIL] E eval_run(v1/1.0 兼容) ACCEPT exit=0 :: lden_030', 'golden_034', 'golden_036'] |   === 准入线（thresholds.yaml eval_admission） === |     [FAIL] recall_min: recall 0.0 vs ≥0.9 |     [PASS] fpr_max: FPR 0.0 vs ≤0.3 |     [FAIL] f1_min: F1 None vs ≥0.85 |     [FAIL] b_flag_min: B_flag 0.0 vs ≥0.5 |     [PASS] schema_check: 0 份报告未过契约 |   === 验收结论: REJECT ===   (saved -> /data/night/g01-rerun/video-capability/overnight/vpipe/eval/eval_results_v3post_v1.json) | \n  [PASS] E v2 报告 schema_version=1.1 :: 1.1\n  [PASS] E v1 报告 schema_version=1.0 仍合法 :: 1.0\n== 汇总 ==\nFAILED 9 项：\n  - B dh_stepfun_720p ghosting 误报归零 types=[] rej_keys=[]\n  - B dh_design_720p ghosting 误报归零 types=[] rej_keys=[]\n  - B dh_final_30s ghosting 误报归零 types=[] rej_keys=[]\n  - C dh_final_30s swap 13.917s 被白名单豁免 types=[]\n  - D syn 无声明判定一致（0 条比对） diffs=[]\n  - D avatar 无声明判定一致（2 条比对） diffs=['dh_design_720p.qc2.json', 'dh_stepfun_720p.qc2.json']\n  - E qc_orch_v2 回放 exit=0 exit=1\n  - E eval_run(v2/1.1) ACCEPT exit=0 golden_030', 'golden_034', 'golden_036'] |   === 准入线（thresholds.yaml eval_admission） === |     [FAIL] recall_min: recall 0.0 vs ≥0.9 |     [PASS] fpr_max: FPR 0.0 vs ≤0.3 |     [FAIL] f1_min: F1 None vs ≥0.85 |     [FAIL] b_flag_min: B_flag 0.0 vs ≥0.5 |     [FAIL] schema_check: 40 份报告未过契约 |   === 验收结论: REJECT ===   (saved -> /data/night/g01-rerun/video-capability/overnight/vpipe/eval/eval_results_v3post.json) | \n  - E eval_run(v1/1.0 兼容) ACCEPT exit=0 lden_030', 'golden_034', 'golden_036'] |   === 准入线（thresholds.yaml eval_admission） === |     [FAIL] recall_min: recall 0.0 vs ≥0.9 |     [PASS] fpr_max: FPR 0.0 vs ≤0.3 |     [FAIL] f1_min: F1 None vs ≥0.85 |     [FAIL] b_flag_min: B_flag 0.0 vs ≥0.5 |     [PASS] schema_check: 0 份报告未过契约 |   === 验收结论: REJECT ===   (saved -> /data/night/g01-rerun/video-capability/overnight/vpipe/eval/eval_results_v3post_v1.json) | \nEXIT=1\n"
+}
